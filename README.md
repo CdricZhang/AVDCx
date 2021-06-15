@@ -1,4 +1,4 @@
-AVDCX 基于 AV_Data_Capture 的 GUI 版本 AVDC 进行修改。
+AVDCX 是基于 AV_Data_Capture 的 GUI 版本 AVDC 再次修改的版本。
 ===================================================
 AV_Data_Capture 项目地址：https://github.com/yoshiko2/AV_Data_Capture
 
