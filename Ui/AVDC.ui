@@ -6,12 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1018</width>
-    <height>699</height>
+    <width>1024</width>
+    <height>700</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>.AppleSystemUIFont</family>
+    <pointsize>13</pointsize>
+    <weight>50</weight>
+    <bold>false</bold>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>AVDC</string>
+   <string>AVDCx</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -21,24 +29,40 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>240</x>
       <y>10</y>
-      <width>781</width>
-      <height>681</height>
+      <width>780</width>
+      <height>680</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>.AppleSystemUIFont</family>
+      <pointsize>13</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_avdc">
      <widget class="QPushButton" name="pushButton_start_cap">
       <property name="geometry">
        <rect>
-        <x>641</x>
-        <y>10</y>
-        <width>121</width>
-        <height>44</height>
+        <x>650</x>
+        <y>0</y>
+        <width>120</width>
+        <height>50</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>开始</string>
@@ -49,9 +73,17 @@
        <rect>
         <x>0</x>
         <y>70</y>
-        <width>201</width>
-        <height>601</height>
+        <width>200</width>
+        <height>600</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true"/>
@@ -59,6 +91,14 @@
       <column>
        <property name="text">
         <string>结果</string>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="background">
         <color alpha="42">
@@ -88,94 +128,22 @@
        </property>
       </item>
      </widget>
-     <widget class="QWidget" name="gridLayoutWidget_2">
+     <widget class="QLabel" name="label_number1">
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>450</y>
-        <width>161</width>
-        <height>221</height>
+        <y>60</y>
+        <width>50</width>
+        <height>40</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_poster">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="text">
-          <string>封面图</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="gridLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>430</x>
-        <y>450</y>
-        <width>331</width>
-        <height>221</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="gridLayout">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetDefaultConstraint</enum>
-       </property>
-       <property name="horizontalSpacing">
-        <number>7</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_thumb">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="text">
-          <string>缩略图</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="margin">
-          <number>0</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QLabel" name="label_11">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>70</y>
-        <width>51</width>
-        <height>39</height>
-       </rect>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>番号：</string>
@@ -185,13 +153,22 @@
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>70</y>
-        <width>201</width>
-        <height>39</height>
+        <y>60</y>
+        <width>120</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);
+color:#336699</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -206,27 +183,43 @@
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>70</y>
-        <width>81</width>
-        <height>39</height>
+        <x>210</x>
+        <y>530</y>
+        <width>50</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="text">
-       <string>发行日期：</string>
+       <string>日期：</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_release">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>70</y>
-        <width>201</width>
-        <height>39</height>
+        <x>260</x>
+        <y>530</y>
+        <width>220</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -235,14 +228,22 @@
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_15">
+     <widget class="QLabel" name="label_actor1">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>270</y>
-        <width>51</width>
-        <height>39</height>
+        <x>430</x>
+        <y>60</y>
+        <width>50</width>
+        <height>40</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>演员：</string>
@@ -251,14 +252,23 @@
      <widget class="QLabel" name="label_actor">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>270</y>
-        <width>501</width>
-        <height>39</height>
+        <x>480</x>
+        <y>60</y>
+        <width>280</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);
+color:#336699</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -274,13 +284,21 @@
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>320</y>
-        <width>501</width>
-        <height>39</height>
+        <y>430</y>
+        <width>500</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -296,10 +314,18 @@
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>320</y>
-        <width>51</width>
-        <height>39</height>
+        <y>430</y>
+        <width>50</width>
+        <height>40</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>简介：</string>
@@ -309,13 +335,21 @@
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>220</y>
-        <width>501</width>
-        <height>39</height>
+        <y>100</y>
+        <width>500</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -327,14 +361,22 @@
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_20">
+     <widget class="QLabel" name="label_title1">
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>220</y>
-        <width>51</width>
-        <height>39</height>
+        <y>100</y>
+        <width>50</width>
+        <height>40</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>标题：</string>
@@ -344,13 +386,21 @@
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>120</y>
-        <width>201</width>
-        <height>39</height>
+        <y>580</y>
+        <width>220</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -365,14 +415,22 @@
      <widget class="QLabel" name="label_publish">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>170</y>
-        <width>201</width>
-        <height>39</height>
+        <x>540</x>
+        <y>630</y>
+        <width>220</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -385,10 +443,18 @@
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>120</y>
-        <width>51</width>
-        <height>39</height>
+        <y>580</y>
+        <width>50</width>
+        <height>40</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>导演：</string>
@@ -397,11 +463,19 @@
      <widget class="QLabel" name="label_24">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>170</y>
-        <width>81</width>
-        <height>39</height>
+        <x>490</x>
+        <y>630</y>
+        <width>50</width>
+        <height>40</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>发行：</string>
@@ -411,13 +485,21 @@
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>170</y>
-        <width>201</width>
-        <height>39</height>
+        <y>630</y>
+        <width>220</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -429,17 +511,25 @@
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_label">
+     <widget class="QLabel" name="label_series">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>120</y>
-        <width>201</width>
-        <height>39</height>
+        <x>540</x>
+        <y>580</y>
+        <width>220</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -452,10 +542,18 @@
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>170</y>
-        <width>51</width>
-        <height>39</height>
+        <y>630</y>
+        <width>50</width>
+        <height>40</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>制作：</string>
@@ -464,11 +562,19 @@
      <widget class="QLabel" name="label_31">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>120</y>
-        <width>81</width>
-        <height>39</height>
+        <x>490</x>
+        <y>580</y>
+        <width>50</width>
+        <height>40</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>系列：</string>
@@ -478,13 +584,21 @@
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>370</y>
-        <width>501</width>
-        <height>39</height>
+        <y>480</y>
+        <width>500</width>
+        <height>40</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -500,10 +614,18 @@
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>370</y>
-        <width>51</width>
-        <height>39</height>
+        <y>480</y>
+        <width>50</width>
+        <height>40</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>类别：</string>
@@ -512,11 +634,19 @@
      <widget class="QCheckBox" name="checkBox_cover">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>420</y>
-        <width>321</width>
-        <height>21</height>
+        <x>260</x>
+        <y>380</y>
+        <width>330</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>显示封面(取消勾选后，立即关闭封面显示)</string>
@@ -526,9 +656,9 @@
       <property name="geometry">
        <rect>
         <x>1</x>
-        <y>20</y>
-        <width>461</width>
-        <height>20</height>
+        <y>10</y>
+        <width>460</width>
+        <height>30</height>
        </rect>
       </property>
       <property name="minimumSize">
@@ -548,6 +678,14 @@
         <width>0</width>
         <height>0</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QProgressBar::chunk {
@@ -569,7 +707,7 @@ QProgressBar {
       <property name="geometry">
        <rect>
         <x>470</x>
-        <y>20</y>
+        <y>10</y>
         <width>50</width>
         <height>30</height>
        </rect>
@@ -594,6 +732,8 @@ QProgressBar {
       </property>
       <property name="font">
        <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -608,10 +748,10 @@ QProgressBar {
      <widget class="QLabel" name="label_progress">
       <property name="geometry">
        <rect>
-        <x>540</x>
-        <y>17</y>
-        <width>81</width>
-        <height>30</height>
+        <x>520</x>
+        <y>0</y>
+        <width>100</width>
+        <height>50</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -634,6 +774,8 @@ QProgressBar {
       </property>
       <property name="font">
        <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -655,35 +797,362 @@ QProgressBar {
       <property name="geometry">
        <rect>
         <x>1</x>
-        <y>30</y>
-        <width>461</width>
-        <height>30</height>
+        <y>34</y>
+        <width>460</width>
+        <height>20</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>530</y>
+        <width>50</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>时长：</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_runtime">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>530</y>
+        <width>220</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="Line" name="line_6">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>460</y>
+        <width>500</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_7">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>510</y>
+        <width>500</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_8">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>560</y>
+        <width>220</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_9">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>560</y>
+        <width>220</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_10">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>610</y>
+        <width>220</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_11">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>660</y>
+        <width>220</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_12">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>610</y>
+        <width>220</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_13">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>660</y>
+        <width>220</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_thumb">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>432</x>
+        <y>150</y>
+        <width>328</width>
+        <height>220</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>缩略图</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_poster">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>150</y>
+        <width>156</width>
+        <height>220</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>156</width>
+        <height>220</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>156</width>
+        <height>220</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>封面图</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_poster1">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>140</y>
+        <width>50</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>15</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>封面：</string>
+      </property>
+     </widget>
      <zorder>pushButton_start_cap</zorder>
      <zorder>treeWidget_number</zorder>
-     <zorder>gridLayoutWidget_2</zorder>
-     <zorder>gridLayoutWidget</zorder>
-     <zorder>label_11</zorder>
+     <zorder>label_number1</zorder>
      <zorder>label_number</zorder>
      <zorder>label_13</zorder>
      <zorder>label_release</zorder>
-     <zorder>label_15</zorder>
+     <zorder>label_actor1</zorder>
      <zorder>label_actor</zorder>
      <zorder>label_outline</zorder>
      <zorder>label_18</zorder>
      <zorder>label_title</zorder>
-     <zorder>label_20</zorder>
+     <zorder>label_title1</zorder>
      <zorder>label_director</zorder>
      <zorder>label_publish</zorder>
      <zorder>label_23</zorder>
      <zorder>label_24</zorder>
      <zorder>label_studio</zorder>
-     <zorder>label_label</zorder>
+     <zorder>label_series</zorder>
      <zorder>label_30</zorder>
      <zorder>label_31</zorder>
      <zorder>label_tag</zorder>
@@ -691,28 +1160,49 @@ QProgressBar {
      <zorder>checkBox_cover</zorder>
      <zorder>label_percent</zorder>
      <zorder>label_progress</zorder>
-     <zorder>line</zorder>
      <zorder>progressBar_avdc</zorder>
+     <zorder>label_22</zorder>
+     <zorder>label_runtime</zorder>
+     <zorder>line_6</zorder>
+     <zorder>line_7</zorder>
+     <zorder>line_8</zorder>
+     <zorder>line_9</zorder>
+     <zorder>line_10</zorder>
+     <zorder>line_11</zorder>
+     <zorder>line_12</zorder>
+     <zorder>line_13</zorder>
+     <zorder>label_thumb</zorder>
+     <zorder>label_poster</zorder>
+     <zorder>line</zorder>
+     <zorder>label_poster1</zorder>
     </widget>
     <widget class="QWidget" name="page_log">
      <widget class="QTextBrowser" name="textBrowser_log_main">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>0</x>
         <y>0</y>
-        <width>771</width>
-        <height>681</height>
+        <width>780</width>
+        <height>680</height>
        </rect>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_start_cap2">
       <property name="geometry">
        <rect>
-        <x>641</x>
-        <y>10</y>
-        <width>121</width>
-        <height>44</height>
+        <x>650</x>
+        <y>0</y>
+        <width>120</width>
+        <height>50</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>开始</string>
@@ -723,21 +1213,29 @@ QProgressBar {
      <widget class="QTextBrowser" name="textBrowser_net_main">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>0</x>
         <y>0</y>
-        <width>771</width>
-        <height>681</height>
+        <width>780</width>
+        <height>680</height>
        </rect>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_check_net">
       <property name="geometry">
        <rect>
-        <x>641</x>
-        <y>10</y>
-        <width>121</width>
-        <height>44</height>
+        <x>650</x>
+        <y>0</y>
+        <width>120</width>
+        <height>50</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>开始检测</string>
@@ -754,6 +1252,18 @@ QProgressBar {
         <height>121</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font:&quot;Courier&quot;;</string>
+      </property>
       <property name="title">
        <string>视频、字幕移动</string>
       </property>
@@ -761,10 +1271,19 @@ QProgressBar {
        <property name="geometry">
         <rect>
          <x>230</x>
-         <y>60</y>
+         <y>70</y>
          <width>511</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>‘视频目录’的所有子目录(不包括排除目录)下的视频及同名字幕，
@@ -776,9 +1295,18 @@ QProgressBar {
         <rect>
          <x>10</x>
          <y>30</y>
-         <width>201</width>
+         <width>200</width>
          <height>50</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>开始移动</string>
@@ -789,12 +1317,24 @@ QProgressBar {
         <rect>
          <x>230</x>
          <y>30</y>
-         <width>81</width>
-         <height>24</height>
+         <width>80</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>排除目录：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_escape_dir_move">
@@ -802,9 +1342,23 @@ QProgressBar {
         <rect>
          <x>310</x>
          <y>30</y>
-         <width>431</width>
-         <height>24</height>
+         <width>430</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
        </property>
       </widget>
      </widget>
@@ -814,8 +1368,20 @@ QProgressBar {
         <x>10</x>
         <y>140</y>
         <width>751</width>
-        <height>171</height>
+        <height>201</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font:&quot;Courier&quot;;</string>
       </property>
       <property name="title">
        <string>单文件刮削</string>
@@ -824,10 +1390,19 @@ QProgressBar {
        <property name="geometry">
         <rect>
          <x>230</x>
-         <y>120</y>
+         <y>150</y>
          <width>511</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>选择单个文件(‘视频目录’下或者子目录下)。
@@ -839,9 +1414,18 @@ QProgressBar {
         <rect>
          <x>10</x>
          <y>30</y>
-         <width>201</width>
+         <width>200</width>
          <height>50</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>选择文件</string>
@@ -851,10 +1435,24 @@ QProgressBar {
        <property name="geometry">
         <rect>
          <x>310</x>
-         <y>90</y>
-         <width>431</width>
-         <height>22</height>
+         <y>110</y>
+         <width>430</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string> border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
        </property>
        <item>
         <property name="text">
@@ -906,36 +1504,74 @@ QProgressBar {
        <property name="geometry">
         <rect>
          <x>230</x>
-         <y>90</y>
-         <width>72</width>
-         <height>21</height>
+         <y>110</y>
+         <width>80</width>
+         <height>30</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Courier</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
        <property name="text">
-        <string>刮削网站:</string>
+        <string>刮削网站：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_appoint_url">
        <property name="geometry">
         <rect>
          <x>310</x>
-         <y>60</y>
-         <width>431</width>
-         <height>21</height>
+         <y>70</y>
+         <width>430</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_10">
        <property name="geometry">
         <rect>
          <x>230</x>
-         <y>60</y>
-         <width>72</width>
-         <height>15</height>
+         <y>70</y>
+         <width>80</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>刮削网址：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_movie_number">
@@ -943,9 +1579,23 @@ QProgressBar {
         <rect>
          <x>310</x>
          <y>30</y>
-         <width>431</width>
-         <height>21</height>
+         <width>430</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_12">
@@ -953,22 +1603,43 @@ QProgressBar {
         <rect>
          <x>230</x>
          <y>30</y>
-         <width>72</width>
-         <height>15</height>
+         <width>80</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>影片番号：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_start_single_file">
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>120</y>
-         <width>201</width>
-         <height>41</height>
+         <y>100</y>
+         <width>200</width>
+         <height>50</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>刮削</string>
@@ -979,10 +1650,22 @@ QProgressBar {
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>340</y>
+        <y>350</y>
         <width>751</width>
         <height>191</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font:&quot;Courier&quot;;</string>
       </property>
       <property name="title">
        <string>Emby-演员头像</string>
@@ -992,9 +1675,18 @@ QProgressBar {
         <rect>
          <x>10</x>
          <y>30</y>
-         <width>201</width>
+         <width>200</width>
          <height>50</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>添加头像</string>
@@ -1005,9 +1697,23 @@ QProgressBar {
         <rect>
          <x>310</x>
          <y>30</y>
-         <width>431</width>
-         <height>21</height>
+         <width>430</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_3">
@@ -1015,12 +1721,24 @@ QProgressBar {
         <rect>
          <x>230</x>
          <y>30</y>
-         <width>72</width>
-         <height>15</height>
+         <width>80</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>Emby地址：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_4">
@@ -1028,12 +1746,24 @@ QProgressBar {
         <rect>
          <x>230</x>
          <y>74</y>
-         <width>72</width>
-         <height>21</height>
+         <width>80</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>API密钥：</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_api_key">
@@ -1041,9 +1771,23 @@ QProgressBar {
         <rect>
          <x>310</x>
          <y>70</y>
-         <width>431</width>
-         <height>21</height>
+         <width>430</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_5">
@@ -1055,6 +1799,15 @@ QProgressBar {
          <height>71</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Courier</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
        <property name="text">
         <string>说明:
    1、头像请放在程序目录(AVDC目录)下的Actor目录中。
@@ -1065,10 +1818,19 @@ QProgressBar {
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>140</y>
-         <width>201</width>
-         <height>40</height>
+         <y>130</y>
+         <width>200</width>
+         <height>50</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>查看</string>
@@ -1078,10 +1840,19 @@ QProgressBar {
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>100</y>
-         <width>201</width>
-         <height>21</height>
+         <y>90</y>
+         <width>200</width>
+         <height>30</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <item>
         <property name="text">
@@ -1109,10 +1880,22 @@ QProgressBar {
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>540</y>
+        <y>550</y>
         <width>751</width>
         <height>111</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font:&quot;Courier&quot;;</string>
       </property>
       <property name="title">
        <string>裁剪封面图</string>
@@ -1121,10 +1904,19 @@ QProgressBar {
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>20</y>
-         <width>201</width>
+         <y>30</y>
+         <width>200</width>
          <height>50</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
        </property>
        <property name="text">
         <string>选择缩略图</string>
@@ -1139,6 +1931,15 @@ QProgressBar {
          <height>71</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Courier</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
        <property name="text">
         <string>说明:
   1、对有些封面图(poster)不满意,比例不对或者分辨率太低,可使用此工具。
@@ -1152,10 +1953,18 @@ QProgressBar {
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>630</y>
+        <y>620</y>
         <width>350</width>
-        <height>44</height>
+        <height>50</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>保存</string>
@@ -1169,6 +1978,15 @@ QProgressBar {
         <width>771</width>
         <height>591</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="accessibleDescription">
        <string/>
@@ -1195,6 +2013,18 @@ QProgressBar {
           <height>441</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
+        </property>
         <property name="title">
          <string>基本设置</string>
         </property>
@@ -1219,6 +2049,15 @@ QProgressBar {
            <height>16777215</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="title">
           <string>失败后移动文件：</string>
          </property>
@@ -1234,6 +2073,15 @@ QProgressBar {
           <layout class="QHBoxLayout" name="horizontalLayout_14">
            <item>
             <widget class="QRadioButton" name="radioButton_fail_move_on">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>开</string>
              </property>
@@ -1241,6 +2089,15 @@ QProgressBar {
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_fail_move_off">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>关</string>
              </property>
@@ -1270,6 +2127,15 @@ QProgressBar {
            <height>16777215</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="title">
           <string>调试模式：</string>
          </property>
@@ -1285,6 +2151,15 @@ QProgressBar {
           <layout class="QHBoxLayout" name="horizontalLayout_11">
            <item>
             <widget class="QRadioButton" name="radioButton_debug_on">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>开</string>
              </property>
@@ -1292,6 +2167,15 @@ QProgressBar {
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_debug_off">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>关</string>
              </property>
@@ -1321,6 +2205,15 @@ QProgressBar {
            <height>16777215</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="title">
           <string>保存日志：</string>
          </property>
@@ -1336,6 +2229,15 @@ QProgressBar {
           <layout class="QHBoxLayout" name="horizontalLayout_13">
            <item>
             <widget class="QRadioButton" name="radioButton_log_on">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>开</string>
              </property>
@@ -1343,6 +2245,15 @@ QProgressBar {
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_log_off">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>关</string>
              </property>
@@ -1372,6 +2283,15 @@ QProgressBar {
            <height>16777215</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="title">
           <string>下载剧照：</string>
          </property>
@@ -1387,6 +2307,15 @@ QProgressBar {
           <layout class="QHBoxLayout" name="horizontalLayout_15">
            <item>
             <widget class="QRadioButton" name="radioButton_extrafanart_download_on">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>开</string>
              </property>
@@ -1394,6 +2323,15 @@ QProgressBar {
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_extrafanart_download_off">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>关</string>
              </property>
@@ -1423,6 +2361,15 @@ QProgressBar {
            <height>16777215</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="title">
           <string>软链接模式：</string>
          </property>
@@ -1438,6 +2385,15 @@ QProgressBar {
           <layout class="QHBoxLayout" name="horizontalLayout_10">
            <item>
             <widget class="QRadioButton" name="radioButton_soft_on">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>开</string>
              </property>
@@ -1445,6 +2401,15 @@ QProgressBar {
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_soft_off">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>关</string>
              </property>
@@ -1474,6 +2439,15 @@ QProgressBar {
            <height>16777215</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="title">
           <string>检测更新：</string>
          </property>
@@ -1489,6 +2463,15 @@ QProgressBar {
           <layout class="QHBoxLayout" name="horizontalLayout_12">
            <item>
             <widget class="QRadioButton" name="radioButton_update_on">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>开</string>
              </property>
@@ -1496,6 +2479,15 @@ QProgressBar {
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_update_off">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>关</string>
              </property>
@@ -1525,6 +2517,15 @@ QProgressBar {
            <height>16777215</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="title">
           <string>模式：</string>
          </property>
@@ -1540,6 +2541,15 @@ QProgressBar {
           <layout class="QHBoxLayout" name="horizontalLayout_9">
            <item>
             <widget class="QRadioButton" name="radioButton_common">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>刮削模式</string>
              </property>
@@ -1547,6 +2557,15 @@ QProgressBar {
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_sort">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>整理模式</string>
              </property>
@@ -1570,6 +2589,15 @@ QProgressBar {
            <height>0</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="title">
           <string>下载文件</string>
          </property>
@@ -1585,6 +2613,15 @@ QProgressBar {
           <layout class="QHBoxLayout" name="horizontalLayout_16">
            <item>
             <widget class="QCheckBox" name="checkBox_download_nfo">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>nfo</string>
              </property>
@@ -1592,6 +2629,15 @@ QProgressBar {
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_download_poster">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>poster</string>
              </property>
@@ -1599,6 +2645,15 @@ QProgressBar {
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_download_fanart">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>fanart</string>
              </property>
@@ -1606,6 +2661,15 @@ QProgressBar {
            </item>
            <item>
             <widget class="QCheckBox" name="checkBox_download_thumb">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="text">
               <string>thumb</string>
              </property>
@@ -1624,15 +2688,27 @@ QProgressBar {
           <height>61</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="title">
-         <string>网站选择</string>
+         <string>刮削网站</string>
         </property>
         <widget class="QComboBox" name="comboBox_website_all">
          <property name="geometry">
           <rect>
            <x>130</x>
            <y>20</y>
-           <width>591</width>
+           <width>590</width>
            <height>30</height>
           </rect>
          </property>
@@ -1659,6 +2735,15 @@ QProgressBar {
            <width>0</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>.AppleSystemUIFont</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
          </property>
          <property name="styleSheet">
           <string notr="true"/>
@@ -1727,6 +2812,18 @@ QProgressBar {
           <height>191</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
+        </property>
         <property name="title">
          <string>命名规则</string>
         </property>
@@ -1748,6 +2845,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
             </property>
@@ -1767,11 +2873,21 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="accessibleDescription">
              <string>测试</string>
             </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -1784,6 +2900,15 @@ QProgressBar {
               <width>170</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -1804,8 +2929,18 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -1818,6 +2953,15 @@ QProgressBar {
               <width>170</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -1838,8 +2982,18 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -1852,6 +3006,15 @@ QProgressBar {
               <width>170</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -1880,6 +3043,15 @@ QProgressBar {
                 <height>16777215</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="text">
                <string>开</string>
               </property>
@@ -1898,6 +3070,15 @@ QProgressBar {
                 <width>1800</width>
                 <height>16777215</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="text">
                <string>关</string>
@@ -1918,6 +3099,18 @@ QProgressBar {
           <height>351</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
+        </property>
         <property name="title">
          <string>目录设置</string>
         </property>
@@ -1927,7 +3120,7 @@ QProgressBar {
            <x>10</x>
            <y>60</y>
            <width>721</width>
-           <height>271</height>
+           <height>428</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="formLayout_2">
@@ -1938,6 +3131,15 @@ QProgressBar {
               <width>170</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -1958,8 +3160,18 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -1972,6 +3184,15 @@ QProgressBar {
               <width>170</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -1995,76 +3216,18 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
-            <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_40">
-            <property name="minimumSize">
-             <size>
-              <width>170</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
-            </property>
-            <property name="text">
-             <string>   视频类型：</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="lineEdit_movie_type">
-            <property name="minimumSize">
-             <size>
-              <width>500</width>
-              <height>30</height>
-             </size>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_48">
-            <property name="minimumSize">
-             <size>
-              <width>170</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
-            </property>
-            <property name="text">
-             <string>   排除目录：</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLineEdit" name="lineEdit_escape_dir">
-            <property name="minimumSize">
-             <size>
-              <width>500</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -2077,6 +3240,15 @@ QProgressBar {
               <width>170</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -2097,23 +3269,124 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
            </widget>
           </item>
-          <item row="5" column="1">
-           <widget class="QLineEdit" name="lineEdit_sub_type">
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_48">
+            <property name="minimumSize">
+             <size>
+              <width>170</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="text">
+             <string>   排除目录：</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="lineEdit_escape_dir">
             <property name="minimumSize">
              <size>
               <width>500</width>
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_40">
+            <property name="minimumSize">
+             <size>
+              <width>170</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="text">
+             <string>   视频类型：</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="lineEdit_movie_type">
+            <property name="minimumSize">
+             <size>
+              <width>500</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -2127,6 +3400,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
             </property>
@@ -2138,6 +3420,31 @@ QProgressBar {
             </property>
            </widget>
           </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="lineEdit_sub_type">
+            <property name="minimumSize">
+             <size>
+              <width>500</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+            </property>
+           </widget>
+          </item>
           <item row="6" column="0">
            <widget class="QLabel" name="label_50">
             <property name="minimumSize">
@@ -2145,6 +3452,15 @@ QProgressBar {
               <width>170</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
@@ -2168,8 +3484,18 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -2185,6 +3511,15 @@ QProgressBar {
            <width>501</width>
            <height>20</height>
           </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
          </property>
          <property name="text">
           <string>注意：‘成功输出目录’、‘失败输出目录’、‘排除目录’应为‘视频目录’下的目录。</string>
@@ -2204,6 +3539,18 @@ QProgressBar {
           <width>741</width>
           <height>211</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="title">
          <string>代理设置</string>
@@ -2226,6 +3573,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>   代理：</string>
             </property>
@@ -2244,6 +3600,15 @@ QProgressBar {
                 <height>30</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="text">
                <string>http</string>
               </property>
@@ -2257,6 +3622,15 @@ QProgressBar {
                 <height>30</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="text">
                <string>socks5</string>
               </property>
@@ -2269,6 +3643,15 @@ QProgressBar {
                 <width>93</width>
                 <height>30</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="text">
                <string>不使用</string>
@@ -2284,6 +3667,15 @@ QProgressBar {
               <width>170</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string>   IP+端口号：</string>
@@ -2307,8 +3699,18 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -2321,6 +3723,15 @@ QProgressBar {
               <width>170</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string>   超时重试时间：</string>
@@ -2416,6 +3827,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>   重试次数：</string>
             </property>
@@ -2503,10 +3923,22 @@ QProgressBar {
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>230</y>
+          <y>240</y>
           <width>741</width>
           <height>321</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="title">
          <string>Cookie设置</string>
@@ -2529,6 +3961,15 @@ QProgressBar {
               <height>80</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>javdb：
 （登录状态）</string>
@@ -2549,7 +3990,7 @@ QProgressBar {
             <property name="styleSheet">
              <string notr="true"> border: 1px solid rgba(0,0,0, 50);
  border-radius: 1px;
-</string>
+font: &quot;Courier&quot;;</string>
             </property>
            </widget>
           </item>
@@ -2564,7 +4005,7 @@ QProgressBar {
             <property name="styleSheet">
              <string notr="true"> border: 1px solid rgba(0,0,0, 50);
  border-radius: 1px;
-</string>
+font: &quot;Courier&quot;;</string>
             </property>
            </widget>
           </item>
@@ -2575,6 +4016,15 @@ QProgressBar {
               <width>170</width>
               <height>80</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string>dmm：</string>
@@ -2589,7 +4039,7 @@ QProgressBar {
         <widget class="QLabel" name="label_21">
          <property name="geometry">
           <rect>
-           <x>20</x>
+           <x>10</x>
            <y>220</y>
            <width>721</width>
            <height>91</height>
@@ -2604,7 +4054,10 @@ QProgressBar {
          <property name="font">
           <font>
            <family>Courier</family>
-           <pointsize>10</pointsize>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
           </font>
          </property>
          <property name="text">
@@ -2631,6 +4084,18 @@ QProgressBar {
           <width>741</width>
           <height>71</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="title">
          <string>要添加的水印类型</string>
@@ -2659,6 +4124,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>字幕</string>
             </property>
@@ -2677,6 +4151,15 @@ QProgressBar {
               <width>100</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string>流出</string>
@@ -2697,6 +4180,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>无码</string>
             </property>
@@ -2713,6 +4205,18 @@ QProgressBar {
           <width>741</width>
           <height>71</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="title">
          <string>首个水印位置</string>
@@ -2741,6 +4245,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>左上</string>
             </property>
@@ -2759,6 +4272,15 @@ QProgressBar {
               <width>0</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string>左下</string>
@@ -2779,6 +4301,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>右上</string>
             </property>
@@ -2798,6 +4329,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>右下</string>
             </property>
@@ -2814,6 +4354,18 @@ QProgressBar {
           <width>741</width>
           <height>71</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="title">
          <string>水印大小</string>
@@ -2902,6 +4454,18 @@ QProgressBar {
           <height>51</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
+        </property>
         <property name="title">
          <string>封面图添加水印</string>
         </property>
@@ -2929,6 +4493,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>开</string>
             </property>
@@ -2948,6 +4521,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>关</string>
             </property>
@@ -2964,6 +4546,18 @@ QProgressBar {
           <width>741</width>
           <height>51</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="title">
          <string>缩略图添加水印</string>
@@ -2992,6 +4586,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>开</string>
             </property>
@@ -3011,6 +4614,15 @@ QProgressBar {
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>关</string>
             </property>
@@ -3027,6 +4639,18 @@ QProgressBar {
           <width>591</width>
           <height>61</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="text">
          <string>说明：
@@ -3048,6 +4672,18 @@ QProgressBar {
           <height>141</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
+        </property>
         <property name="title">
          <string>无码封面</string>
         </property>
@@ -3059,6 +4695,15 @@ QProgressBar {
            <width>501</width>
            <height>61</height>
           </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
          </property>
          <property name="text">
           <string>说明：
@@ -3114,6 +4759,18 @@ QProgressBar {
           <height>111</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
+        </property>
         <property name="title">
          <string>无码番号</string>
         </property>
@@ -3147,6 +4804,15 @@ QProgressBar {
               <height>1700000</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::RightToLeft</enum>
             </property>
@@ -3178,8 +4844,18 @@ QProgressBar {
               <height>16777215</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -3196,6 +4872,15 @@ QProgressBar {
            <height>31</height>
           </rect>
          </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="text">
           <string>说明：只添加 HEYZO、n1111、111111-111之外的前缀。</string>
          </property>
@@ -3209,6 +4894,18 @@ QProgressBar {
           <width>741</width>
           <height>121</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="title">
          <string>排除设置</string>
@@ -3243,8 +4940,18 @@ QProgressBar {
               <height>16777215</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -3269,6 +4976,15 @@ QProgressBar {
               <width>1700000</width>
               <height>1700000</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
              <string>   多余字符串：</string>
@@ -3298,8 +5014,18 @@ QProgressBar {
               <height>16777215</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true"> border: 1px solid rgba(0,0,0, 50);
+             <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
             </property>
@@ -3325,6 +5051,15 @@ QProgressBar {
               <height>1700000</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
              <string>   异常字符：</string>
             </property>
@@ -3342,10 +5077,18 @@ QProgressBar {
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>630</y>
-        <width>120</width>
-        <height>40</height>
+        <y>620</y>
+        <width>160</width>
+        <height>50</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="text">
        <string>恢复默认</string>
@@ -3361,16 +5104,27 @@ QProgressBar {
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>781</width>
-        <height>681</height>
+        <width>780</width>
+        <height>680</height>
        </rect>
       </property>
       <property name="html">
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:20pt; font-weight:600;&quot;&gt;AVDC&lt;/span&gt;&lt;/p&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont','.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:20pt; font-weight:600;&quot;&gt;AVDCx&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:16pt; font-weight:600;&quot;&gt;AVDCx 是基于 AV_Data_Capture 的 GUI 版本 AVDC 再次修改的版本。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:18pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt;&quot;&gt;· AV_Data_Capture 项目地址：&lt;/span&gt;&lt;a href=&quot;https://github.com/yoshiko2/AV_Data_Capture&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; text-decoration: underline; color:#0068da;&quot;&gt;https://github.com/yoshiko2/AV_Data_Capture&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt;&quot;&gt;· AVDC 项目地址：&lt;/span&gt;&lt;a href=&quot;https://github.com/moyy996/AVDC&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; text-decoration: underline; color:#0068da;&quot;&gt;https://github.com/moyy996/AVDC&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt;&quot;&gt;· AVDCx 项目地址：&lt;/span&gt;&lt;a href=&quot;https://github.com/Hermit10/temp&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; text-decoration: underline; color:#0068da;&quot;&gt;https://github.com/Hermit10/temp&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:14pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:24pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:24pt; font-weight:600;&quot;&gt;使用说明&lt;/span&gt;&lt;span style=&quot; font-family:'Courier';&quot;&gt; （内容来自 AVDC ：&lt;/span&gt;&lt;a href=&quot;https://github.com/Hermit10/temp&quot;&gt;&lt;span style=&quot; font-family:'Courier'; text-decoration: underline; color:#0068da;&quot;&gt;https://github.com/moyy996/AVDC&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Courier';&quot;&gt; ）&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:14pt;&quot;&gt;———————————————————————————————————————————————————————&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.AppleSystemUIFont';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:14pt; font-weight:600;&quot;&gt;目录&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;#_一、功能简介&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;&quot;&gt;一、功能简介&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;#_二、项目简介&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;&quot;&gt;二、项目简介&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
@@ -3466,99 +5220,83 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>221</width>
-      <height>701</height>
+      <width>220</width>
+      <height>700</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>.AppleSystemUIFont</family>
+      <pointsize>13</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
     </property>
     <widget class="QLabel" name="label_ico">
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>470</y>
+       <y>540</y>
        <width>141</width>
-       <height>221</height>
+       <height>141</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>.AppleSystemUIFont</family>
+       <pointsize>13</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
      </property>
      <property name="text">
       <string>图标</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>201</width>
-       <height>360</height>
+       <x>0</x>
+       <y>40</y>
+       <width>221</width>
+       <height>311</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>.AppleSystemUIFont</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QPushButton" name="pushButton_close">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>20</horstretch>
-            <verstretch>20</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="baseSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="mouseTracking">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{color:#515151;background:#F14C4C;border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:#FF6058;}</string>
-          </property>
-          <property name="text">
-           <string>×</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="mini">
-          <property name="styleSheet">
-           <string notr="true">border: 1px #336699;</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>22</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>22</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
       <item>
        <widget class="QPushButton" name="pushButton_main">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -3568,8 +5306,16 @@ p, li { white-space: pre-wrap; }
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>16777215</height>
+          <height>40</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
         </property>
         <property name="text">
          <string>主界面</string>
@@ -3577,14 +5323,25 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer_4">
+       <spacer name="verticalSpacer_2">
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>40</height>
+          <height>10</height>
          </size>
         </property>
        </spacer>
@@ -3600,8 +5357,16 @@ p, li { white-space: pre-wrap; }
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>16777215</height>
+          <height>40</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
         </property>
         <property name="text">
          <string>日志</string>
@@ -3609,14 +5374,25 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer_6">
+       <spacer name="verticalSpacer">
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>40</height>
+          <height>10</height>
          </size>
         </property>
        </spacer>
@@ -3632,8 +5408,16 @@ p, li { white-space: pre-wrap; }
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>16777215</height>
+          <height>40</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
         </property>
         <property name="text">
          <string>检测网络</string>
@@ -3641,14 +5425,25 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer_2">
+       <spacer name="verticalSpacer_6">
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>40</height>
+          <height>10</height>
          </size>
         </property>
        </spacer>
@@ -3661,20 +5456,45 @@ p, li { white-space: pre-wrap; }
           <height>40</height>
          </size>
         </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="text">
          <string>工具</string>
         </property>
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer_3">
+       <spacer name="verticalSpacer_4">
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>40</height>
+          <height>10</height>
          </size>
         </property>
        </spacer>
@@ -3687,6 +5507,20 @@ p, li { white-space: pre-wrap; }
           <height>40</height>
          </size>
         </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="text">
          <string>设置</string>
         </property>
@@ -3694,13 +5528,24 @@ p, li { white-space: pre-wrap; }
       </item>
       <item>
        <spacer name="verticalSpacer_5">
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>40</height>
+          <height>10</height>
          </size>
         </property>
        </spacer>
@@ -3713,8 +5558,121 @@ p, li { white-space: pre-wrap; }
           <height>40</height>
          </size>
         </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="text">
          <string>关于</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="label_show_version">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>660</y>
+       <width>220</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>.AppleSystemUIFont</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgba(255, 255, 255, 151);</string>
+     </property>
+     <property name="text">
+      <string>版本号</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>.AppleSystemUIFont</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="pushButton_close">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>20</horstretch>
+          <verstretch>20</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>.AppleSystemUIFont</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="mouseTracking">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{color:#515151;background:#F14C4C;border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:#FF6058;}</string>
+        </property>
+        <property name="text">
+         <string>×</string>
         </property>
        </widget>
       </item>
