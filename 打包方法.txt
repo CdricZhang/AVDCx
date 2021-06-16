@@ -1,0 +1,25 @@
+一、win版打包exe方法
+===============================
+1，官网下载安装 python
+https://www.python.org/
+2，命令行运行：
+cd C:\AVDCx
+3，命令行安装所需模块
+pip install -r requirements.txt
+4，命令行安装打包工具
+pip install pyinstaller
+5，命令行运行
+pyinstaller -n AVDCx.exe -i AVDCx.ico -F -w AVDCx_Main.py --hidden-import pysocks --hidden-import urllib3
+pyinstaller AVDCx.exe.spec
+
+把Img文件夹复制到dist，打包好的程序在dist里面。
+
+二、Mac版打包app方法
+===============================
+1，官网下载安装 python （https://www.python.org/）
+2，命令行cd到AVDCx所在目录
+3，命令行安装所需模块 pip install -r requirements.txt
+4，命令行安装打包工具 pip install py2ap
+5，命令行运行 python setup.py py2app
+
+打包好的程序在dist里面。
