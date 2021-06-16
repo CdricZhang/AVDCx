@@ -159,8 +159,8 @@ def getOutlineScore(number):  # 获取简介
                     result, dmm_detail = get_html(url_detail)
                     html = etree.fromstring(dmm_detail, etree.HTMLParser())
                     outline = str(html.xpath('//*[@class="mg-t0 mg-b20"]/text()')).strip(" ['']").replace('\\n', '').replace('\n', '')
-    except Exception as error_info:
-        print('Error in javbus.getOutlineScore : ' + str(error_info))
+    except Exception as error_info1:
+        print('Error in javdb.getOutlineScore : ' + str(error_info1))
     return outline, score
 
 
@@ -254,16 +254,18 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 log_info += '   >>> JAVDB- cover url 获取失败！\n'
                 error_type = 'Cover_small Url is None!'
                 raise Exception('JAVDB- cover_small url 获取失败！]')
-
             actor = getActor(html_detail) # 获取actor
             if len(actor) == 0 and 'FC2-' in number.upper():
                 actor.append('FC2-NoActor')
+            actor = str(actor).strip(" [',']").replace('\'', '')
+            title = title.replace('-', '').replace(actor, '')
             release = getRelease(html_detail)
+
             try:
                 dic = {
                     'number': number.upper(),
-                    'title': str(title),
-                    'actor': str(actor).strip(" [',']").replace('\'', ''),
+                    'title': title,
+                    'actor': actor,
                     'outline': str(outline),
                     'release': str(release),
                     'year': getYear(release),
@@ -395,12 +397,15 @@ def main_us(number, appoint_url='', log_info='', isuncensored=False):
             actor = getActor(html_detail) # 获取actor
             if len(actor) == 0 and 'FC2-' in number.upper():
                 actor.append('FC2-NoActor')
+            actor = str(actor).strip(" [',']").replace('\'', '')
+            title = title.replace('-', '').replace(actor, '')
             release = getRelease(html_detail)
+
             try:
                 dic = {
                     'number': number.upper(),
-                    'title': str(title),
-                    'actor': str(actor).strip(" [',']").replace('\'', ''),
+                    'title': title,
+                    'actor': actor,
                     'outline': str(outline),
                     'release': str(release),
                     'year': getYear(release),

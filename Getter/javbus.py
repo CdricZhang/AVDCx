@@ -126,8 +126,8 @@ def getOutlineScore(number):  # 获取简介
                     result, dmm_detail = get_html(url_detail)
                     html = etree.fromstring(dmm_detail, etree.HTMLParser())
                     outline = str(html.xpath('//*[@class="mg-t0 mg-b20"]/text()')).strip(" ['']").replace('\\n', '').replace('\n', '')
-    except Exception as error_info:
-        print('Error in javbus.getOutlineScore : ' + str(error_info))
+    except Exception as error_info1:
+        print('Error in javbus.getOutlineScore : ' + str(error_info1))
     return outline, score
 
 
@@ -240,9 +240,10 @@ def main(number, appoint_url='', log_info=''):
         cover_small = getCover_small(number)
         outline, score = getOutlineScore(number)
         number = getNum(htmlcode)
+        actor = getActor(htmlcode).strip(' ')
         try:
             dic = {
-                'title': str(title),
+                'title': str(title).replace('-', '').replace(actor, ''),
                 'studio': getStudio(htmlcode),
                 'publisher': getPublisher(htmlcode),
                 'year': getYear(getRelease(htmlcode)),
@@ -250,7 +251,7 @@ def main(number, appoint_url='', log_info=''):
                 'score': str(score),
                 'runtime': getRuntime(htmlcode).replace('分鐘', '').strip(),
                 'director': getDirector(htmlcode),
-                'actor': getActor(htmlcode),
+                'actor': actor,
                 'release': getRelease(htmlcode),
                 'number': number,
                 'cover': str(cover_url),
@@ -326,13 +327,14 @@ def main_uncensored(number, appoint_url='', log_info=''):
         #     error_type = 'Cover_small Url is None!'
         #     raise Exception('>>> JAVBUS- cover_small url 获取失败！')
         number = getNum(htmlcode)
+        actor = getActor(htmlcode).strip(' ')
         outline = ''
         score = ''
         if 'HEYZO' in number.upper():
             outline, score = getOutlineScore(number)
         try:
             dic = {
-                'title': str(title),
+                'title': str(title).replace('-', '').replace(actor, ''),
                 'studio': getStudio(htmlcode),
                 'publisher': '',
                 'year': getYear(getRelease(htmlcode)),
@@ -340,7 +342,7 @@ def main_uncensored(number, appoint_url='', log_info=''):
                 'score': str(score),
                 'runtime': getRuntime(htmlcode).replace('分鐘', '').strip(),
                 'director': getDirector(htmlcode),
-                'actor': getActor(htmlcode),
+                'actor': actor,
                 'release': getRelease(htmlcode),
                 'number': getNum(htmlcode),
                 'cover': str(cover_url),
@@ -441,13 +443,14 @@ def main_us(number, appoint_url='', log_info=''):
         #     error_type = 'Cover_small Url is None!'
         #     raise Exception('>>> JAVBUS- cover_small url 获取失败！')
         number = getNum(htmlcode)
+        actor = getActor(htmlcode).strip(' ')
         try:
             dic = {
-                'title': str(title),
+                'title': str(title).replace('-', '').replace(actor, ''),
                 'year': getYear(getRelease(htmlcode)),
                 'runtime': getRuntime(htmlcode).replace('分鐘', '').strip(),
                 'director': getDirector(htmlcode),
-                'actor': getActor(htmlcode),
+                'actor': actor,
                 'release': getRelease(htmlcode),
                 'number': getNum(htmlcode),
                 'tag': getTag(htmlcode),

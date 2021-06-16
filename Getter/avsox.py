@@ -107,9 +107,9 @@ def getUrl(number):
                 " ['']")
             if number.upper() == number_get.upper():
                 page_url = 'https:' + url_list[i-1]
-                return i, response, page_url
+                return i, response, page_url, result
                 # return i, response, str(html.xpath('//*[@id="waterfall"]/div[' + str(i) + ']/a/@href')).strip(" ['']")
-    return 0, response, ''
+    return 0, response, '', result
 
 
 def main(number, appoint_url='', log_info=''):
@@ -122,8 +122,8 @@ def main(number, appoint_url='', log_info=''):
     error_info = ''
     dic = {}
     try:
-        count, response, url = getUrl(number)
-        if str(response) == 'ProxyError':
+        count, response, url, result = getUrl(number)
+        if str(result) == 'error':
             log_info += '   >>> AVSOX-请求详情页：超时！请检测网络或代理！'
             error_type = 'timeout'
             raise Exception('>>> AVSOX-请求详情页：出错！请检测网络或代理！')
