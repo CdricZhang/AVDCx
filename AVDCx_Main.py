@@ -39,7 +39,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.set_style()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210613'
+        self.localversion = '20210616'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.m_drag = False
