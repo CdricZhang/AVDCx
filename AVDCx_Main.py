@@ -3,11 +3,11 @@
 from logging import exception
 import threading
 import json
-from PyQt5 import QtWidgets
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtGui import QTextCursor, QCursor
-from PyQt5.QtWidgets import QMainWindow, QTreeWidgetItem, QApplication
-from PyQt5.QtCore import pyqtSignal, Qt, QCoreApplication
+from PySide2 import QtWidgets
+from PySide2.QtGui import QPixmap
+from PySide2.QtGui import QTextCursor, QCursor
+from PySide2.QtWidgets import QMainWindow, QTreeWidgetItem, QApplication
+from PySide2.QtCore import Signal, Qt, QCoreApplication
 import sys
 import time
 import os.path
@@ -24,11 +24,11 @@ from Function.Function import save_config, movie_lists, get_info, getDataFromJSO
 from Function.getHtml import get_html, get_proxies, get_proxy
 
 class MyMAinWindow(QMainWindow, Ui_AVDV):
-    progressBarValue = pyqtSignal(int)  # 进度条信号量
-    main_logs_show = pyqtSignal(str) # 刮削日志信号
-    net_logs_show = pyqtSignal(str) # 网络检测日志信号
-    set_javdb_cookie = pyqtSignal(str) # 加载javdb cookie文本内容到设置页面
-    set_dmm_cookie = pyqtSignal(str) # 加载javdb cookie文本内容到设置页面
+    progressBarValue = Signal(int)  # 进度条信号量
+    main_logs_show = Signal(str) # 刮削日志信号
+    net_logs_show = Signal(str) # 网络检测日志信号
+    set_javdb_cookie = Signal(str) # 加载javdb cookie文本内容到设置页面
+    set_dmm_cookie = Signal(str) # 加载javdb cookie文本内容到设置页面
 
 
     def __init__(self, parent=None):
@@ -39,9 +39,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.set_style()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210616'
+        self.localversion = '20210617'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
+        self.soft_path = os.getcwd()
+        self.default_poster = self.soft_path + '/Img/default-poster.jpg'
+        self.default_thumb = self.soft_path + '/Img/default-thumb.jpg'
         self.m_drag = False
         self.m_DragPosition = 0
         self.count_claw = 0  # 批量刮削次数
@@ -52,6 +55,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.current_proxy = ''  # 代理设置
         self.Init()
         self.Load_Config()
+        self.Ui.label_filepath.setText('准备刮削视频目录（及子目录）的文件...\n🎈 设置视频目录：设置 - 目录设置 - 视频目录')
         self.show_version() # 启动后在【日志】页面显示版本信息
         self.new_proxy = self.check_proxyChange()
         self.add_net_text_main('\n🏠 代理设置在:【设置】 - 【网络设置】 - 【代理设置】。\n') 
@@ -72,6 +76,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.progressBar_avdc.setValue(0)  # 进度条清0 
         self.progressBarValue.connect(self.set_processbar)
         self.Ui.progressBar_avdc.setTextVisible(False)  # 不显示进度条文字
+        self.Ui.pushButton_start_cap.setCheckable(True)
+
         self.main_logs_show.connect(self.Ui.textBrowser_log_main.append)
         self.net_logs_show.connect(self.Ui.textBrowser_net_main.append)
         self.set_javdb_cookie.connect(self.Ui.plainTextEdit_cookie_javdb.setPlainText)
@@ -119,14 +125,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     border:0px solid rgba(0, 0, 0, 80);
             }
             ''')
-
+        # 主界面
         self.Ui.page_avdc.setStyleSheet(
             '''
-            * {
-                    font-family:Courier;
-                    font-size:13px;
-            }
-            QLabel#label_number1,#label_actor1,#label_title1,#label_poster1,#label_number,#label_actor,#label_title,#label_poster1{
+            QLabel#label_number1,#label_actor1,#label_title1,#label_poster1,#label_number,#label_actor,#label_title,#label_poster1,#label_filepath{
                     font-size:15px;
                     font-weight:bold;
                     border:0px solid rgba(0, 0, 0, 80);
@@ -202,7 +204,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             QTextBrowser{
                     font-size:13px;
                     background:#FCFCFC;
-                    border-radius:10px;
+                    border:0px solid #BEBEBE;
                     padding:2px 4px;
             }
             QLineEdit{
@@ -215,10 +217,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     font-size:13px;
                     background:white;
             }   
-
             QPushButton#pushButton_start_cap,#pushButton_init_config,#pushButton_start_cap2,#pushButton_check_net,#pushButton_move_mp4,#pushButton_select_file,#pushButton_add_actor_pic,#pushButton_select_thumb,#pushButton_save_config,#pushButton_start_single_file,#pushButton_show_pic_actor{
                     color:white;
-                    font-size:14px;
+                    font-size:16px;
                     background-color:#0066CC;
                     border-radius:25px;
                     padding:2px 4px;
@@ -299,10 +300,21 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ========================================================================左侧按钮点击事件响应函数
     def close_win(self):
-        if self.Ui.checkBox_cover.isChecked() != self.cover_flag:
-            self.pushButton_save_config_clicked()
-            quit()
+        config_file = 'config.ini'
+        config = RawConfigParser()
+        config.read(config_file, encoding='UTF-8')
+        show_poster = int(config.get('common', 'show_poster'))
+
+        if bool(self.Ui.checkBox_cover.isChecked()) != bool(show_poster):
+            if self.Ui.checkBox_cover.isChecked():
+                config.set('common', 'show_poster', 1)
+            else:
+                config.set('common', 'show_poster', 0)
+            code = open(config_file, 'w')
+            config.write(code)    
+            code.close()
         os._exit(0)
+
 
     def min_win(self):
         self.setWindowState(Qt.WindowMinimized)
@@ -355,6 +367,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def pushButton_start_cap_clicked(self):
         self.Ui.pushButton_start_cap.setEnabled(False)
         self.Ui.pushButton_start_cap2.setEnabled(False)
+        self.Ui.pushButton_start_cap.setText('正在刮削')
+        self.Ui.pushButton_start_cap2.setText('正在刮削')
+        self.Ui.pushButton_start_cap.setStyleSheet('QPushButton#pushButton_start_cap{color:#999999;background-color:#F0F0F0}')
+        self.Ui.pushButton_start_cap2.setStyleSheet('QPushButton#pushButton_start_cap2{color:#999999;background-color:#F0F0F0}')
         self.progressBarValue.emit(int(0))
         try:
             t = threading.Thread(target=self.AVDC_Main)
@@ -427,151 +443,151 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             config = RawConfigParser()
             try:
                 config.read(config_file, encoding='UTF-8')
+                # ========================================================================common
+                if int(config['common']['main_mode']) == 1:
+                    self.Ui.radioButton_common.setChecked(True)
+                elif int(config['common']['main_mode']) == 2:
+                    self.Ui.radioButton_sort.setChecked(True)
+                if int(config['common']['soft_link']) == 1:
+                    self.Ui.radioButton_soft_on.setChecked(True)
+                elif int(config['common']['soft_link']) == 0:
+                    self.Ui.radioButton_soft_off.setChecked(True)
+                if int(config['common']['failed_file_move']) == 1:
+                    self.Ui.radioButton_fail_move_on.setChecked(True)
+                elif int(config['common']['failed_file_move']) == 0:
+                    self.Ui.radioButton_fail_move_off.setChecked(True)
+                if int(config['common']['show_poster']) == 1:
+                    self.Ui.checkBox_cover.setChecked(True)
+                    self.cover_flag = True
+                elif int(config['common']['show_poster']) == 0:
+                    self.Ui.checkBox_cover.setChecked(False)
+                    self.cover_flag = False
+                if config['common']['website'] == 'all':
+                    self.Ui.comboBox_website_all.setCurrentIndex(0)
+                elif config['common']['website'] == 'javbus':
+                    self.Ui.comboBox_website_all.setCurrentIndex(1)
+                elif config['common']['website'] == 'javdb':
+                    self.Ui.comboBox_website_all.setCurrentIndex(2)
+                elif config['common']['website'] == 'jav321':
+                    self.Ui.comboBox_website_all.setCurrentIndex(3)
+                elif config['common']['website'] == 'dmm':
+                    self.Ui.comboBox_website_all.setCurrentIndex(4)
+                elif config['common']['website'] == 'avsox':
+                    self.Ui.comboBox_website_all.setCurrentIndex(5)
+                elif config['common']['website'] == 'xcity':
+                    self.Ui.comboBox_website_all.setCurrentIndex(6)
+                elif config['common']['website'] == 'mgstage':
+                    self.Ui.comboBox_website_all.setCurrentIndex(7)
+                elif config['common']['website'] == 'fc2hub':
+                    self.Ui.comboBox_website_all.setCurrentIndex(8)
+
+                # ========================================================================proxy
+                if config['proxy']['type'] == 'no' or config['proxy']['type'] == '':
+                    self.Ui.radioButton_proxy_nouse.setChecked(True)
+                elif config['proxy']['type'] == 'http':
+                    self.Ui.radioButton_proxy_http.setChecked(True)
+                elif config['proxy']['type'] == 'socks5':
+                    self.Ui.radioButton_proxy_socks5.setChecked(True)
+                self.Ui.lineEdit_proxy.setText(config['proxy']['proxy'])
+                self.Ui.horizontalSlider_timeout.setValue(int(config['proxy']['timeout']))
+                self.Ui.horizontalSlider_retry.setValue(int(config['proxy']['retry']))
+                # ========================================================================Cookies
+                self.set_javdb_cookie.emit(config['Cookies']['javdb'])
+                self.set_dmm_cookie.emit(config['Cookies']['dmm'])
+                # ========================================================================Name_Rule
+                self.Ui.lineEdit_dir_name.setText(config['Name_Rule']['folder_name'])
+                self.Ui.lineEdit_media_name.setText(config['Name_Rule']['naming_media'])
+                self.Ui.lineEdit_local_name.setText(config['Name_Rule']['naming_file'])
+                # ========================================================================update
+                if int(config['update']['update_check']) == 1:
+                    self.Ui.radioButton_update_on.setChecked(True)
+                elif int(config['update']['update_check']) == 0:
+                    self.Ui.radioButton_update_off.setChecked(True)
+                # ========================================================================folder_name_C
+                if int(config['Name_Rule']['folder_name_C']) == 1:
+                    self.Ui.radioButton_foldername_C_on.setChecked(True)
+                elif int(config['Name_Rule']['folder_name_C']) == 0:
+                    self.Ui.radioButton_foldername_C_off.setChecked(True)
+                # ========================================================================log
+                if int(config['log']['save_log']) == 1:
+                    self.Ui.radioButton_log_on.setChecked(True)
+                elif int(config['log']['save_log']) == 0:
+                    self.Ui.radioButton_log_off.setChecked(True)
+                # ========================================================================media
+                self.Ui.lineEdit_movie_path.setText(str(config['media']['media_path']).replace('\\', '/'))
+                self.Ui.lineEdit_movie_type.setText(config['media']['media_type'])
+                self.Ui.lineEdit_sub_type.setText(config['media']['sub_type'])
+                self.Ui.lineEdit_success.setText(config['media']['success_output_folder'])
+                self.Ui.lineEdit_fail.setText(config['media']['failed_output_folder'])
+                # ========================================================================escape
+                self.Ui.lineEdit_escape_dir.setText(config['escape']['folders'])
+                self.Ui.lineEdit_escape_char.setText(config['escape']['literals'])
+                self.Ui.lineEdit_escape_dir_move.setText(config['escape']['folders'])
+                self.Ui.lineEdit_escape_string.setText(config['escape']['string'])
+                # ========================================================================debug_mode
+                if int(config['debug_mode']['switch']) == 1:
+                    self.Ui.radioButton_debug_on.setChecked(True)
+                elif int(config['debug_mode']['switch']) == 0:
+                    self.Ui.radioButton_debug_off.setChecked(True)
+                # ========================================================================emby
+                self.Ui.lineEdit_emby_url.setText(config['emby']['emby_url'])
+                self.Ui.lineEdit_api_key.setText(config['emby']['api_key'])
+                # ========================================================================mark
+                if int(config['mark']['poster_mark']) == 1:
+                    self.Ui.radioButton_poster_mark_on.setChecked(True)
+                elif int(config['mark']['poster_mark']) == 0:
+                    self.Ui.radioButton_poster_mark_off.setChecked(True)
+                if int(config['mark']['thumb_mark']) == 1:
+                    self.Ui.radioButton_thumb_mark_on.setChecked(True)
+                elif int(config['mark']['thumb_mark']) == 0:
+                    self.Ui.radioButton_thumb_mark_off.setChecked(True)
+                self.Ui.horizontalSlider_mark_size.setValue(int(config['mark']['mark_size']))
+                if 'SUB' in str(config['mark']['mark_type']).upper():
+                    self.Ui.checkBox_sub.setChecked(True)
+                if 'LEAK' in str(config['mark']['mark_type']).upper():
+                    self.Ui.checkBox_leak.setChecked(True)
+                if 'UNCENSORED' in str(config['mark']['mark_type']).upper():
+                    self.Ui.checkBox_uncensored.setChecked(True)
+                if 'top_left' == config['mark']['mark_pos']:
+                    self.Ui.radioButton_top_left.setChecked(True)
+                elif 'bottom_left' == config['mark']['mark_pos']:
+                    self.Ui.radioButton_bottom_left.setChecked(True)
+                elif 'top_right' == config['mark']['mark_pos']:
+                    self.Ui.radioButton_top_right.setChecked(True)
+                elif 'bottom_right' == config['mark']['mark_pos']:
+                    self.Ui.radioButton_bottom_right.setChecked(True)
+                # ========================================================================uncensored
+                if int(config['uncensored']['uncensored_poster']) == 1:
+                    self.Ui.radioButton_poster_cut.setChecked(True)
+                elif int(config['uncensored']['uncensored_poster']) == 0:
+                    self.Ui.radioButton_poster_official.setChecked(True)
+                self.Ui.lineEdit_uncensored_prefix.setText(config['uncensored']['uncensored_prefix'])
+                # ========================================================================file_download
+                if int(config['file_download']['nfo']) == 1:
+                    self.Ui.checkBox_download_nfo.setChecked(True)
+                elif int(config['file_download']['nfo']) == 0:
+                    self.Ui.checkBox_download_nfo.setChecked(False)
+                if int(config['file_download']['poster']) == 1:
+                    self.Ui.checkBox_download_poster.setChecked(True)
+                elif int(config['file_download']['poster']) == 0:
+                    self.Ui.checkBox_download_poster.setChecked(False)
+                if int(config['file_download']['fanart']) == 1:
+                    self.Ui.checkBox_download_fanart.setChecked(True)
+                elif int(config['file_download']['fanart']) == 0:
+                    self.Ui.checkBox_download_fanart.setChecked(False)
+                if int(config['file_download']['thumb']) == 1:
+                    self.Ui.checkBox_download_thumb.setChecked(True)
+                elif int(config['file_download']['thumb']) == 0:
+                    self.Ui.checkBox_download_thumb.setChecked(False)
+                # ========================================================================extrafanart
+                if int(config['extrafanart']['extrafanart_download']) == 1:
+                    self.Ui.radioButton_extrafanart_download_on.setChecked(True)
+                elif int(config['extrafanart']['extrafanart_download']) == 0:
+                    self.Ui.radioButton_extrafanart_download_off.setChecked(True)
+                self.Ui.lineEdit_extrafanart_dir.setText(config['extrafanart']['extrafanart_folder'])
             except:
                 self.add_text_main('config.ini is corrupt, and has been reset now.\n')
                 return self.init_config_clicked()
-            # ========================================================================common
-            if int(config['common']['main_mode']) == 1:
-                self.Ui.radioButton_common.setChecked(True)
-            elif int(config['common']['main_mode']) == 2:
-                self.Ui.radioButton_sort.setChecked(True)
-            if int(config['common']['soft_link']) == 1:
-                self.Ui.radioButton_soft_on.setChecked(True)
-            elif int(config['common']['soft_link']) == 0:
-                self.Ui.radioButton_soft_off.setChecked(True)
-            if int(config['common']['failed_file_move']) == 1:
-                self.Ui.radioButton_fail_move_on.setChecked(True)
-            elif int(config['common']['failed_file_move']) == 0:
-                self.Ui.radioButton_fail_move_off.setChecked(True)
-            if int(config['common']['show_poster']) == 1:
-                self.Ui.checkBox_cover.setChecked(True)
-                self.cover_flag = True
-            elif int(config['common']['show_poster']) == 0:
-                self.Ui.checkBox_cover.setChecked(False)
-                self.cover_flag = False
-            if config['common']['website'] == 'all':
-                self.Ui.comboBox_website_all.setCurrentIndex(0)
-            elif config['common']['website'] == 'javbus':
-                self.Ui.comboBox_website_all.setCurrentIndex(1)
-            elif config['common']['website'] == 'javdb':
-                self.Ui.comboBox_website_all.setCurrentIndex(2)
-            elif config['common']['website'] == 'jav321':
-                self.Ui.comboBox_website_all.setCurrentIndex(3)
-            elif config['common']['website'] == 'dmm':
-                self.Ui.comboBox_website_all.setCurrentIndex(4)
-            elif config['common']['website'] == 'avsox':
-                self.Ui.comboBox_website_all.setCurrentIndex(5)
-            elif config['common']['website'] == 'xcity':
-                self.Ui.comboBox_website_all.setCurrentIndex(6)
-            elif config['common']['website'] == 'mgstage':
-                self.Ui.comboBox_website_all.setCurrentIndex(7)
-            elif config['common']['website'] == 'fc2hub':
-                self.Ui.comboBox_website_all.setCurrentIndex(8)
-
-            # ========================================================================proxy
-            if config['proxy']['type'] == 'no' or config['proxy']['type'] == '':
-                self.Ui.radioButton_proxy_nouse.setChecked(True)
-            elif config['proxy']['type'] == 'http':
-                self.Ui.radioButton_proxy_http.setChecked(True)
-            elif config['proxy']['type'] == 'socks5':
-                self.Ui.radioButton_proxy_socks5.setChecked(True)
-            self.Ui.lineEdit_proxy.setText(config['proxy']['proxy'])
-            self.Ui.horizontalSlider_timeout.setValue(int(config['proxy']['timeout']))
-            self.Ui.horizontalSlider_retry.setValue(int(config['proxy']['retry']))
-            # ========================================================================Cookies
-            self.set_javdb_cookie.emit(config['Cookies']['javdb'])
-            self.set_dmm_cookie.emit(config['Cookies']['dmm'])
-            # ========================================================================Name_Rule
-            self.Ui.lineEdit_dir_name.setText(config['Name_Rule']['folder_name'])
-            self.Ui.lineEdit_media_name.setText(config['Name_Rule']['naming_media'])
-            self.Ui.lineEdit_local_name.setText(config['Name_Rule']['naming_file'])
-            # ========================================================================update
-            if int(config['update']['update_check']) == 1:
-                self.Ui.radioButton_update_on.setChecked(True)
-            elif int(config['update']['update_check']) == 0:
-                self.Ui.radioButton_update_off.setChecked(True)
-            # ========================================================================folder_name_C
-            if int(config['Name_Rule']['folder_name_C']) == 1:
-                self.Ui.radioButton_foldername_C_on.setChecked(True)
-            elif int(config['Name_Rule']['folder_name_C']) == 0:
-                self.Ui.radioButton_foldername_C_off.setChecked(True)
-            # ========================================================================log
-            if int(config['log']['save_log']) == 1:
-                self.Ui.radioButton_log_on.setChecked(True)
-            elif int(config['log']['save_log']) == 0:
-                self.Ui.radioButton_log_off.setChecked(True)
-            # ========================================================================media
-            self.Ui.lineEdit_movie_path.setText(str(config['media']['media_path']).replace('\\', '/'))
-            self.Ui.lineEdit_movie_type.setText(config['media']['media_type'])
-            self.Ui.lineEdit_sub_type.setText(config['media']['sub_type'])
-            self.Ui.lineEdit_success.setText(config['media']['success_output_folder'])
-            self.Ui.lineEdit_fail.setText(config['media']['failed_output_folder'])
-            # ========================================================================escape
-            self.Ui.lineEdit_escape_dir.setText(config['escape']['folders'])
-            self.Ui.lineEdit_escape_char.setText(config['escape']['literals'])
-            self.Ui.lineEdit_escape_dir_move.setText(config['escape']['folders'])
-            self.Ui.lineEdit_escape_string.setText(config['escape']['string'])
-            # ========================================================================debug_mode
-            if int(config['debug_mode']['switch']) == 1:
-                self.Ui.radioButton_debug_on.setChecked(True)
-            elif int(config['debug_mode']['switch']) == 0:
-                self.Ui.radioButton_debug_off.setChecked(True)
-            # ========================================================================emby
-            self.Ui.lineEdit_emby_url.setText(config['emby']['emby_url'])
-            self.Ui.lineEdit_api_key.setText(config['emby']['api_key'])
-            # ========================================================================mark
-            if int(config['mark']['poster_mark']) == 1:
-                self.Ui.radioButton_poster_mark_on.setChecked(True)
-            elif int(config['mark']['poster_mark']) == 0:
-                self.Ui.radioButton_poster_mark_off.setChecked(True)
-            if int(config['mark']['thumb_mark']) == 1:
-                self.Ui.radioButton_thumb_mark_on.setChecked(True)
-            elif int(config['mark']['thumb_mark']) == 0:
-                self.Ui.radioButton_thumb_mark_off.setChecked(True)
-            self.Ui.horizontalSlider_mark_size.setValue(int(config['mark']['mark_size']))
-            if 'SUB' in str(config['mark']['mark_type']).upper():
-                self.Ui.checkBox_sub.setChecked(True)
-            if 'LEAK' in str(config['mark']['mark_type']).upper():
-                self.Ui.checkBox_leak.setChecked(True)
-            if 'UNCENSORED' in str(config['mark']['mark_type']).upper():
-                self.Ui.checkBox_uncensored.setChecked(True)
-            if 'top_left' == config['mark']['mark_pos']:
-                self.Ui.radioButton_top_left.setChecked(True)
-            elif 'bottom_left' == config['mark']['mark_pos']:
-                self.Ui.radioButton_bottom_left.setChecked(True)
-            elif 'top_right' == config['mark']['mark_pos']:
-                self.Ui.radioButton_top_right.setChecked(True)
-            elif 'bottom_right' == config['mark']['mark_pos']:
-                self.Ui.radioButton_bottom_right.setChecked(True)
-            # ========================================================================uncensored
-            if int(config['uncensored']['uncensored_poster']) == 1:
-                self.Ui.radioButton_poster_cut.setChecked(True)
-            elif int(config['uncensored']['uncensored_poster']) == 0:
-                self.Ui.radioButton_poster_official.setChecked(True)
-            self.Ui.lineEdit_uncensored_prefix.setText(config['uncensored']['uncensored_prefix'])
-            # ========================================================================file_download
-            if int(config['file_download']['nfo']) == 1:
-                self.Ui.checkBox_download_nfo.setChecked(True)
-            elif int(config['file_download']['nfo']) == 0:
-                self.Ui.checkBox_download_nfo.setChecked(False)
-            if int(config['file_download']['poster']) == 1:
-                self.Ui.checkBox_download_poster.setChecked(True)
-            elif int(config['file_download']['poster']) == 0:
-                self.Ui.checkBox_download_poster.setChecked(False)
-            if int(config['file_download']['fanart']) == 1:
-                self.Ui.checkBox_download_fanart.setChecked(True)
-            elif int(config['file_download']['fanart']) == 0:
-                self.Ui.checkBox_download_fanart.setChecked(False)
-            if int(config['file_download']['thumb']) == 1:
-                self.Ui.checkBox_download_thumb.setChecked(True)
-            elif int(config['file_download']['thumb']) == 0:
-                self.Ui.checkBox_download_thumb.setChecked(False)
-            # ========================================================================extrafanart
-            if int(config['extrafanart']['extrafanart_download']) == 1:
-                self.Ui.radioButton_extrafanart_download_on.setChecked(True)
-            elif int(config['extrafanart']['extrafanart_download']) == 0:
-                self.Ui.radioButton_extrafanart_download_off.setChecked(True)
-            self.Ui.lineEdit_extrafanart_dir.setText(config['extrafanart']['extrafanart_folder'])
         else:
             # ini不存在，重新创建
             self.add_text_main('Create config file: config.ini\n')
@@ -798,6 +814,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     def select_file_thread(self):
         file_name = self.select_file_path
+        if len(file_name) > 55:     # 截断路径长度，以方便在主界面显示路径时能看到后面的文件名
+            show_filepath = file_name[-55:]
+            if show_filepath.find('/') != -1:
+                show_filepath = '...' + show_filepath[show_filepath.find('/'):]
+        else:
+            show_filepath = file_name
         file_root = os.getcwd().replace("\\\\", "/").replace("\\", "/")
         file_path = file_name.replace(file_root, '.').replace("\\\\", "/").replace("\\", "/")
         # 获取去掉拓展名的文件名做为番号
@@ -812,13 +834,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         fail_count = 0
         count += 1
         json_data= ''
-        self.Ui.label_progress.setText('当前: ' + str(count) + '/' + str(count))
+        self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
         percentage = str(count / int(count) * 100)[:4] + '%'
         value = int(count / int(count) * 100)
+        self.progressBarValue.emit(int(value))
         self.add_text_main('[*]' + '='*80)
         self.add_text_main('[!]Round (' + str(self.count_claw) + ') - [' + str(count) + '/' + str(count) + '] - ' + percentage)
         self.add_text_main('[*]' + '='*80)
-
+        self.Ui.label_filepath.setText( '当前：' + str(count) + '/' + str(1) + ' ' + str(value) + '% 正在刮削：\n' + show_filepath)
         try:
             if appoint_number:
                 file_name = appoint_number
@@ -845,6 +868,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.ShowListName(fail_showName, 'fail', json_data, file_name)
             self.add_text_main('[-]Error in select_file_thread: ' + str(error_info))
         self.add_text_main("[*]================================================================================")
+        self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
+        self.progressBarValue.emit(100)
+        self.Ui.label_filepath.setText('🎉 恭喜！全部刮削完成！')
 
     # ========================================================================小工具-裁剪封面图
     def pushButton_select_thumb_clicked(self):
@@ -1556,7 +1582,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     # ========================================================================更新进度条
     def set_processbar(self, value):
         self.Ui.progressBar_avdc.setProperty("value", value)
-        self.Ui.label_percent.setText(str(value) + '%')
 
     def show_dataResult(self, json_data):
         if json_data['error_type']:
@@ -1745,10 +1770,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.add_net_text_main('   ' + each[0].ljust(8) + each[2])
         self.add_net_text_main("================================================================================\n")
         self.Ui.pushButton_check_net.setEnabled(True)
-
+        self.Ui.pushButton_check_net.setText('开始检测')
+        self.Ui.pushButton_check_net.setStyleSheet('QPushButton#pushButton_check_net{background-color:#0066CC}QPushButton:hover#pushButton_check_net{background-color:#4C6EFF}QPushButton:pressed#pushButton_check_net{#4C6EE0}')
     # ========================================================================网络检查
     def NetCheck(self):
         self.Ui.pushButton_check_net.setEnabled(False)
+        self.Ui.pushButton_check_net.setText('正在检测')
+        self.Ui.pushButton_check_net.setStyleSheet('QPushButton#pushButton_check_net{color:#999999;background-color:#F0F0F0}')
         try:
             # self.count_claw += 1
             t = threading.Thread(target=self.NetResult)
@@ -1790,20 +1818,34 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             node = QTreeWidgetItem(self.item_fail)
             node.setText(0, filename)
             self.item_fail.addChild(node)
-        if type(json_data) == str or not json_data.get('number'):
+
+        if not json_data.get('number'):
             json_data['number'] = real_number
+        if not json_data.get('actor'):
             json_data['actor'] = 'unknown'
+        if not json_data.get('title'):
             json_data['title'] = json_data['error_info']
+        if not json_data.get('outline'):
             json_data['outline'] = 'unknown'
+        if not json_data.get('tag'):
             json_data['tag'] = 'unknown'
+        if not json_data.get('release'):
             json_data['release'] = 'unknown'
+        if not json_data.get('runtime'):
             json_data['runtime'] = '0'
+        if not json_data.get('director'):
             json_data['director'] = 'unknown'
+        if not json_data.get('series'):
             json_data['series'] = 'unknown'
+        if not json_data.get('publisher'):
             json_data['publisher'] = 'unknown'
+        if not json_data.get('studio'):
             json_data['studio'] = 'unknown'
-            json_data['poster_path'] = ''
-            json_data['thumb_path'] = ''
+        if not json_data.get('poster_path'):
+            json_data['poster_path'] = self.default_poster
+        if not json_data.get('thumb_path'):
+            json_data['thumb_path'] = self.default_thumb
+
         self.add_label_info(json_data)
         self.json_array[filename] = json_data
 
@@ -1875,7 +1917,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
         # =======================================================================如果获取json_data有问题, 在失败栏目显示文件名
         if data_result != 'ok':                                                # json_data 有问题, 在失败栏目显示文件名 
-            self.ShowListName(fail_showName, 'fail', json_data, number)                # 在失败栏目显示文件名
+            self.ShowListName(fail_showName, 'fail', json_data, number)        # 在失败栏目显示文件名
             self.moveFailedFolder(filepath, failed_folder)                     # 移动文件到失败文件夹
             succ_count -= 1
             return 'error', json_data, succ_count, fail_count                  # 返回AVDC_main, 继续处理下一个文件
@@ -1904,6 +1946,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         poster_path = path + '/' + naming_rule + '-poster.jpg'
 
         if os.path.exists(file_path):
+            json_data['error_type'] = '输出目录已存在同名文件！ ' + file_path
+            json_data['title'] = '输出目录已存在同名文件！ ' + file_path
+            json_data['poster_path'] = poster_path
+            json_data['thumb_path'] = thumb_path
+
             self.ShowListName(fail_showName, 'fail', json_data, number)         # 在失败栏目显示文件名
             self.add_text_main('[!]输出文件夹存在同名文件: ' + file_path)
             self.moveFailedFolder(filepath, failed_folder)                      # 移动文件到失败文件夹
@@ -1984,9 +2031,17 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # =======================================================================遍历电影列表 交给core处理
         for movie in movie_list:  # 遍历电影列表 交给core处理
             count += 1
-            self.Ui.label_progress.setText('当前：' + str(count) + '/' + str(count_all))
-            percentage = str(count / int(count_all) * 100)[:4] + '%'
             value = int(count / int(count_all) * 100)
+            self.progressBarValue.emit(int(value))
+            self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
+            percentage = str(count / int(count_all) * 100)[:4] + '%'
+            if len(movie) > 55:     # 截断路径长度，以方便在主界面显示路径时能看到后面的文件名
+                show_filepath = movie[-55:]
+                if show_filepath.find('/') != -1:
+                    show_filepath = '...' + show_filepath[show_filepath.find('/'):]
+            else:
+                show_filepath = movie
+            self.Ui.label_filepath.setText('正在刮削： ' + str(count) + '/' + str(count_all) + ' （' + str(value) + '%）\n' + show_filepath)
             self.add_text_main('[*]' + '='*80)
             self.add_text_main('[!]Round (' + str(self.count_claw) + ') - [' + str(count) + '/' + count_all + '] - ' + percentage)
             self.add_text_main('[*]' + '='*80)
@@ -2001,10 +2056,16 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 self.add_text_main('[-]Error in AVDC_Main.Core_Main: ' + str(error_info))
                 self.moveFailedFolder(movie, failed_folder)
                 self.add_text_main("[*]================================================================================")
-            self.progressBarValue.emit(int(value))
+        self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
+        self.progressBarValue.emit(100)
+        self.Ui.label_filepath.setText('🎉 恭喜！全部刮削完成！共%s个文件！' % count_all)
         self.CEF(movie_path)
         self.Ui.pushButton_start_cap.setEnabled(True)
         self.Ui.pushButton_start_cap2.setEnabled(True)
+        self.Ui.pushButton_start_cap.setText('开始')
+        self.Ui.pushButton_start_cap2.setText('开始')
+        self.Ui.pushButton_start_cap.setStyleSheet('QPushButton#pushButton_start_cap{background-color:#0066CC}QPushButton:hover#pushButton_start_cap{background-color:#4C6EFF}QPushButton:pressed#pushButton_start_cap{#4C6EE0}')
+        self.Ui.pushButton_start_cap2.setStyleSheet('QPushButton#pushButton_start_cap2{background-color:#0066CC}QPushButton:hover#pushButton_start_cap2{background-color:#4C6EFF}QPushButton:pressed#pushButton_start_cap2{#4C6EE0}')
         self.add_text_main("[*]================================================================================")
         self.add_text_main("[+]Total %s , Success %s , Failed %s" % (count_all, succ_count, fail_count))
         self.add_text_main("[*]================================================================================")
@@ -2016,7 +2077,7 @@ if __name__ == '__main__':
     '''
     主函数
     '''
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    # QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     # QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
     # QCoreApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
 

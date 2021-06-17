@@ -8,7 +8,7 @@ Usage:
 from setuptools import setup
 
 APP = ['AVDCx_Main.py']
-DATA_FILES = ['Img/SUB.png', 'Img/LEAK.png','Img/UNCENSORED.png', 'AVDC-ico.png']
+DATA_FILES = ['Img/SUB.png', 'Img/LEAK.png','Img/UNCENSORED.png', 'Img/AVDC-ico.png', 'Img/default-poster.jpg', 'Img/default-thumb.jpg']
 OPTIONS = {
     'argv_emulation': True,
     'iconfile': 'AVDCx.icns',
@@ -29,5 +29,5 @@ setup(
     app=APP,
     data_files=DATA_FILES,
     options={'py2app': OPTIONS},
-    setup_requires=['py2app','lxml','pyquery','cloudscraper','requests','Pillow','PyQt5', 'urllib3'],
+    setup_requires=['py2app','lxml','pyquery','cloudscraper','requests','Pillow','PyQt5', 'urllib3','PySocks'],
 )
