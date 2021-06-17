@@ -30,9 +30,9 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>10</y>
+      <y>9</y>
       <width>780</width>
-      <height>680</height>
+      <height>681</height>
      </rect>
     </property>
     <property name="font">
@@ -44,14 +44,14 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_avdc">
      <widget class="QPushButton" name="pushButton_start_cap">
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>0</y>
+        <y>10</y>
         <width>120</width>
         <height>50</height>
        </rect>
@@ -68,71 +68,11 @@
        <string>开始</string>
       </property>
      </widget>
-     <widget class="QTreeWidget" name="treeWidget_number">
+     <widget class="QLabel" name="label_number1">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>70</y>
-        <width>200</width>
-        <height>600</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>13</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <column>
-       <property name="text">
-        <string>结果</string>
-       </property>
-       <property name="font">
-        <font>
-         <family>.AppleSystemUIFont</family>
-         <pointsize>13</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="background">
-        <color alpha="42">
-         <red>236</red>
-         <green>236</green>
-         <blue>236</blue>
-        </color>
-       </property>
-       <property name="foreground">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </property>
-      </column>
-      <item>
-       <property name="text">
-        <string>成功</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>失败</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="label_number1">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>60</y>
         <width>50</width>
         <height>40</height>
        </rect>
@@ -152,8 +92,8 @@
      <widget class="QLabel" name="label_number">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>60</y>
+        <x>50</x>
+        <y>70</y>
         <width>120</width>
         <height>40</height>
        </rect>
@@ -183,7 +123,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>0</x>
         <y>530</y>
         <width>50</width>
         <height>40</height>
@@ -204,7 +144,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_release">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>50</x>
         <y>530</y>
         <width>220</width>
         <height>40</height>
@@ -231,8 +171,8 @@ color:#336699</string>
      <widget class="QLabel" name="label_actor1">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>60</y>
+        <x>220</x>
+        <y>70</y>
         <width>50</width>
         <height>40</height>
        </rect>
@@ -252,8 +192,8 @@ color:#336699</string>
      <widget class="QLabel" name="label_actor">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>60</y>
+        <x>270</x>
+        <y>70</y>
         <width>280</width>
         <height>40</height>
        </rect>
@@ -283,7 +223,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_outline">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>50</x>
         <y>430</y>
         <width>500</width>
         <height>40</height>
@@ -313,7 +253,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_18">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>0</x>
         <y>430</y>
         <width>50</width>
         <height>40</height>
@@ -334,8 +274,8 @@ color:#336699</string>
      <widget class="QLabel" name="label_title">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>100</y>
+        <x>50</x>
+        <y>110</y>
         <width>500</width>
         <height>40</height>
        </rect>
@@ -364,8 +304,8 @@ color:#336699</string>
      <widget class="QLabel" name="label_title1">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>100</y>
+        <x>0</x>
+        <y>110</y>
         <width>50</width>
         <height>40</height>
        </rect>
@@ -385,7 +325,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_director">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>50</x>
         <y>580</y>
         <width>220</width>
         <height>40</height>
@@ -415,7 +355,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_publish">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>330</x>
         <y>630</y>
         <width>220</width>
         <height>40</height>
@@ -442,7 +382,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_23">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>0</x>
         <y>580</y>
         <width>50</width>
         <height>40</height>
@@ -463,7 +403,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_24">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>280</x>
         <y>630</y>
         <width>50</width>
         <height>40</height>
@@ -484,7 +424,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_studio">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>50</x>
         <y>630</y>
         <width>220</width>
         <height>40</height>
@@ -514,7 +454,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_series">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>330</x>
         <y>580</y>
         <width>220</width>
         <height>40</height>
@@ -541,7 +481,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_30">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>0</x>
         <y>630</y>
         <width>50</width>
         <height>40</height>
@@ -562,7 +502,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_31">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>280</x>
         <y>580</y>
         <width>50</width>
         <height>40</height>
@@ -583,7 +523,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_tag">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>50</x>
         <y>480</y>
         <width>500</width>
         <height>40</height>
@@ -613,7 +553,7 @@ color:#336699</string>
      <widget class="QLabel" name="label_33">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>0</x>
         <y>480</y>
         <width>50</width>
         <height>40</height>
@@ -634,8 +574,8 @@ color:#336699</string>
      <widget class="QCheckBox" name="checkBox_cover">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>380</y>
+        <x>50</x>
+        <y>390</y>
         <width>330</width>
         <height>30</height>
        </rect>
@@ -652,106 +592,13 @@ color:#336699</string>
        <string>显示封面(取消勾选后，立即关闭封面显示)</string>
       </property>
      </widget>
-     <widget class="QProgressBar" name="progressBar_avdc">
+     <widget class="QLabel" name="label_result">
       <property name="geometry">
        <rect>
-        <x>1</x>
-        <y>10</y>
-        <width>460</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>5</height>
-       </size>
-      </property>
-      <property name="sizeIncrement">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="baseSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>13</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QProgressBar::chunk {
-   background-color: #336699;
-   width: 3px;
-}
-QProgressBar {
-   border: 0px solid rgba(51,102,153, 80);
-   border-radius: 0px;
-   text-align: center;
-   background-color: #FFFFFF;
-}</string>
-      </property>
-      <property name="value">
-       <number>24</number>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_percent">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>10</y>
-        <width>50</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>50</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="sizeIncrement">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="baseSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>13</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>0%</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_progress">
-      <property name="geometry">
-       <rect>
-        <x>520</x>
-        <y>0</y>
-        <width>100</width>
-        <height>50</height>
+        <x>580</x>
+        <y>70</y>
+        <width>201</width>
+        <height>40</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -762,8 +609,8 @@ QProgressBar {
       </property>
       <property name="minimumSize">
        <size>
-        <width>60</width>
-        <height>20</height>
+        <width>0</width>
+        <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
@@ -775,7 +622,7 @@ QProgressBar {
       <property name="font">
        <font>
         <family>.AppleSystemUIFont</family>
-        <pointsize>13</pointsize>
+        <pointsize>-1</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -786,38 +633,25 @@ QProgressBar {
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);
+background-color: rgb(255, 255, 255);
+font-size:14px;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
       <property name="text">
-       <string>0/0</string>
+       <string>等待开始 ...</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-     <widget class="Line" name="line">
-      <property name="geometry">
-       <rect>
-        <x>1</x>
-        <y>34</y>
-        <width>460</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>10</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_22">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>280</x>
         <y>530</y>
         <width>50</width>
         <height>40</height>
@@ -838,7 +672,7 @@ QProgressBar {
      <widget class="QLabel" name="label_runtime">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>330</x>
         <y>530</y>
         <width>220</width>
         <height>40</height>
@@ -865,7 +699,7 @@ QProgressBar {
      <widget class="Line" name="line_6">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>50</x>
         <y>460</y>
         <width>500</width>
         <height>20</height>
@@ -886,7 +720,7 @@ QProgressBar {
      <widget class="Line" name="line_7">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>50</x>
         <y>510</y>
         <width>500</width>
         <height>20</height>
@@ -907,7 +741,7 @@ QProgressBar {
      <widget class="Line" name="line_8">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>50</x>
         <y>560</y>
         <width>220</width>
         <height>20</height>
@@ -928,7 +762,7 @@ QProgressBar {
      <widget class="Line" name="line_9">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>330</x>
         <y>560</y>
         <width>220</width>
         <height>20</height>
@@ -949,7 +783,7 @@ QProgressBar {
      <widget class="Line" name="line_10">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>330</x>
         <y>610</y>
         <width>220</width>
         <height>20</height>
@@ -970,7 +804,7 @@ QProgressBar {
      <widget class="Line" name="line_11">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>330</x>
         <y>660</y>
         <width>220</width>
         <height>20</height>
@@ -991,7 +825,7 @@ QProgressBar {
      <widget class="Line" name="line_12">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>50</x>
         <y>610</y>
         <width>220</width>
         <height>20</height>
@@ -1012,7 +846,7 @@ QProgressBar {
      <widget class="Line" name="line_13">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>50</x>
         <y>660</y>
         <width>220</width>
         <height>20</height>
@@ -1036,8 +870,8 @@ QProgressBar {
       </property>
       <property name="geometry">
        <rect>
-        <x>432</x>
-        <y>150</y>
+        <x>222</x>
+        <y>160</y>
         <width>328</width>
         <height>220</height>
        </rect>
@@ -1069,8 +903,8 @@ QProgressBar {
      <widget class="QLabel" name="label_poster">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>150</y>
+        <x>50</x>
+        <y>160</y>
         <width>156</width>
         <height>220</height>
        </rect>
@@ -1117,8 +951,8 @@ QProgressBar {
      <widget class="QLabel" name="label_poster1">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>140</y>
+        <x>0</x>
+        <y>150</y>
         <width>50</width>
         <height>40</height>
        </rect>
@@ -1135,8 +969,115 @@ QProgressBar {
        <string>封面：</string>
       </property>
      </widget>
-     <zorder>pushButton_start_cap</zorder>
-     <zorder>treeWidget_number</zorder>
+     <widget class="QTreeWidget" name="treeWidget_number">
+      <property name="geometry">
+       <rect>
+        <x>569</x>
+        <y>90</y>
+        <width>200</width>
+        <height>581</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
+      </property>
+      <column>
+       <property name="text">
+        <string> </string>
+       </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="background">
+        <color>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </property>
+       <property name="foreground">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </property>
+      </column>
+      <item>
+       <property name="text">
+        <string>成功</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>失败</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label_filepath">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>800</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);
+color:#336699</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string>视频目录设置：【设置】-【目录设置】-【视频目录】。程序将刮削该目录及子目录的所有文件。</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_14">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>771</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
      <zorder>label_number1</zorder>
      <zorder>label_number</zorder>
      <zorder>label_13</zorder>
@@ -1158,9 +1099,6 @@ QProgressBar {
      <zorder>label_tag</zorder>
      <zorder>label_33</zorder>
      <zorder>checkBox_cover</zorder>
-     <zorder>label_percent</zorder>
-     <zorder>label_progress</zorder>
-     <zorder>progressBar_avdc</zorder>
      <zorder>label_22</zorder>
      <zorder>label_runtime</zorder>
      <zorder>line_6</zorder>
@@ -1173,8 +1111,12 @@ QProgressBar {
      <zorder>line_13</zorder>
      <zorder>label_thumb</zorder>
      <zorder>label_poster</zorder>
-     <zorder>line</zorder>
      <zorder>label_poster1</zorder>
+     <zorder>treeWidget_number</zorder>
+     <zorder>label_result</zorder>
+     <zorder>label_filepath</zorder>
+     <zorder>pushButton_start_cap</zorder>
+     <zorder>line_14</zorder>
     </widget>
     <widget class="QWidget" name="page_log">
      <widget class="QTextBrowser" name="textBrowser_log_main">
@@ -1191,7 +1133,7 @@ QProgressBar {
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>0</y>
+        <y>10</y>
         <width>120</width>
         <height>50</height>
        </rect>
@@ -1224,7 +1166,7 @@ QProgressBar {
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>0</y>
+        <y>10</y>
         <width>120</width>
         <height>50</height>
        </rect>
@@ -5278,13 +5220,13 @@ p, li { white-space: pre-wrap; }
        <number>0</number>
       </property>
       <property name="leftMargin">
-       <number>22</number>
+       <number>18</number>
       </property>
       <property name="topMargin">
        <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>22</number>
+       <number>18</number>
       </property>
       <property name="bottomMargin">
        <number>0</number>
@@ -5679,6 +5621,60 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </widget>
+   <widget class="QProgressBar" name="progressBar_avdc">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>-1</y>
+      <width>803</width>
+      <height>10</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>2</height>
+     </size>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>.AppleSystemUIFont</family>
+      <pointsize>13</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QProgressBar::chunk {
+   background-color: #336699;
+   width: 3px;
+}
+QProgressBar {
+   border: 0px solid rgba(51,102,153, 80);
+   border-radius: 0px;
+   text-align: center;
+   background-color: #FFFFFF;
+}</string>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
+   <zorder>progressBar_avdc</zorder>
+   <zorder>stackedWidget</zorder>
+   <zorder>widget_setting</zorder>
   </widget>
  </widget>
  <resources/>
