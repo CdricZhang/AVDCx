@@ -23,7 +23,7 @@ def get_proxies(proxy_type, proxy):
     elif proxy_type == 'http':
         proxies = {"http": "http://" + proxy, "https": "http://" + proxy}
     elif proxy_type == 'socks5':
-        proxies = {"http": "socks5://" + proxy, "https": "socks5://" + proxy}
+        proxies = {"http": "socks5h://" + proxy, "https": "socks5h://" + proxy}
     return proxies
 
 
@@ -58,9 +58,8 @@ def get_html(url, cookies=None):
     while i < retry_count:
         try:
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                              'Chrome/60.0.3100.0 Safari/537.36'}
-            getweb = requests.get(str(url), headers=headers, timeout=timeout, proxies=proxies, cookies=cookies)
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36',}
+            getweb = requests.get(str(url), headers=headers, timeout=timeout, proxies=proxies, cookies=cookies, verify=False)
             getweb.encoding = 'utf-8'
             return 'ok', getweb.text
         except Exception as error_info2:
@@ -80,7 +79,8 @@ def post_html(url: str, query: dict):
     try:
         proxy_type, proxy, timeout, retry_count = get_proxy()
     except Exception as error_info:
-        print('Error in post_html :' + str(error_info))
+        error_info = 'Error in post_html1 :' + str(error_info)
+        print('Error in post_html1 :' + str(error_info))
         print('[-]Proxy config error! Please check the config.')
     proxies = get_proxies(proxy_type, proxy)
     for i in range(retry_count):
@@ -90,8 +90,8 @@ def post_html(url: str, query: dict):
             result = result.text
             return 'ok', result
         except Exception as error_info:
-            error_info = 'Error in post_html :' + str(error_info)
-            print(error_info)
+            error_info1 = 'Error in post_html2 :' + str(error_info)
             print("[-]Connect retry {}/{}".format(i + 1, retry_count))
     print("[-]Connect Failed! Please check your Proxy or Network!")
-    return 'error', error_info
+    print('Error in post_html2:' + error_info1)
+    return 'error', error_info1
