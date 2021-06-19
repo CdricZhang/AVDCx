@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCkvNoJw.ui'
+## Form generated from reading UI file 'AVDCnDSoaO.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -1727,6 +1727,19 @@ class Ui_AVDV(object):
 
         self.horizontalLayout.addWidget(self.pushButton_close)
 
+        self.label_show_version = QLabel(self.widget_setting)
+        self.label_show_version.setObjectName(u"label_show_version")
+        self.label_show_version.setGeometry(QRect(0, 660, 220, 30))
+        font10 = QFont()
+        font10.setFamily(u".AppleSystemUIFont")
+        font10.setPointSize(10)
+        font10.setBold(False)
+        font10.setItalic(False)
+        font10.setWeight(50)
+        self.label_show_version.setFont(font10)
+        self.label_show_version.setCursor(QCursor(Qt.PointingHandCursor))
+        self.label_show_version.setStyleSheet(u"color: rgba(255, 255, 255, 151);")
+        self.label_show_version.setAlignment(Qt.AlignCenter)
         self.progressBar_avdc = QProgressBar(self.centralwidget)
         self.progressBar_avdc.setObjectName(u"progressBar_avdc")
         self.progressBar_avdc.setGeometry(QRect(220, -1, 803, 10))
@@ -1745,24 +1758,10 @@ class Ui_AVDV(object):
 "	background-color: rgba(246, 246, 246, 0);\n"
 "}")
         self.progressBar_avdc.setValue(24)
-        self.label_show_version = QLabel(self.centralwidget)
-        self.label_show_version.setObjectName(u"label_show_version")
-        self.label_show_version.setGeometry(QRect(260, -20, 220, 32))
-        font10 = QFont()
-        font10.setFamily(u".AppleSystemUIFont")
-        font10.setPointSize(10)
-        font10.setBold(False)
-        font10.setItalic(False)
-        font10.setWeight(50)
-        self.label_show_version.setFont(font10)
-        self.label_show_version.setCursor(QCursor(Qt.PointingHandCursor))
-        self.label_show_version.setStyleSheet(u"color: rgba(255, 255, 255, 151);")
-        self.label_show_version.setAlignment(Qt.AlignCenter)
         AVDV.setCentralWidget(self.centralwidget)
         self.progressBar_avdc.raise_()
         self.stackedWidget.raise_()
         self.widget_setting.raise_()
-        self.label_show_version.raise_()
 
         self.retranslateUi(AVDV)
 
