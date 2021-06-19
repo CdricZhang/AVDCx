@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from logging import exception
+from logging import error, exception
 import threading
 import json
 from PySide2 import QtWidgets
@@ -22,6 +22,9 @@ from configparser import RawConfigParser
 from Ui.AVDC import Ui_AVDV
 from Function.Function import save_config, movie_lists, get_info, getDataFromJSON, escapePath, getNumber, check_pic
 from Function.getHtml import get_html, get_proxies, get_proxy
+import socks
+import urllib3
+urllib3.disable_warnings()
 
 class MyMAinWindow(QMainWindow, Ui_AVDV):
     progressBarValue = Signal(int)  # 进度条信号量
@@ -37,11 +40,15 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.setupUi(self)  # 初始化Ui
         self.Init_Ui()
         self.set_style()
+        self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210617'
+        self.localversion = '20210620'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
+        self.laberl_number_url = ''
+        self.Ui.label_number.mousePressEvent = self.label_number_clicked
+        self.Ui.label_source.mousePressEvent = self.label_number_clicked
         self.soft_path = os.getcwd()
         self.default_poster = self.soft_path + '/Img/default-poster.jpg'
         self.default_thumb = self.soft_path + '/Img/default-thumb.jpg'
@@ -55,7 +62,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.current_proxy = ''  # 代理设置
         self.Init()
         self.Load_Config()
-        self.Ui.label_filepath.setText('准备刮削视频目录（及子目录）的文件...\n🎈 设置视频目录：设置 - 目录设置 - 视频目录')
+        self.Ui.label_filepath.setText('🎈 设置视频目录（设置-目录设置-视频目录），然后点击开始！\n')
         self.show_version() # 启动后在【日志】页面显示版本信息
         self.new_proxy = self.check_proxyChange()
         self.add_net_text_main('\n🏠 代理设置在:【设置】 - 【网络设置】 - 【代理设置】。\n') 
@@ -88,7 +95,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.treeWidget_number.expandAll()
 
     def set_style(self):
-        # 控件美化
+        # 控件美化 左侧栏样式
         self.Ui.widget_setting.setStyleSheet(
             '''
             * {
@@ -101,8 +108,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     border-bottom-left-radius:5px;
             }
             QPushButton{
-                    font-size:14px;
-                    background:#F7F7F7F7;
+                    font-size:15px;
+                    color:white;
                     border-width:9px;
                     border-color:gray;
                     border-radius:18px;
@@ -111,13 +118,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             QPushButton:hover{
                     color:white;
                     background-color:#4C6EFF;
-                    border:3px white;
-                    font-weight:bold;
                 }
             QPushButton:pressed{
                     background-color:#4C6EE0;
-                    border-color:black;
-                    font-weight:bold;
             }
             QLabel#label_show_version{
                     font-size:11px;
@@ -128,8 +131,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # 主界面
         self.Ui.page_avdc.setStyleSheet(
             '''
-            QLabel#label_number1,#label_actor1,#label_title1,#label_poster1,#label_number,#label_actor,#label_title,#label_poster1,#label_filepath{
-                    font-size:15px;
+            QLabel#label_number1,#label_actor1,#label_title1,#label_poster1,#label_number,#label_actor,#label_title,#label_poster1{
+                    font-size:16px;
+                    font-weight:bold;
+                    border:0px solid rgba(0, 0, 0, 80);
+            }
+            QLabel#label_filepath{
+                    font-size:16px;
+                    color: black;
                     font-weight:bold;
                     border:0px solid rgba(0, 0, 0, 80);
             }
@@ -197,14 +206,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     font-size:13px;
             }       
             QWidget#centralwidget{
-                    background:#FFFFFF;
+                    background:#F6F6F6;
                     border:1px solid #BEBEBE;
                     border-radius:5px;
            }            
             QTextBrowser{
                     font-size:13px;
-                    background:#FCFCFC;
                     border:0px solid #BEBEBE;
+                    background-color:rgba(246,246,246,0);
                     padding:2px 4px;
             }
             QLineEdit{
@@ -213,15 +222,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     border-radius:10px;
                     padding:2px 4px;
             }            
-            QTextBrowser#textBrowser_about{
-                    font-size:13px;
-                    background:white;
-            }   
             QPushButton#pushButton_start_cap,#pushButton_init_config,#pushButton_start_cap2,#pushButton_check_net,#pushButton_move_mp4,#pushButton_select_file,#pushButton_add_actor_pic,#pushButton_select_thumb,#pushButton_save_config,#pushButton_start_single_file,#pushButton_show_pic_actor{
                     color:white;
-                    font-size:16px;
+                    font-size:14px;
                     background-color:#0066CC;
-                    border-radius:25px;
+                    border-radius:20px;
                     padding:2px 4px;
             }
             QPushButton:hover#pushButton_start_cap,:hover#pushButton_start_cap2,:hover#pushButton_check_net,:hover#pushButton_move_mp4,:hover#pushButton_select_file,:hover#pushButton_add_actor_pic,:hover#pushButton_select_thumb,:hover#pushButton_save_config,:hover#pushButton_init_config,:hover#pushButton_start_single_file,:hover#pushButton_show_pic_actor{
@@ -244,7 +249,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ========================================================================按钮点击事件
     def Init(self):
-        self.Ui.stackedWidget.setCurrentIndex(0)
+        # self.Ui.stackedWidget.setCurrentIndex(0)
         self.Ui.treeWidget_number.clicked.connect(self.treeWidget_number_clicked)
         self.Ui.pushButton_close.clicked.connect(self.close_win)
         # self.Ui.pushButton_min.clicked.connect(self.min_win)
@@ -280,6 +285,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     def version_clicked(self, test):
         webbrowser.open('https://github.com/Hermit10/temp/releases')
+
+    def label_number_clicked(self, test):
+        if self.laberl_number_url:
+            webbrowser.open(self.laberl_number_url)
+
 
     # ========================================================================鼠标拖动窗口
     def mousePressEvent(self, e):
@@ -321,21 +331,102 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     def pushButton_main_clicked(self):
         self.Ui.stackedWidget.setCurrentIndex(0)
+        self.Ui.pushButton_main.setEnabled(False)
+        self.Ui.pushButton_log.setEnabled(True)
+        self.Ui.pushButton_net.setEnabled(True)
+        self.Ui.pushButton_tool.setEnabled(True)
+        self.Ui.pushButton_setting.setEnabled(True)
+        self.Ui.pushButton_about.setEnabled(True)
+
+        self.Ui.pushButton_main.setStyleSheet('QPushButton#pushButton_main{color:white;background-color:#4C6EFF;border:3px white;}')
+        self.Ui.pushButton_log.setStyleSheet('QPushButton#pushButton_log{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_log{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_log{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_net.setStyleSheet('QPushButton#pushButton_net{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_net{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_net{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_tool.setStyleSheet('QPushButton#pushButton_tool{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_tool{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_tool{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_setting.setStyleSheet('QPushButton#pushButton_setting{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_setting{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_setting{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_about.setStyleSheet('QPushButton#pushButton_about{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_about{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_about{color:white;background-color:#4C6EE0;}')
 
     def pushButton_show_log_clicked(self):
         self.Ui.stackedWidget.setCurrentIndex(1)
+        self.Ui.pushButton_main.setEnabled(True)
+        self.Ui.pushButton_log.setEnabled(False)
+        self.Ui.pushButton_net.setEnabled(True)
+        self.Ui.pushButton_tool.setEnabled(True)
+        self.Ui.pushButton_setting.setEnabled(True)
+        self.Ui.pushButton_about.setEnabled(True)
+
+
+        self.Ui.pushButton_log.setStyleSheet('QPushButton#pushButton_log{color:white;background-color:#4C6EFF;border:3px white;}')
+        self.Ui.pushButton_main.setStyleSheet('QPushButton#pushButton_main{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_main{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_main{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_net.setStyleSheet('QPushButton#pushButton_net{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_net{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_net{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_tool.setStyleSheet('QPushButton#pushButton_tool{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_tool{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_tool{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_setting.setStyleSheet('QPushButton#pushButton_setting{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_setting{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_setting{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_about.setStyleSheet('QPushButton#pushButton_about{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_about{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_about{color:white;background-color:#4C6EE0;}')
+
 
     def pushButton_show_net_clicked(self):  # 点击左侧【检测网络】按钮，切换到检测网络页面
         self.Ui.stackedWidget.setCurrentIndex(2)
+        self.Ui.pushButton_main.setEnabled(True)
+        self.Ui.pushButton_log.setEnabled(True)
+        self.Ui.pushButton_net.setEnabled(False)
+        self.Ui.pushButton_tool.setEnabled(True)
+        self.Ui.pushButton_setting.setEnabled(True)
+        self.Ui.pushButton_about.setEnabled(True)
+
+        self.Ui.pushButton_net.setStyleSheet('QPushButton#pushButton_net{color:white;background-color:#4C6EFF;border:3px white;}')
+        self.Ui.pushButton_log.setStyleSheet('QPushButton#pushButton_log{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_log{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_log{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_main.setStyleSheet('QPushButton#pushButton_main{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_main{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_main{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_tool.setStyleSheet('QPushButton#pushButton_tool{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_tool{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_tool{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_setting.setStyleSheet('QPushButton#pushButton_setting{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_setting{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_setting{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_about.setStyleSheet('QPushButton#pushButton_about{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_about{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_about{color:white;background-color:#4C6EE0;}')
+
 
     def pushButton_tool_clicked(self):
         self.Ui.stackedWidget.setCurrentIndex(3)
+        self.Ui.pushButton_main.setEnabled(True)
+        self.Ui.pushButton_log.setEnabled(True)
+        self.Ui.pushButton_net.setEnabled(True)
+        self.Ui.pushButton_tool.setEnabled(False)
+        self.Ui.pushButton_setting.setEnabled(True)
+        self.Ui.pushButton_about.setEnabled(True)
+
+        self.Ui.pushButton_tool.setStyleSheet('QPushButton#pushButton_tool{color:white;background-color:#4C6EFF;border:3px white;}')
+        self.Ui.pushButton_log.setStyleSheet('QPushButton#pushButton_log{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_log{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_log{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_net.setStyleSheet('QPushButton#pushButton_net{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_net{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_net{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_main.setStyleSheet('QPushButton#pushButton_main{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_main{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_main{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_setting.setStyleSheet('QPushButton#pushButton_setting{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_setting{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_setting{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_about.setStyleSheet('QPushButton#pushButton_about{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_about{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_about{color:white;background-color:#4C6EE0;}')
 
     def pushButton_setting_clicked(self):
         self.Ui.stackedWidget.setCurrentIndex(4)
+        self.Ui.pushButton_main.setEnabled(True)
+        self.Ui.pushButton_log.setEnabled(True)
+        self.Ui.pushButton_net.setEnabled(True)
+        self.Ui.pushButton_tool.setEnabled(True)
+        self.Ui.pushButton_setting.setEnabled(False)
+        self.Ui.pushButton_about.setEnabled(True)
+
+        self.Ui.pushButton_setting.setStyleSheet('QPushButton#pushButton_setting{color:white;background-color:#4C6EFF;border:3px white;}')
+        self.Ui.pushButton_log.setStyleSheet('QPushButton#pushButton_log{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_log{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_log{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_net.setStyleSheet('QPushButton#pushButton_net{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_net{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_net{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_tool.setStyleSheet('QPushButton#pushButton_tool{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_tool{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_tool{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_main.setStyleSheet('QPushButton#pushButton_main{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_main{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_main{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_about.setStyleSheet('QPushButton#pushButton_about{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_about{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_about{color:white;background-color:#4C6EE0;}')
 
     def pushButton_about_clicked(self):
         self.Ui.stackedWidget.setCurrentIndex(5)
+        self.Ui.pushButton_main.setEnabled(True)
+        self.Ui.pushButton_log.setEnabled(True)
+        self.Ui.pushButton_net.setEnabled(True)
+        self.Ui.pushButton_tool.setEnabled(True)
+        self.Ui.pushButton_setting.setEnabled(True)
+        self.Ui.pushButton_about.setEnabled(False)
+
+        self.Ui.pushButton_about.setStyleSheet('QPushButton#pushButton_about{color:white;background-color:#4C6EFF;border:3px white;}')
+        self.Ui.pushButton_log.setStyleSheet('QPushButton#pushButton_log{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_log{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_log{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_net.setStyleSheet('QPushButton#pushButton_net{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_net{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_net{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_tool.setStyleSheet('QPushButton#pushButton_tool{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_tool{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_tool{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_setting.setStyleSheet('QPushButton#pushButton_setting{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_setting{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_setting{color:white;background-color:#4C6EE0;}')
+        self.Ui.pushButton_main.setStyleSheet('QPushButton#pushButton_main{color:rgba(255, 255, 255, 200)}QPushButton:hover#pushButton_main{color:white;background-color:rgba(255,255,255,40);}QPushButton:pressed#pushButton_about{color:white;background-color:#4C6EE0;}')
 
 
     def lcdNumber_timeout_change(self):
@@ -369,8 +460,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.pushButton_start_cap2.setEnabled(False)
         self.Ui.pushButton_start_cap.setText('正在刮削')
         self.Ui.pushButton_start_cap2.setText('正在刮削')
-        self.Ui.pushButton_start_cap.setStyleSheet('QPushButton#pushButton_start_cap{color:#999999;background-color:#F0F0F0}')
-        self.Ui.pushButton_start_cap2.setStyleSheet('QPushButton#pushButton_start_cap2{color:#999999;background-color:#F0F0F0}')
+        self.Ui.pushButton_start_cap.setStyleSheet('QPushButton#pushButton_start_cap{color:#999999;background-color:#F0F0F0;}')
+        self.Ui.pushButton_start_cap2.setStyleSheet('QPushButton#pushButton_start_cap2{color:#999999;background-color:#F0F0F0;}')
         self.progressBarValue.emit(int(0))
         try:
             t = threading.Thread(target=self.AVDC_Main)
@@ -816,8 +907,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         file_name = self.select_file_path
         if len(file_name) > 55:     # 截断路径长度，以方便在主界面显示路径时能看到后面的文件名
             show_filepath = file_name[-55:]
-            if show_filepath.find('/') != -1:
-                show_filepath = '...' + show_filepath[show_filepath.find('/'):]
+            show_filepath = '...' + show_filepath[show_filepath.find('/'):]
+            if len(show_filepath) < 25:
+                show_filepath = '...' + file_name[-45:]
         else:
             show_filepath = file_name
         file_root = os.getcwd().replace("\\\\", "/").replace("\\", "/")
@@ -1152,7 +1244,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'series', series).replace('publisher', publisher)
         name_file = name_file.replace('//', '/').replace('--', '-').strip('-')
         if len(name_file) > 100:  # 文件名过长 取标题前70个字符
-            self.add_text_main('[-]Error in Length of Path! Cut title!')
+            self.add_text_main('[-]提示：标题名过长，取前70个字作为标题!')
             name_file = name_file.replace(title, title[0:70])
         return name_file
 
@@ -1213,7 +1305,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         try:
             proxy_type, proxy, timeout, retry_count = get_proxy()
         except Exception as error_info:
-            print('[-]Error in DownloadFileWithFilename! ' + str(error_info))
+            print('[-]Error in DownloadFileWithFilename1! ' + str(error_info))
             self.add_text_main('[-]Error in DownloadFileWithFilename! Proxy config error! Please check the config.')
         proxies = get_proxies(proxy_type, proxy)
         i = 0
@@ -1230,16 +1322,17 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 code.close()
                 return
             except Exception as error_info:
+                error_info1 = error_info
                 i += 1
-                print('[-]Error in DownloadFileWithFilename! ' + str(error_info))
+                print('[-]Error in DownloadFileWithFilename2! ' + str(error_info1))
                 print('[-]Image Download :   Connect retry ' + str(i) + '/' + str(retry_count))
-        self.add_text_main('[-]Timeout when download file! Please check your Proxy or Network!' + str(error_info))
+        self.add_text_main('[-]Timeout when download file! Please check your Proxy or Network!' + str(error_info1))
         self.moveFailedFolder(filepath, failed_folder)
 
     # ========================================================================下载缩略图
-    def thumbDownload(self, json_data, path, naming_rule, Config, filepath, failed_folder):
+    def thumbDownload(self, json_data, path, naming_rule, Config, filepath, thumb_path, poster_path, failed_folder):
         thumb_name = naming_rule + '-thumb.jpg'
-        if os.path.exists(path + '/' + thumb_name):
+        if os.path.exists(poster_path):
             self.add_text_main('[+]Thumb Existed!     ' + thumb_name)
             return
         i = 1
@@ -1255,9 +1348,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.add_text_main('[+]Thumb Downloaded!  ' + thumb_name)
         elif json_data['cover_small']:
             self.DownloadFileWithFilename(json_data['cover_small'], thumb_name, path, Config, filepath, failed_folder)
-            if not check_pic(path + '/' + thumb_name):
-                os.remove(path + '/' + thumb_name)
-                raise Exception("The Size of Thumb is Error! Deleted " + thumb_name + '!')
+            if os.path.exists(path + '/' + thumb_name):
+                if not check_pic(path + '/' + thumb_name):
+                    os.remove(path + '/' + thumb_name)
+                    raise Exception("The Size of Thumb is Error! Deleted " + thumb_name + '!')
 
     def deletethumb(self, path, naming_rule):
         try:
@@ -1442,8 +1536,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ========================================================================thumb复制为fanart
     def copyRenameJpgToFanart(self, path, naming_rule):
-        if not os.path.exists(path + '/' + naming_rule + '-fanart.jpg'):
-            shutil.copy(path + '/' + naming_rule + '-thumb.jpg', path + '/' + naming_rule + '-fanart.jpg')
+        if os.path.exists(path + '/' + naming_rule + '-thumb.jpg'):
+            if not os.path.exists(path + '/' + naming_rule + '-fanart.jpg'):
+                shutil.copy(path + '/' + naming_rule + '-thumb.jpg', path + '/' + naming_rule + '-fanart.jpg')
 
     # ========================================================================移动视频、字幕
     def pasteFileToFolder(self, filepath, path, naming_rule, failed_folder):
@@ -1497,13 +1592,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def fix_size(self, path, naming_rule):
         try:
             poster_path = path + '/' + naming_rule + '-poster.jpg'
-            pic = Image.open(poster_path)
-            (width, height) = pic.size
-            if not 2 / 3 - 0.05 <= width / height <= 2 / 3 + 0.05:  # 仅处理会过度拉伸的图片
-                fixed_pic = pic.resize((int(width), int(3 / 2 * width)))  # 拉伸图片
-                fixed_pic = fixed_pic.filter(ImageFilter.GaussianBlur(radius=50))  # 高斯模糊
-                fixed_pic.paste(pic, (0, int((3 / 2 * width - height) / 2)))  # 粘贴原图
-                fixed_pic.save(poster_path)
+            if os.path.exists(poster_path):
+                pic = Image.open(poster_path)
+                (width, height) = pic.size
+                if not 2 / 3 - 0.05 <= width / height <= 2 / 3 + 0.05:  # 仅处理会过度拉伸的图片
+                    fixed_pic = pic.resize((int(width), int(3 / 2 * width)))  # 拉伸图片
+                    fixed_pic = fixed_pic.filter(ImageFilter.GaussianBlur(radius=50))  # 高斯模糊
+                    fixed_pic.paste(pic, (0, int((3 / 2 * width - height) / 2)))  # 粘贴原图
+                    fixed_pic.save(poster_path)
         except Exception as error_info:
             self.add_text_main('[-]Error in fix_size: ' + str(error_info))
 
@@ -1641,7 +1737,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'series', series).replace('publisher', publisher)  # 生成文件夹名
         path = path.replace('--', '-').strip('-')
         if len(path) > 100:  # 文件夹名过长 取标题前70个字符
-            self.add_text_main('[-]Error in Length of Path! Cut title!')
+            self.add_text_main('[-]文件夹名过长，取前70个字符!')
             path = path.replace(title, title[0:70])
         path = success_folder + '/' + path
         path = path.replace('--', '-').strip('-')
@@ -1668,6 +1764,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     def add_label_info_Thread(self, json_data):
         self.Ui.label_number.setText(json_data['number'])
+        if json_data.get('source'):
+            self.Ui.label_source.setText('数据：' + json_data['source'].replace('.main_us','').replace('.main',''))
+        self.laberl_number_url = json_data['website']
         self.Ui.label_actor.setText(json_data['actor'])
         self.Ui.label_title.setText(json_data['title'])
         self.Ui.label_outline.setText(json_data['outline'])
@@ -1818,9 +1917,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             node = QTreeWidgetItem(self.item_fail)
             node.setText(0, filename)
             self.item_fail.addChild(node)
-
-        if not json_data.get('number'):
+        try:
+            if not json_data.get('number'):
+                json_data['number'] = real_number
+        except:
+            error_jsondata = json_data
+            json_data = {}
             json_data['number'] = real_number
+            json_data['error_info'] = 'json_data异常错误！' + error_jsondata       
         if not json_data.get('actor'):
             json_data['actor'] = 'unknown'
         if not json_data.get('title'):
@@ -1845,6 +1949,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             json_data['poster_path'] = self.default_poster
         if not json_data.get('thumb_path'):
             json_data['thumb_path'] = self.default_thumb
+        if not json_data.get('website'):
+            json_data['website'] = ''
+        if not json_data.get('source'):
+            json_data['source'] = ''
+
 
         self.add_label_info(json_data)
         self.json_array[filename] = json_data
@@ -1889,7 +1998,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 c_word = '-C'                                                   # 中文字幕影片后缀
                                                                                 # 查找本地字幕文件
         path_old = filepath.replace(filepath.split('/')[-1], '')                # 去掉文件名的路径
-        filename, file_ex = filepath.split('/')[-1].split('.')                  # 获取文件名和扩展名
+        filename = filepath.split('/')[-1]                                      # 获取文件名（含扩展名）
+        file_ex = filename.split('.')[-1]                                       # 获取扩展名（避免文件名有多个.）
+        filename = filename.replace('.' + file_ex, '')                         # 获取文件名（不含扩展名）
         sub_type = self.Ui.lineEdit_sub_type.text().split('|')                  # 本地字幕后缀
         for sub in sub_type:
             if os.path.exists(path_old + '/' + filename + sub):                 # 查找本地字幕, 可能多个
@@ -1965,7 +2076,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # =======================================================================刮削模式
         if program_mode == 1:
             # imagecut 0 判断人脸位置裁剪缩略图为封面, 1 裁剪右半面, 3 下载小封面
-            self.thumbDownload(json_data, path, naming_rule, Config, filepath, failed_folder)
+            self.thumbDownload(json_data, path, naming_rule, Config, filepath, thumb_path, poster_path, failed_folder)
             if self.Ui.checkBox_download_poster.isChecked():    #下载海报
                 if self.smallCoverDownload(path, naming_rule, json_data, Config, filepath,
                                            failed_folder) == 'small_cover_error':       # 下载小封面
@@ -2037,23 +2148,26 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             percentage = str(count / int(count_all) * 100)[:4] + '%'
             if len(movie) > 55:     # 截断路径长度，以方便在主界面显示路径时能看到后面的文件名
                 show_filepath = movie[-55:]
-                if show_filepath.find('/') != -1:
-                    show_filepath = '...' + show_filepath[show_filepath.find('/'):]
+                show_filepath = '...' + show_filepath[show_filepath.find('/'):]
+                if len(show_filepath) < 25:
+                    show_filepath = '...' + movie[-45:]
+
             else:
                 show_filepath = movie
             self.Ui.label_filepath.setText('正在刮削： ' + str(count) + '/' + str(count_all) + ' （' + str(value) + '%）\n' + show_filepath)
             self.add_text_main('[*]' + '='*80)
             self.add_text_main('[!]Round (' + str(self.count_claw) + ') - [' + str(count) + '/' + count_all + '] - ' + percentage)
             self.add_text_main('[*]' + '='*80)
+            movie_number = os.path.splitext(movie.split('/')[-1])[0]
             try:
                 movie_number = getNumber(movie, escape_string).upper()
                 self.add_text_main("[!]Making Data for   [" + movie + "], the number is [" + movie_number + "]")
                 result, json_data, succ_count, fail_count = self.Core_Main(movie, movie_number, mode, count, succ_count, fail_count)
-            except Exception as error_info:
+            except Exception as error_info5:
                 fail_count += 1
                 fail_showName = str(self.count_claw) + '-' + str(fail_count) + '.' + os.path.splitext(movie.split('/')[-1])[0]
                 self.ShowListName(fail_showName, 'fail', json_data, movie_number)
-                self.add_text_main('[-]Error in AVDC_Main.Core_Main: ' + str(error_info))
+                self.add_text_main('[-]Error in AVDC_Main.Core_Main5: ' + str(error_info5))
                 self.moveFailedFolder(movie, failed_folder)
                 self.add_text_main("[*]================================================================================")
         self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
@@ -2064,8 +2178,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.pushButton_start_cap2.setEnabled(True)
         self.Ui.pushButton_start_cap.setText('开始')
         self.Ui.pushButton_start_cap2.setText('开始')
-        self.Ui.pushButton_start_cap.setStyleSheet('QPushButton#pushButton_start_cap{background-color:#0066CC}QPushButton:hover#pushButton_start_cap{background-color:#4C6EFF}QPushButton:pressed#pushButton_start_cap{#4C6EE0}')
-        self.Ui.pushButton_start_cap2.setStyleSheet('QPushButton#pushButton_start_cap2{background-color:#0066CC}QPushButton:hover#pushButton_start_cap2{background-color:#4C6EFF}QPushButton:pressed#pushButton_start_cap2{#4C6EE0}')
+        self.Ui.pushButton_start_cap.setStyleSheet('QPushButton#pushButton_start_cap{color:white;background-color:#0066CC;}QPushButton:hover#pushButton_start_cap{color:white;background-color:#4C6EFF}QPushButton:pressed#pushButton_start_cap{color:white;background-color:#4C6EE0}')
+        self.Ui.pushButton_start_cap2.setStyleSheet('QPushButton#pushButton_start_cap2{color:white;background-color:#0066CC}QPushButton:hover#pushButton_start_cap2{color:white;background-color:#4C6EFF}QPushButton:pressed#pushButton_start_cap2{color:white;background-color:#4C6EE0}')
         self.add_text_main("[*]================================================================================")
         self.add_text_main("[+]Total %s , Success %s , Failed %s" % (count_all, succ_count, fail_count))
         self.add_text_main("[*]================================================================================")

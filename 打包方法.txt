@@ -9,7 +9,8 @@ pip install -r requirements.txt
 4，命令行安装打包工具
 pip install pyinstaller
 5，命令行运行
-pyinstaller -n AVDCx.exe -i Img/AVDCx.ico -F -w AVDCx_Main.py --hidden-import pysocks --hidden-import urllib3
+pyinstaller -n AVDCx.exe -i Img/AVDCx.ico -F -w AVDCx_Main.py --add-data "C:\AVDCx\Getter\cloudscraper;./cloudscraper/" --hidden-import socks --hidden-import urllib3
+
 pyinstaller AVDCx.exe.spec
 
 把Img文件夹复制到dist，打包好的程序在dist里面。
