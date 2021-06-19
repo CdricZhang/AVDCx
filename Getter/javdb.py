@@ -4,12 +4,12 @@ from PIL.JpegImagePlugin import convert_dict_qtables
 from bs4 import BeautifulSoup, SoupStrainer
 from lxml import etree
 import json
+import cloudscraper
 
 from requests.models import stream_decode_response_unicode
 from Function.getHtml import get_html
 from Function.getHtml import post_html
 from Function.getHtml import get_cookies
-import cloudscraper
 
 
 def getNumber(html):
@@ -44,7 +44,13 @@ def getActorPhoto(html, log_info):
     for i in range(actor_count):
         actor_name =  actor_list[i]
         actor_url =  'https://javdb.com' + actor_url_list[i]
-        scraper = cloudscraper.create_scraper()  # returns a CloudScraper instance
+        scraper = cloudscraper.create_scraper(
+            browser={
+                'browser': 'firefox',
+                'platform': 'windows',
+                'mobile': False
+            }
+        )  # returns a CloudScraper instance
         try:
             html_search = scraper.get(actor_url).text
         except Exception as error_info:
@@ -179,7 +185,13 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             url_search = 'https://javdb.com/search?q=' + number + '&f=all&locale=zh'
             log_info += '   >>> JAVDB-生成搜索页地址: %s\n' % url_search
             # ========================================================================搜索番号
-            scraper = cloudscraper.create_scraper()  # returns a CloudScraper instance
+            scraper = cloudscraper.create_scraper(
+                browser={
+                    'browser': 'firefox',
+                    'platform': 'windows',
+                    'mobile': False
+                }
+            )  # returns a CloudScraper instance
             try:
                 html_search = scraper.get(url_search).text.replace(u'\xa0', u' ')
                 # result, html_search = get_html('https://javdb9.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
@@ -316,13 +328,20 @@ def main_us(number, appoint_url='', log_info='', isuncensored=False):
     cover_small = ''
     error_type = ''
     error_info = ''
+    cookies = get_cookies()['javdb']
     try: # 捕获主动抛出的异常
         if not real_url:
             # 通过搜索获取real_url
             url_search = 'https://javdb.com/search?q=' + number + '&f=all&locale=zh'
             log_info += '   >>> JAVDB-生成搜索页地址: %s\n' % url_search
             # ========================================================================搜索番号
-            scraper = cloudscraper.create_scraper()  # returns a CloudScraper instance
+            scraper = cloudscraper.create_scraper(
+                browser={
+                    'browser': 'firefox',
+                    'platform': 'windows',
+                    'mobile': False
+                }
+            )  # returns a CloudScraper instance
             try:
                 html_search = scraper.get(url_search).text.replace(u'\xa0', u' ')
                 # result, html_search = get_html('https://javdb9.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
