@@ -51,9 +51,9 @@
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>10</y>
+        <y>13</y>
         <width>120</width>
-        <height>50</height>
+        <height>40</height>
        </rect>
       </property>
       <property name="font">
@@ -94,7 +94,7 @@
        <rect>
         <x>50</x>
         <y>70</y>
-        <width>120</width>
+        <width>161</width>
         <height>40</height>
        </rect>
       </property>
@@ -105,6 +105,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">border:0px solid rgba(0, 0, 0, 80);
@@ -194,7 +197,7 @@ color:#336699</string>
        <rect>
         <x>270</x>
         <y>70</y>
-        <width>280</width>
+        <width>161</width>
         <height>40</height>
        </rect>
       </property>
@@ -635,7 +638,7 @@ color:#336699</string>
       </property>
       <property name="styleSheet">
        <string notr="true">border:0px solid rgba(0, 0, 0, 80);
-background-color: rgb(255, 255, 255);
+background-color: rgb(246, 246, 246);
 font-size:14px;</string>
       </property>
       <property name="frameShape">
@@ -973,9 +976,9 @@ font-size:14px;</string>
       <property name="geometry">
        <rect>
         <x>569</x>
-        <y>90</y>
+        <y>110</y>
         <width>200</width>
-        <height>581</height>
+        <height>561</height>
        </rect>
       </property>
       <property name="font">
@@ -987,11 +990,27 @@ font-size:14px;</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);
+background-color: rgb(246, 246, 246);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="itemsExpandable">
+       <bool>true</bool>
+      </property>
+      <property name="headerHidden">
+       <bool>true</bool>
       </property>
       <column>
        <property name="text">
-        <string> </string>
+        <string>111</string>
        </property>
        <property name="font">
         <font>
@@ -1003,8 +1022,8 @@ font-size:14px;</string>
        </property>
        <property name="background">
         <color>
-         <red>255</red>
-         <green>255</green>
+         <red>85</red>
+         <green>170</green>
          <blue>255</blue>
         </color>
        </property>
@@ -1047,8 +1066,7 @@ font-size:14px;</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border:0px solid rgba(0, 0, 0, 80);
-color:#336699</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -1076,6 +1094,39 @@ color:#336699</string>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_source">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>70</y>
+        <width>121</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>.AppleSystemUIFont</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px solid rgba(0, 0, 0, 80);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
      <zorder>label_number1</zorder>
@@ -1117,6 +1168,7 @@ color:#336699</string>
      <zorder>label_filepath</zorder>
      <zorder>pushButton_start_cap</zorder>
      <zorder>line_14</zorder>
+     <zorder>label_source</zorder>
     </widget>
     <widget class="QWidget" name="page_log">
      <widget class="QTextBrowser" name="textBrowser_log_main">
@@ -1128,14 +1180,17 @@ color:#336699</string>
         <height>680</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
      </widget>
      <widget class="QPushButton" name="pushButton_start_cap2">
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>10</y>
+        <y>13</y>
         <width>120</width>
-        <height>50</height>
+        <height>40</height>
        </rect>
       </property>
       <property name="font">
@@ -1161,14 +1216,17 @@ color:#336699</string>
         <height>680</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
      </widget>
      <widget class="QPushButton" name="pushButton_check_net">
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>10</y>
+        <y>13</y>
         <width>120</width>
-        <height>50</height>
+        <height>40</height>
        </rect>
       </property>
       <property name="font">
@@ -1390,11 +1448,6 @@ color:#336699</string>
          <italic>false</italic>
          <bold>false</bold>
         </font>
-       </property>
-       <property name="styleSheet">
-        <string> border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
        </property>
        <item>
         <property name="text">
@@ -5050,6 +5103,9 @@ font: &quot;Courier&quot;;</string>
         <height>680</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="html">
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -5521,37 +5577,6 @@ p, li { white-space: pre-wrap; }
       </item>
      </layout>
     </widget>
-    <widget class="QLabel" name="label_show_version">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>660</y>
-       <width>220</width>
-       <height>32</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>.AppleSystemUIFont</family>
-       <pointsize>10</pointsize>
-       <weight>50</weight>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgba(255, 255, 255, 151);</string>
-     </property>
-     <property name="text">
-      <string>版本号</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
@@ -5611,7 +5636,7 @@ p, li { white-space: pre-wrap; }
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton{color:#515151;background:#F14C4C;border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:#FF6058;}</string>
+         <string notr="true">QPushButton{color:#E0E0E0;background:#F14C4C;border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:#FF6058;}</string>
         </property>
         <property name="text">
          <string>×</string>
@@ -5665,16 +5690,48 @@ QProgressBar {
    border: 0px solid rgba(51,102,153, 80);
    border-radius: 0px;
    text-align: center;
-   background-color: #FFFFFF;
+	background-color: rgba(246, 246, 246, 0);
 }</string>
     </property>
     <property name="value">
      <number>24</number>
     </property>
    </widget>
+   <widget class="QLabel" name="label_show_version">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>-20</y>
+      <width>220</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>.AppleSystemUIFont</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgba(255, 255, 255, 151);</string>
+    </property>
+    <property name="text">
+     <string>版本号</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
    <zorder>progressBar_avdc</zorder>
    <zorder>stackedWidget</zorder>
    <zorder>widget_setting</zorder>
+   <zorder>label_show_version</zorder>
   </widget>
  </widget>
  <resources/>

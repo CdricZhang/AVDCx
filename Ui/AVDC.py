@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCwRPPNv.ui'
+## Form generated from reading UI file 'AVDCkvNoJw.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -37,7 +37,7 @@ class Ui_AVDV(object):
         self.page_avdc.setObjectName(u"page_avdc")
         self.pushButton_start_cap = QPushButton(self.page_avdc)
         self.pushButton_start_cap.setObjectName(u"pushButton_start_cap")
-        self.pushButton_start_cap.setGeometry(QRect(650, 10, 120, 50))
+        self.pushButton_start_cap.setGeometry(QRect(650, 13, 120, 40))
         font1 = QFont()
         font1.setFamily(u".AppleSystemUIFont")
         font1.setPointSize(14)
@@ -55,8 +55,9 @@ class Ui_AVDV(object):
         self.label_number1.setFont(font2)
         self.label_number = QLabel(self.page_avdc)
         self.label_number.setObjectName(u"label_number")
-        self.label_number.setGeometry(QRect(50, 70, 120, 40))
+        self.label_number.setGeometry(QRect(50, 70, 161, 40))
         self.label_number.setFont(font2)
+        self.label_number.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_number.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);\n"
 "color:#336699")
         self.label_number.setFrameShape(QFrame.Box)
@@ -77,7 +78,7 @@ class Ui_AVDV(object):
         self.label_actor1.setFont(font2)
         self.label_actor = QLabel(self.page_avdc)
         self.label_actor.setObjectName(u"label_actor")
-        self.label_actor.setGeometry(QRect(270, 70, 280, 40))
+        self.label_actor.setGeometry(QRect(270, 70, 161, 40))
         self.label_actor.setFont(font2)
         self.label_actor.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);\n"
 "color:#336699")
@@ -180,7 +181,7 @@ class Ui_AVDV(object):
         self.label_result.setCursor(QCursor(Qt.ArrowCursor))
         self.label_result.setLayoutDirection(Qt.LeftToRight)
         self.label_result.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);\n"
-"background-color: rgb(255, 255, 255);\n"
+"background-color: rgb(246, 246, 246);\n"
 "font-size:14px;")
         self.label_result.setFrameShape(QFrame.Box)
         self.label_result.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -279,18 +280,23 @@ class Ui_AVDV(object):
         font5.setPointSize(13)
         font5.setBold(True)
         font5.setWeight(75)
-        self.treeWidget_number.headerItem().setText(0, "")
         __qtreewidgetitem = QTreeWidgetItem()
         __qtreewidgetitem.setFont(0, font5);
-        __qtreewidgetitem.setBackground(0, QColor(255, 255, 255));
+        __qtreewidgetitem.setBackground(0, QColor(85, 170, 255));
         __qtreewidgetitem.setForeground(0, brush);
         self.treeWidget_number.setHeaderItem(__qtreewidgetitem)
         QTreeWidgetItem(self.treeWidget_number)
         QTreeWidgetItem(self.treeWidget_number)
         self.treeWidget_number.setObjectName(u"treeWidget_number")
-        self.treeWidget_number.setGeometry(QRect(569, 90, 200, 581))
+        self.treeWidget_number.setGeometry(QRect(569, 110, 200, 561))
         self.treeWidget_number.setFont(font)
-        self.treeWidget_number.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
+        self.treeWidget_number.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);\n"
+"background-color: rgb(246, 246, 246);")
+        self.treeWidget_number.setFrameShape(QFrame.NoFrame)
+        self.treeWidget_number.setFrameShadow(QFrame.Plain)
+        self.treeWidget_number.setLineWidth(0)
+        self.treeWidget_number.setItemsExpandable(True)
+        self.treeWidget_number.setHeaderHidden(True)
         self.label_filepath = QLabel(self.page_avdc)
         self.label_filepath.setObjectName(u"label_filepath")
         self.label_filepath.setGeometry(QRect(0, 10, 800, 50))
@@ -300,8 +306,7 @@ class Ui_AVDV(object):
         font6.setBold(True)
         font6.setWeight(75)
         self.label_filepath.setFont(font6)
-        self.label_filepath.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);\n"
-"color:#336699")
+        self.label_filepath.setStyleSheet(u"")
         self.label_filepath.setFrameShape(QFrame.Box)
         self.line_14 = QFrame(self.page_avdc)
         self.line_14.setObjectName(u"line_14")
@@ -309,6 +314,14 @@ class Ui_AVDV(object):
         self.line_14.setFont(font4)
         self.line_14.setFrameShape(QFrame.HLine)
         self.line_14.setFrameShadow(QFrame.Sunken)
+        self.label_source = QLabel(self.page_avdc)
+        self.label_source.setObjectName(u"label_source")
+        self.label_source.setGeometry(QRect(430, 70, 121, 40))
+        self.label_source.setFont(font)
+        self.label_source.setCursor(QCursor(Qt.PointingHandCursor))
+        self.label_source.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
+        self.label_source.setFrameShape(QFrame.Box)
+        self.label_source.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.stackedWidget.addWidget(self.page_avdc)
         self.label_number1.raise_()
         self.label_number.raise_()
@@ -349,14 +362,16 @@ class Ui_AVDV(object):
         self.label_filepath.raise_()
         self.pushButton_start_cap.raise_()
         self.line_14.raise_()
+        self.label_source.raise_()
         self.page_log = QWidget()
         self.page_log.setObjectName(u"page_log")
         self.textBrowser_log_main = QTextBrowser(self.page_log)
         self.textBrowser_log_main.setObjectName(u"textBrowser_log_main")
         self.textBrowser_log_main.setGeometry(QRect(0, 0, 780, 680))
+        self.textBrowser_log_main.setStyleSheet(u"")
         self.pushButton_start_cap2 = QPushButton(self.page_log)
         self.pushButton_start_cap2.setObjectName(u"pushButton_start_cap2")
-        self.pushButton_start_cap2.setGeometry(QRect(650, 10, 120, 50))
+        self.pushButton_start_cap2.setGeometry(QRect(650, 13, 120, 40))
         self.pushButton_start_cap2.setFont(font1)
         self.stackedWidget.addWidget(self.page_log)
         self.page_net = QWidget()
@@ -364,9 +379,10 @@ class Ui_AVDV(object):
         self.textBrowser_net_main = QTextBrowser(self.page_net)
         self.textBrowser_net_main.setObjectName(u"textBrowser_net_main")
         self.textBrowser_net_main.setGeometry(QRect(0, 0, 780, 680))
+        self.textBrowser_net_main.setStyleSheet(u"")
         self.pushButton_check_net = QPushButton(self.page_net)
         self.pushButton_check_net.setObjectName(u"pushButton_check_net")
-        self.pushButton_check_net.setGeometry(QRect(650, 10, 120, 50))
+        self.pushButton_check_net.setGeometry(QRect(650, 13, 120, 40))
         self.pushButton_check_net.setFont(font1)
         self.stackedWidget.addWidget(self.page_net)
         self.page_tool = QWidget()
@@ -1598,6 +1614,7 @@ class Ui_AVDV(object):
         self.textBrowser_about = QTextBrowser(self.page_about)
         self.textBrowser_about.setObjectName(u"textBrowser_about")
         self.textBrowser_about.setGeometry(QRect(0, 0, 780, 680))
+        self.textBrowser_about.setStyleSheet(u"")
         self.stackedWidget.addWidget(self.page_about)
         self.widget_setting = QWidget(self.centralwidget)
         self.widget_setting.setObjectName(u"widget_setting")
@@ -1686,19 +1703,6 @@ class Ui_AVDV(object):
 
         self.verticalLayout.addWidget(self.pushButton_about)
 
-        self.label_show_version = QLabel(self.widget_setting)
-        self.label_show_version.setObjectName(u"label_show_version")
-        self.label_show_version.setGeometry(QRect(0, 660, 220, 32))
-        font10 = QFont()
-        font10.setFamily(u".AppleSystemUIFont")
-        font10.setPointSize(10)
-        font10.setBold(False)
-        font10.setItalic(False)
-        font10.setWeight(50)
-        self.label_show_version.setFont(font10)
-        self.label_show_version.setCursor(QCursor(Qt.PointingHandCursor))
-        self.label_show_version.setStyleSheet(u"color: rgba(255, 255, 255, 151);")
-        self.label_show_version.setAlignment(Qt.AlignCenter)
         self.layoutWidget1 = QWidget(self.widget_setting)
         self.layoutWidget1.setObjectName(u"layoutWidget1")
         self.layoutWidget1.setGeometry(QRect(0, 0, 41, 41))
@@ -1719,7 +1723,7 @@ class Ui_AVDV(object):
         self.pushButton_close.setBaseSize(QSize(0, 0))
         self.pushButton_close.setFont(font)
         self.pushButton_close.setMouseTracking(False)
-        self.pushButton_close.setStyleSheet(u"QPushButton{color:#515151;background:#F14C4C;border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:#FF6058;}")
+        self.pushButton_close.setStyleSheet(u"QPushButton{color:#E0E0E0;background:#F14C4C;border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:#FF6058;}")
 
         self.horizontalLayout.addWidget(self.pushButton_close)
 
@@ -1738,13 +1742,27 @@ class Ui_AVDV(object):
 "   border: 0px solid rgba(51,102,153, 80);\n"
 "   border-radius: 0px;\n"
 "   text-align: center;\n"
-"   background-color: #FFFFFF;\n"
+"	background-color: rgba(246, 246, 246, 0);\n"
 "}")
         self.progressBar_avdc.setValue(24)
+        self.label_show_version = QLabel(self.centralwidget)
+        self.label_show_version.setObjectName(u"label_show_version")
+        self.label_show_version.setGeometry(QRect(260, -20, 220, 32))
+        font10 = QFont()
+        font10.setFamily(u".AppleSystemUIFont")
+        font10.setPointSize(10)
+        font10.setBold(False)
+        font10.setItalic(False)
+        font10.setWeight(50)
+        self.label_show_version.setFont(font10)
+        self.label_show_version.setCursor(QCursor(Qt.PointingHandCursor))
+        self.label_show_version.setStyleSheet(u"color: rgba(255, 255, 255, 151);")
+        self.label_show_version.setAlignment(Qt.AlignCenter)
         AVDV.setCentralWidget(self.centralwidget)
         self.progressBar_avdc.raise_()
         self.stackedWidget.raise_()
         self.widget_setting.raise_()
+        self.label_show_version.raise_()
 
         self.retranslateUi(AVDV)
 
@@ -1785,16 +1803,19 @@ class Ui_AVDV(object):
         self.label_thumb.setText(QCoreApplication.translate("AVDV", u"\u7f29\u7565\u56fe", None))
         self.label_poster.setText(QCoreApplication.translate("AVDV", u"\u5c01\u9762\u56fe", None))
         self.label_poster1.setText(QCoreApplication.translate("AVDV", u"\u5c01\u9762\uff1a", None))
+        ___qtreewidgetitem = self.treeWidget_number.headerItem()
+        ___qtreewidgetitem.setText(0, QCoreApplication.translate("AVDV", u"111", None));
 
         __sortingEnabled = self.treeWidget_number.isSortingEnabled()
         self.treeWidget_number.setSortingEnabled(False)
-        ___qtreewidgetitem = self.treeWidget_number.topLevelItem(0)
-        ___qtreewidgetitem.setText(0, QCoreApplication.translate("AVDV", u"\u6210\u529f", None));
-        ___qtreewidgetitem1 = self.treeWidget_number.topLevelItem(1)
-        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("AVDV", u"\u5931\u8d25", None));
+        ___qtreewidgetitem1 = self.treeWidget_number.topLevelItem(0)
+        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("AVDV", u"\u6210\u529f", None));
+        ___qtreewidgetitem2 = self.treeWidget_number.topLevelItem(1)
+        ___qtreewidgetitem2.setText(0, QCoreApplication.translate("AVDV", u"\u5931\u8d25", None));
         self.treeWidget_number.setSortingEnabled(__sortingEnabled)
 
         self.label_filepath.setText(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u76ee\u5f55\u8bbe\u7f6e\uff1a\u3010\u8bbe\u7f6e\u3011-\u3010\u76ee\u5f55\u8bbe\u7f6e\u3011-\u3010\u89c6\u9891\u76ee\u5f55\u3011\u3002\u7a0b\u5e8f\u5c06\u522e\u524a\u8be5\u76ee\u5f55\u53ca\u5b50\u76ee\u5f55\u7684\u6240\u6709\u6587\u4ef6\u3002", None))
+        self.label_source.setText("")
         self.pushButton_start_cap2.setText(QCoreApplication.translate("AVDV", u"\u5f00\u59cb", None))
         self.pushButton_check_net.setText(QCoreApplication.translate("AVDV", u"\u5f00\u59cb\u68c0\u6d4b", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u3001\u5b57\u5e55\u79fb\u52a8", None))
@@ -1816,9 +1837,6 @@ class Ui_AVDV(object):
         self.comboBox_website.setItemText(7, QCoreApplication.translate("AVDV", u"mgstage", None))
         self.comboBox_website.setItemText(8, QCoreApplication.translate("AVDV", u"fc2club", None))
 
-        self.comboBox_website.setStyleSheet(QCoreApplication.translate("AVDV", u" border: 1px solid rgba(0,0,0, 50);\n"
-" border-radius: 15px;\n"
-"", None))
         self.label_2.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u7f51\u7ad9\uff1a", None))
         self.label_10.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u7f51\u5740\uff1a", None))
         self.label_12.setText(QCoreApplication.translate("AVDV", u"\u5f71\u7247\u756a\u53f7\uff1a", None))
@@ -2111,7 +2129,7 @@ class Ui_AVDV(object):
         self.pushButton_tool.setText(QCoreApplication.translate("AVDV", u"\u5de5\u5177", None))
         self.pushButton_setting.setText(QCoreApplication.translate("AVDV", u"\u8bbe\u7f6e", None))
         self.pushButton_about.setText(QCoreApplication.translate("AVDV", u"\u5173\u4e8e", None))
-        self.label_show_version.setText(QCoreApplication.translate("AVDV", u"\u7248\u672c\u53f7", None))
         self.pushButton_close.setText(QCoreApplication.translate("AVDV", u"\u00d7", None))
+        self.label_show_version.setText(QCoreApplication.translate("AVDV", u"\u7248\u672c\u53f7", None))
     # retranslateUi
 
