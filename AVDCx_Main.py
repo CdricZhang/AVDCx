@@ -28,10 +28,11 @@ urllib3.disable_warnings()
 
 #生成资源文件目录访问路径
 def resource_path(relative_path):
-    if getattr(sys, 'frozen', False): #是否Bundle Resource
+    base_path = os.path.abspath(".")
+    if os.path.exists(os.path.join(base_path, relative_path)):
+        pass
+    elif getattr(sys, 'frozen', False): #是否Bundle Resource
         base_path = sys._MEIPASS
-    else:
-        base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
 class MyMAinWindow(QMainWindow, Ui_AVDV):
@@ -51,15 +52,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210619'
+        self.localversion = '20210621'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.laberl_number_url = ''
         self.Ui.label_number.mousePressEvent = self.label_number_clicked
         self.Ui.label_source.mousePressEvent = self.label_number_clicked
-        self.soft_path = os.getcwd()
-        self.default_poster = self.soft_path + resource_path('/Img/default-poster.jpg')
-        self.default_thumb = self.soft_path + resource_path('/Img/default-thumb.jpg')
+        self.default_poster = resource_path('Img/default-poster.jpg')
+        self.default_thumb = resource_path('Img/default-thumb.jpg')
         self.m_drag = False
         self.m_DragPosition = 0
         self.count_claw = 0  # 批量刮削次数
@@ -81,10 +81,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     def Init_Ui(self):
         ico_path = resource_path('Img/AVDC-ico.png')
-        # if os.path.exists('AVDC-ico.png'):
-        #     ico_path = 'AVDC-ico.png'
-        # elif os.path.exists('Img/AVDC-ico.png'):
-        #     ico_path = 'Img/AVDC-ico.png'
         pix = QPixmap(ico_path)
         self.Ui.label_ico.setScaledContents(True)
         self.Ui.label_ico.setPixmap(pix)  # 添加图标
