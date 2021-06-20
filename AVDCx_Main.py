@@ -26,6 +26,14 @@ import socks
 import urllib3
 urllib3.disable_warnings()
 
+#生成资源文件目录访问路径
+def resource_path(relative_path):
+    if getattr(sys, 'frozen', False): #是否Bundle Resource
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 class MyMAinWindow(QMainWindow, Ui_AVDV):
     progressBarValue = Signal(int)  # 进度条信号量
     main_logs_show = Signal(str) # 刮削日志信号
@@ -43,15 +51,15 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210620'
+        self.localversion = '20210619'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.laberl_number_url = ''
         self.Ui.label_number.mousePressEvent = self.label_number_clicked
         self.Ui.label_source.mousePressEvent = self.label_number_clicked
         self.soft_path = os.getcwd()
-        self.default_poster = self.soft_path + '/Img/default-poster.jpg'
-        self.default_thumb = self.soft_path + '/Img/default-thumb.jpg'
+        self.default_poster = self.soft_path + resource_path('/Img/default-poster.jpg')
+        self.default_thumb = self.soft_path + resource_path('/Img/default-thumb.jpg')
         self.m_drag = False
         self.m_DragPosition = 0
         self.count_claw = 0  # 批量刮削次数
@@ -72,11 +80,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
 
     def Init_Ui(self):
-        ico_path = ''
-        if os.path.exists('AVDC-ico.png'):
-            ico_path = 'AVDC-ico.png'
-        elif os.path.exists('Img/AVDC-ico.png'):
-            ico_path = 'Img/AVDC-ico.png'
+        ico_path = resource_path('Img/AVDC-ico.png')
+        # if os.path.exists('AVDC-ico.png'):
+        #     ico_path = 'AVDC-ico.png'
+        # elif os.path.exists('Img/AVDC-ico.png'):
+        #     ico_path = 'Img/AVDC-ico.png'
         pix = QPixmap(ico_path)
         self.Ui.label_ico.setScaledContents(True)
         self.Ui.label_ico.setPixmap(pix)  # 添加图标
@@ -896,7 +904,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     def pushButton_start_single_file_clicked(self):
         if self.select_file_path != '':
-            self.Ui.stackedWidget.setCurrentIndex(1) # 点击刮削按钮后跳转到日志页面, 日志页面是1, 主界面是0
+            # self.Ui.stackedWidget.setCurrentIndex(1) # 点击刮削按钮后跳转到日志页面, 日志页面是1, 主界面是0
+            self.pushButton_main_clicked() # 点击刮削按钮后跳转到主页面
             try:
                 t = threading.Thread(target=self.select_file_thread)
                 t.start()  # 启动线程,即让线程开始执行
@@ -1030,7 +1039,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ========================================================================小工具-视频移动
     def move_file(self):
-        self.Ui.stackedWidget.setCurrentIndex(1)
+        # self.Ui.stackedWidget.setCurrentIndex(1)
+        self.pushButton_show_log_clicked() # 点击开始移动按钮后跳转到日志页面
         try:
             t = threading.Thread(target=self.move_file_thread)
             t.start()  # 启动线程,即让线程开始执行
@@ -1038,12 +1048,15 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.add_text_main('[-]Error in move_file: ' + str(error_info))
 
     def move_file_thread(self):
-        escape_dir = self.Ui.lineEdit_escape_dir_move.text()
-        sub_type = self.Ui.lineEdit_sub_type.text().split('|')
         movie_path = self.Ui.lineEdit_movie_path.text()
+        escape_dir = self.Ui.lineEdit_escape_dir_move.text()
         movie_type = self.Ui.lineEdit_movie_type.text()
+        sub_type = self.Ui.lineEdit_sub_type.text().split('|')
+        if not movie_path:  # 没有输入视频目录时，获取程序当前路径
+            movie_path = os.path.abspath(".")
         movie_list = movie_lists(escape_dir, movie_type, movie_path)
         des_path = movie_path + '/Movie_moved'
+        print(des_path)
         if not os.path.exists(des_path):
             self.add_text_main('[+]Created folder Movie_moved!')
             os.makedirs(des_path)
@@ -1087,7 +1100,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.add_text_main('[-]Error in pushButton_add_actor_pic_clicked: ' + str(error_info))
 
     def pushButton_show_pic_actor_clicked(self):  # 查看按钮响应
-        self.Ui.stackedWidget.setCurrentIndex(1)
+        # self.Ui.stackedWidget.setCurrentIndex(1)
+        self.pushButton_show_log_clicked() # 点击查看按钮后跳转到日志页面
         emby_url = self.Ui.lineEdit_emby_url.text()
         api_key = self.Ui.lineEdit_api_key.text()
         if emby_url == '':
@@ -1644,11 +1658,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def add_to_pic(self, pic_path, img_pic, size, count, mode):
         mark_pic_path = ''
         if mode == 1:
-            mark_pic_path = 'Img/SUB.png'
+            mark_pic_path = resource_path('Img/SUB.png')
         elif mode == 2:
-            mark_pic_path = 'Img/LEAK.png'
+            mark_pic_path = resource_path('Img/LEAK.png')
         elif mode == 3:
-            mark_pic_path = 'Img/UNCENSORED.png'
+            mark_pic_path = resource_path('Img/UNCENSORED.png')
         img_subt = Image.open(mark_pic_path)
         scroll_high = int(img_pic.height / size)
         scroll_wide = int(scroll_high * img_subt.width / img_subt.height)
@@ -2172,7 +2186,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 self.add_text_main("[*]================================================================================")
         self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
         self.progressBarValue.emit(100)
-        self.Ui.label_filepath.setText('🎉 恭喜！全部刮削完成！共%s个文件！' % count_all)
+        self.Ui.label_filepath.setText('🎉 恭喜！全部刮削完成！共 %s 个文件！' % count_all)
         self.CEF(movie_path)
         self.Ui.pushButton_start_cap.setEnabled(True)
         self.Ui.pushButton_start_cap2.setEnabled(True)
