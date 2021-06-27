@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>.AppleSystemUIFont</family>
+    <family>Courier</family>
     <pointsize>13</pointsize>
     <weight>50</weight>
     <bold>false</bold>
@@ -37,14 +37,14 @@
     </property>
     <property name="font">
      <font>
-      <family>.AppleSystemUIFont</family>
+      <family>Courier</family>
       <pointsize>13</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_avdc">
      <widget class="QPushButton" name="pushButton_start_cap">
@@ -58,8 +58,8 @@
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>14</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -79,10 +79,10 @@
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -100,10 +100,10 @@
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="cursor">
@@ -134,7 +134,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -155,7 +155,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -182,10 +182,10 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -203,10 +203,10 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -234,7 +234,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -264,7 +264,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -285,10 +285,10 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -315,10 +315,10 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -336,7 +336,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -366,7 +366,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -393,7 +393,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -414,7 +414,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -435,7 +435,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -465,7 +465,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -492,7 +492,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -513,7 +513,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -534,7 +534,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -564,7 +564,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -585,7 +585,7 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -624,10 +624,10 @@ color:#336699</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="cursor">
@@ -662,7 +662,7 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -683,7 +683,7 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -710,8 +710,8 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>10</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -731,8 +731,8 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>10</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -752,8 +752,8 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>10</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -773,8 +773,8 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>10</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -794,8 +794,8 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>10</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -815,8 +815,8 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>10</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -836,8 +836,8 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>10</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -857,8 +857,8 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>10</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -881,7 +881,7 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -932,7 +932,7 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -962,10 +962,10 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>15</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="text">
@@ -983,7 +983,7 @@ font-size:14px;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -1014,7 +1014,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>75</weight>
          <bold>true</bold>
@@ -1048,7 +1048,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
       </item>
      </widget>
-     <widget class="QLabel" name="label_filepath">
+     <widget class="QLabel" name="label_file_path">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -1059,10 +1059,10 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>14</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -1086,8 +1086,8 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>10</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -1107,7 +1107,7 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -1165,7 +1165,7 @@ background-color: rgb(246, 246, 246);</string>
      <zorder>label_poster1</zorder>
      <zorder>treeWidget_number</zorder>
      <zorder>label_result</zorder>
-     <zorder>label_filepath</zorder>
+     <zorder>label_file_path</zorder>
      <zorder>pushButton_start_cap</zorder>
      <zorder>line_14</zorder>
      <zorder>label_source</zorder>
@@ -1195,8 +1195,8 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>14</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -1231,8 +1231,8 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
-        <pointsize>14</pointsize>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -1254,7 +1254,7 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <italic>false</italic>
@@ -1278,7 +1278,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1301,7 +1301,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1323,7 +1323,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1348,7 +1348,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1373,7 +1373,7 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <italic>false</italic>
@@ -1420,7 +1420,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1442,7 +1442,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1452,6 +1452,11 @@ background-color: rgb(246, 246, 246);</string>
        <item>
         <property name="text">
          <string>All websites</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>airav</string>
         </property>
        </item>
        <item>
@@ -1531,7 +1536,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1580,7 +1585,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1629,7 +1634,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1652,7 +1657,7 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <italic>false</italic>
@@ -1676,7 +1681,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1698,7 +1703,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1772,7 +1777,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1820,7 +1825,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1842,7 +1847,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1882,7 +1887,7 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <italic>false</italic>
@@ -1906,7 +1911,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Courier</family>
          <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
@@ -1955,7 +1960,7 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>14</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -1976,7 +1981,7 @@ background-color: rgb(246, 246, 246);</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>13</pointsize>
         <weight>50</weight>
         <italic>false</italic>
@@ -2005,7 +2010,7 @@ background-color: rgb(246, 246, 246);</string>
           <x>10</x>
           <y>80</y>
           <width>741</width>
-          <height>441</height>
+          <height>361</height>
          </rect>
         </property>
         <property name="font">
@@ -2026,15 +2031,15 @@ background-color: rgb(246, 246, 246);</string>
         <widget class="QGroupBox" name="groupBox_15">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>270</y>
-           <width>711</width>
+           <x>380</x>
+           <y>160</y>
+           <width>341</width>
            <height>51</height>
           </rect>
          </property>
          <property name="minimumSize">
           <size>
-           <width>500</width>
+           <width>200</width>
            <height>0</height>
           </size>
          </property>
@@ -2061,7 +2066,7 @@ background-color: rgb(246, 246, 246);</string>
            <rect>
             <x>120</x>
             <y>20</y>
-            <width>591</width>
+            <width>211</width>
             <height>31</height>
            </rect>
           </property>
@@ -2071,7 +2076,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2087,7 +2092,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2105,14 +2110,14 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>120</y>
-           <width>711</width>
+           <y>90</y>
+           <width>341</width>
            <height>51</height>
           </rect>
          </property>
          <property name="minimumSize">
           <size>
-           <width>500</width>
+           <width>200</width>
            <height>0</height>
           </size>
          </property>
@@ -2139,7 +2144,7 @@ background-color: rgb(246, 246, 246);</string>
            <rect>
             <x>120</x>
             <y>20</y>
-            <width>591</width>
+            <width>211</width>
             <height>31</height>
            </rect>
           </property>
@@ -2149,7 +2154,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2165,7 +2170,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2182,15 +2187,15 @@ background-color: rgb(246, 246, 246);</string>
         <widget class="QGroupBox" name="groupBox_17">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>220</y>
-           <width>711</width>
+           <x>380</x>
+           <y>90</y>
+           <width>341</width>
            <height>51</height>
           </rect>
          </property>
          <property name="minimumSize">
           <size>
-           <width>500</width>
+           <width>200</width>
            <height>0</height>
           </size>
          </property>
@@ -2217,7 +2222,7 @@ background-color: rgb(246, 246, 246);</string>
            <rect>
             <x>120</x>
             <y>20</y>
-            <width>591</width>
+            <width>211</width>
             <height>31</height>
            </rect>
           </property>
@@ -2227,7 +2232,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2243,85 +2248,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>关</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_23">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>320</y>
-           <width>711</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>500</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>739</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Courier</family>
-           <pointsize>13</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>下载剧照：</string>
-         </property>
-         <widget class="QWidget" name="horizontalLayoutWidget_13">
-          <property name="geometry">
-           <rect>
-            <x>120</x>
-            <y>20</y>
-            <width>591</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_15">
-           <item>
-            <widget class="QRadioButton" name="radioButton_extrafanart_download_on">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>10</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>开</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_extrafanart_download_off">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2338,15 +2265,15 @@ background-color: rgb(246, 246, 246);</string>
         <widget class="QGroupBox" name="groupBox_2">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>70</y>
-           <width>711</width>
+           <x>380</x>
+           <y>20</y>
+           <width>341</width>
            <height>51</height>
           </rect>
          </property>
          <property name="minimumSize">
           <size>
-           <width>500</width>
+           <width>200</width>
            <height>0</height>
           </size>
          </property>
@@ -2373,7 +2300,7 @@ background-color: rgb(246, 246, 246);</string>
            <rect>
             <x>120</x>
             <y>20</y>
-            <width>591</width>
+            <width>211</width>
             <height>31</height>
            </rect>
           </property>
@@ -2383,7 +2310,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2399,7 +2326,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2417,14 +2344,14 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>170</y>
-           <width>711</width>
+           <y>160</y>
+           <width>341</width>
            <height>51</height>
           </rect>
          </property>
          <property name="minimumSize">
           <size>
-           <width>500</width>
+           <width>200</width>
            <height>0</height>
           </size>
          </property>
@@ -2451,7 +2378,7 @@ background-color: rgb(246, 246, 246);</string>
            <rect>
             <x>120</x>
             <y>20</y>
-            <width>591</width>
+            <width>211</width>
             <height>31</height>
            </rect>
           </property>
@@ -2461,7 +2388,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2477,7 +2404,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2496,13 +2423,13 @@ background-color: rgb(246, 246, 246);</string>
           <rect>
            <x>11</x>
            <y>20</y>
-           <width>711</width>
+           <width>341</width>
            <height>51</height>
           </rect>
          </property>
          <property name="minimumSize">
           <size>
-           <width>500</width>
+           <width>200</width>
            <height>0</height>
           </size>
          </property>
@@ -2529,7 +2456,7 @@ background-color: rgb(246, 246, 246);</string>
            <rect>
             <x>120</x>
             <y>20</y>
-            <width>591</width>
+            <width>211</width>
             <height>31</height>
            </rect>
           </property>
@@ -2539,7 +2466,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2548,6 +2475,9 @@ background-color: rgb(246, 246, 246);</string>
              <property name="text">
               <string>刮削模式</string>
              </property>
+             <property name="autoRepeatDelay">
+              <number>300</number>
+             </property>
             </widget>
            </item>
            <item>
@@ -2555,7 +2485,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2573,7 +2503,7 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>380</y>
+           <y>290</y>
            <width>711</width>
            <height>51</height>
           </rect>
@@ -2611,7 +2541,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2627,7 +2557,7 @@ background-color: rgb(246, 246, 246);</string>
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2639,11 +2569,27 @@ background-color: rgb(246, 246, 246);</string>
             </widget>
            </item>
            <item>
+            <widget class="QCheckBox" name="checkBox_download_thumb">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>13</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>thumb</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QCheckBox" name="checkBox_download_fanart">
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
@@ -2655,18 +2601,112 @@ background-color: rgb(246, 246, 246);</string>
             </widget>
            </item>
            <item>
-            <widget class="QCheckBox" name="checkBox_download_thumb">
+            <widget class="QCheckBox" name="checkBox_download_extrafanart">
              <property name="font">
               <font>
                <family>Courier</family>
-               <pointsize>10</pointsize>
+               <pointsize>13</pointsize>
                <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
               </font>
              </property>
              <property name="text">
-              <string>thumb</string>
+              <string>extrafanart</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_25">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>230</y>
+           <width>711</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>739</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="title">
+          <string>翻译语言</string>
+         </property>
+         <widget class="QWidget" name="horizontalLayoutWidget_15">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>20</y>
+            <width>581</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_18">
+           <item>
+            <widget class="QRadioButton" name="radioButton_zh_cn">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>13</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>简体</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_zh_tw">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>13</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>繁体</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_ja">
+             <property name="font">
+              <font>
+               <family>Courier</family>
+               <pointsize>13</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>日语</string>
              </property>
             </widget>
            </item>
@@ -2685,7 +2725,7 @@ background-color: rgb(246, 246, 246);</string>
         </property>
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
+          <family>Courier</family>
           <pointsize>13</pointsize>
           <weight>50</weight>
           <italic>false</italic>
@@ -2733,7 +2773,7 @@ background-color: rgb(246, 246, 246);</string>
          </property>
          <property name="font">
           <font>
-           <family>.AppleSystemUIFont</family>
+           <family>Courier</family>
            <pointsize>13</pointsize>
            <weight>50</weight>
            <italic>false</italic>
@@ -2749,6 +2789,11 @@ background-color: rgb(246, 246, 246);</string>
          <item>
           <property name="text">
            <string>All websites</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>airav</string>
           </property>
          </item>
          <item>
@@ -3758,6 +3803,14 @@ background-color: rgb(246, 246, 246);</string>
                 <height>30</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
               </property>
@@ -3803,6 +3856,14 @@ background-color: rgb(246, 246, 246);</string>
                 <width>70</width>
                 <height>30</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="digitCount">
                <number>5</number>
@@ -3861,6 +3922,14 @@ background-color: rgb(246, 246, 246);</string>
                 <height>30</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="mouseTracking">
                <bool>false</bool>
               </property>
@@ -3903,6 +3972,14 @@ background-color: rgb(246, 246, 246);</string>
                 <width>70</width>
                 <height>30</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="intValue" stdset="0">
                <number>3</number>
@@ -4656,7 +4733,7 @@ font: &quot;Courier&quot;;</string>
       </widget>
       <widget class="QWidget" name="tab5">
        <attribute name="title">
-        <string>其它设置</string>
+        <string>更多设置</string>
        </attribute>
        <widget class="QGroupBox" name="groupBox_39">
         <property name="geometry">
@@ -4680,7 +4757,7 @@ font: &quot;Courier&quot;;</string>
          <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="title">
-         <string>无码封面</string>
+         <string>Poster图片来源</string>
         </property>
         <widget class="QLabel" name="label_14">
          <property name="geometry">
@@ -4702,8 +4779,8 @@ font: &quot;Courier&quot;;</string>
          </property>
          <property name="text">
           <string>说明：
-    1、官方封面--完整、不清晰；裁剪封面--清晰、不完整。
-    2、官方无图，自动裁剪缩略图。</string>
+    1、官方下载原图--完整、不清晰；使用thumb裁剪--清晰、不完整。
+    2、官方无图，自动使用thumb裁剪。</string>
          </property>
         </widget>
         <widget class="QWidget" name="horizontalLayoutWidget_24">
@@ -4724,8 +4801,16 @@ font: &quot;Courier&quot;;</string>
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
-             <string>官方</string>
+             <string>官方下载原图</string>
             </property>
            </widget>
           </item>
@@ -4737,8 +4822,16 @@ font: &quot;Courier&quot;;</string>
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
             <property name="text">
-             <string>裁剪</string>
+             <string>使用thumb裁剪</string>
             </property>
            </widget>
           </item>
@@ -5079,7 +5172,7 @@ font: &quot;Courier&quot;;</string>
       </property>
       <property name="font">
        <font>
-        <family>.AppleSystemUIFont</family>
+        <family>Courier</family>
         <pointsize>14</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -5110,7 +5203,7 @@ font: &quot;Courier&quot;;</string>
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont','.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Courier','Courier'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:20pt; font-weight:600;&quot;&gt;AVDCx&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:16pt; font-weight:600;&quot;&gt;AVDCx 是基于 AV_Data_Capture 的 GUI 版本 AVDC 再次修改的版本。&lt;/span&gt;&lt;/p&gt;
@@ -5122,7 +5215,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:24pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:24pt; font-weight:600;&quot;&gt;使用说明&lt;/span&gt;&lt;span style=&quot; font-family:'Courier';&quot;&gt; （内容来自 AVDC ：&lt;/span&gt;&lt;a href=&quot;https://github.com/Hermit10/temp&quot;&gt;&lt;span style=&quot; font-family:'Courier'; text-decoration: underline; color:#0068da;&quot;&gt;https://github.com/moyy996/AVDC&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Courier';&quot;&gt; ）&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:14pt;&quot;&gt;———————————————————————————————————————————————————————&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.AppleSystemUIFont';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:14pt; font-weight:600;&quot;&gt;目录&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;#_一、功能简介&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;&quot;&gt;一、功能简介&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;#_二、项目简介&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;&quot;&gt;二、项目简介&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
@@ -5224,7 +5317,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="font">
      <font>
-      <family>.AppleSystemUIFont</family>
+      <family>Courier</family>
       <pointsize>13</pointsize>
       <weight>50</weight>
       <bold>false</bold>
@@ -5241,7 +5334,7 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="font">
       <font>
-       <family>.AppleSystemUIFont</family>
+       <family>Courier</family>
        <pointsize>13</pointsize>
        <weight>50</weight>
        <bold>false</bold>
@@ -5265,8 +5358,8 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="font">
       <font>
-       <family>.AppleSystemUIFont</family>
-       <pointsize>10</pointsize>
+       <family>Courier</family>
+       <pointsize>13</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -5309,8 +5402,8 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>14</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5324,8 +5417,8 @@ p, li { white-space: pre-wrap; }
        <spacer name="verticalSpacer_2">
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>10</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5360,8 +5453,8 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>14</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5375,8 +5468,8 @@ p, li { white-space: pre-wrap; }
        <spacer name="verticalSpacer">
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>10</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5411,8 +5504,8 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>14</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5426,8 +5519,8 @@ p, li { white-space: pre-wrap; }
        <spacer name="verticalSpacer_6">
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>10</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5462,8 +5555,8 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>14</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5477,8 +5570,8 @@ p, li { white-space: pre-wrap; }
        <spacer name="verticalSpacer_4">
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>10</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5513,8 +5606,8 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>14</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5528,8 +5621,8 @@ p, li { white-space: pre-wrap; }
        <spacer name="verticalSpacer_5">
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>10</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5564,8 +5657,8 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
-          <pointsize>14</pointsize>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>
@@ -5588,8 +5681,8 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="font">
       <font>
-       <family>.AppleSystemUIFont</family>
-       <pointsize>10</pointsize>
+       <family>Courier</family>
+       <pointsize>13</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -5626,7 +5719,7 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="font">
          <font>
-          <family>.AppleSystemUIFont</family>
+          <family>Courier</family>
           <pointsize>13</pointsize>
           <weight>50</weight>
           <bold>false</bold>
@@ -5656,10 +5749,9 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="font">
       <font>
-       <family>.AppleSystemUIFont</family>
-       <pointsize>10</pointsize>
+       <family>Courier</family>
+       <pointsize>13</pointsize>
        <weight>50</weight>
-       <italic>false</italic>
        <bold>false</bold>
       </font>
      </property>
@@ -5706,7 +5798,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="font">
      <font>
-      <family>.AppleSystemUIFont</family>
+      <family>Courier</family>
       <pointsize>13</pointsize>
       <weight>50</weight>
       <bold>false</bold>
