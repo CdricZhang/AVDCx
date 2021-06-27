@@ -8,7 +8,7 @@ import os
 import json
 from PIL import Image
 from configparser import RawConfigParser
-from Getter import avsox, javbus, javdb, fc2hub, mgstage, dmm, jav321, xcity
+from Getter import airav, javbus, javdb, jav321, dmm, avsox, xcity, mgstage, fc2hub
 
 # ========================================================================是否为无码
 def is_uncensored(number):
@@ -128,14 +128,17 @@ def getNumber(filepath, escape_string):
 
 
 # ========================================================================根据番号获取数据
-def getDataFromJSON(file_number, config, mode, appoint_url):  # 从JSON返回元数据
+def getDataFromJSON(file_number, config, mode, appoint_url, translate_language):  # 从JSON返回元数据
     # ================================================网站规则添加开始================================================
     isuncensored = is_uncensored(file_number)
     json_data = {}
     if mode == 1:  # 从全部网站刮削
           # =======================================================================无码抓取:111111-111,n1111,HEYZO-1111,SMD-115
         if isuncensored:
-            json_data = json.loads(javbus.main_uncensored(file_number, appoint_url))
+            json_data = json.loads(airav.main(file_number, appoint_url,translate_language))
+            if getDataState(json_data) == 0:
+                log_info = json_data['log_info']
+                json_data = json.loads(javbus.main_uncensored(file_number, appoint_url, log_info))
             if getDataState(json_data) == 0:
                 log_info = json_data['log_info']
                 json_data = json.loads(javdb.main(file_number, appoint_url, log_info, True))
@@ -163,6 +166,9 @@ def getDataFromJSON(file_number, config, mode, appoint_url):  # 从JSON返回元
             json_data = json.loads(fc2hub.main(re.search('\d{4,}', file_number).group(), appoint_url))
             if getDataState(json_data) == 0:
                 log_info = json_data['log_info']
+                json_data = json.loads(airav.main(file_number, appoint_url, translate_language, log_info))
+            if getDataState(json_data) == 0:
+                log_info = json_data['log_info']
                 json_data = json.loads(javdb.main(file_number, appoint_url, log_info))
         # =======================================================================ssni00321
         elif re.match('\D{2,}00\d{3,}', file_number) and '-' not in file_number and '_' not in file_number:
@@ -175,7 +181,10 @@ def getDataFromJSON(file_number, config, mode, appoint_url):  # 从JSON返回元
                 json_data = json.loads(javbus.main_us(file_number, appoint_url, log_info))
         # =======================================================================MIDE-139
         else:
-            json_data = json.loads(javbus.main(file_number, appoint_url))
+            json_data = json.loads(airav.main(file_number, appoint_url, translate_language))
+            if getDataState(json_data) == 0:
+                log_info = json_data['log_info']
+                json_data = json.loads(javbus.main(file_number, appoint_url, log_info))
             if getDataState(json_data) == 0:
                 log_info = json_data['log_info']
                 json_data = json.loads(javdb.main(file_number, appoint_url, log_info))
@@ -188,7 +197,7 @@ def getDataFromJSON(file_number, config, mode, appoint_url):  # 从JSON返回元
             if getDataState(json_data) == 0:
                 log_info = json_data['log_info']
                 json_data = json.loads(avsox.main(file_number, appoint_url, log_info))
-    elif re.match('\D{2,}00\d{3,}', file_number) and mode != 6:
+    elif re.match('\D{2,}00\d{3,}', file_number) and mode != 7:
         json_data = {
             'title': '',
             'actor': '',
@@ -197,29 +206,31 @@ def getDataFromJSON(file_number, config, mode, appoint_url):  # 从JSON返回元
             'error_type': '',
             'error_info': '',
         }
-    elif mode == 2:  # 仅从javbus
+    elif mode == 2:  # 仅从airav
+        json_data = json.loads(airav.main(file_number, appoint_url, translate_language))
+    elif mode == 3:  # 仅从javbus
         if isuncensored:
             json_data = json.loads(javbus.main_uncensored(file_number, appoint_url))
         elif re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
             json_data = json.loads(javbus.main_us(file_number, appoint_url))
         else:
             json_data = json.loads(javbus.main(file_number, appoint_url))
-    elif mode == 3:  # 仅从javdb
+    elif mode == 4:  # 仅从javdb
         if re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
             json_data = json.loads(javdb.main_us(file_number, appoint_url))
         else:
             json_data = json.loads(javdb.main(file_number, appoint_url))
-    elif mode == 4:  # 仅从jav321
+    elif mode == 5:  # 仅从jav321
         json_data = json.loads(jav321.main(file_number, appoint_url))
-    elif mode == 5:  # 仅从dmm
+    elif mode == 6:  # 仅从dmm
         json_data = json.loads(dmm.main(file_number, appoint_url))
-    elif mode == 6:  # 仅从avsox
+    elif mode == 7:  # 仅从avsox
         json_data = json.loads(avsox.main(file_number, appoint_url))
-    elif mode == 7:  # 仅从xcity
+    elif mode == 8:  # 仅从xcity
         json_data = json.loads(xcity.main(file_number, appoint_url))
-    elif mode == 8:  # 仅从mgstage
+    elif mode == 9:  # 仅从mgstage
         json_data = json.loads(mgstage.main(file_number, appoint_url))
-    elif mode == 9:  # 仅从fc2hub
+    elif mode == 10:  # 仅从fc2hub
         json_data = json.loads(fc2hub.main(file_number, appoint_url))
 
     # ================================================网站规则添加结束================================================
@@ -317,8 +328,10 @@ def save_config(json_config):
         print("failed_file_move = " + str(json_config['failed_file_move']), file=code)
         print("soft_link = " + str(json_config['soft_link']), file=code)
         print("show_poster = " + str(json_config['show_poster']), file=code)
+        print("translate_language = " + json_config['translate_language'], file=code)
+        print("# zh_cn or zh_tw or ja", file=code)
         print("website = " + json_config['website'], file=code)
-        print("# all or javbus or javdb or jav321 or dmm or avsox or xcity or mgstage or fc2hub", file=code)
+        print("# all or airav or javbus or javdb or jav321 or dmm or avsox or xcity or mgstage or fc2hub", file=code)
         print("", file=code)
         print("[proxy]", file=code)
         print("type = " + json_config['type'], file=code)
