@@ -106,13 +106,13 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             result_url = appoint_url
         result, response = post_html(result_url, query={"sn": number})
         if result == 'error':
-            log_info += '   >>> JAV321-请求详情页：错误！信息：' + response
+            log_info += '   >>> JAV321-请求搜索页：错误！信息：' + response
             error_type = 'timeout'
-            raise Exception('>>> JAV321-请求详情页：错误！信息' + response)
-        if '未找到您要找的AV' in response:
+            raise Exception('>>> JAV321-请求搜索页：错误！信息' + response)
+        if 'AVが見つかりませんでした' in response:
             log_info += '   >>> JAV321-未匹配到番号！ \n'
             error_type = 'Movie not found'
-            raise Exception('Movie not found')
+            raise Exception('JAV321-未匹配到番号')
         detail_page = etree.fromstring(response, etree.HTMLParser())
         title = getTitle(response) # 获取标题
         if not title:
@@ -120,6 +120,9 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             error_type = 'need login'
             raise Exception('>>> JAV321- title 获取失败！]')
         cover_url = getCover(detail_page) # 获取cover
+        cover_small = getCoverSmall(detail_page)
+        if not cover_url:
+            cover_url = cover_small
         if 'http' not in cover_url:
             log_info += '   >>> JAV321- cover url 获取失败！ \n'
             error_type = 'Cover Url is None!'
@@ -127,14 +130,10 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
         release = getRelease(response)
         actor = getActor(response)
         imagecut = 1
-        cover_small = ''
-        cover_small = getCoverSmall(detail_page)
         if 'HEYZO' in number.upper() or isuncensored:
             imagecut = 3
             if cover_small == '':
                 imagecut = 0
-        if not cover_url:
-            cover_url = cover_small
         try:
             dic = {
                 'actor': actor,

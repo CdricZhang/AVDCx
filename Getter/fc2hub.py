@@ -43,7 +43,7 @@ def getTag(html):  # 获取标签
     return result
 
 def getOutline(html):  # 获取简介
-    result = str(html.xpath('//div[@class="col des"]/text()')).strip('['']').replace("',", '').replace('\\n', '').replace("'", '').replace('・', '')
+    result = str(html.xpath('//div[@class="col des"]/text()')).strip('['']').replace("',", '').replace('\\n', '').replace("'", '').replace('・', '').strip()
     return result
 
 def main(number, appoint_url='', log_info=''):
@@ -54,7 +54,7 @@ def main(number, appoint_url='', log_info=''):
     cover_small = ''
     error_type = ''
     error_info = ''
-    number = number.upper().replace('FC', '').replace('PPV', '').replace('FC2PPV', '').replace('-', '')
+    number = number.upper().replace('FC', '').replace('PPV', '').replace('FC2PPV', '').replace('-', '').strip()
     dic = {}
     try: # 捕获主动抛出的异常
         if not real_url:

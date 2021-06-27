@@ -218,8 +218,8 @@ def main(number, appoint_url='', log_info=''):
             result_url = find_number(number)
         if result_url == 'Movie not found':
             log_info += '   >>> JAVBUS-搜索结果页匹配番号：未匹配到番号！ \n'
-            error_type = 'Movie not found'
-            raise Exception('Movie not found')
+            error_type = '未匹配到番号'
+            raise Exception('JAVBUS-搜索结果页：未匹配到番号！')
 
         result, htmlcode = get_html(result_url)
         if result == 'error':
@@ -240,7 +240,8 @@ def main(number, appoint_url='', log_info=''):
         cover_small = getCover_small(number)
         outline, score = getOutlineScore(number)
         number = getNum(htmlcode)
-        actor = getActor(htmlcode).strip(' ')
+        actor = str(getActor(htmlcode)).strip('['']').replace("'", '')
+
         try:
             dic = {
                 'title': str(title).replace('-', '').replace(actor, ''),

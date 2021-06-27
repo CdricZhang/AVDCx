@@ -179,6 +179,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
     error_type = ''
     error_info = ''
     cookies = get_cookies()['javdb']
+    url_search = ''
     try: # 捕获主动抛出的异常
         if not real_url:
             # 通过搜索获取real_url
@@ -211,7 +212,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             if not real_url:
                 log_info += '   >>> JAVDB-搜索结果页：未匹配到番号！\n'
                 error_type = 'Movie not found'
-                raise Exception('Movie not found')
+                raise Exception('JAVDB-搜索结果页：未匹配到番号')
             else:
                 real_url = 'https://javdb.com' + real_url[0] + '?locale=zh'
                 log_info += '   >>> JAVDB-生成详情页地址：%s\n' % real_url
@@ -238,7 +239,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 else:
                     log_info += '   >>> JAVDB-请到【设置】-【网络设置】中添加 javdb Cookie！\n'
                 error_type = 'need login'
-                raise Exception('JAVDB-该番号内容需要登录查看！]')
+                raise Exception('JAVDB-该番号内容需要登录查看！')
             imagecut = 1
             outline = ''
             if isuncensored and (re.match('^\d{4,}', number) or re.match('n\d{4}', number)):  # 无码，收集封面、评分
@@ -320,7 +321,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
     return js
 
 
-def main_us(number, appoint_url='', log_info='', isuncensored=False):
+def main_us(number, appoint_url='', log_info='', isuncensored=True):
     log_info += '   >>> JAVDB-开始使用 javdb 进行刮削\n'
     real_url = appoint_url
     title = ''
@@ -417,7 +418,7 @@ def main_us(number, appoint_url='', log_info='', isuncensored=False):
             if len(actor) == 0 and 'FC2-' in number.upper():
                 actor.append('FC2-NoActor')
             actor = str(actor).strip(" [',']").replace('\'', '')
-            title = title.replace('-', '').replace(actor, '')
+            title = title.replace(actor, '').replace('-', '')
             release = getRelease(html_detail)
 
             try:
