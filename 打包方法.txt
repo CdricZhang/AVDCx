@@ -20,7 +20,7 @@ pyinstaller AVDCx.exe.spec
 1，官网下载安装 python （https://www.python.org/）
 2，命令行cd到AVDCx所在目录
 3，命令行安装所需模块 pip install -r requirements.txt
-4，命令行安装打包工具 pip install py2ap
+4，命令行安装打包工具 pip install py2app
 5，命令行运行 python setup.py py2app
 
 打包好的程序在dist里面。

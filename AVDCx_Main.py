@@ -11,7 +11,6 @@ from PySide2.QtCore import Signal, Qt, QCoreApplication
 import sys
 import time
 import os.path
-from googletrans.models import Translated
 import requests
 import shutil
 import base64
@@ -25,12 +24,15 @@ from Function.Function import save_config, movie_lists, get_info, getDataFromJSO
 from Function.getHtml import get_html, get_proxies, get_proxy
 import socks
 import urllib3
+import urllib.request as requestss
 urllib3.disable_warnings()
 import faulthandler
 faulthandler.enable()
-from googletrans import Translator
 from lxml import etree
-
+import urllib.parse
+import random
+import hashlib
+from zhconv import convert
 
 #生成资源文件目录访问路径
 def resource_path(relative_path):
@@ -58,7 +60,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210628'
+        self.localversion = '20210629'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.laberl_number_url = ''
@@ -2063,6 +2065,201 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         file_show_path = self.showFilePath(file_path)
         return movie_number, floder_path, file_name, file_ex, leak, cd_part, c_word, sub_list, file_show_name, file_show_path
 
+    # =====================================================================================有道翻译
+    def youdao(self, msg, language='zh_cn'):
+        msg = msg
+        url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
+        D = "Tbh5E8=q6U3EXe+&L[4c@"  
+        salt = str(int(time.time() * 1000) + random.randint(0, 10))
+        sign = hashlib.md5(("fanyideskweb" + msg + salt + D).encode('utf-8')).hexdigest()
+        ts = str(int(time.time() * 1000))
+
+        Form_Data = {
+            'i': msg,
+            'from': 'AUTO',
+            'to': 'zh-CHS',
+            'smartresult': 'dict',
+            'client': 'fanyideskweb',
+            'salt': salt,
+            'sign': sign,
+            'ts': ts,
+            'bv': 'c6b8c998b2cbaa29bd94afc223bc106c',
+            'doctype': 'json',
+            'version': '2.1',
+            'keyfrom': 'fanyi.web',
+            'ue' : 'UTF-8',
+            'typoResult': 'true',
+            'action': 'FY_BY_CLICKBUTTION'
+            
+        }
+        Form_Data = urllib.parse.urlencode(Form_Data).encode('utf-8')
+
+        headers = {
+            # 'Accept': 'application/json, text/javascript, */*; q=0.01',
+            # 'Accept-Encoding': 'gzip, deflate',
+            # 'Accept-Language': 'zh-CN,zh;q=0.9,mt;q=0.8',
+            # 'Connection': 'keep-alive',
+            # 'Content-Length': '240',
+            # 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'Cookie': 'OUTFOX_SEARCH_USER_ID=-2022895048@10.168.8.76;',
+            # 'Host': 'fanyi.youdao.com',
+            # 'Origin': 'http://fanyi.youdao.com',
+            'Referer': 'http://fanyi.youdao.com/',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; rv:51.0) Gecko/20100101 Firefox/51.0',
+            # 'X-Requested-With': 'XMLHttpRequest'
+        }
+        try:
+            req = requestss.Request(url, Form_Data, headers, method='POST')
+            response = requestss.urlopen(req)
+        except Exception as error0:
+            self.addTextMain('   >>>提示：有道翻译接口挂了。。' + error0)
+        else:
+            html = response.read().decode('utf-8')
+            translate_results = json.loads(html)
+            # 找到翻译结果
+            if 'translateResult' in translate_results:
+                translateResult = translate_results.get('translateResult')
+                msg = ''
+                for each in translateResult[0]:
+                    msg += each.get('tgt')
+        if language == 'zh_tw':
+            msg = convert(msg, 'zh-hant')
+        return msg
+
+    # =====================================================================================处理单个文件刮削
+    def coreMain(self, file_path, movie_number, config, mode, count, succ_count=0, fail_count=0, appoint_number='', appoint_url='', jsonfile_data={}):
+        # =====================================================================================初始化所需变量
+        sub_list = []
+        leak = ''
+        cd_part = ''
+        c_word = ''
+        uncensored = 0
+        appoint_number = ''
+        appoint_url = ''
+        config_file = 'config.ini'
+        config = RawConfigParser()
+        config.read(config_file, encoding='UTF-8')
+        translate_language = config.get('common', 'translate_language')
+
+        # 获取设置的媒体目录、失败目录、成功目录
+        movie_path, failed_folder, success_folder = self.getMoviePathSetting()
+
+        # 获取文件信息
+        movie_number, floder_path, file_name, file_ex, leak, cd_part, c_word, sub_list, file_show_name, file_show_path = self.getFileInfo(file_path, appoint_number)
+
+        # 获取json_data
+        json_data = self.getJsonData(mode, movie_number, config, appoint_url, translate_language)
+
+        # 处理json_data
+        data_result = self.showDataResult(json_data)                           # 显示 make data 的结果
+        if self.Ui.radioButton_debug_on.isChecked():                           # 调试模式打开时显示详细日志
+            self.showDebugInfo(json_data)
+        if data_result != 'ok':                                                # json_data 有问题, 在失败栏目显示文件名 
+            return 'error', json_data                 # 返回AVDC_main, 继续处理下一个文件
+        # 处理翻译
+        if translate_language != 'ja':
+            # 匹配本地高质量标题
+            movie_title = jsonfile_data.get(movie_number)
+            # 匹配网络高质量标题（可在线更新）
+            if not movie_title:
+                result, html_search_title = get_html('http://www.yesjav.info/search.asp?q=%s&' % movie_number)
+                html_title = etree.fromstring(html_search_title, etree.HTMLParser())
+                movie_title = str(html_title.xpath('//dl[@id="zi"]/p/font/a/b[contains(text(), $number)]/../../a[contains(text(), "中文字幕")]/text()', number=movie_number)).replace(' (中文字幕)', '').strip("['']") 
+                if not movie_title:
+                    movie_title =json_data['title']
+            if translate_language == 'zh_cn':
+                json_data['title'] = self.youdao(movie_title, 'zh_cn')
+                if json_data.get('outline').strip():
+                    json_data['outline'] = self.youdao(json_data['outline'], 'zh_cn')
+
+            elif translate_language == 'zh_tw':
+                json_data['title'] = self.youdao(movie_title, 'zh_tw')
+                if json_data.get('outline').strip():
+                    json_data['outline'] = self.youdao(json_data['outline'], 'zh_tw')
+
+        # 调试模式打开时显示data信息
+        if self.Ui.radioButton_debug_on.isChecked():                           
+            self.showMovieInfo(json_data)
+
+        # 开始处理当前文件
+        # =====================================================================================创建目标文件夹
+        try:
+            path = self.creatFolder(success_folder, json_data, config, c_word)
+        except Exception as ex:
+            self.addTextMain('[!]创建目标文件夹出错: ' + ex)
+            return 'error', json_data                    # 返回AVDC_main, 继续处理下一个文件
+        self.addTextMain('[+]创建输出文件夹: ' + path)
+
+
+        # =====================================================================================更新文件命名规则
+        number = json_data['number']
+        naming_rule = str(self.getNamingRule(json_data)).replace('--', '-').strip('-')
+        naming_rule = naming_rule + leak + cd_part + c_word
+
+        # =====================================================================================生成文件和图片新路径路径
+        file_new_path = path + '/' + naming_rule + file_ex
+        thumb_path = path + '/' + naming_rule + '-thumb.jpg'
+        poster_path = path + '/' + naming_rule + '-poster.jpg'
+
+
+        if os.path.exists(file_new_path):
+            if file_new_path != file_path:
+                json_data['error_type'] = '输出目录已存在同名文件！ ' + file_new_path
+                json_data['title'] = '输出目录已存在同名文件！ ' + file_new_path
+                json_data['poster_path'] = poster_path
+                json_data['thumb_path'] = thumb_path
+                self.addTextMain('[!]输出文件夹存在同名文件: ' + file_path)
+                self.moveFailedFolder(file_path, failed_folder)                  # 移动文件到失败文件夹
+                return 'error', json_data                   # 返回AVDC_main, 继续处理下一个文件
+
+        config_file = 'config.ini'
+        Config = RawConfigParser()
+        Config.read(config_file, encoding='UTF-8')
+
+        # =====================================================================================判断刮削模式或整理模式
+        if int(Config.get('common', 'main_mode')) == 2:                                # 整理模式（仅根据女优把电影命名为番号并分类到女优名称的文件夹下。）
+            self.pasteFileToFolder(file_path, path, naming_rule, failed_folder)   # 移动文件
+        else:
+            # =====================================================================================无码封面获取方式
+            if json_data['imagecut'] == 3:  # imagecut=3为无码
+                uncensored = 1
+            if json_data['imagecut'] == 3 and int(Config.get('uncensored', 'uncensored_poster')) == 1:
+                json_data['imagecut'] = 0
+            # =====================================================================================刮削模式
+            # imagecut 0 判断人脸位置裁剪缩略图为封面(裁剪中间), 1 裁剪右半面, 2 工具页面裁剪, 3 下载小封面
+            self.thumbDownload(json_data, path, naming_rule, Config, file_path, thumb_path, poster_path, failed_folder) # 下载海报
+            if int(Config.get('file_download', 'poster')) == 1:                              # 下载poster
+                if int(Config.get('uncensored', 'uncensored_poster')) == 0:                  # 官方下载
+                    if self.smallCoverDownload(path, naming_rule, json_data, Config, file_path,
+                                            failed_folder) == 'small_cover_error':
+                        if json_data['imagecut'] == 3:
+                            json_data['imagecut'] = 0
+                        self.cutImage(json_data['imagecut'], path, naming_rule)         # 下载失败裁剪图
+                        # self.fix_size(path, naming_rule)
+                else:
+                    self.cutImage(json_data['imagecut'], path, naming_rule)             # 裁剪图
+                    # self.fix_size(path, naming_rule)
+            if self.Ui.checkBox_download_fanart.isChecked():                            # 下载剧照
+                self.copyRenameJpgToFanart(path, naming_rule)
+            self.deletethumb(path, naming_rule)                                         # 删除
+            self.add_mark(poster_path, thumb_path, c_word, leak, uncensored, Config)    # 加水印
+            if self.Ui.checkBox_download_nfo.isChecked():                          
+                self.PrintFiles(path, naming_rule, c_word, leak, json_data, file_path, failed_folder)  # 输出nfo文件
+            if self.Ui.checkBox_download_extrafanart.isChecked():
+                self.extrafanartDownload(json_data, path, Config, file_path, failed_folder)
+            self.pasteFileToFolder(file_path, path, naming_rule, failed_folder)          # 移动文件
+            for sub in sub_list:
+                shutil.move(floder_path + '/' + file_name + sub, path + '/' + naming_rule + sub) # 移动字幕
+                self.addTextMain('[+]Sub moved!         ' + naming_rule + sub)
+
+            # =====================================================================================json添加封面项
+            json_data['thumb_path'] = thumb_path
+            json_data['poster_path'] = poster_path
+            json_data['number'] = number
+
+        return 'ok', json_data
+
+
     # =====================================================================================主功能函数
     def AVDC_Main(self, file_mode):
         # os.chdir(os.getcwd())
@@ -2150,136 +2347,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.pushButton_start_cap2.setText('开始')
         self.Ui.pushButton_start_cap.setStyleSheet('QPushButton#pushButton_start_cap{color:white;background-color:#0066CC;}QPushButton:hover#pushButton_start_cap{color:white;background-color:#4C6EFF}QPushButton:pressed#pushButton_start_cap{color:white;background-color:#4C6EE0}')
         self.Ui.pushButton_start_cap2.setStyleSheet('QPushButton#pushButton_start_cap2{color:white;background-color:#0066CC}QPushButton:hover#pushButton_start_cap2{color:white;background-color:#4C6EFF}QPushButton:pressed#pushButton_start_cap2{color:white;background-color:#4C6EE0}')
-
-
-    def coreMain(self, file_path, movie_number, config, mode, count, succ_count=0, fail_count=0, appoint_number='', appoint_url='', jsonfile_data={}):
-        # =====================================================================================初始化所需变量
-        sub_list = []
-        leak = ''
-        cd_part = ''
-        c_word = ''
-        uncensored = 0
-        appoint_number = ''
-        appoint_url = ''
-        config_file = 'config.ini'
-        config = RawConfigParser()
-        config.read(config_file, encoding='UTF-8')
-        translate_language = config.get('common', 'translate_language')
-
-        # 获取设置的媒体目录、失败目录、成功目录
-        movie_path, failed_folder, success_folder = self.getMoviePathSetting()
-
-        # 获取文件信息
-        movie_number, floder_path, file_name, file_ex, leak, cd_part, c_word, sub_list, file_show_name, file_show_path = self.getFileInfo(file_path, appoint_number)
-
-        # 获取json_data
-        json_data = self.getJsonData(mode, movie_number, config, appoint_url, translate_language)
-
-        # 处理json_data
-        data_result = self.showDataResult(json_data)                           # 显示 make data 的结果
-        if self.Ui.radioButton_debug_on.isChecked():                           # 调试模式打开时显示详细日志
-            self.showDebugInfo(json_data)
-        if self.Ui.radioButton_debug_on.isChecked():                           # 调试模式打开时显示data信息
-            self.showMovieInfo(json_data)
-        if data_result != 'ok':                                                # json_data 有问题, 在失败栏目显示文件名 
-            return 'error', json_data                 # 返回AVDC_main, 继续处理下一个文件
-        # 处理翻译
-        if translate_language != 'ja':
-            translator = Translator(service_urls=['translate.google.com'])
-            # 匹配本地高质量标题
-            movie_title = jsonfile_data.get(movie_number)
-            # 匹配网络高质量标题（可在线更新）
-            if not movie_title:
-                result, html_search_title = get_html('http://www.yesjav.info/search.asp?q=%s&' % movie_number)
-                html_title = etree.fromstring(html_search_title, etree.HTMLParser())
-                movie_title = str(html_title.xpath('//dl[@id="zi"]/p/font/a/b[contains(text(), $number)]/../../a[contains(text(), "中文字幕")]/text()', number=movie_number)).replace(' (中文字幕)', '').strip("['']") 
-                if not movie_title:
-                    movie_title =json_data['title']
-            if translate_language == 'zh_cn':
-                json_data['title'] = translator.translate(movie_title, dest='zh-cn').text.encode('utf-8').decode('utf-8')
-                if json_data.get('outline').strip():
-                    json_data['outline'] = translator.translate(json_data['outline'], dest='zh-cn').text.encode('utf-8').decode('utf-8')
-            elif translate_language == 'zh_tw':
-                json_data['title'] = translator.translate(movie_title, dest='zh-tw').text.encode('utf-8').decode('utf-8')
-                if json_data.get('outline').strip():
-                    json_data['outline'] = translator.translate(json_data['outline'], dest='zh-tw').text.encode('utf-8').decode('utf-8')
-        # 开始处理当前文件
-        # =====================================================================================创建目标文件夹
-        try:
-            path = self.creatFolder(success_folder, json_data, config, c_word)
-        except Exception as ex:
-            self.addTextMain('[!]创建目标文件夹出错: ' + ex)
-            return 'error', json_data                    # 返回AVDC_main, 继续处理下一个文件
-        self.addTextMain('[+]创建输出文件夹: ' + path)
-
-
-        # =====================================================================================更新文件命名规则
-        number = json_data['number']
-        naming_rule = str(self.getNamingRule(json_data)).replace('--', '-').strip('-')
-        naming_rule = naming_rule + leak + cd_part + c_word
-
-        # =====================================================================================生成文件和图片新路径路径
-        file_new_path = path + '/' + naming_rule + file_ex
-        thumb_path = path + '/' + naming_rule + '-thumb.jpg'
-        poster_path = path + '/' + naming_rule + '-poster.jpg'
-
-
-        if os.path.exists(file_new_path):
-            if file_new_path != file_path:
-                json_data['error_type'] = '输出目录已存在同名文件！ ' + file_new_path
-                json_data['title'] = '输出目录已存在同名文件！ ' + file_new_path
-                json_data['poster_path'] = poster_path
-                json_data['thumb_path'] = thumb_path
-                self.addTextMain('[!]输出文件夹存在同名文件: ' + file_path)
-                self.moveFailedFolder(file_path, failed_folder)                  # 移动文件到失败文件夹
-                return 'error', json_data                   # 返回AVDC_main, 继续处理下一个文件
-
-        config_file = 'config.ini'
-        Config = RawConfigParser()
-        Config.read(config_file, encoding='UTF-8')
-
-        # =====================================================================================判断刮削模式或整理模式
-        if int(Config.get('common', 'main_mode')) == 2:                                # 整理模式（仅根据女优把电影命名为番号并分类到女优名称的文件夹下。）
-            self.pasteFileToFolder(file_path, path, naming_rule, failed_folder)   # 移动文件
-        else:
-            # =====================================================================================无码封面获取方式
-            if json_data['imagecut'] == 3:  # imagecut=3为无码
-                uncensored = 1
-            if json_data['imagecut'] == 3 and int(Config.get('uncensored', 'uncensored_poster')) == 1:
-                json_data['imagecut'] = 0
-            # =====================================================================================刮削模式
-            # imagecut 0 判断人脸位置裁剪缩略图为封面(裁剪中间), 1 裁剪右半面, 2 工具页面裁剪, 3 下载小封面
-            self.thumbDownload(json_data, path, naming_rule, Config, file_path, thumb_path, poster_path, failed_folder) # 下载海报
-            if int(Config.get('file_download', 'poster')) == 1:                              # 下载poster
-                if int(Config.get('uncensored', 'uncensored_poster')) == 0:                  # 官方下载
-                    if self.smallCoverDownload(path, naming_rule, json_data, Config, file_path,
-                                            failed_folder) == 'small_cover_error':
-                        if json_data['imagecut'] == 3:
-                            json_data['imagecut'] = 0
-                        self.cutImage(json_data['imagecut'], path, naming_rule)         # 下载失败裁剪图
-                        # self.fix_size(path, naming_rule)
-                else:
-                    self.cutImage(json_data['imagecut'], path, naming_rule)             # 裁剪图
-                    # self.fix_size(path, naming_rule)
-            if self.Ui.checkBox_download_fanart.isChecked():                            # 下载剧照
-                self.copyRenameJpgToFanart(path, naming_rule)
-            self.deletethumb(path, naming_rule)                                         # 删除
-            self.add_mark(poster_path, thumb_path, c_word, leak, uncensored, Config)    # 加水印
-            if self.Ui.checkBox_download_nfo.isChecked():                          
-                self.PrintFiles(path, naming_rule, c_word, leak, json_data, file_path, failed_folder)  # 输出nfo文件
-            if self.Ui.checkBox_download_extrafanart.isChecked():
-                self.extrafanartDownload(json_data, path, Config, file_path, failed_folder)
-            self.pasteFileToFolder(file_path, path, naming_rule, failed_folder)          # 移动文件
-            for sub in sub_list:
-                shutil.move(floder_path + '/' + file_name + sub, path + '/' + naming_rule + sub) # 移动字幕
-                self.addTextMain('[+]Sub moved!         ' + naming_rule + sub)
-
-            # =====================================================================================json添加封面项
-            json_data['thumb_path'] = thumb_path
-            json_data['poster_path'] = poster_path
-            json_data['number'] = number
-
-        return 'ok', json_data
 
 
 
