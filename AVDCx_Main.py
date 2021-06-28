@@ -26,8 +26,8 @@ import socks
 import urllib3
 import urllib.request as requestss
 urllib3.disable_warnings()
-import faulthandler
-faulthandler.enable()
+# import faulthandler
+# faulthandler.enable()
 from lxml import etree
 import urllib.parse
 import random
