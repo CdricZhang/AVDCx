@@ -24,7 +24,6 @@ from Function.Function import save_config, movie_lists, get_info, getDataFromJSO
 from Function.getHtml import get_html, get_proxies, get_proxy
 import socks
 import urllib3
-import urllib.request as requestss
 urllib3.disable_warnings()
 # import faulthandler
 # faulthandler.enable()
@@ -33,6 +32,7 @@ import urllib.parse
 import random
 import hashlib
 from zhconv import convert
+from googletrans import Translator
 
 #生成资源文件目录访问路径
 def resource_path(relative_path):
@@ -60,7 +60,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210629'
+        self.localversion = '20210702'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.laberl_number_url = ''
@@ -1053,7 +1053,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================小工具-emby女优头像
     def pushButton_add_actor_pic_clicked(self):  # 添加头像按钮响应
-        self.Ui.stackedWidget.setCurrentIndex(1)
+        self.pushButton_show_log_clicked() # 点击查看按钮后跳转到日志页面
         emby_url = self.Ui.lineEdit_emby_url.text()
         api_key = self.Ui.lineEdit_api_key.text()
         if emby_url == '':
@@ -1071,7 +1071,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.addTextMain('[-]Error in pushButton_add_actor_pic_clicked: ' + str(error_info))
 
     def pushButton_show_pic_actor_clicked(self):  # 查看按钮响应
-        # self.Ui.stackedWidget.setCurrentIndex(1)
         self.pushButton_show_log_clicked() # 点击查看按钮后跳转到日志页面
         emby_url = self.Ui.lineEdit_emby_url.text()
         api_key = self.Ui.lineEdit_api_key.text()
@@ -1430,8 +1429,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 print('<?xml version="1.0" encoding="UTF-8" ?>', file=code)
                 print("<movie>", file=code)
                 print("  <title>" + name_media + "</title>", file=code)
-                print("  <set>", file=code)
-                print("  </set>", file=code)
+                print("  <num>" + number + "</num>", file=code)
+                if release != 'unknown':
+                    print("  <premiered>" + release + "</premiered>", file=code)
+                    print("  <release>" + release + "</release>", file=code)
+                print("  <cover>" + cover + "</cover>", file=code)
+                print("  <set>" + series + "</set>", file=code)
                 try:
                     if str(json_data['score']) != 'unknown' and str(json_data['score']) != '' and float(
                             json_data['score']) != 0.0:
@@ -1505,11 +1508,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     print("  <genre>" + '製作:' + studio + "</genre>", file=code)
                 if publisher != 'unknown':
                     print("  <genre>" + '發行:' + publisher + "</genre>", file=code)
-                print("  <num>" + number + "</num>", file=code)
-                if release != 'unknown':
-                    print("  <premiered>" + release + "</premiered>", file=code)
-                    print("  <release>" + release + "</release>", file=code)
-                print("  <cover>" + cover + "</cover>", file=code)
+
                 print("  <website>" + website + "</website>", file=code)
                 print("</movie>", file=code)
                 self.addTextMain("[+]Nfo Wrote!         " + name_file + ".nfo")
@@ -2040,7 +2039,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             movie_number = appoint_number.upper()
         else:
             escape_string = self.Ui.lineEdit_escape_string.text()
-            movie_number = getNumber(file_name, escape_string).upper()
+            movie_number = getNumber(file_path, escape_string).upper()
         # 判断是否流出
         if '流出' in file_name:
             leak = '-流出'
@@ -2067,6 +2066,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # =====================================================================================有道翻译
     def youdao(self, msg, language='zh_cn'):
+        proxy_type, proxy, timeout, retry_count = get_proxy()
+        proxies = get_proxies(proxy_type, proxy)
         msg = msg
         url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
         D = "Tbh5E8=q6U3EXe+&L[4c@"  
@@ -2092,7 +2093,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'action': 'FY_BY_CLICKBUTTION'
             
         }
-        Form_Data = urllib.parse.urlencode(Form_Data).encode('utf-8')
 
         headers = {
             # 'Accept': 'application/json, text/javascript, */*; q=0.01',
@@ -2109,13 +2109,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             # 'X-Requested-With': 'XMLHttpRequest'
         }
         try:
-            req = requestss.Request(url, Form_Data, headers, method='POST')
-            response = requestss.urlopen(req)
+            req = requests.post(url, data=Form_Data, headers=headers, proxies=proxies, timeout=timeout)
+            req.encoding = 'utf-8'
+            req = req.text
         except Exception as error0:
-            self.addTextMain('   >>>提示：有道翻译接口挂了。。' + error0)
+            self.addTextMain('   >>> 提示：有道翻译接口请求失败，将跳过翻译。错误原因：' + str(error0))
         else:
-            html = response.read().decode('utf-8')
-            translate_results = json.loads(html)
+            translate_results = json.loads(req)
             # 找到翻译结果
             if 'translateResult' in translate_results:
                 translateResult = translate_results.get('translateResult')
@@ -2186,7 +2186,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         try:
             path = self.creatFolder(success_folder, json_data, config, c_word)
         except Exception as ex:
-            self.addTextMain('[!]创建目标文件夹出错: ' + ex)
+            self.addTextMain('[!]创建目标文件夹出错: ' + str(ex))
             return 'error', json_data                    # 返回AVDC_main, 继续处理下一个文件
         self.addTextMain('[+]创建输出文件夹: ' + path)
 
@@ -2317,7 +2317,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             try:
                 result, json_data = self.coreMain(file_path, movie_number, config, mode, count, succ_count, fail_count, appoint_number, appoint_url, jsonfile_data)
             except Exception as error_info5:
-                json_data = error_info5
+                json_data = str(error_info5)
                 succ_count -= 1
                 self.showListName(fail_show_name, 'fail', json_data, movie_number)
                 self.addTextMain('[-]Error in AVDC_Main.coreMain5: ' + str(error_info5))
@@ -2354,9 +2354,9 @@ if __name__ == '__main__':
     '''
     主函数
     '''
-    # QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    # QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
-    # QCoreApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
+    QCoreApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
 
     app = QApplication(sys.argv)
     ui = MyMAinWindow()
