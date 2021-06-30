@@ -1998,7 +1998,7 @@ background-color: rgb(246, 246, 246);</string>
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tab1">
        <attribute name="title">
@@ -2674,7 +2674,7 @@ background-color: rgb(246, 246, 246);</string>
               </font>
              </property>
              <property name="text">
-              <string>简体</string>
+              <string>简体中文</string>
              </property>
             </widget>
            </item>
@@ -2690,7 +2690,7 @@ background-color: rgb(246, 246, 246);</string>
               </font>
              </property>
              <property name="text">
-              <string>繁体</string>
+              <string>繁体中文</string>
              </property>
             </widget>
            </item>
@@ -4810,7 +4810,7 @@ font: &quot;Courier&quot;;</string>
              </font>
             </property>
             <property name="text">
-             <string>官方下载原图</string>
+             <string>官方下载原图（模糊）</string>
             </property>
            </widget>
           </item>
@@ -4831,7 +4831,7 @@ font: &quot;Courier&quot;;</string>
              </font>
             </property>
             <property name="text">
-             <string>使用thumb裁剪</string>
+             <string>使用thumb裁剪（清晰，推荐）</string>
             </property>
            </widget>
           </item>

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCFMYGlA.ui'
+## Form generated from reading UI file 'AVDCigaZza.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -1759,7 +1759,7 @@ class Ui_AVDV(object):
         self.retranslateUi(AVDV)
 
         self.stackedWidget.setCurrentIndex(4)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(AVDV)
@@ -1882,8 +1882,8 @@ class Ui_AVDV(object):
         self.checkBox_download_fanart.setText(QCoreApplication.translate("AVDV", u"fanart", None))
         self.checkBox_download_extrafanart.setText(QCoreApplication.translate("AVDV", u"extrafanart", None))
         self.groupBox_25.setTitle(QCoreApplication.translate("AVDV", u"\u7ffb\u8bd1\u8bed\u8a00", None))
-        self.radioButton_zh_cn.setText(QCoreApplication.translate("AVDV", u"\u7b80\u4f53", None))
-        self.radioButton_zh_tw.setText(QCoreApplication.translate("AVDV", u"\u7e41\u4f53", None))
+        self.radioButton_zh_cn.setText(QCoreApplication.translate("AVDV", u"\u7b80\u4f53\u4e2d\u6587", None))
+        self.radioButton_zh_tw.setText(QCoreApplication.translate("AVDV", u"\u7e41\u4f53\u4e2d\u6587", None))
         self.radioButton_ja.setText(QCoreApplication.translate("AVDV", u"\u65e5\u8bed", None))
         self.groupBox_11.setTitle(QCoreApplication.translate("AVDV", u"\u522e\u524a\u7f51\u7ad9", None))
         self.comboBox_website_all.setItemText(0, QCoreApplication.translate("AVDV", u"All websites", None))
@@ -1959,8 +1959,8 @@ class Ui_AVDV(object):
         self.label_14.setText(QCoreApplication.translate("AVDV", u"\u8bf4\u660e\uff1a\n"
 "    1\u3001\u5b98\u65b9\u4e0b\u8f7d\u539f\u56fe--\u5b8c\u6574\u3001\u4e0d\u6e05\u6670\uff1b\u4f7f\u7528thumb\u88c1\u526a--\u6e05\u6670\u3001\u4e0d\u5b8c\u6574\u3002\n"
 "    2\u3001\u5b98\u65b9\u65e0\u56fe\uff0c\u81ea\u52a8\u4f7f\u7528thumb\u88c1\u526a\u3002", None))
-        self.radioButton_poster_official.setText(QCoreApplication.translate("AVDV", u"\u5b98\u65b9\u4e0b\u8f7d\u539f\u56fe", None))
-        self.radioButton_poster_cut.setText(QCoreApplication.translate("AVDV", u"\u4f7f\u7528thumb\u88c1\u526a", None))
+        self.radioButton_poster_official.setText(QCoreApplication.translate("AVDV", u"\u5b98\u65b9\u4e0b\u8f7d\u539f\u56fe\uff08\u6a21\u7cca\uff09", None))
+        self.radioButton_poster_cut.setText(QCoreApplication.translate("AVDV", u"\u4f7f\u7528thumb\u88c1\u526a\uff08\u6e05\u6670\uff0c\u63a8\u8350\uff09", None))
         self.groupBox_40.setTitle(QCoreApplication.translate("AVDV", u"\u65e0\u7801\u756a\u53f7", None))
         self.label_16.setText(QCoreApplication.translate("AVDV", u"   \u65e0\u7801\u756a\u53f7\u524d\u7f00\uff1a", None))
         self.label_17.setText(QCoreApplication.translate("AVDV", u"\u8bf4\u660e\uff1a\u53ea\u6dfb\u52a0 HEYZO\u3001n1111\u3001111111-111\u4e4b\u5916\u7684\u524d\u7f00\u3002", None))
