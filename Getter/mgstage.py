@@ -130,7 +130,7 @@ def main(number, appoint_url='', log_info=''):
             error_type = 'timeout'
             raise Exception('>>> MGSTAGE-请求详情页：错误！信息：' + htmlcode)
 
-        title = getTitle(htmlcode).replace("\\n", '').replace('        ', '').strip(','), # 获取标题
+        title = getTitle(htmlcode).replace("\\n", '').replace('        ', '').strip(',') # 获取标题
         if not title:
             log_info += '   >>> MGSTAGE- title 获取失败！ \n'
             error_type = 'need login'
@@ -146,25 +146,25 @@ def main(number, appoint_url='', log_info=''):
         try:
             dic = {
                 'title': str(title),
+                'number': getNum(htmlcode).strip(','),
+                'actor': actor.strip(','),
+                'outline': getOutline(htmlcode).replace('\n', '').strip(','),
+                'tag': getTag(htmlcode).strip(','),
+                'release': release.strip(',').replace('/', '-'),
+                'year': getYear(release).strip(','),
+                'runtime': getRuntime(htmlcode).strip(','),
+                'score': getScore(htmlcode).strip(','),
+                'series': getSeries(htmlcode).strip(','),
+                'director': '',
                 'studio': getStudio(htmlcode).strip(','),
                 'publisher': getPublisher(htmlcode).strip(','),
-                'outline': getOutline(htmlcode).replace('\n', '').strip(','),
-                'score': getScore(htmlcode).strip(','),
-                'runtime': getRuntime(htmlcode).strip(','),
-                'actor': actor.strip(','),
-                'release': release.strip(',').replace('/', '-'),
-                'number': getNum(htmlcode).strip(','),
+                'source': 'mgstage.main',
+                'website': url,
+                'actor_photo': getActorPhoto(actor.split(',')),
                 'cover': str(cover_url),
                 'cover_small': '',
                 'extrafanart': getExtraFanart(htmlcode),
                 'imagecut': 0,
-                'tag': getTag(htmlcode).strip(','),
-                'series': getSeries(htmlcode).strip(','),
-                'year': getYear(release).strip(','),
-                'actor_photo': getActorPhoto(actor.split(',')),
-                'director': '',
-                'website': url,
-                'source': 'mgstage.main',
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -173,8 +173,8 @@ def main(number, appoint_url='', log_info=''):
             log_info += '   >>> MGSTAGE-数据获取成功！\n'
             dic['log_info'] = log_info
         except Exception as error_info:
-                log_info += '   >>> MGSTAGE-生成数据字典：出错！ 错误信息：%s\n' % error_info
-                error_info = error_info
+                log_info += '   >>> MGSTAGE-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
+                error_info = str(error_info)
                 raise Exception(log_info)
 
     except Exception as error_info:
@@ -186,7 +186,7 @@ def main(number, appoint_url='', log_info=''):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 '''
 print(main('200GANA-2240'))

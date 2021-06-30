@@ -37,6 +37,11 @@ def getExtraFanart(html):  # 获取剧照
     result = html.xpath('//div[@style="padding: 0"]/a/@href')
     return result
 
+def getStudio(html):  # 使用卖家作为厂家
+    result = html.xpath('//div[@class="col-8"]/text()')
+    if result:
+        result = result[0].strip()
+    return result
 
 def getTag(html):  # 获取标签
     result = html.xpath('//p[contains(text(), "タグ :")]/a/text()')
@@ -54,7 +59,7 @@ def main(number, appoint_url='', log_info=''):
     cover_small = ''
     error_type = ''
     error_info = ''
-    number = number.upper().replace('FC', '').replace('PPV', '').replace('FC2PPV', '').replace('-', '').strip()
+    number = number.upper().replace('FC2PPV', '').replace('FC2-PPV-', '').replace('FC2-', '').replace('-', '').strip()
     dic = {}
     try: # 捕获主动抛出的异常
         if not real_url:
@@ -85,9 +90,9 @@ def main(number, appoint_url='', log_info=''):
             try:
                 result, html_content = get_html(real_url)
             except Exception as error_info:
-                log_info += '   >>> FC2HUB-请求详情页：出错！错误信息：%s \n' % error_info
+                log_info += '   >>> FC2HUB-请求详情页：出错！错误信息：%s \n' % str(error_info)
                 error_type = 'timeout'
-                raise Exception('>>> FC2HUB-请求详情页：出错！错误信息：%s \n' % error_info)            
+                raise Exception('>>> FC2HUB-请求详情页：出错！错误信息：%s \n' % str(error_info))          
             html_info = etree.fromstring(html_content, etree.HTMLParser())
 
             title = getTitle(html_info) # 获取标题
@@ -100,28 +105,29 @@ def main(number, appoint_url='', log_info=''):
                 log_info += '   >>> FC2HUB- cover url 获取失败！ \n'
                 error_type = 'Cover Url is None!'
                 raise Exception('>>> FC2HUB- cover url 获取失败!')
+            studio = getStudio(html_info) # 获取厂商
             try:
                 dic = {
-                    'number': 'FC2-' + str(number),
                     'title': str(title),
+                    'number': 'FC2-' + str(number),
                     'actor': 'FC2系列',
-                    'actor_photo': {},
-                    'cover': str(cover_url),
-                    'extrafanart': getExtraFanart(html_info),
-                    'cover_small': 'https://fc2hub.com/images/luscio-quad.png',
+                    'outline': getOutline(html_info),
+                    'tag': getTag(html_info),
                     'release': '',
                     'year': '',
-                    'score': '',
                     'runtime': '',
-                    'studio': '',
-                    'tag': getTag(html_info),
-                    'imagecut': 0,
-                    'director': '',
+                    'score': '',
                     'series': '',
-                    'publisher': '',
-                    'outline': getOutline(html_info),
-                    'website': str(real_url).strip('[]'),
+                    'director': '',
+                    'studio': studio,
+                    'publisher': studio,
                     'source': 'fc2hub.main',
+                    'website': str(real_url).strip('[]'),
+                    'actor_photo': {},
+                    'cover': str(cover_url),
+                    'cover_small': 'https://fc2hub.com/images/luscio-quad.png',
+                    'extrafanart': getExtraFanart(html_info),
+                    'imagecut': 0,
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),
@@ -129,8 +135,8 @@ def main(number, appoint_url='', log_info=''):
                 log_info += '   >>> FC2HUB-数据获取成功！\n'
                 dic['log_info'] = log_info
             except Exception as error_info:
-                log_info += '   >>> FC2HUB-生成数据字典：出错！ 错误信息：%s \n' % error_info
-                error_info = error_info
+                log_info += '   >>> FC2HUB-生成数据字典：出错！ 错误信息：%s \n' % str(error_info)
+                error_info = str(error_info)
                 raise Exception(log_info)        
     except Exception as error_info:
         dic = {
@@ -141,7 +147,7 @@ def main(number, appoint_url='', log_info=''):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )
     return js
 
 

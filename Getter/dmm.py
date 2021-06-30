@@ -181,31 +181,31 @@ def main(number, appoint_url='', log_info=''):
             year = getYear(release)
             extrafanart = getExtraFanart(html)
         except Exception as error_info:
-                log_info += '   >>> DMM-获取data信息时出错(dmm.py)！ 错误信息：%s\n' % error_info
-                error_info = error_info
+                log_info += '   >>> DMM-获取data信息时出错(dmm.py)！ 错误信息：%s\n' % str(error_info)
+                error_info = str(error_info)
                 raise Exception(log_info)            
         try:
             dic = {
                 'title': title,
+                'number': number,
+                'actor': actor,
+                'outline': outline,
+                'tag': tag,
+                'release': release,
+                'year': year,
+                'runtime': runtime,
+                'score': score,
+                'series': series,
+                'director': director,
                 'studio': studio,
                 'publisher': studio,
-                'outline': outline,
-                'score': score,
-                'runtime': runtime,
-                'director': director,
-                'actor': actor,
-                'release': release,
-                'number': number,
-                'tag': tag,
-                'series': series,
-                'year': year,
+                'source': 'dmm.main',
+                'website': url,
                 'actor_photo': '',
                 'cover': str(cover_url),
                 'cover_small': '',
                 'extrafanart': extrafanart,
                 'imagecut': 1,
-                'website': url,
-                'source': 'dmm.main',
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -213,8 +213,8 @@ def main(number, appoint_url='', log_info=''):
             log_info += '   >>> DMM-数据获取成功！\n'
             dic['log_info'] = log_info
         except Exception as error_info:
-                log_info += '   >>> DMM-生成数据字典：出错！ 错误信息：%s\n' % error_info
-                error_info = error_info
+                log_info += '   >>> DMM-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
+                error_info = str(error_info)
                 raise Exception(log_info)
 
     except Exception as error_info:
@@ -226,7 +226,7 @@ def main(number, appoint_url='', log_info=''):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'))  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'))  # .encode('UTF-8')
     return js
 
 

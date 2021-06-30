@@ -138,7 +138,7 @@ def main(number, appoint_url='', log_info=''):
         soup = BeautifulSoup(web, 'lxml')
         info = str(soup.find(attrs={'class': 'row movie'}))
         number = getNum(web)
-        title = getTitle(web).strip(number).strip().replace(' ', '-'), # 获取标题
+        title = getTitle(web).strip(number).strip().replace(' ', '-') # 获取标题
         if not title:
             log_info += '   >>> AVSOX- title 获取失败！ \n'
             error_type = 'need login'
@@ -153,28 +153,30 @@ def main(number, appoint_url='', log_info=''):
             log_info += '   >>> AVSOX- cover url 获取失败！\n'
             error_type = 'Cover_small Url is None!'
             raise Exception('>>> AVSOX- cover_small url 获取失败！')
+        studio = getStudio(info)
+
         try:
             dic = {
-                'actor': getActor(web),
                 'title': str(title),
-                'studio': getStudio(info),
-                'runtime': getRuntime(info),
-                'release': getRelease(info),
                 'number': getNum(info),
+                'actor': getActor(web),
+                'outline': '',
                 'tag': getTag(web),
-                'series': getSeries(info),
+                'release': getRelease(info),
                 'year': getYear(getRelease(info)),
+                'runtime': getRuntime(info),
+                'score': '',
+                'director': '',
+                'series': getSeries(info),
+                'studio': studio,
+                'publisher': studio,
+                'imagecut': 3,
+                'source': 'avsox.website',
+                'website': url,
                 'actor_photo': getActorPhoto(web),
                 'cover': str(cover_url),
                 'cover_small': str(cover_small),
                 'extrafanart': '',
-                'imagecut': 3,
-                'director': '',
-                'publisher': '',
-                'outline': '',
-                'score': '',
-                'website': url,
-                'source': 'avsox.website',
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -182,8 +184,8 @@ def main(number, appoint_url='', log_info=''):
             log_info += '   >>> AVSOX-数据获取成功！\n'
             dic['log_info'] = log_info
         except Exception as error_info:
-                log_info += '   >>> AVSOX-生成数据字典：出错！ 错误信息：%s\n' % error_info
-                error_info = error_info
+                log_info += '   >>> AVSOX-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
+                error_info = str(error_info)
                 raise Exception(log_info)
 
     except Exception as error_info:
@@ -195,7 +197,7 @@ def main(number, appoint_url='', log_info=''):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 

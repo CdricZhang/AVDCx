@@ -88,7 +88,7 @@ def getActor(htmlcode):  # 获取女优
     a = soup.find_all(attrs={'class': 'star-name'})
     for i in a:
         b.append(i.get_text())
-    return b
+    return str(b)
 
 
 def getNum(htmlcode):  # 获取番号
@@ -162,6 +162,8 @@ def getTag(htmlcode):  # 获取标签
         if 'onmouseout' in str(i):
             continue
         tag.append(i.get_text())
+    if '多選提交' in tag:
+        tag.remove('多選提交')
     return tag
 
 
@@ -240,30 +242,30 @@ def main(number, appoint_url='', log_info=''):
         cover_small = getCover_small(number)
         outline, score = getOutlineScore(number)
         number = getNum(htmlcode)
-        actor = str(getActor(htmlcode)).strip('['']').replace("'", '')
+        actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
 
         try:
             dic = {
                 'title': str(title).replace('-', '').replace(actor, ''),
+                'number': number,
+                'actor': actor,
+                'outline': str(outline),
+                'tag': getTag(htmlcode),
+                'release': getRelease(htmlcode),
+                'year': getYear(getRelease(htmlcode)),
+                'runtime': getRuntime(htmlcode).replace('分鐘', '').strip(),
+                'score': str(score),
+                'series': getSeries(htmlcode),
+                'director': getDirector(htmlcode),
                 'studio': getStudio(htmlcode),
                 'publisher': getPublisher(htmlcode),
-                'year': getYear(getRelease(htmlcode)),
-                'outline': str(outline),
-                'score': str(score),
-                'runtime': getRuntime(htmlcode).replace('分鐘', '').strip(),
-                'director': getDirector(htmlcode),
-                'actor': actor,
-                'release': getRelease(htmlcode),
-                'number': number,
+                'source': 'javbus.main',
+                'website': str(result_url),
+                'actor_photo': getActorPhoto(htmlcode),
                 'cover': str(cover_url),
                 'cover_small': str(cover_small),  # 从avsox获取封面图
                 'extrafanart': getExtraFanart(htmlcode),
                 'imagecut': 1,
-                'tag': getTag(htmlcode),
-                'series': getSeries(htmlcode),
-                'actor_photo': getActorPhoto(htmlcode),
-                'website': str(result_url),
-                'source': 'javbus.main',
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -271,8 +273,8 @@ def main(number, appoint_url='', log_info=''):
             log_info += '   >>> JAVBUS-数据获取成功！\n'
             dic['log_info'] = log_info
         except Exception as error_info:
-            log_info += '   >>> JAVBUS-生成数据字典：出错！ 错误信息：%s \n' % error_info
-            error_info = error_info
+            log_info += '   >>> JAVBUS-生成数据字典：出错！ 错误信息：%s \n' % str(error_info)
+            error_info = str(error_info)
             raise Exception(log_info)        
     except Exception as error_info:
         dic = {
@@ -283,7 +285,7 @@ def main(number, appoint_url='', log_info=''):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 
@@ -328,33 +330,34 @@ def main_uncensored(number, appoint_url='', log_info=''):
         #     error_type = 'Cover_small Url is None!'
         #     raise Exception('>>> JAVBUS- cover_small url 获取失败！')
         number = getNum(htmlcode)
-        actor = getActor(htmlcode).strip(' ')
+        actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
         outline = ''
         score = ''
         if 'HEYZO' in number.upper():
             outline, score = getOutlineScore(number)
+        studio = getStudio(htmlcode)
         try:
             dic = {
                 'title': str(title).replace('-', '').replace(actor, ''),
-                'studio': getStudio(htmlcode),
-                'publisher': '',
-                'year': getYear(getRelease(htmlcode)),
-                'outline': str(outline),
-                'score': str(score),
-                'runtime': getRuntime(htmlcode).replace('分鐘', '').strip(),
-                'director': getDirector(htmlcode),
-                'actor': actor,
-                'release': getRelease(htmlcode),
                 'number': getNum(htmlcode),
-                'cover': str(cover_url),
-                'extrafanart': getExtraFanart(htmlcode),
+                'actor': actor,
+                'outline': str(outline),
                 'tag': getTag(htmlcode),
+                'release': getRelease(htmlcode),
+                'year': getYear(getRelease(htmlcode)),
+                'runtime': getRuntime(htmlcode).replace('分鐘', '').strip(),
+                'score': str(score),
                 'series': getSeries(htmlcode),
-                'imagecut': 3,
-                'cover_small': str(cover_small),  # 从avsox获取封面图
-                'actor_photo': getActorPhoto(htmlcode),
-                'website': str(result_url),
+                'director': getDirector(htmlcode),
+                'studio': studio,
+                'publisher': studio,
                 'source': 'javbus.main_uncensored',
+                'website': str(result_url),
+                'actor_photo': getActorPhoto(htmlcode),
+                'cover': str(cover_url),
+                'cover_small': str(cover_small),  # 从avsox获取封面图
+                'extrafanart': getExtraFanart(htmlcode),
+                'imagecut': 3,
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -364,8 +367,8 @@ def main_uncensored(number, appoint_url='', log_info=''):
             log_info += '   >>> JAVBUS-数据获取成功！\n'
             dic['log_info'] = log_info
         except Exception as error_info:
-            log_info += '   >>> JAVBUS-生成数据字典：出错！ 错误信息：%s \n' % error_info
-            error_info = error_info
+            log_info += '   >>> JAVBUS-生成数据字典：出错！ 错误信息：%s \n' % str(error_info)
+            error_info = str(error_info)
             raise Exception(log_info)        
     except Exception as error_info:
         dic = {
@@ -376,7 +379,7 @@ def main_uncensored(number, appoint_url='', log_info=''):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 
@@ -444,28 +447,29 @@ def main_us(number, appoint_url='', log_info=''):
         #     error_type = 'Cover_small Url is None!'
         #     raise Exception('>>> JAVBUS- cover_small url 获取失败！')
         number = getNum(htmlcode)
-        actor = getActor(htmlcode).strip(' ')
+        actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
         try:
             dic = {
                 'title': str(title).replace('-', '').replace(actor, ''),
+                'number': getNum(htmlcode),
+                'actor': actor,
+                'outline': '',
+                'tag': getTag(htmlcode),
+                'release': getRelease(htmlcode),
                 'year': getYear(getRelease(htmlcode)),
                 'runtime': getRuntime(htmlcode).replace('分鐘', '').strip(),
-                'director': getDirector(htmlcode),
-                'actor': actor,
-                'release': getRelease(htmlcode),
-                'number': getNum(htmlcode),
-                'tag': getTag(htmlcode),
-                'series': getSeries(htmlcode),
-                'cover': str(cover_url),
-                'extrafanart': getExtraFanart(htmlcode),
-                'cover_small': str(cover_small),  # 从avsox获取封面图
-                'imagecut': 0,
-                'actor_photo': getActorPhoto(htmlcode),
-                'publisher': '',
-                'outline': '',
                 'score': '',
-                'website': str(result_url),
+                'series': getSeries(htmlcode),
+                'director': getDirector(htmlcode),
+                'studio': '',
+                'publisher': '',
                 'source': 'javbus.us',
+                'website': str(result_url),
+                'actor_photo': getActorPhoto(htmlcode),
+                'cover': str(cover_url),
+                'cover_small': str(cover_small),  # 从avsox获取封面图
+                'extrafanart': getExtraFanart(htmlcode),
+                'imagecut': 0,
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -473,8 +477,8 @@ def main_us(number, appoint_url='', log_info=''):
             log_info += '   >>> JAVBUS-数据获取成功！\n'
             dic['log_info'] = log_info
         except Exception as error_info:
-            log_info += '   >>> JAVBUS-生成数据字典：出错！ 错误信息：%s \n' % error_info
-            error_info = error_info
+            log_info += '   >>> JAVBUS-生成数据字典：出错！ 错误信息：%s \n' % str(error_info)
+            error_info = str(error_info)
             raise Exception(log_info)        
     except Exception as error_info:
         dic = {
@@ -485,7 +489,7 @@ def main_us(number, appoint_url='', log_info=''):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 

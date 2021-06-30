@@ -134,28 +134,29 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             imagecut = 3
             if cover_small == '':
                 imagecut = 0
+        studio = getStudio(response)
         try:
             dic = {
-                'actor': actor,
                 'title': str(title),
-                'studio': getStudio(response),
-                'outline': getOutline(detail_page),
-                'runtime': getRuntime(response),
-                'release': str(release),
                 'number': getNum(response),
-                'score': getScore(response),
+                'actor': actor,
+                'outline': getOutline(detail_page),
                 'tag': getTag(response),
-                'series': getSeries(response),
+                'release': str(release),
                 'year': getYear(release),
+                'runtime': getRuntime(response),
+                'score': getScore(response),
+                'series': getSeries(response),
+                'director': '',
+                'studio': studio,
+                'publisher': studio,
+                'source': 'jav321.main',
+                'website': getWebsite(detail_page),
                 'actor_photo': getActorPhoto(actor.split(',')),
                 'cover': str(cover_url),
-                'extrafanart': getExtraFanart(detail_page),
                 'cover_small': str(cover_small),
+                'extrafanart': getExtraFanart(detail_page),
                 'imagecut': imagecut,
-                'director': '',
-                'publisher': '',
-                'website': getWebsite(detail_page),
-                'source': 'jav321.main',
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -163,8 +164,8 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             log_info += '   >>> JAV321-数据获取成功！\n'
             dic['log_info'] = log_info
         except Exception as error_info:
-            log_info += '   >>> JAV321-生成数据字典：出错！ 错误信息：%s\n' % error_info
-            error_info = error_info
+            log_info += '   >>> JAV321-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
+            error_info = str(error_info)
             raise Exception(log_info)
 
     except Exception as error_info:
@@ -176,7 +177,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 

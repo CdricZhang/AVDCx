@@ -54,9 +54,9 @@ def getActorPhoto(html, log_info):
         try:
             html_search = scraper.get(actor_url).text
         except Exception as error_info:
-            log_info += '   >>> JAVDB-请求歌手头像：出错！错误信息：%s\n' % error_info
+            log_info += '   >>> JAVDB-请求歌手头像：出错！错误信息：%s\n' % str(error_info)
             error_type = 'timeout'
-            raise Exception('JAVDB-请求歌手头像：出错！错误信息：%s\n' % error_info)
+            raise Exception('JAVDB-请求歌手头像：出错！错误信息：%s\n' % str(error_info))
         html = etree.fromstring(html_search, etree.HTMLParser())
         actor_real_url = html.xpath('//span[@class="avatar"]/@style')
         if actor_real_url:
@@ -197,9 +197,9 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 html_search = scraper.get(url_search).text.replace(u'\xa0', u' ')
                 # result, html_search = get_html('https://javdb9.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
             except Exception as error_info:
-                log_info += '   >>> JAVDB-请求搜索页：出错！错误信息：%s\n' % error_info
+                log_info += '   >>> JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
-                raise Exception('JAVDB-请求搜索页：出错！错误信息：%s\n' % error_info)
+                raise Exception('JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info))
             html = etree.fromstring(html_search, etree.HTMLParser())
             # print(etree.tostring(html,encoding="utf-8").decode())
             html_title = str(html.xpath('//title/text()')).strip(" ['']")
@@ -222,9 +222,9 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             try:
                 html_info = scraper.get(real_url, cookies=cookies).text
             except Exception as error_info:
-                log_info += '   >>> JAVDB-请求详情页：出错！错误信息：%s\n' % error_info
+                log_info += '   >>> JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
-                raise Exception('JAVDB-请求详情页：出错！错误信息：%s\n' % error_info)
+                raise Exception('JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info))
             # ========================================================================获取评分、简介
             html_detail = etree.fromstring(html_info, etree.HTMLParser())
             html_title = str(html_detail.xpath('//title/text()')).strip(" ['']")
@@ -276,27 +276,27 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
 
             try:
                 dic = {
-                    'number': number.upper(),
                     'title': title,
+                    'number': number.upper(),
                     'actor': actor,
                     'outline': str(outline),
+                    'tag': getTag(html_detail),
                     'release': str(release),
                     'year': getYear(release),
                     'runtime': getRuntime(html_detail),
                     'score': str(score),
                     'series': getSeries(html_detail),
                     'director': getDirector(html_detail),
-                    'publisher': getPublisher(html_detail),
                     'studio': getStudio(html_detail),
+                    'publisher': getPublisher(html_detail),
+                    'source': 'javdb.main',
+                    'website': real_url.replace('?locale=zh', ''),
+                    'search_url': str(url_search),
+                    'actor_photo': getActorPhoto(html_detail, log_info),
                     'cover': str(cover_url),
                     'cover_small': '',
                     'extrafanart': getExtraFanart(html_detail),
-                    'actor_photo': getActorPhoto(html_detail, log_info),
                     'imagecut': imagecut,
-                    'tag': getTag(html_detail),
-                    'website': real_url.replace('?locale=zh', ''),
-                    'search_url': str(url_search),
-                    'source': 'javdb.main',
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),
@@ -304,8 +304,8 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 log_info += '   >>> JAVDB-数据获取成功！\n'
                 dic['log_info'] = log_info
             except Exception as error_info:
-                log_info += '   >>> JAVDB-生成数据字典：出错！ 错误信息：%s\n' % error_info
-                error_info = error_info
+                log_info += '   >>> JAVDB-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
+                error_info = str(error_info)
                 raise Exception(log_info)
 
     except Exception as error_info:
@@ -317,7 +317,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 
@@ -347,9 +347,9 @@ def main_us(number, appoint_url='', log_info='', isuncensored=True):
                 html_search = scraper.get(url_search).text.replace(u'\xa0', u' ')
                 # result, html_search = get_html('https://javdb9.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
             except Exception as error_info:
-                log_info += '   >>> JAVDB-请求搜索页：出错！错误信息：%s\n' % error_info
+                log_info += '   >>> JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
-                raise Exception('JAVDB-请求搜索页：出错！错误信息：%s\n' % error_info)
+                raise Exception('JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info))
             html = etree.fromstring(html_search, etree.HTMLParser())
             # print(etree.tostring(html,encoding="utf-8").decode())
             html_title = str(html.xpath('//title/text()')).strip(" ['']")
@@ -372,9 +372,9 @@ def main_us(number, appoint_url='', log_info='', isuncensored=True):
             try:
                 html_info = scraper.get(real_url, cookies=cookies).text
             except Exception as error_info:
-                log_info += '   >>> JAVDB-请求详情页：出错！错误信息：%s\n' % error_info
+                log_info += '   >>> JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
-                raise Exception('JAVDB-请求详情页：出错！错误信息：%s\n' % error_info)
+                raise Exception('JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info))
             # ========================================================================获取评分、简介
             html_detail = etree.fromstring(html_info, etree.HTMLParser())
             html_title = str(html_detail.xpath('//title/text()')).strip(" ['']")
@@ -423,27 +423,27 @@ def main_us(number, appoint_url='', log_info='', isuncensored=True):
 
             try:
                 dic = {
-                    'number': number.upper(),
                     'title': title,
+                    'number': number.upper(),
                     'actor': actor,
                     'outline': str(outline),
+                    'tag': getTag(html_detail),
                     'release': str(release),
                     'year': getYear(release),
                     'runtime': getRuntime(html_detail),
                     'score': str(score),
                     'series': getSeries(html_detail),
                     'director': getDirector(html_detail),
-                    'publisher': getPublisher(html_detail),
                     'studio': getStudio(html_detail),
+                    'publisher': getPublisher(html_detail),
+                    'source': 'javdb.us',
+                    'website': str(real_url).replace('?locale=zh', '').strip('[]'),
+                    'search_url': str(url_search),
+                    'actor_photo': getActorPhoto(html_detail, log_info),
                     'cover': str(cover_url),
                     'cover_small': '',
                     'extrafanart': getExtraFanart(html_detail),
-                    'actor_photo': getActorPhoto(html_detail, log_info),
                     'imagecut': imagecut,
-                    'tag': getTag(html_detail),
-                    'website': str(real_url).replace('?locale=zh', '').strip('[]'),
-                    'search_url': str(url_search),
-                    'source': 'javdb.us',
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),
@@ -451,8 +451,8 @@ def main_us(number, appoint_url='', log_info='', isuncensored=True):
                 log_info += '   >>> JAVDB-数据获取成功！\n'
                 dic['log_info'] = log_info
             except Exception as error_info:
-                log_info += '   >>> JAVDB-生成数据字典：出错！ 错误信息：%s\n' % error_info
-                error_info = error_info
+                log_info += '   >>> JAVDB-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
+                error_info = str(error_info)
                 raise Exception(log_info)
 
     except Exception as error_info:
@@ -465,7 +465,7 @@ def main_us(number, appoint_url='', log_info='', isuncensored=True):
             'error_info': str(error_info),
         }
    
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 

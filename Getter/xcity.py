@@ -151,7 +151,7 @@ def main(number, appoint_url='', log_info=''):
             raise Exception('Movie not found')
         actor = getActor(detail_page)
         release = getRelease(detail_page)
-        title = getTitle(detail_page), # 获取标题
+        title = getTitle(detail_page) # 获取标题
         if not title:
             log_info += '   >>> XCITY- title 获取失败！ \n'
             error_type = 'need login'
@@ -161,35 +161,35 @@ def main(number, appoint_url='', log_info=''):
             log_info += '   >>> XCITY- cover url 获取失败！ \n'
             error_type = 'Cover Url is None!'
             raise Exception('>>> XCITY- cover url 获取失败！]')
-
+        studio = getStudio(detail_page)
         try:
             dic = {
                 'title': str(title),
+                'number': getNum(detail_page),
+                'actor': actor,
+                'outline': getOutline(detail_page),
+                'tag': getTag(detail_page),
                 'release': release,
                 'year': getYear(release),
-                'actor': actor,
-                'actor_photo': getActorPhoto(actor),
-                'number': getNum(detail_page),
-                'outline': getOutline(detail_page),
-                'director': getDirector(detail_page),
-                'tag': getTag(detail_page),
                 'runtime': getRuntime(detail_page),
-                'studio': getStudio(detail_page),
+                'score': '',
                 'series': getSeries(detail_page),
+                'director': getDirector(detail_page),
+                'studio': studio,
+                'publisher': studio,
+                'source': 'xcity.main',
+                'website': url,
+                'actor_photo': getActorPhoto(actor),
                 'cover': str(cover_url),
-                'cover': '',
+                'cover_small': '',
                 'extrafanart': getExtraFanart(detail_page),
                 'imagecut': 1,
-                'score': '',
-                'publisher': '',
-                'website': url,
-                'source': 'xcity.main',
             }
             log_info += '   >>> XCITY-数据获取成功！\n'
             dic['log_info'] = log_info
         except Exception as error_info:
-                log_info += '   >>> XCITY-生成数据字典：出错！ 错误信息：%s\n' % error_info
-                error_info = error_info
+                log_info += '   >>> XCITY-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
+                error_info = str(error_info)
                 raise Exception(log_info)
 
     except Exception as error_info:
@@ -201,7 +201,7 @@ def main(number, appoint_url='', log_info=''):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'))  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'))  # .encode('UTF-8')
     return js
 
 

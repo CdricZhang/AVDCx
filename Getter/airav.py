@@ -46,9 +46,9 @@ def getActorPhoto(html, airav_url, log_info):
         try:
             result, html_content = get_html(actor_url)
         except Exception as error_info:
-            log_info += '   >>> AIRAV请求歌手头像：出错！错误信息：%s\n' % error_info
+            log_info += '   >>> AIRAV请求歌手头像：出错！错误信息：%s\n' % str(error_info)
             error_type = 'timeout'
-            raise Exception('AIRAV请求歌手头像：出错！错误信息：%s\n' % error_info)
+            raise Exception('AIRAV请求歌手头像：出错！错误信息：%s\n' % str(error_info))
         html = etree.fromstring(html_content, etree.HTMLParser())
         # web_cache_url = etree.tostring(html,encoding="utf-8").decode() # 将element对象转化为字符串
         # print(web_cache_url)
@@ -193,7 +193,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
         airav_lan = '?lng=zh-TW'
     else:
         airav_url = 'https://jp.airav.wiki'
-        airav_lan = ''      
+        airav_lan = '?lng=jp'      
 
     try: # 捕获主动抛出的异常
         if not real_url:
@@ -232,9 +232,9 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
             try:
                 result, html_content = get_html(real_url)
             except Exception as error_info:
-                log_info += '   >>> AIRAV-请求详情页：出错！错误信息：%s \n' % error_info
+                log_info += '   >>> AIRAV-请求详情页：出错！错误信息：%s \n' % str(error_info)
                 error_type = 'timeout'
-                raise Exception('>>> AIRAV-请求详情页：出错！错误信息：%s \n' % error_info)            
+                raise Exception('>>> AIRAV-请求详情页：出错！错误信息：%s \n' % str(error_info))          
             html_info = etree.fromstring(html_content, etree.HTMLParser())
             web_cache_url = etree.tostring(html_info,encoding="utf-8").decode() # 将element对象转化为字符串
             # print(web_cache_url)
@@ -275,10 +275,11 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
 
             try:
                 dic = {
-                    'number': number,
                     'title': title,
+                    'number': number,
                     'actor': actor,
                     'outline': outline,
+                    'tag': tag,
                     'release': release,
                     'year': year,
                     'runtime': runtime,
@@ -287,15 +288,14 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
                     'director': director,
                     'publisher': publisher,
                     'studio': studio,
+                    'source': 'airav.main',
+                    'website': real_url,
+                    'search_url': url_search,
+                    'actor_photo': actor_photo,
                     'cover': cover_url,
                     'cover_small': '',
                     'extrafanart': extrafanart,
-                    'actor_photo': actor_photo,
                     'imagecut': imagecut,
-                    'tag': tag,
-                    'website': real_url,
-                    'search_url': url_search,
-                    'source': 'airav.main',
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),
@@ -303,8 +303,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
                 log_info += '   >>> AIRAV-数据获取成功！\n'
                 dic['log_info'] = log_info
             except Exception as error_info:
-                log_info += '   >>> AIRAV-生成数据字典：出错！ 错误信息：%s \n' % error_info
-                error_info = error_info
+                log_info += '   >>> AIRAV-生成数据字典：出错！ 错误信息：%s \n' % str(error_info)
+                error_info = str(error_info)
                 raise Exception(log_info)        
 
     except Exception as error_info:
@@ -316,7 +316,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 
