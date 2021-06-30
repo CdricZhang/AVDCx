@@ -71,7 +71,7 @@ def get_html(url, cookies=None):
     return 'error', error_info3
 
 
-def post_html(url: str, query: dict):
+def post_html(url: str, query: dict, headers={}):
     proxy_type = ''
     retry_count = 0
     proxy = ''
@@ -85,7 +85,7 @@ def post_html(url: str, query: dict):
     proxies = get_proxies(proxy_type, proxy)
     for i in range(retry_count):
         try:
-            result = requests.post(url, data=query, proxies=proxies, timeout=timeout)
+            result = requests.post(url, data=query, headers=headers,proxies=proxies, timeout=timeout)
             result.encoding = 'utf-8'
             result = result.text
             return 'ok', result

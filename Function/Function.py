@@ -73,6 +73,7 @@ def movie_lists(escape_folder, movie_type, movie_path):
 # ========================================================================获取番号
 def getNumber(filepath, escape_string):
     filepath = filepath.replace('-C.', '.').replace('-c.', '.').replace(' ', '-')
+    filepath = filepath.upper().replace('HEYDOUGA-', '').replace('HEYDOUGA', '')
     filename = os.path.splitext(filepath.split('/')[-1])[0]
     escape_string_list = re.split('[,，]', escape_string)
     for string in escape_string_list:
