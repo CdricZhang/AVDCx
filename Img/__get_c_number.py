@@ -10,7 +10,7 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36'}
 
 def save_log(error_info):
-    with open('_错误信息.txt', 'a') as f:
+    with open('_错误信息.txt', 'a', encoding='utf-8') as f:
         f.write(error_info)
 
 
@@ -18,9 +18,9 @@ def get_c_number():
     i = 1
     json_filename = 'c_number.json'
     if not os.path.exists(json_filename):
-        with open(json_filename, 'w') as f:
+        with open(json_filename, 'w', encoding='utf-8') as f:
             f.write('{}')
-    with open(json_filename) as data:
+    with open(json_filename, 'r', encoding='utf-8') as data:
         json_data = json.load(data)
     while i:
         url = ('https://www.sehuatang.org/forum-103-%s.html' % i)
@@ -68,13 +68,13 @@ def get_c_number():
                         number = b[:b.find(' ')]
                         title = b[b.find(' ') + 1:]
                     elif '3000' in post_title:
-                        post_title1 = post_title.replace('[经典老片]')
+                        post_title1 = post_title.replace('[经典老片]', '')
                         a = post_title1[post_title1.find('3000'):]
                         b = a[a.find(']')+1:].strip()
                         number = b[:b.find(' ')]
                         title = b[b.find(' ') + 1:]
                     elif '5500' in post_title:
-                        post_title1 = post_title.replace('[经典老片]')
+                        post_title1 = post_title.replace('[经典老片]', '')
                         a = post_title1[post_title1.find('5500'):]
                         b = a[a.find(']')+1:].strip()
                         number = b[:b.find(' ')]
@@ -98,7 +98,7 @@ def get_c_number():
                     print(number + ' : ' + title)
             print('\n当前第 %s 页数据...\n页面地址：%s' % (i, url))
             print('**'*20)
-            with open (json_filename, 'w') as f:
+            with open (json_filename, 'w', encoding='utf-8') as f:
                 json.dump(json_data, f, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )
             if i < int(page_total):
                 i += 1
