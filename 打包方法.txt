@@ -9,7 +9,7 @@ pip install -r requirements.txt
 4，命令行安装打包工具
 pip install pyinstaller
 5，命令行运行
-pyinstaller -n AVDCx.exe -i Img/AVDCx.ico -F -w AVDCx_Main.py --add-data "Function/cloudscraper;cloudscraper" --add-data "Img;Img" --hidden-import socks --hidden-import urllib3
+pyinstaller -n AVDCx.exe -i Img/AVDCx.ico -F -w AVDCx_Main.py --add-data "Function/cloudscraper;cloudscraper" --add-data "Function/zhconv;zhconv" --add-data "Img;Img" --hidden-import socks --hidden-import urllib3
 
 pyinstaller AVDCx.exe.spec
 

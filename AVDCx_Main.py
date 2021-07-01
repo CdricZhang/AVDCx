@@ -32,7 +32,6 @@ import urllib.parse
 import random
 import hashlib
 from zhconv import convert
-from googletrans import Translator
 
 #生成资源文件目录访问路径
 def resource_path(relative_path):
@@ -60,7 +59,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210702'
+        self.localversion = '20210703'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.laberl_number_url = ''
@@ -1428,33 +1427,52 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             with open(path + "/" + name_file + ".nfo", "wt", encoding='UTF-8') as code:
                 print('<?xml version="1.0" encoding="UTF-8" ?>', file=code)
                 print("<movie>", file=code)
-                print("  <title>" + name_media + "</title>", file=code)
+                # 输出番号
                 print("  <num>" + number + "</num>", file=code)
+                # 输出标题
+                print("  <title>" + name_media + "</title>", file=code)
+                # 输出简介
+                if outline != 'unknown':
+                    print("  <outline>" + outline + "</outline>", file=code)
+                    print("  <plot>" + outline + "</plot>", file=code)
+                # 输出合集、系列
+                print("  <set>" + series + "</set>", file=code)
+                print("  <series>" + series + "</series>", file=code)
+                # 输出发行日期
                 if release != 'unknown':
                     print("  <premiered>" + release + "</premiered>", file=code)
                     print("  <release>" + release + "</release>", file=code)
-                print("  <cover>" + cover + "</cover>", file=code)
-                print("  <set>" + series + "</set>", file=code)
+                # 输出年代
+                if str(year) != 'unknown':
+                    print("  <year>" + year + "</year>", file=code)
+                # 输出时长
+                if str(runtime) != 'unknown':
+                    print("  <runtime>" + str(runtime).replace(" ", "") + "</runtime>", file=code)
+                # 输出评分
                 try:
                     if str(json_data['score']) != 'unknown' and str(json_data['score']) != '' and float(
                             json_data['score']) != 0.0:
                         print("  <rating>" + str(json_data['score']) + "</rating>", file=code)
                 except Exception as err:
                     print("Error in json_data score!" + str(err))
-                if studio != 'unknown':
-                    print("  <studio>" + studio + "</studio>", file=code)
-                if str(year) != 'unknown':
-                    print("  <year>" + year + "</year>", file=code)
-                if outline != 'unknown':
-                    print("  <outline>" + outline + "</outline>", file=code)
-                    print("  <plot>" + outline + "</plot>", file=code)
-                if str(runtime) != 'unknown':
-                    print("  <runtime>" + str(runtime).replace(" ", "") + "</runtime>", file=code)
+                # 输出导演
                 if director != 'unknown':
                     print("  <director>" + director + "</director>", file=code)
+                # 输出厂商
+                if studio != 'unknown':
+                    print("  <studio>" + studio + "</studio>", file=code)
+                # 输出制作商
+                if studio != 'unknown':
+                    print("  <maker>" + studio + "</maker>", file=code)
+                # 输出发行商
+                if publisher != 'unknown':
+                    print("  <maker>" + publisher + "</maker>", file=code)
+                # 输出图片文件位置
+                print("  <cover>" + cover + "</cover>", file=code)
                 print("  <poster>" + name_file + "-poster.jpg</poster>", file=code)
                 print("  <thumb>" + name_file + "-thumb.jpg</thumb>", file=code)
                 print("  <fanart>" + name_file + "-fanart.jpg</fanart>", file=code)
+                # 输出演员
                 if actor_photo and actor_photo != 'unknown':
                     try:
                         for key, value in actor_photo.items():
@@ -1466,12 +1484,17 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                                 print("  </actor>", file=code)
                     except Exception as error_info:
                         self.addTextMain('[-]Error in actor_photo: ' + str(error_info))
-                if studio != 'unknown':
-                    print("  <maker>" + studio + "</maker>", file=code)
-                if publisher != 'unknown':
-                    print("  <maker>" + publisher + "</maker>", file=code)
+                elif actor and actor != 'unknown':
+                    actor_list = str(json_data.get('actor')).strip("[ ]").replace("'", '').split(',')  # 字符串转列表
+                    actor_list = [actor.strip() for actor in actor_list]  # 去除空白
+                    if actor_list:
+                        for actor in actor_list:
+                            print("  <actor>", file=code)
+                            print("   <name>" + actor + "</name>", file=code)
+                            print("  </actor>", file=code)
                 print("  <label>", file=code)
                 print("  </label>", file=code)
+                # 输出tag and genre
                 try:
                     for i in tag:
                         if i != 'unknown':
@@ -1508,7 +1531,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     print("  <genre>" + '製作:' + studio + "</genre>", file=code)
                 if publisher != 'unknown':
                     print("  <genre>" + '發行:' + publisher + "</genre>", file=code)
-
                 print("  <website>" + website + "</website>", file=code)
                 print("</movie>", file=code)
                 self.addTextMain("[+]Nfo Wrote!         " + name_file + ".nfo")
