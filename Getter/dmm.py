@@ -18,6 +18,13 @@ def getActor(html):
         "', '", ',')
     return result
 
+def getActorPhoto(actor):
+    actor = actor.split(',')
+    data = {}
+    for i in actor:
+        actor_photo = {i: ''}
+        data.update(actor_photo)
+    return data
 
 def getStudio(html):
     result = html.xpath("//a[contains(@href, 'article=maker')]/text()")
@@ -180,6 +187,7 @@ def main(number, appoint_url='', log_info=''):
             series = getSeries(html).replace('-', '')
             year = getYear(release)
             extrafanart = getExtraFanart(html)
+            actor_photo = getActorPhoto(actor)
         except Exception as error_info:
                 log_info += '   >>> DMM-获取data信息时出错(dmm.py)！ 错误信息：%s\n' % str(error_info)
                 error_info = str(error_info)
@@ -201,7 +209,7 @@ def main(number, appoint_url='', log_info=''):
                 'publisher': studio,
                 'source': 'dmm.main',
                 'website': url,
-                'actor_photo': '',
+                'actor_photo': actor_photo,
                 'cover': str(cover_url),
                 'cover_small': '',
                 'extrafanart': extrafanart,

@@ -123,7 +123,7 @@ def main(number, appoint_url='', log_info=''):
                     'publisher': studio,
                     'source': 'fc2hub.main',
                     'website': str(real_url).strip('[]'),
-                    'actor_photo': {},
+                    'actor_photo': {'FC2系列':''},
                     'cover': str(cover_url),
                     'cover_small': 'https://fc2hub.com/images/luscio-quad.png',
                     'extrafanart': getExtraFanart(html_info),

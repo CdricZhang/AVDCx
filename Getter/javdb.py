@@ -290,7 +290,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                     'studio': getStudio(html_detail),
                     'publisher': getPublisher(html_detail),
                     'source': 'javdb.main',
-                    'website': real_url.replace('?locale=zh', ''),
+                    'website': str(real_url).replace('?locale=zh', '').strip('[]'),
                     'search_url': str(url_search),
                     'actor_photo': getActorPhoto(html_detail, log_info),
                     'cover': str(cover_url),

@@ -1,18 +1,11 @@
-from logging import error
 import re
-from PIL.JpegImagePlugin import convert_dict_qtables
-from bs4 import BeautifulSoup, SoupStrainer
 from lxml import etree
 import json
-import cloudscraper
-from requests.api import get
-
-from requests.models import stream_decode_response_unicode
 from Function.getHtml import get_html
 from Function.getHtml import post_html
 import urllib3
 urllib3.disable_warnings()
-from Getter import  javdb
+from Getter import javdb
 
 def getNumber(html):
     result1 = str(html.xpath('//strong[contains(text(),"番號:")]/../span/a/text()')).strip(
@@ -35,7 +28,15 @@ def getActor(html):
     return result
 
 
-def getActorPhoto(html, airav_url, log_info): 
+def getActorPhoto(actor):
+    actor = actor.split(',')
+    data = {}
+    for i in actor:
+        actor_photo = {i: ''}
+        data.update(actor_photo)
+    return data
+
+def getActorPhoto1(html, airav_url, log_info): 
     actor_list = html.xpath('//li[@class="videoAvstarListItem"]/a/text()')
     actor_url_list = html.xpath('//li[@class="videoAvstarListItem"]/a/@href')
     actor_count = len(actor_list)
@@ -65,10 +66,8 @@ def getActorPhoto(html, airav_url, log_info):
 
 
 def getStudio(html):
-    result1 = str(html.xpath('//strong[contains(text(),"片商:")]/../span/a/text()')).strip(" ['']")
-    result2 = str(html.xpath('//strong[contains(text(),"Maker:")]/../span/a/text()')).strip(" ['']")
-    return str(result1 + result2).strip('+').replace("', '", '').replace('"', '')
-
+    result = str(html.xpath('//a[contains(@href,"video_factory")]/text()')).strip(" ['']")
+    return result
 
 def getPublisher(html):
     result1 = str(html.xpath('//strong[contains(text(),"發行:")]/../span/a/text()')).strip(" ['']")
@@ -253,13 +252,15 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
                 raise Exception('>>> AIRAV- cover url 获取失败!')
             actor = getActor(html_info) # 获取actor
             title = title.replace(' ' + actor,'').replace(number, '').replace(' ', '').strip()
-            # actor_photo = getActorPhoto(html_info, airav_url, log_info) # 歌手头像已可以刮削，但目前没用到，暂时注释掉
-            actor_photo = ''
+            # actor_photo = getActorPhoto1(html_info, airav_url, log_info)
+            actor_photo = getActorPhoto(actor)
             outline = getOutline(html_info, translate_language, real_url)
             release = getRelease(html_info)
             year = getYear(release)
             tag = getTag(html_info)
+            studio = getStudio(html_info)
             json_data = json.loads(javdb.main(number, '', log_info))
+            # json_data={}
             if json_data.get('title'):
                 runtime = json_data['runtime']
                 score = json_data['score']
@@ -268,11 +269,16 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
                 publisher = json_data['publisher']
                 studio = json_data['studio']
                 extrafanart = json_data['extrafanart']
-                publisher = json_data['publisher']
-                if '克破' in title:
+                if '克破' in title or '克破' in outline:
                     title = json_data['title']
                     outline = json_data['outline']
-
+            else:
+                runtime = ''
+                score = ''
+                series = ''
+                director = ''
+                publisher = studio
+                extrafanart = ''
             try:
                 dic = {
                     'title': title,

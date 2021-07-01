@@ -26,16 +26,18 @@ def getActor(response):
         return str(re.findall(r'<b>出演者</b>: ([^<]+) &nbsp; <br>', response)).strip(" [',']").replace('\'', '')
 
 
-def getStudio(response):
-    return str(re.findall(r'<a href="/company/\S+">(\S+)</a>', response)).strip(" ['']")
-
+def getStudio(html):
+    result = str(html.xpath('//div[@class="col-md-9"]/a[contains(@href,"/company/")]/text()')).strip(" ['']")
+    print(result)
+    return result
 
 def getRuntime(response):
     return str(re.findall(r'<b>収録時間</b>: (\d+) \S+<br>', response)).strip(" ['']")
 
 
-def getSeries(response):
-    return str(re.findall(r'<b>系列</b>: <a href="/series/\S+">(\S+)</a>', response)).strip(" ['']")
+def getSeries(html):
+    result = str(html.xpath('//div[@class="col-md-9"]/a[contains(@href,"/series/")]/text()')).strip(" ['']")
+    return result
 
 
 def getWebsite(detail_page):
@@ -134,7 +136,8 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             imagecut = 3
             if cover_small == '':
                 imagecut = 0
-        studio = getStudio(response)
+        studio = getStudio(detail_page)
+        series = getSeries(detail_page)
         try:
             dic = {
                 'title': str(title),
@@ -146,7 +149,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 'year': getYear(release),
                 'runtime': getRuntime(response),
                 'score': getScore(response),
-                'series': getSeries(response),
+                'series': series,
                 'director': '',
                 'studio': studio,
                 'publisher': studio,
@@ -181,6 +184,8 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
     return js
 
 
+# print(main('blk-495'))
+# print(main('snis-333'))
 # print(main('GERK-326'))
 # print(main('msfh-010'))
 
