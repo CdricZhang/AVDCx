@@ -1998,7 +1998,7 @@ background-color: rgb(246, 246, 246);</string>
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab1">
        <attribute name="title">
@@ -4996,7 +4996,7 @@ font: &quot;Courier&quot;;</string>
          <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="title">
-         <string>排除设置</string>
+         <string>文件名排除设置</string>
         </property>
         <widget class="QWidget" name="formLayoutWidget_3">
          <property name="geometry">
@@ -5149,7 +5149,7 @@ font: &quot;Courier&quot;;</string>
              </font>
             </property>
             <property name="text">
-             <string>   异常字符：</string>
+             <string>异常字符：</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

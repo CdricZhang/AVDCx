@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCigaZza.ui'
+## Form generated from reading UI file 'AVDCRSYiPM.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -1759,7 +1759,7 @@ class Ui_AVDV(object):
         self.retranslateUi(AVDV)
 
         self.stackedWidget.setCurrentIndex(4)
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(AVDV)
@@ -1964,9 +1964,9 @@ class Ui_AVDV(object):
         self.groupBox_40.setTitle(QCoreApplication.translate("AVDV", u"\u65e0\u7801\u756a\u53f7", None))
         self.label_16.setText(QCoreApplication.translate("AVDV", u"   \u65e0\u7801\u756a\u53f7\u524d\u7f00\uff1a", None))
         self.label_17.setText(QCoreApplication.translate("AVDV", u"\u8bf4\u660e\uff1a\u53ea\u6dfb\u52a0 HEYZO\u3001n1111\u3001111111-111\u4e4b\u5916\u7684\u524d\u7f00\u3002", None))
-        self.groupBox_18.setTitle(QCoreApplication.translate("AVDV", u"\u6392\u9664\u8bbe\u7f6e", None))
+        self.groupBox_18.setTitle(QCoreApplication.translate("AVDV", u"\u6587\u4ef6\u540d\u6392\u9664\u8bbe\u7f6e", None))
         self.label_39.setText(QCoreApplication.translate("AVDV", u"   \u591a\u4f59\u5b57\u7b26\u4e32\uff1a", None))
-        self.label_38.setText(QCoreApplication.translate("AVDV", u"   \u5f02\u5e38\u5b57\u7b26\uff1a", None))
+        self.label_38.setText(QCoreApplication.translate("AVDV", u"\u5f02\u5e38\u5b57\u7b26\uff1a", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab5), QCoreApplication.translate("AVDV", u"\u66f4\u591a\u8bbe\u7f6e", None))
         self.pushButton_init_config.setText(QCoreApplication.translate("AVDV", u"\u6062\u590d\u9ed8\u8ba4", None))
         self.textBrowser_about.setHtml(QCoreApplication.translate("AVDV", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
