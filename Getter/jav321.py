@@ -107,13 +107,13 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
         if appoint_url != '':
             result_url = appoint_url
         result, response = post_html(result_url, query={"sn": number})
-        if result == 'error':
+        if not result:
             log_info += '   >>> JAV321-请求搜索页：错误！信息：' + response
             error_type = 'timeout'
             raise Exception('>>> JAV321-请求搜索页：错误！信息' + response)
         if 'AVが見つかりませんでした' in response:
             log_info += '   >>> JAV321-未匹配到番号！ \n'
-            error_type = 'Movie not found'
+            error_type = 'Movie data not found'
             raise Exception('JAV321-未匹配到番号')
         detail_page = etree.fromstring(response, etree.HTMLParser())
         title = getTitle(response) # 获取标题

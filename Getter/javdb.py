@@ -211,7 +211,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             real_url = html.xpath("//div[@class='uid'][contains(text(), $number)]/../@href", number=number)
             if not real_url:
                 log_info += '   >>> JAVDB-搜索结果页：未匹配到番号！\n'
-                error_type = 'Movie not found'
+                error_type = 'Movie data not found'
                 raise Exception('JAVDB-搜索结果页：未匹配到番号')
             else:
                 real_url = 'https://javdb.com' + real_url[0] + '?locale=zh'
@@ -361,8 +361,8 @@ def main_us(number, appoint_url='', log_info='', isuncensored=True):
             real_url = html.xpath("//div[@class='uid'][contains(text(), $number)]/../@href", number=number)
             if not real_url:
                 log_info += '   >>> JAVDB-搜索结果页：未匹配到番号！\n'
-                error_type = 'Movie not found'
-                raise Exception('Movie not found')
+                error_type = 'Movie data not found'
+                raise Exception('JAVDB-搜索结果页：未匹配到番号！')
             else:
                 real_url = 'https://javdb.com' + real_url[0] + '?locale=zh'
                 log_info += '   >>> JAVDB-生成详情页地址：%s\n' % real_url

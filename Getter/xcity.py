@@ -120,7 +120,7 @@ def find_number(number, appoint_url):
         return appoint_url, get_html(appoint_url)[1]
     result, htmlcode = get_html('https://xcity.jp/result_published/?q=' + number.replace('-', ''))
     if '該当する作品はみつかりませんでした' in htmlcode:
-        return 'Movie not found', ''
+        return 'Movie data not found', ''
     html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
     counts = len(html.xpath("//div[@id='searchResult']/table[@class='resultList']/tr"))
     if counts >= 2:
@@ -131,7 +131,7 @@ def find_number(number, appoint_url):
             number_get = str(detail_page_html.xpath("//span[@id='hinban']/text()")[0])
             if number_get.upper() == number.replace('-', '').upper():
                 return result_url, detail_page
-    return 'Movie not found', ''
+    return 'Movie data not found', ''
 
 
 def main(number, appoint_url='', log_info=''):
@@ -145,10 +145,10 @@ def main(number, appoint_url='', log_info=''):
     dic = {}
     try:
         url, detail_page = find_number(number, appoint_url)
-        if url == 'Movie not found':
+        if url == 'Movie data not found':
             log_info += '   >>> XCITY-未匹配到番号！ \n'
-            error_type = 'Movie not found'
-            raise Exception('Movie not found')
+            error_type = 'Movie data not found'
+            raise Exception('Movie data not found')
         actor = getActor(detail_page)
         release = getRelease(detail_page)
         title = getTitle(detail_page) # 获取标题

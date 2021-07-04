@@ -131,8 +131,8 @@ def main(number, appoint_url='', log_info=''):
             url = appoint_url
         elif url == '':
             log_info += '   >>> AVSOX-未匹配到番号！ \n'
-            error_type = 'Movie not found'
-            raise Exception('Movie not found')
+            error_type = 'Movie data not found'
+            raise Exception('AVSOX-未匹配到番号！')
 
         result, web = get_html(url)
         soup = BeautifulSoup(web, 'lxml')

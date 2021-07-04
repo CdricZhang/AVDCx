@@ -187,7 +187,7 @@ def find_number(number):
     html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
     counts = len(html.xpath("//div[@id='waterfall']/div[@id='waterfall']/div"))
     if counts == 0:
-        return 'Movie not found'
+        return 'Movie data not found'
     for count in range(1, counts + 1):  # 遍历搜索结果，找到需要的番号
         number_get = html.xpath("//div[@id='waterfall']/div[@id='waterfall']/div[" + str(count) + "]/a[@class='movie-box']/div[@class='photo-info']/span/date[1]/text()")[0]
         number_get = number_get.upper()
@@ -200,7 +200,7 @@ def find_number(number):
             result_url = html.xpath(
                 "//div[@id='waterfall']/div[@id='waterfall']/div[" + str(count) + "]/a[@class='movie-box']/@href")[0]
             return result_url
-    return 'Movie not found'
+    return 'Movie data not found'
 
 
 def main(number, appoint_url='', log_info=''):
@@ -218,13 +218,13 @@ def main(number, appoint_url='', log_info=''):
             result_url = appoint_url
         else:
             result_url = find_number(number)
-        if result_url == 'Movie not found':
+        if result_url == 'Movie data not found':
             log_info += '   >>> JAVBUS-搜索结果页匹配番号：未匹配到番号！ \n'
             error_type = '未匹配到番号'
             raise Exception('JAVBUS-搜索结果页：未匹配到番号！')
 
         result, htmlcode = get_html(result_url)
-        if result == 'error':
+        if not result:
             log_info += '   >>> JAVBUS-请求详情页：' + htmlcode
             error_type = 'timeout'
             raise Exception('>>> JAVBUS-请求详情页：' + htmlcode)
@@ -304,12 +304,12 @@ def main_uncensored(number, appoint_url='', log_info=''):
             result_url = find_number(number)
         else:
             result_url = appoint_url
-        if result_url == 'Movie not found':
+        if result_url == 'Movie data not found':
             log_info += '   >>> JAVBUS-搜索结果页匹配番号：未匹配到番号！ \n'
-            error_type = 'Movie not found'
-            raise Exception('Movie not found')
+            error_type = 'Movie data not found'
+            raise Exception('Movie data not found')
         result, htmlcode = get_html(result_url)
-        if result == 'error':
+        if not result:
             log_info += '   >>> JAVBUS-请求详情页：' + str(htmlcode)
             error_type = 'timeout'
             raise Exception('>>> JAVBUS-请求详情页：' + str(htmlcode))
@@ -399,7 +399,7 @@ def main_us(number, appoint_url='', log_info=''):
             result_url = appoint_url
         else:
             result, htmlcode = get_html('https://www.javbus.one/search/' + number)
-            if result == 'error':
+            if not result:
                 log_info += '   >>> JAVBUS-请求搜索页：' + (htmlcode)
                 error_type = 'timeout'
                 raise Exception('>>> JAVBUS-请求搜索页：' + (htmlcode))
@@ -407,8 +407,8 @@ def main_us(number, appoint_url='', log_info=''):
             counts = len(html.xpath("//div[@class='row']/div[@id='waterfall']/div"))
             if counts == 0:
                 log_info += '   >>> JAVBUS-搜索结果页匹配番号：未匹配到番号！ \n'
-                error_type = 'Movie not found'
-                raise Exception('Movie not found')
+                error_type = 'Movie data not found'
+                raise Exception('Movie data not found')
             result_url = ''
             cover_small = ''
             for count in range(1, counts + 1):  # 遍历搜索结果，找到需要的番号
@@ -423,10 +423,10 @@ def main_us(number, appoint_url='', log_info=''):
                     break
             if result_url == '':
                 log_info += '   >>> JAVBUS-搜索结果页匹配番号：未匹配到番号！ \n'
-                error_type = 'Movie not found'
-                raise Exception('Movie not found')
+                error_type = 'Movie data not found'
+                raise Exception('Movie data not found')
         result, htmlcode = get_html(result_url)
-        if result == 'error':
+        if not result:
             log_info += '   >>> JAVBUS-请求详情页：' + htmlcode
             error_type = 'timeout'
             raise Exception('>>> JAVBUS-请求详情页：' + htmlcode)

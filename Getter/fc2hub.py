@@ -68,7 +68,7 @@ def main(number, appoint_url='', log_info=''):
             log_info += '   >>> FC2HUB-生成搜索页地址: %s \n' % url_search
             # ========================================================================搜索番号
             result, html_search = get_html(url_search)
-            if result == 'error':
+            if not result:
                 log_info += '   >>> FC2HUB-请求搜索页：错误！信息：' + html_search
                 error_type = 'timeout'
                 raise Exception('>>> FC2HUB-请求搜索页：错误！信息：' + html_search)
@@ -81,8 +81,8 @@ def main(number, appoint_url='', log_info=''):
 
             if not real_url:
                 log_info += '   >>> FC2HUB-搜索结果页匹配番号：未匹配到番号！ \n'
-                error_type = 'Movie not found'
-                raise Exception('Movie not found')
+                error_type = 'Movie data not found'
+                raise Exception('FC2HUB-搜索结果页匹配番号：未匹配到番号！')
             else:
                 real_url = real_url[0]
                 log_info += '   >>> FC2HUB-匹配详情页地址： %s \n' % real_url

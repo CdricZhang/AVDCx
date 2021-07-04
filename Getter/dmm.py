@@ -128,7 +128,7 @@ def main(number, appoint_url='', log_info=''):
         if appoint_url: # 如果传入地址，则使用传入的地址
             url = appoint_url
         result, htmlcode = get_html(url, cookies=cookies)
-        if result == 'error':
+        if not result:
             log_info += '   >>> DMM-请求URL：%s 出现错误：%s' % (url, htmlcode)
             error_type = 'timeout'
             raise Exception('DMM-请求URL：%s 出现错误：%s' % (url, htmlcode))
@@ -151,7 +151,7 @@ def main(number, appoint_url='', log_info=''):
         if appoint_url:  # 如果是传入的地址，判断页面地址是否正确
             if '404 Not Found' in str(html.xpath("//span[@class='d-txten']/text()")):   # 如果页面有404，表示传入的页面地址不对
                 log_info += '   >>> DMM-未匹配到番号' 
-                error_type = 'Movie not found'
+                error_type = 'Movie data not found'
                 raise Exception('DMM-未匹配到番号')
         else:            # 如果不是传入的地址，则上面请求的是搜索页，需要再解析搜索页，获取详情页地址
             if html.xpath("//a[contains(@href, $val)]", val=num1): # 优先匹配'/cid=snis126/'这样链接的，图上面没有蓝光水印
@@ -160,7 +160,7 @@ def main(number, appoint_url='', log_info=''):
                 url = html.xpath("//a[contains(@href, 'detail')][contains(@href, $val)]/@href", val=num2)[0]
             else:
                 log_info += '   >>> DMM-未匹配到番号' 
-                error_type = 'Movie not found'
+                error_type = 'Movie data not found'
                 raise Exception('DMM-未匹配到番号')                    
             result, htmlcode = get_html(url, cookies=cookies)   # 获取详情页内容
             html = etree.fromstring(htmlcode, etree.HTMLParser())

@@ -201,7 +201,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
             log_info += '   >>> AIRAV-生成搜索页地址: %s\n' % url_search
             # ========================================================================搜索番号
             result, html_search = get_html(url_search)
-            if result == 'error':
+            if not result:
                 log_info += '   >>> AIRAV-请求搜索页：错误！信息：' + html_search
                 error_type = 'timeout'
                 raise Exception('>>> AIRAV-请求搜索页：错误！信息：' + html_search)
@@ -224,8 +224,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
                 log_info += '   >>> AIRAV-匹配详情页地址： %s \n' % real_url
             else:
                 log_info += '   >>> AIRAV-搜索结果页匹配番号：未匹配到番号！ \n'
-                error_type = 'Movie not found'
-                raise Exception('Movie not found')
+                error_type = 'Movie data not found'
+                raise Exception('Movie data not found')
 
         if real_url:
             try:
@@ -269,6 +269,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
                 publisher = json_data['publisher']
                 studio = json_data['studio']
                 extrafanart = json_data['extrafanart']
+                actor_photo = json_data['actor_photo'] # 暂时使用javdb的日文名字，避免emby不识别歌手头像
                 if '克破' in title or '克破' in outline:
                     title = json_data['title']
                     outline = json_data['outline']

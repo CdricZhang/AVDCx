@@ -125,7 +125,7 @@ def main(number, appoint_url='', log_info=''):
             url = appoint_url
         result, htmlcode = str(get_html(url, cookies={'adc': '1'}))
         htmlcode = htmlcode.replace('ahref', 'a href')  # 针对a标签、属性中间未分开
-        if result == 'error':
+        if not result:
             log_info += '   >>> MGSTAGE-请求详情页：错误！信息：' + htmlcode
             error_type = 'timeout'
             raise Exception('>>> MGSTAGE-请求详情页：错误！信息：' + htmlcode)
