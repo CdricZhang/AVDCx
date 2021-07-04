@@ -1,3 +1,4 @@
+from logging import error
 import requests
 import os
 from configparser import RawConfigParser
@@ -50,10 +51,11 @@ def get_html(url, cookies=None):
     timeout = 0
     try:
         proxy_type, proxy, timeout, retry_count = get_proxy()
-    except Exception as error_info1:
-        print('Error in get_html1 :' + str(error_info1))
-        print('[-]Proxy config error! Please check the config.')
-    proxies = get_proxies(proxy_type, proxy)
+        proxies = get_proxies(proxy_type, proxy)
+    except Exception as ex:
+        ex = 'Error in get_htm1l, Proxy config error! Please check the config. url: %s Error info: %s ' % (url, str(ex))
+        print(ex)
+        return False, str(ex)
     i = 0
     while i < retry_count:
         try:
@@ -61,14 +63,13 @@ def get_html(url, cookies=None):
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36',}
             getweb = requests.get(str(url), headers=headers, timeout=timeout, proxies=proxies, cookies=cookies, verify=False)
             getweb.encoding = 'utf-8'
-            return 'ok', getweb.text
-        except Exception as error_info2:
+            return True, getweb.text
+        except Exception as ex:
             i += 1
-            error_info3 = 'Error in get_html2 :' + str(error_info2)
-            print(error_info3)
+            ex = 'Error in get_htm2l, Connect Failed! Please check your Proxy or Network! url: %s Error info: %s ' % (url, str(ex))
+            print(ex)
             print('[-]Connect retry ' + str(i) + '/' + str(retry_count))
-    print('[-]Connect Failed! Please check your Proxy or Network!')
-    return 'error', error_info3
+    return False, str(ex)
 
 
 def post_html(url: str, query: dict, headers={}):
@@ -85,7 +86,7 @@ def post_html(url: str, query: dict, headers={}):
     proxies = get_proxies(proxy_type, proxy)
     for i in range(retry_count):
         try:
-            result = requests.post(url, data=query, headers=headers,proxies=proxies, timeout=timeout)
+            result = requests.post(url=url, data=query, headers=headers,proxies=proxies, timeout=timeout)
             result.encoding = 'utf-8'
             result = result.text
             return 'ok', result

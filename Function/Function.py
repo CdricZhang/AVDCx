@@ -323,8 +323,8 @@ def save_config(json_config):
     # json_config = json.loads(json_config)
     config_file = 'config.ini'
     with open(config_file, "wt", encoding='UTF-8') as code:
-        print("# modified time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n", file=code)
         print("[common]", file=code)
+        print("# modified time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n", file=code)
         print("main_mode = " + str(json_config['main_mode']), file=code)
         print("failed_file_move = " + str(json_config['failed_file_move']), file=code)
         print("soft_link = " + str(json_config['soft_link']), file=code)
@@ -405,11 +405,13 @@ def save_config(json_config):
 
 
 def check_pic(path_pic):
-    try:
-        img = Image.open(path_pic)
-        img.load()
-        return True
-    except (FileNotFoundError, OSError):
-        # print('文件损坏')
-        return False
+    if os.path.exists(path_pic):
+        try:
+            img = Image.open(path_pic)
+            img.load()
+            return True
+        except:
+            pass
+            # print('文件损坏')
+    return False
 
