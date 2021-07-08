@@ -5,10 +5,9 @@ from socket import MsgFlag
 import threading
 import json
 from PySide2 import QtWidgets
-from PySide2.QtGui import QPixmap
-from PySide2.QtGui import QTextCursor, QCursor
-from PySide2.QtWidgets import QMainWindow, QTreeWidgetItem, QApplication
-from PySide2.QtCore import Signal, Qt, QCoreApplication
+from PySide2.QtGui import QTextCursor, QCursor, QPixmap
+from PySide2.QtWidgets import QMainWindow, QTreeWidgetItem, QApplication, QPushButton, QDialog, QFileDialog, QDialogButtonBox
+from PySide2.QtCore import Signal, Qt, QCoreApplication, QPoint, QRect
 import sys
 import time
 import os.path
@@ -21,7 +20,8 @@ import os
 import webbrowser
 from configparser import RawConfigParser
 from Ui.AVDC import Ui_AVDV
-from Function.Function import save_config, movie_lists, get_info, getDataFromJSON, escapePath, getNumber, check_pic
+from Ui.posterCutTool import Ui_Dialog_cut_poster
+from Function.Function import save_config, movie_lists, get_info, getDataFromJSON, escapePath, getNumber, check_pic, is_uncensored
 from Function.getHtml import get_html, get_proxies, get_proxy
 import socks
 import urllib3
@@ -60,10 +60,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210704'
+        self.localversion = '20210708'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
-        self.laberl_number_url = ''
+        self.thumb_path = ''
+        self.poster_path = ''
         self.Ui.label_number.mousePressEvent = self.label_number_clicked
         self.Ui.label_source.mousePressEvent = self.label_number_clicked
         self.default_poster = resource_path('Img/default-poster.jpg')
@@ -287,6 +288,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.horizontalSlider_timeout.valueChanged.connect(self.lcdNumber_timeout_change)
         self.Ui.horizontalSlider_retry.valueChanged.connect(self.lcdNumber_retry_change)
         self.Ui.horizontalSlider_mark_size.valueChanged.connect(self.lcdNumber_mark_size_change)
+        self.Ui.label_thumb.mousePressEvent = self.test_clicked
+        self.Ui.label_poster.mousePressEvent = self.test_clicked
 
     # ======================================================================================显示版本号
     def show_version(self):
@@ -302,6 +305,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def label_number_clicked(self, test):
         if self.laberl_number_url:
             webbrowser.open(self.laberl_number_url)
+
+    def test_clicked(self, test):
+        newWin2.showimage(self.thumb_path, self.poster_path)
+        newWin2.show()
 
     # ======================================================================================鼠标拖动窗口
     def mousePressEvent(self, e):
@@ -497,6 +504,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         json_config = {
             'show_poster': 1,
             'main_mode': 1,
+            'main_like': 1,
             'soft_link': 0,
             'switch_debug': 1,
             'failed_file_move': 1,
@@ -555,6 +563,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     self.Ui.radioButton_common.setChecked(True)
                 elif int(config['common']['main_mode']) == 2:
                     self.Ui.radioButton_sort.setChecked(True)
+                try:
+                    config.getint('common', 'main_like')
+                except:
+                    config.set('common', 'main_like', 1)
+                if int(config['common']['main_like']) == 1:
+                    self.Ui.radioButton_like_more.setChecked(True)
+                elif int(config['common']['main_like']) == 0:
+                    self.Ui.radioButton_like_speed.setChecked(True)
                 if int(config['common']['soft_link']) == 1:
                     self.Ui.radioButton_soft_on.setChecked(True)
                 elif int(config['common']['soft_link']) == 0:
@@ -734,6 +750,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     def save_config_clicked(self):
         main_mode = 1
+        main_like = 1
         failed_file_move = 1
         soft_link = 0
         show_poster = 0
@@ -760,6 +777,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             main_mode = 1
         elif self.Ui.radioButton_sort.isChecked():  # 整理模式
             main_mode = 2
+        if self.Ui.radioButton_like_more.isChecked():  # 字段全
+            main_like = 1
+        elif self.Ui.radioButton_like_speed.isChecked():  # 快速
+            main_like = 0
         if self.Ui.radioButton_soft_on.isChecked():  # 软链接开
             soft_link = 1
         elif self.Ui.radioButton_soft_off.isChecked():  # 软链接关
@@ -872,6 +893,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             extrafanart_download = 0
         json_config = {
             'main_mode': main_mode,
+            'main_like': main_like,
             'soft_link': soft_link,
             'switch_debug': switch_debug,
             'show_poster': show_poster,
@@ -954,23 +976,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             path = os.getcwd()
         file_path, fileType = QtWidgets.QFileDialog.getOpenFileName(self, "选取缩略图", path,
                                                                    "Picture Files(*.jpg);;All Files(*)")
+        img_name, img_ex = os.path.splitext(file_path)
         if file_path != '':
-            self.pushButton_show_log_clicked() # 点击刮削按钮后跳转到日志页面
-            try:
-                t = threading.Thread(target=self.select_thumb_thread, args=(file_path,))
-                t.start()  # 启动线程,即让线程开始执行
-            except Exception as ex:
-                self.addTextMain('[-]Error in pushButton_select_thumb_clicked: ' + str(ex))
-
-    def select_thumb_thread(self, file_path):
-        file_path = file_path.replace('\\', '/')
-        folder_path, file_name = os.path.split(file_path)
-        file_name_f,file_ex = os.path.splitext(file_name)
-        poster_name = file_name_f.replace('-thumb', '').replace('-fanart', '').replace('-poster', '') + '-poster'
-        poster_name +=  file_ex
-        poster_path = os.path.join(folder_path, poster_name)
-        self.image_cut(file_name, poster_name, file_path, poster_path, 2)
-        self.addTextMain("[*]================================================================================")
+            poster_path = file_path.replace('\\', '/').replace(('-fanart' + img_ex), '').replace(('-thumb' + img_ex), '').replace(('-poster' + img_ex), '').replace(img_ex, '') + '-poster' + img_ex
+            self.thumb_path = file_path
+            self.poster_path = poster_path
+            newWin2.showimage(file_path, poster_path)
+            newWin2.show()
 
     def image_cut(self, thumb_name, poster_name, thumb_path, poster_path, mode=1):
         try:
@@ -1720,7 +1732,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             mark_show_type = str(mark_list).strip(" ['']").replace("'", "")
             mark_pos = config.get('mark', 'mark_pos')
             mark_size = int(config.getint('mark', 'mark_size'))
-            if int(config.getint('mark', 'thumb_mark')) and int(config.getint('file_download', 'thumb')) and os.path.exists(thumb_path):
+            if config.getint('mark', 'thumb_mark') and config.getint('file_download', 'thumb') and os.path.exists(thumb_path):
                 self.add_mark_thread(thumb_path, mark_list, mark_pos, mark_size)
                 self.addTextMain('[+] 🟢 Thumb has been watermarked: ' + mark_show_type)
             if int(config.getint('mark', 'poster_mark')) and int(config.getint('file_download', 'poster')) and os.path.exists(poster_path):
@@ -1840,10 +1852,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================从指定网站获取json_data
     def getJsonData(self, mode, number, config, appoint_url, translate_language):
-        if mode == 4:  # javdb模式
-            ss = random.randint(0, 3)
-            self.addTextMain('[!]Please Wait %s Seconds！' % str(ss))
-            time.sleep(ss)
+        # if mode == 4:  # javdb模式
+        #     ss = random.randint(0, 3)
+        #     self.addTextMain('[!]Please Wait %s Seconds！' % str(ss))
+        #     time.sleep(ss)
         json_data = getDataFromJSON(number, config, mode, appoint_url, translate_language)
         return json_data
 
@@ -1877,6 +1889,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             }
         self.Ui.label_number.setText(json_data['number'])
         self.laberl_number_url = json_data['website']
+        self.thumb_path = json_data['thumb_path']
+        self.poster_path = json_data['poster_path']
         self.Ui.label_actor.setText(json_data['actor'])
         if json_data.get('source'):
             self.Ui.label_source.setText('数据：' + json_data['source'].replace('.main_us','').replace('.main',''))
@@ -2134,7 +2148,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         return movie_path.replace('\\', '/'), failed_folder.replace('\\', '/'), success_folder.replace('\\', '/')
 
     # =====================================================================================获取文件的相关信息
-    def getFileInfo(self, file_path, appoint_number):
+    def getFileInfo(self, file_path, appoint_number=''):
         c_word = ''
         cd_part = ''
         leak = ''
@@ -2174,12 +2188,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # =====================================================================================有道翻译
     def youdao(self, msg, language='zh_cn'):
-        # time.sleep(random.randint(0, 2))
         proxy_type, proxy, timeout, retry_count = get_proxy()
         proxies = get_proxies(proxy_type, proxy)
         msg = msg
         url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
-        D = "Tbh5E8=q6U3EXe+&L[4c@"  
+        D = "Y2FYu%TNSbMCxc3t2u^XT"
         salt = str(int(time.time() * 1000) + random.randint(0, 10))
         sign = hashlib.md5(("fanyideskweb" + msg + salt + D).encode('utf-8')).hexdigest()
         ts = str(int(time.time() * 1000))
@@ -2238,6 +2251,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                         msg += each.get('tgt')
         if language == 'zh_tw':
             msg = zhconv.convert(msg, 'zh-hant')
+        elif language == 'zh_cn':
+            msg = zhconv.convert(msg, 'zh-cn')
         return msg
 
     # =====================================================================================处理翻译
@@ -2339,7 +2354,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 return False, json_data                   # 返回AVDC_main, 继续处理下一个文件
 
         # =====================================================================================整理模式
-        if int(config.getint('common', 'main_mode')) == 2: # 整理模式（仅根据女优把电影命名为番号并分类到女优名称的文件夹下。）
+        if int(config.getint('common', 'main_mode')) == 2: # 整理模式（仅根据女优把电影命名为番号并分类到女优名称的文件夹下）
             if not self.pasteFileToFolder(file_path, file_new_path, failed_folder, config):   # 移动文件
                 return False, json_data                   # 返回AVDC_main, 继续处理下一个文件
             else:
@@ -2479,6 +2494,313 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.pushButton_start_cap.setStyleSheet('QPushButton#pushButton_start_cap{color:white;background-color:#0066CC;}QPushButton:hover#pushButton_start_cap{color:white;background-color:#4C6EFF}QPushButton:pressed#pushButton_start_cap{color:white;background-color:#4C6EE0}')
         self.Ui.pushButton_start_cap2.setStyleSheet('QPushButton#pushButton_start_cap2{color:white;background-color:#0066CC}QPushButton:hover#pushButton_start_cap2{color:white;background-color:#4C6EFF}QPushButton:pressed#pushButton_start_cap2{color:white;background-color:#4C6EE0}')
 
+class DraggableButton(QPushButton):
+    def __init__(self, title, parent):
+        super().__init__(title, parent)
+        self.iniDragCor = [0, 0]       
+    def mousePressEvent(self,e):
+        # print("ppp",e.pos())
+        self.iniDragCor[0] = e.x()
+        self.iniDragCor[1] = e.y()
+
+    def mouseMoveEvent(self, e):
+        x = e.x() - self.iniDragCor[0]
+        y = e.y() - self.iniDragCor[1]
+        # 判断水平移动或竖直移动
+        if newWin2.pic_h_w_ratio <= 1.5:
+            y = 0
+        else:
+            x = 0
+            
+        cor = QPoint(x, y)        
+        self.move(self.mapToParent(cor))# 需要maptoparent一下才可以的,否则只是相对位置。
+        # print('drag button event,',time.time(),e.pos(),e.x(),e.y())
+
+        # 计算实际裁剪位置
+        c_x, c_y, c_x2, c_y2 = newWin2.getRealPos()
+        # print('拖动：%s %s %s %s' % (str(c_x), str(c_y), str(c_x2), str(c_y2))) 
+
+    def mouseReleaseEvent(self, e):
+        if e.button() == Qt.LeftButton:
+            self.m_drag = False
+        # 计算实际裁剪位置
+        c_x, c_y, c_x2, c_y2 = newWin2.getRealPos()
+        # print('松开：%s %s %s %s' % (str(c_x), str(c_y), str(c_x2), str(c_y2))) 
+
+class CutWindow(QDialog, Ui_Dialog_cut_poster):
+    def __init__(self, parent=None):
+        super(CutWindow, self).__init__(parent)
+        self.Ui = Ui_Dialog_cut_poster()  # 实例化 Ui
+        self.Ui.setupUi(self)  # 初始化Ui
+        self.m_drag = True
+        self.m_DragPosition = 0
+        self.show_w = self.Ui.label_backgroud_pic.width()   # 图片显示区域的宽高
+        self.show_h = self.Ui.label_backgroud_pic.height()   # 图片显示区域的宽高
+        self.zomm_ratio = 1
+        self.pic_new_w = self.show_w
+        self.pic_new_h = self.show_h
+        self.pic_w = self.show_w
+        self.pic_h = self.show_h
+        self.Ui.pushButton_select_cutrange = DraggableButton('拖动选择裁剪范围', self.Ui.label_backgroud_pic)
+        self.Ui.pushButton_select_cutrange.setObjectName(u"pushButton_select_cutrange")
+        self.Ui.pushButton_select_cutrange.setGeometry(QRect(420, 0, 379, 539))
+        self.Ui.pushButton_select_cutrange.setCursor(QCursor(Qt.OpenHandCursor))
+        self.Ui.pushButton_select_cutrange.setAcceptDrops(True)
+        self.Ui.pushButton_select_cutrange.setStyleSheet(u"background-color: rgba(200, 200, 200, 80);\n""font-size:13px;\n""font-weight:normal;""color: rgba(0, 0, 0, 255);\n"
+"border:2px solid rgba(0, 55, 255, 255);\n")
+        self.set_style()
+        self.Ui.horizontalSlider_left.valueChanged.connect(self.change_postion_left)
+        self.Ui.horizontalSlider_right.valueChanged.connect(self.change_postion_right)
+        self.Ui.pushButton_open_pic.clicked.connect(self.openimage)
+        self.Ui.pushButton_cut_close.clicked.connect(self.toCutClose)
+        self.Ui.pushButton_cut.clicked.connect(self.toCut)
+        self.Ui.pushButton_close.clicked.connect(self.close)
+        self.showimage()
+
+    def set_style(self):
+        # 控件美化 左侧栏样式
+        self.Ui.widget.setStyleSheet(
+            '''
+
+            QPushButton{
+                    color:black;
+                    font-size:15px;
+                    background-color:#CCCCCC;
+                    border-radius:20px;
+                    padding:2px 4px;
+            }
+            QPushButton:hover{
+                    color:white;
+                    background-color:#4C6EFF;
+                    font-weight:bold;
+                }
+            QPushButton:pressed{
+                    background-color:#4C6EE0;
+                    border-color:black;
+                    border-width:12px;
+                    font-weight:bold;
+            }
+            ''')
+
+
+    def toCutClose(self):
+        self.toCut()
+        self.close()
+
+    def toCut(self):
+        thumb_path = self.thumb_path
+        poster_path = self.poster_path
+        if not thumb_path or not poster_path:
+            return
+        # print('裁剪位置：', end='')
+        # print(self.c_x, self.c_y, self.c_x2, self.c_y2)
+
+        img = Image.open(thumb_path)
+        img = img.convert('RGB')
+        img_new_png = img.crop((self.c_x, self.c_y, self.c_x2, self.c_y2))
+        # fp.close()
+        try:
+            if os.path.exists(poster_path):
+                os.remove(poster_path)
+        except Exception as ex:
+            ui.addTextMain("[!] 🔴 Failed to remove old poster!\n   >>> " + str(ex))
+            return False
+        img_new_png.save(poster_path)
+        ui.addTextMain("[+] 🟢 Poster cut successfully!")
+        # 加水印
+        mark_type = ''
+        c_word = ''
+        leak = ''
+        uncensored = ''
+        config_file = 'config.ini'
+        config = RawConfigParser()
+        config.read(config_file, encoding='UTF-8')
+
+        if self.Ui.checkBox_add_sub.isChecked():
+            c_word = True
+            mark_type += 'SUB,'
+        if self.Ui.checkBox_add_leak.isChecked():
+            leak = True
+            mark_type += 'LEAK,'
+        if self.Ui.checkBox_add_uncensored.isChecked():
+            uncensored = True
+            mark_type += 'UNCENSORED,'
+                                    
+        config.set('mark', 'mark_type', mark_type)
+        config.set('mark', 'thumb_mark', 0) 
+        config.set('mark', 'poster_mark', 1) 
+
+        ui.add_mark(poster_path, thumb_path, c_word, leak, uncensored, config)
+
+        pix = QPixmap(thumb_path)
+        ui.Ui.label_thumb.setScaledContents(True)
+        ui.Ui.label_thumb.setPixmap(pix)  # 添加图标
+        pix = QPixmap(poster_path)
+        ui.Ui.label_poster.setScaledContents(True)
+        ui.Ui.label_poster.setPixmap(pix)  # 添加图标
+        ui.pushButton_main_clicked()
+        return True
+
+    def change_postion_left(self):
+        abc = self.Ui.horizontalSlider_left.value()
+        self.Ui.horizontalSlider_right.valueChanged.disconnect(self.change_postion_right)
+        self.Ui.horizontalSlider_right.setValue(10000 - abc)
+        self.Ui.horizontalSlider_right.valueChanged.connect(self.change_postion_right)
+
+        self.rect_x, self.rect_y, self.rect_w, self.rect_h = self.Ui.pushButton_select_cutrange.geometry().getRect()
+        self.rect_h_w_ratio = 1 + abc / 10000   # 更新高宽比
+        self.Ui.label_cut_ratio.setText('%.2f' % self.rect_h_w_ratio)
+
+        # 计算裁剪框大小
+        if self.pic_h_w_ratio <= 1.5: # 如果高宽比小时，固定高度，右边水平移动
+            self.rect_w1 = int (self.rect_h / self.rect_h_w_ratio)
+            self.rect_x = self.rect_x + self.rect_w - self.rect_w1
+            self.rect_w = self.rect_w1
+        else:
+            self.rect_h1 = int(self.rect_w * self.rect_h_w_ratio)
+            self.rect_y = self.rect_y + self.rect_h - self.rect_h1
+            self.rect_h = self.rect_h1
+        self.Ui.pushButton_select_cutrange.setGeometry(QRect(self.rect_x, self.rect_y, self.rect_w, self.rect_h))   # 显示裁剪框
+        self.getRealPos()  # 显示裁剪框实际位置
+
+    def change_postion_right(self):
+        abc = self.Ui.horizontalSlider_right.value()
+        self.Ui.horizontalSlider_left.valueChanged.disconnect(self.change_postion_left)
+        self.Ui.horizontalSlider_left.setValue(10000 - abc)
+        self.Ui.horizontalSlider_left.valueChanged.connect(self.change_postion_left)
+
+        self.rect_x, self.rect_y, self.rect_w, self.rect_h = self.Ui.pushButton_select_cutrange.geometry().getRect()
+        self.rect_h_w_ratio = 2 - abc / 10000   # 更新高宽比
+        self.Ui.label_cut_ratio.setText('%.2f' % self.rect_h_w_ratio)
+        # 计算裁剪框大小
+        if self.pic_h_w_ratio <= 1.5: # 如果高宽比小时，固定高度，右边水平移动
+            self.rect_w = int (self.rect_h / self.rect_h_w_ratio)
+        else:
+            self.rect_h = int(self.rect_w * self.rect_h_w_ratio)
+        self.Ui.pushButton_select_cutrange.setGeometry(QRect(self.rect_x, self.rect_y, self.rect_w, self.rect_h))   # 显示裁剪框
+        self.getRealPos()  # 显示裁剪框实际位置
+
+    # 打开图片选择框
+    def openimage(self):
+        img_path, img_type = QFileDialog.getOpenFileName(self, "打开图片", "", "*.jpg;;*.png;;All Files(*)")
+        if img_path:
+            img_name, img_ex = os.path.splitext(img_path)
+            poster_path = img_path.replace(('-fanart' + img_ex), '').replace(('-thumb' + img_ex), '').replace(('-poster' + img_ex), '').replace(img_ex, '') + '-poster' + img_ex
+            self.thumb_path = img_path
+            self.poster_path = poster_path
+            ui.thumb_path = img_path
+            ui.poster_path = poster_path
+            self.showimage(img_path, poster_path)
+
+    # 显示要裁剪的图片
+    def showimage(self, img_path='', poster_path=''):
+        self.Ui.checkBox_add_sub.setChecked(True) if '-C-' in img_path else  self.Ui.checkBox_add_sub.setChecked(False)
+        self.Ui.checkBox_add_leak.setChecked(True) if '-流出' in img_path.upper() else self.Ui.checkBox_add_leak.setChecked(False)
+        movie_number, folder_path, file_name, file_ex, leak, cd_part, c_word, sub_list, file_show_name, file_show_path = ui.getFileInfo(img_path)
+        self.Ui.checkBox_add_uncensored.setChecked(True) if is_uncensored(movie_number) else self.Ui.checkBox_add_uncensored.setChecked(False)
+        
+        self.poster_path = poster_path
+        self.thumb_path = img_path
+        if img_path:
+            pic = QPixmap(img_path)
+            self.pic_w = pic.width()
+            self.pic_h = pic.height()
+        self.Ui.label_origin_size.setText('%s, %s' % (str(self.pic_w), str(self.pic_h)))    # 显示宽高
+        self.pic_h_w_ratio = self.pic_h / self.pic_w    # 图片高宽比
+        self.rect_h_w_ratio = 536.6 / 379
+        abc = (self.rect_h_w_ratio - 1) * 10000
+        self.Ui.horizontalSlider_left.setValue(abc)
+        self.Ui.horizontalSlider_right.setValue(10000 - abc)
+        if img_path:
+            # 背景图片等比缩放并显示
+            if self.pic_h_w_ratio <= self.show_h / self.show_w: # 水平撑满
+                self.pic_new_w = self.show_w
+                self.pic_new_h = int(self.pic_new_w * self.pic_h / self.pic_w)
+            else:   # 垂直撑满
+                self.pic_new_h = self.show_h
+                self.pic_new_w = int(self.pic_new_h * self.pic_w / self.pic_h)
+            self.zomm_ratio = self.pic_w / self.pic_new_w
+            pic = QPixmap.scaled(pic, self.pic_new_w , self.pic_new_h, aspectRatioMode=Qt.KeepAspectRatio)  # 图片缩放
+            self.Ui.label_backgroud_pic.setGeometry(0, 0, self.pic_new_w , self.pic_new_h)  # 背景区域设置
+            self.Ui.label_backgroud_pic.setPixmap(pic)  # 显示图片
+        # 计算裁剪框大小
+        if self.pic_h_w_ratio <= 1.5: # 如果高宽比小时，固定高度，水平移动
+            self.rect_h = self.pic_new_h
+            self.rect_w = int (self.rect_h / self.rect_h_w_ratio)
+            self.rect_x = self.pic_new_w - self.rect_w
+            self.rect_y = 0
+        else:   # 高宽比大时，固定宽度，竖向移动
+            self.rect_w = self.pic_new_w
+            self.rect_h = int(self.rect_w * self.rect_h_w_ratio)
+            self.rect_x = 0
+            self.rect_y = int((self.pic_new_h - self.rect_h)/2)
+        self.Ui.pushButton_select_cutrange.setGeometry(QRect(self.rect_x, self.rect_y, self.rect_w, self.rect_h))   # 显示裁剪框
+        self.getRealPos()  # 显示裁剪框实际位置
+
+    # 计算在原图的裁剪位置
+    def getRealPos(self):
+        # 边界处理
+        pic_new_w = self.pic_new_w
+        pic_new_h = self.pic_new_h
+        px, py , pw, ph= self.Ui.pushButton_select_cutrange.geometry().getRect()
+        pw1 = int(pw / 2)
+        ph1 = int(ph / 2)
+        if px <= - pw1: # 左边出去一半
+            px = - pw1
+        elif px >= pic_new_w - pw1: # x右边出去一半
+            px = pic_new_w - pw1
+        if py <= - ph1: # 上面出去一半
+            py = - ph1
+        elif py >= pic_new_h - ph1: # 下面出去一半
+            py = pic_new_h - ph1
+
+        # 更新显示裁剪框
+        self.Ui.pushButton_select_cutrange.setGeometry(QRect(px, py , pw, ph))
+        # 计算实际裁剪位置
+        z_ratio = self.zomm_ratio    # 原图/显示图的比率
+        self.c_x = int(px * z_ratio) # 左上角坐标x
+        self.c_y = int(py * z_ratio) # 左上角坐标y
+        self.c_w = int(pw * z_ratio)
+        self.c_h = int(ph * z_ratio)
+        self.c_x2 = self.c_x + self.c_w    # 右下角坐标x
+        self.c_y2 = self.c_y + self.c_h    # 右下角坐标y
+        # 在原图以外的区域不裁剪
+        if self.c_x < 0:
+            self.c_w += self.c_x
+            self.c_x = 0
+        if self.c_y < 0:
+            self.c_h += self.c_y
+            self.c_y = 0
+        if self.c_x2 > self.pic_w:
+            self.c_w += self.pic_w - self.c_x2
+            self.c_x2 = self.pic_w
+        if self.c_y2 > self.pic_h:
+            self.c_h += self.pic_h - self.c_y2
+            self.c_y2 = self.pic_h
+        # 显示实际裁剪位置
+        self.Ui.label_cut_postion.setText('%s, %s, %s, %s' % (str(self.c_x), str(self.c_y), str(self.c_x2), str(self.c_y2)))
+        # print('选择位置： %s, %s, %s, %s' % (str(self.c_x), str(self.c_y), str(self.c_x2), str(self.c_y2)))
+        # 显示实际裁剪尺寸
+        self.Ui.label_cut_size.setText('%s, %s' % (str(self.c_w), str(self.c_h)))
+
+        return self.c_x, self.c_y, self.c_x2, self.c_y2
+
+    def mousePressEvent(self, e):
+        if e.button() == Qt.LeftButton:
+            self.m_drag = True
+            self.m_DragPosition = e.globalPos() - self.pos()
+            self.setCursor(QCursor(Qt.OpenHandCursor))  # 按下左键改变鼠标指针样式为手掌
+
+    def mouseReleaseEvent(self, e):
+        if e.button() == Qt.LeftButton:
+            self.m_drag = False
+            self.setCursor(QCursor(Qt.ArrowCursor))  # 释放左键改变鼠标指针样式为箭头
+
+    def mouseMoveEvent(self, e):
+        if Qt.LeftButton and self.m_drag:
+            self.move(e.globalPos() - self.m_DragPosition)
+            e.accept()
+        # print('main',e.x(),e.y())
 
 
 if __name__ == '__main__':
@@ -2492,5 +2814,10 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ui = MyMAinWindow()
     ui.show()
+    newWin2 = CutWindow()
+    # 显示窗口
+    # window.collec_btn.clicked.connect(newWin2.show)
+    # ui.Ui.label_thumb.mousePressEvent = newWin2.show
+    # ui.Ui.label_poster.mousePressEvent = newWin2.show
 
     sys.exit(app.exec_())
