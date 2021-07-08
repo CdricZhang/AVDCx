@@ -1,11 +1,17 @@
 import re
 from lxml import etree
 import json
-from Function.getHtml import get_html
-from Function.getHtml import post_html
+from Function.getHtml import get_html, post_html
 import urllib3
 urllib3.disable_warnings()
 from Getter import javdb
+from configparser import RawConfigParser
+
+def getModeLike():
+    config_file = 'config.ini'
+    config = RawConfigParser()
+    config.read(config_file, encoding='UTF-8')
+    return config.getint('common', 'main_like')
 
 def getNumber(html):
     result1 = str(html.xpath('//strong[contains(text(),"番號:")]/../span/a/text()')).strip(
@@ -259,27 +265,29 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
             year = getYear(release)
             tag = getTag(html_info)
             studio = getStudio(html_info)
-            json_data = json.loads(javdb.main(number, '', log_info))
-            # json_data={}
-            if json_data.get('title'):
-                runtime = json_data['runtime']
-                score = json_data['score']
-                series = json_data['series']
-                director = json_data['director']
-                publisher = json_data['publisher']
-                studio = json_data['studio']
-                extrafanart = json_data['extrafanart']
-                actor_photo = json_data['actor_photo'] # 暂时使用javdb的日文名字，避免emby不识别歌手头像
-                if '克破' in title or '克破' in outline:
-                    title = json_data['title']
-                    outline = json_data['outline']
-            else:
-                runtime = ''
-                score = ''
-                series = ''
-                director = ''
-                publisher = studio
-                extrafanart = ''
+            runtime = ''
+            score = ''
+            series = ''
+            director = ''
+            publisher = studio
+            extrafanart = ''
+            mode_like = getModeLike()
+
+            if mode_like or '克破' in title or '克破' in outline:
+                json_data = json.loads(javdb.main(number, '', log_info))
+                if json_data.get('title'):
+                    runtime = json_data['runtime']
+                    score = json_data['score']
+                    series = json_data['series']
+                    director = json_data['director']
+                    publisher = json_data['publisher']
+                    studio = json_data['studio']
+                    extrafanart = json_data['extrafanart']
+                    actor_photo = json_data['actor_photo'] # 暂时使用javdb的日文名字，避免emby不识别歌手头像
+                    if '克破' in title or '克破' in outline:
+                        title = json_data['title']
+                        outline = json_data['outline']
+                        
             try:
                 dic = {
                     'title': title,
