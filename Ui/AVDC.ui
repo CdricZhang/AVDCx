@@ -975,7 +975,7 @@ font-size:14px;</string>
      <widget class="QTreeWidget" name="treeWidget_number">
       <property name="geometry">
        <rect>
-        <x>569</x>
+        <x>570</x>
         <y>110</y>
         <width>200</width>
         <height>561</height>
@@ -1976,7 +1976,7 @@ background-color: rgb(246, 246, 246);</string>
         <x>0</x>
         <y>20</y>
         <width>771</width>
-        <height>591</height>
+        <height>681</height>
        </rect>
       </property>
       <property name="font">
@@ -2004,716 +2004,6 @@ background-color: rgb(246, 246, 246);</string>
        <attribute name="title">
         <string>基本设置</string>
        </attribute>
-       <widget class="QGroupBox" name="groupBox_10">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>80</y>
-          <width>741</width>
-          <height>361</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Courier</family>
-          <pointsize>13</pointsize>
-          <weight>50</weight>
-          <italic>false</italic>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">font:&quot;Courier&quot;;</string>
-        </property>
-        <property name="title">
-         <string>基本设置</string>
-        </property>
-        <widget class="QGroupBox" name="groupBox_15">
-         <property name="geometry">
-          <rect>
-           <x>380</x>
-           <y>160</y>
-           <width>341</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>739</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Courier</family>
-           <pointsize>13</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>失败后移动文件：</string>
-         </property>
-         <widget class="QWidget" name="horizontalLayoutWidget_12">
-          <property name="geometry">
-           <rect>
-            <x>120</x>
-            <y>20</y>
-            <width>211</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_14">
-           <item>
-            <widget class="QRadioButton" name="radioButton_fail_move_on">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>开</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_fail_move_off">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>关</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_3">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>90</y>
-           <width>341</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>739</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Courier</family>
-           <pointsize>13</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>调试模式：</string>
-         </property>
-         <widget class="QWidget" name="horizontalLayoutWidget_9">
-          <property name="geometry">
-           <rect>
-            <x>120</x>
-            <y>20</y>
-            <width>211</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_11">
-           <item>
-            <widget class="QRadioButton" name="radioButton_debug_on">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>开</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_debug_off">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>关</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_17">
-         <property name="geometry">
-          <rect>
-           <x>380</x>
-           <y>90</y>
-           <width>341</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>739</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Courier</family>
-           <pointsize>13</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>保存日志：</string>
-         </property>
-         <widget class="QWidget" name="horizontalLayoutWidget_11">
-          <property name="geometry">
-           <rect>
-            <x>120</x>
-            <y>20</y>
-            <width>211</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_13">
-           <item>
-            <widget class="QRadioButton" name="radioButton_log_on">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>开</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_log_off">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>关</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_2">
-         <property name="geometry">
-          <rect>
-           <x>380</x>
-           <y>20</y>
-           <width>341</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>739</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Courier</family>
-           <pointsize>13</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>软链接模式：</string>
-         </property>
-         <widget class="QWidget" name="horizontalLayoutWidget_8">
-          <property name="geometry">
-           <rect>
-            <x>120</x>
-            <y>20</y>
-            <width>211</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_10">
-           <item>
-            <widget class="QRadioButton" name="radioButton_soft_on">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>开</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_soft_off">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>关</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_4">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>160</y>
-           <width>341</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>739</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Courier</family>
-           <pointsize>13</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>检测更新：</string>
-         </property>
-         <widget class="QWidget" name="horizontalLayoutWidget_10">
-          <property name="geometry">
-           <rect>
-            <x>120</x>
-            <y>20</y>
-            <width>211</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_12">
-           <item>
-            <widget class="QRadioButton" name="radioButton_update_on">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>开</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_update_off">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>关</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-        <widget class="QGroupBox" name="groupBox">
-         <property name="geometry">
-          <rect>
-           <x>11</x>
-           <y>20</y>
-           <width>341</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>739</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Courier</family>
-           <pointsize>13</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>模式：</string>
-         </property>
-         <widget class="QWidget" name="horizontalLayoutWidget_7">
-          <property name="geometry">
-           <rect>
-            <x>120</x>
-            <y>20</y>
-            <width>211</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_9">
-           <item>
-            <widget class="QRadioButton" name="radioButton_common">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>刮削模式</string>
-             </property>
-             <property name="autoRepeatDelay">
-              <number>300</number>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_sort">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>整理模式</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_24">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>290</y>
-           <width>711</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>500</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Courier</family>
-           <pointsize>13</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>下载文件</string>
-         </property>
-         <widget class="QWidget" name="horizontalLayoutWidget_14">
-          <property name="geometry">
-           <rect>
-            <x>120</x>
-            <y>20</y>
-            <width>590</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_16">
-           <item>
-            <widget class="QCheckBox" name="checkBox_download_nfo">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>nfo</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="checkBox_download_poster">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>poster</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="checkBox_download_thumb">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>thumb</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="checkBox_download_fanart">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>fanart</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="checkBox_download_extrafanart">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>extrafanart</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_25">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>230</y>
-           <width>711</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>739</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Courier</family>
-           <pointsize>13</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>翻译语言</string>
-         </property>
-         <widget class="QWidget" name="horizontalLayoutWidget_15">
-          <property name="geometry">
-           <rect>
-            <x>120</x>
-            <y>20</y>
-            <width>581</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_18">
-           <item>
-            <widget class="QRadioButton" name="radioButton_zh_cn">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>简体中文</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_zh_tw">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>繁体中文</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_ja">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-               <pointsize>13</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>日语</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-       </widget>
        <widget class="QGroupBox" name="groupBox_11">
         <property name="geometry">
          <rect>
@@ -2838,6 +2128,821 @@ background-color: rgb(246, 246, 246);</string>
          </item>
         </widget>
        </widget>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>739</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>739</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>工作模式：</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_7">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>20</y>
+           <width>651</width>
+           <height>36</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <item>
+           <widget class="QRadioButton" name="radioButton_common">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>刮削模式</string>
+            </property>
+            <property name="autoRepeatDelay">
+             <number>300</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_sort">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>整理模式</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QLabel" name="label_11">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>50</y>
+           <width>211</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(125, 128, 128);
+font-size: 12pt;</string>
+         </property>
+         <property name="text">
+          <string>刮削信息，成功后移动文件</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_15">
+         <property name="geometry">
+          <rect>
+           <x>420</x>
+           <y>50</y>
+           <width>281</width>
+           <height>25</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(125, 128, 128);
+font-size: 12pt;</string>
+         </property>
+         <property name="text">
+          <string>不刮削信息，仅移动所有视频到媒体目录</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_15">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>170</y>
+          <width>351</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>739</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>失败后移动文件：</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_12">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>20</y>
+           <width>211</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_14">
+          <item>
+           <widget class="QRadioButton" name="radioButton_fail_move_on">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>开</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_fail_move_off">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>关</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_24">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>450</y>
+          <width>741</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>500</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>下载文件</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_14">
+         <property name="geometry">
+          <rect>
+           <x>69</x>
+           <y>20</y>
+           <width>641</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_16">
+          <item>
+           <widget class="QCheckBox" name="checkBox_download_nfo">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>nfo</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_download_poster">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>poster</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_download_thumb">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>thumb</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_download_fanart">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>fanart</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_download_extrafanart">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>extrafanart</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_25">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>380</y>
+          <width>739</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>739</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>翻译语言</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_15">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>20</y>
+           <width>651</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_18">
+          <item>
+           <widget class="QRadioButton" name="radioButton_zh_cn">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>简体中文</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_zh_tw">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>繁体中文</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_ja">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>日语</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_17">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>310</y>
+          <width>351</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>739</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>保存日志：</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_11">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>20</y>
+           <width>211</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_13">
+          <item>
+           <widget class="QRadioButton" name="radioButton_log_on">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>开</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_log_off">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>关</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>170</y>
+          <width>351</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>739</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>刮削偏好：</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_13">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>20</y>
+           <width>251</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_15">
+          <item>
+           <widget class="QRadioButton" name="radioButton_like_speed">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>快速</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_like_more">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>字段全</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>240</y>
+          <width>351</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>739</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>检测更新：</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_10">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>20</y>
+           <width>251</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_12">
+          <item>
+           <widget class="QRadioButton" name="radioButton_update_on">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>开</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_update_off">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>关</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>310</y>
+          <width>351</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>739</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>调试模式：</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_9">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>20</y>
+           <width>251</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <item>
+           <widget class="QRadioButton" name="radioButton_debug_on">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>开</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_debug_off">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>关</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>240</y>
+          <width>351</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>739</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>软链接模式：</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_8">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>20</y>
+           <width>211</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <item>
+           <widget class="QRadioButton" name="radioButton_soft_on">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>开</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_soft_off">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>关</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab2">
        <attribute name="title">
@@ -2932,6 +3037,94 @@ background-color: rgb(246, 246, 246);</string>
 </string>
             </property>
            </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_51">
+            <property name="minimumSize">
+             <size>
+              <width>170</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::RightToLeft</enum>
+            </property>
+            <property name="text">
+             <string>有字幕时目录名称后添加-C：</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_21">
+            <item>
+             <widget class="QRadioButton" name="radioButton_foldername_C_on">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>180</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>开</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_foldername_C_off">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>1800</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>关</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="label_44">
@@ -3039,94 +3232,6 @@ background-color: rgb(246, 246, 246);</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_51">
-            <property name="minimumSize">
-             <size>
-              <width>170</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Courier</family>
-              <pointsize>13</pointsize>
-              <weight>50</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::RightToLeft</enum>
-            </property>
-            <property name="text">
-             <string>有字幕时目录名称后添加-C：</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <layout class="QHBoxLayout" name="horizontalLayout_21">
-            <item>
-             <widget class="QRadioButton" name="radioButton_foldername_C_on">
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>180</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>开</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="radioButton_foldername_C_off">
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>1800</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>关</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
          </layout>
         </widget>
        </widget>
@@ -3160,7 +3265,7 @@ background-color: rgb(246, 246, 246);</string>
            <x>10</x>
            <y>60</y>
            <width>721</width>
-           <height>428</height>
+           <height>291</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="formLayout_2">
@@ -4152,7 +4257,7 @@ font: &quot;Courier&quot;;</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>150</y>
+          <y>70</y>
           <width>741</width>
           <height>71</height>
          </rect>
@@ -4273,7 +4378,7 @@ font: &quot;Courier&quot;;</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>240</y>
+          <y>150</y>
           <width>741</width>
           <height>71</height>
          </rect>
@@ -4291,7 +4396,7 @@ font: &quot;Courier&quot;;</string>
          <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="title">
-         <string>首个水印位置</string>
+         <string>首个水印位置（有多个水印时，将从首个水印，顺时针添加）</string>
         </property>
         <widget class="QWidget" name="horizontalLayoutWidget_2">
          <property name="geometry">
@@ -4422,7 +4527,7 @@ font: &quot;Courier&quot;;</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>330</y>
+          <y>230</y>
           <width>741</width>
           <height>71</height>
          </rect>
@@ -4522,7 +4627,7 @@ font: &quot;Courier&quot;;</string>
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>741</width>
+          <width>361</width>
           <height>51</height>
          </rect>
         </property>
@@ -4546,8 +4651,8 @@ font: &quot;Courier&quot;;</string>
           <rect>
            <x>150</x>
            <y>10</y>
-           <width>591</width>
-           <height>41</height>
+           <width>197</width>
+           <height>43</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -4561,8 +4666,8 @@ font: &quot;Courier&quot;;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>150</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="font">
@@ -4589,8 +4694,8 @@ font: &quot;Courier&quot;;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>150</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="font">
@@ -4613,9 +4718,9 @@ font: &quot;Courier&quot;;</string>
        <widget class="QGroupBox" name="groupBox_22">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>80</y>
-          <width>741</width>
+          <x>390</x>
+          <y>10</y>
+          <width>361</width>
           <height>51</height>
          </rect>
         </property>
@@ -4639,7 +4744,7 @@ font: &quot;Courier&quot;;</string>
           <rect>
            <x>150</x>
            <y>10</y>
-           <width>591</width>
+           <width>201</width>
            <height>41</height>
           </rect>
          </property>
@@ -4654,8 +4759,8 @@ font: &quot;Courier&quot;;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>150</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="font">
@@ -4682,8 +4787,8 @@ font: &quot;Courier&quot;;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>150</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="font">
@@ -4706,10 +4811,10 @@ font: &quot;Courier&quot;;</string>
        <widget class="QLabel" name="label_9">
         <property name="geometry">
          <rect>
-          <x>120</x>
-          <y>420</y>
-          <width>591</width>
-          <height>61</height>
+          <x>550</x>
+          <y>430</y>
+          <width>171</width>
+          <height>101</height>
          </rect>
         </property>
         <property name="font">
@@ -4725,10 +4830,131 @@ font: &quot;Courier&quot;;</string>
          <string notr="true">font:&quot;Courier&quot;;</string>
         </property>
         <property name="text">
-         <string>说明：
-    1、多个水印时,从首个水印,顺时针添加.
-    2、水印文件可自己替换,分辨率要求长宽 500x300,背景透明，png格式.</string>
+         <string>水印文件可自己替换
+分辨率要求长宽 500x300,
+背景透明，png格式.</string>
         </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_23">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>310</y>
+          <width>741</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font:&quot;Courier&quot;;</string>
+        </property>
+        <property name="title">
+         <string>水印样式（开发中！）</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_16">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>20</y>
+           <width>591</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_19">
+          <item>
+           <widget class="QRadioButton" name="radioButton_top_left_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>默认样式</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_bottom_left_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>样式2</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_top_right_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>自定义</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="tab5">
