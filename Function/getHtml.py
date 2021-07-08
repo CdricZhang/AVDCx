@@ -54,9 +54,10 @@ def get_html(url, cookies=None):
         proxies = get_proxies(proxy_type, proxy)
     except Exception as ex:
         ex = 'Error in get_htm1l, Proxy config error! Please check the config. url: %s Error info: %s ' % (url, str(ex))
-        print(ex)
+        print(str(ex))
         return False, str(ex)
     i = 0
+    ex1 = 'Error in get_htm3l url: ' + url
     while i < retry_count:
         try:
             headers = {
@@ -66,10 +67,9 @@ def get_html(url, cookies=None):
             return True, getweb.text
         except Exception as ex:
             i += 1
-            ex = 'Error in get_htm2l, Connect Failed! Please check your Proxy or Network! url: %s Error info: %s ' % (url, str(ex))
-            print(ex)
+            ex1 = 'Error in get_htm2l, Connect Failed! Please check your Proxy or Network! url: %s Error info: %s ' % (url, str(ex))
             print('[-]Connect retry ' + str(i) + '/' + str(retry_count))
-    return False, str(ex)
+    return False, str(ex1)
 
 
 def post_html(url: str, query: dict, headers={}):

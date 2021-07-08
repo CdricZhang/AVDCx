@@ -136,7 +136,7 @@ def getDataFromJSON(file_number, config, mode, appoint_url, translate_language):
     if mode == 1:  # 从全部网站刮削
           # =======================================================================无码抓取:111111-111,n1111,HEYZO-1111,SMD-115
         if isuncensored:
-            json_data = json.loads(airav.main(file_number, appoint_url,translate_language))
+            json_data = json.loads(airav.main(file_number, appoint_url, translate_language))
             if getDataState(json_data) == 0:
                 log_info = json_data['log_info']
                 json_data = json.loads(javbus.main_uncensored(file_number, appoint_url, log_info))
@@ -326,6 +326,7 @@ def save_config(json_config):
         print("[common]", file=code)
         print("# modified time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n", file=code)
         print("main_mode = " + str(json_config['main_mode']), file=code)
+        print("main_like = " + str(json_config['main_like']), file=code)
         print("failed_file_move = " + str(json_config['failed_file_move']), file=code)
         print("soft_link = " + str(json_config['soft_link']), file=code)
         print("show_poster = " + str(json_config['show_poster']), file=code)
