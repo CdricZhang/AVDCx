@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCUHXEEg.ui'
+## Form generated from reading UI file 'AVDCIIitUg.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -596,7 +596,7 @@ class Ui_AVDV(object):
 
         self.label_11 = QLabel(self.groupBox)
         self.label_11.setObjectName(u"label_11")
-        self.label_11.setGeometry(QRect(90, 50, 211, 25))
+        self.label_11.setGeometry(QRect(90, 50, 301, 25))
         font5 = QFont()
         font5.setFamily(u"Courier")
         font5.setPointSize(12)
@@ -604,14 +604,12 @@ class Ui_AVDV(object):
         font5.setItalic(False)
         font5.setWeight(50)
         self.label_11.setFont(font5)
-        self.label_11.setStyleSheet(u"color: rgb(125, 128, 128);\n"
-"font-size: 12pt;")
+        self.label_11.setStyleSheet(u"color: rgb(125, 128, 128);")
         self.label_15 = QLabel(self.groupBox)
         self.label_15.setObjectName(u"label_15")
-        self.label_15.setGeometry(QRect(420, 50, 281, 25))
+        self.label_15.setGeometry(QRect(420, 50, 311, 25))
         self.label_15.setFont(font5)
-        self.label_15.setStyleSheet(u"color: rgb(125, 128, 128);\n"
-"font-size: 12pt;")
+        self.label_15.setStyleSheet(u"color: rgb(125, 128, 128);")
         self.groupBox_15 = QGroupBox(self.tab1)
         self.groupBox_15.setObjectName(u"groupBox_15")
         self.groupBox_15.setGeometry(QRect(400, 170, 351, 61))
@@ -832,12 +830,12 @@ class Ui_AVDV(object):
         self.tab2.setObjectName(u"tab2")
         self.groupBox_8 = QGroupBox(self.tab2)
         self.groupBox_8.setObjectName(u"groupBox_8")
-        self.groupBox_8.setGeometry(QRect(10, 10, 741, 191))
+        self.groupBox_8.setGeometry(QRect(10, 10, 741, 211))
         self.groupBox_8.setFont(font3)
         self.groupBox_8.setStyleSheet(u"font:\"Courier\";")
         self.formLayoutWidget_4 = QWidget(self.groupBox_8)
         self.formLayoutWidget_4.setObjectName(u"formLayoutWidget_4")
-        self.formLayoutWidget_4.setGeometry(QRect(10, 30, 721, 161))
+        self.formLayoutWidget_4.setGeometry(QRect(10, 30, 721, 151))
         self.formLayout_6 = QFormLayout(self.formLayoutWidget_4)
         self.formLayout_6.setObjectName(u"formLayout_6")
         self.formLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -931,14 +929,18 @@ class Ui_AVDV(object):
 
         self.formLayout_6.setWidget(3, QFormLayout.FieldRole, self.lineEdit_local_name)
 
+        self.label_20 = QLabel(self.groupBox_8)
+        self.label_20.setObjectName(u"label_20")
+        self.label_20.setGeometry(QRect(0, 180, 741, 20))
+        self.label_20.setFont(font3)
         self.groupBox_16 = QGroupBox(self.tab2)
         self.groupBox_16.setObjectName(u"groupBox_16")
-        self.groupBox_16.setGeometry(QRect(10, 210, 741, 351))
+        self.groupBox_16.setGeometry(QRect(10, 230, 741, 321))
         self.groupBox_16.setFont(font3)
         self.groupBox_16.setStyleSheet(u"font:\"Courier\";")
         self.formLayoutWidget_5 = QWidget(self.groupBox_16)
         self.formLayoutWidget_5.setObjectName(u"formLayoutWidget_5")
-        self.formLayoutWidget_5.setGeometry(QRect(10, 60, 721, 291))
+        self.formLayoutWidget_5.setGeometry(QRect(10, 60, 721, 261))
         self.formLayout_2 = QFormLayout(self.formLayoutWidget_5)
         self.formLayout_2.setObjectName(u"formLayout_2")
         self.formLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -1086,7 +1088,7 @@ class Ui_AVDV(object):
 
         self.label_7 = QLabel(self.groupBox_16)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(180, 30, 501, 20))
+        self.label_7.setGeometry(QRect(100, 30, 621, 20))
         self.label_7.setFont(font3)
         self.tabWidget.addTab(self.tab2, "")
         self.tab3 = QWidget()
@@ -1946,8 +1948,8 @@ class Ui_AVDV(object):
         self.groupBox.setTitle(QCoreApplication.translate("AVDV", u"\u5de5\u4f5c\u6a21\u5f0f\uff1a", None))
         self.radioButton_common.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u6a21\u5f0f", None))
         self.radioButton_sort.setText(QCoreApplication.translate("AVDV", u"\u6574\u7406\u6a21\u5f0f", None))
-        self.label_11.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u4fe1\u606f\uff0c\u6210\u529f\u540e\u79fb\u52a8\u6587\u4ef6", None))
-        self.label_15.setText(QCoreApplication.translate("AVDV", u"\u4e0d\u522e\u524a\u4fe1\u606f\uff0c\u4ec5\u79fb\u52a8\u6240\u6709\u89c6\u9891\u5230\u5a92\u4f53\u76ee\u5f55", None))
+        self.label_11.setText(QCoreApplication.translate("AVDV", u"\u6267\u884c\u522e\u524a\u4fe1\u606f\u3001\u4e0b\u8f7d\u3001\u7ffb\u8bd1\u3001\u79fb\u52a8\u7b49\u5168\u90e8\u64cd\u4f5c", None))
+        self.label_15.setText(QCoreApplication.translate("AVDV", u"\u4ec5\u6267\u884c\u522e\u524a\u4fe1\u606f\uff0c\u7136\u540e\u91cd\u547d\u540d\u89c6\u9891\u5e76\u79fb\u52a8\u5230\u6f14\u5458\u76ee\u5f55\u4e0b", None))
         self.groupBox_15.setTitle(QCoreApplication.translate("AVDV", u"\u5931\u8d25\u540e\u79fb\u52a8\u6587\u4ef6\uff1a", None))
         self.radioButton_fail_move_on.setText(QCoreApplication.translate("AVDV", u"\u5f00", None))
         self.radioButton_fail_move_off.setText(QCoreApplication.translate("AVDV", u"\u5173", None))
@@ -1987,15 +1989,16 @@ class Ui_AVDV(object):
         self.radioButton_foldername_C_off.setText(QCoreApplication.translate("AVDV", u"\u5173", None))
         self.label_44.setText(QCoreApplication.translate("AVDV", u"   \u89c6\u9891\u6807\u9898(\u5a92\u4f53\u5e93\u4e2d)\uff1a", None))
         self.label_45.setText(QCoreApplication.translate("AVDV", u"   \u89c6\u9891\u6807\u9898(\u672c\u5730\u6587\u4ef6)\uff1a", None))
+        self.label_20.setText(QCoreApplication.translate("AVDV", u"\u547d\u540d\u5b57\u6bb5\u6709\uff1atitle, actor, number, studio, publisher, year, runtime, director, release, series", None))
         self.groupBox_16.setTitle(QCoreApplication.translate("AVDV", u"\u76ee\u5f55\u8bbe\u7f6e", None))
-        self.label_49.setText(QCoreApplication.translate("AVDV", u"   \u89c6\u9891\u76ee\u5f55\uff1a", None))
+        self.label_49.setText(QCoreApplication.translate("AVDV", u"   \u5f85\u522e\u524a\u89c6\u9891\u76ee\u5f55\uff1a", None))
         self.label_47.setText(QCoreApplication.translate("AVDV", u"   \u6210\u529f\u8f93\u51fa\u76ee\u5f55\uff1a", None))
         self.label_46.setText(QCoreApplication.translate("AVDV", u"   \u5931\u8d25\u8f93\u51fa\u76ee\u5f55\uff1a", None))
         self.label_48.setText(QCoreApplication.translate("AVDV", u"   \u6392\u9664\u76ee\u5f55\uff1a", None))
         self.label_40.setText(QCoreApplication.translate("AVDV", u"   \u89c6\u9891\u7c7b\u578b\uff1a", None))
         self.label_42.setText(QCoreApplication.translate("AVDV", u"   \u5b57\u5e55\u7c7b\u578b\uff1a", None))
         self.label_50.setText(QCoreApplication.translate("AVDV", u"   \u5267\u7167\u76ee\u5f55\uff1a", None))
-        self.label_7.setText(QCoreApplication.translate("AVDV", u"\u6ce8\u610f\uff1a\u2018\u6210\u529f\u8f93\u51fa\u76ee\u5f55\u2019\u3001\u2018\u5931\u8d25\u8f93\u51fa\u76ee\u5f55\u2019\u3001\u2018\u6392\u9664\u76ee\u5f55\u2019\u5e94\u4e3a\u2018\u89c6\u9891\u76ee\u5f55\u2019\u4e0b\u7684\u76ee\u5f55\u3002", None))
+        self.label_7.setText(QCoreApplication.translate("AVDV", u"\u63d0\u793a\uff1a1\u3001\u300c\u6210\u529f/\u5931\u8d25\u8f93\u51fa\u76ee\u5f55\u300d\u53ef\u4ee5\u4e0d\u5728\u89c6\u9891\u76ee\u5f55\u4e0b\u30022\u3001\u300c\u6392\u9664\u76ee\u5f55\u300d\u53ef\u4ee5\u591a\u4e2a\uff0c\u4ee5\u9017\u53f7\u5206\u5272", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab2), QCoreApplication.translate("AVDV", u"\u76ee\u5f55\u8bbe\u7f6e", None))
         self.groupBox_9.setTitle(QCoreApplication.translate("AVDV", u"\u4ee3\u7406\u8bbe\u7f6e", None))
         self.label_19.setText(QCoreApplication.translate("AVDV", u"   \u4ee3\u7406\uff1a", None))

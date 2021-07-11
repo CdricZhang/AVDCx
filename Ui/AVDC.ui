@@ -2213,7 +2213,7 @@ background-color: rgb(246, 246, 246);</string>
           <rect>
            <x>90</x>
            <y>50</y>
-           <width>211</width>
+           <width>301</width>
            <height>25</height>
           </rect>
          </property>
@@ -2227,11 +2227,10 @@ background-color: rgb(246, 246, 246);</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(125, 128, 128);
-font-size: 12pt;</string>
+          <string notr="true">color: rgb(125, 128, 128);</string>
          </property>
          <property name="text">
-          <string>刮削信息，成功后移动文件</string>
+          <string>执行刮削信息、下载、翻译、移动等全部操作</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_15">
@@ -2239,7 +2238,7 @@ font-size: 12pt;</string>
           <rect>
            <x>420</x>
            <y>50</y>
-           <width>281</width>
+           <width>311</width>
            <height>25</height>
           </rect>
          </property>
@@ -2253,11 +2252,10 @@ font-size: 12pt;</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(125, 128, 128);
-font-size: 12pt;</string>
+          <string notr="true">color: rgb(125, 128, 128);</string>
          </property>
          <property name="text">
-          <string>不刮削信息，仅移动所有视频到媒体目录</string>
+          <string>仅执行刮削信息，然后重命名视频并移动到演员目录下</string>
          </property>
         </widget>
        </widget>
@@ -2954,7 +2952,7 @@ font-size: 12pt;</string>
           <x>10</x>
           <y>10</y>
           <width>741</width>
-          <height>191</height>
+          <height>211</height>
          </rect>
         </property>
         <property name="font">
@@ -2978,7 +2976,7 @@ font-size: 12pt;</string>
            <x>10</x>
            <y>30</y>
            <width>721</width>
-           <height>161</height>
+           <height>151</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="formLayout_6">
@@ -3234,14 +3232,36 @@ font-size: 12pt;</string>
           </item>
          </layout>
         </widget>
+        <widget class="QLabel" name="label_20">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>180</y>
+           <width>741</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>命名字段有：title, actor, number, studio, publisher, year, runtime, director, release, series</string>
+         </property>
+        </widget>
        </widget>
        <widget class="QGroupBox" name="groupBox_16">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>210</y>
+          <y>230</y>
           <width>741</width>
-          <height>351</height>
+          <height>321</height>
          </rect>
         </property>
         <property name="font">
@@ -3265,7 +3285,7 @@ font-size: 12pt;</string>
            <x>10</x>
            <y>60</y>
            <width>721</width>
-           <height>291</height>
+           <height>261</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="formLayout_2">
@@ -3290,7 +3310,7 @@ font-size: 12pt;</string>
              <enum>Qt::RightToLeft</enum>
             </property>
             <property name="text">
-             <string>   视频目录：</string>
+             <string>   待刮削视频目录：</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -3651,9 +3671,9 @@ font-size: 12pt;</string>
         <widget class="QLabel" name="label_7">
          <property name="geometry">
           <rect>
-           <x>180</x>
+           <x>100</x>
            <y>30</y>
-           <width>501</width>
+           <width>621</width>
            <height>20</height>
           </rect>
          </property>
@@ -3667,7 +3687,7 @@ font-size: 12pt;</string>
           </font>
          </property>
          <property name="text">
-          <string>注意：‘成功输出目录’、‘失败输出目录’、‘排除目录’应为‘视频目录’下的目录。</string>
+          <string>提示：1、「成功/失败输出目录」可以不在视频目录下。2、「排除目录」可以多个，以逗号分割</string>
          </property>
         </widget>
        </widget>
