@@ -5,11 +5,7 @@ from bs4 import BeautifulSoup, SoupStrainer
 from lxml import etree
 import json
 import cloudscraper
-
-from requests.models import stream_decode_response_unicode
-from Function.getHtml import get_html
-from Function.getHtml import post_html
-from Function.getHtml import get_cookies
+from Function.getHtml import get_html, post_html, get_cookies, get_proxies, get_proxy
 
 
 def getNumber(html):
@@ -36,7 +32,7 @@ def getActor(html):
     return result1 + result2
 
 
-def getActorPhoto(html, log_info): 
+def getActorPhoto(html, log_info, cookies, proxies, timeout): 
     actor_list = html.xpath('//strong[@class="symbol female"][last()]/preceding-sibling::a/text()')
     actor_url_list = html.xpath('//strong[@class="symbol female"][last()]/preceding-sibling::a/@href')
     actor_count = len(actor_list)
@@ -52,7 +48,7 @@ def getActorPhoto(html, log_info):
             }
         )  # returns a CloudScraper instance
         try:
-            html_search = scraper.get(actor_url).text
+            html_search = scraper.get(actor_url, cookies=cookies, proxies=proxies, timeout=timeout).text
         except Exception as error_info:
             log_info += '   >>> JAVDB-请求歌手头像：出错！错误信息：%s\n' % str(error_info)
             error_type = 'timeout'
@@ -171,6 +167,9 @@ def getOutlineScore(number):  # 获取简介
 
 
 def main(number, appoint_url='', log_info='', isuncensored=False):
+    cookies = get_cookies('javdb')
+    proxies = get_proxies()
+    proxy_type, proxy, timeout, retry_count = get_proxy()
     log_info += '   >>> JAVDB-开始使用 javdb 进行刮削\n'
     real_url = appoint_url
     title = ''
@@ -178,7 +177,6 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
     cover_small = ''
     error_type = ''
     error_info = ''
-    cookies = get_cookies()['javdb']
     url_search = ''
     try: # 捕获主动抛出的异常
         if not real_url:
@@ -194,12 +192,16 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 }
             )  # returns a CloudScraper instance
             try:
-                html_search = scraper.get(url_search).text.replace(u'\xa0', u' ')
+                html_search = scraper.get(url_search, cookies=cookies, proxies=proxies, timeout=timeout).text
                 # result, html_search = get_html('https://javdb9.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
             except Exception as error_info:
                 log_info += '   >>> JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
                 raise Exception('JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info))
+            if "The owner of this website has banned your access based on your browser's behaving" in html_search:
+                log_info += '   >>> JAVDB-请求搜索页：%s\n' % html_search
+                error_type = 'SearchCloudFlare'
+                raise Exception('JAVDB-请求搜索页：基於你的異常行為，管理員禁止了你的訪問！')
             html = etree.fromstring(html_search, etree.HTMLParser())
             # print(etree.tostring(html,encoding="utf-8").decode())
             html_title = str(html.xpath('//title/text()')).strip(" ['']")
@@ -220,7 +222,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
         if real_url:
             scraper = cloudscraper.CloudScraper()
             try:
-                html_info = scraper.get(real_url, cookies=cookies).text
+                html_info = scraper.get(real_url, cookies=cookies, proxies=proxies, timeout=timeout).text
             except Exception as error_info:
                 log_info += '   >>> JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
@@ -234,7 +236,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 raise Exception('JAVDB-请求详情页：被 5 秒盾拦截！]')
             if '登入' in html_title or 'Sign in' in html_title:
                 log_info += '   >>> JAVDB-该番号内容需要登录查看！\n'
-                if cookies['Cookie']:
+                if cookies:
                     log_info += '   >>> JAVDB-Cookie 已失效，请到设置中更新 Cookie！\n'
                 else:
                     log_info += '   >>> JAVDB-请到【设置】-【网络设置】中添加 javdb Cookie！\n'
@@ -292,7 +294,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                     'source': 'javdb.main',
                     'website': str(real_url).replace('?locale=zh', '').strip('[]'),
                     'search_url': str(url_search),
-                    'actor_photo': getActorPhoto(html_detail, log_info),
+                    'actor_photo': getActorPhoto(html_detail, log_info, cookies, proxies, timeout),
                     'cover': str(cover_url),
                     'cover_small': '',
                     'extrafanart': getExtraFanart(html_detail),
@@ -322,6 +324,9 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
 
 
 def main_us(number, appoint_url='', log_info='', isuncensored=True):
+    cookies = get_cookies('javdb')
+    proxies = get_proxies()
+    proxy_type, proxy, timeout, retry_count = get_proxy()
     log_info += '   >>> JAVDB-开始使用 javdb 进行刮削\n'
     real_url = appoint_url
     title = ''
@@ -329,7 +334,6 @@ def main_us(number, appoint_url='', log_info='', isuncensored=True):
     cover_small = ''
     error_type = ''
     error_info = ''
-    cookies = get_cookies()['javdb']
     try: # 捕获主动抛出的异常
         if not real_url:
             # 通过搜索获取real_url
@@ -342,9 +346,10 @@ def main_us(number, appoint_url='', log_info='', isuncensored=True):
                     'platform': 'windows',
                     'mobile': False
                 }
+
             )  # returns a CloudScraper instance
             try:
-                html_search = scraper.get(url_search).text.replace(u'\xa0', u' ')
+                html_search = scraper.get(url_search, cookies=cookies, proxies=proxies).text.replace(u'\xa0', u' ')
                 # result, html_search = get_html('https://javdb9.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
             except Exception as error_info:
                 log_info += '   >>> JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info)
@@ -370,7 +375,7 @@ def main_us(number, appoint_url='', log_info='', isuncensored=True):
         if real_url:
             scraper = cloudscraper.CloudScraper()
             try:
-                html_info = scraper.get(real_url, cookies=cookies).text
+                html_info = scraper.get(real_url, cookies=cookies, proxies=proxies, timeout=timeout).text
             except Exception as error_info:
                 log_info += '   >>> JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
@@ -439,7 +444,7 @@ def main_us(number, appoint_url='', log_info='', isuncensored=True):
                     'source': 'javdb.us',
                     'website': str(real_url).replace('?locale=zh', '').strip('[]'),
                     'search_url': str(url_search),
-                    'actor_photo': getActorPhoto(html_detail, log_info),
+                    'actor_photo': getActorPhoto(html_detail, log_info, cookies, proxies, timeout),
                     'cover': str(cover_url),
                     'cover_small': '',
                     'extrafanart': getExtraFanart(html_detail),

@@ -173,9 +173,9 @@ def main(number, appoint_url='', log_info=''):
             log_info += '   >>> MGSTAGE-数据获取成功！\n'
             dic['log_info'] = log_info
         except Exception as error_info:
-                log_info += '   >>> MGSTAGE-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
-                error_info = str(error_info)
-                raise Exception(log_info)
+            log_info += '   >>> MGSTAGE-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
+            error_info = str(error_info)
+            raise Exception(log_info)
 
     except Exception as error_info:
         dic = {

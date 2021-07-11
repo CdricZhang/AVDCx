@@ -69,7 +69,7 @@ def main(number, appoint_url='', log_info=''):
             # ========================================================================搜索番号
             result, html_search = get_html(url_search)
             if not result:
-                log_info += '   >>> FC2HUB-请求搜索页：错误！信息：' + html_search
+                log_info += '   >>> FC2HUB-请求搜索页：错误！信息：%s\n' % html_search
                 error_type = 'timeout'
                 raise Exception('>>> FC2HUB-请求搜索页：错误！信息：' + html_search)
             html = etree.fromstring(html_search, etree.HTMLParser())

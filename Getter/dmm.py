@@ -5,7 +5,6 @@ from lxml import etree
 import json
 from Function.getHtml import get_html, get_cookies
 
-
 def getTitle(html):
     result = html.xpath('//img[@class="tdmm"]/@alt')
     if result:
@@ -112,6 +111,7 @@ def getScore(html):
     return ''
 
 def main(number, appoint_url='', log_info=''):
+    cookies = get_cookies('dmm')
     log_info += '   >>> DMM-开始使用 dmm 进行刮削\n'
     title = ''
     cover_url = ''
@@ -123,7 +123,6 @@ def main(number, appoint_url='', log_info=''):
     url = 'https://www.dmm.co.jp/search/=/searchstr=' + new_number
     num1 = '/cid=' + new_number + '/'
     num2 = new_number + '/'
-    cookies = get_cookies()['dmm']
     try:
         if appoint_url: # 如果传入地址，则使用传入的地址
             url = appoint_url
@@ -140,7 +139,7 @@ def main(number, appoint_url='', log_info=''):
             raise Exception('DMM-地域限制, 请使用日本节点访问！')
 
         if re.findall('ageCheck', htmlcode):   # 如果页面有ageCheck，表示无cookie或cookie失效，需要进行年龄认证
-            if cookies['Cookie']:
+            if cookies:
                 log_info += '   >>> DMM-Cookie 已失效，请到设置中更新 Cookie！\n'
             else:
                 log_info += '   >>> DMM-请到【设置】-【网络设置】中添加 dmm Cookie！\n'
