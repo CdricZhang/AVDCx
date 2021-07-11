@@ -51,6 +51,7 @@ def movie_lists(escape_folder, movie_type, movie_path):
     for root, dirs, files in os.walk(file_root):
         if escape_folder != '':
             flag_escape = 0
+            root = root.replace('\\', '/') + '/'
             for folder in escape_folder:
                 if folder in root:
                     flag_escape = 1
@@ -63,7 +64,7 @@ def movie_lists(escape_folder, movie_type, movie_path):
             if re.search(r'^\..+', file_name):
                 continue
             if file_type_current in file_type:
-                path = root + '/' + f
+                path = os.path.join(root, f)
                 # path = path.replace(file_root, '.')
                 path = path.replace("\\\\", "/").replace("\\", "/")
                 total.append(path)
@@ -129,11 +130,11 @@ def getNumber(filepath, escape_string):
 
 
 # ========================================================================根据番号获取数据
-def getDataFromJSON(file_number, config, mode, appoint_url, translate_language):  # 从JSON返回元数据
+def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_language):  # 从JSON返回元数据
     # ================================================网站规则添加开始================================================
     isuncensored = is_uncensored(file_number)
     json_data = {}
-    if mode == 1:  # 从全部网站刮削
+    if website_mode == 1:  # 从全部网站刮削
           # =======================================================================无码抓取:111111-111,n1111,HEYZO-1111,SMD-115
         if isuncensored:
             json_data = json.loads(airav.main(file_number, appoint_url, translate_language))
@@ -207,31 +208,31 @@ def getDataFromJSON(file_number, config, mode, appoint_url, translate_language):
             'error_type': '',
             'error_info': '',
         }
-    elif mode == 2:  # 仅从airav
+    elif website_mode == 2:  # 仅从airav
         json_data = json.loads(airav.main(file_number, appoint_url, translate_language))
-    elif mode == 3:  # 仅从javbus
+    elif website_mode == 3:  # 仅从javbus
         if isuncensored:
             json_data = json.loads(javbus.main_uncensored(file_number, appoint_url))
         elif re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
             json_data = json.loads(javbus.main_us(file_number, appoint_url))
         else:
             json_data = json.loads(javbus.main(file_number, appoint_url))
-    elif mode == 4:  # 仅从javdb
+    elif website_mode == 4:  # 仅从javdb
         if re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
             json_data = json.loads(javdb.main_us(file_number, appoint_url))
         else:
             json_data = json.loads(javdb.main(file_number, appoint_url))
-    elif mode == 5:  # 仅从jav321
+    elif website_mode == 5:  # 仅从jav321
         json_data = json.loads(jav321.main(file_number, appoint_url))
-    elif mode == 6:  # 仅从dmm
+    elif website_mode == 6:  # 仅从dmm
         json_data = json.loads(dmm.main(file_number, appoint_url))
-    elif mode == 7:  # 仅从avsox
+    elif website_mode == 7:  # 仅从avsox
         json_data = json.loads(avsox.main(file_number, appoint_url))
-    elif mode == 8:  # 仅从xcity
+    elif website_mode == 8:  # 仅从xcity
         json_data = json.loads(xcity.main(file_number, appoint_url))
-    elif mode == 9:  # 仅从mgstage
+    elif website_mode == 9:  # 仅从mgstage
         json_data = json.loads(mgstage.main(file_number, appoint_url))
-    elif mode == 10:  # 仅从fc2hub
+    elif website_mode == 10:  # 仅从fc2hub
         json_data = json.loads(fc2hub.main(file_number, appoint_url))
 
     # ================================================网站规则添加结束================================================
@@ -252,7 +253,7 @@ def getDataFromJSON(file_number, config, mode, appoint_url, translate_language):
     tag = str(json_data['tag']).strip("[ ]").replace("'", '').replace(" ", '').split(',')  # 字符串转列表 @
     actor = str(actor_list).strip("[ ]").replace("'", '').replace(" ", '')
     if actor == '':
-        actor = 'Unknown'
+        actor = 'unknown'
 
     # ====================处理异常字符====================== #\/:*?"<>|
     title = title.replace('\\', '')
@@ -320,11 +321,12 @@ def get_info(json_data):
 
 # ========================================================================保存配置到config.ini
 def save_config(json_config):
-    # json_config = json.loads(json_config)
     config_file = 'config.ini'
     with open(config_file, "wt", encoding='UTF-8') as code:
+        print("[modified_time]", file=code)
+        print("modified_time = " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), file=code)
+        print("", file=code)
         print("[common]", file=code)
-        print("# modified time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + "\n", file=code)
         print("main_mode = " + str(json_config['main_mode']), file=code)
         print("main_like = " + str(json_config['main_like']), file=code)
         print("failed_file_move = " + str(json_config['failed_file_move']), file=code)
@@ -352,6 +354,7 @@ def save_config(json_config):
         print("naming_media = " + json_config['naming_media'], file=code)
         print("naming_file = " + json_config['naming_file'], file=code)
         print("folder_name_C = " + str(json_config['folder_name_C']), file=code)
+        print("# 命名字段有：title, actor, number, studio, publisher, year, runtime, director, release, series", file=code)
         print("", file=code)
         print("[update]", file=code)
         print("update_check = " + str(json_config['update_check']), file=code)
