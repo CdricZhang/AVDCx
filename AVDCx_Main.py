@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from logging import PercentStyle, error, exception
-from socket import MsgFlag
 import threading
 import json
 from PySide2 import QtWidgets
@@ -19,8 +17,6 @@ from PIL import Image, ImageFilter
 import os
 import webbrowser
 from configparser import RawConfigParser
-
-from setuptools import config
 from Ui.AVDC import Ui_AVDV
 from Ui.posterCutTool import Ui_Dialog_cut_poster
 from Function.Function import save_config, movie_lists, get_info, getDataFromJSON, escapePath, getNumber, check_pic, is_uncensored
@@ -35,7 +31,6 @@ import urllib.parse
 import random
 import hashlib
 import zhconv
-from pathlib import Path
 import platform
 import cloudscraper
 
@@ -53,8 +48,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     main_logs_show = Signal(str) # 刮削日志信号
     net_logs_show = Signal(str) # 网络检测日志信号
     set_javdb_cookie = Signal(str) # 加载javdb cookie文本内容到设置页面
-    set_dmm_cookie = Signal(str) # 加载javdb cookie文本内容到设置页面
-
 
     def __init__(self, parent=None):
         super(MyMAinWindow, self).__init__(parent)
@@ -65,7 +58,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210711'
+        self.localversion = '20210714'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -107,7 +100,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.main_logs_show.connect(self.Ui.textBrowser_log_main.append)
         self.net_logs_show.connect(self.Ui.textBrowser_net_main.append)
         self.set_javdb_cookie.connect(self.Ui.plainTextEdit_cookie_javdb.setPlainText)
-        self.set_dmm_cookie.connect(self.Ui.plainTextEdit_cookie_dmm.setPlainText)
         self.setWindowFlag(Qt.FramelessWindowHint)  # 隐藏边框
         # self.setWindowOpacity(0.98)  # 设置窗口透明度
         self.setAttribute(Qt.WA_TranslucentBackground)  # 设置窗口背景透明
@@ -192,6 +184,18 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     font-family:Courier;
                     font-size:13px;
             }
+            QScrollArea#scrollArea{
+                    background-color: rgba(246, 246, 246, 255);
+                    border-color: rgba(246, 246, 246, 255);
+            }
+            QTabWidget#tabWidget{
+                    background-color: rgba(246, 246, 246, 255);
+                    border-color: rgba(246, 246, 246, 255);
+            }
+            QWidget#tab1,#scrollAreaWidgetContents,#tab2,#scrollAreaWidgetContents_2,#tab3,#scrollAreaWidgetContents_3,#tab4,#scrollAreaWidgetContents_4,#tab5,#scrollAreaWidgetContents_5{
+                    background-color: rgba(246, 246, 246, 255);
+                    border-color: rgba(246, 246, 246, 255);
+            }
             QLabel{
                     font-size:13px;
                     border:0px solid rgba(0, 0, 0, 80);
@@ -214,8 +218,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     font-size:13px;
             }
             QGroupBox{
-                    font-size:13px;
+                    background-color: rgba(246, 246, 246, 255);
             }
+
             ''')
         # 整个页面
         self.Ui.centralwidget.setStyleSheet(
@@ -521,7 +526,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'main_like': 1,
             'soft_link': 0,
             'switch_debug': 1,
+            'success_file_move': 1,
             'failed_file_move': 1,
+            'success_file_rename': 1,
             'update_check': 1,
             'translate_language': 'zh_cn',
             'save_log': 1,
@@ -533,13 +540,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'timeout': 10,
             'retry': 3,
             'javdb': '',
-            'dmm': '',
             'folder_name': 'actor/number actor',
             'naming_media': 'number title',
             'naming_file': 'number',
             'folder_name_C': 1,
             'literals': '\|()',
-            'folders': 'JAV_output',
+            'folders': 'JAV_output,examples',
             'string': '1080p,720p,22-sht.me,-HD',
             'emby_url': '192.168.5.191:8096',
             'api_key': 'cb83900340b447fab785cb628a99c3da',
@@ -552,7 +558,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'mark_type': 'SUB,LEAK,UNCENSORED',
             'mark_pos': 'top_left',
             'uncensored_poster': 1,
-            'uncensored_prefix': 'S2M|BT|LAF|SMD',
+            'uncensored_prefix': 'BT|CT|EMP|CCDV|CWP|CWPBD|DSAM|DRC|DRG|GACHI|heydouga|JAV|LAF|LAFBD|HEYZO|KTG|KP|KG|LLDV|MCDV|MKD|MKBD|MMDV|NIP|PB|PT|QE|RED|RHJ|S2M|SKY|SKYHD|SMD|SSDV|SSKP|TRG|TS|xxx-av|YKB|heydouga|1pon|Carib',
             'nfo_download': 1,
             'poster_download': 1,
             'fanart_download': 1,
@@ -612,6 +618,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             except:
                 self.Ui.radioButton_soft_off.setChecked(True)
 
+            try:    # 成功后移动文件
+                if int(config['common']['success_file_move']) == 0:
+                    self.Ui.radioButton_succ_move_off.setChecked(True)
+                else:
+                    self.Ui.radioButton_succ_move_on.setChecked(True)
+            except:
+                self.Ui.radioButton_succ_move_on.setChecked(True)
+
             try:    # 失败后移动文件
                 if int(config['common']['failed_file_move']) == 0:
                     self.Ui.radioButton_fail_move_off.setChecked(True)
@@ -619,6 +633,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     self.Ui.radioButton_fail_move_on.setChecked(True)
             except:
                 self.Ui.radioButton_fail_move_on.setChecked(True)
+
+            try:    # 成功后重命名文件
+                if int(config['common']['success_file_rename']) == 0:
+                    self.Ui.radioButton_succ_rename_off.setChecked(True)
+                else:
+                    self.Ui.radioButton_succ_rename_on.setChecked(True)
+            except:
+                self.Ui.radioButton_succ_rename_on.setChecked(True)
 
             try:    # 显示封面
                 if int(config['common']['show_poster']) == 0:
@@ -704,10 +726,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 self.set_javdb_cookie.emit(config['Cookies']['javdb'])
             except:
                 self.set_javdb_cookie.emit('')
-            try:    # dmm cookie
-                self.set_dmm_cookie.emit(config['Cookies']['dmm'])
-            except:
-                self.set_dmm_cookie.emit('')
             # ======================================================================================Name_Rule
             if not config.has_section("Name_Rule"):
                 config.add_section("Name_Rule")
@@ -955,7 +973,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def save_config_clicked(self):
         main_mode = 1
         main_like = 1
+        success_file_move = 1
         failed_file_move = 1
+        success_file_rename = 1
         soft_link = 0
         show_poster = 0
         switch_debug = 0
@@ -1016,10 +1036,18 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             show_poster = 1
         else:  # 关闭封面
             show_poster = 0
+        if self.Ui.radioButton_succ_move_on.isChecked():  # 成功移动开
+            success_file_move = 1
+        elif self.Ui.radioButton_succ_move_off.isChecked():  # 成功移动关
+            success_file_move = 0
         if self.Ui.radioButton_fail_move_on.isChecked():  # 失败移动开
             failed_file_move = 1
         elif self.Ui.radioButton_fail_move_off.isChecked():  # 失败移动关
             failed_file_move = 0
+        if self.Ui.radioButton_succ_rename_on.isChecked():  # 成功重命名开
+            success_file_rename = 1
+        elif self.Ui.radioButton_succ_rename_off.isChecked():  # 成功重命名关
+            success_file_rename = 0
         if self.Ui.comboBox_website_all.currentText() == 'All websites':  # all
             website = 'all'
         elif self.Ui.comboBox_website_all.currentText() == 'airav':  # airav
@@ -1101,7 +1129,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'soft_link': soft_link,
             'switch_debug': switch_debug,
             'show_poster': show_poster,
+            'success_file_move': success_file_move,
             'failed_file_move': failed_file_move,
+            'success_file_rename': success_file_rename,
             'update_check': update_check,
             'translate_language': translate_language,
             'folder_name_C': folder_name_C,
@@ -1112,7 +1142,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'timeout': self.Ui.horizontalSlider_timeout.value(),
             'retry': self.Ui.horizontalSlider_retry.value(),
             'javdb': self.Ui.plainTextEdit_cookie_javdb.toPlainText(),
-            'dmm': self.Ui.plainTextEdit_cookie_dmm.toPlainText(),
             'folder_name': self.Ui.lineEdit_dir_name.text(),
             'naming_media': self.Ui.lineEdit_media_name.text(),
             'naming_file': self.Ui.lineEdit_local_name.text(),
@@ -1676,7 +1705,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================打印NFO
     def PrintFiles(self, nfo_path, folder_path, file_name, c_word, leak, json_data, config):
-        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series = get_info(
+        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
             json_data)
         if int(config.getint('file_download', 'nfo')) == 0:
             return True
@@ -1687,7 +1716,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'runtime',
             runtime).replace(
             'director', director).replace('actor', actor).replace('release', release).replace('number', number).replace(
-            'series', series).replace('publisher', publisher)
+            'series', series).replace('publisher', publisher).replace('mosaic', mosaic)
 
         try:
             if not os.path.exists(folder_path):
@@ -1822,24 +1851,29 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================移动视频、字幕
     def pasteFileToFolder(self, file_path, file_new_path, config):
-        if file_path == file_new_path:
+        if int(config.getint('common', 'soft_link')) == 1:  # 如果使用软链接
+            if file_path == file_new_path:  # 相同不需要创建
+                self.addTextMain(" 🟢 Movie file is already in success folder! no need to movie it again!\n   >>> The current path is '%s'" % file_new_path)
+            else:
+                os.symlink(file_path, file_new_path)
+                self.addTextMain(" 🟢 Symlink done! \n   >>> The symlink path is '%s' \n   >>> The real path is '%s'" % (file_new_path, file_path))
+            return True 
+        if config.getint('common', 'success_file_move') == 0:   # 如果成功后不移动文件
+            self.addTextMain(" 🟢 Movie not moved! \n   >>> The path is '%s'" % file_new_path)
+            return True
+
+        if file_path == file_new_path:          # 成功后移动文件，当路径相同
             self.addTextMain(" 🟢 Movie file is already in success folder! no need to movie it again!\n   >>> The current path is '%s'" % file_new_path)
             return True
-        else:
-            if int(config.getint('common', 'soft_link')) == 1:  # 如果使用软链接
-                os.symlink(file_path, file_new_path)
-                self.addTextMain(" 🟢 Symlink done! \n   >>> The real path is '%s' \n   >>> The symlink path is '%s'" % (file_path, file_new_path))
-                return True
-            else:
-                try:    # 如果不是软链接
-                    shutil.move(file_path, file_new_path)
-                    self.addTextMain(" 🟢 Movie moved! \n   >>> The new path is '%s'" % file_new_path)
-                    return True
-                except PermissionError:
-                    self.addTextMain(' 🔴 Failed to move movie file to success folder! \n   >>> No permission! Please run as Administrator!')
-                except Exception as ex:
-                    self.addTextMain(' 🔴 Failed to move movie file  to success folder! \n   >>> %s' % str(ex))
-                return False
+        try:    # 路径不同⑨移动文件
+            shutil.move(file_path, file_new_path)
+            self.addTextMain(" 🟢 Movie moved! \n   >>> The new path is '%s'" % file_new_path)
+            return True
+        except PermissionError:
+            self.addTextMain(' 🔴 Failed to move movie file to success folder! \n   >>> No permission! Please run as Administrator!')
+        except Exception as ex:
+            self.addTextMain(' 🔴 Failed to move movie file  to success folder! \n   >>> %s' % str(ex))
+        return False
 
     # ======================================================================================有码片裁剪封面
     def cutImage(self, imagecut, path, thumb_name, poster_name, thumb_path, poster_path, cover_small_path):
@@ -2001,7 +2035,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             return
         try:
             for key, value in json_data.items():
-                if value == '' or key == 'imagecut' or key == 'search_url' or key == 'log_info' or key == 'error_type' or key == 'error_info' or key == 'naming_media' or key == 'naming_file' or key == 'folder_name' or key == 'extrafanart' or key == 'actor_photo' or key == 'source' or key == 'cover' or key == 'website' or key == 'number' or key == 'cover_small':
+                if value == '' or key == 'imagecut' or key == 'search_url' or key == 'log_info' or key == 'error_type' or key == 'error_info' or key == 'naming_media' or key == 'naming_file' or key == 'folder_name' or key == 'extrafanart' or key == 'actor_photo' or key == 'source' or key == 'cover' or key == 'website' or key == 'number' or key == 'cover_small' or key == 'mosaic':
                     continue
 
                 if key == 'tag':
@@ -2017,8 +2051,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.addTextMain(' 🔴 Error in showMovieInfo: ' + str(ex))
 
     # ======================================================================================获取输出文件夹名称
-    def getFolderPath(self, success_folder, json_data, config, c_word):
-        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series = get_info(
+    def getFolderPath(self, file_path, success_folder, json_data, config, c_word):
+        if config.getint('common', 'success_file_move') == 0 and config.getint('common', 'soft_link') == 0:
+            folder_path = os.path.split(file_path)[0]
+            return folder_path
+        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
             json_data)
         title = re.sub(r'[\\/:*?"<>|\r\n]+', '', title)
         if len(actor.split(',')) >= 10:  # 演员过多取前五个
@@ -2029,7 +2066,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         folder_new_name = folder_name.replace('title', title).replace('studio', studio).replace('year', year).replace('runtime',
                                                                                                            runtime).replace(
             'director', director).replace('actor', actor).replace('release', release).replace('number', number + c_word).replace(
-            'series', series).replace('publisher', publisher)  # 生成文件夹名
+            'series', series).replace('publisher', publisher).replace('mosaic', mosaic)  # 生成文件夹名
         folder_new_name = folder_new_name.replace('--', '-').strip('-')
         folder_new_name = re.sub(r'[\\:*?"<>|\r\n]+', '', folder_new_name).strip('/')
         if len(folder_new_name) > 100:  # 文件夹名过长 取标题前70个字符
@@ -2042,8 +2079,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
 
     # ======================================================================================获取输出的本地文件名
-    def getNamingRule(self, json_data, config, c_word, leak, cd_part):
-        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series = get_info(
+    def getNamingRule(self, file_path, json_data, config, c_word, leak, cd_part):
+        if config.getint('common', 'success_file_rename') == 0:
+            file_name = os.path.split(file_path)[1]
+            file_name = os.path.splitext(file_name)[0]
+            return file_name
+        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
             json_data)
         title = re.sub(r'[\\/:*?"<>|\r\n]+', '', title)
         if len(actor.split(',')) >= 10:  # 演员过多取前五个
@@ -2053,7 +2094,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'runtime',
             runtime).replace(
             'director', director).replace('actor', actor).replace('release', release).replace('number', number).replace(
-            'series', series).replace('publisher', publisher)
+            'series', series).replace('publisher', publisher).replace('mosaic', mosaic)
         file_name = file_name.replace('//', '/').replace('--', '-').strip('-')
         file_name = re.sub(r'[\\/:*?"<>|\r\n]+', '', file_name) # 用在保存文件时的名字，需要过滤window异常字符
         if len(file_name) > 100:  # 文件名过长 取标题前70个字符
@@ -2066,11 +2107,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         return file_name
 
     # ======================================================================================生成各种输出文件和文件夹的名字
-    def getOutPutName(self, success_folder, json_data, config, c_word, leak, cd_part, file_ex):
+    def getOutPutName(self, file_path, success_folder, json_data, config, c_word, leak, cd_part, file_ex):
         # =====================================================================================更新输出文件夹名
-        folder_path = self.getFolderPath(success_folder, json_data, config, c_word)
+        folder_path = self.getFolderPath(file_path, success_folder, json_data, config, c_word)
         # =====================================================================================更新实体文件命名规则
-        naming_rule = self.getNamingRule(json_data, config, c_word, leak, cd_part)
+        naming_rule = self.getNamingRule(file_path, json_data, config, c_word, leak, cd_part)
         # =====================================================================================生成文件和图片新路径路径
         file_name = naming_rule + file_ex
         thumb_name = naming_rule + '-thumb.jpg'
@@ -2547,7 +2588,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         return msg
 
     def creatFolder(self, folder_path, file_path, file_new_path, thumb_path, poster_path, config, json_data):
-        if not os.path.exists(folder_path):   # 如果不存在目标文件，则创建文件夹
+        if config.getint('common', 'success_file_move') == 0 and config.getint('common', 'soft_link') == 0:   # 如果成功后移动文件夹关
+            return True
+        if not os.path.exists(folder_path):   # 如果不存在目标文件夹，则创建文件夹
             try:
                 os.makedirs(folder_path)
                 self.addTextMain(" 🟢 Folder done!")
@@ -2604,6 +2647,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     json_data['outline'] = self.youdao(json_data['outline'], 'zh_cn')
 
             elif translate_language == 'zh_tw':
+                json_data['mosaic'] = self.youdao(json_data['mosaic'], 'zh_tw')
                 json_data['title'] = self.youdao(movie_title, 'zh_tw')
                 if json_data.get('outline').strip():
                     json_data['outline'] = self.youdao(json_data['outline'], 'zh_tw')
@@ -2611,6 +2655,18 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # =====================================================================================处理单个文件刮削
     def coreMain(self, file_path, movie_number, config, file_mode, appoint_number='', appoint_url='', jsonfile_data={}):
+        json_data = {}
+        if not os.path.exists(file_path):
+            json_data = {
+                'title': '',
+                'actor': '',
+                'website': '',
+                'log_info': '',
+                'error_type': 'file not exist',
+                'error_info': '文件不存在',
+            }
+            self.addTextMain(" 🔴 File is not exist! \n   >>> The path is '%s'" % file_path)
+            return False, json_data
         # =====================================================================================初始化所需变量
         sub_list = []
         leak = ''
@@ -2642,7 +2698,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.showMovieInfo(json_data, config)
 
         # =====================================================================================生成输出文件夹和输出文件的路径
-        folder_path, file_new_path, thumb_path, poster_path, poster_path, fanart_path, nfo_path, cover_small_path, naming_rule, thumb_name, poster_name, nfo_name, cover_small_name = self.getOutPutName(success_folder, json_data, config, c_word, leak, cd_part, file_ex)
+        folder_path, file_new_path, thumb_path, poster_path, poster_path, fanart_path, nfo_path, cover_small_path, naming_rule, thumb_name, poster_name, nfo_name, cover_small_name = self.getOutPutName(file_path, success_folder, json_data, config, c_word, leak, cd_part, file_ex)
 
         # =====================================================================================判断输出文件夹和文件是否已存在，如无则创建输出文件夹
         if  not self.creatFolder(folder_path, file_path, file_new_path, thumb_path, poster_path, config, json_data):
@@ -2738,7 +2794,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
         # 处理视频列表
         for file_path in movie_list:
-            file_path = os.path.realpath(file_path)  # 如果文件本身是一个符号连接，这时使用它的真实地址
+            if os.path.exists(os.path.realpath(file_path)):
+                file_path = os.path.realpath(file_path)  # 如果文件本身是一个符号连接，这时使用它的真实地址
+            else:
+                try:
+                    os.remove(file_path)
+                except:
+                    pass
             count += 1
             # 获取进度
             progress_value = count / count_all * 100    
