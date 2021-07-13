@@ -74,7 +74,7 @@ def movie_lists(escape_folder, movie_type, movie_path):
 # ========================================================================获取番号
 def getNumber(filepath, escape_string):
     filepath = filepath.replace('-C.', '.').replace('-c.', '.').replace(' ', '-')
-    filepath = filepath.upper().replace('HEYDOUGA-', '').replace('HEYDOUGA', '')
+    filepath = filepath.upper().replace('HEYDOUGA-', '').replace('HEYDOUGA', '').replace('CARIBBEANCOM', '').replace('CARIB', '').replace('1PONDO', '').replace('1PON', '')
     filename = os.path.splitext(filepath.split('/')[-1])[0]
     escape_string_list = re.split('[,，]', escape_string)
     for string in escape_string_list:
@@ -199,7 +199,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             if getDataState(json_data) == 0:
                 log_info = json_data['log_info']
                 json_data = json.loads(avsox.main(file_number, appoint_url, log_info))
-    elif re.match('\D{2,}00\d{3,}', file_number) and mode != 7:
+    elif re.match('\D{2,}00\d{3,}', file_number) and website_mode != 7:
         json_data = {
             'title': '',
             'actor': '',
@@ -293,6 +293,11 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     json_data['naming_media'] = naming_media
     json_data['naming_file'] = naming_file
     json_data['folder_name'] = folder_name
+    if is_uncensored(number):
+        json_data['mosaic'] = '无码'
+    else:
+        json_data['mosaic']  = '有码'
+
     return json_data
 
 
@@ -316,7 +321,9 @@ def get_info(json_data):
     cover = json_data['cover']
     website = json_data['website']
     series = json_data['series']
-    return title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series
+    mosaic = json_data['mosaic']
+
+    return title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic
 
 
 # ========================================================================保存配置到config.ini
@@ -329,7 +336,9 @@ def save_config(json_config):
         print("[common]", file=code)
         print("main_mode = " + str(json_config['main_mode']), file=code)
         print("main_like = " + str(json_config['main_like']), file=code)
+        print("success_file_move = " + str(json_config['success_file_move']), file=code)
         print("failed_file_move = " + str(json_config['failed_file_move']), file=code)
+        print("success_file_rename = " + str(json_config['success_file_rename']), file=code)
         print("soft_link = " + str(json_config['soft_link']), file=code)
         print("show_poster = " + str(json_config['show_poster']), file=code)
         print("translate_language = " + json_config['translate_language'], file=code)
@@ -346,7 +355,6 @@ def save_config(json_config):
         print("", file=code)
         print("[Cookies]", file=code)
         print("javdb = " + json_config['javdb'], file=code)
-        print("dmm = " + json_config['dmm'], file=code)
         print("# cookies存在有效期，记得更新", file=code)
         print("", file=code)
         print("[Name_Rule]", file=code)
@@ -354,7 +362,7 @@ def save_config(json_config):
         print("naming_media = " + json_config['naming_media'], file=code)
         print("naming_file = " + json_config['naming_file'], file=code)
         print("folder_name_C = " + str(json_config['folder_name_C']), file=code)
-        print("# 命名字段有：title, actor, number, studio, publisher, year, runtime, director, release, series", file=code)
+        print("# 命名字段有：title, actor, number, studio, publisher, year, mosaic, runtime, director, release, series", file=code)
         print("", file=code)
         print("[update]", file=code)
         print("update_check = " + str(json_config['update_check']), file=code)
