@@ -130,7 +130,7 @@ def getScore(html):
     return ''
 
 def main(number, appoint_url='', log_info=''):
-    cookies = get_cookies('dmm')
+    cookies = {'cookie':'uid=abcd786561031111; age_check_done=1;'}
     log_info += '   >>> [ DMM ] 开始使用 dmm 进行刮削\n'
     title = ''
     cover_url = ''
