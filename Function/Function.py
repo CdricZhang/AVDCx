@@ -74,7 +74,7 @@ def movie_lists(escape_folder, movie_type, movie_path):
 # ========================================================================获取番号
 def getNumber(filepath, escape_string):
     filepath = filepath.replace('-C.', '.').replace('-c.', '.').replace(' ', '-')
-    filepath = filepath.upper().replace('HEYDOUGA-', '').replace('HEYDOUGA', '').replace('CARIBBEANCOM', '').replace('CARIB', '').replace('1PONDO', '').replace('1PON', '')
+    filepath = filepath.upper().replace('HEYDOUGA-', '').replace('HEYDOUGA', '').replace('CARIBBEANCOM', '').replace('CARIB', '').replace('1PONDO', '').replace('1PON', '').replace('PACOMA', '').replace('PACO', '').replace('10MUSUME', '').replace('-10MU', '')
     filename = os.path.splitext(filepath.split('/')[-1])[0]
     escape_string_list = re.split('[,，]', escape_string)
     for string in escape_string_list:
@@ -177,7 +177,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             json_data = json.loads(dmm.main(file_number, appoint_url))
         # =======================================================================sexart.15.06.14
         elif re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
-            json_data = json.loads(javdb.main_us(file_number, appoint_url))
+            json_data = json.loads(javdb.main_u(file_number, appoint_url))
             if getDataState(json_data) == 0:
                 log_info = json_data['log_info']
                 json_data = json.loads(javbus.main_us(file_number, appoint_url, log_info))
@@ -219,7 +219,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             json_data = json.loads(javbus.main(file_number, appoint_url))
     elif website_mode == 4:  # 仅从javdb
         if re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
-            json_data = json.loads(javdb.main_us(file_number, appoint_url))
+            json_data = json.loads(javdb.main(file_number, appoint_url))
         else:
             json_data = json.loads(javdb.main(file_number, appoint_url))
     elif website_mode == 5:  # 仅从jav321
@@ -265,9 +265,9 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     title = title.replace('<', '')
     title = title.replace('>', '')
     title = title.replace('|', '')
-    title = title.replace(' ', '.')
-    title = title.replace('【', '')
-    title = title.replace('】', '')
+    # title = title.replace(' ', '.')
+    # title = title.replace('【', '')
+    # title = title.replace('】', '')
     release = release.replace('/', '-')
     tmpArr = cover_small.split(',')
     if len(tmpArr) > 0:
@@ -279,9 +279,6 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     naming_media = config.get('Name_Rule', 'naming_media')
     naming_file = config.get('Name_Rule', 'naming_file')
     folder_name = config.get('Name_Rule', 'folder_name')
-    # naming_media = config['Name_Rule']['naming_media']
-    # naming_file = config['Name_Rule']['naming_file']
-    # folder_name = config['Name_Rule']['folder_name']
 
     # 返回处理后的json_data
     json_data['title'] = title
@@ -303,9 +300,13 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
 
 # ========================================================================返回json里的数据
 def get_info(json_data):
-    for key, value in json_data.items():    # 这一步去掉就不显示信息，不太好看
-        if value == '' or value == 'N/A':
-            json_data[key] = 'unknown'
+    # for key, value in json_data.items():    # 这一步去掉就不显示信息，不太好看
+    #     if value == '' or value == 'N/A':
+    #         json_data[key] = 'unknown'
+    for key, value in json_data.items():    # 去除unknown
+        if str(value).lower() == 'unknown':
+            json_data[key] = ''
+
     title = json_data['title']
     studio = json_data['studio']
     publisher = json_data['publisher']
