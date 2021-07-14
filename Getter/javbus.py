@@ -229,7 +229,8 @@ def main(number, appoint_url='', log_info=''):
             error_type = 'timeout'
             raise Exception('>>> JAVBUS-请求详情页：' + htmlcode)
 
-        title = str(getTitle(htmlcode)).replace(number, '').strip().replace(' ', '-') # 获取标题
+        actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
+        title = str(getTitle(htmlcode)).strip(actor).replace(number, '').strip() # 获取标题
         if not title:
             log_info += '   >>> JAVBUS- title 获取失败！ \n'
             error_type = 'need login'
@@ -241,8 +242,6 @@ def main(number, appoint_url='', log_info=''):
             raise Exception('>>> JAVBUS- cover url 获取失败！')
         cover_small = getCover_small(number)
         outline, score = getOutlineScore(number)
-        number = getNum(htmlcode)
-        actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
 
         try:
             dic = {
@@ -314,7 +313,8 @@ def main_uncensored(number, appoint_url='', log_info=''):
             error_type = 'timeout'
             raise Exception('>>> JAVBUS-请求详情页：' + str(htmlcode))
 
-        title = str(getTitle(htmlcode)).replace(number, '').strip().replace(' ', '-') # 获取标题
+        actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
+        title = str(getTitle(htmlcode)).strip(actor).replace(number, '').strip() # 获取标题
         if not title:
             log_info += '   >>> JAVBUS- title 获取失败！ \n'
             error_type = 'need login'
@@ -329,8 +329,6 @@ def main_uncensored(number, appoint_url='', log_info=''):
         #     log_info += '   >>> JAVBUS- cover url 获取失败！\n'
         #     error_type = 'Cover_small Url is None!'
         #     raise Exception('>>> JAVBUS- cover_small url 获取失败！')
-        number = getNum(htmlcode)
-        actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
         outline = ''
         score = ''
         if 'HEYZO' in number.upper():
@@ -338,8 +336,8 @@ def main_uncensored(number, appoint_url='', log_info=''):
         studio = getStudio(htmlcode)
         try:
             dic = {
-                'title': str(title).replace('-', '').replace(actor, ''),
-                'number': getNum(htmlcode),
+                'title': str(title),
+                'number': number,
                 'actor': actor,
                 'outline': str(outline),
                 'tag': getTag(htmlcode),
@@ -431,7 +429,8 @@ def main_us(number, appoint_url='', log_info=''):
             error_type = 'timeout'
             raise Exception('>>> JAVBUS-请求详情页：' + htmlcode)
 
-        title = str(getTitle(htmlcode)).replace(number, '').strip().replace(' ', '-') # 获取标题
+        actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
+        title = str(getTitle(htmlcode)).strip(actor).replace(number, '').strip()    # 获取标题
         if not title:
             log_info += '   >>> JAVBUS- title 获取失败！ \n'
             error_type = 'need login'
@@ -446,12 +445,10 @@ def main_us(number, appoint_url='', log_info=''):
         #     log_info += '   >>> JAVBUS- cover_small url 获取失败！\n'
         #     error_type = 'Cover_small Url is None!'
         #     raise Exception('>>> JAVBUS- cover_small url 获取失败！')
-        number = getNum(htmlcode)
-        actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
         try:
             dic = {
-                'title': str(title).replace('-', '').replace(actor, ''),
-                'number': getNum(htmlcode),
+                'title': str(title),
+                'number': number,
                 'actor': actor,
                 'outline': '',
                 'tag': getTag(htmlcode),

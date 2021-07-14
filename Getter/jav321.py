@@ -28,7 +28,6 @@ def getActor(response):
 
 def getStudio(html):
     result = str(html.xpath('//div[@class="col-md-9"]/a[contains(@href,"/company/")]/text()')).strip(" ['']")
-    print(result)
     return result
 
 def getRuntime(response):
@@ -116,7 +115,8 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             error_type = 'Movie data not found'
             raise Exception('JAV321-未匹配到番号')
         detail_page = etree.fromstring(response, etree.HTMLParser())
-        title = getTitle(response) # 获取标题
+        actor = getActor(response)
+        title = getTitle(response).strip(actor).strip() # 获取标题
         if not title:
             log_info += '   >>> JAV321- title 获取失败！ \n'
             error_type = 'need login'
@@ -130,7 +130,6 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             error_type = 'Cover Url is None!'
             raise Exception('>>> JAV321- cover url 获取失败！]')
         release = getRelease(response)
-        actor = getActor(response)
         imagecut = 1
         if 'HEYZO' in number.upper() or isuncensored:
             imagecut = 3

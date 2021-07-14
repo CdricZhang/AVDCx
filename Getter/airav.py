@@ -183,7 +183,6 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
     real_url = appoint_url
     airav_url = 'https://cn.airav.wiki'
     airav_lan = '?lng=zh-CN'
-    title = ''
     cover_url = ''
     cover_small = ''
     error_type = ''
@@ -241,23 +240,22 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
                 error_type = 'timeout'
                 raise Exception('>>> AIRAV-请求详情页：出错！错误信息：%s \n' % str(error_info))          
             html_info = etree.fromstring(html_content, etree.HTMLParser())
-            web_cache_url = etree.tostring(html_info,encoding="utf-8").decode() # 将element对象转化为字符串
+            # web_cache_url = etree.tostring(html_info,encoding="utf-8").decode() # 将element对象转化为字符串
             # print(web_cache_url)
             # with open('11.txt', 'wt') as f:
             #     f.write(web_cache_url)
-            if not title:
-                title = getTitle(html_info) # 获取标题
+            title = getTitle(html_info) # 获取标题
             if not title:
                 log_info += '   >>> AIRAV- title 获取失败！ \n'
                 error_type = 'AIRAV - title 获取失败！'
                 raise Exception('>>> AIRAV- title 获取失败!')
+            actor = getActor(html_info) # 获取actor
+            title = title.strip(actor).replace(number, '').strip()
             cover_url = getCover(html_info) # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> AIRAV- cover url 获取失败！ \n'
                 error_type = 'Cover Url is None!'
                 raise Exception('>>> AIRAV- cover url 获取失败!')
-            actor = getActor(html_info) # 获取actor
-            title = title.replace(' ' + actor,'').replace(number, '').replace(' ', '').strip()
             # actor_photo = getActorPhoto1(html_info, airav_url, log_info)
             actor_photo = getActorPhoto(actor)
             outline = getOutline(html_info, translate_language, real_url)
@@ -273,7 +271,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
             extrafanart = ''
             mode_like = getModeLike()
 
-            if mode_like or '克破' in title or '克破' in outline:
+            if mode_like:
                 json_data = json.loads(javdb.main(number, '', log_info))
                 if json_data.get('title'):
                     runtime = json_data['runtime']

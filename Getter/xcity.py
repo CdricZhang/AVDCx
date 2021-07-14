@@ -111,11 +111,14 @@ def getOutline(htmlcode):
 
 def getScore(htmlcode):
     html = etree.fromstring(htmlcode, etree.HTMLParser())
-    result = str(html.xpath("//p[@class='d-review__average']/strong/text()")[0]).replace('\\n', '').replace('\n', '').replace('点', '')
+    result = html.xpath("//p[@class='d-review__average']/strong/text()")
+    if result:
+        result = str(result[0]).replace('\\n', '').replace('\n', '').replace('点', '')
     return result
 
 
 def find_number(number, appoint_url):
+    number_get = ''
     if appoint_url:
         return appoint_url, get_html(appoint_url)[1]
     result, htmlcode = get_html('https://xcity.jp/result_published/?q=' + number.replace('-', ''))
@@ -125,10 +128,15 @@ def find_number(number, appoint_url):
     counts = len(html.xpath("//div[@id='searchResult']/table[@class='resultList']/tr"))
     if counts >= 2:
         for count in range(2, counts + 1):  # 遍历搜索结果，找到需要的番号
-            result_url = 'https://xcity.jp' + html.xpath("//div[@id='searchResult']/table[@class='resultList']/tr[" + str(count) + "]/td[1]/a/@href")[0]
+            result1 = html.xpath("//div[@id='searchResult']/table[@class='resultList']/tr[" + str(count) + "]/td[1]/a/@href")
+            if result1:
+                result_url = 'https://xcity.jp' + result1[0]
+            else:
+                return 'Movie data not found', ''
             result, detail_page = get_html(result_url)
             detail_page_html = etree.fromstring(detail_page, etree.HTMLParser())
-            number_get = str(detail_page_html.xpath("//span[@id='hinban']/text()")[0])
+            if detail_page_html.xpath("//span[@id='hinban']/text()"):
+                number_get = str(detail_page_html.xpath("//span[@id='hinban']/text()")[0])
             if number_get.upper() == number.replace('-', '').upper():
                 return result_url, detail_page
     return 'Movie data not found', ''

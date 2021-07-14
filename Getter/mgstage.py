@@ -4,17 +4,15 @@ import json
 from Function.getHtml import get_html
 
 
-def getTitle(htmlcode):
+def getTitle(html):
     try:
-        html = etree.fromstring(htmlcode, etree.HTMLParser())
         result = str(html.xpath('//*[@id="center_column"]/div[1]/h1/text()')).strip(" ['']")
         return result.replace('/', ',')
     except:
         return ''
 
 
-def getActor(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
+def getActor(html):
     result1 = str(html.xpath('//th[contains(text(),"出演")]/../td/a/text()')).strip(" ['']")
     result2 = str(html.xpath('//th[contains(text(),"出演")]/../td/text()')).strip(" ['']")
     return str(result1 + result2).replace('/', ',').replace('\'', '').replace(' ', '').replace('\\n', '')
@@ -29,36 +27,31 @@ def getActorPhoto(actor):
     return d
 
 
-def getStudio(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
+def getStudio(html):
     result1 = str(html.xpath('//th[contains(text(),"メーカー：")]/../td/a/text()')).strip(" ['']")
     result2 = str(html.xpath('//th[contains(text(),"メーカー：")]/../td/text()')).strip(" ['']")
     return str(result1 + result2).replace('\'', '').replace(' ', '').replace('\\n', '')
 
 
-def getPublisher(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
+def getPublisher(html):
     result1 = str(html.xpath('//th[contains(text(),"レーベル：")]/../td/a/text()')).strip(" ['']")
     result2 = str(html.xpath('//th[contains(text(),"レーベル：")]/../td/text()')).strip(" ['']")
     return str(result1 + result2).replace('\'', '').replace(' ', '').replace('\\n', '')
 
 
-def getRuntime(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
+def getRuntime(html):
     result1 = str(html.xpath('//th[contains(text(),"収録時間：")]/../td/a/text()')).strip(" ['']")
     result2 = str(html.xpath('//th[contains(text(),"収録時間：")]/../td/text()')).strip(" ['']")
     return str(result1 + result2).rstrip('min').replace('\'', '').replace(' ', '').replace('\\n', '')
 
 
-def getSeries(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
+def getSeries(html):
     result1 = str(html.xpath('//th[contains(text(),"シリーズ：")]/../td/a/text()')).strip(" ['']")
     result2 = str(html.xpath('//th[contains(text(),"シリーズ：")]/../td/text()')).strip(" ['']")
     return str(result1 + result2).replace('\'', '').replace(' ', '').replace('\\n', '')
 
 
-def getNum(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
+def getNum(html):
     result1 = str(html.xpath('//th[contains(text(),"品番：")]/../td/a/text()')).strip(" ['']")
     result2 = str(html.xpath('//th[contains(text(),"品番：")]/../td/text()')).strip(" ['']")
     return str(result1 + result2).replace('\'', '').replace(' ', '').replace('\\n', '')
@@ -72,34 +65,29 @@ def getYear(getRelease):
         return getRelease
 
 
-def getRelease(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
+def getRelease(html):
     result1 = str(html.xpath('//th[contains(text(),"配信開始日：")]/../td/a/text()')).strip(" ['']")
     result2 = str(html.xpath('//th[contains(text(),"配信開始日：")]/../td/text()')).strip(" ['']")
     return str(result1 + result2).replace('\'', '').replace(' ', '').replace('\\n', '')
 
 
-def getTag(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
+def getTag(html):
     result1 = str(html.xpath('//th[contains(text(),"ジャンル：")]/../td/a/text()')).strip(" ['']")
     result2 = str(html.xpath('//th[contains(text(),"ジャンル：")]/../td/text()')).strip(" ['']")
     return str(result1 + result2).replace('\'', '').replace(' ', '').replace('\\n', '')
 
 
-def getCover(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())
+def getCover(html):
     result = str(html.xpath('//*[@id="center_column"]/div[1]/div[1]/div/div/h2/img/@src')).strip(" ['']")
     return result
 
 
-def getExtraFanart(htmlcode):  # 获取封面链接
-    html = etree.fromstring(htmlcode, etree.HTMLParser())
+def getExtraFanart(html):  # 获取封面链接
     extrafanart_list = html.xpath("//dl[@id='sample-photo']/dd/ul/li/a[@class='sample_image']/@href")
     return extrafanart_list
 
 
-def getOutline(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())
+def getOutline(html):
     result = str(html.xpath('//*[@id="introduction"]/dd/p[1]/text()')).strip(" ['']")
     return result
 
@@ -123,14 +111,20 @@ def main(number, appoint_url='', log_info=''):
         url = 'https://www.mgstage.com/product/product_detail/' + str(number) + '/'
         if appoint_url != '':
             url = appoint_url
-        result, htmlcode = str(get_html(url, cookies={'adc': '1'}))
-        htmlcode = htmlcode.replace('ahref', 'a href')  # 针对a标签、属性中间未分开
+        result, htmlcode = get_html(url, cookies={'adc': '1'})
         if not result:
             log_info += '   >>> MGSTAGE-请求详情页：错误！信息：' + htmlcode
             error_type = 'timeout'
             raise Exception('>>> MGSTAGE-请求详情页：错误！信息：' + htmlcode)
+        if not htmlcode.strip():
+            log_info += '   >>> MGSTAGE-网站挂了！'
+            error_type = 'timeout'
+            raise Exception('MGSTAGE-网站挂了!')            
+        htmlcode = htmlcode.replace('ahref', 'a href')  # 针对a标签、属性中间未分开
+        htmlcode = etree.fromstring(htmlcode, etree.HTMLParser())
 
-        title = getTitle(htmlcode).replace("\\n", '').replace('        ', '').strip(',') # 获取标题
+        actor = getActor(htmlcode).replace(' ', '')
+        title = getTitle(htmlcode).strip(actor).replace("\\n", '').replace('        ', '').strip(',').strip() # 获取标题
         if not title:
             log_info += '   >>> MGSTAGE- title 获取失败！ \n'
             error_type = 'need login'
@@ -141,7 +135,6 @@ def main(number, appoint_url='', log_info=''):
             error_type = 'Cover Url is None!'
             raise Exception('>>> MGSTAGE- cover url 获取失败！]')
 
-        actor = getActor(htmlcode).replace(' ', '')
         release = getRelease(htmlcode)
         try:
             dic = {

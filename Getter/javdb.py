@@ -254,7 +254,12 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 outline, score = getOutlineScore(number)
                 score = getScore(html_detail)
             # ========================================================================收集信息
-            title = getTitle(html_detail).replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_','-').replace(number.upper(), '').replace(number, '').strip().replace(' ', '-').replace('--', '-') # 获取标题
+            actor = getActor(html_detail) # 获取actor
+            if len(actor) == 0 and 'FC2-' in number.upper():
+                actor.append('FC2-NoActor')
+            actor = str(actor).strip(" [',']").replace('\'', '')
+            title = getTitle(html_detail).strip(actor) # 获取标题并去掉头尾歌手名
+            title = title.replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_','-').replace(number.upper(), '').replace(number, '').strip().replace('--', '-')
             if not title:
                 log_info += '   >>> JAVDB- title 获取失败！\n'
                 error_type = 'need login'
@@ -264,16 +269,10 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 log_info += '   >>> JAVDB- cover url 获取失败！\n'
                 error_type = 'Cover Url is None!'
                 raise Exception('JAVDB- cover url 获取失败！]')
-
             if imagecut == 3 and 'http' not in cover_small:
                 log_info += '   >>> JAVDB- cover url 获取失败！\n'
                 error_type = 'Cover_small Url is None!'
                 raise Exception('JAVDB- cover_small url 获取失败！]')
-            actor = getActor(html_detail) # 获取actor
-            if len(actor) == 0 and 'FC2-' in number.upper():
-                actor.append('FC2-NoActor')
-            actor = str(actor).strip(" [',']").replace('\'', '')
-            title = title.replace('-', '').replace(actor, '')
             release = getRelease(html_detail)
 
             try:
@@ -319,157 +318,6 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             'error_type': str(error_type),
             'error_info': str(error_info),
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
-    return js
-
-
-def main_us(number, appoint_url='', log_info='', isuncensored=True):
-    cookies = get_cookies('javdb')
-    proxies = get_proxies()
-    proxy_type, proxy, timeout, retry_count = get_proxy()
-    log_info += '   >>> JAVDB-开始使用 javdb 进行刮削\n'
-    real_url = appoint_url
-    title = ''
-    cover_url = ''
-    cover_small = ''
-    error_type = ''
-    error_info = ''
-    try: # 捕获主动抛出的异常
-        if not real_url:
-            # 通过搜索获取real_url
-            url_search = 'https://javdb.com/search?q=' + number + '&f=all&locale=zh'
-            log_info += '   >>> JAVDB-生成搜索页地址: %s\n' % url_search
-            # ========================================================================搜索番号
-            scraper = cloudscraper.create_scraper(
-                browser={
-                    'browser': 'firefox',
-                    'platform': 'windows',
-                    'mobile': False
-                }
-
-            )  # returns a CloudScraper instance
-            try:
-                html_search = scraper.get(url_search, cookies=cookies, proxies=proxies).text.replace(u'\xa0', u' ')
-                # result, html_search = get_html('https://javdb9.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
-            except Exception as error_info:
-                log_info += '   >>> JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info)
-                error_type = 'timeout'
-                raise Exception('JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info))
-            html = etree.fromstring(html_search, etree.HTMLParser())
-            # print(etree.tostring(html,encoding="utf-8").decode())
-            html_title = str(html.xpath('//title/text()')).strip(" ['']")
-            if 'Cloudflare' in html_title:
-                real_url = ''
-                log_info += '   >>> JAVDB-请求搜索页：被 5 秒盾拦截！\n'
-                error_type = 'SearchCloudFlare'
-                raise Exception('JAVDB-请求搜索页：被 5 秒盾拦截！')
-            real_url = html.xpath("//div[@class='uid'][contains(text(), $number)]/../@href", number=number)
-            if not real_url:
-                log_info += '   >>> JAVDB-搜索结果页：未匹配到番号！\n'
-                error_type = 'Movie data not found'
-                raise Exception('JAVDB-搜索结果页：未匹配到番号！')
-            else:
-                real_url = 'https://javdb.com' + real_url[0] + '?locale=zh'
-                log_info += '   >>> JAVDB-生成详情页地址：%s\n' % real_url
-
-        if real_url:
-            scraper = cloudscraper.CloudScraper()
-            try:
-                html_info = scraper.get(real_url, cookies=cookies, proxies=proxies, timeout=timeout).text
-            except Exception as error_info:
-                log_info += '   >>> JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info)
-                error_type = 'timeout'
-                raise Exception('JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info))
-            # ========================================================================获取评分、简介
-            html_detail = etree.fromstring(html_info, etree.HTMLParser())
-            html_title = str(html_detail.xpath('//title/text()')).strip(" ['']")
-            if html_title == 'Please Wait... | Cloudflare':
-                log_info += '   >>> JAVDB-请求详情页：被 5 秒盾拦截！\n'
-                error_type = 'SearchCloudFlare'
-                raise Exception('JAVDB-请求详情页：被 5 秒盾拦截！]')
-            if '登入' in html_title or 'Sign in' in html_title:
-                log_info += '   >>> JAVDB-该番号内容需要登录查看！\n'
-                error_type = 'need login'
-                raise Exception('JAVDB-该番号内容需要登录查看！]')
-            imagecut = 1
-            outline = ''
-            if isuncensored and (re.match('^\d{4,}', number) or re.match('n\d{4}', number)):  # 无码，收集封面、评分
-                imagecut = 0
-                score = getScore(html_detail)
-            elif 'HEYZO' in number.upper():  # HEYZO，收集封面、评分、简介
-                imagecut = 0
-                outline, score = getOutlineScore(number)
-            else:  # 其他，收集评分、简介
-                outline, score = getOutlineScore(number)
-                score = getScore(html_detail)
-            # ========================================================================收集信息
-            title = getTitle(html_detail).replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_','-').replace(number.upper(), '').replace(number, '').strip().replace(' ', '-').replace('--', '-') # 获取标题
-            if not title:
-                log_info += '   >>> JAVDB- title 获取失败！\n'
-                error_type = 'need login'
-                raise Exception('JAVDB- title 获取失败！]')
-            cover_url = getCover(html_detail) # 获取cover
-            if 'http' not in cover_url:
-                log_info += '   >>> JAVDB- cover url 获取失败！\n'
-                error_type = 'Cover Url is None!'
-                raise Exception('JAVDB- cover url 获取失败！]')
-
-            if imagecut == 3 and 'http' not in cover_small:
-                log_info += '   >>> JAVDB- cover url 获取失败！\n'
-                error_type = 'Cover_small Url is None!'
-                raise Exception('JAVDB- cover_small url 获取失败！]')
-
-            actor = getActor(html_detail) # 获取actor
-            if len(actor) == 0 and 'FC2-' in number.upper():
-                actor.append('FC2-NoActor')
-            actor = str(actor).strip(" [',']").replace('\'', '')
-            title = title.replace(actor, '').replace('-', '')
-            release = getRelease(html_detail)
-
-            try:
-                dic = {
-                    'title': title,
-                    'number': number.upper(),
-                    'actor': actor,
-                    'outline': str(outline),
-                    'tag': getTag(html_detail),
-                    'release': str(release),
-                    'year': getYear(release),
-                    'runtime': getRuntime(html_detail),
-                    'score': str(score),
-                    'series': getSeries(html_detail),
-                    'director': getDirector(html_detail),
-                    'studio': getStudio(html_detail),
-                    'publisher': getPublisher(html_detail),
-                    'source': 'javdb.us',
-                    'website': str(real_url).replace('?locale=zh', '').strip('[]'),
-                    'search_url': str(url_search),
-                    'actor_photo': getActorPhoto(html_detail, log_info, cookies, proxies, timeout),
-                    'cover': str(cover_url),
-                    'cover_small': '',
-                    'extrafanart': getExtraFanart(html_detail),
-                    'imagecut': imagecut,
-                    'log_info': str(log_info),
-                    'error_type': '',
-                    'error_info': str(error_info),
-                }
-                log_info += '   >>> JAVDB-数据获取成功！\n'
-                dic['log_info'] = log_info
-            except Exception as error_info:
-                log_info += '   >>> JAVDB-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
-                error_info = str(error_info)
-                raise Exception(log_info)
-
-    except Exception as error_info:
-        dic = {
-            'title': '',
-            'cover': '',
-            'website': str(real_url).strip('[]'),
-            'log_info': str(log_info),
-            'error_type': str(error_type),
-            'error_info': str(error_info),
-        }
-   
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 

@@ -137,8 +137,8 @@ def main(number, appoint_url='', log_info=''):
         result, web = get_html(url)
         soup = BeautifulSoup(web, 'lxml')
         info = str(soup.find(attrs={'class': 'row movie'}))
-        number = getNum(web)
-        title = getTitle(web).strip(number).strip().replace(' ', '-') # 获取标题
+        actor = getActor(web)
+        title = getTitle(web).strip(actor).strip() # 获取标题
         if not title:
             log_info += '   >>> AVSOX- title 获取失败！ \n'
             error_type = 'need login'
@@ -158,8 +158,8 @@ def main(number, appoint_url='', log_info=''):
         try:
             dic = {
                 'title': str(title),
-                'number': getNum(info),
-                'actor': getActor(web),
+                'number': number,
+                'actor': actor,
                 'outline': '',
                 'tag': getTag(web),
                 'release': getRelease(info),
