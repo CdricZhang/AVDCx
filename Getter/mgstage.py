@@ -93,7 +93,11 @@ def getOutline(html):
 
 
 def getScore(htmlcode):
-    return str(re.findall(r'5点満点中 (\S+)点', htmlcode)).strip(" ['']")
+    try:
+        result = str(re.findall(r'5点満点中 (\S+)点', htmlcode)).strip(" ['']")
+    except:
+        result = ''
+    return result
 
 
 def main(number, appoint_url='', log_info=''):
@@ -134,29 +138,38 @@ def main(number, appoint_url='', log_info=''):
             log_info += '   >>> MGSTAGE- cover url 获取失败！ \n'
             error_type = 'Cover Url is None!'
             raise Exception('>>> MGSTAGE- cover url 获取失败！]')
-
-        release = getRelease(htmlcode)
+        outline = getOutline(htmlcode).replace('\n', '').strip(',')
+        release = getRelease(htmlcode).strip(',').replace('/', '-')
+        tag = getTag(htmlcode).strip(',')
+        year = getYear(release).strip(',')
+        runtime = getRuntime(htmlcode).strip(',')
+        score = getScore(htmlcode).strip(',')
+        series = getSeries(htmlcode).strip(',')
+        studio = getStudio(htmlcode).strip(',')
+        publisher = getPublisher(htmlcode).strip(',')
+        actor_photo= getActorPhoto(actor.split(','))
+        extrafanart = getExtraFanart(htmlcode)
         try:
             dic = {
                 'title': str(title),
-                'number': getNum(htmlcode).strip(','),
-                'actor': actor.strip(','),
-                'outline': getOutline(htmlcode).replace('\n', '').strip(','),
-                'tag': getTag(htmlcode).strip(','),
-                'release': release.strip(',').replace('/', '-'),
-                'year': getYear(release).strip(','),
-                'runtime': getRuntime(htmlcode).strip(','),
-                'score': getScore(htmlcode).strip(','),
-                'series': getSeries(htmlcode).strip(','),
+                'number': number,
+                'actor': actor,
+                'outline': outline,
+                'tag': tag,
+                'release': release,
+                'year': year,
+                'runtime': runtime,
+                'score': score,
+                'series': series,
                 'director': '',
-                'studio': getStudio(htmlcode).strip(','),
-                'publisher': getPublisher(htmlcode).strip(','),
+                'studio': studio,
+                'publisher': publisher,
                 'source': 'mgstage.main',
                 'website': url,
-                'actor_photo': getActorPhoto(actor.split(',')),
+                'actor_photo': actor_photo,
                 'cover': str(cover_url),
                 'cover_small': '',
-                'extrafanart': getExtraFanart(htmlcode),
+                'extrafanart':extrafanart,
                 'imagecut': 0,
                 'log_info': str(log_info),
                 'error_type': '',
