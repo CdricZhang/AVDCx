@@ -58,7 +58,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210714'
+        self.localversion = '20210715'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -1530,7 +1530,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         cookies = None
         ex1 = ''
         if url == '' or url == 'unknown':
-            self.addTextMain(" 🔴 The url '%s' is wrong, the file '%s' will skip download! " %(url, filename))
+            # self.addTextMain(" 🔴 The url '%s' is wrong, the file '%s' will skip download! " %(url, filename))
             return False
         try:
             proxy_type, proxy, timeout, retry_count = get_proxy()
@@ -1554,7 +1554,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 i += 1
                 print(str(ex))
                 ex1 = str(ex)
-        self.addTextMain(" 🔴 Download failed! url ( %s )\n   >>> %s" % (url, str(ex1)))
+        self.addTextMain(" ⚠️ Download failed! url ( %s )\n   >>> %s" % (url, str(ex1)))
         return False
 
     # ======================================================================================下载缩略图
@@ -1565,7 +1565,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         try:
             cover_url = str(json_data['cover'])
         except Exception as ex:
-            self.addTextMain(" 🔴 Can't use the cover url to download thumb! beacuse the cover url is not exist! \n >>> %s" % str(ex))
+            self.addTextMain(" ⚠️ Can't use the cover url to download thumb! beacuse the cover url is not exist! \n >>> %s" % str(ex))
             return False
         if os.path.exists(thumb_path):  # 移除已存在的thumb文件，重新下载
             os.remove(thumb_path)
@@ -1581,11 +1581,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.addTextMain(" 🟢 Thumb done!")
             return True
         else:
-            self.addTextMain(" ⏳ Start downloading the thumb using cover small url... ")
+            # self.addTextMain(" ⏳ Start downloading the thumb using cover small url... ")
             try:
                 cover_small_url = json_data['cover_small']
             except Exception as ex:
-                self.addTextMain(" 🔴 Can't use the cover small url to download thumb, beacuse the cover small url is not exist! \n >>> %s" % str(ex))
+                # self.addTextMain(" 🔴 Can't use the cover small url to download thumb, beacuse the cover small url is not exist! \n >>> %s" % str(ex))
                 return False
             if self.downloadFileWithFilename(cover_small_url, thumb_name, path):
                 if check_pic(thumb_path):
@@ -1705,11 +1705,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================打印NFO
     def PrintFiles(self, nfo_path, folder_path, file_name, c_word, leak, json_data, config):
-        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
-            json_data)
         if int(config.getint('file_download', 'nfo')) == 0:
             return True
         # self.addTextMain(" ⏳ Start creating nfo... ")
+        # 获取字段
+        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
+            json_data)
         # 获取在媒体文件中显示的规则，不需要过滤Windows异常字符
         name_media = json_data['naming_media'].replace('title', title).replace('studio', studio).replace('year',
                                                                                                          year).replace(
@@ -1717,7 +1718,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             runtime).replace(
             'director', director).replace('actor', actor).replace('release', release).replace('number', number).replace(
             'series', series).replace('publisher', publisher).replace('mosaic', mosaic)
-
         try:
             if not os.path.exists(folder_path):
                 os.makedirs(folder_path)
@@ -1731,40 +1731,40 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 # 输出标题
                 print("  <title>" + name_media + "</title>", file=code)
                 # 输出简介
-                if outline != 'unknown':
+                if outline:
                     print("  <outline>" + outline + "</outline>", file=code)
                     print("  <plot>" + outline + "</plot>", file=code)
                 # 输出合集、系列
-                print("  <set>" + series + "</set>", file=code)
-                print("  <series>" + series + "</series>", file=code)
+                if series:
+                    print("  <set>" + series + "</set>", file=code)
+                    print("  <series>" + series + "</series>", file=code)
                 # 输出发行日期
-                if release != 'unknown':
+                if release:
                     print("  <premiered>" + release + "</premiered>", file=code)
                     print("  <release>" + release + "</release>", file=code)
                 # 输出年代
-                if str(year) != 'unknown':
-                    print("  <year>" + year + "</year>", file=code)
+                if str(year):
+                    print("  <year>" + str(year) + "</year>", file=code)
                 # 输出时长
-                if str(runtime) != 'unknown':
+                if str(runtime):
                     print("  <runtime>" + str(runtime).replace(" ", "") + "</runtime>", file=code)
                 # 输出评分
                 try:
-                    if str(json_data['score']) != 'unknown' and str(json_data['score']) != '' and float(
+                    if str(json_data['score']) and str(json_data['score']) != '' and float(
                             json_data['score']) != 0.0:
                         print("  <rating>" + str(json_data['score']) + "</rating>", file=code)
                 except Exception as err:
                     print("Error in json_data score!" + str(err))
                 # 输出导演
-                if director != 'unknown':
+                if director:
                     print("  <director>" + director + "</director>", file=code)
                 # 输出厂商
-                if studio != 'unknown':
+                if studio:
                     print("  <studio>" + studio + "</studio>", file=code)
                 # 输出制作商
-                if studio != 'unknown':
                     print("  <maker>" + studio + "</maker>", file=code)
                 # 输出发行商
-                if publisher != 'unknown':
+                if publisher:
                     print("  <maker>" + publisher + "</maker>", file=code)
                 # 输出图片文件位置
                 print("  <cover>" + cover + "</cover>", file=code)
@@ -1772,10 +1772,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 print("  <thumb>" + file_name + "-thumb.jpg</thumb>", file=code)
                 print("  <fanart>" + file_name + "-fanart.jpg</fanart>", file=code)
                 # 输出演员
-                if actor_photo and actor_photo != 'unknown':
+                if actor_photo:
                     try:
                         for key, value in actor_photo.items():
-                            if str(key) != 'unknown' and str(key) != '':
+                            if str(key) and str(key) != '':
                                 print("  <actor>", file=code)
                                 print("   <name>" + key + "</name>", file=code)
                                 if not value == '':  # or actor_photo == []:
@@ -1783,7 +1783,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                                 print("  </actor>", file=code)
                     except Exception as ex:
                         self.addTextMain(' 🔴 Error when print actor to nfo\n   >>> ' + str(ex))
-                elif actor and actor != 'unknown':
+                elif actor:
                     actor_list = str(json_data.get('actor')).strip("[ ]").replace("'", '').split(',')  # 字符串转列表
                     actor_list = [actor.strip() for actor in actor_list]  # 去除空白
                     if actor_list:
@@ -1796,39 +1796,39 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 # 输出tag and genre
                 try:
                     for i in tag:
-                        if i != 'unknown':
+                        if i:
                             print("  <tag>" + i + "</tag>", file=code)
                 except Exception as ex:
                     self.addTextMain('Error in tag: ' + str(ex))
-                if json_data['imagecut'] == 3:
-                    print("  <tag>無碼</tag>", file=code)
+                if mosaic:
+                    print("  <tag>" + mosaic + "</tag>", file=code)
                 if leak:
                     print("  <tag>流出</tag>", file=code)
                 if c_word:
                     print("  <tag>中文字幕</tag>", file=code)
-                if series != 'unknown':
+                if series:
                     print("  <tag>" + '系列:' + series + "</tag>", file=code)
-                if studio != 'unknown':
+                if studio:
                     print("  <tag>" + '製作:' + studio + "</tag>", file=code)
-                if publisher != 'unknown':
+                if publisher:
                     print("  <tag>" + '發行:' + publisher + "</tag>", file=code)
                 try:
                     for i in tag:
-                        if i != 'unknown':
+                        if i:
                             print("  <genre>" + i + "</genre>", file=code)
                 except Exception as ex:
                     self.addTextMain(' 🔴 Error when print genre to nfo\n   >>> ' + str(ex))
-                if json_data['imagecut'] == 3:
-                    print("  <genre>無碼</genre>", file=code)
+                if mosaic:
+                    print("  <genre>" + mosaic + "</genre>", file=code)
                 if leak:
                     print("  <genre>流出</genre>", file=code)
                 if c_word:
                     print("  <genre>中文字幕</genre>", file=code)
-                if series != 'unknown':
+                if series:
                     print("  <genre>" + '系列:' + series + "</genre>", file=code)
-                if studio != 'unknown':
+                if studio:
                     print("  <genre>" + '製作:' + studio + "</genre>", file=code)
-                if publisher != 'unknown':
+                if publisher:
                     print("  <genre>" + '發行:' + publisher + "</genre>", file=code)
                 print("  <website>" + website + "</website>", file=code)
                 print("</movie>", file=code)
@@ -2042,10 +2042,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     value = str(json_data['tag']).strip(" ['']").replace('\'', '')
                 if len(str(value)) == 0:
                     continue
-                if value.lower() == 'unknown':
+                if str(value).lower() == 'unknown':
                     continue
-                if len(value) > 100:
-                    value = value[:100] + '......（略）'
+                if key == 'outline' and len(value) > 100:
+                    value = value[:98] + '......（略）'
                 self.addTextMain('    ' + "%-10s" % key + ': ' + str(value))
         except Exception as ex:
             self.addTextMain(' 🔴 Error in showMovieInfo: ' + str(ex))
@@ -2057,8 +2057,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             return folder_path
         title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
             json_data)
+        # 去除Windows特殊字符
         title = re.sub(r'[\\/:*?"<>|\r\n]+', '', title)
-        if len(actor.split(',')) >= 10:  # 演员过多取前五个
+        # 歌手名替换
+        if not actor:
+            actor = '未知演员'
+        elif len(actor.split(',')) >= 10:  # 演员过多取前五个
             actor = actor.split(',')[0] + ',' + actor.split(',')[1] + ',' + actor.split(',')[2] + '等演员'
         folder_name = json_data['folder_name'].replace('\\', '/')
         if str(config['Name_Rule']['folder_name_C']) != '1':
@@ -2097,8 +2101,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'series', series).replace('publisher', publisher).replace('mosaic', mosaic)
         file_name = file_name.replace('//', '/').replace('--', '-').strip('-')
         file_name = re.sub(r'[\\/:*?"<>|\r\n]+', '', file_name) # 用在保存文件时的名字，需要过滤window异常字符
-        if len(file_name) > 100:  # 文件名过长 取标题前70个字符
-            self.addTextMain('提示：标题名过长，取前70个字作为标题!')
+        if not file_name:
+            file_name = number
+        elif len(file_name) > 100:  # 文件名过长 取标题前70个字符
+            self.addTextMain('⚠️ 提示：标题名过长，取前70个字作为标题!')
             file_name = file_name.replace(title, title[0:70])
         file_name = escapePath(file_name, config)   # 清除设置的异常字符
         file_name = file_name.replace('--', '-').strip('-')
@@ -2499,10 +2505,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         if '流出' in file_name:
             leak = '-流出'
         # 判断是否分集及分集序号
-        if '-cd' in file_name.lower():
-            part_list = re.search('-cd\d+', file_name.lower())
+        if 'cd' in file_name.lower():
+            part_list = re.search('[-_]cd\d+', file_name.lower())
             if part_list:
-                cd_part = part_list[0]
+                cd_part = part_list[0].replace('_', '-')
         # 判断是否中文字幕
         if '-C.' in file_full_name.upper() or '-C ' in file_full_name.upper() or '中文' in file_path or '字幕' in file_path:                                                 
             if '無字幕' not in file_path and '无字幕' not in file_path:
@@ -2647,7 +2653,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     json_data['outline'] = self.youdao(json_data['outline'], 'zh_cn')
 
             elif translate_language == 'zh_tw':
-                json_data['mosaic'] = self.youdao(json_data['mosaic'], 'zh_tw')
+                json_data['mosaic'] = zhconv.convert(json_data['mosaic'], 'zh-hant')
                 json_data['title'] = self.youdao(movie_title, 'zh_tw')
                 if json_data.get('outline').strip():
                     json_data['outline'] = self.youdao(json_data['outline'], 'zh_tw')
@@ -2794,13 +2800,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
         # 处理视频列表
         for file_path in movie_list:
-            if os.path.exists(os.path.realpath(file_path)):
-                file_path = os.path.realpath(file_path)  # 如果文件本身是一个符号连接，这时使用它的真实地址
-            else:
-                try:
-                    os.remove(file_path)
-                except:
-                    pass
+            try:    
+                if os.path.exists(os.path.realpath(file_path)):
+                    file_path = os.path.realpath(file_path)  # 如果文件本身是一个符号连接，这时使用它的真实地址
+                else:
+                    os.remove(file_path)   # 清理失效的软链接文件
+            except:
+                pass
             count += 1
             # 获取进度
             progress_value = count / count_all * 100    
@@ -2816,7 +2822,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.addTextMain('\n%d/%d (%s) round(%s)' % (count, count_all, progress_percentage, self.count_claw))
             self.addTextMain('='*80)
             if file_mode == 'single_file':
-                self.addTextMain('当前为单文件刮削模式: \n   >>> 指定番号：%s\n   >>> 刮削地址：%s\n   >>> 刮削网站：%s' % (appoint_number, appoint_url, str(website_mode)))
+                self.addTextMain('当前为单文件刮削模式: \n   >>> 指定番号：%s\n   >>> 刮削地址：%s' % (appoint_number, appoint_url))
             self.addTextMain(" 🙈 Movie [" + self.convert_path(file_path) + "]\n 🚘 Number [" + movie_number + "]")
             succ_count += 1
             fail_count += 1
