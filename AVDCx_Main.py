@@ -1545,7 +1545,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     os.makedirs(path)
                 headers = {
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36',}
-                result = requests.get(str(url), headers=headers, timeout=timeout, cookies=cookies, )
+                result = requests.get(str(url), headers=headers, proxies=proxies, timeout=timeout, cookies=cookies, )
                 with open(str(path) + "/" + filename, "wb") as code:
                     code.write(result.content)
                 code.close()
