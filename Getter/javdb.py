@@ -31,8 +31,15 @@ def getActor(html):
     result2 = str(html.xpath('//strong[text()="Actor(s):"]/../span/strong[@class="symbol female"][last()]/preceding-sibling::a/text()'))
     return result1 + result2
 
+def getActorPhoto(actor):
+    actor = actor.split(',')
+    data = {}
+    for i in actor:
+        actor_photo = {i: ''}
+        data.update(actor_photo)
+    return data
 
-def getActorPhoto(html, log_info, cookies, proxies, timeout): 
+def getActorPhoto2(html, log_info, cookies, proxies, timeout): 
     actor_list = html.xpath('//strong[@class="symbol female"][last()]/preceding-sibling::a/text()')
     actor_url_list = html.xpath('//strong[@class="symbol female"][last()]/preceding-sibling::a/@href')
     actor_count = len(actor_list)
@@ -261,6 +268,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             if len(actor) == 0 and 'FC2-' in number.upper():
                 actor.append('FC2-NoActor')
             actor = str(actor).strip(" [',']").replace('\'', '')
+            actor_photo = getActorPhoto(actor)
             title = getTitle(html_detail) # 获取标题并去掉头尾歌手名
             title = title.replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_','-').replace(number.upper(), '').replace(number, '').strip().replace('--', '-')
             if not title:
@@ -277,7 +285,6 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 error_type = 'Cover_small Url is None!'
                 raise Exception('JAVDB- cover_small url 获取失败！]')
             release = getRelease(html_detail)
-
             try:
                 dic = {
                     'title': title,
@@ -296,7 +303,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                     'source': 'javdb.main',
                     'website': str(real_url).replace('?locale=zh', '').strip('[]'),
                     'search_url': str(url_search),
-                    'actor_photo': getActorPhoto(html_detail, log_info, cookies, proxies, timeout),
+                    'actor_photo': actor_photo,
                     'cover': str(cover_url),
                     'cover_small': '',
                     'extrafanart': getExtraFanart(html_detail),
