@@ -44,7 +44,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_avdc">
      <widget class="QPushButton" name="pushButton_start_cap">
@@ -1286,8 +1286,8 @@ background-color: rgb(246, 246, 246);</string>
         </font>
        </property>
        <property name="text">
-        <string>‘视频目录’的所有子目录(不包括排除目录)下的视频及同名字幕，
-移动到‘视频目录’下的‘Movie_moved’目录下。</string>
+        <string>移动「待刮削视频目录」中的所有视频到「待刮削视频目录」的
+「Movie_moved」目录下。不包括「排除目录」下的视频及同名字幕</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_move_mp4">
@@ -1405,8 +1405,8 @@ background-color: rgb(246, 246, 246);</string>
         </font>
        </property>
        <property name="text">
-        <string>选择单个文件(‘视频目录’下或者子目录下)。
-不指定番号，则默认使用文件名做为番号进行刮削。</string>
+        <string>如不指定番号，则默认使用文件名识别番号进行刮削。
+如指定了刮削网址，则「刮削网站」请选择对应网站！</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_select_file">
@@ -1496,7 +1496,17 @@ background-color: rgb(246, 246, 246);</string>
        </item>
        <item>
         <property name="text">
+         <string>fc2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>fc2club</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>fc2hub</string>
         </property>
        </item>
       </widget>
@@ -1942,8 +1952,8 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="text">
         <string>说明:
-  1、对有些封面图(poster)不满意,比例不对或者分辨率太低,可使用此工具。
-  2、此工具通过判断人脸位置，可以将缩略图(thumb)裁剪为封面图。</string>
+  1、对有些封面图(poster)不满意，比例不对或者分辨率太低，可使用此工具。
+  2、此工具支持手动选择裁剪范围，可以将缩略图(thumb)裁剪为封面图。</string>
        </property>
       </widget>
      </widget>
@@ -2032,7 +2042,7 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-318</y>
+           <y>0</y>
            <width>771</width>
            <height>1150</height>
           </rect>
@@ -2536,7 +2546,17 @@ background-color: rgb(246, 246, 246);</string>
            </item>
            <item>
             <property name="text">
+             <string>fc2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
              <string>fc2club</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>fc2hub</string>
             </property>
            </item>
           </widget>
@@ -3371,7 +3391,7 @@ background-color: rgb(246, 246, 246);</string>
         <property name="geometry">
          <rect>
           <x>-1</x>
-          <y>-1</y>
+          <y>0</y>
           <width>771</width>
           <height>553</height>
          </rect>
@@ -3397,7 +3417,7 @@ background-color: rgb(246, 246, 246);</string>
            <x>0</x>
            <y>0</y>
            <width>769</width>
-           <height>1250</height>
+           <height>1300</height>
           </rect>
          </property>
          <widget class="QGroupBox" name="groupBox_16">
@@ -3899,7 +3919,7 @@ background-color: rgb(246, 246, 246);</string>
             <x>30</x>
             <y>410</y>
             <width>701</width>
-            <height>441</height>
+            <height>521</height>
            </rect>
           </property>
           <property name="font">
@@ -3923,12 +3943,37 @@ background-color: rgb(246, 246, 246);</string>
              <x>0</x>
              <y>30</y>
              <width>681</width>
-             <height>401</height>
+             <height>481</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_8">
-            <item row="1" column="1">
-             <widget class="QLabel" name="label_66">
+            <item row="6" column="1">
+             <widget class="QLineEdit" name="lineEdit_local_name">
+              <property name="minimumSize">
+               <size>
+                <width>450</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="1">
+             <widget class="QLabel" name="label_62">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3948,13 +3993,7 @@ background-color: rgb(246, 246, 246);</string>
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
               <property name="text">
-               <string>当刮削成功时，为该视频创建一个视频目录，并移动该视频目录到成功输出目录。
-目录名字支持自定义。命名字段有：
-title, actor, number, studio, publisher, year, mosaic,
-runtime, director, release, series
-注意：1，可以添加命名字段以外的字符，命名时会原样保留；
-2，当留空时，表示不创建视频目录；
-3，当勾选「成功后不移动文件」时，将不会创建视频目录</string>
+               <string>个别网站有时会在一些标题末尾加上演员名，此时的标题其实 = 标题 演员</string>
               </property>
              </widget>
             </item>
@@ -3981,6 +4020,202 @@ runtime, director, release, series
               <property name="text">
                <string>当有字幕时，文件夹名字后面添加-C。满足以下任一条件，视为有中文字幕：
 1，文件名中含有-C；2，路径中含有「中文」、「字幕」字符</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <layout class="QHBoxLayout" name="horizontalLayout_21">
+              <item>
+               <widget class="QRadioButton" name="radioButton_foldername_C_on">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Courier</family>
+                  <pointsize>13</pointsize>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>开</string>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_foldername_C_off">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Courier</family>
+                  <pointsize>13</pointsize>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>关</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="label_63">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>160</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string>视频标题(本地文件)：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="lineEdit_dir_name">
+              <property name="minimumSize">
+               <size>
+                <width>450</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="accessibleDescription">
+               <string>测试</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QLabel" name="label_68">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>指在nfo文件中的标题格式，命名字段同上</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="label_71">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>160</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string>去除标题末尾演员名：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -4018,65 +4253,6 @@ runtime, director, release, series
               </property>
              </widget>
             </item>
-            <item row="6" column="0">
-             <widget class="QLabel" name="label_63">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>160</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="text">
-               <string>视频标题(本地文件)：</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="1">
-             <widget class="QLabel" name="label_68">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>12</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(8, 128, 128);</string>
-              </property>
-              <property name="text">
-               <string>指在nfo文件中的标题格式，命名字段同上</string>
-              </property>
-             </widget>
-            </item>
             <item row="7" column="1">
              <widget class="QLabel" name="label_61">
               <property name="sizePolicy">
@@ -4102,31 +4278,34 @@ runtime, director, release, series
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="lineEdit_dir_name">
-              <property name="minimumSize">
-               <size>
-                <width>450</width>
-                <height>30</height>
-               </size>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_66">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
               </property>
               <property name="font">
                <font>
                 <family>Courier</family>
-                <pointsize>13</pointsize>
+                <pointsize>12</pointsize>
                 <weight>50</weight>
                 <italic>false</italic>
                 <bold>false</bold>
                </font>
               </property>
-              <property name="accessibleDescription">
-               <string>测试</string>
-              </property>
               <property name="styleSheet">
-               <string notr="true"> font: &quot;Courier&quot;;
- border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>当刮削成功时，为该视频创建一个视频目录，并移动该视频目录到成功输出目录。
+目录名字支持自定义。命名字段有：
+title, actor, number, studio, publisher, year, mosaic,
+runtime, director, release, series
+注意：1，可以添加命名字段以外的字符，命名时会原样保留；
+2，当留空时，表示不创建视频目录；
+3，当勾选「成功后不移动文件」时，将不会创建视频目录</string>
               </property>
              </widget>
             </item>
@@ -4198,66 +4377,6 @@ runtime, director, release, series
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
-             <layout class="QHBoxLayout" name="horizontalLayout_21">
-              <item>
-               <widget class="QRadioButton" name="radioButton_foldername_C_on">
-                <property name="minimumSize">
-                 <size>
-                  <width>100</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>180</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Courier</family>
-                  <pointsize>13</pointsize>
-                  <weight>50</weight>
-                  <italic>false</italic>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>开</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="radioButton_foldername_C_off">
-                <property name="minimumSize">
-                 <size>
-                  <width>100</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>1800</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Courier</family>
-                  <pointsize>13</pointsize>
-                  <weight>50</weight>
-                  <italic>false</italic>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>关</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
             <item row="4" column="1">
              <widget class="QLineEdit" name="lineEdit_media_name">
               <property name="minimumSize">
@@ -4283,30 +4402,52 @@ runtime, director, release, series
               </property>
              </widget>
             </item>
-            <item row="6" column="1">
-             <widget class="QLineEdit" name="lineEdit_local_name">
-              <property name="minimumSize">
-               <size>
-                <width>450</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"> font: &quot;Courier&quot;;
- border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
-              </property>
-             </widget>
+            <item row="8" column="1">
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QGroupBox" name="groupBox_20">
+                <property name="styleSheet">
+                 <string notr="true">border:0px solid rgba(255, 255, 255, 0);
+background-color: rgba(255, 255, 255, 0);</string>
+                </property>
+                <property name="title">
+                 <string/>
+                </property>
+                <widget class="QRadioButton" name="radioButton_del_actor_on">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>508</width>
+                   <height>31</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>开</string>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+                <widget class="QRadioButton" name="radioButton_del_actor_off">
+                 <property name="geometry">
+                  <rect>
+                   <x>250</x>
+                   <y>0</y>
+                   <width>508</width>
+                   <height>23</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>关</string>
+                 </property>
+                 <property name="autoExclusive">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -4315,7 +4456,7 @@ runtime, director, release, series
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>1110</y>
+            <y>1150</y>
             <width>701</width>
             <height>121</height>
            </rect>
@@ -4497,9 +4638,9 @@ runtime, director, release, series
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>870</y>
+            <y>950</y>
             <width>701</width>
-            <height>221</height>
+            <height>181</height>
            </rect>
           </property>
           <property name="font">
@@ -4523,7 +4664,7 @@ runtime, director, release, series
              <x>0</x>
              <y>30</y>
              <width>681</width>
-             <height>181</height>
+             <height>141</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_12">
@@ -4558,62 +4699,6 @@ runtime, director, release, series
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="lineEdit_movie_type">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>300</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"> font: &quot;Courier&quot;;
- border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QLabel" name="label_62">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>12</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(8, 128, 128);</string>
-              </property>
-              <property name="text">
-               <string>只添加 HEYZO、n1111、111111-111之外的前缀。</string>
               </property>
              </widget>
             </item>
@@ -4719,6 +4804,37 @@ runtime, director, release, series
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="lineEdit_movie_type">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>300</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
               </property>
              </widget>
             </item>
