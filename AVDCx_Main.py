@@ -31,6 +31,7 @@ import urllib.parse
 import random
 import hashlib
 import zhconv
+import langid
 import platform
 import cloudscraper
 
@@ -58,7 +59,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210715'
+        self.localversion = '20210718'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -273,10 +274,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================按钮点击事件
     def Init(self):
-        # self.Ui.stackedWidget.setCurrentIndex(0)
         self.Ui.treeWidget_number.clicked.connect(self.treeWidget_number_clicked)
         self.Ui.pushButton_close.clicked.connect(self.close_win)
-        # self.Ui.pushButton_min.clicked.connect(self.min_win)
         self.Ui.pushButton_main.clicked.connect(self.pushButton_main_clicked)
         self.Ui.pushButton_tool.clicked.connect(self.pushButton_tool_clicked)
         self.Ui.pushButton_setting.clicked.connect(self.pushButton_setting_clicked)
@@ -544,13 +543,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'naming_media': 'number title',
             'naming_file': 'number',
             'folder_name_C': 1,
+            'del_actor_name': 1,
             'literals': '\|()',
             'folders': 'JAV_output,examples',
             'string': '1080p,720p,22-sht.me,-HD',
             'emby_url': '192.168.5.191:8096',
             'api_key': 'cb83900340b447fab785cb628a99c3da',
             'media_path': '',
-            'media_type': '.mp4|.avi|.rmvb|.wmv|.mov|.mkv|.flv|.ts|.webm|.MP4|.AVI|.RMVB|.WMV|.MOV|.MKV|.FLV|.TS|.WEBM',
+            'media_type': '.mp4|.avi|.rmvb|.wmv|.mov|.mkv|.flv|.ts|.webm|.iso|.mpg',
             'sub_type': '.smi|.srt|.idx|.sub|.sup|.psb|.ssa|.ass|.txt|.usf|.xss|.ssf|.rt|.lrc|.sbv|.vtt|.ttml',
             'poster_mark': 1,
             'thumb_mark': 1,
@@ -581,7 +581,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 config.read(config_file, encoding='UTF-8')
             except:
                 # ini损坏，重新创建
-                print('aaaa')
+                print('ini损坏，重新创建')
                 self.init_config_clicked()
                 return
             # ======================================================================================modified_time
@@ -669,8 +669,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     self.Ui.comboBox_website_all.setCurrentIndex(7)
                 elif config['common']['website'] == 'mgstage':
                     self.Ui.comboBox_website_all.setCurrentIndex(8)
-                elif config['common']['website'] == 'fc2hub':
+                elif config['common']['website'] == 'fc2':
                     self.Ui.comboBox_website_all.setCurrentIndex(9)
+                elif config['common']['website'] == 'fc2club':
+                    self.Ui.comboBox_website_all.setCurrentIndex(10)
+                elif config['common']['website'] == 'fc2hub':
+                    self.Ui.comboBox_website_all.setCurrentIndex(11)
                 else:
                     self.Ui.comboBox_website_all.setCurrentIndex(0)
             except:
@@ -749,6 +753,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             except:
                 self.Ui.radioButton_foldername_C_on.setChecked(True)
 
+            try:    # 去除标题演员名
+                if int(config['Name_Rule']['del_actor_name']) == 0:
+                    self.Ui.radioButton_del_actor_off.setChecked(True)
+                else:
+                    self.Ui.radioButton_del_actor_on.setChecked(True)
+            except:
+                self.Ui.radioButton_del_actor_on.setChecked(True)
+
             # ======================================================================================update
             if not config.has_section("update"):
                 config.add_section("update")
@@ -778,9 +790,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 config['media']['media_path'] = ''
                 self.Ui.lineEdit_movie_path.setText('')
             try:    # 视频类型
-                self.Ui.lineEdit_movie_type.setText('.mp4|.avi|.rmvb|.wmv|.mov|.mkv|.flv|.ts|.webm|.MP4|.AVI|.RMVB|.WMV|.MOV|.MKV|.FLV|.TS|.WEBM')
+                self.Ui.lineEdit_movie_type.setText(config['media']['media_type'])
             except:
-                self.Ui.lineEdit_movie_type.setText('.mp4|.avi|.rmvb|.wmv|.mov|.mkv|.flv|.ts|.webm|.MP4|.AVI|.RMVB|.WMV|.MOV|.MKV|.FLV|.TS|.WEBM')
+                self.Ui.lineEdit_movie_type.setText('.mp4|.avi|.rmvb|.wmv|.mov|.mkv|.flv|.ts|.webm|.iso|.mpg')
             try:    # 字幕类型
                 self.Ui.lineEdit_sub_type.setText(config['media']['sub_type'])
             except:
@@ -981,7 +993,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         switch_debug = 0
         update_check = 0
         translate_language = ''
-        folder_name_C = 0
+        folder_name_C = 1
+        del_actor_name = 1
         save_log = 0
         website = ''
         add_mark = 1
@@ -1023,11 +1036,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             translate_language = 'zh_tw'
         elif self.Ui.radioButton_ja.isChecked():  # 翻译日文
             translate_language = 'ja'
-
-        if self.Ui.radioButton_foldername_C_on.isChecked():  # 文件夹加-C
+        if self.Ui.radioButton_foldername_C_on.isChecked():  # 文件夹加-C开
             folder_name_C = 1
-        elif self.Ui.radioButton_foldername_C_off.isChecked():  # 文件夹不加-C
+        elif self.Ui.radioButton_foldername_C_off.isChecked():  # 文件夹不加-C关
             folder_name_C = 0
+        if self.Ui.radioButton_del_actor_on.isChecked():  # 去除标题歌手名开
+            del_actor_name = 1
+        elif self.Ui.radioButton_del_actor_off.isChecked():  # 去除标题歌手名关
+            del_actor_name = 0
         if self.Ui.radioButton_log_on.isChecked():  # 开启日志
             save_log = 1
         elif self.Ui.radioButton_log_off.isChecked():  # 关闭日志
@@ -1066,6 +1082,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             website = 'xcity'
         elif self.Ui.comboBox_website_all.currentText() == 'mgstage':  # mgstage
             website = 'mgstage'
+        elif self.Ui.comboBox_website_all.currentText() == 'fc2':  # fc2
+            website = 'fc2'
+        elif self.Ui.comboBox_website_all.currentText() == 'fc2club':  # fc2club
+            website = 'fc2club'
         elif self.Ui.comboBox_website_all.currentText() == 'fc2hub':  # fc2hub
             website = 'fc2hub'
         # ======================================================================================proxy
@@ -1135,6 +1155,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'update_check': update_check,
             'translate_language': translate_language,
             'folder_name_C': folder_name_C,
+            'del_actor_name': del_actor_name,
             'save_log': save_log,
             'website': website,
             'type': proxy_type,
@@ -1273,7 +1294,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def move_file_thread(self):
         movie_path = self.Ui.lineEdit_movie_path.text().replace('\\', '/')
         escape_dir = self.Ui.lineEdit_escape_dir_move.text().replace('\\', '/')
-        movie_type = self.Ui.lineEdit_movie_type.text()
+        movie_type = self.Ui.lineEdit_movie_type.text().lower()
         sub_type = self.Ui.lineEdit_sub_type.text().split('|')
         if not movie_path:  # 没有输入视频目录时，获取程序当前路径
             movie_path = os.path.abspath(".")
@@ -1493,7 +1514,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def addNetTextMain(self, text):
         try:
             self.net_logs_show.emit(text)
-            # time.sleep(0.1)
             # self.Ui.textBrowser_net_main.append(text)
             # self.Ui.textBrowser_net_main.moveCursor(QTextCursor.End)
             # self.Ui.textBrowser_net_main.verticalScrollBar().setValue(self.Ui.textBrowser_net_main.verticalScrollBar().maximum())
@@ -1503,7 +1523,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
 
     # ======================================================================================移动到失败文件夹
-    def moveFailedFolder(self, file_path, failed_folder, config):
+    def moveFailedFolder(self, file_path, failed_folder, file_ex, config):
         if int(config.getint('common', 'failed_file_move')) == 1:
             if int(config.getint('common', 'soft_link')) != 1:
                 file_new_path = self.convert_path(os.path.join(failed_folder, os.path.split(file_path)[1]))
@@ -1514,6 +1534,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                         try:
                             shutil.move(file_path, failed_folder)
                             self.addTextMain("   >>> Move file to the failed folder! \n   >>> The new path is '%s'" % file_new_path)
+                            self.delOldPic(file_path, file_new_path, file_ex)   # 移动后清理原文件夹中的旧图片
                         except Exception as ex:
                             self.addTextMain("   >>> Failed to move the file to the failed folder! \n   >>> " + str(ex))
                     else:
@@ -1522,7 +1543,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     self.addTextMain("   >>> The file is already in the failed folder, no need to move it again!\n   >>> The current path is '%s'" % file_path)
 
     # ======================================================================================下载文件
-    def downloadFileWithFilename(self, url, filename, path):
+    def downloadFileWithFilename(self, url, filename, folder_new_path):
         proxy_type = ''
         retry_count = 0
         proxy = ''
@@ -1541,12 +1562,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         i = 0
         while i < retry_count:
             try:
-                if not os.path.exists(path):
-                    os.makedirs(path)
+                if not os.path.exists(folder_new_path):
+                    os.makedirs(folder_new_path)
+                    
                 headers = {
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36',}
                 result = requests.get(str(url), headers=headers, proxies=proxies, timeout=timeout, cookies=cookies, )
-                with open(str(path) + "/" + filename, "wb") as code:
+                with open(str(folder_new_path) + "/" + filename, "wb") as code:
                     code.write(result.content)
                 code.close()
                 return True
@@ -1554,125 +1576,113 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 i += 1
                 print(str(ex))
                 ex1 = str(ex)
-        self.addTextMain(" ⚠️ Download failed! url ( %s )\n   >>> %s" % (url, str(ex1)))
+        self.addTextMain(" 🟠 Download failed! url ( %s )\n   >>> %s" % (url, str(ex1)))
         return False
 
     # ======================================================================================下载缩略图
-    def thumbDownload(self, json_data, path, config, thumb_name, thumb_path):
-        if int(config.getint('file_download', 'thumb')) == 0:
-            return True
+    def thumbDownload(self, json_data, folder_new_path, config, thumb_new_name, thumb_new_path):
         # self.addTextMain(" ⏳ Start downloading the thumb... ")
         try:
             cover_url = str(json_data['cover'])
         except Exception as ex:
-            self.addTextMain(" ⚠️ Can't use the cover url to download thumb! beacuse the cover url is not exist! \n >>> %s" % str(ex))
-            return False
-        if os.path.exists(thumb_path):  # 移除已存在的thumb文件，重新下载
-            os.remove(thumb_path)
-        i = 1
-        while i <= int(config['proxy']['retry']):
-            self.downloadFileWithFilename(cover_url, thumb_name, path)
-            if not check_pic(thumb_path):
-                i = i + 1
-            else:
-                break
-
-        if check_pic(thumb_path):
-            self.addTextMain(" 🟢 Thumb done!")
-            return True
+            self.addTextMain(" 🟠 Can't use the cover url to download thumb! beacuse the cover url is not exist! \n >>> %s" % str(ex))
         else:
-            # self.addTextMain(" ⏳ Start downloading the thumb using cover small url... ")
-            try:
-                cover_small_url = json_data['cover_small']
-            except Exception as ex:
-                # self.addTextMain(" 🔴 Can't use the cover small url to download thumb, beacuse the cover small url is not exist! \n >>> %s" % str(ex))
-                return False
-            if self.downloadFileWithFilename(cover_small_url, thumb_name, path):
-                if check_pic(thumb_path):
-                    self.addTextMain(" 🟢 Thumb done!")
-                    return True
-            if os.path.exists(thumb_path):  # 下载失败时，删除损坏的文件
-                os.remove(thumb_path)
-            self.addTextMain(" 🔴 Thumb failed!")
-            json_data['title'] = "Thumb download failed!"
-            json_data['error_info'] = "Thumb download failed!"
-            return False
-
-    # ======================================================================================下载poster
-    def posterDownload(self, json_data, folder_path, config, thumb_name, poster_name, thumb_path, poster_path, cover_small_path):
-        if int(config.getint('file_download', 'poster')) == 0:
-            return True
-        if os.path.exists(poster_path):
-            os.remove(poster_path)
-        if int(config.getint('uncensored', 'uncensored_poster')) == 0:     # 官方下载
-            # self.addTextMain(" ⏳ Start downloading the poster... ")
-            if not self.smallCoverDownload(json_data, folder_path, config, thumb_name, poster_name, thumb_path, poster_path, cover_small_path):
-                if json_data['imagecut'] == 3:  # 下载失败，使用裁剪，修改裁剪方式为0
-                    json_data['imagecut'] = 0
-        if not os.path.exists(poster_path): # 没有poster图时，进行裁剪
-            # self.addTextMain(" ⏳ Start creating poster by clipping thumb... ")
-            if not self.cutImage(json_data['imagecut'], folder_path, thumb_name, poster_name, thumb_path, poster_path, cover_small_path):
-                return False
-        if not os.path.exists(poster_path): 
-                return False
+            if os.path.exists(thumb_new_path):  # 移除已存在的thumb文件，重新下载
+                os.remove(thumb_new_path)
+            i = 1
+            while i <= int(config['proxy']['retry']):
+                self.downloadFileWithFilename(cover_url, thumb_new_name, folder_new_path)
+                if not check_pic(thumb_new_path):
+                    i = i + 1
+                else:
+                    break
+            if check_pic(thumb_new_path):
+                self.addTextMain(" 🟢 Thumb done!")
+                return True
+        if os.path.exists(thumb_new_path):  # 移除已存在的thumb文件
+            os.remove(thumb_new_path)
+        if int(config.getint('file_download', 'poster')) == 1 and int(config.getint('uncensored', 'uncensored_poster')) == 0:
+            pass    # 等待poster下载结果，如果下载成功，就使用poster作为thumb
+        else:
+            shutil.copy(self.default_thumb, thumb_new_path)
+            self.addTextMain(" 🟠 Thumb download failed! Now use the default thumb as thumb! ")
         return True
 
-    # ======================================================================================删除缩略图
-    def deletethumb(self, thumb_name, thumb_path, config):
-        try:
-            if int(config.getint('file_download', 'thumb')) == 0 and os.path.exists(thumb_path):
-                os.remove(thumb_path)
-                self.addTextMain(" 🟢 Delete the thumb '%s' successfully!" % thumb_name)
-        except Exception as ex:
-            self.addTextMain(" 🔴 Failed to delete the thumb '%s'\n   >>> %s" % (thumb_name, str(ex)))
+    # ======================================================================================下载poster
+    def posterDownload(self, json_data, folder_new_path, config, thumb_new_name, poster_new_name, thumb_new_path, poster_new_path):
+        if int(config.getint('file_download', 'poster')) == 0:
+            return True
+        if os.path.exists(poster_new_path):
+            os.remove(poster_new_path)
+        if int(config.getint('uncensored', 'uncensored_poster')) == 0:     # 官方下载
+            # self.addTextMain(" ⏳ Start downloading the poster... ")
+            if self.smallCoverDownload(json_data, folder_new_path, config, thumb_new_name, poster_new_name, thumb_new_path, poster_new_path):
+                # 如果poster下载成功，发现thumb不存在但下载开，就复制poster到thumb
+                if not os.path.exists(thumb_new_path) and int(config.getint('file_download', 'thumb')) == 1: 
+                    shutil.copy(poster_new_path, thumb_new_path)
+                    self.addTextMain(" 🟠 Thumb download failed! Now use poster as thumb! ")                    
+                return True
+        # 下载失败，如果存在损坏的poster，就删除掉
+        if os.path.exists(poster_new_path):
+            os.remove(poster_new_path)
+        # 存在thumb，使用thumb裁剪
+        if os.path.exists(thumb_new_path):
+            # 修改裁剪方式为0，3不裁剪
+            if json_data['imagecut'] == 3: 
+                json_data['imagecut'] = 0
+            if self.cutImage(json_data['imagecut'], folder_new_path, thumb_new_name, poster_new_name, thumb_new_path, poster_new_path):
+                return True
+        # 不存在thumb，但下载thumb开
+        elif int(config.getint('file_download', 'thumb')) == 1:
+            shutil.copy(self.default_thumb, thumb_new_path)
+            self.addTextMain(" 🟠 Thumb download failed! Now use the dufault thumb as thumb! ")
+        if os.path.exists(poster_new_path):
+            os.remove(poster_new_path)
+        shutil.copy(self.default_poster, poster_new_path)
+        self.addTextMain(" 🟠 Poster failed! Now use the dufault poster as poster! ")
+        return True
 
     # ======================================================================================下载封面图
-    def smallCoverDownload(self, json_data, path, config, thumb_name, poster_name, thumb_path, poster_path, cover_small_path):
+    def smallCoverDownload(self, json_data, folder_new_path, config, thumb_new_name, poster_new_name, thumb_new_path, poster_new_path):
         try:
             if json_data['cover_small'] == '' or json_data['cover_small'] == 'unknown':
-                self.addTextMain('Failed to download poster using the small cover url! beacuse cover url is not exist!')
                 return False
         except Exception as ex:
-            self.addTextMain(" 🔴 Can't use the cover small url to download poster! beacuse the cover small url is not exist! \n >>> %s" % str(ex))
+            self.addTextMain(" 🟠 Can't use the cover small url to download poster! beacuse the cover small url is not exist! \n >>> %s" % str(ex))
             return False
-        is_pic_open = 0
-        if os.path.exists(poster_path):  # 移除已存在的tposter文件，重新下载
-            os.remove(thumb_path)
+        if os.path.exists(poster_new_path):  # 移除已存在的poster文件，重新下载
+            os.remove(poster_new_path)
 
         i = 1
         while i <= int(config['proxy']['retry']):
-            self.downloadFileWithFilename(json_data['cover_small'], cover_small_path, path)
-            if not check_pic(cover_small_path):
+            self.downloadFileWithFilename(json_data['cover_small'], poster_new_name, folder_new_path)
+            if not check_pic(poster_new_path):
                 i = i + 1
             else:
                 break
-        if not check_pic(cover_small_path):
-            self.addTextMain(' 🔴 Poster download failed!')
+        if not check_pic(poster_new_path):
+            self.addTextMain(' 🟠 Poster download failed!')
+            try:
+                os.remove(poster_new_path)
+            except:
+                pass
             return False
+        self.addTextMain(" 🟢 Poster done!")
+        return True
+
+
+    # ======================================================================================删除缩略图
+    def deletethumb(self, thumb_new_name, thumb_new_path, config):
         try:
-            fp = open(cover_small_path, 'rb')
-            is_pic_open = 1
-            img = Image.open(fp)
-            w = img.width
-            h = img.height
-            if not (1.3 <= h / w <= 1.6):
-                fp.close()
-                self.addTextMain(' 🔴 Poster size is not appropriate!')
-                return False
-            img.save(poster_path)
-            fp.close()
-            os.remove(cover_small_path)
-            self.addTextMain(" 🟢 Poster downloded successfully!\n   >>> The poster name is '%s'" % poster_name)
-            return True
+            if int(config.getint('file_download', 'thumb')) == 0 and os.path.exists(thumb_new_path):
+                os.remove(thumb_new_path)
+                self.addTextMain(" 🟢 Delete the thumb '%s' successfully!" % thumb_new_name)
         except Exception as ex:
-            self.addTextMain(' 🔴 Fail to save poster!\n   >>> ' + str(ex))
-            if is_pic_open:
-                fp.close()
-            os.remove(cover_small_path)
-            return False
+            self.addTextMain(" 🔴 Failed to delete the thumb '%s'\n   >>> %s" % (thumb_new_name, str(ex)))
+
 
     # ======================================================================================下载剧照
-    def extrafanartDownload(self, json_data, path, config):
+    def extrafanartDownload(self, json_data, folder_new_path, config):
         if int(config.getint('extrafanart', 'extrafanart_download')) == 0:
             return
         try:
@@ -1682,7 +1692,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             return
         self.addTextMain(' ⏳ ExtraFanart downloading!')
         extrafanart_folder = config.get('extrafanart', 'extrafanart_folder').replace('\\', '/')
-        extrafanart_path = os.path.join(path, extrafanart_folder)
+        extrafanart_path = os.path.join(folder_new_path, extrafanart_folder)
         extrafanart_list = json_data['extrafanart']
         if not os.path.exists(extrafanart_path):
             os.makedirs(extrafanart_path)
@@ -1703,8 +1713,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                         break
         self.addTextMain(" 🟢 ExtraFanart downloaded complete! Total %s , success %s " % (extrafanart_count, extrafanart_count_succ))
 
+
     # ======================================================================================打印NFO
-    def PrintFiles(self, nfo_path, folder_path, file_name, c_word, leak, json_data, config):
+    def PrintFiles(self, nfo_new_path, folder_new_path, thumb_new_name, poster_new_name, fanart_new_name, c_word, leak, json_data, config):
         if int(config.getint('file_download', 'nfo')) == 0:
             return True
         # self.addTextMain(" ⏳ Start creating nfo... ")
@@ -1719,11 +1730,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'director', director).replace('actor', actor).replace('release', release).replace('number', number).replace(
             'series', series).replace('publisher', publisher).replace('mosaic', mosaic)
         try:
-            if not os.path.exists(folder_path):
-                os.makedirs(folder_path)
-            if os.path.exists(nfo_path):
-                os.remove(nfo_path)
-            with open(nfo_path, "wt", encoding='UTF-8') as code:
+            if not os.path.exists(folder_new_path):
+                os.makedirs(folder_new_path)
+            if os.path.exists(nfo_new_path):
+                os.remove(nfo_new_path)
+            with open(nfo_new_path, "wt", encoding='UTF-8') as code:
                 print('<?xml version="1.0" encoding="UTF-8" ?>', file=code)
                 print("<movie>", file=code)
                 # 输出番号
@@ -1768,9 +1779,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     print("  <maker>" + publisher + "</maker>", file=code)
                 # 输出图片文件位置
                 print("  <cover>" + cover + "</cover>", file=code)
-                print("  <poster>" + file_name + "-poster.jpg</poster>", file=code)
-                print("  <thumb>" + file_name + "-thumb.jpg</thumb>", file=code)
-                print("  <fanart>" + file_name + "-fanart.jpg</fanart>", file=code)
+                print("  <poster>" + poster_new_name + "</poster>", file=code)
+                print("  <thumb>" + thumb_new_name + "</thumb>", file=code)
+                print("  <fanart>" + fanart_new_name + "</fanart>", file=code)
                 # 输出演员
                 if actor_photo:
                     try:
@@ -1837,13 +1848,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.addTextMain(' 🔴 Nfo failed! \n   >>>  %s' % str(ex))
 
     # ======================================================================================thumb复制为fanart
-    def copyRenameJpgToFanart(self, thumb_path, fanart_path, config):
+    def copyRenameJpgToFanart(self, thumb_new_path, fanart_new_path, config):
         if int(config.getint('file_download', 'fanart')) == 1:
             # self.addTextMain(" ⏳ Start creating fanart by copying the thumb... ")
-            if os.path.exists(thumb_path):
-                if os.path.exists(fanart_path):
-                    os.remove(fanart_path)
-                shutil.copy(thumb_path, fanart_path)
+            if os.path.exists(thumb_new_path):
+                if os.path.exists(fanart_new_path):
+                    os.remove(fanart_new_path)
+                shutil.copy(thumb_new_path, fanart_new_path)
                 self.addTextMain(" 🟢 Fanart done!")
                 return True
             self.addTextMain(' 🔴 Failed to create fanart! the thumb is not exist!')
@@ -1858,16 +1869,27 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 os.symlink(file_path, file_new_path)
                 self.addTextMain(" 🟢 Symlink done! \n   >>> The symlink path is '%s' \n   >>> The real path is '%s'" % (file_new_path, file_path))
             return True 
-        if config.getint('common', 'success_file_move') == 0:   # 如果成功后不移动文件
-            self.addTextMain(" 🟢 Movie not moved! \n   >>> The path is '%s'" % file_new_path)
-            return True
 
-        if file_path == file_new_path:          # 成功后移动文件，当路径相同
-            self.addTextMain(" 🟢 Movie file is already in success folder! no need to movie it again!\n   >>> The current path is '%s'" % file_new_path)
+        if config.getint('common', 'success_file_move') == 0:   # 如果成功后不移动文件
+            if file_path == file_new_path:          # 当路径相同，不移动
+                self.addTextMain(" 🟢 Movie not moved! \n   >>> The path is '%s'" % file_new_path)
+                return True
+            try:    # 路径不同，就重命名
+                shutil.move(file_path, file_new_path)
+                self.addTextMain(" 🟢 Movie renamed! \n   >>> The new name is '%s'" % file_new_path)
+                return True
+            except PermissionError:
+                self.addTextMain(' 🔴 Failed to rename the movie! \n   >>> No permission! Please run as Administrator!')
+            except Exception as ex:
+                self.addTextMain(' 🔴 Failed to rename the movie! \n   >>> %s' % str(ex))
+            return False
+        if file_path == file_new_path:          # 当路径相同，不移动
+            # self.addTextMain(" 🟢 Movie file is already in success folder! no need to movie it again!\n   >>> The current path is '%s'" % file_new_path)
+            self.addTextMain(" 🟢 Movie done! \n 🙉 [Movie] %s" % file_new_path)
             return True
-        try:    # 路径不同⑨移动文件
+        try:    # 路径不同，就移动文件
             shutil.move(file_path, file_new_path)
-            self.addTextMain(" 🟢 Movie moved! \n   >>> The new path is '%s'" % file_new_path)
+            self.addTextMain(" 🟢 Movie done! \n 🙉 [Movie] %s" % file_new_path)
             return True
         except PermissionError:
             self.addTextMain(' 🔴 Failed to move movie file to success folder! \n   >>> No permission! Please run as Administrator!')
@@ -1876,14 +1898,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         return False
 
     # ======================================================================================有码片裁剪封面
-    def cutImage(self, imagecut, path, thumb_name, poster_name, thumb_path, poster_path, cover_small_path):
+    def cutImage(self, imagecut, path, thumb_name, poster_name, thumb_path, poster_path):
         if imagecut != 3:
             if not os.path.exists(thumb_path):
-                if os.path.exists(cover_small_path):
-                    thumb_path = cover_small_path
-                else:
-                    self.addTextMain(" 🔴 Can't cut, beacuse thumb.jpg and cover_small.jpg are not exist!")
-                    return False
+                self.addTextMain(" 🟠 Poster can't cut from thumb, beacuse thumb.jpg is not exist!")
+                return False
             if os.path.exists(poster_path):
                 os.remove(poster_path)
             if imagecut == 0:   # 中间裁剪
@@ -1913,10 +1932,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     self.addTextMain(" 🟢 Poster done!")
                     return True
                 except Exception as ex:
-                    self.addTextMain(' 🔴 Poster cut failed!\n   >>> ' + str(ex))
+                    self.addTextMain(' 🟠 Poster cut failed!\n   >>> ' + str(ex))
                     return False
         else:
-            self.addTextMain(' 🔴 Poster is not cut! beacuse imagecut=3, it mean only download!')
+            self.addTextMain(' 🟠 Poster is not cut! beacuse imagecut=3, it mean only download!')
             return False
 
     def fix_size(self, path, naming_rule):
@@ -1933,8 +1952,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         except Exception as ex:
             self.addTextMain('Error in fix_size: ' + str(ex))
 
+                    # poster_new_path, thumb_new_path, c_word, leak, uncensored, config
     # ======================================================================================添加水印
-    def add_mark(self, poster_path, thumb_path, c_word, leak, uncensored, config):
+    def add_mark(self, poster_new_path, thumb_new_path, c_word, leak, uncensored, config):
         mark_type = config.get('mark', 'mark_type')
         mark_type_list = mark_type.upper().split(',')
         mark_list = []
@@ -1949,12 +1969,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             mark_show_type = str(mark_list).strip(" ['']").replace("'", "")
             mark_pos = config.get('mark', 'mark_pos')
             mark_size = int(config.getint('mark', 'mark_size'))
-            if config.getint('mark', 'thumb_mark') and config.getint('file_download', 'thumb') and os.path.exists(thumb_path):
-                self.add_mark_thread(thumb_path, mark_list, mark_pos, mark_size)
-                self.addTextMain(' 🟢 Thumb has been watermarked: ' + mark_show_type)
-            if int(config.getint('mark', 'poster_mark')) and int(config.getint('file_download', 'poster')) and os.path.exists(poster_path):
-                self.add_mark_thread(poster_path, mark_list, mark_pos, mark_size)
-                self.addTextMain(' 🟢 Poster has been watermarked: ' + mark_show_type)
+            if config.getint('mark', 'thumb_mark') and config.getint('file_download', 'thumb') and os.path.exists(thumb_new_path):
+                self.add_mark_thread(thumb_new_path, mark_list, mark_pos, mark_size)
+                self.addTextMain(' 🟢 Thumb add watermark: %s!' % mark_show_type)
+            if int(config.getint('mark', 'poster_mark')) and int(config.getint('file_download', 'poster')) and os.path.exists(poster_new_path):
+                self.add_mark_thread(poster_new_path, mark_list, mark_pos, mark_size)
+                self.addTextMain(' 🟢 Poster add watermark: %s!' % mark_show_type)
 
     def add_mark_thread(self, pic_path, mark_list, mark_pos, mark_size):
         size = 14 - mark_size  # 获取水印自定义大小的值
@@ -2009,12 +2029,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================显示jsondata结果
     def showDataResult(self, json_data, config):
+        self.addTextMain(' 🌐 [website] %s' % json_data['req_web'].strip('-> '))
         if json_data['error_type'] or json_data['title'] == '':
-            self.addTextMain(' 🔴 Data failed!')
+            self.addTextMain(' 🟠 Data failed!')
             self.showDebugInfo(json_data, config)    # 调试模式打开时显示详细日志
             return False
         else:
-            self.addTextMain(' 🌐 website [%s]' % json_data['source'].replace('.main_us','').replace('.main','').upper())
+            # self.addTextMain(' 🌐 [website] %s' % json_data['source'].replace('.main_us','').replace('.main','').upper())
             self.addTextMain(' 🟢 Data done!')
             # self.showMovieInfo(json_data, config)
             # self.showDebugInfo(json_data, config)    # 调试模式打开时显示详细日志
@@ -2024,7 +2045,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def showDebugInfo(self, json_data, config):
         if int(config.getint('debug_mode', 'switch')) == 1:    # 调试模式打开时显示详细日志
             try:
-                self.addTextMain(' ****** Debug Info ******')
+                self.addTextMain('   ****** Debug Info ******')
                 self.addTextMain(json_data['log_info'].strip('\n'))
             except Exception as ex:
                 self.addTextMain(' 🔴 Error in showDebugInfo: ' + str(ex))
@@ -2035,7 +2056,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             return
         try:
             for key, value in json_data.items():
-                if value == '' or key == 'imagecut' or key == 'search_url' or key == 'log_info' or key == 'error_type' or key == 'error_info' or key == 'naming_media' or key == 'naming_file' or key == 'folder_name' or key == 'extrafanart' or key == 'actor_photo' or key == 'source' or key == 'cover' or key == 'website' or key == 'number' or key == 'cover_small' or key == 'mosaic':
+                if value == '' or key == 'imagecut' or key == 'search_url' or key == 'log_info' or key == 'error_type' or key == 'error_info' or key == 'naming_media' or key == 'naming_file' or key == 'folder_name' or key == 'extrafanart' or key == 'actor_photo' or key == 'source' or key == 'cover' or key == 'number' or key == 'cover_small' or key == 'mosaic' or key == 'req_web':
                     continue
 
                 if key == 'tag':
@@ -2060,6 +2081,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # 去除Windows特殊字符
         title = re.sub(r'[\\/:*?"<>|\r\n]+', '', title)
         # 歌手名替换
+        if not series:
+            series = '未知系列'
         if not actor:
             actor = '未知演员'
         elif len(actor.split(',')) >= 10:  # 演员过多取前五个
@@ -2091,7 +2114,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
             json_data)
         title = re.sub(r'[\\/:*?"<>|\r\n]+', '', title)
-        if len(actor.split(',')) >= 10:  # 演员过多取前五个
+        if len(actor.split(',')) >= 10:  # 演员过多取前3个
             actor = actor.split(',')[0] + ',' + actor.split(',')[1] + ',' + actor.split(',')[2] + '等演员'
         file_name = json_data['naming_file'].replace('title', title).replace('studio', studio).replace('year',
                                                                                                        year).replace(
@@ -2104,7 +2127,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         if not file_name:
             file_name = number
         elif len(file_name) > 100:  # 文件名过长 取标题前70个字符
-            self.addTextMain('⚠️ 提示：标题名过长，取前70个字作为标题!')
+            self.addTextMain('🟠 提示：标题名过长，取前70个字作为标题!')
             file_name = file_name.replace(title, title[0:70])
         file_name = escapePath(file_name, config)   # 清除设置的异常字符
         file_name = file_name.replace('--', '-').strip('-')
@@ -2115,23 +2138,21 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     # ======================================================================================生成各种输出文件和文件夹的名字
     def getOutPutName(self, file_path, success_folder, json_data, config, c_word, leak, cd_part, file_ex):
         # =====================================================================================更新输出文件夹名
-        folder_path = self.getFolderPath(file_path, success_folder, json_data, config, c_word)
+        folder_new_path = self.getFolderPath(file_path, success_folder, json_data, config, c_word)
         # =====================================================================================更新实体文件命名规则
         naming_rule = self.getNamingRule(file_path, json_data, config, c_word, leak, cd_part)
         # =====================================================================================生成文件和图片新路径路径
-        file_name = naming_rule + file_ex
-        thumb_name = naming_rule + '-thumb.jpg'
-        poster_name = naming_rule + '-poster.jpg'
-        fanart_name = naming_rule + '-fanart.jpg'
-        nfo_name = naming_rule + '.nfo'
-        cover_small_name = naming_rule + '-cover_small.jpg'
-        file_new_path = self.convert_path(os.path.join(folder_path, file_name))
-        thumb_path = self.convert_path(os.path.join(folder_path, thumb_name))
-        poster_path = self.convert_path(os.path.join(folder_path, poster_name))
-        fanart_path = self.convert_path(os.path.join(folder_path, fanart_name))
-        nfo_path = self.convert_path(os.path.join(folder_path, nfo_name))
-        cover_small_path = self.convert_path(os.path.join(folder_path, cover_small_name))
-        return folder_path, file_new_path, thumb_path, poster_path, poster_path, fanart_path, nfo_path, cover_small_path, naming_rule, thumb_name, poster_name, nfo_name, cover_small_name
+        file_new_name = naming_rule + file_ex.lower()
+        thumb_new_name = naming_rule + '-thumb.jpg'
+        poster_new_name = naming_rule + '-poster.jpg'
+        fanart_new_name = naming_rule + '-fanart.jpg'
+        nfo_new_name = naming_rule + '.nfo'
+        file_new_path = self.convert_path(os.path.join(folder_new_path, file_new_name))
+        thumb_new_path = self.convert_path(os.path.join(folder_new_path, thumb_new_name))
+        poster_new_path = self.convert_path(os.path.join(folder_new_path, poster_new_name))
+        fanart_new_path = self.convert_path(os.path.join(folder_new_path, fanart_new_name))
+        nfo_new_path = self.convert_path(os.path.join(folder_new_path, nfo_new_name))
+        return folder_new_path, file_new_path, thumb_new_path, poster_new_path, fanart_new_path, nfo_new_path, naming_rule, file_new_name, thumb_new_name, poster_new_name, fanart_new_name, nfo_new_name
 
     # ======================================================================================获取刮削网站
     def getWebSite(self, file_mode):
@@ -2147,7 +2168,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         website_mode = self.getWebSite(file_mode)
         if website_mode == 4:  # javdb模式，加上延时，避免被封
             ss = random.randint(1, 4)
-            self.addTextMain('Please Wait %s Seconds！' % str(ss))
+            if ss:
+                self.addTextMain(' ⏱ Please Wait %s Seconds！' % str(ss))
             time.sleep(ss)
         json_data = getDataFromJSON(number, config, website_mode, appoint_url, translate_language)
         return json_data
@@ -2293,7 +2315,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.show_netstatus(self.current_proxy)
         # 检测网络连通性
         self.addNetTextMain(' 检测网络连通性...')
-        net_info = [['github', 'https://github.com' , ''], ['airav', 'https://www.airav.wiki' , ''], ['javbus', 'https://www.javbus.com' , ''], ['javdb', 'https://javdb.com', ''], ['jav321', 'https://www.jav321.com' , ''], ['dmm', 'https://www.dmm.co.jp' , ''], ['avsox', 'https://avsox.website' , ''], ['xcity', 'https://xcity.jp' , ''], ['mgstage', 'https://www.mgstage.com', ''], ['fc2hub', 'https://fc2hub.com', '']]
+        net_info = [['github', 'https://github.com' , ''], ['airav', 'https://www.airav.wiki' , ''], ['javbus', 'https://www.javbus.com' , ''], ['javdb', 'https://javdb.com', ''], ['jav321', 'https://www.jav321.com' , ''], ['dmm', 'https://www.dmm.co.jp' , ''], ['avsox', 'https://avsox.website' , ''], ['xcity', 'https://xcity.jp' , ''], ['mgstage', 'https://www.mgstage.com', ''], ['fc2', 'https://adult.contents.fc2.com', ''], ['fc2club', 'https://fc2club.net', ''], ['fc2hub', 'https://fc2hub.com', '']]
         for each in net_info:
             proxies = get_proxies()
             proxy_type, proxy, timeout, retry_count = get_proxy()
@@ -2324,6 +2346,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                         if each[0] == 'dmm':
                             if re.findall('このページはお住まいの地域からご利用になれません', html_content):
                                 each[2] = '❌ 连接失败 地域限制, 请使用日本节点访问！'
+                            else:
+                                each[2] = '✅ 连接正常'
+                        elif each[0] == 'mgstage':
+                            if not html_content.strip():
+                                each[2] = '❌ 连接失败 请检查网络或代理设置！'
                             else:
                                 each[2] = '✅ 连接正常'
                         else:
@@ -2398,25 +2425,25 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         if not json_data.get('number'):
             json_data['number'] = real_number
         if not json_data.get('actor'):
-            json_data['actor'] = 'unknown'
+            json_data['actor'] = ''
         if not json_data.get('title'):
             json_data['title'] = json_data['error_info']
         if not json_data.get('outline'):
-            json_data['outline'] = 'unknown'
+            json_data['outline'] = ''
         if not json_data.get('tag'):
-            json_data['tag'] = 'unknown'
+            json_data['tag'] = ''
         if not json_data.get('release'):
-            json_data['release'] = 'unknown'
+            json_data['release'] = ''
         if not json_data.get('runtime'):
-            json_data['runtime'] = '0'
+            json_data['runtime'] = ''
         if not json_data.get('director'):
-            json_data['director'] = 'unknown'
+            json_data['director'] = ''
         if not json_data.get('series'):
-            json_data['series'] = 'unknown'
+            json_data['series'] = ''
         if not json_data.get('publisher'):
-            json_data['publisher'] = 'unknown'
+            json_data['publisher'] = ''
         if not json_data.get('studio'):
-            json_data['studio'] = 'unknown'
+            json_data['studio'] = ''
         if not json_data.get('poster_path'):
             json_data['poster_path'] = self.default_poster
         if not json_data.get('thumb_path'):
@@ -2435,7 +2462,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         movie_list = []
         appoint_number = ''
         appoint_url = ''
-        movie_type = config.get('media', 'media_type')
+        movie_type = config.get('media', 'media_type').lower()
         if file_mode == 'default_folder':                                       # 刮削默认视频目录的文件
             movie_list = movie_lists(escape_folder, movie_type, movie_path)     # 获取所有需要刮削的影片列表
             count_all = len(movie_list)
@@ -2525,14 +2552,18 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         return movie_number, folder_path, file_name, file_ex, leak, cd_part, c_word, sub_list, file_show_name, file_show_path
 
     # =====================================================================================有道翻译
-    def youdao(self, msg, language='zh_cn'):
+    def youdao(self, title, outline):
         proxy_type, proxy, timeout, retry_count = get_proxy()
         proxies = get_proxies()
-        msg = msg
+        ttt = ''
+        ooo = ''
+        msg = '''%s
+        %s
+        ''' % (title, outline)
         url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
-        D = "Y2FYu%TNSbMCxc3t2u^XT"
+        youdaokey = self.youdaokey
         salt = str(int(time.time() * 1000) + random.randint(0, 10))
-        sign = hashlib.md5(("fanyideskweb" + msg + salt + D).encode('utf-8')).hexdigest()
+        sign = hashlib.md5(("fanyideskweb" + msg + salt + youdaokey).encode('utf-8')).hexdigest()
         ts = str(int(time.time() * 1000))
 
         Form_Data = {
@@ -2579,41 +2610,64 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             try:
                 translate_results = json.loads(req)
             except Exception as ex:
-                self.addTextMain('   >>> 提示：有道翻译接口返回数据异常！将跳过翻译！返回内容：%s 错误：%s' % (req, str(ex)))
+                self.addTextMain('   >>> 提示：有道翻译接口返回数据异常1！将跳过翻译！返回内容：%s 错误：%s' % (req, str(ex)))
             else:
                 # 找到翻译结果
                 if 'translateResult' in translate_results:
                     translateResult = translate_results.get('translateResult')
-                    msg = ''
-                    for each in translateResult[0]:
-                        msg += each.get('tgt')
-        if language == 'zh_tw':
-            msg = zhconv.convert(msg, 'zh-hant')
-        elif language == 'zh_cn':
-            msg = zhconv.convert(msg, 'zh-cn')
-        return msg
+                    msg1 = translateResult[0]
+                    msg2 = translateResult[1]
+                    for each in msg1:
+                        ttt += each.get('tgt')
+                    for each in msg2:
+                        ooo += each.get('tgt')
+                    title = ttt
+                    outline = ooo
+                else:
+                    self.addTextMain('   >>> 提示：有道翻译接口返回数据异常2！将跳过翻译！返回内容：%s' % str(translate_results))
+        return title, outline
 
-    def creatFolder(self, folder_path, file_path, file_new_path, thumb_path, poster_path, config, json_data):
+    # =====================================================================================获取有道翻译key
+    def getYouDaoKey(self):
+        url = 'https://shared.ydstatic.com/fanyi/newweb/v1.1.7/scripts/newweb/fanyi.min.js'
+        try:
+            req = requests.get(url)
+            req.encoding = 'utf-8'
+            req = req.text
+            self.youdaokey = re.search('(?<="fanyideskweb"\+e\+i\+")[^"]+', req).group(0)
+            # sign: n.md5("fanyideskweb" + e + i + "Y2FYu%TNSbMCxc3t2u^XT")
+        except Exception as ex:
+            self.youdaokey = "Y2FYu%TNSbMCxc3t2u^XT"
+            print('有道翻译接口key获取失败！' + str(ex))
+            self.addTextMain(' 🟠 有道翻译接口key获取失败！请检查网页版有道是否正常！%s' % str(ex))
+        # print(self.youdaokey)
+        return self.youdaokey
+
+    # =====================================================================================创建成功输出目录
+    def creatFolder(self, folder_new_path, file_path, file_new_path, thumb_new_path, poster_new_path, config, json_data):
         if config.getint('common', 'success_file_move') == 0 and config.getint('common', 'soft_link') == 0:   # 如果成功后移动文件夹关
             return True
-        if not os.path.exists(folder_path):   # 如果不存在目标文件夹，则创建文件夹
+        if not os.path.exists(folder_new_path):   # 如果不存在目标文件夹，则创建文件夹
             try:
-                os.makedirs(folder_path)
+                os.makedirs(folder_new_path)
                 self.addTextMain(" 🟢 Folder done!")
             except Exception as ex:
                 self.addTextMain(' 🔴 Failed to create folder! \n   >>> ' + str(ex))
                 return False
         if os.path.exists(file_new_path):   # 如果存在目标文件
-            if file_new_path != os.path.realpath(file_new_path):    # 如果是软链接，删除
-                os.remove(file_new_path)
-                return True
+            try:
+                if file_new_path != os.path.realpath(file_new_path):    # 如果是软链接，删除
+                    os.remove(file_new_path)
+                    return True
+            except:
+                pass
 
             if config.getint('common', 'soft_link') != 1:  # 非软链接
-                if os.path.exists(thumb_path):
-                    json_data['thumb_path'] = thumb_path
-                if os.path.exists(poster_path):
-                    json_data['poster_path'] = poster_path
-                if file_new_path == file_path:  # 如果路径相同，则代表已经在成功文件夹里
+                if os.path.exists(thumb_new_path):
+                    json_data['thumb_path'] = thumb_new_path
+                if os.path.exists(poster_new_path):
+                    json_data['poster_path'] = poster_new_path
+                if file_new_path.lower() == file_path.lower():  # 如果路径相同，则代表已经在成功文件夹里
                     # self.addTextMain(" 🟢 Movie file is already in success folder! no need to movie it again!\n   >>> The current path is '%s'" % file_new_path)
                     return True
                 else:
@@ -2645,19 +2699,54 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     movie_title = str(html_title.xpath('//dl[@id="zi"]/p/font/a/b[contains(text(), $number)]/../../a[contains(text(), "中文字幕")]/text()', number=movie_number)).replace(' (中文字幕)', '').strip("['']") 
             # 使用json_data数据
             if not movie_title:
-                movie_title =json_data['title']
+                movie_title = json_data['title']
+            # print('翻译前：')
+            # print('title: ' + movie_title)
+            # print('\noutline: ' + json_data['outline'])
+            # 判断标题或简介语言，如果有一个是日语，就把标题和简介同时请求有道翻译
+            if langid.classify(movie_title)[0] == 'ja':
+                rr = random.randint(1, 5)
+                self.addTextMain(' ⏱ Translation will request after %s seconds!' % str(rr))
+                time.sleep(rr)  # 尝试加上延时，看被封情况
+                movie_title, json_data['outline'] = self.youdao(movie_title, json_data.get('outline'))
+                # print('\n翻译后1：\n%s\n\n%s\n\n' % (movie_title, json_data['outline']))
+            elif langid.classify(json_data['outline'])[0] == 'ja':
+                rr = random.randint(1, 5)
+                self.addTextMain(' ⏱ Translation will request after %s seconds!' % str(rr))
+                time.sleep(rr)  # 尝试加上延时，看被封情况
+                test1, json_data['outline'] = self.youdao('', json_data.get('outline'))
+                # print('\n翻译后2：\n%s\n\n%s\n\n' % (movie_title, json_data['outline']))
 
+            # 简繁转换
             if translate_language == 'zh_cn':
-                json_data['title'] = self.youdao(movie_title, 'zh_cn')
-                if json_data.get('outline').strip():
-                    json_data['outline'] = self.youdao(json_data['outline'], 'zh_cn')
+                json_data['title'] = zhconv.convert(movie_title, 'zh-cn')
+                json_data['outline'] = zhconv.convert(json_data['outline'], 'zh-cn')
 
             elif translate_language == 'zh_tw':
-                json_data['mosaic'] = zhconv.convert(json_data['mosaic'], 'zh-hant')
-                json_data['title'] = self.youdao(movie_title, 'zh_tw')
-                if json_data.get('outline').strip():
-                    json_data['outline'] = self.youdao(json_data['outline'], 'zh_tw')
-            self.addTextMain(' 🟢 Translate done!')
+                json_data['title'] = zhconv.convert(movie_title, 'zh-hant')
+                json_data['outline'] = zhconv.convert(json_data['outline'], 'zh-hant')
+                json_data['mosaic'] = zhconv.convert(json_data['mosaic'], 'zh-hant')                
+            # print('\n简繁转换：\n%s\n%s\n\n' % (movie_title, json_data['outline']))
+            self.addTextMain(' 🟢 Translation done!')
+
+    # =====================================================================================清理旧的thumb、poster、fanart、nfo
+    def delOldPic(self, file_path, file_new_path, file_ex):
+        thumb_old_path = file_path.replace(file_ex, '-thumb.jpg')
+        poster_old_path = file_path.replace(file_ex, '-poster.jpg')
+        fanart_old_path = file_path.replace(file_ex, '-fanart.jpg')
+        nfo_old_path = file_path.replace(file_ex, '.nfo')
+        try:
+            if os.path.exists(thumb_old_path) and thumb_old_path != file_path:  # 避免误删除视频文件
+                os.remove(thumb_old_path)
+            if os.path.exists(poster_old_path) and poster_old_path != file_path:
+                os.remove(poster_old_path)
+            if os.path.exists(fanart_old_path) and fanart_old_path != file_path:
+                os.remove(fanart_old_path)
+            if os.path.exists(nfo_old_path) and nfo_old_path != file_path:
+                os.remove(nfo_old_path)
+        except:
+            pass
+        return
 
     # =====================================================================================处理单个文件刮削
     def coreMain(self, file_path, movie_number, config, file_mode, appoint_number='', appoint_url='', jsonfile_data={}):
@@ -2704,10 +2793,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.showMovieInfo(json_data, config)
 
         # =====================================================================================生成输出文件夹和输出文件的路径
-        folder_path, file_new_path, thumb_path, poster_path, poster_path, fanart_path, nfo_path, cover_small_path, naming_rule, thumb_name, poster_name, nfo_name, cover_small_name = self.getOutPutName(file_path, success_folder, json_data, config, c_word, leak, cd_part, file_ex)
+        folder_new_path, file_new_path, thumb_new_path, poster_new_path, fanart_new_path, nfo_new_path, naming_rule, file_new_name, thumb_new_name, poster_new_name, fanart_new_name, nfo_new_name = self.getOutPutName(file_path, success_folder, json_data, config, c_word, leak, cd_part, file_ex)
 
         # =====================================================================================判断输出文件夹和文件是否已存在，如无则创建输出文件夹
-        if  not self.creatFolder(folder_path, file_path, file_new_path, thumb_path, poster_path, config, json_data):
+        if  not self.creatFolder(folder_new_path, file_path, file_new_path, thumb_new_path, poster_new_path, config, json_data):
             return False, json_data                    # 返回AVDC_main, 继续处理下一个文件
 
         # =====================================================================================整理模式
@@ -2715,6 +2804,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             if not self.pasteFileToFolder(file_path, file_new_path, config):   # 移动文件
                 return False, json_data                   # 返回AVDC_main, 继续处理下一个文件
             else:
+                self.delOldPic(file_path, file_new_path, file_ex)   # 清理旧的thumb、poster、fanart、nfo
                 return True, json_data
         # =====================================================================================刮削模式
 
@@ -2725,29 +2815,32 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             if int(config.getint('uncensored', 'uncensored_poster')) == 1: # 允许裁剪时3改成0
                 json_data['imagecut'] = 0
 
+        # =====================================================================================清理旧的thumb、poster、fanart、nfo
+        self.delOldPic(file_path, file_new_path, file_ex)
+
         # =====================================================================================下载thumb
-        if not self.thumbDownload(json_data, folder_path, config, thumb_name, thumb_path):
+        if not self.thumbDownload(json_data, folder_new_path, config, thumb_new_name, thumb_new_path):
             return False, json_data                   # 返回AVDC_main, 继续处理下一个文件
 
         # =====================================================================================下载poster
-        if not self.posterDownload(json_data, folder_path, config, thumb_name, poster_name, thumb_path, poster_path, cover_small_path):
+        if not self.posterDownload(json_data, folder_new_path, config, thumb_new_name, poster_new_name, thumb_new_path, poster_new_path):
             return False, json_data                   # 返回AVDC_main, 继续处理下一个文件
 
         # =====================================================================================下载艺术图
-        self.copyRenameJpgToFanart(thumb_path, fanart_path, config)
+        self.copyRenameJpgToFanart(thumb_new_path, fanart_new_path, config)
 
         # =====================================================================================删除thumb.jpg(当选择不保存时)
-        self.deletethumb(thumb_name, thumb_path, config)
+        self.deletethumb(thumb_new_name, thumb_new_path, config)
 
         # =====================================================================================加水印
-        self.add_mark(poster_path, thumb_path, c_word, leak, uncensored, config)
+        self.add_mark(poster_new_path, thumb_new_path, c_word, leak, uncensored, config)
 
         # =====================================================================================生成nfo文件
-        if self.PrintFiles(nfo_path, folder_path, file_name, c_word, leak, json_data, config):
+        if self.PrintFiles(nfo_new_path, folder_new_path, thumb_new_name, poster_new_name, fanart_new_name, c_word, leak, json_data, config):
             return False, json_data                   # 返回AVDC_main, 继续处理下一个文件
 
         # =====================================================================================下载剧照
-        self.extrafanartDownload(json_data, folder_path, config)
+        self.extrafanartDownload(json_data, folder_new_path, config)
 
         # =====================================================================================移动文件
         if not self.pasteFileToFolder(file_path, file_new_path, config):
@@ -2755,13 +2848,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
         # =====================================================================================移动字幕
         for sub in sub_list:
-            shutil.move(os.path.join(folder_old_path, (file_name + sub)), os.path.join(folder_path, (naming_rule + sub)))
+            shutil.move(os.path.join(folder_old_path, (file_name + sub)), os.path.join(folder_new_path, (naming_rule + sub)))
             self.addTextMain(" 🟢 Sub file '%s' moved successfully! " % (naming_rule + sub))
 
         # =====================================================================================json添加封面缩略图路径
         json_data['number'] = movie_number
-        json_data['thumb_path'] = thumb_path
-        json_data['poster_path'] = poster_path
+        json_data['thumb_path'] = thumb_new_path
+        json_data['poster_path'] = poster_new_path
 
         return True, json_data
 
@@ -2778,6 +2871,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         appoint_url = ''
         json_data = {}
         self.add_label_info(json_data)  # 清空主界面显示信息
+        self.getYouDaoKey() # 获取有道key
         config_file = 'config.ini'
         config = RawConfigParser()
         config.read(config_file, encoding='UTF-8')
@@ -2819,11 +2913,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.Ui.label_file_path.setText('正在刮削： ' + str(count) + '/' + str(count_all) + ' （' + progress_percentage + '）\n' + self.convert_path(file_show_path))
             self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
             self.progressBarValue.emit(int(progress_value))
-            self.addTextMain('\n%d/%d (%s) round(%s)' % (count, count_all, progress_percentage, self.count_claw))
+            self.addTextMain('\n%d/%d (%s) round(%s) %s' % (count, count_all, progress_percentage, self.count_claw, file_name+file_ex))
             self.addTextMain('='*80)
             if file_mode == 'single_file':
                 self.addTextMain('当前为单文件刮削模式: \n   >>> 指定番号：%s\n   >>> 刮削地址：%s' % (appoint_number, appoint_url))
-            self.addTextMain(" 🙈 Movie [" + self.convert_path(file_path) + "]\n 🚘 Number [" + movie_number + "]")
+            self.addTextMain(" 🙈 [Movie] " + self.convert_path(file_path) + "\n 🚘 [Number] " + movie_number)
             succ_count += 1
             fail_count += 1
             succ_show_name = str(self.count_claw) + '-' + str(succ_count) + '.' + file_show_name
@@ -2841,8 +2935,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             else:
                 succ_count -= 1
                 self.showListName(fail_show_name, 'fail', json_data, movie_number)
-                self.addTextMain(' 🔴 Error: ' + json_data['error_info'])
-                self.moveFailedFolder(file_path, failed_folder, config)
+                self.addTextMain(' 🔴 [Error] %s' % json_data['error_info'])
+                self.moveFailedFolder(file_path, failed_folder, file_ex, config)
         self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
         self.progressBarValue.emit(100)
         self.Ui.label_file_path.setText('🎉 恭喜！全部刮削完成！共 %s 个文件！' % count_all)

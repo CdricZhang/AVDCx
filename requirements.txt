@@ -8,3 +8,4 @@ PySide2==5.15.2
 PySocks==1.7.1
 urllib3==1.25.11
 zhconv
+langid
