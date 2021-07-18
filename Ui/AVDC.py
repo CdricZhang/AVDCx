@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCVXqqLB.ui'
+## Form generated from reading UI file 'AVDCfaFWPi.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -424,6 +424,7 @@ class Ui_AVDV(object):
         self.comboBox_website.addItem("")
         self.comboBox_website.addItem("")
         self.comboBox_website.addItem("")
+        self.comboBox_website.addItem("")
         self.comboBox_website.setObjectName(u"comboBox_website")
         self.comboBox_website.setGeometry(QRect(310, 110, 430, 30))
         self.comboBox_website.setFont(font3)
@@ -693,6 +694,7 @@ class Ui_AVDV(object):
         self.groupBox_11.setFont(font3)
         self.groupBox_11.setStyleSheet(u"")
         self.comboBox_website_all = QComboBox(self.groupBox_11)
+        self.comboBox_website_all.addItem("")
         self.comboBox_website_all.addItem("")
         self.comboBox_website_all.addItem("")
         self.comboBox_website_all.addItem("")
@@ -2244,7 +2246,7 @@ class Ui_AVDV(object):
 
         self.retranslateUi(AVDV)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2306,7 +2308,7 @@ class Ui_AVDV(object):
 "\u5982\u6307\u5b9a\u4e86\u522e\u524a\u7f51\u5740\uff0c\u5219\u300c\u522e\u524a\u7f51\u7ad9\u300d\u8bf7\u9009\u62e9\u5bf9\u5e94\u7f51\u7ad9\uff01", None))
         self.pushButton_select_file.setText(QCoreApplication.translate("AVDV", u"\u9009\u62e9\u6587\u4ef6", None))
         self.comboBox_website.setItemText(0, QCoreApplication.translate("AVDV", u"All websites", None))
-        self.comboBox_website.setItemText(1, QCoreApplication.translate("AVDV", u"airav", None))
+        self.comboBox_website.setItemText(1, QCoreApplication.translate("AVDV", u"iqqtv", None))
         self.comboBox_website.setItemText(2, QCoreApplication.translate("AVDV", u"javbus", None))
         self.comboBox_website.setItemText(3, QCoreApplication.translate("AVDV", u"javdb", None))
         self.comboBox_website.setItemText(4, QCoreApplication.translate("AVDV", u"jav321", None))
@@ -2317,6 +2319,7 @@ class Ui_AVDV(object):
         self.comboBox_website.setItemText(9, QCoreApplication.translate("AVDV", u"fc2", None))
         self.comboBox_website.setItemText(10, QCoreApplication.translate("AVDV", u"fc2club", None))
         self.comboBox_website.setItemText(11, QCoreApplication.translate("AVDV", u"fc2hub", None))
+        self.comboBox_website.setItemText(12, QCoreApplication.translate("AVDV", u"airav", None))
 
         self.label_2.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u7f51\u7ad9\uff1a", None))
         self.label_10.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u7f51\u5740\uff1a", None))
@@ -2359,7 +2362,7 @@ class Ui_AVDV(object):
         self.label_32.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u6210\u529f\u65f6\uff0c\u4f1a\u5c1d\u8bd5\u8bf7\u6c42\u5176\u4ed6\u7f51\u7ad9\u8865\u5168\u7f3a\u5931\u7684\u5b57\u6bb5\uff0c\u56e0\u6b64\u901f\u5ea6\u4f1a\u7565\u6162\u4e00\u4e9b", None))
         self.groupBox_11.setTitle(QCoreApplication.translate("AVDV", u"\u522e\u524a\u7f51\u7ad9", None))
         self.comboBox_website_all.setItemText(0, QCoreApplication.translate("AVDV", u"All websites", None))
-        self.comboBox_website_all.setItemText(1, QCoreApplication.translate("AVDV", u"airav", None))
+        self.comboBox_website_all.setItemText(1, QCoreApplication.translate("AVDV", u"iqqtv", None))
         self.comboBox_website_all.setItemText(2, QCoreApplication.translate("AVDV", u"javbus", None))
         self.comboBox_website_all.setItemText(3, QCoreApplication.translate("AVDV", u"javdb", None))
         self.comboBox_website_all.setItemText(4, QCoreApplication.translate("AVDV", u"jav321", None))
@@ -2370,6 +2373,7 @@ class Ui_AVDV(object):
         self.comboBox_website_all.setItemText(9, QCoreApplication.translate("AVDV", u"fc2", None))
         self.comboBox_website_all.setItemText(10, QCoreApplication.translate("AVDV", u"fc2club", None))
         self.comboBox_website_all.setItemText(11, QCoreApplication.translate("AVDV", u"fc2hub", None))
+        self.comboBox_website_all.setItemText(12, QCoreApplication.translate("AVDV", u"airav", None))
 
         self.groupBox_24.setTitle(QCoreApplication.translate("AVDV", u"\u4e0b\u8f7d\u56fe\u7247\u548cnfo\u6587\u4ef6", None))
         self.checkBox_download_poster.setText(QCoreApplication.translate("AVDV", u"poster", None))

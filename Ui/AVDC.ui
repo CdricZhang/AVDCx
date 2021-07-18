@@ -44,7 +44,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_avdc">
      <widget class="QPushButton" name="pushButton_start_cap">
@@ -1456,7 +1456,7 @@ background-color: rgb(246, 246, 246);</string>
        </item>
        <item>
         <property name="text">
-         <string>airav</string>
+         <string>iqqtv</string>
         </property>
        </item>
        <item>
@@ -1507,6 +1507,11 @@ background-color: rgb(246, 246, 246);</string>
        <item>
         <property name="text">
          <string>fc2hub</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>airav</string>
         </property>
        </item>
       </widget>
@@ -2506,7 +2511,7 @@ background-color: rgb(246, 246, 246);</string>
            </item>
            <item>
             <property name="text">
-             <string>airav</string>
+             <string>iqqtv</string>
             </property>
            </item>
            <item>
@@ -2557,6 +2562,11 @@ background-color: rgb(246, 246, 246);</string>
            <item>
             <property name="text">
              <string>fc2hub</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>airav</string>
             </property>
            </item>
           </widget>
