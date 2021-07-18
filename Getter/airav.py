@@ -177,7 +177,8 @@ def getOutlineScore(number):  # 获取简介
     return outline, score
 
 
-def main(number, appoint_url='', translate_language='zh_cn', log_info='', isuncensored=False):
+def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
+    req_web += '-> airav '
     log_info += '   >>> AIRAV-开始使用airav进行刮削\n'
     number = number.upper()
     real_url = appoint_url
@@ -250,7 +251,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
                 error_type = 'AIRAV - title 获取失败！'
                 raise Exception('>>> AIRAV- title 获取失败!')
             actor = getActor(html_info) # 获取actor
-            title = title.strip(actor).replace(number, '').strip()
+            title = title.replace(number, '').strip()
             cover_url = getCover(html_info) # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> AIRAV- cover url 获取失败！ \n'
@@ -272,8 +273,9 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
             mode_like = getModeLike()
 
             if mode_like:
-                json_data = json.loads(javdb.main(number, '', log_info))
+                json_data = json.loads(javdb.main(number, '', log_info, req_web))
                 if json_data.get('title'):
+                    req_web = json_data['req_web']
                     runtime = json_data['runtime']
                     score = json_data['score']
                     series = json_data['series']
@@ -312,6 +314,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),
+                    'req_web': req_web,
                 }
                 log_info += '   >>> AIRAV-数据获取成功！\n'
                 dic['log_info'] = log_info
@@ -328,6 +331,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', isunce
             'log_info': str(log_info),
             'error_type': str(error_type),
             'error_info': str(error_info),
+            'req_web': req_web,
         }
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js

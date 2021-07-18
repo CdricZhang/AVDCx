@@ -93,7 +93,8 @@ def getOutline(detail_page):
     return str(detail_page.xpath('/html/body/div[2]/div[1]/div[1]/div[2]/div[3]/div/text()')).strip(" ['']")
 
 
-def main(number, appoint_url='', log_info='', isuncensored=False):
+def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
+    req_web += '-> jav321'
     log_info += '   >>> JAV321-开始使用 jav321 进行刮削\n'
     real_url = appoint_url
     title = ''
@@ -116,7 +117,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             raise Exception('JAV321-未匹配到番号')
         detail_page = etree.fromstring(response, etree.HTMLParser())
         actor = getActor(response)
-        title = getTitle(response).strip(actor).strip() # 获取标题
+        title = getTitle(response).strip() # 获取标题
         if not title:
             log_info += '   >>> JAV321- title 获取失败！ \n'
             error_type = 'need login'
@@ -162,6 +163,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
+                'req_web': req_web,
             }
             log_info += '   >>> JAV321-数据获取成功！\n'
             dic['log_info'] = log_info
@@ -178,6 +180,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             'log_info': str(log_info),
             'error_type': str(error_type),
             'error_info': str(error_info),
+            'req_web': req_web,
         }
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js

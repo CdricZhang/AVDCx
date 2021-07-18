@@ -142,7 +142,8 @@ def find_number(number, appoint_url):
     return 'Movie data not found', ''
 
 
-def main(number, appoint_url='', log_info=''):
+def main(number, appoint_url='', log_info='', req_web=''):
+    req_web += '-> xcity '
     log_info += '   >>> XCITY-开始使用 xcity 进行刮削\n'
     real_url = appoint_url
     title = ''
@@ -192,6 +193,10 @@ def main(number, appoint_url='', log_info=''):
                 'cover_small': '',
                 'extrafanart': getExtraFanart(detail_page),
                 'imagecut': 1,
+                'log_info': str(log_info),
+                'error_type': str(error_type),
+                'error_info': str(error_info),
+                'req_web': req_web,
             }
             log_info += '   >>> XCITY-数据获取成功！\n'
             dic['log_info'] = log_info
@@ -208,6 +213,7 @@ def main(number, appoint_url='', log_info=''):
             'log_info': str(log_info),
             'error_type': str(error_type),
             'error_info': str(error_info),
+            'req_web': req_web,
         }
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'))  # .encode('UTF-8')
     return js

@@ -166,7 +166,8 @@ def getOutlineScore(number):  # 获取简介
     return outline, score
 
 
-def main(number, appoint_url='', log_info='', isuncensored=False):
+def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
+    req_web += '-> javdb '
     cookies = get_cookies('javdb')
     proxies = get_proxies()
     proxy_type, proxy, timeout, retry_count = get_proxy()
@@ -211,6 +212,8 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                 error_type = 'SearchCloudFlare'
                 raise Exception('JAVDB-请求搜索页：被 5 秒盾拦截！')
             real_url = html.xpath("//div[@class='uid'][contains(text(), $number)]/../@href", number=number)
+            if not real_url:
+                real_url = html.xpath("//div[@class='uid'][contains(text(), $number)]/../@href", number=number.upper())
             if not real_url:
                 log_info += '   >>> JAVDB-搜索结果页：未匹配到番号！\n'
                 error_type = 'Movie data not found'
@@ -258,7 +261,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             if len(actor) == 0 and 'FC2-' in number.upper():
                 actor.append('FC2-NoActor')
             actor = str(actor).strip(" [',']").replace('\'', '')
-            title = getTitle(html_detail).strip(actor) # 获取标题并去掉头尾歌手名
+            title = getTitle(html_detail) # 获取标题并去掉头尾歌手名
             title = title.replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_','-').replace(number.upper(), '').replace(number, '').strip().replace('--', '-')
             if not title:
                 log_info += '   >>> JAVDB- title 获取失败！\n'
@@ -301,6 +304,7 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),
+                    'req_web': req_web,
                 }
                 log_info += '   >>> JAVDB-数据获取成功！\n'
                 dic['log_info'] = log_info
@@ -317,23 +321,23 @@ def main(number, appoint_url='', log_info='', isuncensored=False):
             'log_info': str(log_info),
             'error_type': str(error_type),
             'error_info': str(error_info),
+            'req_web': req_web,
         }
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 
-'''
-print(main('abs-141'))
-print(main('HYSD-00083'))
-print(main('IESP-660'))
-print(main('n1403'))
-print(main('GANA-1910'))
-print(main('heyzo-1031'))
-print(main_us('x-art.19.11.03'))
-print(main('032020-001'))
-print(main('S2M-055'))
-print(main('LUXU-1217'))
-'''
+# print(main('abs-141'))
+# print(main('HYSD-00083'))
+# print(main('IESP-660'))
+# print(main('n1403'))
+# print(main('GANA-1910'))
+# print(main('heyzo-1031'))
+# print(main('x-art.19.11.03'))
+# print(main('032020-001'))
+# print(main('S2M-055'))
+# print(main('LUXU-1217'))
+
 # print(main('SSIS-001', ''))
 # print(main('SSIS-090', ''))
 # print(main('SNIS-016', ''))

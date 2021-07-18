@@ -129,7 +129,8 @@ def getScore(html):
         return result[0].replace('\\n', '').replace('\n', '').replace('点', '')
     return ''
 
-def main(number, appoint_url='', log_info=''):
+def main(number, appoint_url='', log_info='',req_web=''):
+    req_web += '-> dmm '
     cookies = {'cookie':'uid=abcd786561031111; age_check_done=1;'}
     log_info += '   >>> [ DMM ] 开始使用 dmm 进行刮削\n'
     title = ''
@@ -192,7 +193,7 @@ def main(number, appoint_url='', log_info=''):
             raise
 
         actor = getActor(html)  # 获取歌手
-        title = getTitle(html).strip(actor).strip() # 获取标题（去掉标题最后的歌手名）
+        title = getTitle(html).strip() # 获取标题（去掉标题最后的歌手名）
         if not title:
             error_type = 'title data not found'
             error_info = '[ DMM ]  标题数据未匹配到！'
@@ -248,6 +249,7 @@ def main(number, appoint_url='', log_info=''):
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
+                'req_web': req_web,
             }
             log_info += '   >>> [ DMM ] 数据获取成功！\n'
             dic['log_info'] = log_info
@@ -265,6 +267,7 @@ def main(number, appoint_url='', log_info=''):
             'log_info': str(log_info),
             'error_type': str(error_type),
             'error_info': str(error_info),
+            'req_web': req_web,
         }
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'))  # .encode('UTF-8')
     return js

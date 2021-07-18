@@ -112,7 +112,8 @@ def getUrl(number):
     return 0, response, '', result
 
 
-def main(number, appoint_url='', log_info=''):
+def main(number, appoint_url='', log_info='', req_web=''):
+    req_web += '-> avsox '
     log_info += '   >>> AVSOX-开始使用 avsox 进行刮削\n'
     real_url = appoint_url
     title = ''
@@ -138,7 +139,7 @@ def main(number, appoint_url='', log_info=''):
         soup = BeautifulSoup(web, 'lxml')
         info = str(soup.find(attrs={'class': 'row movie'}))
         actor = getActor(web)
-        title = getTitle(web).strip(actor).strip() # 获取标题
+        title = getTitle(web).strip() # 获取标题
         if not title:
             log_info += '   >>> AVSOX- title 获取失败！ \n'
             error_type = 'need login'
@@ -180,6 +181,7 @@ def main(number, appoint_url='', log_info=''):
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
+                'req_web': req_web,
             }
             log_info += '   >>> AVSOX-数据获取成功！\n'
             dic['log_info'] = log_info
@@ -196,6 +198,7 @@ def main(number, appoint_url='', log_info=''):
             'log_info': str(log_info),
             'error_type': str(error_type),
             'error_info': str(error_info),
+            'req_web': req_web,
         }
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js

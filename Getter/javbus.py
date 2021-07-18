@@ -203,7 +203,8 @@ def find_number(number):
     return 'Movie data not found'
 
 
-def main(number, appoint_url='', log_info=''):
+def main(number, appoint_url='', log_info='', req_web=''):
+    req_web += '-> javbus '
     log_info += '   >>> JAVBUS-开始使用 javbus 进行刮削\n'
     real_url = appoint_url
     title = ''
@@ -230,7 +231,7 @@ def main(number, appoint_url='', log_info=''):
             raise Exception('>>> JAVBUS-请求详情页：' + htmlcode)
 
         actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
-        title = str(getTitle(htmlcode)).strip(actor).replace(number, '').strip() # 获取标题
+        title = str(getTitle(htmlcode)).replace(number, '').strip() # 获取标题
         if not title:
             log_info += '   >>> JAVBUS- title 获取失败！ \n'
             error_type = 'need login'
@@ -268,6 +269,7 @@ def main(number, appoint_url='', log_info=''):
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
+                'req_web': req_web,
             }
             log_info += '   >>> JAVBUS-数据获取成功！\n'
             dic['log_info'] = log_info
@@ -283,12 +285,14 @@ def main(number, appoint_url='', log_info=''):
             'log_info': str(log_info),
             'error_type': str(error_type),
             'error_info': str(error_info),
+            'req_web': req_web,
         }
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 
-def main_uncensored(number, appoint_url='', log_info=''):
+def main_uncensored(number, appoint_url='', log_info='', req_web=''):
+    req_web += '-> javbus '
     log_info += '   >>> JAVBUS-开始使用 javbus 进行刮削\n'
     real_url = appoint_url
     title = ''
@@ -314,7 +318,7 @@ def main_uncensored(number, appoint_url='', log_info=''):
             raise Exception('>>> JAVBUS-请求详情页：' + str(htmlcode))
 
         actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
-        title = str(getTitle(htmlcode)).strip(actor).replace(number, '').strip() # 获取标题
+        title = str(getTitle(htmlcode)).replace(number, '').strip() # 获取标题
         if not title:
             log_info += '   >>> JAVBUS- title 获取失败！ \n'
             error_type = 'need login'
@@ -359,6 +363,7 @@ def main_uncensored(number, appoint_url='', log_info=''):
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
+                'req_web': req_web,
             }
             if dic['cover_small'] == '':
                 dic['imagecut'] = 0
@@ -376,12 +381,14 @@ def main_uncensored(number, appoint_url='', log_info=''):
             'log_info': str(log_info),
             'error_type': str(error_type),
             'error_info': str(error_info),
+            'req_web': req_web,
         }
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 
-def main_us(number, appoint_url='', log_info=''):
+def main_us(number, appoint_url='', log_info='', req_web=''):
+    req_web += '-> javbus '
     log_info += '   >>> JAVBUS-开始使用 javbus 进行刮削\n'
     real_url = appoint_url
     title = ''
@@ -430,7 +437,7 @@ def main_us(number, appoint_url='', log_info=''):
             raise Exception('>>> JAVBUS-请求详情页：' + htmlcode)
 
         actor = str(getActor(htmlcode)).strip(' ['']').replace("'", '')
-        title = str(getTitle(htmlcode)).strip(actor).replace(number, '').strip()    # 获取标题
+        title = str(getTitle(htmlcode)).replace(number, '').strip()    # 获取标题
         if not title:
             log_info += '   >>> JAVBUS- title 获取失败！ \n'
             error_type = 'need login'
@@ -470,6 +477,7 @@ def main_us(number, appoint_url='', log_info=''):
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
+                'req_web': req_web,
             }
             log_info += '   >>> JAVBUS-数据获取成功！\n'
             dic['log_info'] = log_info
@@ -485,6 +493,7 @@ def main_us(number, appoint_url='', log_info=''):
             'log_info': str(log_info),
             'error_type': str(error_type),
             'error_info': str(error_info),
+            'req_web': req_web,
         }
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
