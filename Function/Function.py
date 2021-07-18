@@ -8,7 +8,7 @@ import os
 import json
 from PIL import Image
 from configparser import RawConfigParser
-from Getter import airav, javbus, javdb, jav321, dmm, avsox, xcity, mgstage, fc2hub
+from Getter import airav, javbus, javdb, jav321, dmm, avsox, xcity, mgstage, fc2, fc2club, fc2hub
 
 # ========================================================================是否为无码
 def is_uncensored(number):
@@ -20,6 +20,8 @@ def is_uncensored(number):
     prefix_list = str(config['uncensored']['uncensored_prefix']).split('|')
     for pre in prefix_list:
         if pre.upper() in number.upper():
+            if 'PBD' in number.upper() and 'CWPBD' not in number:
+                return False
             return True
     return False
 
@@ -59,11 +61,10 @@ def movie_lists(escape_folder, movie_type, movie_path):
             if flag_escape == 1:
                 continue
         for f in files:
-            file_type_current = os.path.splitext(f)[1]
-            file_name = os.path.splitext(f)[0]
+            file_name, file_type_current = os.path.splitext(f)
             if re.search(r'^\..+', file_name):
                 continue
-            if file_type_current in file_type:
+            if file_type_current.lower() in file_type:
                 path = os.path.join(root, f)
                 # path = path.replace(file_root, '.')
                 path = path.replace("\\\\", "/").replace("\\", "/")
@@ -139,39 +140,56 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         if isuncensored:
             json_data = json.loads(airav.main(file_number, appoint_url, translate_language))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javbus.main_uncensored(file_number, appoint_url, log_info))
+                json_data = json.loads(javbus.main_uncensored(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javdb.main(file_number, appoint_url, log_info, True))
+                json_data = json.loads(javdb.main(file_number, appoint_url, log_info, req_web, True))
             if getDataState(json_data) == 0 and 'HEYZO' in file_number.upper():
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(jav321.main(file_number, appoint_url, log_info, True))
+                json_data = json.loads(jav321.main(file_number, appoint_url, log_info, req_web, True))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(avsox.main(file_number, appoint_url, log_info))
+                json_data = json.loads(avsox.main(file_number, appoint_url, log_info, req_web))
         # =======================================================================259LUXU-1111
         elif re.match('\d+[a-zA-Z]+-\d+', file_number) or 'SIRO' in file_number.upper():
             json_data = json.loads(mgstage.main(file_number, appoint_url))
             file_number = re.search('[a-zA-Z]+-\d+', file_number).group()
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(jav321.main(file_number, appoint_url, log_info))
+                json_data = json.loads(jav321.main(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javdb.main(file_number, appoint_url, log_info))
+                json_data = json.loads(javdb.main(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javbus.main(file_number, appoint_url, log_info))
+                json_data = json.loads(javbus.main(file_number, appoint_url, log_info, req_web))
         # =======================================================================FC2-111111
         elif 'FC2' in file_number.upper():
-            json_data = json.loads(fc2hub.main(re.search('\d{4,}', file_number).group(), appoint_url))
+            json_data = json.loads(fc2.main(re.search('\d{4,}', file_number).group(), appoint_url))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(airav.main(file_number, appoint_url, translate_language, log_info))
+                json_data = json.loads(fc2club.main(re.search('\d{4,}', file_number).group(), appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javdb.main(file_number, appoint_url, log_info))
+                json_data = json.loads(fc2hub.main(re.search('\d{4,}', file_number).group(), appoint_url, log_info ,req_web))
+            if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
+                log_info = json_data['log_info']
+                json_data = json.loads(airav.main(file_number, appoint_url, translate_language, log_info, req_web))
+            if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
+                log_info = json_data['log_info']
+                json_data = json.loads(javdb.main(file_number, appoint_url, log_info, req_web))
         # =======================================================================ssni00321
         elif re.match('\D{2,}00\d{3,}', file_number) and '-' not in file_number and '_' not in file_number:
             json_data = json.loads(dmm.main(file_number, appoint_url))
@@ -179,26 +197,32 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         elif re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
             json_data = json.loads(javdb.main_u(file_number, appoint_url))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javbus.main_us(file_number, appoint_url, log_info))
+                json_data = json.loads(javbus.main_us(file_number, appoint_url, log_info, req_web))
         # =======================================================================MIDE-139
         else:
             json_data = json.loads(airav.main(file_number, appoint_url, translate_language))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javbus.main(file_number, appoint_url, log_info))
+                json_data = json.loads(javbus.main(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javdb.main(file_number, appoint_url, log_info))
+                json_data = json.loads(javdb.main(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(jav321.main(file_number, appoint_url, log_info))
+                json_data = json.loads(jav321.main(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(xcity.main(file_number, appoint_url, log_info))
+                json_data = json.loads(xcity.main(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(avsox.main(file_number, appoint_url, log_info))
+                json_data = json.loads(avsox.main(file_number, appoint_url, log_info, req_web))
     elif re.match('\D{2,}00\d{3,}', file_number) and website_mode != 7:
         json_data = {
             'title': '',
@@ -232,9 +256,12 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         json_data = json.loads(xcity.main(file_number, appoint_url))
     elif website_mode == 9:  # 仅从mgstage
         json_data = json.loads(mgstage.main(file_number, appoint_url))
-    elif website_mode == 10:  # 仅从fc2hub
+    elif website_mode == 10:  # 仅从fc2
+        json_data = json.loads(fc2.main(file_number, appoint_url))
+    elif website_mode == 11:  # 仅从fc2club
+        json_data = json.loads(fc2club.main(file_number, appoint_url))
+    elif website_mode == 12:  # 仅从fc2hub
         json_data = json.loads(fc2hub.main(file_number, appoint_url))
-
     # ================================================网站规则添加结束================================================
 
     # ======================================超时或未找到返回
@@ -252,8 +279,9 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         cover_small = ''
     tag = str(json_data['tag']).strip("[ ]").replace("'", '').replace(" ", '').split(',')  # 字符串转列表 @
     actor = str(actor_list).strip("[ ]").replace("'", '').replace(" ", '')
-    if actor == '':
-        actor = 'unknown'
+
+    if config.getint('Name_Rule', 'del_actor_name'):
+        title = title.replace((' ' + actor), '').strip(actor)
 
     # ====================处理异常字符====================== #\/:*?"<>|
     title = title.replace('\\', '')
@@ -268,6 +296,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     # title = title.replace(' ', '.')
     # title = title.replace('【', '')
     # title = title.replace('】', '')
+    title = title.strip()
     release = release.replace('/', '-')
     tmpArr = cover_small.split(',')
     if len(tmpArr) > 0:
@@ -345,7 +374,7 @@ def save_config(json_config):
         print("translate_language = " + json_config['translate_language'], file=code)
         print("# zh_cn or zh_tw or ja", file=code)
         print("website = " + json_config['website'], file=code)
-        print("# all or airav or javbus or javdb or jav321 or dmm or avsox or xcity or mgstage or fc2hub", file=code)
+        print("# all or airav or javbus or javdb or jav321 or dmm or avsox or xcity or mgstage or fc2 or fc2club or fc2hub", file=code)
         print("", file=code)
         print("[proxy]", file=code)
         print("type = " + json_config['type'], file=code)
@@ -363,6 +392,7 @@ def save_config(json_config):
         print("naming_media = " + json_config['naming_media'], file=code)
         print("naming_file = " + json_config['naming_file'], file=code)
         print("folder_name_C = " + str(json_config['folder_name_C']), file=code)
+        print("del_actor_name = " + str(json_config['del_actor_name']), file=code)
         print("# 命名字段有：title, actor, number, studio, publisher, year, mosaic, runtime, director, release, series", file=code)
         print("", file=code)
         print("[update]", file=code)
@@ -424,7 +454,10 @@ def check_pic(path_pic):
             img.load()
             return True
         except:
-            pass
+            try:
+                os.removie(path_pic)
+            except:
+                pass
             # print('文件损坏')
     return False
 
