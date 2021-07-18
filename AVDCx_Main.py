@@ -59,7 +59,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210718'
+        self.localversion = '20210719'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -653,7 +653,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             try:    # 刮削网站
                 if config['common']['website'] == 'all':
                     self.Ui.comboBox_website_all.setCurrentIndex(0)
-                elif config['common']['website'] == 'airav':
+                elif config['common']['website'] == 'iqqtv':
                     self.Ui.comboBox_website_all.setCurrentIndex(1)
                 elif config['common']['website'] == 'javbus':
                     self.Ui.comboBox_website_all.setCurrentIndex(2)
@@ -675,6 +675,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     self.Ui.comboBox_website_all.setCurrentIndex(10)
                 elif config['common']['website'] == 'fc2hub':
                     self.Ui.comboBox_website_all.setCurrentIndex(11)
+                elif config['common']['website'] == 'airav':
+                    self.Ui.comboBox_website_all.setCurrentIndex(12)
                 else:
                     self.Ui.comboBox_website_all.setCurrentIndex(0)
             except:
@@ -1066,8 +1068,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             success_file_rename = 0
         if self.Ui.comboBox_website_all.currentText() == 'All websites':  # all
             website = 'all'
-        elif self.Ui.comboBox_website_all.currentText() == 'airav':  # airav
-            website = 'airav'
+        elif self.Ui.comboBox_website_all.currentText() == 'iqqtv':  # iqqtv
+            website = 'iqqtv'
         elif self.Ui.comboBox_website_all.currentText() == 'javbus':  # javbus
             website = 'javbus'
         elif self.Ui.comboBox_website_all.currentText() == 'javdb':  # javdb
@@ -1088,6 +1090,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             website = 'fc2club'
         elif self.Ui.comboBox_website_all.currentText() == 'fc2hub':  # fc2hub
             website = 'fc2hub'
+        elif self.Ui.comboBox_website_all.currentText() == 'airav':  # airav
+            website = 'airav'
         # ======================================================================================proxy
         if self.Ui.radioButton_proxy_http.isChecked():  # http proxy
             proxy_type = 'http'
@@ -2315,7 +2319,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.show_netstatus(self.current_proxy)
         # 检测网络连通性
         self.addNetTextMain(' 检测网络连通性...')
-        net_info = [['github', 'https://github.com' , ''], ['airav', 'https://www.airav.wiki' , ''], ['javbus', 'https://www.javbus.com' , ''], ['javdb', 'https://javdb.com', ''], ['jav321', 'https://www.jav321.com' , ''], ['dmm', 'https://www.dmm.co.jp' , ''], ['avsox', 'https://avsox.website' , ''], ['xcity', 'https://xcity.jp' , ''], ['mgstage', 'https://www.mgstage.com', ''], ['fc2', 'https://adult.contents.fc2.com', ''], ['fc2club', 'https://fc2club.net', ''], ['fc2hub', 'https://fc2hub.com', '']]
+        net_info = [['github', 'https://github.com' , ''], ['iqqtv', 'https://iqqtv.cloud' , ''], ['javbus', 'https://www.javbus.com' , ''], ['javdb', 'https://javdb.com', ''], ['jav321', 'https://www.jav321.com' , ''], ['dmm', 'https://www.dmm.co.jp' , ''], ['avsox', 'https://avsox.website' , ''], ['xcity', 'https://xcity.jp' , ''], ['mgstage', 'https://www.mgstage.com', ''], ['fc2', 'https://adult.contents.fc2.com', ''], ['fc2club', 'https://fc2club.net', ''], ['fc2hub', 'https://fc2hub.com', ''], ['airav', 'https://www.airav.wiki' , '']]
         for each in net_info:
             proxies = get_proxies()
             proxy_type, proxy, timeout, retry_count = get_proxy()
