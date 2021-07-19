@@ -343,9 +343,6 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
 
 # ========================================================================返回json里的数据
 def get_info(json_data):
-    # for key, value in json_data.items():    # 这一步去掉就不显示信息，不太好看
-    #     if value == '' or value == 'N/A':
-    #         json_data[key] = 'unknown'
     for key, value in json_data.items():    # 去除unknown
         if str(value).lower() == 'unknown':
             json_data[key] = ''
@@ -367,7 +364,7 @@ def get_info(json_data):
     series = json_data['series']
     mosaic = json_data['mosaic']
 
-    return title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic
+    return title, studio, publisher, str(year), outline, str(runtime), director, actor_photo, actor, release, tag, number, cover, website, series, mosaic
 
 
 # ========================================================================保存配置到config.ini
@@ -387,6 +384,9 @@ def save_config(json_config):
         print("show_poster = " + str(json_config['show_poster']), file=code)
         print("translate_language = " + json_config['translate_language'], file=code)
         print("# zh_cn or zh_tw or ja", file=code)
+        print("translate_by = " + json_config['translate_by'], file=code)
+        print("# youdao or deepl", file=code)
+        print("deepl_key = " + json_config['deepl_key'], file=code)
         print("website = " + json_config['website'], file=code)
         print("# all or iqqtv or javbus or javdb or jav321 or dmm or avsox or xcity or mgstage or fc2 or fc2club or fc2hub or airav", file=code)
         print("", file=code)
