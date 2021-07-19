@@ -59,7 +59,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210719'
+        self.localversion = '20210720'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -530,6 +530,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'success_file_rename': 1,
             'update_check': 1,
             'translate_language': 'zh_cn',
+            'translate_by': 'youdao',
+            'deepl_key': '',
             'save_log': 1,
             'website': 'all',
             'failed_output_folder': 'failed',
@@ -694,7 +696,22 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     self.Ui.radioButton_zh_cn.setChecked(True)
             except:
                 self.Ui.radioButton_zh_cn.setChecked(True)
-            
+
+            # ======================================================================================translate_by
+            try:    # 翻译引擎
+                if config['common']['translate_by'] == 'youdao':
+                    self.Ui.radioButton_youdao.setChecked(True)
+                elif config['common']['translate_by'] == 'deepl':
+                    self.Ui.radioButton_deepl.setChecked(True)
+                else:
+                    self.Ui.radioButton_youdao.setChecked(True)
+            except:
+                self.Ui.radioButton_youdao.setChecked(True)
+            try:    # deepl_key
+                self.Ui.lineEdit_deepl_key.setText(config['common']['deepl_key'])
+            except:
+                self.Ui.lineEdit_deepl_key.setText('')
+
             # ======================================================================================proxy
             if not config.has_section("proxy"):
                 config.add_section("proxy")
@@ -995,6 +1012,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         switch_debug = 0
         update_check = 0
         translate_language = ''
+        translate_by = 'youdao'
         folder_name_C = 1
         del_actor_name = 1
         save_log = 0
@@ -1038,6 +1056,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             translate_language = 'zh_tw'
         elif self.Ui.radioButton_ja.isChecked():  # 翻译日文
             translate_language = 'ja'
+        if self.Ui.radioButton_youdao.isChecked():  # 有道翻译
+            translate_by = 'youdao'
+        elif self.Ui.radioButton_deepl.isChecked():  # deepl翻译
+            translate_by = 'deepl'
         if self.Ui.radioButton_foldername_C_on.isChecked():  # 文件夹加-C开
             folder_name_C = 1
         elif self.Ui.radioButton_foldername_C_off.isChecked():  # 文件夹不加-C关
@@ -1158,6 +1180,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'success_file_rename': success_file_rename,
             'update_check': update_check,
             'translate_language': translate_language,
+            'translate_by': translate_by,
+            'deepl_key': self.Ui.lineEdit_deepl_key.text(),
             'folder_name_C': folder_name_C,
             'del_actor_name': del_actor_name,
             'save_log': save_log,
@@ -1585,6 +1609,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================下载缩略图
     def thumbDownload(self, json_data, folder_new_path, config, thumb_new_name, thumb_new_path):
+        if int(config.getint('file_download', 'thumb')) == 0 and int(config.getint('file_download', 'poster')) == 0 and int(config.getint('file_download', 'fanart')) == 0: # 如果thumb、poster、fanart都不下载，则不需要下载thumb
+            return True
         # self.addTextMain(" ⏳ Start downloading the thumb... ")
         try:
             cover_url = str(json_data['cover'])
@@ -1677,10 +1703,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================删除缩略图
     def deletethumb(self, thumb_new_name, thumb_new_path, config):
+        if int(config.getint('file_download', 'thumb')) == 0 and int(config.getint('file_download', 'poster')) == 0 and int(config.getint('file_download', 'fanart')) == 0: # 如果thumb、poster、fanart都不下载，则不需要删除thumb，因为这种场景有可能只是想更新nfo文件
+            return
         try:
             if int(config.getint('file_download', 'thumb')) == 0 and os.path.exists(thumb_new_path):
                 os.remove(thumb_new_path)
-                self.addTextMain(" 🟢 Delete the thumb '%s' successfully!" % thumb_new_name)
+                # self.addTextMain(" 🟢 Delete the thumb '%s' successfully!" % thumb_new_name)
         except Exception as ex:
             self.addTextMain(" 🔴 Failed to delete the thumb '%s'\n   >>> %s" % (thumb_new_name, str(ex)))
 
@@ -2220,7 +2248,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.label_tag.setText(str(json_data['tag']).strip(" [',']").replace('\'', ''))
         self.Ui.label_release.setText(json_data['release'])
         if json_data['runtime']:
-            self.Ui.label_runtime.setText(json_data['runtime'] + ' 分钟')
+            self.Ui.label_runtime.setText(str(json_data['runtime']) + ' 分钟')
         else:
             self.Ui.label_runtime.setText(json_data['runtime'])
         self.Ui.label_director.setText(json_data['director'])
@@ -2556,7 +2584,51 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         return movie_number, folder_path, file_name, file_ex, leak, cd_part, c_word, sub_list, file_show_name, file_show_path
 
     # =====================================================================================有道翻译
-    def youdao(self, title, outline):
+    def translateDeepl(self, text, s_lang='JA', t_lang='ZH'):
+        proxy_type, proxy, timeout, retry_count = get_proxy()
+        proxies = get_proxies()
+        url = 'https://api.deepl.com/v2/translate'
+        deepl_key = self.deepl_key
+        headers = {
+            'Content-Type': 'application/x-www-form-urlencoded; utf-8'
+        }
+
+        params = {
+            'auth_key': deepl_key,
+            'text': text,
+            'target_lang': t_lang
+        }
+
+        if s_lang != '':
+            params['source_lang'] = s_lang
+
+        try:
+            result = requests.post(url, data=params, headers=headers, proxies=proxies, timeout=timeout)
+            result.encoding = 'utf-8'
+            result = result.text
+        except Exception as ex:
+            self.addTextMain('   >>> 提示：deepl翻译接口请求失败，将跳过翻译！错误：' + str(ex))
+        else:
+            try:
+                translate_results = json.loads(result)
+            except Exception as ex:
+                if len(result) == 0:
+                    if deepl_key:
+                        self.addTextMain(' 🟠 本次翻译将跳过！deepl API key 无效！请重新输入！')
+                    else:
+                        self.addTextMain(' 🟠 本次翻译将跳过！请在设置里填写 deepl API key 后使用！')
+                else:
+                    self.addTextMain(' 🟠 本次翻译将跳过！deepl翻译接口返回数据异常1！返回内容：%s' % str(ex))
+            else:
+                if 'translations' in translate_results:
+                    text = translate_results["translations"][0]["text"]
+                else:
+                    self.addTextMain(' 🟠 本次翻译将跳过！deepl翻译接口返回数据异常2！返回内容：%s' % str(translate_results))
+        return text
+
+
+    # =====================================================================================有道翻译
+    def translateYoudao(self, title, outline):
         proxy_type, proxy, timeout, retry_count = get_proxy()
         proxies = get_proxies()
         ttt = ''
@@ -2687,7 +2759,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         return True
 
     # =====================================================================================处理翻译
-    def transLanguage(self, movie_number, jsonfile_data, json_data, translate_language):
+    def transLanguage(self, movie_number, jsonfile_data, json_data, translate_language, translate_by):
         if translate_language != 'ja':
             movie_title = ''
             # 匹配本地高质量标题
@@ -2704,22 +2776,27 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             # 使用json_data数据
             if not movie_title:
                 movie_title = json_data['title']
-            # print('翻译前：')
-            # print('title: ' + movie_title)
-            # print('\noutline: ' + json_data['outline'])
-            # 判断标题或简介语言，如果有一个是日语，就把标题和简介同时请求有道翻译
-            if langid.classify(movie_title)[0] == 'ja':
-                rr = random.randint(1, 5)
-                self.addTextMain(' ⏱ Translation will request after %s seconds!' % str(rr))
-                time.sleep(rr)  # 尝试加上延时，看被封情况
-                movie_title, json_data['outline'] = self.youdao(movie_title, json_data.get('outline'))
-                # print('\n翻译后1：\n%s\n\n%s\n\n' % (movie_title, json_data['outline']))
-            elif langid.classify(json_data['outline'])[0] == 'ja':
-                rr = random.randint(1, 5)
-                self.addTextMain(' ⏱ Translation will request after %s seconds!' % str(rr))
-                time.sleep(rr)  # 尝试加上延时，看被封情况
-                test1, json_data['outline'] = self.youdao('', json_data.get('outline'))
-                # print('\n翻译后2：\n%s\n\n%s\n\n' % (movie_title, json_data['outline']))
+            # print('翻译前：\ntitle: %s\noutline: %s\n' %(movie_title, json_data['outline']))
+
+            if translate_by == 'youdao':
+                # 判断标题或简介语言，如果有一个是日语，就把标题和简介同时请求有道翻译
+                if langid.classify(movie_title)[0] == 'ja':
+                    rr = random.randint(1, 5)
+                    self.addTextMain(' ⏱ Translation will request after %s seconds!' % str(rr))
+                    time.sleep(rr)  # 尝试加上延时，看被封情况
+                    movie_title, json_data['outline'] = self.translateYoudao(movie_title, json_data.get('outline'))
+                    # print('\n翻译后1：\n%s\n\n%s\n\n' % (movie_title, json_data['outline']))
+                elif langid.classify(json_data['outline'])[0] == 'ja':
+                    rr = random.randint(1, 5)
+                    self.addTextMain(' ⏱ Translation will request after %s seconds!' % str(rr))
+                    time.sleep(rr)  # 尝试加上延时，看被封情况
+                    test1, json_data['outline'] = self.translateYoudao('', json_data.get('outline'))
+                    # print('\n翻译后2：\n%s\n\n%s\n\n' % (movie_title, json_data['outline']))
+            elif translate_by == 'deepl':
+                if langid.classify(movie_title)[0] == 'ja':
+                    movie_title = self.translateDeepl(movie_title)
+                if langid.classify(json_data['outline'])[0] == 'ja':
+                    json_data['outline'] = self.translateDeepl(json_data.get('outline'))
 
             # 简繁转换
             if translate_language == 'zh_cn':
@@ -2776,6 +2853,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         config = RawConfigParser()
         config.read(config_file, encoding='UTF-8')
         translate_language = config.get('common', 'translate_language')
+        translate_by = config.get('common', 'translate_by')
+        self.deepl_key = config.get('common', 'deepl_key')
 
         # =====================================================================================获取设置的媒体目录、失败目录、成功目录
         movie_path, success_folder, failed_folder, escape_folder, extrafanart_folder = self.getMoviePathSetting(config)
@@ -2791,7 +2870,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             return False, json_data                 # 返回AVDC_main, 继续处理下一个文件
 
         # =====================================================================================翻译json_data的标题和介绍
-        self.transLanguage(movie_number, jsonfile_data, json_data, translate_language)
+        self.transLanguage(movie_number, jsonfile_data, json_data, translate_language, translate_by)
 
         # =====================================================================================显示json_data
         self.showMovieInfo(json_data, config)
@@ -2859,6 +2938,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         json_data['number'] = movie_number
         json_data['thumb_path'] = thumb_new_path
         json_data['poster_path'] = poster_new_path
+        if os.path.exists(fanart_new_path) and not os.path.exists(thumb_new_path):
+            json_data['thumb_path'] = fanart_new_path
 
         return True, json_data
 
