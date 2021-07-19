@@ -108,7 +108,7 @@ def getRuntime(html):
             result = int(int(result[0])*60 + int(result[1]) + int(result[2])/60)
     else:
         result = ''
-    return result
+    return str(result)
 
 def getPublisher(html):
     result1 = str(html.xpath('//strong[contains(text(),"發行:")]/../span/a/text()')).strip(" ['']")

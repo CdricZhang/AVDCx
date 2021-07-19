@@ -13,7 +13,6 @@ def getTitle(html, number):  # 获取标题
         result = ''
     return result
 
-
 def getNum(html):  # 获取番号
     result = html.xpath('//h1/text()')
     if result:
@@ -21,7 +20,6 @@ def getNum(html):  # 获取番号
     else:
         result = ''
     return result
-
 
 def getCover(html):  # 获取封面
     extrafanart = []
@@ -64,7 +62,6 @@ def getActorPhoto(actor):  # 获取演员头像
     for act in actor_list: 
         actor_photo[act] = ''
     return actor_photo
-
 
 def getTag(html):  # 获取标签
     result = html.xpath('//strong[contains(text(), "影片标签")]/../a/text()')
