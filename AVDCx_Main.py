@@ -59,7 +59,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210720'
+        self.localversion = '20210721'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -566,7 +566,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'fanart_download': 1,
             'thumb_download': 1,
             'extrafanart_download': 0,
-            'extrafanart_folder': 'extrafanart',
+            'extrafanart_folder': '',
         }
         save_config(json_config)
         self.check_proxyChange()
@@ -968,7 +968,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             try:    # 剧照目录
                 self.Ui.lineEdit_extrafanart_dir.setText(config['extrafanart']['extrafanart_folder'])
             except:
-                self.Ui.lineEdit_extrafanart_dir.setText('extrafanart')
+                self.Ui.lineEdit_extrafanart_dir.setText('')
             self.save_config_clicked()
             print('config.ini ok')
         else:
@@ -1722,27 +1722,35 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 return
         except:
             return
-        self.addTextMain(' ⏳ ExtraFanart downloading!')
+        self.addTextMain(' ⏳ ExtraFanart downloading...')
         extrafanart_folder = config.get('extrafanart', 'extrafanart_folder').replace('\\', '/')
-        extrafanart_path = os.path.join(folder_new_path, extrafanart_folder)
+        extrafanart_copy_path = os.path.join(folder_new_path, extrafanart_folder)
+        extrafanart_path = os.path.join(folder_new_path, 'extrafanart')
         extrafanart_list = json_data['extrafanart']
         if not os.path.exists(extrafanart_path):
             os.makedirs(extrafanart_path)
+        if not os.path.exists(extrafanart_copy_path):
+            os.makedirs(extrafanart_copy_path)
         extrafanart_count = 0
         extrafanart_count_succ = 0
         for extrafanart_url in extrafanart_list:
             extrafanart_count += 1
-            if not os.path.exists(os.path.join(extrafanart_path, ('fanart' + str(extrafanart_count) + '.jpg'))):
-                i = 1
-                while i <= int(config['proxy']['retry']):
-                    self.downloadFileWithFilename(extrafanart_url, 'fanart' + str(extrafanart_count) + '.jpg',
-                                                    extrafanart_path)
-                    if not check_pic(os.path.join(extrafanart_path, ('fanart' + str(extrafanart_count) + '.jpg'))):
-                        print('Image Download Failed! Trying again. ' + str(i) + '/' + config['proxy']['retry'])
-                        i = i + 1
-                    else:
-                        extrafanart_count_succ += 1
-                        break
+            extrafanart_name = os.path.join(extrafanart_path, ('fanart' + str(extrafanart_count) + '.jpg'))
+            if os.path.exists(extrafanart_name):
+                os.remove(extrafanart_name)
+            i = 1
+            while i <= int(config['proxy']['retry']):
+                self.downloadFileWithFilename(extrafanart_url, 'fanart' + str(extrafanart_count) + '.jpg',
+                                                extrafanart_path)
+                if not check_pic(extrafanart_name):
+                    print('Image Download Failed! Trying again. ' + str(i) + '/' + config['proxy']['retry'])
+                    i = i + 1
+                else:
+                    extrafanart_count_succ += 1
+                    self.addTextMain(" 🟢 %s done!" % ('fanart' + str(extrafanart_count) + '.jpg'))
+                    if extrafanart_folder and extrafanart_copy_path != extrafanart_path:
+                        shutil.copy(extrafanart_name, os.path.join(extrafanart_copy_path, (str(extrafanart_count) + '.jpg')))
+                    break
         self.addTextMain(" 🟢 ExtraFanart downloaded complete! Total %s , success %s " % (extrafanart_count, extrafanart_count_succ))
 
 
