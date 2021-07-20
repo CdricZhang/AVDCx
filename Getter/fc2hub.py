@@ -113,7 +113,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 dic = {
                     'title': str(title),
                     'number': 'FC2-' + str(number),
-                    'actor': 'FC2系列',
+                    'actor': studio,
                     'outline': outline,
                     'tag': tag,
                     'release': '',
@@ -126,7 +126,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
                     'publisher': studio,
                     'source': 'fc2hub.main',
                     'website': str(real_url).strip('[]'),
-                    'actor_photo': {'FC2系列':''},
+                    'actor_photo': {studio:''},
                     'cover': str(cover_url),
                     'cover_small': '',
                     'extrafanart': extrafanart,

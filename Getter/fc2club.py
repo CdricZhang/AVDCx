@@ -48,12 +48,12 @@ def getScore(html):  # 获取评分
         result = ''
     return result
 
-def getActor(html):  # 获取演员
+def getActor(html, studio):  # 获取演员
     result = html.xpath('//strong[contains(text(), "女优名字")]/../a/text()')
     if result:
         result = str(result).strip(' []').replace('"', '').replace("'", '').replace(', ', ',')
     else:
-        result = 'FC2系列'
+        result = studio
     return result
 
 def getActorPhoto(actor):  # 获取演员头像
@@ -115,7 +115,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
         tag = getTag(html_info)
         studio = getStudio(html_info) # 获取厂商
         score = getScore(html_info) # 获取厂商
-        actor = getActor(html_info) # 获取演员
+        actor = getActor(html_info, studio) # 获取演员
         actor_photo = getActorPhoto(actor)  # 获取演员列表
 
         try:
