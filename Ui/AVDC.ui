@@ -2047,7 +2047,7 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-767</y>
+           <y>0</y>
            <width>771</width>
            <height>1320</height>
           </rect>
@@ -3706,7 +3706,7 @@ background-color: rgb(246, 246, 246);</string>
                <enum>QFrame::NoFrame</enum>
               </property>
               <property name="text">
-               <string>剧照目录：</string>
+               <string>剧照副本目录：</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -3926,7 +3926,7 @@ background-color: rgb(246, 246, 246);</string>
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
               <property name="text">
-               <string>指存放exfanart图片的文件夹，一般不需要修改</string>
+               <string>指把剧照目录exfanart内容再复制到另一个目录，以便剧照可以在emby浏览查看</string>
               </property>
              </widget>
             </item>

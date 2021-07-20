@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCPJyXaP.ui'
+## Form generated from reading UI file 'AVDCyjTxRz.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -553,7 +553,7 @@ class Ui_AVDV(object):
         self.scrollArea.setWidgetResizable(False)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, -767, 771, 1320))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 771, 1320))
         self.groupBox = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(30, 110, 701, 101))
@@ -2490,12 +2490,12 @@ class Ui_AVDV(object):
         self.label_53.setText(QCoreApplication.translate("AVDV", u"\u63a8\u8350\uff0c\u5c06\u4f7f\u7528thumb\u88c1\u526a\uff0c\u56fe\u7247\u6e05\u6670", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1), QCoreApplication.translate("AVDV", u"\u522e\u524a\u8bbe\u7f6e", None))
         self.groupBox_16.setTitle(QCoreApplication.translate("AVDV", u"\u76ee\u5f55\u8bbe\u7f6e", None))
-        self.label_50.setText(QCoreApplication.translate("AVDV", u"\u5267\u7167\u76ee\u5f55\uff1a", None))
+        self.label_50.setText(QCoreApplication.translate("AVDV", u"\u5267\u7167\u526f\u672c\u76ee\u5f55\uff1a", None))
         self.label_58.setText(QCoreApplication.translate("AVDV", u"\u6307\u4e0d\u60f3\u8981\u522e\u524a\u7684\u76ee\u5f55\uff0c\u53ef\u4ee5\u586b\u5199\u591a\u4e2a\u76ee\u5f55\uff0c\u4ee5\u9017\u53f7\u5206\u5f00\uff08\u4e2d\u82f1\u6587\u9017\u53f7\u90fd\u53ef\u4ee5\uff09", None))
         self.label_47.setText(QCoreApplication.translate("AVDV", u"\u6210\u529f\u8f93\u51fa\u76ee\u5f55\uff1a", None))
         self.label_48.setText(QCoreApplication.translate("AVDV", u"\u6392\u9664\u76ee\u5f55\uff1a", None))
         self.label_49.setText(QCoreApplication.translate("AVDV", u"\u5f85\u522e\u524a\u89c6\u9891\u76ee\u5f55\uff1a", None))
-        self.label_59.setText(QCoreApplication.translate("AVDV", u"\u6307\u5b58\u653eexfanart\u56fe\u7247\u7684\u6587\u4ef6\u5939\uff0c\u4e00\u822c\u4e0d\u9700\u8981\u4fee\u6539", None))
+        self.label_59.setText(QCoreApplication.translate("AVDV", u"\u6307\u628a\u5267\u7167\u76ee\u5f55exfanart\u5185\u5bb9\u518d\u590d\u5236\u5230\u53e6\u4e00\u4e2a\u76ee\u5f55\uff0c\u4ee5\u4fbf\u5267\u7167\u53ef\u4ee5\u5728emby\u6d4f\u89c8\u67e5\u770b", None))
         self.label_56.setText(QCoreApplication.translate("AVDV", u"\u6307\u672c\u5730\u542b\u6709\u89c6\u9891\u7684\u6587\u4ef6\u5939\uff0c\u5c06\u4ece\u7f51\u7edc\u4e0a\u522e\u524a\u8be5\u76ee\u5f55\uff08\u542b\u5b50\u76ee\u5f55\uff09\u6240\u6709\u89c6\u9891\u7684\u5143\u6570\u636e\u4fe1\u606f", None))
         self.label_46.setText(QCoreApplication.translate("AVDV", u"\u5931\u8d25\u8f93\u51fa\u76ee\u5f55\uff1a", None))
         self.label_57.setText(QCoreApplication.translate("AVDV", u"\u6307\u522e\u524a\u5931\u8d25\u65f6\uff0c\u89c6\u9891\u5c06\u79fb\u52a8\u5230\u8fd9\u4e2a\u6587\u4ef6\u5939\u3002\u8f93\u51fa\u76ee\u5f55\u53ef\u4ee5\u4e0d\u5728\u5f85\u522e\u524a\u89c6\u9891\u76ee\u5f55\u4e0b", None))
