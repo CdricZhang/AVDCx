@@ -126,7 +126,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 'cover_small': cover_small_url,
                 'extrafanart': extrafanart,
                 'imagecut': 0,
-                'mosaic': '无码',
+                'mosaic': 'FC2',
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),

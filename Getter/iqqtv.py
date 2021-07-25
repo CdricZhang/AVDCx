@@ -1,12 +1,10 @@
 import re
 from lxml import etree
 import json
-from numpy import number
-from Function.getHtml import get_html, post_html
+from Function.getHtml import get_html
+from configparser import RawConfigParser
 import urllib3
 urllib3.disable_warnings()
-from Getter import javdb
-from configparser import RawConfigParser
 
 
 def getDelActorName():
@@ -71,12 +69,12 @@ def getRelease(html):
         result = ''
     return result
 
-def getYear(realse):
+def getYear(release):
     try:
-        result = str(re.search('\d{4}', realse).group())
+        result = str(re.search('\d{4}', release).group())
         return result
     except:
-        return realse[:4]
+        return release[:4]
 
 def getTag(html):
     result = html.xpath('//p[@class="movie_txt_tag"]/a/text()')
@@ -111,46 +109,9 @@ def getRuntime(html):
         result = ''
     return str(result)
 
-def getPublisher(html):
-    result1 = str(html.xpath('//strong[contains(text(),"發行:")]/../span/a/text()')).strip(" ['']")
-    result2 = str(html.xpath('//strong[contains(text(),"Publisher:")]/../span/a/text()')).strip(" ['']")
-    return str(result1 + result2).strip('+').replace("', '", '').replace('"', '')
-
-def getSeries(html):
-    result1 = str(html.xpath('//strong[contains(text(),"系列:")]/../span/a/text()')).strip(" ['']")
-    result2 = str(html.xpath('//strong[contains(text(),"Series:")]/../span/a/text()')).strip(" ['']")
-    return str(result1 + result2).strip('+').replace("', '", '').replace('"', '')
-
-def getExtraFanart(html):  # 获取封面链接
-    extrafanart_list = html.xpath("//div[@class='tile-images preview-images']/a[@class='tile-item']/@href")
-    return extrafanart_list
-
-def getDirector(html):
-    result = html.xpath('//span[@itemprop="director"]/text()')
-    if result:
-        result = result[0].replace('/', '-')
-    else:
-        result = ''
-    return result
-
-def getScore(html):
-    result = str(html.xpath("//span[@class='score-stars']/../text()")).strip(" ['']")
-    try:
-        score = re.findall(r'(\d{1}\..+)分', result)
-        if score:
-            score = score[0]
-        else:
-            score = ''
-    except:
-        score = ''
-    return score
-
 def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
     req_web += '-> iqqtv[%s] ' % translate_language.replace('zh_', '')
     log_info += '   >>> iqqtv-开始使用iqqtv进行刮削\n'
-    # number = 'snis-555'
-    # number = '070121_001'
-    # number = 'bt-191'
     real_url = appoint_url
     iqqtv_domain = 'https://iqqtv.cloud'
     cover_url = ''
@@ -177,12 +138,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 log_info += '   >>> iqqtv-请求搜索页：错误！信息：' + html_search
                 error_type = 'timeout'
                 raise Exception('iqqtv-请求搜索页：错误！信息：' + html_search)
-            # with open('11.txt', 'wt') as f:
-            #     f.write(html_search)
             html = etree.fromstring(html_search, etree.HTMLParser())
             real_url = html.xpath("//h3[@class='one_name ga_name' and (contains(text(), $number)) and not (contains(text(), '克破'))]/../@href", number=number.upper())
-            # real_url = html.xpath("//h3[@class='one_name ga_name'][contains(text(), $number)]/../@href", number=number.upper())
-            # print(real_url)
 
             if real_url:
                 real_url = iqqtv_domain + real_url[0]
@@ -191,8 +148,6 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 log_info += '   >>> iqqtv-搜索结果页匹配番号：未匹配到番号！ \n'
                 error_type = 'iqqtv-搜索结果页匹配番号：未匹配到番号！'
                 raise Exception('iqqtv-搜索结果页匹配番号：未匹配到番号！')
-            # print(real_url)
-
         if real_url:
             try:
                 result, html_content = get_html(real_url)
@@ -200,47 +155,32 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 log_info += '   >>> iqqtv-请求详情页：出错！错误信息：%s \n' % str(error_info)
                 error_type = 'timeout'
                 raise Exception('iqqtv-请求详情页：出错！错误信息：%s \n' % str(error_info))          
-            # with open('123.txt', 'wt') as f:
-            #     f.write(html_content)
             html_info = etree.fromstring(html_content, etree.HTMLParser())
             title = getTitle(html_info) # 获取标题
-            # print(title)
             if not title:
                 log_info += '   >>> iqqtv- title 获取失败！ \n'
                 error_type = 'iqqtv- title 获取失败！'
                 raise Exception('iqqtv- title 获取失败!')
             web_number = getWebNumber(title, number)    # 获取番号，用来替换标题里的番号
-            # print(web_number)
             title = title.replace(' %s' % web_number, '').strip()
-            # print(title)
             actor = getActor(html_info) # 获取actor
+            actor_photo = getActorPhoto(actor)
             if getDelActorName():
                 title = title.strip(' ' + actor)
-            # print(actor)
-            actor_photo = getActorPhoto(actor)
-            # print(actor_photo)
             cover_url = getCover(html_info) # 获取cover
-            # print(cover_url)
             if 'http' not in cover_url:
                 log_info += '   >>> iqqtv- cover url 获取失败！ \n'
                 error_type = 'Cover Url is None!'
                 raise Exception('iqqtv- cover url 获取失败!')
             outline = getOutline(html_info)
-            # print(outline)
             release = getRelease(html_info)
-            # print(release)
             year = getYear(release)
-            # print(year)
             tag = getTag(html_info)
-            # print(tag)
             mosaic = getMosaic(tag)
             if mosaic == '无码':
                 imagecut = 3
-            # print(mosaic)
             studio = getStudio(html_info)
-            # print(studio)
             runtime = getRuntime(html_info)
-            # print(runtime)
             score = ''
             series = ''
             director = ''

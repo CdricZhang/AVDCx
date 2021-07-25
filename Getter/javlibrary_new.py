@@ -1,5 +1,5 @@
 import json
-from Getter import javdb, iqqtv, jav321
+from Getter import javlibrary, jav321
 from configparser import RawConfigParser
 import time
 
@@ -27,19 +27,19 @@ def getMode():
 
 def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
     translate_language, translate_content, main_like = getMode()
-    appoint_url = appoint_url.replace('/cn/', '/jp/').replace('iqqtv.cloud/player', 'iqqtv.cloud/jp/player')
-    json_data = json.loads(iqqtv.main(number, appoint_url, translate_language='jp'))
+    appoint_url = appoint_url.replace('/cn/', '/ja/').replace('/tw/', '/ja/')
+    json_data = json.loads(javlibrary.main(number, appoint_url, 'jp', log_info, req_web))
     if not getDataState(json_data):
         return json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )
     if translate_language != 'ja':
         if translate_language == 'zh_cn':
-            appoint_url = json_data['website'].replace('/jp/', '/cn/')
+            appoint_url = json_data['website'].replace('/ja/', '/cn/')
         else:
-            appoint_url = json_data['website'].replace('/jp/', '/')
+            appoint_url = json_data['website'].replace('/ja/', '/tw/')
         log_info = json_data['log_info']
         req_web = json_data['req_web']
         # time.sleep(0.5)
-        json_data_zh = json.loads(iqqtv.main(number, appoint_url, translate_language, log_info, req_web))
+        json_data_zh = json.loads(javlibrary.main(number, appoint_url, translate_language, log_info, req_web))
         if getDataState(json_data_zh):
             json_data['req_web'] = json_data_zh['req_web']
             json_data['website'] = json_data_zh['website']
@@ -47,8 +47,6 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 json_data['title'] = json_data_zh['title']
                 if getDelActorName():
                     json_data['title'] = json_data['title'].strip(' ' + json_data['actor'])
-            if 'outline' in translate_content:
-                json_data['outline'] = json_data_zh['outline']
             if 'actor' in translate_content:
                 json_data['actor'] = json_data_zh['actor']
             if 'tag' in translate_content:
@@ -58,15 +56,20 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
         json_data_jav321 = json.loads(jav321.main(number, '', log_info, req_web))
         if getDataState(json_data_jav321):
             json_data['req_web'] = json_data_jav321['req_web']
-            json_data['runtime'] = json_data_jav321['runtime']
-            json_data['score'] = json_data_jav321['score']
+            json_data['outline'] = json_data_jav321['outline']
+            if not json_data['score']:
+                json_data['score'] = json_data_jav321['score']
             json_data['series'] = json_data_jav321['series']
-            json_data['director'] = json_data_jav321['director']
+            if not json_data['director']:
+                json_data['director'] = json_data_jav321['director']
             json_data['extrafanart'] = json_data_jav321['extrafanart']
     # return json_data
     js = json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
+
+
+# print(main('SSIS-118', 'https://www.javlibrary.com/cn/?v=javme5ly4e'))
 # print(main('abs-141'))
 # print(main('HYSD-00083'))
 # print(main('IESP-660'))

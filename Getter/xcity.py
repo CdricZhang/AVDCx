@@ -4,21 +4,41 @@ import re
 from lxml import etree
 import json
 from Function.getHtml import get_html
+from configparser import RawConfigParser
+import urllib3
+urllib3.disable_warnings()
 
+def getDelActorName():
+    config_file = 'config.ini'
+    config = RawConfigParser()
+    config.read(config_file, encoding='UTF-8')
+    del_actor_name = config.getint('Name_Rule', 'del_actor_name')
+    return del_actor_name
 
-def getTitle(a):
-    html = etree.fromstring(a, etree.HTMLParser())
-    result = str(html.xpath("//span[@id='program_detail_title']/text()")).strip(" ['']").replace("'", '')
+def getTitle(html):
+    result = html.xpath('//span[@id="program_detail_title"]/text()')
+    if result:
+        result = result[0]
+    else:
+        result = ''
     return result
 
-
-def getActor(a):  # //*[@id="center_column"]/div[2]/div[1]/div/table/tbody/tr[1]/td/text()
-    html = etree.fromstring(a, etree.HTMLParser())
-    result = str(html.xpath("//li[@class='credit-links']/a/text()")).strip(" ['']").replace("'", '')
+def getWebNumber(html):
+    result = html.xpath('//span[@id="hinban"]/text()')
+    if result:
+        result = result[0]
+    else:
+        result = ''
     return result
 
+def getActor(html):
+    try:
+        result = str(html.xpath('//li[@class="credit-links"]/a/text()')).strip("['']").replace("'", '')
+    except:
+        result = ''
+    return result
 
-def getActorPhoto(actor):  # //*[@id="star_qdt"]/li/a/img
+def getActorPhoto(actor):
     actor = actor.split(',')
     d = {}
     for i in actor:
@@ -27,183 +47,207 @@ def getActorPhoto(actor):  # //*[@id="star_qdt"]/li/a/img
             d.update(p)
     return d
 
-
-def getStudio(a):
-    html = etree.fromstring(a, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
-    result = str(html.xpath("//span[@id='program_detail_maker_name']/text()")).strip(" ['']")
-    return result
-
-
-def getRuntime(a):
-    html = etree.fromstring(a, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
-    try:
-        result = str(html.xpath("//span[contains(text(),'収録時間')]/parent::li/text()"))
-        if re.search(r'\d+', result):
-            result = re.findall(r'\d+', result)[0].replace('/', '-')
-    except:
+def getCover(html):
+    result = html.xpath('//div[@class="photo"]/p/a/@href')
+    if result:
+        result = 'https:' + result[0]
+    else:
         result = ''
     return result
 
-
-def getSeries(a):
-    html = etree.fromstring(a, etree.HTMLParser())
-    result = str(html.xpath("//span[contains(text(),'シリーズ')]/following-sibling::a/span/text()")).strip(" ['']").replace('\'', '')
+def getOutline(html):
+    result = html.xpath('//p[@class="lead"]/text()')
+    if result:
+        result = result[0].strip().replace('"', '')
+    else:
+        result = ''
     return result
 
-
-def getNum(a):
-    html = etree.fromstring(a, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
-    result = str(html.xpath("//span[@id='hinban']/text()")).strip(" ['']")
+def getRelease(html):
+    result = html.xpath('//li/span[@class="koumoku" and (contains(text(), "発売日"))]/../text()')
+    result = re.findall('[\d]+/[\d]+/[\d]+', str(result))
+    if result:
+        result = result[0].replace('/', '-')
+    else:
+        result = ''
     return result
 
-
-def getYear(getRelease):
+def getYear(release):
     try:
-        result = str(re.search('\d{4}', getRelease).group())
+        result = str(re.search('\d{4}', release).group())
         return result
     except:
-        return getRelease
+        return release[:4]
 
-
-def getRelease(a):
-    html = etree.fromstring(a, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
-    try:
-        result = str(html.xpath("//span[contains(text(),'発売日')]/parent::li/text()"))
-        if re.search(r'\d{4}/\d{2}/\d{2}', result):
-            result = re.findall(r'\d{4}/\d{2}/\d{2}', result)[0].replace('/', '-')
-    except:
+def getTag(html):
+    result = html.xpath('//a[@class="genre"]/text()')
+    if result:
+        result = str(result).strip(" ['']").replace("'", "").replace(', ', ',').replace('\\n', '').replace('\\t', '')
+    else:
         result = ''
     return result
 
-
-def getTag(a):
-    html = etree.fromstring(a, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
-    result1 = str(html.xpath("//a[@class='genre']/text()")).strip(" ['']").replace('\'', '').replace('\\t', '').replace('\\n', '')
-    return result1.replace("', '", ",")
-
-
-def getCover(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())
-    result = 'https:' + str(html.xpath("//div[@class='photo']/p[@class='tn']/a/@href")).strip(" ['']").replace('\'', '')
-    return result
-
-
-def getExtraFanart(htmlcode):  # 获取封面链接
-    html = etree.fromstring(htmlcode, etree.HTMLParser())
-    old_list = html.xpath("//div[@id='sample_images']/div/a/@href")
-    new_list = []
-    for extrafanart in old_list:
-        new_list.append('https:' + extrafanart.replace('scene/small/', ''))
-    return new_list
-
-
-def getDirector(a):
-    html = etree.fromstring(a, etree.HTMLParser())
-    result1 = str(html.xpath("//span[@id='program_detail_director']/text()")).strip(" ['']").replace('\\t', '').replace('\\n', '')
-    return result1
-
-
-def getOutline(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())
-    result = str(html.xpath("//p[@class='lead']/text()")).strip(" ['']").replace('\\n', '').replace('\n', '')
-    return result
-
-
-def getScore(htmlcode):
-    html = etree.fromstring(htmlcode, etree.HTMLParser())
-    result = html.xpath("//p[@class='d-review__average']/strong/text()")
+def getStudio(html):
+    result = html.xpath('//span[@id="program_detail_maker_name"]/text()')
     if result:
-        result = str(result[0]).replace('\\n', '').replace('\n', '').replace('点', '')
+        result = result[0].strip()
+    else:
+        result = ''
     return result
 
+def getPublisher(html):
+    result = html.xpath('//span[@id="program_detail_label_name"]/text()')
+    if result:
+        result = result[0].strip()
+    else:
+        result = ''
+    return result
 
-def find_number(number, appoint_url):
-    number_get = ''
-    if appoint_url:
-        return appoint_url, get_html(appoint_url)[1]
-    result, htmlcode = get_html('https://xcity.jp/result_published/?q=' + number.replace('-', ''))
-    if '該当する作品はみつかりませんでした' in htmlcode:
-        return 'Movie data not found', ''
-    html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
-    counts = len(html.xpath("//div[@id='searchResult']/table[@class='resultList']/tr"))
-    if counts >= 2:
-        for count in range(2, counts + 1):  # 遍历搜索结果，找到需要的番号
-            result1 = html.xpath("//div[@id='searchResult']/table[@class='resultList']/tr[" + str(count) + "]/td[1]/a/@href")
-            if result1:
-                result_url = 'https://xcity.jp' + result1[0]
-            else:
-                return 'Movie data not found', ''
-            result, detail_page = get_html(result_url)
-            detail_page_html = etree.fromstring(detail_page, etree.HTMLParser())
-            if detail_page_html.xpath("//span[@id='hinban']/text()"):
-                number_get = str(detail_page_html.xpath("//span[@id='hinban']/text()")[0])
-            if number_get.upper() == number.replace('-', '').upper():
-                return result_url, detail_page
-    return 'Movie data not found', ''
+def getRuntime(html):
+    result = str(html.xpath('//span[@class="koumoku"][contains(text(), "収録時間")]/../text()'))
+    result = re.findall('[\d]+', result)
+    if result:
+        result = result[0].strip()
+    else:
+        result = ''
+    return result
+
+def getDirector(html):
+    result = html.xpath('//span[@id="program_detail_director"]/text()')
+    if result:
+        result = result[0].replace('\\n', '').replace('\\t', '').strip()
+    else:
+        result = ''
+    return result
+
+def getExtrafanart(html):
+    result = html.xpath('//a[contains(@class, "thumb")]/@href')
+    if result:
+        result = str(result).replace('//faws.xcity.jp/scene/small/', 'https://faws.xcity.jp/').strip(' []').replace("'", '').replace(', ', ',')
+        result = result.split(',')
+    else:
+        result = ''
+    return result
+
+def getCoverSmall(html):
+    result = html.xpath('//img[@class="packageThumb"]/@src')
+    if result:
+        result = 'https:' + result[0]
+    else:
+        result = ''
+    return result.replace('package/medium/', '')
+
+def getSeries(html):
+    result = html.xpath('//a[contains(@href, "series")]/span/text()')
+    if result:
+        result = result[0]
+    else:
+        result = ''
+    return result
 
 
 def main(number, appoint_url='', log_info='', req_web=''):
     req_web += '-> xcity '
-    log_info += '   >>> XCITY-开始使用 xcity 进行刮削\n'
+    log_info += '   >>> xcity-开始使用 xcity 进行刮削\n'
     real_url = appoint_url
-    title = ''
     cover_url = ''
-    cover_small = ''
     error_type = ''
     error_info = ''
     dic = {}
     try:
-        url, detail_page = find_number(number, appoint_url)
-        if url == 'Movie data not found':
-            log_info += '   >>> XCITY-未匹配到番号！ \n'
+        if not real_url:
+            url_search = 'https://xcity.jp/avod/result/?q=' + number.replace('-', '')
+            log_info += '   >>> xcity-生成搜索页地址: %s \n' % url_search
+        result, html_search = get_html(url_search)
+        if not result:
+            log_info += '   >>> xcity-请求搜索页：错误！信息：%s\n' % html_search
+            error_type = 'timeout'
+            raise Exception('>>> xcity-请求搜索页：错误！信息：' + html_search)
+        if '該当する作品はみつかりませんでした' in html_search:
+            log_info += '   >>> xcity-搜索结果页匹配番号：未匹配到番号！ \n'
             error_type = 'Movie data not found'
-            raise Exception('Movie data not found')
-        actor = getActor(detail_page)
-        release = getRelease(detail_page)
-        title = getTitle(detail_page) # 获取标题
-        if not title:
-            log_info += '   >>> XCITY- title 获取失败！ \n'
-            error_type = 'need login'
-            raise Exception('>>> XCITY- title 获取失败！]')
-        cover_url = getCover(detail_page) # 获取cover
-        if 'http' not in cover_url:
-            log_info += '   >>> XCITY- cover url 获取失败！ \n'
-            error_type = 'Cover Url is None!'
-            raise Exception('>>> XCITY- cover url 获取失败！]')
-        studio = getStudio(detail_page)
-        try:
-            dic = {
-                'title': str(title),
-                'number': getNum(detail_page),
-                'actor': actor,
-                'outline': getOutline(detail_page),
-                'tag': getTag(detail_page),
-                'release': release,
-                'year': getYear(release),
-                'runtime': getRuntime(detail_page),
-                'score': '',
-                'series': getSeries(detail_page),
-                'director': getDirector(detail_page),
-                'studio': studio,
-                'publisher': studio,
-                'source': 'xcity.main',
-                'website': url,
-                'actor_photo': getActorPhoto(actor),
-                'cover': str(cover_url),
-                'cover_small': '',
-                'extrafanart': getExtraFanart(detail_page),
-                'imagecut': 1,
-                'log_info': str(log_info),
-                'error_type': str(error_type),
-                'error_info': str(error_info),
-                'req_web': req_web,
-            }
-            log_info += '   >>> XCITY-数据获取成功！\n'
-            dic['log_info'] = log_info
-        except Exception as error_info:
-            log_info += '   >>> XCITY-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
-            error_info = str(error_info)
-            raise Exception(log_info)
+            raise Exception('xcity-搜索结果页匹配番号：未匹配到番号！')
+        html = etree.fromstring(html_search, etree.HTMLParser())
+        real_url = html.xpath("//p[@class='x-itemBox-title']/a/@href")
+        if not real_url:
+            log_info += '   >>> xcity-搜索结果页匹配番号：未匹配到番号！ \n'
+            error_type = 'Movie data not found'
+            raise Exception('xcity-搜索结果页匹配番号：未匹配到番号！')
+        else:
+            real_url = 'https://xcity.jp' + real_url[0]
+            log_info += '   >>> xcity-匹配详情页地址： %s \n' % real_url
+        if real_url:
+            try:
+                result, html_content = get_html(real_url)
+            except Exception as error_info:
+                log_info += '   >>> xcity-请求详情页：出错！错误信息：%s \n' % str(error_info)
+                error_type = 'timeout'
+                raise Exception('>>> xcity-请求详情页：出错！错误信息：%s \n' % str(error_info))
+            html_info = etree.fromstring(html_content, etree.HTMLParser())
+
+            title = getTitle(html_info) # 获取标题
+            if not title:
+                log_info += '   >>> xcity-title 获取失败！ \n'
+                error_type = 'xcity-title 获取失败！'
+                raise Exception('xcity-title 获取失败!')
+            web_number = getWebNumber(html_info)    # 获取番号，用来替换标题里的番号
+            title = title.replace(' %s' % web_number, '').strip()
+            actor = getActor(html_info) # 获取actor
+            actor_photo = getActorPhoto(actor)
+            if getDelActorName():
+                title = title.strip(' ' + actor)
+            cover_url = getCover(html_info) # 获取cover
+            if 'http' not in cover_url:
+                log_info += '   >>> xcity-cover url 获取失败！ \n'
+                error_type = 'Cover Url is None!'
+                raise Exception('xcity-cover url 获取失败!')
+            outline = getOutline(html_info)
+            release = getRelease(html_info)
+            year = getYear(release)
+            tag = getTag(html_info)
+            studio = getStudio(html_info)
+            publisher = getPublisher(html_info)
+            runtime = getRuntime(html_info)
+            director = getDirector(html_info)
+            extrafanart = getExtrafanart(html_info)
+            coversmall = getCoverSmall(html_info)
+            score = ''
+            series = getSeries(html_info)
+            try:
+                dic = {
+                    'title': title,
+                    'number': web_number,
+                    'actor': actor,
+                    'outline': outline,
+                    'tag': tag,
+                    'release': release,
+                    'year': year,
+                    'runtime': runtime,
+                    'score': score,
+                    'series': series,
+                    'director': director,
+                    'publisher': publisher,
+                    'studio': studio,
+                    'source': 'xcity',
+                    'website': real_url,
+                    'search_url': url_search,
+                    'actor_photo': actor_photo,
+                    'cover': cover_url,
+                    'cover_small': coversmall,
+                    'extrafanart': extrafanart,
+                    'imagecut': 1,
+                    'log_info': str(log_info),
+                    'error_type': '',
+                    'error_info': str(error_info),
+                    'req_web': req_web,
+                    'mosaic': '',
+                }
+                log_info += '   >>> xcity-数据获取成功！\n'
+                dic['log_info'] = log_info
+            except Exception as error_info:
+                log_info += '   >>> xcity-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
+                error_info = str(error_info)
+                raise Exception(log_info)
 
     except Exception as error_info:
         dic = {
@@ -219,13 +263,13 @@ def main(number, appoint_url='', log_info='', req_web=''):
     return js
 
 
-'''
-print(main('xc-1280'))
-print(main('xv-163'))
-print(main('sea-081'))
-print(main('IA-28'))
-print(main('xc-1298'))
-print(main('DMOW185'))
-print(main('EMOT007'))
-'''
+
+# print(main('MXGS563'))
+# print(main('xc-1280'))
+# print(main('xv-163'))
+# print(main('sea-081'))
+# print(main('IA-28'))
+# print(main('xc-1298'))
+# print(main('DMOW185'))
+# print(main('EMOT007'))
 # print(main('EMOT007', "https://xcity.jp/avod/detail/?id=147036"))
