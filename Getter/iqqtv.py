@@ -9,16 +9,17 @@ from Getter import javdb
 from configparser import RawConfigParser
 
 
-def getModeLike():
+def getDelActorName():
     config_file = 'config.ini'
     config = RawConfigParser()
     config.read(config_file, encoding='UTF-8')
-    return config.getint('common', 'main_like')
+    del_actor_name = config.getint('Name_Rule', 'del_actor_name')
+    return del_actor_name
 
 def getTitle(html):
     result = html.xpath('//p[@class="movie_txt_nsme"]/text()')
     if result:
-        result = result[0]
+        result = result[0].replace('&', '')
     else:
         result = ''
     return result
@@ -57,7 +58,7 @@ def getCover(html):
 def getOutline(html):
     result = html.xpath('//p[@itemprop="description"]/span/text()')
     if result:
-        result = result[0].strip()
+        result = result[0].strip().replace('&', '')
     else:
         result = ''
     return result
@@ -145,7 +146,7 @@ def getScore(html):
     return score
 
 def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
-    req_web += '-> iqqtv '
+    req_web += '-> iqqtv[%s] ' % translate_language.replace('zh_', '')
     log_info += '   >>> iqqtv-开始使用iqqtv进行刮削\n'
     # number = 'snis-555'
     # number = '070121_001'
@@ -213,6 +214,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             title = title.replace(' %s' % web_number, '').strip()
             # print(title)
             actor = getActor(html_info) # 获取actor
+            if getDelActorName():
+                title = title.strip(' ' + actor)
             # print(actor)
             actor_photo = getActorPhoto(actor)
             # print(actor_photo)
@@ -243,22 +246,6 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             director = ''
             publisher = studio
             extrafanart = ''
-            mode_like = getModeLike()
-            if mode_like:
-                json_data = json.loads(javdb.main(number, '', log_info, req_web))
-                req_web = json_data['req_web']
-                if json_data.get('title'):
-                    runtime = json_data['runtime']
-                    score = json_data['score']
-                    series = json_data['series']
-                    director = json_data['director']
-                    # publisher = json_data['publisher']
-                    # studio = json_data['studio']
-                    extrafanart = json_data['extrafanart']
-                    actor_photo = json_data['actor_photo'] # 暂时使用javdb的日文名字，避免emby不识别歌手头像
-                    if '克破' in title or '克破' in outline:
-                        title = json_data['title']
-                        outline = json_data['outline']
             try:
                 dic = {
                     'title': title,
@@ -275,7 +262,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                     'publisher': publisher,
                     'studio': studio,
                     'source': 'iqqtv',
-                    'website': real_url,
+                    'website': real_url.replace('&cat=19', ''),
                     'search_url': url_search,
                     'actor_photo': actor_photo,
                     'cover': cover_url,
@@ -299,7 +286,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
         dic = {
             'title': '',
             'cover': '',
-            'website': str(real_url).strip('[]'),
+            'website': str(real_url).strip('[]').replace('&cat=19', ''),
             'log_info': str(log_info),
             'error_type': str(error_type),
             'error_info': str(error_info),
