@@ -8,11 +8,11 @@ import os
 import json
 from PIL import Image
 from configparser import RawConfigParser
-from Getter import iqqtv, javbus, javdb, jav321, dmm, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav
+from Getter import iqqtv_new, javbus, javdb, jav321, dmm, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav
 
 # ========================================================================是否为无码
 def is_uncensored(number):
-    if re.match('^\d{4,}', number) or re.match('n\d{4}', number) or 'HEYZO' in number.upper():
+    if re.match('^\d{4,}', number) or re.match('n\d{4}', number) or 'HEYZO' in number.upper() or 'FC2-' in number.upper() or 'FC2PPV' in number.upper():
         return True
     config_file = 'config.ini'
     config = RawConfigParser()
@@ -138,7 +138,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     if website_mode == 1:  # 从全部网站刮削
           # =======================================================================无码抓取:111111-111,n1111,HEYZO-1111,SMD-115
         if isuncensored:
-            json_data = json.loads(iqqtv.main(file_number, appoint_url, translate_language))
+            json_data = iqqtv_new.main(file_number, appoint_url, translate_language)
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
@@ -199,14 +199,14 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             json_data = json.loads(dmm.main(file_number, appoint_url))
         # =======================================================================sexart.15.06.14
         elif re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
-            json_data = json.loads(javdb.main_u(file_number, appoint_url))
+            json_data = json.loads(javdb.main(file_number, appoint_url))
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
                 json_data = json.loads(javbus.main_us(file_number, appoint_url, log_info, req_web))
         # =======================================================================MIDE-139
         else:
-            json_data = json.loads(iqqtv.main(file_number, appoint_url, translate_language))
+            json_data = iqqtv_new.main(file_number, appoint_url, translate_language)
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
@@ -241,7 +241,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             'error_info': '',
         }
     elif website_mode == 2:  # 仅从iqqtv
-        json_data = json.loads(iqqtv.main(file_number, appoint_url, translate_language))
+        json_data = iqqtv_new.main(file_number, appoint_url, translate_language)
     elif website_mode == 3:  # 仅从javbus
         if isuncensored:
             json_data = json.loads(javbus.main_uncensored(file_number, appoint_url))
@@ -384,6 +384,7 @@ def save_config(json_config):
         print("show_poster = " + str(json_config['show_poster']), file=code)
         print("translate_language = " + json_config['translate_language'], file=code)
         print("# zh_cn or zh_tw or ja", file=code)
+        print("translate_content = " + json_config['translate_content'], file=code)
         print("translate_by = " + json_config['translate_by'], file=code)
         print("# youdao or deepl", file=code)
         print("deepl_key = " + json_config['deepl_key'], file=code)
@@ -417,10 +418,11 @@ def save_config(json_config):
         print("", file=code)
         print("[media]", file=code)
         print("media_path = " + json_config['media_path'], file=code)
+        print("success_output_folder = " + json_config['success_output_folder'], file=code)
+        print("failed_output_folder = " + json_config['failed_output_folder'], file=code)
+        print("extrafanart_folder = " + str(json_config['extrafanart_folder']), file=code)
         print("media_type = " + json_config['media_type'], file=code)
         print("sub_type = " + json_config['sub_type'], file=code)
-        print("failed_output_folder = " + json_config['failed_output_folder'], file=code)
-        print("success_output_folder = " + json_config['success_output_folder'], file=code)
         print("", file=code)
         print("[escape]", file=code)
         print("literals = " + json_config['literals'], file=code)
@@ -450,14 +452,18 @@ def save_config(json_config):
         print("# 0 : official, 1 : cut", file=code)
         print("", file=code)
         print("[file_download]", file=code)
-        print("nfo = " + str(json_config['nfo_download']), file=code)
+        print("old_poster = " + str(json_config['old_poster']), file=code)
+        print("old_thumb = " + str(json_config['old_thumb']), file=code)
+        print("old_fanart = " + str(json_config['old_fanart']), file=code)
+        print("old_extrafanart = " + str(json_config['old_extrafanart']), file=code)
+        print("old_extrafanart_copy = " + str(json_config['old_extrafanart_copy']), file=code)
+        print("old_nfo = " + str(json_config['old_nfo']), file=code)
         print("poster = " + str(json_config['poster_download']), file=code)
-        print("fanart = " + str(json_config['fanart_download']), file=code)
         print("thumb = " + str(json_config['thumb_download']), file=code)
-        print("", file=code)
-        print("[extrafanart]", file=code)
-        print("extrafanart_download = " + str(json_config['extrafanart_download']), file=code)
-        print("extrafanart_folder = " + str(json_config['extrafanart_folder']), file=code)
+        print("fanart = " + str(json_config['fanart_download']), file=code)
+        print("extrafanart = " + str(json_config['extrafanart_download']), file=code)
+        print("extrafanart_copy = " + str(json_config['extrafanart_copy']), file=code)
+        print("nfo = " + str(json_config['nfo_download']), file=code)
     code.close()
 
 
