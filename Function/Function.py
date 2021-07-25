@@ -8,11 +8,11 @@ import os
 import json
 from PIL import Image
 from configparser import RawConfigParser
-from Getter import iqqtv_new, javbus, javdb, jav321, dmm, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav
+from Getter import iqqtv_new, javbus, javdb, jav321, dmm, javlibrary_new, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav
 
 # ========================================================================是否为无码
 def is_uncensored(number):
-    if re.match('^\d{4,}', number) or re.match('n\d{4}', number) or 'HEYZO' in number.upper() or 'FC2-' in number.upper() or 'FC2PPV' in number.upper():
+    if re.match('^\d{4,}', number) or re.match('n\d{4}', number) or 'HEYZO' in number.upper():
         return True
     config_file = 'config.ini'
     config = RawConfigParser()
@@ -136,9 +136,28 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     isuncensored = is_uncensored(file_number)
     json_data = {}
     if website_mode == 1:  # 从全部网站刮削
+        # =======================================================================FC2-111111
+        if 'FC2' in file_number.upper():
+            json_data = json.loads(fc2.main(re.search('\d{4,}', file_number).group(), appoint_url))
+            if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
+                log_info = json_data['log_info']
+                json_data = json.loads(fc2club.main(re.search('\d{4,}', file_number).group(), appoint_url, log_info, req_web))
+            if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
+                log_info = json_data['log_info']
+                json_data = json.loads(fc2hub.main(re.search('\d{4,}', file_number).group(), appoint_url, log_info ,req_web))
+            if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
+                log_info = json_data['log_info']
+                json_data = json.loads(airav.main(file_number, appoint_url, translate_language, log_info, req_web))
+            if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
+                log_info = json_data['log_info']
+                json_data = json.loads(javdb.main(file_number, appoint_url, log_info, req_web))
           # =======================================================================无码抓取:111111-111,n1111,HEYZO-1111,SMD-115
-        if isuncensored:
-            json_data = iqqtv_new.main(file_number, appoint_url, translate_language)
+        elif isuncensored:
+            json_data = json.loads(iqqtv_new.main(file_number, appoint_url, translate_language))
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
@@ -175,25 +194,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
                 json_data = json.loads(javbus.main(file_number, appoint_url, log_info, req_web))
-        # =======================================================================FC2-111111
-        elif 'FC2' in file_number.upper():
-            json_data = json.loads(fc2.main(re.search('\d{4,}', file_number).group(), appoint_url))
-            if getDataState(json_data) == 0:
-                req_web = json_data['req_web']
-                log_info = json_data['log_info']
-                json_data = json.loads(fc2club.main(re.search('\d{4,}', file_number).group(), appoint_url, log_info, req_web))
-            if getDataState(json_data) == 0:
-                req_web = json_data['req_web']
-                log_info = json_data['log_info']
-                json_data = json.loads(fc2hub.main(re.search('\d{4,}', file_number).group(), appoint_url, log_info ,req_web))
-            if getDataState(json_data) == 0:
-                req_web = json_data['req_web']
-                log_info = json_data['log_info']
-                json_data = json.loads(airav.main(file_number, appoint_url, translate_language, log_info, req_web))
-            if getDataState(json_data) == 0:
-                req_web = json_data['req_web']
-                log_info = json_data['log_info']
-                json_data = json.loads(javdb.main(file_number, appoint_url, log_info, req_web))
+
         # =======================================================================ssni00321
         elif re.match('\D{2,}00\d{3,}', file_number) and '-' not in file_number and '_' not in file_number:
             json_data = json.loads(dmm.main(file_number, appoint_url))
@@ -206,7 +207,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
                 json_data = json.loads(javbus.main_us(file_number, appoint_url, log_info, req_web))
         # =======================================================================MIDE-139
         else:
-            json_data = iqqtv_new.main(file_number, appoint_url, translate_language)
+            json_data = json.loads(iqqtv_new.main(file_number, appoint_url, translate_language))
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
@@ -226,6 +227,10 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
+                json_data = json.loads(javlibrary_new.main(file_number, appoint_url, translate_language, log_info, req_web))
+            if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
+                log_info = json_data['log_info']
                 json_data = json.loads(xcity.main(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
@@ -241,7 +246,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             'error_info': '',
         }
     elif website_mode == 2:  # 仅从iqqtv
-        json_data = iqqtv_new.main(file_number, appoint_url, translate_language)
+        json_data = json.loads(iqqtv_new.main(file_number, appoint_url, translate_language))
     elif website_mode == 3:  # 仅从javbus
         if isuncensored:
             json_data = json.loads(javbus.main_uncensored(file_number, appoint_url))
@@ -272,6 +277,8 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         json_data = json.loads(fc2hub.main(file_number, appoint_url))
     elif website_mode == 13:  # 仅从airav
         json_data = json.loads(airav.main(file_number, appoint_url, translate_language))
+    elif website_mode == 14:  # 仅从javlibrary
+        json_data = json.loads(javlibrary_new.main(file_number, appoint_url, translate_language))
     # ================================================网站规则添加结束================================================
 
     # ======================================超时或未找到返回
@@ -332,7 +339,9 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     try:
         json_data['mosaic']
     except:
-        if is_uncensored(number):
+        if 'FC2' in number:
+            json_data['mosaic'] = 'FC2'
+        elif is_uncensored(number):
             json_data['mosaic'] = '无码'
         else:
             json_data['mosaic']  = '有码'
@@ -389,7 +398,7 @@ def save_config(json_config):
         print("# youdao or deepl", file=code)
         print("deepl_key = " + json_config['deepl_key'], file=code)
         print("website = " + json_config['website'], file=code)
-        print("# all or iqqtv or javbus or javdb or jav321 or dmm or avsox or xcity or mgstage or fc2 or fc2club or fc2hub or airav", file=code)
+        print("# all or iqqtv or javbus or javdb or jav321 or dmm or avsox or xcity or mgstage or fc2 or fc2club or fc2hub or airav or javlibrary", file=code)
         print("", file=code)
         print("[proxy]", file=code)
         print("type = " + json_config['type'], file=code)
