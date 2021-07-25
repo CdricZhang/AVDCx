@@ -2047,9 +2047,9 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
+           <y>-1047</y>
            <width>771</width>
-           <height>1320</height>
+           <height>1600</height>
           </rect>
          </property>
          <widget class="QGroupBox" name="groupBox">
@@ -2226,7 +2226,7 @@ background-color: rgb(246, 246, 246);</string>
            </font>
           </property>
           <property name="title">
-           <string>翻译标题和简介</string>
+           <string>翻译语言</string>
           </property>
           <widget class="QWidget" name="horizontalLayoutWidget_15">
            <property name="geometry">
@@ -3137,9 +3137,9 @@ background-color: rgb(246, 246, 246);</string>
          <widget class="QGroupBox" name="groupBox_31">
           <property name="geometry">
            <rect>
-            <x>20</x>
-            <y>930</y>
-            <width>711</width>
+            <x>30</x>
+            <y>1090</y>
+            <width>701</width>
             <height>151</height>
            </rect>
           </property>
@@ -3349,8 +3349,8 @@ background-color: rgb(246, 246, 246);</string>
          <widget class="QGroupBox" name="groupBox_24">
           <property name="geometry">
            <rect>
-            <x>20</x>
-            <y>1100</y>
+            <x>30</x>
+            <y>1380</y>
             <width>701</width>
             <height>81</height>
            </rect>
@@ -3448,6 +3448,22 @@ background-color: rgb(246, 246, 246);</string>
              </widget>
             </item>
             <item>
+             <widget class="QCheckBox" name="checkBox_download_extrafanart_copy">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>extrafanart副本</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QCheckBox" name="checkBox_download_nfo">
               <property name="font">
                <font>
@@ -3469,8 +3485,8 @@ background-color: rgb(246, 246, 246);</string>
          <widget class="QGroupBox" name="groupBox_39">
           <property name="geometry">
            <rect>
-            <x>20</x>
-            <y>1200</y>
+            <x>30</x>
+            <y>1480</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -3600,6 +3616,316 @@ background-color: rgb(246, 246, 246);</string>
              </widget>
             </item>
            </layout>
+          </widget>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_26">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>930</y>
+            <width>701</width>
+            <height>141</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>739</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Courier</family>
+            <pointsize>13</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="title">
+           <string>翻译内容</string>
+          </property>
+          <widget class="QWidget" name="horizontalLayoutWidget_17">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>30</y>
+             <width>641</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_22">
+            <item>
+             <widget class="QCheckBox" name="checkBox_translate_title">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>标题</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_translate_outline">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>简介</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_translate_actor">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>演员</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_translate_tag">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>标签</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QLabel" name="label_74">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>70</y>
+             <width>611</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(8, 128, 128);</string>
+           </property>
+           <property name="text">
+            <string>为避免翻译错误，演员、标签使用的是刮削网站翻译的内容，并不使用有道翻译。
+因此，当刮削网站没有翻译时，演员和标签也不会翻译，显示仍旧为日语。
+另外，为了保证演员头像正常显示，nfo里的演员会默认使用日文名字。</string>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_33">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>1260</y>
+            <width>701</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>500</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Courier</family>
+            <pointsize>13</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="title">
+           <string>优先使用本地文件</string>
+          </property>
+          <widget class="QWidget" name="horizontalLayoutWidget_18">
+           <property name="geometry">
+            <rect>
+             <x>59</x>
+             <y>30</y>
+             <width>641</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_23">
+            <item>
+             <widget class="QCheckBox" name="checkBox_old_poster">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>poster</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_old_thumb">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>thumb</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_old_fanart">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>fanart</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_old_extrafanart">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>extrafanart</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_old_extrafanart_copy">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>extrafanart副本</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_old_nfo">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>nfo</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QLabel" name="label_79">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>60</y>
+             <width>631</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(8, 128, 128);</string>
+           </property>
+           <property name="text">
+            <string>所勾选项目存在本地文件时，将保留并优先使用本地文件，不再重新下载；未勾选项目的本地文件将被清理</string>
+           </property>
           </widget>
          </widget>
         </widget>

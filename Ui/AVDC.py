@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCyjTxRz.ui'
+## Form generated from reading UI file 'AVDCPiYegu.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -553,7 +553,7 @@ class Ui_AVDV(object):
         self.scrollArea.setWidgetResizable(False)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 771, 1320))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, -1047, 771, 1600))
         self.groupBox = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(30, 110, 701, 101))
@@ -902,7 +902,7 @@ class Ui_AVDV(object):
 
         self.groupBox_31 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_31.setObjectName(u"groupBox_31")
-        self.groupBox_31.setGeometry(QRect(20, 930, 711, 151))
+        self.groupBox_31.setGeometry(QRect(30, 1090, 701, 151))
         self.groupBox_31.setFont(font3)
         self.groupBox_31.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_14 = QWidget(self.groupBox_31)
@@ -977,7 +977,7 @@ class Ui_AVDV(object):
 
         self.groupBox_24 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_24.setObjectName(u"groupBox_24")
-        self.groupBox_24.setGeometry(QRect(20, 1100, 701, 81))
+        self.groupBox_24.setGeometry(QRect(30, 1380, 701, 81))
         self.groupBox_24.setMinimumSize(QSize(500, 0))
         self.groupBox_24.setFont(font3)
         self.horizontalLayoutWidget_14 = QWidget(self.groupBox_24)
@@ -1010,6 +1010,12 @@ class Ui_AVDV(object):
 
         self.horizontalLayout_16.addWidget(self.checkBox_download_extrafanart)
 
+        self.checkBox_download_extrafanart_copy = QCheckBox(self.horizontalLayoutWidget_14)
+        self.checkBox_download_extrafanart_copy.setObjectName(u"checkBox_download_extrafanart_copy")
+        self.checkBox_download_extrafanart_copy.setFont(font3)
+
+        self.horizontalLayout_16.addWidget(self.checkBox_download_extrafanart_copy)
+
         self.checkBox_download_nfo = QCheckBox(self.horizontalLayoutWidget_14)
         self.checkBox_download_nfo.setObjectName(u"checkBox_download_nfo")
         self.checkBox_download_nfo.setFont(font3)
@@ -1018,7 +1024,7 @@ class Ui_AVDV(object):
 
         self.groupBox_39 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_39.setObjectName(u"groupBox_39")
-        self.groupBox_39.setGeometry(QRect(20, 1200, 701, 101))
+        self.groupBox_39.setGeometry(QRect(30, 1480, 701, 101))
         self.groupBox_39.setFont(font3)
         self.groupBox_39.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_5 = QWidget(self.groupBox_39)
@@ -1066,6 +1072,103 @@ class Ui_AVDV(object):
 
         self.gridLayout_5.addWidget(self.label_53, 0, 1, 1, 1)
 
+        self.groupBox_26 = QGroupBox(self.scrollAreaWidgetContents)
+        self.groupBox_26.setObjectName(u"groupBox_26")
+        self.groupBox_26.setGeometry(QRect(30, 930, 701, 141))
+        self.groupBox_26.setMinimumSize(QSize(200, 0))
+        self.groupBox_26.setMaximumSize(QSize(739, 16777215))
+        self.groupBox_26.setFont(font3)
+        self.horizontalLayoutWidget_17 = QWidget(self.groupBox_26)
+        self.horizontalLayoutWidget_17.setObjectName(u"horizontalLayoutWidget_17")
+        self.horizontalLayoutWidget_17.setGeometry(QRect(60, 30, 641, 31))
+        self.horizontalLayout_22 = QHBoxLayout(self.horizontalLayoutWidget_17)
+        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
+        self.horizontalLayout_22.setContentsMargins(0, 0, 0, 0)
+        self.checkBox_translate_title = QCheckBox(self.horizontalLayoutWidget_17)
+        self.checkBox_translate_title.setObjectName(u"checkBox_translate_title")
+        self.checkBox_translate_title.setFont(font3)
+
+        self.horizontalLayout_22.addWidget(self.checkBox_translate_title)
+
+        self.checkBox_translate_outline = QCheckBox(self.horizontalLayoutWidget_17)
+        self.checkBox_translate_outline.setObjectName(u"checkBox_translate_outline")
+        self.checkBox_translate_outline.setFont(font3)
+
+        self.horizontalLayout_22.addWidget(self.checkBox_translate_outline)
+
+        self.checkBox_translate_actor = QCheckBox(self.horizontalLayoutWidget_17)
+        self.checkBox_translate_actor.setObjectName(u"checkBox_translate_actor")
+        self.checkBox_translate_actor.setFont(font3)
+
+        self.horizontalLayout_22.addWidget(self.checkBox_translate_actor)
+
+        self.checkBox_translate_tag = QCheckBox(self.horizontalLayoutWidget_17)
+        self.checkBox_translate_tag.setObjectName(u"checkBox_translate_tag")
+        self.checkBox_translate_tag.setFont(font3)
+
+        self.horizontalLayout_22.addWidget(self.checkBox_translate_tag)
+
+        self.label_74 = QLabel(self.groupBox_26)
+        self.label_74.setObjectName(u"label_74")
+        self.label_74.setGeometry(QRect(60, 70, 611, 51))
+        sizePolicy3.setHeightForWidth(self.label_74.sizePolicy().hasHeightForWidth())
+        self.label_74.setSizePolicy(sizePolicy3)
+        self.label_74.setFont(font4)
+        self.label_74.setStyleSheet(u"color: rgb(8, 128, 128);")
+        self.groupBox_33 = QGroupBox(self.scrollAreaWidgetContents)
+        self.groupBox_33.setObjectName(u"groupBox_33")
+        self.groupBox_33.setGeometry(QRect(30, 1260, 701, 101))
+        self.groupBox_33.setMinimumSize(QSize(500, 0))
+        self.groupBox_33.setFont(font3)
+        self.horizontalLayoutWidget_18 = QWidget(self.groupBox_33)
+        self.horizontalLayoutWidget_18.setObjectName(u"horizontalLayoutWidget_18")
+        self.horizontalLayoutWidget_18.setGeometry(QRect(59, 30, 641, 31))
+        self.horizontalLayout_23 = QHBoxLayout(self.horizontalLayoutWidget_18)
+        self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
+        self.horizontalLayout_23.setContentsMargins(0, 0, 0, 0)
+        self.checkBox_old_poster = QCheckBox(self.horizontalLayoutWidget_18)
+        self.checkBox_old_poster.setObjectName(u"checkBox_old_poster")
+        self.checkBox_old_poster.setFont(font3)
+
+        self.horizontalLayout_23.addWidget(self.checkBox_old_poster)
+
+        self.checkBox_old_thumb = QCheckBox(self.horizontalLayoutWidget_18)
+        self.checkBox_old_thumb.setObjectName(u"checkBox_old_thumb")
+        self.checkBox_old_thumb.setFont(font3)
+
+        self.horizontalLayout_23.addWidget(self.checkBox_old_thumb)
+
+        self.checkBox_old_fanart = QCheckBox(self.horizontalLayoutWidget_18)
+        self.checkBox_old_fanart.setObjectName(u"checkBox_old_fanart")
+        self.checkBox_old_fanart.setFont(font3)
+
+        self.horizontalLayout_23.addWidget(self.checkBox_old_fanart)
+
+        self.checkBox_old_extrafanart = QCheckBox(self.horizontalLayoutWidget_18)
+        self.checkBox_old_extrafanart.setObjectName(u"checkBox_old_extrafanart")
+        self.checkBox_old_extrafanart.setFont(font3)
+
+        self.horizontalLayout_23.addWidget(self.checkBox_old_extrafanart)
+
+        self.checkBox_old_extrafanart_copy = QCheckBox(self.horizontalLayoutWidget_18)
+        self.checkBox_old_extrafanart_copy.setObjectName(u"checkBox_old_extrafanart_copy")
+        self.checkBox_old_extrafanart_copy.setFont(font3)
+
+        self.horizontalLayout_23.addWidget(self.checkBox_old_extrafanart_copy)
+
+        self.checkBox_old_nfo = QCheckBox(self.horizontalLayoutWidget_18)
+        self.checkBox_old_nfo.setObjectName(u"checkBox_old_nfo")
+        self.checkBox_old_nfo.setFont(font3)
+
+        self.horizontalLayout_23.addWidget(self.checkBox_old_nfo)
+
+        self.label_79 = QLabel(self.groupBox_33)
+        self.label_79.setObjectName(u"label_79")
+        self.label_79.setGeometry(QRect(60, 60, 631, 31))
+        sizePolicy3.setHeightForWidth(self.label_79.sizePolicy().hasHeightForWidth())
+        self.label_79.setSizePolicy(sizePolicy3)
+        self.label_79.setFont(font4)
+        self.label_79.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.tabWidget.addTab(self.tab1, "")
         self.tab2 = QWidget()
@@ -2426,7 +2529,7 @@ class Ui_AVDV(object):
         self.radioButton_sort.setText(QCoreApplication.translate("AVDV", u"\u6574\u7406\u6a21\u5f0f", None))
         self.label_11.setText(QCoreApplication.translate("AVDV", u"\u5305\u542b\u522e\u524a\u4fe1\u606f\u3001\u7ffb\u8bd1\u6807\u9898\u548c\u7b80\u4ecb\u3001\u4e0b\u8f7d\u56fe\u7247\u548cnfo\u6587\u4ef6\u3001\u91cd\u547d\u540d\u6587\u4ef6\u3001\u79fb\u52a8\u6587\u4ef6\u7b49\u5168\u90e8\u64cd\u4f5c", None))
         self.label_15.setText(QCoreApplication.translate("AVDV", u"\u4e0d\u4e0b\u8f7d\u56fe\u7247\u548cnfo\u6587\u4ef6\uff0c\u5176\u4ed6\u540c\u4e0a", None))
-        self.groupBox_25.setTitle(QCoreApplication.translate("AVDV", u"\u7ffb\u8bd1\u6807\u9898\u548c\u7b80\u4ecb", None))
+        self.groupBox_25.setTitle(QCoreApplication.translate("AVDV", u"\u7ffb\u8bd1\u8bed\u8a00", None))
         self.radioButton_zh_cn.setText(QCoreApplication.translate("AVDV", u"\u7b80\u4f53\u4e2d\u6587", None))
         self.radioButton_zh_tw.setText(QCoreApplication.translate("AVDV", u"\u7e41\u4f53\u4e2d\u6587", None))
         self.radioButton_ja.setText(QCoreApplication.translate("AVDV", u"\u4e0d\u7ffb\u8bd1", None))
@@ -2482,12 +2585,29 @@ class Ui_AVDV(object):
         self.checkBox_download_thumb.setText(QCoreApplication.translate("AVDV", u"thumb", None))
         self.checkBox_download_fanart.setText(QCoreApplication.translate("AVDV", u"fanart", None))
         self.checkBox_download_extrafanart.setText(QCoreApplication.translate("AVDV", u"extrafanart", None))
+        self.checkBox_download_extrafanart_copy.setText(QCoreApplication.translate("AVDV", u"extrafanart\u526f\u672c", None))
         self.checkBox_download_nfo.setText(QCoreApplication.translate("AVDV", u"nfo", None))
         self.groupBox_39.setTitle(QCoreApplication.translate("AVDV", u"poster\u5904\u7406\u65b9\u5f0f", None))
         self.radioButton_poster_cut.setText(QCoreApplication.translate("AVDV", u"thumb\u88c1\u526a\uff08\u6e05\u6670\uff09", None))
         self.radioButton_poster_official.setText(QCoreApplication.translate("AVDV", u"\u4e0b\u8f7d\uff08\u6a21\u7cca\uff09", None))
         self.label_52.setText(QCoreApplication.translate("AVDV", u"\u4ece\u7f51\u7edc\u4e0b\u8f7d\u56fe\u7247\uff0c\u4e00\u822c\u5f88\u4e0d\u6e05\u6670\u3002\u5f53\u6ca1\u6709\u4e0b\u8f7d\u94fe\u63a5\u65f6\uff0c\u5c06\u81ea\u52a8\u4f7f\u7528thumb\u88c1\u526a", None))
         self.label_53.setText(QCoreApplication.translate("AVDV", u"\u63a8\u8350\uff0c\u5c06\u4f7f\u7528thumb\u88c1\u526a\uff0c\u56fe\u7247\u6e05\u6670", None))
+        self.groupBox_26.setTitle(QCoreApplication.translate("AVDV", u"\u7ffb\u8bd1\u5185\u5bb9", None))
+        self.checkBox_translate_title.setText(QCoreApplication.translate("AVDV", u"\u6807\u9898", None))
+        self.checkBox_translate_outline.setText(QCoreApplication.translate("AVDV", u"\u7b80\u4ecb", None))
+        self.checkBox_translate_actor.setText(QCoreApplication.translate("AVDV", u"\u6f14\u5458", None))
+        self.checkBox_translate_tag.setText(QCoreApplication.translate("AVDV", u"\u6807\u7b7e", None))
+        self.label_74.setText(QCoreApplication.translate("AVDV", u"\u4e3a\u907f\u514d\u7ffb\u8bd1\u9519\u8bef\uff0c\u6f14\u5458\u3001\u6807\u7b7e\u4f7f\u7528\u7684\u662f\u522e\u524a\u7f51\u7ad9\u7ffb\u8bd1\u7684\u5185\u5bb9\uff0c\u5e76\u4e0d\u4f7f\u7528\u6709\u9053\u7ffb\u8bd1\u3002\n"
+"\u56e0\u6b64\uff0c\u5f53\u522e\u524a\u7f51\u7ad9\u6ca1\u6709\u7ffb\u8bd1\u65f6\uff0c\u6f14\u5458\u548c\u6807\u7b7e\u4e5f\u4e0d\u4f1a\u7ffb\u8bd1\uff0c\u663e\u793a\u4ecd\u65e7\u4e3a\u65e5\u8bed\u3002\n"
+"\u53e6\u5916\uff0c\u4e3a\u4e86\u4fdd\u8bc1\u6f14\u5458\u5934\u50cf\u6b63\u5e38\u663e\u793a\uff0cnfo\u91cc\u7684\u6f14\u5458\u4f1a\u9ed8\u8ba4\u4f7f\u7528\u65e5\u6587\u540d\u5b57\u3002", None))
+        self.groupBox_33.setTitle(QCoreApplication.translate("AVDV", u"\u4f18\u5148\u4f7f\u7528\u672c\u5730\u6587\u4ef6", None))
+        self.checkBox_old_poster.setText(QCoreApplication.translate("AVDV", u"poster", None))
+        self.checkBox_old_thumb.setText(QCoreApplication.translate("AVDV", u"thumb", None))
+        self.checkBox_old_fanart.setText(QCoreApplication.translate("AVDV", u"fanart", None))
+        self.checkBox_old_extrafanart.setText(QCoreApplication.translate("AVDV", u"extrafanart", None))
+        self.checkBox_old_extrafanart_copy.setText(QCoreApplication.translate("AVDV", u"extrafanart\u526f\u672c", None))
+        self.checkBox_old_nfo.setText(QCoreApplication.translate("AVDV", u"nfo", None))
+        self.label_79.setText(QCoreApplication.translate("AVDV", u"\u6240\u52fe\u9009\u9879\u76ee\u5b58\u5728\u672c\u5730\u6587\u4ef6\u65f6\uff0c\u5c06\u4fdd\u7559\u5e76\u4f18\u5148\u4f7f\u7528\u672c\u5730\u6587\u4ef6\uff0c\u4e0d\u518d\u91cd\u65b0\u4e0b\u8f7d\uff1b\u672a\u52fe\u9009\u9879\u76ee\u7684\u672c\u5730\u6587\u4ef6\u5c06\u88ab\u6e05\u7406", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1), QCoreApplication.translate("AVDV", u"\u522e\u524a\u8bbe\u7f6e", None))
         self.groupBox_16.setTitle(QCoreApplication.translate("AVDV", u"\u76ee\u5f55\u8bbe\u7f6e", None))
         self.label_50.setText(QCoreApplication.translate("AVDV", u"\u5267\u7167\u526f\u672c\u76ee\u5f55\uff1a", None))
