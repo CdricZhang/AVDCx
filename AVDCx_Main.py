@@ -59,7 +59,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210725'
+        self.localversion = '20210726'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -687,6 +687,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     self.Ui.comboBox_website_all.setCurrentIndex(11)
                 elif config['common']['website'] == 'airav':
                     self.Ui.comboBox_website_all.setCurrentIndex(12)
+                elif config['common']['website'] == 'javlibrary':
+                    self.Ui.comboBox_website_all.setCurrentIndex(13)
                 else:
                     self.Ui.comboBox_website_all.setCurrentIndex(0)
             except:
@@ -1206,6 +1208,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             website = 'fc2hub'
         elif self.Ui.comboBox_website_all.currentText() == 'airav':  # airav
             website = 'airav'
+        elif self.Ui.comboBox_website_all.currentText() == 'javlibrary':  # javlibrary
+            website = 'javlibrary'
         # ======================================================================================proxy
         if self.Ui.radioButton_proxy_http.isChecked():  # http proxy
             proxy_type = 'http'
@@ -2284,9 +2288,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         if not actor:
             actor = '未知演员'
         if not release:
-            release = '未知日期'
+            release = '0000-00-00'
         if not year:
-            year = '未知年份'
+            year = '0000'
         elif len(actor.split(',')) >= 10:  # 演员过多取前五个
             actor = actor.split(',')[0] + ',' + actor.split(',')[1] + ',' + actor.split(',')[2] + '等演员'
         folder_name = json_data['folder_name'].replace('\\', '/')
@@ -2525,7 +2529,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.show_netstatus(self.current_proxy)
         # 检测网络连通性
         self.addNetTextMain(' 检测网络连通性...')
-        net_info = [['github', 'https://github.com' , ''], ['iqqtv', 'https://iqqtv.cloud' , ''], ['javbus', 'https://www.javbus.com' , ''], ['javdb', 'https://javdb.com', ''], ['jav321', 'https://www.jav321.com' , ''], ['dmm', 'https://www.dmm.co.jp' , ''], ['avsox', 'https://avsox.website' , ''], ['xcity', 'https://xcity.jp' , ''], ['mgstage', 'https://www.mgstage.com', ''], ['fc2', 'https://adult.contents.fc2.com', ''], ['fc2club', 'https://fc2club.net', ''], ['fc2hub', 'https://fc2hub.com', ''], ['airav', 'https://www.airav.wiki' , '']]
+        net_info = [['github', 'https://github.com' , ''], ['iqqtv', 'https://iqqtv.cloud' , ''], ['javbus', 'https://www.javbus.com' , ''], ['javdb', 'https://javdb.com', ''], ['jav321', 'https://www.jav321.com' , ''], ['dmm', 'https://www.dmm.co.jp' , ''], ['avsox', 'https://avsox.website' , ''], ['xcity', 'https://xcity.jp' , ''], ['mgstage', 'https://www.mgstage.com', ''], ['fc2', 'https://adult.contents.fc2.com', ''], ['fc2club', 'https://fc2club.net', ''], ['fc2hub', 'https://fc2hub.com', ''], ['airav', 'https://www.airav.wiki' , ''], ['javlibrary', 'http://www.javlibrary.com' , '']]
         for each in net_info:
             proxies = get_proxies()
             proxy_type, proxy, timeout, retry_count = get_proxy()
@@ -2567,7 +2571,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                             each[2] = '✅ 连接正常'
                 except Exception as ex:
                     each[2] = '测试连接时出现异常！信息:' + str(ex)
-            self.addNetTextMain('   ' + each[0].ljust(8) + each[2])
+            self.addNetTextMain('   ' + each[0].ljust(12) + each[2])
         self.addNetTextMain("================================================================================\n")
         self.Ui.pushButton_check_net.setEnabled(True)
         self.Ui.pushButton_check_net.setText('开始检测')
