@@ -35,14 +35,6 @@ import langid
 import platform
 import cloudscraper
 
-#生成资源文件目录访问路径
-def resource_path(relative_path):
-    base_path = os.path.abspath(".")
-    if os.path.exists(os.path.join(base_path, relative_path)):
-        pass
-    elif getattr(sys, 'frozen', False): #是否Bundle Resource
-        base_path = sys._MEIPASS
-    return os.path.join(base_path, relative_path)
 
 class MyMAinWindow(QMainWindow, Ui_AVDV):
     progressBarValue = Signal(int)  # 进度条信号量
@@ -52,6 +44,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     def __init__(self, parent=None):
         super(MyMAinWindow, self).__init__(parent)
+        self.main_path = self.mainPath()
         self.Ui = Ui_AVDV()  # 实例化 Ui
         self.Ui.setupUi(self)  # 初始化Ui
         self.Init_Ui()
@@ -59,16 +52,16 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210726'
+        self.localversion = '20210727'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
         self.poster_path = ''
         self.Ui.label_number.mousePressEvent = self.label_number_clicked
         self.Ui.label_source.mousePressEvent = self.label_number_clicked
-        self.default_poster = resource_path('Img/default-poster.jpg')
-        self.default_thumb = resource_path('Img/default-thumb.jpg')
-        self.c_numuber_jsonfile = resource_path('Img/c_number.json')
+        self.default_poster = self.resource_path('Img/default-poster.jpg')
+        self.default_thumb = self.resource_path('Img/default-thumb.jpg')
+        self.c_numuber_jsonfile = self.resource_path('c_number/c_number.json')
         self.m_drag = False
         self.m_DragPosition = 0
         self.count_claw = 0  # 批量刮削次数
@@ -90,7 +83,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
 
     def Init_Ui(self):
-        ico_path = resource_path('Img/AVDC-ico.png')
+        ico_path = self.resource_path('Img/AVDC-ico.png')
         pix = QPixmap(ico_path)
         self.Ui.label_ico.setScaledContents(True)
         self.Ui.label_ico.setPixmap(pix)  # 添加图标
@@ -299,6 +292,39 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.horizontalSlider_mark_size.valueChanged.connect(self.lcdNumber_mark_size_change)
         self.Ui.label_thumb.mousePressEvent = self.test_clicked
         self.Ui.label_poster.mousePressEvent = self.test_clicked
+
+
+    #  打包前（虚拟机py运行）
+    #  主路径1 os.getcwd()：C:\Users\username
+    #  √主路径2 sys.path[0]：\\Mac\Home\Desktop\AVDCx
+    #  主路径3 os.path.split(os.path.realpath(__file__))[0]：\\Mac\Home\Desktop\AVDCx
+    #  主路径4 os.path.abspath(".")：C:\Users\username 
+
+    #  打包后（exe运行）
+    #  主路径1 os.getcwd()：\\Mac\Home\Desktop\AVDCx\dist 
+    #  主路径2 sys.path[0]：C:\Users\username\AppData\Local\Temp\_MEI15962\base_library.zip 
+    #  主路径3 os.path.split(os.path.realpath(__file__))[0]：C:\Users\username\AppData\Local\Temp\_MEI15962 
+    #  √主路径4 os.path.abspath(".")：\\Mac\Home\Desktop\AVDCx\dist     
+
+    def mainPath(self):
+        try:
+            main_path = os.path.split(os.path.realpath(__file__))[0]    # 取的是__file__所在文件xx.py的所在目录
+        except:
+            main_path = sys.path[0] # 或sys.argv[0],取的是被初始执行的脚本的所在目录，打包后路径会变成\base_libarary.zip
+        # base_path = os.path.abspath(".")    # 取的是起始执行目录，和os.getcwd()结果一样，不太准
+        if getattr(sys, 'frozen', False): #是否Bundle Resource，是否打包成exe运行
+            main_path = os.path.abspath(".")    # 打包后，路径是准的
+        return main_path
+
+    # ======================================================================================生成资源文件目录访问路径
+    def resource_path(self, relative_path):
+        base_path = self.main_path
+        # base_path = os.path.split(os.path.realpath(__file__))[0]
+        if os.path.exists(os.path.join(base_path, relative_path)):
+            pass
+        elif getattr(sys, 'frozen', False): #是否Bundle Resource
+            base_path = sys._MEIPASS
+        return os.path.join(base_path, relative_path).replace('\\', '/')
 
     # ======================================================================================显示版本号
     def show_version(self):
@@ -1357,7 +1383,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def pushButton_select_file_clicked(self):
         path = self.Ui.lineEdit_movie_path.text()
         if not path:
-            path = os.getcwd()
+            # path = os.getcwd()
+            # path = os.path.split(os.path.realpath(__file__))[0]
+            path = self.main_path
         file_path, filetype = QtWidgets.QFileDialog.getOpenFileName(self, "选取视频文件", path, "Movie Files(*.mp4 "
                                                                                          "*.avi *.rmvb *.wmv "
                                                                                          "*.mov *.mkv *.flv *.ts "
@@ -1387,7 +1415,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def pushButton_select_thumb_clicked(self):
         path = self.Ui.lineEdit_movie_path.text()
         if not path:
-            path = os.getcwd()
+            # path = os.getcwd()
+            # path = os.path.split(os.path.realpath(__file__))[0]
+            path = self.main_path
         file_path, fileType = QtWidgets.QFileDialog.getOpenFileName(self, "选取缩略图", path,
                                                                    "Picture Files(*.jpg);;All Files(*)")
         img_name, img_ex = os.path.splitext(file_path)
@@ -1457,7 +1487,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         movie_type = self.Ui.lineEdit_movie_type.text().lower()
         sub_type = self.Ui.lineEdit_sub_type.text().split('|')
         if not movie_path:  # 没有输入视频目录时，获取程序当前路径
-            movie_path = os.path.abspath(".")
+            # movie_path = os.path.abspath(".")
+            movie_path = os.path.split(os.path.realpath(__file__))[0]
         movie_list = movie_lists(escape_dir, movie_type, movie_path)
         des_path = os.path.join(movie_path, 'Movie_moved')
         if not os.path.exists(des_path):
@@ -1653,14 +1684,23 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             try:
                 self.log_txt.write((str(text) + '\n').encode('utf8'))
             except:
-                if not os.path.exists('Log'):
-                    os.makedirs('Log')  
-                log_name = 'Log/' + time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()) + '.txt'
-                log_name = self.convert_path(log_name)
-                log_name = os.path.join(os.getcwd(), log_name)
+                log_folder = os.path.join(self.main_path, 'Log')
+                # log_folder = os.path.join(os.path.split(os.path.realpath(__file__))[0], 'Log')
+                if not os.path.exists(log_folder):
+                    os.makedirs(log_folder)
+                log_name = time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()) + '.txt'
+                # log_name = os.path.join(os.getcwd(), log_name)
+                log_name = self.convert_path(os.path.join(log_folder, log_name))
+
                 self.log_txt = open(log_name, "wb", buffering=0)
                 self.addTextMain('Create log file: ' + log_name + '\n')
                 self.addTextMain(text)
+                self.addTextMain(' 主程序路径：%s \n' % self.main_path)
+                # aa = '主路径1 os.getcwd()：' + os.getcwd()
+                # bb = '主路径2 sys.path[0]：' + sys.path[0]
+                # cc = '主路径3 os.path.split(os.path.realpath(__file__))[0]：' + os.path.split(os.path.realpath(__file__))[0]
+                # dd = '主路径4 os.path.abspath(".")：' + os.path.abspath(".")
+                # self.addTextMain(' %s \n %s \n %s \n %s \n' % (aa, bb, cc, dd))
                 print('Create log file: ' + log_name + '\n')
                 print(text)
                 return
@@ -2204,11 +2244,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def add_to_pic(self, pic_path, img_pic, size, count, mode):
         mark_pic_path = ''
         if mode == 1:
-            mark_pic_path = resource_path('Img/SUB.png')
+            mark_pic_path = self.resource_path('Img/SUB.png')
         elif mode == 2:
-            mark_pic_path = resource_path('Img/LEAK.png')
+            mark_pic_path = self.resource_path('Img/LEAK.png')
         elif mode == 3:
-            mark_pic_path = resource_path('Img/UNCENSORED.png')
+            mark_pic_path = self.resource_path('Img/UNCENSORED.png')
         img_subt = Image.open(mark_pic_path)
         scroll_high = int(img_pic.height / size)
         scroll_wide = int(scroll_high * img_subt.width / img_subt.height)
@@ -2704,7 +2744,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def getMoviePathSetting(self, config):
         movie_path = config.get('media', 'media_path').replace('\\', '/')                       # 用户设置的扫描媒体路径
         if movie_path == '':
-            movie_path = os.getcwd().replace('\\', '/')                                         # 主程序当前路径
+            # movie_path = os.getcwd().replace('\\', '/')                                         # 主程序当前路径
+            # movie_path = os.path.split(os.path.realpath(__file__))[0].replace('\\', '/')
+            movie_path = self.main_path.replace('\\', '/')
         success_folder = config.get('media', 'success_output_folder').replace('\\', '/')        # 用户设置的成功输出目录
         failed_folder = config.get('media', 'failed_output_folder').replace('\\', '/')          # 用户设置的失败输出目录
         escape_folder_list = config.get('escape', 'folders').replace('\\', '/').replace('，', ',').split(',')     # 用户设置的排除目录
@@ -3255,6 +3297,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             if config['common']['soft_link'] == '1':
                 self.addTextMain(' 🎈 Soft link mode is ENABLE!')
         # 日志页面显示信息
+        self.addTextMain(' 🖥 Movie path: ' + movie_path)
         self.addTextMain(' 📺 Find ' + str(count_all) + ' movies')
 
         with open(self.c_numuber_jsonfile, encoding='UTF-8') as data:

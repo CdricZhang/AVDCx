@@ -3,13 +3,13 @@
 1，官网下载安装 python
 https://www.python.org/
 2，命令行运行：
-cd C:\AVDCx-py-20210726
+cd C:\AVDCx-py-20210727
 3，命令行安装所需模块
 pip install -r requirements.txt
 4，命令行安装打包工具
 pip install pyinstaller
 5，命令行运行
-pyinstaller -n AVDCx.exe -i Img/AVDCx.ico -F -w AVDCx_Main.py --add-data "Function/cloudscraper;cloudscraper" --add-data "Function/zhconv;zhconv" --add-data "Img;Img" --hidden-import socks --hidden-import urllib3
+pyinstaller -n AVDCx.exe -i Img/AVDCx.ico -F -w AVDCx_Main.py --add-data "Data;." --add-data "Img;Img" --hidden-import socks --hidden-import urllib3
 
 pyinstaller AVDCx.exe.spec
 
