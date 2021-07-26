@@ -2222,6 +2222,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             {'x': 0, 'y': img_pic.height - scroll_high},
         ]
         img_pic.paste(img_subt, (pos[count]['x'], pos[count]['y']), mask=a)
+        img_pic = img_pic.convert('RGB')
         img_pic.save(pic_path, quality=95)
 
 
