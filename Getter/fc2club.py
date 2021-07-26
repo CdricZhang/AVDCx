@@ -72,6 +72,14 @@ def getOutline(html):  # 获取简介
     result = str(html.xpath('//div[@class="col des"]/text()')).strip('['']').replace("',", '').replace('\\n', '').replace("'", '').replace('・', '').strip()
     return result
 
+def getMosaic(html):  # 获取马赛克
+    result = str(html.xpath('//h5/strong[contains(text(), "资源参数")]/../text()'))
+    if '无码' in result:
+        mosaic = '无码'
+    else:
+        mosaic = '有码'
+    return mosaic
+
 def main(number, appoint_url='', log_info='', req_web=''):
     req_web += '-> fc2club '
     log_info += '   >>> FC2CLUB-开始使用 FC2CLUB 进行刮削\n'
@@ -117,7 +125,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
         score = getScore(html_info) # 获取厂商
         actor = getActor(html_info, studio) # 获取演员
         actor_photo = getActorPhoto(actor)  # 获取演员列表
-
+        mosaic = getMosaic(html_info)
         try:
             dic = {
                 'title': str(title),
@@ -140,7 +148,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 'cover_small': '',
                 'extrafanart': extrafanart,
                 'imagecut': 0,
-                'mosaic': 'FC2',
+                'mosaic': mosaic,
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -166,6 +174,8 @@ def main(number, appoint_url='', log_info='', req_web=''):
     return js
 
 
+
+# print(main('1470588', ''))
 # print(main('674261', ''))
 # print(main('406570', ''))
 # print(main('1474843', ''))

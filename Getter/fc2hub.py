@@ -43,11 +43,22 @@ def getStudio(html):  # 使用卖家作为厂家
     return result
 
 def getTag(html):  # 获取标签
-    result = str(html.xpath('//p[contains(text(), "タグ :")]/a/text()')).strip('['']').replace("',", '').replace('\\n', '').replace("'", '').replace('・', '').strip()
+    result = html.xpath('//p[@class="card-text"]/a[contains(@href, "/tag/")]/text()')
+    if result:
+        result = str(result).strip(' ['']').replace(", ", ',').replace("'", '').strip()
+    else:
+        result = ''
     return result
 
 def getOutline(html):  # 获取简介
     result = str(html.xpath('//div[@class="col des"]/text()')).strip('['']').replace("',", '').replace('\\n', '').replace("'", '').replace('・', '').strip()
+    return result
+
+def getMosaic(tag, title):  # 获取马赛克
+    if '無修正' in tag or '無修正' in title:
+        result = '无码'
+    else:
+        result = '有码'
     return result
 
 def main(number, appoint_url='', log_info='', req_web=''):
@@ -108,6 +119,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
             tag = getTag(html_info)
             studio = getStudio(html_info) # 获取厂商
             extrafanart = getExtraFanart(html_info)
+            mosaic = getMosaic(tag, title)
 
             try:
                 dic = {
@@ -131,7 +143,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
                     'cover_small': '',
                     'extrafanart': extrafanart,
                     'imagecut': 0,
-                    'mosaic': 'FC2',
+                    'mosaic': mosaic,
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),
@@ -158,9 +170,10 @@ def main(number, appoint_url='', log_info='', req_web=''):
 
 
 
-# print(main('1860858', ''))
+# print(main('1940476'))  # 无码
+# print(main('1860858', ''))  #有码
 # print(main('1599412', ''))
-# print(main('1131214', ''))
+# print(main('1131214', ''))  # 未找到
 # print(main('1837553', ''))
 # print(main('1613618', ''))
 # print(main('1837553', ''))

@@ -51,7 +51,6 @@ def getTag(html):  # 获取标签
     result = str(result).strip(" ['']").replace("', '", ",")
     return result
 
-
 def getOutline(html):  # 获取简介
     result = html.xpath('//meta[@name="description"]/@content')
     if result:
@@ -60,6 +59,12 @@ def getOutline(html):  # 获取简介
         result = ''
     return result
 
+def getMosaic(tag, title):  # 获取马赛克
+    if '無修正' in tag or '無修正' in title:
+        result = '无码'
+    else:
+        result = '有码'
+    return result
 
 def main(number, appoint_url='', log_info='', req_web=''):
     req_web += '-> fc2 '
@@ -104,6 +109,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
         tag = getTag(html_info)
         release = getRelease(html_info)
         studio = getStudio(html_info) # 使用卖家作为厂商
+        mosaic = getMosaic(tag, title)
         try:
             dic = {
                 'title': title,
@@ -126,7 +132,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 'cover_small': cover_small_url,
                 'extrafanart': extrafanart,
                 'imagecut': 0,
-                'mosaic': 'FC2',
+                'mosaic': mosaic,
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -152,12 +158,12 @@ def main(number, appoint_url='', log_info='', req_web=''):
     return js
 
 
-# print(main('1723984', ''))
+# print(main('1723984', ''))  # 有码
 # print(main('1924776', ''))
 # print(main('1860858', ''))
 # print(main('1599412', ''))    # fc2hub有，fc2/fc2club没有
 # print(main('1131214', ''))    # fc2club有，fc2/fc2hub没有
-# print(main('1837553', ''))
+# print(main('1837553', ''))  # 无码
 # print(main('1613618', ''))
 # print(main('1837553', ''))
 # print(main('1837589', ""))

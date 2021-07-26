@@ -154,11 +154,21 @@ def main(number, appoint_url='', log_info='', req_web=''):
     error_type = ''
     error_info = ''
     dic = {}
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36',
+        'referer': 'https://xcity.jp/result_published/?genre=%2Fresult_published%2F&q=2&sg=main&num=60',        
+        }
+
     try:
         if not real_url:
-            url_search = 'https://xcity.jp/avod/result/?q=' + number.replace('-', '')
+            url_search = 'https://xcity.jp/result_published/?q=' + number.replace('-', '')
             log_info += '   >>> xcity-生成搜索页地址: %s \n' % url_search
-        result, html_search = get_html(url_search)
+        result, html_search = get_html(url_search, headers=headers)
+        # getweb = requests.get(url_search, headers=headers, proxies=proxies, verify=False)
+        # getweb.encoding = 'utf-8'
+        # result, html_search = True, getweb.text
+        # with open('124', 'w') as f:
+        #     f.write(html_search)
         if not result:
             log_info += '   >>> xcity-请求搜索页：错误！信息：%s\n' % html_search
             error_type = 'timeout'
@@ -168,7 +178,9 @@ def main(number, appoint_url='', log_info='', req_web=''):
             error_type = 'Movie data not found'
             raise Exception('xcity-搜索结果页匹配番号：未匹配到番号！')
         html = etree.fromstring(html_search, etree.HTMLParser())
-        real_url = html.xpath("//p[@class='x-itemBox-title']/a/@href")
+        # real_url = html.xpath("//p[@class='x-itemBox-title']/a/@href")
+        real_url = html.xpath("//table[@class='resultList']/tr/td/a/@href")
+        print(real_url)
         if not real_url:
             log_info += '   >>> xcity-搜索结果页匹配番号：未匹配到番号！ \n'
             error_type = 'Movie data not found'
@@ -264,6 +276,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
 
 
 
+# print(main('STVF010'))
 # print(main('MXGS563'))
 # print(main('xc-1280'))
 # print(main('xv-163'))
