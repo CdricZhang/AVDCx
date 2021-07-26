@@ -44,7 +44,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_avdc">
      <widget class="QPushButton" name="pushButton_start_cap">
@@ -1514,6 +1514,11 @@ background-color: rgb(246, 246, 246);</string>
          <string>airav</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>javlibrary</string>
+        </property>
+       </item>
       </widget>
       <widget class="QLabel" name="label_2">
        <property name="geometry">
@@ -2047,7 +2052,7 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-1047</y>
+           <y>0</y>
            <width>771</width>
            <height>1600</height>
           </rect>
@@ -2567,6 +2572,11 @@ background-color: rgb(246, 246, 246);</string>
            <item>
             <property name="text">
              <string>airav</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>javlibrary</string>
             </property>
            </item>
           </widget>
