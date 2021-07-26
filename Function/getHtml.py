@@ -42,11 +42,12 @@ def get_cookies(website):
 
 
 # ========================================================================网页请求
-def get_html(url, cookies=None):
+def get_html(url, cookies=None, headers=None):
     proxy_type, proxy, timeout, retry_count = get_proxy()
     proxies = get_proxies()
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'}
+    if not headers:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'}
     i = 0
     ex1 = 'Error in get_htm3l url: ' + url
     while i < retry_count:
@@ -68,7 +69,7 @@ def post_html(url: str, query: dict, headers={}):
     proxies = get_proxies()
     for i in range(retry_count):
         try:
-            result = requests.post(url=url, data=query, headers=headers,proxies=proxies, timeout=timeout)
+            result = requests.post(url=url, data=query, headers=headers, proxies=proxies, timeout=timeout)
             result.encoding = 'utf-8'
             result = result.text
             return 'ok', result

@@ -339,12 +339,13 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     try:
         json_data['mosaic']
     except:
-        if 'FC2' in number:
-            json_data['mosaic'] = 'FC2'
-        elif is_uncensored(number):
-            json_data['mosaic'] = '无码'
-        else:
-            json_data['mosaic']  = '有码'
+        json_data['mosaic'] = ''
+    finally:
+        if not json_data['mosaic']:
+            if is_uncensored(number):
+                json_data['mosaic'] = '无码'
+            else:
+                json_data['mosaic']  = '有码'
         print(number, json_data['mosaic'])
 
     return json_data
