@@ -3,7 +3,7 @@
 import threading
 import json
 from PySide2 import QtWidgets
-from PySide2.QtGui import QTextCursor, QCursor, QPixmap
+from PySide2.QtGui import QTextCursor, QCursor, QPixmap, QWindow
 from PySide2.QtWidgets import QMainWindow, QTreeWidgetItem, QApplication, QPushButton, QDialog, QFileDialog, QDialogButtonBox
 from PySide2.QtCore import Signal, Qt, QCoreApplication, QPoint, QRect
 import sys
@@ -52,7 +52,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210727'
+        self.localversion = '20210729'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -61,7 +61,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.label_source.mousePressEvent = self.label_number_clicked
         self.default_poster = self.resource_path('Img/default-poster.jpg')
         self.default_thumb = self.resource_path('Img/default-thumb.jpg')
-        self.c_numuber_jsonfile = self.resource_path('c_number/c_number.json')
+        self.c_numuber_jsonfile = self.resource_path(self.c_numberPath())
         self.m_drag = False
         self.m_DragPosition = 0
         self.count_claw = 0  # 批量刮削次数
@@ -269,6 +269,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def Init(self):
         self.Ui.treeWidget_number.clicked.connect(self.treeWidget_number_clicked)
         self.Ui.pushButton_close.clicked.connect(self.close_win)
+        self.Ui.pushButton_min.clicked.connect(self.min_win)
         self.Ui.pushButton_main.clicked.connect(self.pushButton_main_clicked)
         self.Ui.pushButton_tool.clicked.connect(self.pushButton_tool_clicked)
         self.Ui.pushButton_setting.clicked.connect(self.pushButton_setting_clicked)
@@ -310,7 +311,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         try:
             main_path = os.path.split(os.path.realpath(__file__))[0]    # 取的是__file__所在文件xx.py的所在目录
         except:
-            main_path = sys.path[0] # 或sys.argv[0],取的是被初始执行的脚本的所在目录，打包后路径会变成\base_libarary.zip
+            main_path = os.path.abspath(sys.path[0]) # 或sys.argv[0],取的是被初始执行的脚本的所在目录，打包后路径会变成\base_libarary.zip
         # base_path = os.path.abspath(".")    # 取的是起始执行目录，和os.getcwd()结果一样，不太准
         if getattr(sys, 'frozen', False): #是否Bundle Resource，是否打包成exe运行
             main_path = os.path.abspath(".")    # 打包后，路径是准的
@@ -325,6 +326,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         elif getattr(sys, 'frozen', False): #是否Bundle Resource
             base_path = sys._MEIPASS
         return os.path.join(base_path, relative_path).replace('\\', '/')
+
+    # ======================================================================================c_number.json位置
+    def c_numberPath(self):
+        if getattr(sys, 'frozen', False): #是否Bundle Resource，是否打包成exe运行
+            c_numberPath ='c_number/c_number.json'
+        else:
+            c_numberPath ='Data/c_number/c_number.json'
+        return c_numberPath
 
     # ======================================================================================显示版本号
     def show_version(self):
@@ -384,8 +393,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         os._exit(0)
 
 
-    # def min_win(self):        # 最小化窗口
-    #     self.setWindowState(Qt.WindowMinimized)
+    # ======================================================================================最小化窗口
+    def min_win(self):
+        self.setWindowState(Qt.WindowMinimized)
+        # self.showMinimized()
+        # print(self.isMinimized())
 
 
     # ====================================================================================== 根据平台转换路径
@@ -554,6 +566,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'success_file_move': 1,
             'failed_file_move': 1,
             'success_file_rename': 1,
+            'series_as_set': 1,
             'update_check': 1,
             'translate_language': 'zh_cn',
             'translate_content': 'title,outline,actor,tag',
@@ -677,6 +690,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     self.Ui.radioButton_succ_rename_on.setChecked(True)
             except:
                 self.Ui.radioButton_succ_rename_on.setChecked(True)
+
+            try:    # 使用系列作为合集
+                if int(config['common']['series_as_set']) == 0:
+                    self.Ui.radioButton_series_as_set_off.setChecked(True)
+                else:
+                    self.Ui.radioButton_series_as_set_on.setChecked(True)
+            except:
+                self.Ui.radioButton_series_as_set_on.setChecked(True)
 
             try:    # 显示封面
                 if int(config['common']['show_poster']) == 0:
@@ -1114,6 +1135,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         success_file_move = 1
         failed_file_move = 1
         success_file_rename = 1
+        series_as_set = 1
         soft_link = 0
         show_poster = 0
         switch_debug = 0
@@ -1208,6 +1230,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             success_file_rename = 1
         elif self.Ui.radioButton_succ_rename_off.isChecked():  # 成功重命名关
             success_file_rename = 0
+        if self.Ui.radioButton_series_as_set_on.isChecked():  # 使用系列作为合集开
+            series_as_set = 1
+        elif self.Ui.radioButton_series_as_set_off.isChecked():  # 使用系列作为合集关
+            series_as_set = 0
         if self.Ui.comboBox_website_all.currentText() == 'All websites':  # all
             website = 'all'
         elif self.Ui.comboBox_website_all.currentText() == 'iqqtv':  # iqqtv
@@ -1337,6 +1363,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'del_actor_name': del_actor_name,
             'save_log': save_log,
             'website': website,
+            'series_as_set': series_as_set,
             'type': proxy_type,
             'proxy': self.Ui.lineEdit_proxy.text(),
             'timeout': self.Ui.horizontalSlider_timeout.value(),
@@ -1946,8 +1973,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         shutil.copytree(extrafanart_path, extrafanart_copy_path)
         filelist = os.listdir(extrafanart_copy_path)
         for each in filelist:
+            file_new_name = each.replace('fanart', '')
             file_path = os.path.join(extrafanart_copy_path, each)
-            file_new_path = file_path.replace('fanart', '')
+            file_new_path = os.path.join(extrafanart_copy_path, file_new_name)
             os.rename(file_path, file_new_path)
         self.addTextMain(" 🟢 ExtraFanart Copy done!")
         if not int(config.getint('file_download', 'old_extrafanart')) and not int(config.getint('file_download', 'extrafanart')):
@@ -1987,7 +2015,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     print("  <plot>" + outline + "</plot>", file=code)
                 # 输出合集、系列
                 if series:
-                    print("  <set>" + series + "</set>", file=code)
+                    if int(config.getint('common', 'series_as_set')) == 1:
+                        print("  <set>" + series + "</set>", file=code)
                     print("  <series>" + series + "</series>", file=code)
                 # 输出发行日期
                 if release:
