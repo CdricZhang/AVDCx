@@ -7,19 +7,26 @@ urllib3.disable_warnings()
 from Getter import javdb
 from configparser import RawConfigParser
 
+def getDelActorName():
+    config_file = 'config.ini'
+    config = RawConfigParser()
+    config.read(config_file, encoding='UTF-8')
+    del_actor_name = config.getint('Name_Rule', 'del_actor_name')
+    return del_actor_name
+
 def getModeLike():
     config_file = 'config.ini'
     config = RawConfigParser()
     config.read(config_file, encoding='UTF-8')
     return config.getint('common', 'main_like')
 
-def getNumber(html):
-    result1 = str(html.xpath('//strong[contains(text(),"番號:")]/../span/a/text()')).strip(
-        " ['']").replace('_', '-')
-    result2 = str(html.xpath('//strong[contains(text(),"ID:")]/../span/a/text()')).strip(
-        " ['']").replace('_', '-')
-    return str(result2 + result1).strip('+')
-
+def getWebNumber(html):
+    result = html.xpath('//h5[@class=" d-none d-md-block text-primary mb-3"]/text()')
+    if result:
+        result = result[0].strip()
+    else:
+        result = ''
+    return result
     
 def getTitle(html):
     result = str(html.xpath('//h5[@class=" d-none d-md-block"]/text()')).strip(" ['']")
@@ -178,14 +185,11 @@ def getOutlineScore(number):  # 获取简介
 
 
 def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
-    req_web += '-> airav '
+    req_web += '-> airav[%s] ' % translate_language.replace('zh_', '')
     log_info += '   >>> AIRAV-开始使用airav进行刮削\n'
     number = number.upper()
     real_url = appoint_url
-    airav_url = 'https://cn.airav.wiki'
-    airav_lan = '?lng=zh-CN'
     cover_url = ''
-    cover_small = ''
     error_type = ''
     error_info = ''
     imagecut = 1
@@ -250,15 +254,20 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 log_info += '   >>> AIRAV- title 获取失败！ \n'
                 error_type = 'AIRAV - title 获取失败！'
                 raise Exception('>>> AIRAV- title 获取失败!')
+            print('111')
+            web_number = getWebNumber(html_info)    # 获取番号，用来替换标题里的番号
+            print(web_number)
+            title = title.replace(web_number, '').strip()
             actor = getActor(html_info) # 获取actor
-            title = title.replace(number, '').strip()
+            actor_photo = getActorPhoto(actor)
+            if getDelActorName():
+                title = title.strip(' ' + actor)
             cover_url = getCover(html_info) # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> AIRAV- cover url 获取失败！ \n'
                 error_type = 'Cover Url is None!'
                 raise Exception('>>> AIRAV- cover url 获取失败!')
             # actor_photo = getActorPhoto1(html_info, airav_url, log_info)
-            actor_photo = getActorPhoto(actor)
             outline = getOutline(html_info, translate_language, real_url)
             release = getRelease(html_info)
             year = getYear(release)
@@ -270,23 +279,23 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             director = ''
             publisher = studio
             extrafanart = ''
-            mode_like = getModeLike()
+            # mode_like = getModeLike()
 
-            if mode_like:
-                json_data = json.loads(javdb.main(number, '', log_info, req_web))
-                if json_data.get('title'):
-                    req_web = json_data['req_web']
-                    runtime = json_data['runtime']
-                    score = json_data['score']
-                    series = json_data['series']
-                    director = json_data['director']
-                    publisher = json_data['publisher']
-                    studio = json_data['studio']
-                    extrafanart = json_data['extrafanart']
-                    actor_photo = json_data['actor_photo'] # 暂时使用javdb的日文名字，避免emby不识别歌手头像
-                    if '克破' in title or '克破' in outline:
-                        title = json_data['title']
-                        outline = json_data['outline']
+            # if mode_like:
+            #     json_data = json.loads(javdb.main(number, '', log_info, req_web))
+            #     if json_data.get('title'):
+            #         req_web = json_data['req_web']
+            #         runtime = json_data['runtime']
+            #         score = json_data['score']
+            #         series = json_data['series']
+            #         director = json_data['director']
+            #         publisher = json_data['publisher']
+            #         studio = json_data['studio']
+            #         extrafanart = json_data['extrafanart']
+            #         actor_photo = json_data['actor_photo'] # 暂时使用javdb的日文名字，避免emby不识别歌手头像
+            #         if '克破' in title or '克破' in outline:
+            #             title = json_data['title']
+            #             outline = json_data['outline']
                         
             try:
                 dic = {

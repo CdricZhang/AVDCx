@@ -110,6 +110,8 @@ def getRuntime(html):
     return str(result)
 
 def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
+    if not re.match('n\d{4}', number):
+        number = number.upper()
     req_web += '-> iqqtv[%s] ' % translate_language.replace('zh_', '')
     log_info += '   >>> iqqtv-开始使用iqqtv进行刮削\n'
     real_url = appoint_url
@@ -131,7 +133,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
         if not real_url:
             # 通过搜索获取real_url
             url_search = iqqtv_url + 'search.php?kw=' + number
-            log_info += '   >>> iqqtv-生成搜索页地址: %s\n' % url_search
+            log_info += '   >>> iqqtv-生成搜索页地址: %s \n' % url_search
             # ========================================================================搜索番号
             result, html_search = get_html(url_search)
             if not result:
@@ -139,7 +141,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 error_type = 'timeout'
                 raise Exception('iqqtv-请求搜索页：错误！信息：' + html_search)
             html = etree.fromstring(html_search, etree.HTMLParser())
-            real_url = html.xpath("//h3[@class='one_name ga_name' and (contains(text(), $number)) and not (contains(text(), '克破'))]/../@href", number=number.upper())
+            real_url = html.xpath("//h3[@class='one_name ga_name' and (contains(text(), $number)) and not (contains(text(), '克破'))]/../@href", number=number)
 
             if real_url:
                 real_url = iqqtv_domain + real_url[0]
@@ -189,7 +191,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             try:
                 dic = {
                     'title': title,
-                    'number': web_number,
+                    'number': number,
                     'actor': actor,
                     'outline': outline,
                     'tag': tag,

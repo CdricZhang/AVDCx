@@ -1,5 +1,5 @@
 import json
-from Getter import javdb, iqqtv, jav321
+from Getter import airav, javdb, jav321
 from configparser import RawConfigParser
 import time
 
@@ -27,19 +27,24 @@ def getMode():
 
 def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
     translate_language, translate_content, main_like = getMode()
-    appoint_url = appoint_url.replace('/cn/', '/jp/').replace('iqqtv.cloud/player', 'iqqtv.cloud/jp/player')
-    json_data = json.loads(iqqtv.main(number, appoint_url, translate_language='jp'))
+    if 'cn.airav.wiki' in appoint_url:
+        appoint_url = appoint_url.replace('cn.airav.wiki', 'jp.airav.wiki').replace('?lng=zh-CN', '') + '?lng=jp'
+    elif 'www.airav.wiki' in appoint_url:
+        appoint_url = appoint_url.replace('www.airav.wiki', 'jp.airav.wiki').replace('?lng=zh-TW', '') + '?lng=jp'
+    elif 'jp.airav.wiki' in appoint_url:
+        appoint_url = appoint_url.replace('?lng=jp', '') + '?lng=jp'
+    json_data = json.loads(airav.main(number, appoint_url, translate_language='jp'))
     if not getDataState(json_data):
         return json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )
     if translate_language != 'ja':
         if translate_language == 'zh_cn':
-            appoint_url = json_data['website'].replace('/jp/', '/cn/')
+            appoint_url = json_data['website'].replace('jp.airav.wiki', 'cn.airav.wiki').replace('?lng=jp', '?lng=zh-CN')
         else:
-            appoint_url = json_data['website'].replace('/jp/', '/')
+            appoint_url = json_data['website'].replace('jp.airav.wiki', 'www.airav.wiki').replace('?lng=jp', '?lng=zh-TW')
         log_info = json_data['log_info']
         req_web = json_data['req_web']
         # time.sleep(0.5)
-        json_data_zh = json.loads(iqqtv.main(number, appoint_url, translate_language, log_info, req_web))
+        json_data_zh = json.loads(airav.main(number, appoint_url, translate_language, log_info, req_web))
         if getDataState(json_data_zh):
             json_data['req_web'] = json_data_zh['req_web']
             json_data['website'] = json_data_zh['website']
@@ -55,7 +60,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 json_data['tag'] = json_data_zh['tag']
     if main_like:
         req_web = json_data['req_web']
-        json_data_jav321 = json.loads(javdb.main(number, '', log_info, req_web))
+        json_data_jav321 = json.loads(jav321.main(number, '', log_info, req_web))
         if getDataState(json_data_jav321):
             json_data['req_web'] = json_data_jav321['req_web']
             json_data['runtime'] = json_data_jav321['runtime']
