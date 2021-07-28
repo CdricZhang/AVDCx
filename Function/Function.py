@@ -14,16 +14,18 @@ from Getter import iqqtv_new, javbus, javdb, jav321, dmm, javlibrary_new, avsox,
 def is_uncensored(number):
     if re.match('^\d{4,}', number) or re.match('n\d{4}', number) or 'HEYZO' in number.upper():
         return True
-    config_file = 'config.ini'
-    config = RawConfigParser()
-    config.read(config_file, encoding='UTF-8')
-    prefix_list = str(config['uncensored']['uncensored_prefix']).split('|')
-    for pre in prefix_list:
-        if pre.upper() in number.upper():
-            if 'PBD' in number.upper() and 'CWPBD' not in number:
-                return False
-            return True
-    return False
+    else:
+        return False
+    # config_file = 'config.ini'
+    # config = RawConfigParser()
+    # config.read(config_file, encoding='UTF-8')
+    # prefix_list = str(config['uncensored']['uncensored_prefix']).split('|')
+    # for pre in prefix_list:
+    #     if pre.upper() in number.upper():
+    #         if 'PBD' in number.upper() and 'CWPBD' not in number:
+    #             return False
+    #         return True
+    # return False
 
 
 # ========================================================================元数据获取失败检测
@@ -138,15 +140,20 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     if website_mode == 1:  # 从全部网站刮削
         # =======================================================================FC2-111111
         if 'FC2' in file_number.upper():
-            json_data = json.loads(fc2.main(re.search('\d{4,}', file_number).group(), appoint_url))
+            file_number = re.search('\d{4,}', file_number).group()
+            json_data = json.loads(fc2.main(file_number, appoint_url))
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(fc2club.main(re.search('\d{4,}', file_number).group(), appoint_url, log_info, req_web))
+                json_data = json.loads(fc2club.main(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(fc2hub.main(re.search('\d{4,}', file_number).group(), appoint_url, log_info ,req_web))
+                json_data = json.loads(fc2hub.main(file_number, appoint_url, log_info ,req_web))
+            if getDataState(json_data) == 0:
+                req_web = json_data['req_web']
+                log_info = json_data['log_info']
+                json_data = json.loads(avsox.main(file_number, appoint_url, translate_language, log_info, req_web))
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
@@ -161,7 +168,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javbus.main_uncensored(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(javbus.main(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
@@ -248,9 +255,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     elif website_mode == 2:  # 仅从iqqtv
         json_data = json.loads(iqqtv_new.main(file_number, appoint_url, translate_language))
     elif website_mode == 3:  # 仅从javbus
-        if isuncensored:
-            json_data = json.loads(javbus.main_uncensored(file_number, appoint_url))
-        elif re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
+        if re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
             json_data = json.loads(javbus.main_us(file_number, appoint_url))
         else:
             json_data = json.loads(javbus.main(file_number, appoint_url))
@@ -400,6 +405,7 @@ def save_config(json_config):
         print("deepl_key = " + json_config['deepl_key'], file=code)
         print("website = " + json_config['website'], file=code)
         print("# all or iqqtv or javbus or javdb or jav321 or dmm or avsox or xcity or mgstage or fc2 or fc2club or fc2hub or airav or javlibrary", file=code)
+        print("series_as_set = " + str(json_config['series_as_set']), file=code)
         print("", file=code)
         print("[proxy]", file=code)
         print("type = " + json_config['type'], file=code)
