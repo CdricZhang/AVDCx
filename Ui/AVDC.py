@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCATAvfp.ui'
+## Form generated from reading UI file 'AVDCoeXTHd.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -18,6 +18,11 @@ class Ui_AVDV(object):
         if not AVDV.objectName():
             AVDV.setObjectName(u"AVDV")
         AVDV.resize(1024, 700)
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(AVDV.sizePolicy().hasHeightForWidth())
+        AVDV.setSizePolicy(sizePolicy)
         font = QFont()
         font.setFamily(u"Courier")
         font.setPointSize(13)
@@ -156,11 +161,11 @@ class Ui_AVDV(object):
         self.label_result = QLabel(self.page_avdc)
         self.label_result.setObjectName(u"label_result")
         self.label_result.setGeometry(QRect(580, 70, 201, 40))
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_result.sizePolicy().hasHeightForWidth())
-        self.label_result.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.label_result.sizePolicy().hasHeightForWidth())
+        self.label_result.setSizePolicy(sizePolicy1)
         self.label_result.setMinimumSize(QSize(0, 0))
         self.label_result.setMaximumSize(QSize(16777215, 16777215))
         font1 = QFont()
@@ -245,8 +250,8 @@ class Ui_AVDV(object):
         self.label_poster = QLabel(self.page_avdc)
         self.label_poster.setObjectName(u"label_poster")
         self.label_poster.setGeometry(QRect(50, 160, 156, 220))
-        sizePolicy.setHeightForWidth(self.label_poster.sizePolicy().hasHeightForWidth())
-        self.label_poster.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.label_poster.sizePolicy().hasHeightForWidth())
+        self.label_poster.setSizePolicy(sizePolicy1)
         self.label_poster.setMinimumSize(QSize(156, 220))
         self.label_poster.setMaximumSize(QSize(156, 220))
         self.label_poster.setFont(font)
@@ -541,11 +546,11 @@ class Ui_AVDV(object):
         self.scrollArea = QScrollArea(self.tab1)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setGeometry(QRect(-1, -1, 771, 553))
-        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Maximum)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
-        self.scrollArea.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Maximum)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
+        self.scrollArea.setSizePolicy(sizePolicy2)
         self.scrollArea.setFrameShape(QFrame.Box)
         self.scrollArea.setLineWidth(0)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
@@ -554,7 +559,7 @@ class Ui_AVDV(object):
         self.scrollArea.setWidgetResizable(False)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 771, 1600))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, -1280, 771, 1880))
         self.groupBox = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(30, 110, 701, 101))
@@ -569,11 +574,11 @@ class Ui_AVDV(object):
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.radioButton_common = QRadioButton(self.gridLayoutWidget_2)
         self.radioButton_common.setObjectName(u"radioButton_common")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.radioButton_common.sizePolicy().hasHeightForWidth())
-        self.radioButton_common.setSizePolicy(sizePolicy2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.radioButton_common.sizePolicy().hasHeightForWidth())
+        self.radioButton_common.setSizePolicy(sizePolicy3)
         self.radioButton_common.setMinimumSize(QSize(80, 0))
         self.radioButton_common.setFont(font3)
         self.radioButton_common.setAutoRepeatDelay(300)
@@ -588,11 +593,11 @@ class Ui_AVDV(object):
 
         self.label_11 = QLabel(self.gridLayoutWidget_2)
         self.label_11.setObjectName(u"label_11")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
-        self.label_11.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
+        self.label_11.setSizePolicy(sizePolicy4)
         font4 = QFont()
         font4.setFamily(u"Courier")
         font4.setPointSize(12)
@@ -606,8 +611,8 @@ class Ui_AVDV(object):
 
         self.label_15 = QLabel(self.gridLayoutWidget_2)
         self.label_15.setObjectName(u"label_15")
-        sizePolicy3.setHeightForWidth(self.label_15.sizePolicy().hasHeightForWidth())
-        self.label_15.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_15.sizePolicy().hasHeightForWidth())
+        self.label_15.setSizePolicy(sizePolicy4)
         self.label_15.setFont(font4)
         self.label_15.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -657,8 +662,8 @@ class Ui_AVDV(object):
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.radioButton_like_speed = QRadioButton(self.gridLayoutWidget)
         self.radioButton_like_speed.setObjectName(u"radioButton_like_speed")
-        sizePolicy2.setHeightForWidth(self.radioButton_like_speed.sizePolicy().hasHeightForWidth())
-        self.radioButton_like_speed.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.radioButton_like_speed.sizePolicy().hasHeightForWidth())
+        self.radioButton_like_speed.setSizePolicy(sizePolicy3)
         self.radioButton_like_speed.setMinimumSize(QSize(80, 0))
         self.radioButton_like_speed.setFont(font3)
         self.radioButton_like_speed.setLayoutDirection(Qt.LeftToRight)
@@ -673,8 +678,8 @@ class Ui_AVDV(object):
 
         self.label_28 = QLabel(self.gridLayoutWidget)
         self.label_28.setObjectName(u"label_28")
-        sizePolicy3.setHeightForWidth(self.label_28.sizePolicy().hasHeightForWidth())
-        self.label_28.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_28.sizePolicy().hasHeightForWidth())
+        self.label_28.setSizePolicy(sizePolicy4)
         self.label_28.setFont(font4)
         self.label_28.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -682,8 +687,8 @@ class Ui_AVDV(object):
 
         self.label_32 = QLabel(self.gridLayoutWidget)
         self.label_32.setObjectName(u"label_32")
-        sizePolicy3.setHeightForWidth(self.label_32.sizePolicy().hasHeightForWidth())
-        self.label_32.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_32.sizePolicy().hasHeightForWidth())
+        self.label_32.setSizePolicy(sizePolicy4)
         self.label_32.setFont(font4)
         self.label_32.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -711,11 +716,11 @@ class Ui_AVDV(object):
         self.comboBox_website_all.addItem("")
         self.comboBox_website_all.setObjectName(u"comboBox_website_all")
         self.comboBox_website_all.setGeometry(QRect(60, 30, 631, 40))
-        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Maximum)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.comboBox_website_all.sizePolicy().hasHeightForWidth())
-        self.comboBox_website_all.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Maximum)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.comboBox_website_all.sizePolicy().hasHeightForWidth())
+        self.comboBox_website_all.setSizePolicy(sizePolicy5)
         self.comboBox_website_all.setMinimumSize(QSize(400, 40))
         self.comboBox_website_all.setMaximumSize(QSize(16000, 40))
         self.comboBox_website_all.setSizeIncrement(QSize(0, 0))
@@ -736,8 +741,8 @@ class Ui_AVDV(object):
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
         self.label_36 = QLabel(self.gridLayoutWidget_4)
         self.label_36.setObjectName(u"label_36")
-        sizePolicy3.setHeightForWidth(self.label_36.sizePolicy().hasHeightForWidth())
-        self.label_36.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_36.sizePolicy().hasHeightForWidth())
+        self.label_36.setSizePolicy(sizePolicy4)
         self.label_36.setFont(font4)
         self.label_36.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -745,8 +750,8 @@ class Ui_AVDV(object):
 
         self.label_37 = QLabel(self.gridLayoutWidget_4)
         self.label_37.setObjectName(u"label_37")
-        sizePolicy3.setHeightForWidth(self.label_37.sizePolicy().hasHeightForWidth())
-        self.label_37.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_37.sizePolicy().hasHeightForWidth())
+        self.label_37.setSizePolicy(sizePolicy4)
         self.label_37.setFont(font4)
         self.label_37.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -754,8 +759,8 @@ class Ui_AVDV(object):
 
         self.radioButton_soft_on = QRadioButton(self.gridLayoutWidget_4)
         self.radioButton_soft_on.setObjectName(u"radioButton_soft_on")
-        sizePolicy2.setHeightForWidth(self.radioButton_soft_on.sizePolicy().hasHeightForWidth())
-        self.radioButton_soft_on.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.radioButton_soft_on.sizePolicy().hasHeightForWidth())
+        self.radioButton_soft_on.setSizePolicy(sizePolicy3)
         self.radioButton_soft_on.setMinimumSize(QSize(80, 0))
         self.radioButton_soft_on.setFont(font3)
 
@@ -781,8 +786,8 @@ class Ui_AVDV(object):
         self.gridLayout_13.setContentsMargins(0, 0, 0, 0)
         self.label_38 = QLabel(self.gridLayoutWidget_13)
         self.label_38.setObjectName(u"label_38")
-        sizePolicy3.setHeightForWidth(self.label_38.sizePolicy().hasHeightForWidth())
-        self.label_38.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_38.sizePolicy().hasHeightForWidth())
+        self.label_38.setSizePolicy(sizePolicy4)
         self.label_38.setFont(font4)
         self.label_38.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -790,8 +795,8 @@ class Ui_AVDV(object):
 
         self.label_39 = QLabel(self.gridLayoutWidget_13)
         self.label_39.setObjectName(u"label_39")
-        sizePolicy3.setHeightForWidth(self.label_39.sizePolicy().hasHeightForWidth())
-        self.label_39.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_39.sizePolicy().hasHeightForWidth())
+        self.label_39.setSizePolicy(sizePolicy4)
         self.label_39.setFont(font4)
         self.label_39.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -799,8 +804,8 @@ class Ui_AVDV(object):
 
         self.radioButton_succ_rename_on = QRadioButton(self.gridLayoutWidget_13)
         self.radioButton_succ_rename_on.setObjectName(u"radioButton_succ_rename_on")
-        sizePolicy2.setHeightForWidth(self.radioButton_succ_rename_on.sizePolicy().hasHeightForWidth())
-        self.radioButton_succ_rename_on.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.radioButton_succ_rename_on.sizePolicy().hasHeightForWidth())
+        self.radioButton_succ_rename_on.setSizePolicy(sizePolicy3)
         self.radioButton_succ_rename_on.setMinimumSize(QSize(80, 0))
         self.radioButton_succ_rename_on.setFont(font3)
 
@@ -826,8 +831,8 @@ class Ui_AVDV(object):
         self.gridLayout_6.setContentsMargins(0, 0, 0, 0)
         self.label_54 = QLabel(self.gridLayoutWidget_6)
         self.label_54.setObjectName(u"label_54")
-        sizePolicy3.setHeightForWidth(self.label_54.sizePolicy().hasHeightForWidth())
-        self.label_54.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_54.sizePolicy().hasHeightForWidth())
+        self.label_54.setSizePolicy(sizePolicy4)
         self.label_54.setFont(font4)
         self.label_54.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -835,8 +840,8 @@ class Ui_AVDV(object):
 
         self.label_55 = QLabel(self.gridLayoutWidget_6)
         self.label_55.setObjectName(u"label_55")
-        sizePolicy3.setHeightForWidth(self.label_55.sizePolicy().hasHeightForWidth())
-        self.label_55.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_55.sizePolicy().hasHeightForWidth())
+        self.label_55.setSizePolicy(sizePolicy4)
         self.label_55.setFont(font4)
         self.label_55.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -844,8 +849,8 @@ class Ui_AVDV(object):
 
         self.radioButton_succ_move_on = QRadioButton(self.gridLayoutWidget_6)
         self.radioButton_succ_move_on.setObjectName(u"radioButton_succ_move_on")
-        sizePolicy2.setHeightForWidth(self.radioButton_succ_move_on.sizePolicy().hasHeightForWidth())
-        self.radioButton_succ_move_on.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.radioButton_succ_move_on.sizePolicy().hasHeightForWidth())
+        self.radioButton_succ_move_on.setSizePolicy(sizePolicy3)
         self.radioButton_succ_move_on.setMinimumSize(QSize(80, 0))
         self.radioButton_succ_move_on.setFont(font3)
 
@@ -871,8 +876,8 @@ class Ui_AVDV(object):
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
         self.label_34 = QLabel(self.gridLayoutWidget_3)
         self.label_34.setObjectName(u"label_34")
-        sizePolicy3.setHeightForWidth(self.label_34.sizePolicy().hasHeightForWidth())
-        self.label_34.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_34.sizePolicy().hasHeightForWidth())
+        self.label_34.setSizePolicy(sizePolicy4)
         self.label_34.setFont(font4)
         self.label_34.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -880,8 +885,8 @@ class Ui_AVDV(object):
 
         self.label_35 = QLabel(self.gridLayoutWidget_3)
         self.label_35.setObjectName(u"label_35")
-        sizePolicy3.setHeightForWidth(self.label_35.sizePolicy().hasHeightForWidth())
-        self.label_35.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_35.sizePolicy().hasHeightForWidth())
+        self.label_35.setSizePolicy(sizePolicy4)
         self.label_35.setFont(font4)
         self.label_35.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -889,8 +894,8 @@ class Ui_AVDV(object):
 
         self.radioButton_fail_move_on = QRadioButton(self.gridLayoutWidget_3)
         self.radioButton_fail_move_on.setObjectName(u"radioButton_fail_move_on")
-        sizePolicy2.setHeightForWidth(self.radioButton_fail_move_on.sizePolicy().hasHeightForWidth())
-        self.radioButton_fail_move_on.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.radioButton_fail_move_on.sizePolicy().hasHeightForWidth())
+        self.radioButton_fail_move_on.setSizePolicy(sizePolicy3)
         self.radioButton_fail_move_on.setMinimumSize(QSize(80, 0))
         self.radioButton_fail_move_on.setFont(font3)
 
@@ -934,8 +939,8 @@ class Ui_AVDV(object):
 
         self.label_81 = QLabel(self.gridLayoutWidget_14)
         self.label_81.setObjectName(u"label_81")
-        sizePolicy2.setHeightForWidth(self.label_81.sizePolicy().hasHeightForWidth())
-        self.label_81.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_81.sizePolicy().hasHeightForWidth())
+        self.label_81.setSizePolicy(sizePolicy3)
         self.label_81.setMinimumSize(QSize(130, 30))
         self.label_81.setFont(font3)
         self.label_81.setLayoutDirection(Qt.LeftToRight)
@@ -945,8 +950,8 @@ class Ui_AVDV(object):
 
         self.label_80 = QLabel(self.gridLayoutWidget_14)
         self.label_80.setObjectName(u"label_80")
-        sizePolicy2.setHeightForWidth(self.label_80.sizePolicy().hasHeightForWidth())
-        self.label_80.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_80.sizePolicy().hasHeightForWidth())
+        self.label_80.setSizePolicy(sizePolicy3)
         self.label_80.setMinimumSize(QSize(130, 30))
         self.label_80.setFont(font3)
         self.label_80.setLayoutDirection(Qt.LeftToRight)
@@ -957,8 +962,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_deepl_key = QLineEdit(self.gridLayoutWidget_14)
         self.lineEdit_deepl_key.setObjectName(u"lineEdit_deepl_key")
-        sizePolicy3.setHeightForWidth(self.lineEdit_deepl_key.sizePolicy().hasHeightForWidth())
-        self.lineEdit_deepl_key.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.lineEdit_deepl_key.sizePolicy().hasHeightForWidth())
+        self.lineEdit_deepl_key.setSizePolicy(sizePolicy4)
         self.lineEdit_deepl_key.setMinimumSize(QSize(300, 30))
         self.lineEdit_deepl_key.setFont(font3)
         self.lineEdit_deepl_key.setStyleSheet(u" font: \"Courier\";\n"
@@ -970,8 +975,8 @@ class Ui_AVDV(object):
 
         self.label_60 = QLabel(self.gridLayoutWidget_14)
         self.label_60.setObjectName(u"label_60")
-        sizePolicy3.setHeightForWidth(self.label_60.sizePolicy().hasHeightForWidth())
-        self.label_60.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_60.sizePolicy().hasHeightForWidth())
+        self.label_60.setSizePolicy(sizePolicy4)
         self.label_60.setFont(font4)
         self.label_60.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1049,8 +1054,8 @@ class Ui_AVDV(object):
 
         self.radioButton_poster_official = QRadioButton(self.gridLayoutWidget_5)
         self.radioButton_poster_official.setObjectName(u"radioButton_poster_official")
-        sizePolicy2.setHeightForWidth(self.radioButton_poster_official.sizePolicy().hasHeightForWidth())
-        self.radioButton_poster_official.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.radioButton_poster_official.sizePolicy().hasHeightForWidth())
+        self.radioButton_poster_official.setSizePolicy(sizePolicy3)
         self.radioButton_poster_official.setMinimumSize(QSize(100, 30))
         self.radioButton_poster_official.setFont(font3)
 
@@ -1058,8 +1063,8 @@ class Ui_AVDV(object):
 
         self.label_52 = QLabel(self.gridLayoutWidget_5)
         self.label_52.setObjectName(u"label_52")
-        sizePolicy3.setHeightForWidth(self.label_52.sizePolicy().hasHeightForWidth())
-        self.label_52.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_52.sizePolicy().hasHeightForWidth())
+        self.label_52.setSizePolicy(sizePolicy4)
         self.label_52.setFont(font4)
         self.label_52.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1067,8 +1072,8 @@ class Ui_AVDV(object):
 
         self.label_53 = QLabel(self.gridLayoutWidget_5)
         self.label_53.setObjectName(u"label_53")
-        sizePolicy3.setHeightForWidth(self.label_53.sizePolicy().hasHeightForWidth())
-        self.label_53.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_53.sizePolicy().hasHeightForWidth())
+        self.label_53.setSizePolicy(sizePolicy4)
         self.label_53.setFont(font4)
         self.label_53.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1113,8 +1118,8 @@ class Ui_AVDV(object):
         self.label_74 = QLabel(self.groupBox_26)
         self.label_74.setObjectName(u"label_74")
         self.label_74.setGeometry(QRect(60, 70, 611, 51))
-        sizePolicy3.setHeightForWidth(self.label_74.sizePolicy().hasHeightForWidth())
-        self.label_74.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_74.sizePolicy().hasHeightForWidth())
+        self.label_74.setSizePolicy(sizePolicy4)
         self.label_74.setFont(font4)
         self.label_74.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.groupBox_33 = QGroupBox(self.scrollAreaWidgetContents)
@@ -1167,10 +1172,100 @@ class Ui_AVDV(object):
         self.label_79 = QLabel(self.groupBox_33)
         self.label_79.setObjectName(u"label_79")
         self.label_79.setGeometry(QRect(60, 60, 631, 31))
-        sizePolicy3.setHeightForWidth(self.label_79.sizePolicy().hasHeightForWidth())
-        self.label_79.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_79.sizePolicy().hasHeightForWidth())
+        self.label_79.setSizePolicy(sizePolicy4)
         self.label_79.setFont(font4)
         self.label_79.setStyleSheet(u"color: rgb(8, 128, 128);")
+        self.groupBox_22 = QGroupBox(self.scrollAreaWidgetContents)
+        self.groupBox_22.setObjectName(u"groupBox_22")
+        self.groupBox_22.setGeometry(QRect(30, 1600, 701, 101))
+        self.groupBox_22.setMinimumSize(QSize(200, 0))
+        self.groupBox_22.setMaximumSize(QSize(739, 16777215))
+        self.groupBox_22.setFont(font3)
+        self.gridLayoutWidget_15 = QWidget(self.groupBox_22)
+        self.gridLayoutWidget_15.setObjectName(u"gridLayoutWidget_15")
+        self.gridLayoutWidget_15.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayout_15 = QGridLayout(self.gridLayoutWidget_15)
+        self.gridLayout_15.setObjectName(u"gridLayout_15")
+        self.gridLayout_15.setContentsMargins(0, 0, 0, 0)
+        self.label_40 = QLabel(self.gridLayoutWidget_15)
+        self.label_40.setObjectName(u"label_40")
+        sizePolicy4.setHeightForWidth(self.label_40.sizePolicy().hasHeightForWidth())
+        self.label_40.setSizePolicy(sizePolicy4)
+        self.label_40.setFont(font4)
+        self.label_40.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_15.addWidget(self.label_40, 0, 1, 1, 1)
+
+        self.label_42 = QLabel(self.gridLayoutWidget_15)
+        self.label_42.setObjectName(u"label_42")
+        sizePolicy4.setHeightForWidth(self.label_42.sizePolicy().hasHeightForWidth())
+        self.label_42.setSizePolicy(sizePolicy4)
+        self.label_42.setFont(font4)
+        self.label_42.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_15.addWidget(self.label_42, 1, 1, 1, 1)
+
+        self.radioButton_series_as_set_on = QRadioButton(self.gridLayoutWidget_15)
+        self.radioButton_series_as_set_on.setObjectName(u"radioButton_series_as_set_on")
+        sizePolicy3.setHeightForWidth(self.radioButton_series_as_set_on.sizePolicy().hasHeightForWidth())
+        self.radioButton_series_as_set_on.setSizePolicy(sizePolicy3)
+        self.radioButton_series_as_set_on.setMinimumSize(QSize(80, 0))
+        self.radioButton_series_as_set_on.setFont(font3)
+
+        self.gridLayout_15.addWidget(self.radioButton_series_as_set_on, 0, 0, 1, 1)
+
+        self.radioButton_series_as_set_off = QRadioButton(self.gridLayoutWidget_15)
+        self.radioButton_series_as_set_off.setObjectName(u"radioButton_series_as_set_off")
+        self.radioButton_series_as_set_off.setFont(font3)
+
+        self.gridLayout_15.addWidget(self.radioButton_series_as_set_off, 1, 0, 1, 1)
+
+        self.groupBox_34 = QGroupBox(self.scrollAreaWidgetContents)
+        self.groupBox_34.setObjectName(u"groupBox_34")
+        self.groupBox_34.setGeometry(QRect(30, 1720, 701, 101))
+        self.groupBox_34.setMinimumSize(QSize(200, 0))
+        self.groupBox_34.setMaximumSize(QSize(739, 16777215))
+        self.groupBox_34.setFont(font3)
+        self.gridLayoutWidget_16 = QWidget(self.groupBox_34)
+        self.gridLayoutWidget_16.setObjectName(u"gridLayoutWidget_16")
+        self.gridLayoutWidget_16.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayout_16 = QGridLayout(self.gridLayoutWidget_16)
+        self.gridLayout_16.setObjectName(u"gridLayout_16")
+        self.gridLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.label_82 = QLabel(self.gridLayoutWidget_16)
+        self.label_82.setObjectName(u"label_82")
+        sizePolicy4.setHeightForWidth(self.label_82.sizePolicy().hasHeightForWidth())
+        self.label_82.setSizePolicy(sizePolicy4)
+        self.label_82.setFont(font4)
+        self.label_82.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_16.addWidget(self.label_82, 0, 1, 1, 1)
+
+        self.label_83 = QLabel(self.gridLayoutWidget_16)
+        self.label_83.setObjectName(u"label_83")
+        sizePolicy4.setHeightForWidth(self.label_83.sizePolicy().hasHeightForWidth())
+        self.label_83.setSizePolicy(sizePolicy4)
+        self.label_83.setFont(font4)
+        self.label_83.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_16.addWidget(self.label_83, 1, 1, 1, 1)
+
+        self.radioButton_succ_rename_on_3 = QRadioButton(self.gridLayoutWidget_16)
+        self.radioButton_succ_rename_on_3.setObjectName(u"radioButton_succ_rename_on_3")
+        sizePolicy3.setHeightForWidth(self.radioButton_succ_rename_on_3.sizePolicy().hasHeightForWidth())
+        self.radioButton_succ_rename_on_3.setSizePolicy(sizePolicy3)
+        self.radioButton_succ_rename_on_3.setMinimumSize(QSize(80, 0))
+        self.radioButton_succ_rename_on_3.setFont(font3)
+
+        self.gridLayout_16.addWidget(self.radioButton_succ_rename_on_3, 0, 0, 1, 1)
+
+        self.radioButton_succ_rename_off_3 = QRadioButton(self.gridLayoutWidget_16)
+        self.radioButton_succ_rename_off_3.setObjectName(u"radioButton_succ_rename_off_3")
+        self.radioButton_succ_rename_off_3.setFont(font3)
+
+        self.gridLayout_16.addWidget(self.radioButton_succ_rename_off_3, 1, 0, 1, 1)
+
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.tabWidget.addTab(self.tab1, "")
         self.tab2 = QWidget()
@@ -1199,8 +1294,8 @@ class Ui_AVDV(object):
         self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
         self.label_50 = QLabel(self.gridLayoutWidget_7)
         self.label_50.setObjectName(u"label_50")
-        sizePolicy2.setHeightForWidth(self.label_50.sizePolicy().hasHeightForWidth())
-        self.label_50.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_50.sizePolicy().hasHeightForWidth())
+        self.label_50.setSizePolicy(sizePolicy3)
         self.label_50.setMinimumSize(QSize(160, 30))
         self.label_50.setFont(font3)
         self.label_50.setLayoutDirection(Qt.LeftToRight)
@@ -1211,8 +1306,8 @@ class Ui_AVDV(object):
 
         self.label_58 = QLabel(self.gridLayoutWidget_7)
         self.label_58.setObjectName(u"label_58")
-        sizePolicy3.setHeightForWidth(self.label_58.sizePolicy().hasHeightForWidth())
-        self.label_58.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_58.sizePolicy().hasHeightForWidth())
+        self.label_58.setSizePolicy(sizePolicy4)
         self.label_58.setFont(font4)
         self.label_58.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1220,8 +1315,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_fail = QLineEdit(self.gridLayoutWidget_7)
         self.lineEdit_fail.setObjectName(u"lineEdit_fail")
-        sizePolicy3.setHeightForWidth(self.lineEdit_fail.sizePolicy().hasHeightForWidth())
-        self.lineEdit_fail.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.lineEdit_fail.sizePolicy().hasHeightForWidth())
+        self.lineEdit_fail.setSizePolicy(sizePolicy4)
         self.lineEdit_fail.setMinimumSize(QSize(300, 30))
         self.lineEdit_fail.setFont(font3)
         self.lineEdit_fail.setStyleSheet(u" font: \"Courier\";\n"
@@ -1233,8 +1328,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_extrafanart_dir = QLineEdit(self.gridLayoutWidget_7)
         self.lineEdit_extrafanart_dir.setObjectName(u"lineEdit_extrafanart_dir")
-        sizePolicy3.setHeightForWidth(self.lineEdit_extrafanart_dir.sizePolicy().hasHeightForWidth())
-        self.lineEdit_extrafanart_dir.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.lineEdit_extrafanart_dir.sizePolicy().hasHeightForWidth())
+        self.lineEdit_extrafanart_dir.setSizePolicy(sizePolicy4)
         self.lineEdit_extrafanart_dir.setMinimumSize(QSize(300, 30))
         self.lineEdit_extrafanart_dir.setFont(font3)
         self.lineEdit_extrafanart_dir.setStyleSheet(u" font: \"Courier\";\n"
@@ -1246,8 +1341,8 @@ class Ui_AVDV(object):
 
         self.label_47 = QLabel(self.gridLayoutWidget_7)
         self.label_47.setObjectName(u"label_47")
-        sizePolicy2.setHeightForWidth(self.label_47.sizePolicy().hasHeightForWidth())
-        self.label_47.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_47.sizePolicy().hasHeightForWidth())
+        self.label_47.setSizePolicy(sizePolicy3)
         self.label_47.setMinimumSize(QSize(160, 30))
         self.label_47.setFont(font3)
         self.label_47.setLayoutDirection(Qt.LeftToRight)
@@ -1258,8 +1353,8 @@ class Ui_AVDV(object):
 
         self.label_48 = QLabel(self.gridLayoutWidget_7)
         self.label_48.setObjectName(u"label_48")
-        sizePolicy2.setHeightForWidth(self.label_48.sizePolicy().hasHeightForWidth())
-        self.label_48.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_48.sizePolicy().hasHeightForWidth())
+        self.label_48.setSizePolicy(sizePolicy3)
         self.label_48.setMinimumSize(QSize(160, 30))
         self.label_48.setFont(font3)
         self.label_48.setLayoutDirection(Qt.LeftToRight)
@@ -1269,8 +1364,8 @@ class Ui_AVDV(object):
 
         self.label_49 = QLabel(self.gridLayoutWidget_7)
         self.label_49.setObjectName(u"label_49")
-        sizePolicy2.setHeightForWidth(self.label_49.sizePolicy().hasHeightForWidth())
-        self.label_49.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_49.sizePolicy().hasHeightForWidth())
+        self.label_49.setSizePolicy(sizePolicy3)
         self.label_49.setMinimumSize(QSize(160, 30))
         self.label_49.setFont(font3)
         self.label_49.setLayoutDirection(Qt.LeftToRight)
@@ -1280,8 +1375,8 @@ class Ui_AVDV(object):
 
         self.label_59 = QLabel(self.gridLayoutWidget_7)
         self.label_59.setObjectName(u"label_59")
-        sizePolicy3.setHeightForWidth(self.label_59.sizePolicy().hasHeightForWidth())
-        self.label_59.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_59.sizePolicy().hasHeightForWidth())
+        self.label_59.setSizePolicy(sizePolicy4)
         self.label_59.setFont(font4)
         self.label_59.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1289,8 +1384,8 @@ class Ui_AVDV(object):
 
         self.label_56 = QLabel(self.gridLayoutWidget_7)
         self.label_56.setObjectName(u"label_56")
-        sizePolicy3.setHeightForWidth(self.label_56.sizePolicy().hasHeightForWidth())
-        self.label_56.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_56.sizePolicy().hasHeightForWidth())
+        self.label_56.setSizePolicy(sizePolicy4)
         self.label_56.setFont(font4)
         self.label_56.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1298,8 +1393,8 @@ class Ui_AVDV(object):
 
         self.label_46 = QLabel(self.gridLayoutWidget_7)
         self.label_46.setObjectName(u"label_46")
-        sizePolicy2.setHeightForWidth(self.label_46.sizePolicy().hasHeightForWidth())
-        self.label_46.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_46.sizePolicy().hasHeightForWidth())
+        self.label_46.setSizePolicy(sizePolicy3)
         self.label_46.setMinimumSize(QSize(160, 30))
         self.label_46.setFont(font3)
         self.label_46.setLayoutDirection(Qt.LeftToRight)
@@ -1309,8 +1404,8 @@ class Ui_AVDV(object):
 
         self.label_57 = QLabel(self.gridLayoutWidget_7)
         self.label_57.setObjectName(u"label_57")
-        sizePolicy3.setHeightForWidth(self.label_57.sizePolicy().hasHeightForWidth())
-        self.label_57.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_57.sizePolicy().hasHeightForWidth())
+        self.label_57.setSizePolicy(sizePolicy4)
         self.label_57.setFont(font4)
         self.label_57.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1318,8 +1413,8 @@ class Ui_AVDV(object):
 
         self.label_29 = QLabel(self.gridLayoutWidget_7)
         self.label_29.setObjectName(u"label_29")
-        sizePolicy3.setHeightForWidth(self.label_29.sizePolicy().hasHeightForWidth())
-        self.label_29.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_29.sizePolicy().hasHeightForWidth())
+        self.label_29.setSizePolicy(sizePolicy4)
         self.label_29.setFont(font4)
         self.label_29.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1327,8 +1422,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_movie_path = QLineEdit(self.gridLayoutWidget_7)
         self.lineEdit_movie_path.setObjectName(u"lineEdit_movie_path")
-        sizePolicy3.setHeightForWidth(self.lineEdit_movie_path.sizePolicy().hasHeightForWidth())
-        self.lineEdit_movie_path.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.lineEdit_movie_path.sizePolicy().hasHeightForWidth())
+        self.lineEdit_movie_path.setSizePolicy(sizePolicy4)
         self.lineEdit_movie_path.setMinimumSize(QSize(300, 30))
         self.lineEdit_movie_path.setFont(font3)
         self.lineEdit_movie_path.setStyleSheet(u" font: \"Courier\";\n"
@@ -1340,8 +1435,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_escape_dir = QLineEdit(self.gridLayoutWidget_7)
         self.lineEdit_escape_dir.setObjectName(u"lineEdit_escape_dir")
-        sizePolicy3.setHeightForWidth(self.lineEdit_escape_dir.sizePolicy().hasHeightForWidth())
-        self.lineEdit_escape_dir.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.lineEdit_escape_dir.sizePolicy().hasHeightForWidth())
+        self.lineEdit_escape_dir.setSizePolicy(sizePolicy4)
         self.lineEdit_escape_dir.setMinimumSize(QSize(300, 30))
         self.lineEdit_escape_dir.setFont(font3)
         self.lineEdit_escape_dir.setStyleSheet(u" font: \"Courier\";\n"
@@ -1353,8 +1448,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_success = QLineEdit(self.gridLayoutWidget_7)
         self.lineEdit_success.setObjectName(u"lineEdit_success")
-        sizePolicy3.setHeightForWidth(self.lineEdit_success.sizePolicy().hasHeightForWidth())
-        self.lineEdit_success.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.lineEdit_success.sizePolicy().hasHeightForWidth())
+        self.lineEdit_success.setSizePolicy(sizePolicy4)
         self.lineEdit_success.setMinimumSize(QSize(300, 30))
         self.lineEdit_success.setFont(font3)
         self.lineEdit_success.setStyleSheet(u" font: \"Courier\";\n"
@@ -1388,8 +1483,8 @@ class Ui_AVDV(object):
 
         self.label_62 = QLabel(self.gridLayoutWidget_8)
         self.label_62.setObjectName(u"label_62")
-        sizePolicy3.setHeightForWidth(self.label_62.sizePolicy().hasHeightForWidth())
-        self.label_62.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_62.sizePolicy().hasHeightForWidth())
+        self.label_62.setSizePolicy(sizePolicy4)
         self.label_62.setFont(font4)
         self.label_62.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1397,8 +1492,8 @@ class Ui_AVDV(object):
 
         self.label_69 = QLabel(self.gridLayoutWidget_8)
         self.label_69.setObjectName(u"label_69")
-        sizePolicy3.setHeightForWidth(self.label_69.sizePolicy().hasHeightForWidth())
-        self.label_69.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_69.sizePolicy().hasHeightForWidth())
+        self.label_69.setSizePolicy(sizePolicy4)
         self.label_69.setFont(font4)
         self.label_69.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1408,8 +1503,8 @@ class Ui_AVDV(object):
         self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
         self.radioButton_foldername_C_on = QRadioButton(self.gridLayoutWidget_8)
         self.radioButton_foldername_C_on.setObjectName(u"radioButton_foldername_C_on")
-        sizePolicy3.setHeightForWidth(self.radioButton_foldername_C_on.sizePolicy().hasHeightForWidth())
-        self.radioButton_foldername_C_on.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.radioButton_foldername_C_on.sizePolicy().hasHeightForWidth())
+        self.radioButton_foldername_C_on.setSizePolicy(sizePolicy4)
         self.radioButton_foldername_C_on.setMinimumSize(QSize(0, 30))
         self.radioButton_foldername_C_on.setMaximumSize(QSize(16777215, 16777215))
         self.radioButton_foldername_C_on.setFont(font3)
@@ -1419,8 +1514,8 @@ class Ui_AVDV(object):
 
         self.radioButton_foldername_C_off = QRadioButton(self.gridLayoutWidget_8)
         self.radioButton_foldername_C_off.setObjectName(u"radioButton_foldername_C_off")
-        sizePolicy3.setHeightForWidth(self.radioButton_foldername_C_off.sizePolicy().hasHeightForWidth())
-        self.radioButton_foldername_C_off.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.radioButton_foldername_C_off.sizePolicy().hasHeightForWidth())
+        self.radioButton_foldername_C_off.setSizePolicy(sizePolicy4)
         self.radioButton_foldername_C_off.setMinimumSize(QSize(0, 30))
         self.radioButton_foldername_C_off.setMaximumSize(QSize(16777215, 16777215))
         self.radioButton_foldername_C_off.setFont(font3)
@@ -1432,8 +1527,8 @@ class Ui_AVDV(object):
 
         self.label_63 = QLabel(self.gridLayoutWidget_8)
         self.label_63.setObjectName(u"label_63")
-        sizePolicy2.setHeightForWidth(self.label_63.sizePolicy().hasHeightForWidth())
-        self.label_63.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_63.sizePolicy().hasHeightForWidth())
+        self.label_63.setSizePolicy(sizePolicy3)
         self.label_63.setMinimumSize(QSize(160, 30))
         self.label_63.setFont(font3)
         self.label_63.setLayoutDirection(Qt.LeftToRight)
@@ -1454,8 +1549,8 @@ class Ui_AVDV(object):
 
         self.label_68 = QLabel(self.gridLayoutWidget_8)
         self.label_68.setObjectName(u"label_68")
-        sizePolicy3.setHeightForWidth(self.label_68.sizePolicy().hasHeightForWidth())
-        self.label_68.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_68.sizePolicy().hasHeightForWidth())
+        self.label_68.setSizePolicy(sizePolicy4)
         self.label_68.setFont(font4)
         self.label_68.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1463,8 +1558,8 @@ class Ui_AVDV(object):
 
         self.label_71 = QLabel(self.gridLayoutWidget_8)
         self.label_71.setObjectName(u"label_71")
-        sizePolicy2.setHeightForWidth(self.label_71.sizePolicy().hasHeightForWidth())
-        self.label_71.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_71.sizePolicy().hasHeightForWidth())
+        self.label_71.setSizePolicy(sizePolicy3)
         self.label_71.setMinimumSize(QSize(160, 30))
         self.label_71.setFont(font3)
         self.label_71.setLayoutDirection(Qt.LeftToRight)
@@ -1474,8 +1569,8 @@ class Ui_AVDV(object):
 
         self.label_67 = QLabel(self.gridLayoutWidget_8)
         self.label_67.setObjectName(u"label_67")
-        sizePolicy2.setHeightForWidth(self.label_67.sizePolicy().hasHeightForWidth())
-        self.label_67.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_67.sizePolicy().hasHeightForWidth())
+        self.label_67.setSizePolicy(sizePolicy3)
         self.label_67.setMinimumSize(QSize(160, 30))
         self.label_67.setFont(font3)
         self.label_67.setLayoutDirection(Qt.LeftToRight)
@@ -1485,8 +1580,8 @@ class Ui_AVDV(object):
 
         self.label_61 = QLabel(self.gridLayoutWidget_8)
         self.label_61.setObjectName(u"label_61")
-        sizePolicy3.setHeightForWidth(self.label_61.sizePolicy().hasHeightForWidth())
-        self.label_61.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_61.sizePolicy().hasHeightForWidth())
+        self.label_61.setSizePolicy(sizePolicy4)
         self.label_61.setFont(font4)
         self.label_61.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1494,8 +1589,8 @@ class Ui_AVDV(object):
 
         self.label_66 = QLabel(self.gridLayoutWidget_8)
         self.label_66.setObjectName(u"label_66")
-        sizePolicy3.setHeightForWidth(self.label_66.sizePolicy().hasHeightForWidth())
-        self.label_66.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_66.sizePolicy().hasHeightForWidth())
+        self.label_66.setSizePolicy(sizePolicy4)
         self.label_66.setFont(font4)
         self.label_66.setStyleSheet(u"color: rgb(8, 128, 128);")
 
@@ -1503,11 +1598,11 @@ class Ui_AVDV(object):
 
         self.label_43 = QLabel(self.gridLayoutWidget_8)
         self.label_43.setObjectName(u"label_43")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.label_43.sizePolicy().hasHeightForWidth())
-        self.label_43.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.label_43.sizePolicy().hasHeightForWidth())
+        self.label_43.setSizePolicy(sizePolicy6)
         self.label_43.setMinimumSize(QSize(160, 30))
         self.label_43.setFont(font3)
         self.label_43.setLayoutDirection(Qt.RightToLeft)
@@ -1517,8 +1612,8 @@ class Ui_AVDV(object):
 
         self.label_51 = QLabel(self.gridLayoutWidget_8)
         self.label_51.setObjectName(u"label_51")
-        sizePolicy2.setHeightForWidth(self.label_51.sizePolicy().hasHeightForWidth())
-        self.label_51.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_51.sizePolicy().hasHeightForWidth())
+        self.label_51.setSizePolicy(sizePolicy3)
         self.label_51.setMinimumSize(QSize(160, 30))
         self.label_51.setFont(font3)
         self.label_51.setLayoutDirection(Qt.RightToLeft)
@@ -1570,8 +1665,8 @@ class Ui_AVDV(object):
         self.gridLayout_11.setContentsMargins(0, 0, 0, 0)
         self.label_72 = QLabel(self.gridLayoutWidget_11)
         self.label_72.setObjectName(u"label_72")
-        sizePolicy2.setHeightForWidth(self.label_72.sizePolicy().hasHeightForWidth())
-        self.label_72.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_72.sizePolicy().hasHeightForWidth())
+        self.label_72.setSizePolicy(sizePolicy3)
         self.label_72.setMinimumSize(QSize(160, 30))
         self.label_72.setFont(font3)
         self.label_72.setLayoutDirection(Qt.LeftToRight)
@@ -1582,8 +1677,8 @@ class Ui_AVDV(object):
 
         self.label_76 = QLabel(self.gridLayoutWidget_11)
         self.label_76.setObjectName(u"label_76")
-        sizePolicy2.setHeightForWidth(self.label_76.sizePolicy().hasHeightForWidth())
-        self.label_76.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_76.sizePolicy().hasHeightForWidth())
+        self.label_76.setSizePolicy(sizePolicy3)
         self.label_76.setMinimumSize(QSize(160, 30))
         self.label_76.setFont(font3)
         self.label_76.setLayoutDirection(Qt.LeftToRight)
@@ -1593,8 +1688,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_escape_char = QLineEdit(self.gridLayoutWidget_11)
         self.lineEdit_escape_char.setObjectName(u"lineEdit_escape_char")
-        sizePolicy4.setHeightForWidth(self.lineEdit_escape_char.sizePolicy().hasHeightForWidth())
-        self.lineEdit_escape_char.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.lineEdit_escape_char.sizePolicy().hasHeightForWidth())
+        self.lineEdit_escape_char.setSizePolicy(sizePolicy5)
         self.lineEdit_escape_char.setMinimumSize(QSize(500, 30))
         self.lineEdit_escape_char.setMaximumSize(QSize(540, 16777215))
         self.lineEdit_escape_char.setFont(font3)
@@ -1607,8 +1702,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_escape_string = QLineEdit(self.gridLayoutWidget_11)
         self.lineEdit_escape_string.setObjectName(u"lineEdit_escape_string")
-        sizePolicy4.setHeightForWidth(self.lineEdit_escape_string.sizePolicy().hasHeightForWidth())
-        self.lineEdit_escape_string.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.lineEdit_escape_string.sizePolicy().hasHeightForWidth())
+        self.lineEdit_escape_string.setSizePolicy(sizePolicy5)
         self.lineEdit_escape_string.setMinimumSize(QSize(500, 30))
         self.lineEdit_escape_string.setMaximumSize(QSize(540, 16777215))
         self.lineEdit_escape_string.setFont(font3)
@@ -1632,8 +1727,8 @@ class Ui_AVDV(object):
         self.gridLayout_12.setContentsMargins(0, 0, 0, 0)
         self.label_77 = QLabel(self.gridLayoutWidget_12)
         self.label_77.setObjectName(u"label_77")
-        sizePolicy2.setHeightForWidth(self.label_77.sizePolicy().hasHeightForWidth())
-        self.label_77.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_77.sizePolicy().hasHeightForWidth())
+        self.label_77.setSizePolicy(sizePolicy3)
         self.label_77.setMinimumSize(QSize(160, 30))
         self.label_77.setFont(font3)
         self.label_77.setLayoutDirection(Qt.LeftToRight)
@@ -1643,8 +1738,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_uncensored_prefix = QLineEdit(self.gridLayoutWidget_12)
         self.lineEdit_uncensored_prefix.setObjectName(u"lineEdit_uncensored_prefix")
-        sizePolicy4.setHeightForWidth(self.lineEdit_uncensored_prefix.sizePolicy().hasHeightForWidth())
-        self.lineEdit_uncensored_prefix.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.lineEdit_uncensored_prefix.sizePolicy().hasHeightForWidth())
+        self.lineEdit_uncensored_prefix.setSizePolicy(sizePolicy5)
         self.lineEdit_uncensored_prefix.setMinimumSize(QSize(500, 30))
         self.lineEdit_uncensored_prefix.setMaximumSize(QSize(540, 16777215))
         self.lineEdit_uncensored_prefix.setFont(font3)
@@ -1657,8 +1752,8 @@ class Ui_AVDV(object):
 
         self.label_78 = QLabel(self.gridLayoutWidget_12)
         self.label_78.setObjectName(u"label_78")
-        sizePolicy2.setHeightForWidth(self.label_78.sizePolicy().hasHeightForWidth())
-        self.label_78.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_78.sizePolicy().hasHeightForWidth())
+        self.label_78.setSizePolicy(sizePolicy3)
         self.label_78.setMinimumSize(QSize(160, 30))
         self.label_78.setFont(font3)
         self.label_78.setLayoutDirection(Qt.LeftToRight)
@@ -1668,8 +1763,8 @@ class Ui_AVDV(object):
 
         self.label_44 = QLabel(self.gridLayoutWidget_12)
         self.label_44.setObjectName(u"label_44")
-        sizePolicy5.setHeightForWidth(self.label_44.sizePolicy().hasHeightForWidth())
-        self.label_44.setSizePolicy(sizePolicy5)
+        sizePolicy6.setHeightForWidth(self.label_44.sizePolicy().hasHeightForWidth())
+        self.label_44.setSizePolicy(sizePolicy6)
         self.label_44.setMinimumSize(QSize(160, 30))
         self.label_44.setFont(font3)
         self.label_44.setLayoutDirection(Qt.RightToLeft)
@@ -1679,8 +1774,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_movie_type = QLineEdit(self.gridLayoutWidget_12)
         self.lineEdit_movie_type.setObjectName(u"lineEdit_movie_type")
-        sizePolicy3.setHeightForWidth(self.lineEdit_movie_type.sizePolicy().hasHeightForWidth())
-        self.lineEdit_movie_type.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.lineEdit_movie_type.sizePolicy().hasHeightForWidth())
+        self.lineEdit_movie_type.setSizePolicy(sizePolicy4)
         self.lineEdit_movie_type.setMinimumSize(QSize(300, 30))
         self.lineEdit_movie_type.setFont(font3)
         self.lineEdit_movie_type.setStyleSheet(u" font: \"Courier\";\n"
@@ -1692,8 +1787,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_sub_type = QLineEdit(self.gridLayoutWidget_12)
         self.lineEdit_sub_type.setObjectName(u"lineEdit_sub_type")
-        sizePolicy3.setHeightForWidth(self.lineEdit_sub_type.sizePolicy().hasHeightForWidth())
-        self.lineEdit_sub_type.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.lineEdit_sub_type.sizePolicy().hasHeightForWidth())
+        self.lineEdit_sub_type.setSizePolicy(sizePolicy4)
         self.lineEdit_sub_type.setMinimumSize(QSize(300, 30))
         self.lineEdit_sub_type.setFont(font3)
         self.lineEdit_sub_type.setStyleSheet(u" font: \"Courier\";\n"
@@ -1740,8 +1835,8 @@ class Ui_AVDV(object):
 
         self.label_45 = QLabel(self.gridLayoutWidget_10)
         self.label_45.setObjectName(u"label_45")
-        sizePolicy5.setHeightForWidth(self.label_45.sizePolicy().hasHeightForWidth())
-        self.label_45.setSizePolicy(sizePolicy5)
+        sizePolicy6.setHeightForWidth(self.label_45.sizePolicy().hasHeightForWidth())
+        self.label_45.setSizePolicy(sizePolicy6)
         self.label_45.setMinimumSize(QSize(160, 30))
         self.label_45.setFont(font3)
         self.label_45.setLayoutDirection(Qt.RightToLeft)
@@ -1752,8 +1847,8 @@ class Ui_AVDV(object):
         self.label_75 = QLabel(self.groupBox_10)
         self.label_75.setObjectName(u"label_75")
         self.label_75.setGeometry(QRect(10, 170, 691, 91))
-        sizePolicy3.setHeightForWidth(self.label_75.sizePolicy().hasHeightForWidth())
-        self.label_75.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.label_75.sizePolicy().hasHeightForWidth())
+        self.label_75.setSizePolicy(sizePolicy4)
         self.label_75.setFont(font4)
         self.label_75.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.label_75.setScaledContents(True)
@@ -1770,8 +1865,8 @@ class Ui_AVDV(object):
         self.gridLayout_9.setContentsMargins(0, 0, 0, 0)
         self.label_65 = QLabel(self.gridLayoutWidget_9)
         self.label_65.setObjectName(u"label_65")
-        sizePolicy2.setHeightForWidth(self.label_65.sizePolicy().hasHeightForWidth())
-        self.label_65.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_65.sizePolicy().hasHeightForWidth())
+        self.label_65.setSizePolicy(sizePolicy3)
         self.label_65.setMinimumSize(QSize(160, 30))
         self.label_65.setFont(font3)
         self.label_65.setLayoutDirection(Qt.LeftToRight)
@@ -1781,8 +1876,8 @@ class Ui_AVDV(object):
 
         self.label_73 = QLabel(self.gridLayoutWidget_9)
         self.label_73.setObjectName(u"label_73")
-        sizePolicy2.setHeightForWidth(self.label_73.sizePolicy().hasHeightForWidth())
-        self.label_73.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_73.sizePolicy().hasHeightForWidth())
+        self.label_73.setSizePolicy(sizePolicy3)
         self.label_73.setMinimumSize(QSize(160, 30))
         self.label_73.setFont(font3)
         self.label_73.setLayoutDirection(Qt.LeftToRight)
@@ -1792,8 +1887,8 @@ class Ui_AVDV(object):
 
         self.label_64 = QLabel(self.gridLayoutWidget_9)
         self.label_64.setObjectName(u"label_64")
-        sizePolicy2.setHeightForWidth(self.label_64.sizePolicy().hasHeightForWidth())
-        self.label_64.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_64.sizePolicy().hasHeightForWidth())
+        self.label_64.setSizePolicy(sizePolicy3)
         self.label_64.setMinimumSize(QSize(160, 30))
         self.label_64.setFont(font3)
         self.label_64.setLayoutDirection(Qt.LeftToRight)
@@ -1806,11 +1901,11 @@ class Ui_AVDV(object):
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalSlider_timeout = QSlider(self.gridLayoutWidget_9)
         self.horizontalSlider_timeout.setObjectName(u"horizontalSlider_timeout")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.horizontalSlider_timeout.sizePolicy().hasHeightForWidth())
-        self.horizontalSlider_timeout.setSizePolicy(sizePolicy6)
+        sizePolicy7 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
+        sizePolicy7.setHorizontalStretch(0)
+        sizePolicy7.setVerticalStretch(0)
+        sizePolicy7.setHeightForWidth(self.horizontalSlider_timeout.sizePolicy().hasHeightForWidth())
+        self.horizontalSlider_timeout.setSizePolicy(sizePolicy7)
         self.horizontalSlider_timeout.setMinimumSize(QSize(300, 30))
         self.horizontalSlider_timeout.setMaximumSize(QSize(66666, 30))
         self.horizontalSlider_timeout.setFont(font5)
@@ -1827,11 +1922,11 @@ class Ui_AVDV(object):
 
         self.lcdNumber_timeout = QLCDNumber(self.gridLayoutWidget_9)
         self.lcdNumber_timeout.setObjectName(u"lcdNumber_timeout")
-        sizePolicy7 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Maximum)
-        sizePolicy7.setHorizontalStretch(0)
-        sizePolicy7.setVerticalStretch(0)
-        sizePolicy7.setHeightForWidth(self.lcdNumber_timeout.sizePolicy().hasHeightForWidth())
-        self.lcdNumber_timeout.setSizePolicy(sizePolicy7)
+        sizePolicy8 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Maximum)
+        sizePolicy8.setHorizontalStretch(0)
+        sizePolicy8.setVerticalStretch(0)
+        sizePolicy8.setHeightForWidth(self.lcdNumber_timeout.sizePolicy().hasHeightForWidth())
+        self.lcdNumber_timeout.setSizePolicy(sizePolicy8)
         self.lcdNumber_timeout.setMinimumSize(QSize(30, 30))
         self.lcdNumber_timeout.setMaximumSize(QSize(70, 30))
         self.lcdNumber_timeout.setFont(font5)
@@ -1847,8 +1942,8 @@ class Ui_AVDV(object):
         self.horizontalLayout_retry.setObjectName(u"horizontalLayout_retry")
         self.horizontalSlider_retry = QSlider(self.gridLayoutWidget_9)
         self.horizontalSlider_retry.setObjectName(u"horizontalSlider_retry")
-        sizePolicy6.setHeightForWidth(self.horizontalSlider_retry.sizePolicy().hasHeightForWidth())
-        self.horizontalSlider_retry.setSizePolicy(sizePolicy6)
+        sizePolicy7.setHeightForWidth(self.horizontalSlider_retry.sizePolicy().hasHeightForWidth())
+        self.horizontalSlider_retry.setSizePolicy(sizePolicy7)
         self.horizontalSlider_retry.setMinimumSize(QSize(300, 30))
         self.horizontalSlider_retry.setMaximumSize(QSize(66666, 30))
         self.horizontalSlider_retry.setFont(font5)
@@ -1864,11 +1959,11 @@ class Ui_AVDV(object):
 
         self.lcdNumber_retry = QLCDNumber(self.gridLayoutWidget_9)
         self.lcdNumber_retry.setObjectName(u"lcdNumber_retry")
-        sizePolicy8 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
-        sizePolicy8.setHorizontalStretch(0)
-        sizePolicy8.setVerticalStretch(0)
-        sizePolicy8.setHeightForWidth(self.lcdNumber_retry.sizePolicy().hasHeightForWidth())
-        self.lcdNumber_retry.setSizePolicy(sizePolicy8)
+        sizePolicy9 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
+        sizePolicy9.setHorizontalStretch(0)
+        sizePolicy9.setVerticalStretch(0)
+        sizePolicy9.setHeightForWidth(self.lcdNumber_retry.sizePolicy().hasHeightForWidth())
+        self.lcdNumber_retry.setSizePolicy(sizePolicy9)
         self.lcdNumber_retry.setMinimumSize(QSize(30, 30))
         self.lcdNumber_retry.setMaximumSize(QSize(70, 30))
         self.lcdNumber_retry.setFont(font5)
@@ -1907,8 +2002,8 @@ class Ui_AVDV(object):
 
         self.label_70 = QLabel(self.gridLayoutWidget_9)
         self.label_70.setObjectName(u"label_70")
-        sizePolicy2.setHeightForWidth(self.label_70.sizePolicy().hasHeightForWidth())
-        self.label_70.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_70.sizePolicy().hasHeightForWidth())
+        self.label_70.setSizePolicy(sizePolicy3)
         self.label_70.setMinimumSize(QSize(160, 30))
         self.label_70.setFont(font3)
         self.label_70.setLayoutDirection(Qt.LeftToRight)
@@ -1918,8 +2013,8 @@ class Ui_AVDV(object):
 
         self.lineEdit_proxy = QLineEdit(self.gridLayoutWidget_9)
         self.lineEdit_proxy.setObjectName(u"lineEdit_proxy")
-        sizePolicy3.setHeightForWidth(self.lineEdit_proxy.sizePolicy().hasHeightForWidth())
-        self.lineEdit_proxy.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.lineEdit_proxy.sizePolicy().hasHeightForWidth())
+        self.lineEdit_proxy.setSizePolicy(sizePolicy4)
         self.lineEdit_proxy.setMinimumSize(QSize(300, 30))
         self.lineEdit_proxy.setFont(font3)
         self.lineEdit_proxy.setStyleSheet(u" font: \"Courier\";\n"
@@ -1957,8 +2052,8 @@ class Ui_AVDV(object):
         self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.radioButton_poster_mark_on = QRadioButton(self.horizontalLayoutWidget_5)
         self.radioButton_poster_mark_on.setObjectName(u"radioButton_poster_mark_on")
-        sizePolicy3.setHeightForWidth(self.radioButton_poster_mark_on.sizePolicy().hasHeightForWidth())
-        self.radioButton_poster_mark_on.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.radioButton_poster_mark_on.sizePolicy().hasHeightForWidth())
+        self.radioButton_poster_mark_on.setSizePolicy(sizePolicy4)
         self.radioButton_poster_mark_on.setMinimumSize(QSize(0, 0))
         self.radioButton_poster_mark_on.setFont(font3)
 
@@ -1966,8 +2061,8 @@ class Ui_AVDV(object):
 
         self.radioButton_poster_mark_off = QRadioButton(self.horizontalLayoutWidget_5)
         self.radioButton_poster_mark_off.setObjectName(u"radioButton_poster_mark_off")
-        sizePolicy3.setHeightForWidth(self.radioButton_poster_mark_off.sizePolicy().hasHeightForWidth())
-        self.radioButton_poster_mark_off.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.radioButton_poster_mark_off.sizePolicy().hasHeightForWidth())
+        self.radioButton_poster_mark_off.setSizePolicy(sizePolicy4)
         self.radioButton_poster_mark_off.setMinimumSize(QSize(0, 0))
         self.radioButton_poster_mark_off.setFont(font3)
 
@@ -1987,8 +2082,8 @@ class Ui_AVDV(object):
         self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.radioButton_thumb_mark_on = QRadioButton(self.horizontalLayoutWidget_6)
         self.radioButton_thumb_mark_on.setObjectName(u"radioButton_thumb_mark_on")
-        sizePolicy3.setHeightForWidth(self.radioButton_thumb_mark_on.sizePolicy().hasHeightForWidth())
-        self.radioButton_thumb_mark_on.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.radioButton_thumb_mark_on.sizePolicy().hasHeightForWidth())
+        self.radioButton_thumb_mark_on.setSizePolicy(sizePolicy4)
         self.radioButton_thumb_mark_on.setMinimumSize(QSize(0, 0))
         self.radioButton_thumb_mark_on.setFont(font3)
 
@@ -1996,8 +2091,8 @@ class Ui_AVDV(object):
 
         self.radioButton_thumb_mark_off = QRadioButton(self.horizontalLayoutWidget_6)
         self.radioButton_thumb_mark_off.setObjectName(u"radioButton_thumb_mark_off")
-        sizePolicy3.setHeightForWidth(self.radioButton_thumb_mark_off.sizePolicy().hasHeightForWidth())
-        self.radioButton_thumb_mark_off.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.radioButton_thumb_mark_off.sizePolicy().hasHeightForWidth())
+        self.radioButton_thumb_mark_off.setSizePolicy(sizePolicy4)
         self.radioButton_thumb_mark_off.setMinimumSize(QSize(0, 0))
         self.radioButton_thumb_mark_off.setFont(font3)
 
@@ -2016,8 +2111,8 @@ class Ui_AVDV(object):
         self.horizontalLayout_19.setContentsMargins(0, 0, 0, 0)
         self.radioButton_top_left_3 = QRadioButton(self.horizontalLayoutWidget_16)
         self.radioButton_top_left_3.setObjectName(u"radioButton_top_left_3")
-        sizePolicy4.setHeightForWidth(self.radioButton_top_left_3.sizePolicy().hasHeightForWidth())
-        self.radioButton_top_left_3.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.radioButton_top_left_3.sizePolicy().hasHeightForWidth())
+        self.radioButton_top_left_3.setSizePolicy(sizePolicy5)
         self.radioButton_top_left_3.setMinimumSize(QSize(0, 30))
         self.radioButton_top_left_3.setFont(font3)
 
@@ -2025,8 +2120,8 @@ class Ui_AVDV(object):
 
         self.radioButton_bottom_left_3 = QRadioButton(self.horizontalLayoutWidget_16)
         self.radioButton_bottom_left_3.setObjectName(u"radioButton_bottom_left_3")
-        sizePolicy4.setHeightForWidth(self.radioButton_bottom_left_3.sizePolicy().hasHeightForWidth())
-        self.radioButton_bottom_left_3.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.radioButton_bottom_left_3.sizePolicy().hasHeightForWidth())
+        self.radioButton_bottom_left_3.setSizePolicy(sizePolicy5)
         self.radioButton_bottom_left_3.setMinimumSize(QSize(0, 30))
         self.radioButton_bottom_left_3.setFont(font3)
 
@@ -2034,8 +2129,8 @@ class Ui_AVDV(object):
 
         self.radioButton_top_right_3 = QRadioButton(self.horizontalLayoutWidget_16)
         self.radioButton_top_right_3.setObjectName(u"radioButton_top_right_3")
-        sizePolicy4.setHeightForWidth(self.radioButton_top_right_3.sizePolicy().hasHeightForWidth())
-        self.radioButton_top_right_3.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.radioButton_top_right_3.sizePolicy().hasHeightForWidth())
+        self.radioButton_top_right_3.setSizePolicy(sizePolicy5)
         self.radioButton_top_right_3.setMinimumSize(QSize(0, 30))
         self.radioButton_top_right_3.setFont(font3)
 
@@ -2054,8 +2149,8 @@ class Ui_AVDV(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.radioButton_top_left = QRadioButton(self.horizontalLayoutWidget_2)
         self.radioButton_top_left.setObjectName(u"radioButton_top_left")
-        sizePolicy4.setHeightForWidth(self.radioButton_top_left.sizePolicy().hasHeightForWidth())
-        self.radioButton_top_left.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.radioButton_top_left.sizePolicy().hasHeightForWidth())
+        self.radioButton_top_left.setSizePolicy(sizePolicy5)
         self.radioButton_top_left.setMinimumSize(QSize(0, 30))
         self.radioButton_top_left.setFont(font3)
 
@@ -2063,8 +2158,8 @@ class Ui_AVDV(object):
 
         self.radioButton_bottom_left = QRadioButton(self.horizontalLayoutWidget_2)
         self.radioButton_bottom_left.setObjectName(u"radioButton_bottom_left")
-        sizePolicy4.setHeightForWidth(self.radioButton_bottom_left.sizePolicy().hasHeightForWidth())
-        self.radioButton_bottom_left.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.radioButton_bottom_left.sizePolicy().hasHeightForWidth())
+        self.radioButton_bottom_left.setSizePolicy(sizePolicy5)
         self.radioButton_bottom_left.setMinimumSize(QSize(0, 30))
         self.radioButton_bottom_left.setFont(font3)
 
@@ -2072,8 +2167,8 @@ class Ui_AVDV(object):
 
         self.radioButton_top_right = QRadioButton(self.horizontalLayoutWidget_2)
         self.radioButton_top_right.setObjectName(u"radioButton_top_right")
-        sizePolicy4.setHeightForWidth(self.radioButton_top_right.sizePolicy().hasHeightForWidth())
-        self.radioButton_top_right.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.radioButton_top_right.sizePolicy().hasHeightForWidth())
+        self.radioButton_top_right.setSizePolicy(sizePolicy5)
         self.radioButton_top_right.setMinimumSize(QSize(0, 30))
         self.radioButton_top_right.setFont(font3)
 
@@ -2081,8 +2176,8 @@ class Ui_AVDV(object):
 
         self.radioButton_bottom_right = QRadioButton(self.horizontalLayoutWidget_2)
         self.radioButton_bottom_right.setObjectName(u"radioButton_bottom_right")
-        sizePolicy4.setHeightForWidth(self.radioButton_bottom_right.sizePolicy().hasHeightForWidth())
-        self.radioButton_bottom_right.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.radioButton_bottom_right.sizePolicy().hasHeightForWidth())
+        self.radioButton_bottom_right.setSizePolicy(sizePolicy5)
         self.radioButton_bottom_right.setMinimumSize(QSize(0, 30))
         self.radioButton_bottom_right.setFont(font3)
 
@@ -2101,8 +2196,8 @@ class Ui_AVDV(object):
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.checkBox_sub = QCheckBox(self.horizontalLayoutWidget_3)
         self.checkBox_sub.setObjectName(u"checkBox_sub")
-        sizePolicy4.setHeightForWidth(self.checkBox_sub.sizePolicy().hasHeightForWidth())
-        self.checkBox_sub.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.checkBox_sub.sizePolicy().hasHeightForWidth())
+        self.checkBox_sub.setSizePolicy(sizePolicy5)
         self.checkBox_sub.setMinimumSize(QSize(100, 30))
         self.checkBox_sub.setFont(font3)
 
@@ -2110,8 +2205,8 @@ class Ui_AVDV(object):
 
         self.checkBox_leak = QCheckBox(self.horizontalLayoutWidget_3)
         self.checkBox_leak.setObjectName(u"checkBox_leak")
-        sizePolicy4.setHeightForWidth(self.checkBox_leak.sizePolicy().hasHeightForWidth())
-        self.checkBox_leak.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.checkBox_leak.sizePolicy().hasHeightForWidth())
+        self.checkBox_leak.setSizePolicy(sizePolicy5)
         self.checkBox_leak.setMinimumSize(QSize(100, 30))
         self.checkBox_leak.setFont(font3)
 
@@ -2119,8 +2214,8 @@ class Ui_AVDV(object):
 
         self.checkBox_uncensored = QCheckBox(self.horizontalLayoutWidget_3)
         self.checkBox_uncensored.setObjectName(u"checkBox_uncensored")
-        sizePolicy4.setHeightForWidth(self.checkBox_uncensored.sizePolicy().hasHeightForWidth())
-        self.checkBox_uncensored.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.checkBox_uncensored.sizePolicy().hasHeightForWidth())
+        self.checkBox_uncensored.setSizePolicy(sizePolicy5)
         self.checkBox_uncensored.setMinimumSize(QSize(100, 30))
         self.checkBox_uncensored.setFont(font3)
 
@@ -2139,8 +2234,8 @@ class Ui_AVDV(object):
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.horizontalSlider_mark_size = QSlider(self.horizontalLayoutWidget_4)
         self.horizontalSlider_mark_size.setObjectName(u"horizontalSlider_mark_size")
-        sizePolicy2.setHeightForWidth(self.horizontalSlider_mark_size.sizePolicy().hasHeightForWidth())
-        self.horizontalSlider_mark_size.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.horizontalSlider_mark_size.sizePolicy().hasHeightForWidth())
+        self.horizontalSlider_mark_size.setSizePolicy(sizePolicy3)
         self.horizontalSlider_mark_size.setMinimumSize(QSize(400, 30))
         self.horizontalSlider_mark_size.setMaximumSize(QSize(500, 30))
         self.horizontalSlider_mark_size.setMinimum(1)
@@ -2153,8 +2248,8 @@ class Ui_AVDV(object):
 
         self.lcdNumber_mark_size = QLCDNumber(self.horizontalLayoutWidget_4)
         self.lcdNumber_mark_size.setObjectName(u"lcdNumber_mark_size")
-        sizePolicy7.setHeightForWidth(self.lcdNumber_mark_size.sizePolicy().hasHeightForWidth())
-        self.lcdNumber_mark_size.setSizePolicy(sizePolicy7)
+        sizePolicy8.setHeightForWidth(self.lcdNumber_mark_size.sizePolicy().hasHeightForWidth())
+        self.lcdNumber_mark_size.setSizePolicy(sizePolicy8)
         self.lcdNumber_mark_size.setMinimumSize(QSize(30, 30))
         self.lcdNumber_mark_size.setMaximumSize(QSize(70, 30))
         self.lcdNumber_mark_size.setProperty("intValue", 3)
@@ -2291,7 +2386,7 @@ class Ui_AVDV(object):
         self.label_ico.setAlignment(Qt.AlignCenter)
         self.layoutWidget = QWidget(self.widget_setting)
         self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(0, 40, 221, 331))
+        self.layoutWidget.setGeometry(QRect(0, 50, 221, 331))
         self.layoutWidget.setFont(font)
         self.verticalLayout = QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setSpacing(0)
@@ -2299,11 +2394,8 @@ class Ui_AVDV(object):
         self.verticalLayout.setContentsMargins(18, 0, 18, 0)
         self.pushButton_main = QPushButton(self.layoutWidget)
         self.pushButton_main.setObjectName(u"pushButton_main")
-        sizePolicy9 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-        sizePolicy9.setHorizontalStretch(0)
-        sizePolicy9.setVerticalStretch(0)
-        sizePolicy9.setHeightForWidth(self.pushButton_main.sizePolicy().hasHeightForWidth())
-        self.pushButton_main.setSizePolicy(sizePolicy9)
+        sizePolicy.setHeightForWidth(self.pushButton_main.sizePolicy().hasHeightForWidth())
+        self.pushButton_main.setSizePolicy(sizePolicy)
         self.pushButton_main.setMinimumSize(QSize(0, 40))
         self.pushButton_main.setMaximumSize(QSize(16777215, 40))
         self.pushButton_main.setFont(font)
@@ -2372,7 +2464,7 @@ class Ui_AVDV(object):
 
         self.layoutWidget1 = QWidget(self.widget_setting)
         self.layoutWidget1.setObjectName(u"layoutWidget1")
-        self.layoutWidget1.setGeometry(QRect(0, 0, 41, 41))
+        self.layoutWidget1.setGeometry(QRect(0, 0, 91, 41))
         self.layoutWidget1.setFont(font)
         self.horizontalLayout = QHBoxLayout(self.layoutWidget1)
         self.horizontalLayout.setSpacing(0)
@@ -2393,6 +2485,20 @@ class Ui_AVDV(object):
         self.pushButton_close.setStyleSheet(u"QPushButton{color:#E0E0E0;background:#F14C4C;border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:#FF6058;}")
 
         self.horizontalLayout.addWidget(self.pushButton_close)
+
+        self.pushButton_min = QPushButton(self.layoutWidget1)
+        self.pushButton_min.setObjectName(u"pushButton_min")
+        sizePolicy10.setHeightForWidth(self.pushButton_min.sizePolicy().hasHeightForWidth())
+        self.pushButton_min.setSizePolicy(sizePolicy10)
+        self.pushButton_min.setMinimumSize(QSize(20, 20))
+        self.pushButton_min.setMaximumSize(QSize(20, 20))
+        self.pushButton_min.setBaseSize(QSize(0, 0))
+        self.pushButton_min.setFont(font)
+        self.pushButton_min.setMouseTracking(False)
+        self.pushButton_min.setStyleSheet(u"QPushButton{color:#E0E0E0;background:rgb(246, 186, 76);border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:rgba(246, 186, 76, 230);}\n"
+"")
+
+        self.horizontalLayout.addWidget(self.pushButton_min)
 
         self.label_show_version = QLabel(self.widget_setting)
         self.label_show_version.setObjectName(u"label_show_version")
@@ -2426,7 +2532,7 @@ class Ui_AVDV(object):
 
         self.retranslateUi(AVDV)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(4)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2612,6 +2718,16 @@ class Ui_AVDV(object):
         self.checkBox_old_extrafanart_copy.setText(QCoreApplication.translate("AVDV", u"extrafanart\u526f\u672c", None))
         self.checkBox_old_nfo.setText(QCoreApplication.translate("AVDV", u"nfo", None))
         self.label_79.setText(QCoreApplication.translate("AVDV", u"\u6240\u52fe\u9009\u9879\u76ee\u5b58\u5728\u672c\u5730\u6587\u4ef6\u65f6\uff0c\u5c06\u4fdd\u7559\u5e76\u4f18\u5148\u4f7f\u7528\u672c\u5730\u6587\u4ef6\uff0c\u4e0d\u518d\u91cd\u65b0\u4e0b\u8f7d\uff1b\u672a\u52fe\u9009\u9879\u76ee\u7684\u672c\u5730\u6587\u4ef6\u5c06\u88ab\u6e05\u7406", None))
+        self.groupBox_22.setTitle(QCoreApplication.translate("AVDV", u"\u4f7f\u7528\u7cfb\u5217\u4f5c\u4e3a\u5408\u96c6", None))
+        self.label_40.setText(QCoreApplication.translate("AVDV", u"\u4fdd\u5b58nfo\u65f6\uff0c\u5c06\u7cfb\u5217\u540d\u79f0\u4f5c\u4e3a\u5408\u96c6\u4fe1\u606f\uff0c\u4ee5\u4fbf\u5728emby\u4f7f\u7528\u5408\u96c6\u67e5\u770b\u7cfb\u5217", None))
+        self.label_42.setText(QCoreApplication.translate("AVDV", u"\u4fdd\u5b58nfo\u65f6\uff0c\u4e0d\u5199\u5165\u5408\u96c6\u4fe1\u606f", None))
+        self.radioButton_series_as_set_on.setText(QCoreApplication.translate("AVDV", u"\u5f00", None))
+        self.radioButton_series_as_set_off.setText(QCoreApplication.translate("AVDV", u"\u5173", None))
+        self.groupBox_34.setTitle(QCoreApplication.translate("AVDV", u"\u6587\u4ef6\u540d\u4fdd\u7559\u756a\u53f7\u524d\u7f00\uff08\u8fd8\u5728\u5f00\u53d1\u4e2d\uff0c\u76ee\u524d\u9ed8\u8ba4\u53bb\u9664\uff09", None))
+        self.label_82.setText(QCoreApplication.translate("AVDV", u"\u6bd4\u59821pondo_11111_001", None))
+        self.label_83.setText(QCoreApplication.translate("AVDV", u"\u6bd4\u598211111_001", None))
+        self.radioButton_succ_rename_on_3.setText(QCoreApplication.translate("AVDV", u"\u5f00", None))
+        self.radioButton_succ_rename_off_3.setText(QCoreApplication.translate("AVDV", u"\u5173", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1), QCoreApplication.translate("AVDV", u"\u522e\u524a\u8bbe\u7f6e", None))
         self.groupBox_16.setTitle(QCoreApplication.translate("AVDV", u"\u76ee\u5f55\u8bbe\u7f6e", None))
         self.label_50.setText(QCoreApplication.translate("AVDV", u"\u5267\u7167\u526f\u672c\u76ee\u5f55\uff1a", None))
@@ -2619,7 +2735,7 @@ class Ui_AVDV(object):
         self.label_47.setText(QCoreApplication.translate("AVDV", u"\u6210\u529f\u8f93\u51fa\u76ee\u5f55\uff1a", None))
         self.label_48.setText(QCoreApplication.translate("AVDV", u"\u6392\u9664\u76ee\u5f55\uff1a", None))
         self.label_49.setText(QCoreApplication.translate("AVDV", u"\u5f85\u522e\u524a\u89c6\u9891\u76ee\u5f55\uff1a", None))
-        self.label_59.setText(QCoreApplication.translate("AVDV", u"\u6307\u628a\u5267\u7167\u76ee\u5f55exfanart\u5185\u5bb9\u518d\u590d\u5236\u5230\u53e6\u4e00\u4e2a\u76ee\u5f55\uff0c\u4ee5\u4fbf\u5267\u7167\u53ef\u4ee5\u5728emby\u6d4f\u89c8\u67e5\u770b", None))
+        self.label_59.setText(QCoreApplication.translate("AVDV", u"\u6307\u628a\u5267\u7167\u76ee\u5f55extrafanart\u5185\u5bb9\u518d\u590d\u5236\u5230\u53e6\u4e00\u4e2a\u76ee\u5f55\uff0c\u4ee5\u4fbf\u5267\u7167\u53ef\u4ee5\u5728emby\u6d4f\u89c8\u67e5\u770b", None))
         self.label_56.setText(QCoreApplication.translate("AVDV", u"\u6307\u672c\u5730\u542b\u6709\u89c6\u9891\u7684\u6587\u4ef6\u5939\uff0c\u5c06\u4ece\u7f51\u7edc\u4e0a\u522e\u524a\u8be5\u76ee\u5f55\uff08\u542b\u5b50\u76ee\u5f55\uff09\u6240\u6709\u89c6\u9891\u7684\u5143\u6570\u636e\u4fe1\u606f", None))
         self.label_46.setText(QCoreApplication.translate("AVDV", u"\u5931\u8d25\u8f93\u51fa\u76ee\u5f55\uff1a", None))
         self.label_57.setText(QCoreApplication.translate("AVDV", u"\u6307\u522e\u524a\u5931\u8d25\u65f6\uff0c\u89c6\u9891\u5c06\u79fb\u52a8\u5230\u8fd9\u4e2a\u6587\u4ef6\u5939\u3002\u8f93\u51fa\u76ee\u5f55\u53ef\u4ee5\u4e0d\u5728\u5f85\u522e\u524a\u89c6\u9891\u76ee\u5f55\u4e0b", None))
@@ -2867,6 +2983,7 @@ class Ui_AVDV(object):
         self.pushButton_setting.setText(QCoreApplication.translate("AVDV", u"\u8bbe\u7f6e", None))
         self.pushButton_about.setText(QCoreApplication.translate("AVDV", u"\u5173\u4e8e", None))
         self.pushButton_close.setText(QCoreApplication.translate("AVDV", u"\u00d7", None))
+        self.pushButton_min.setText(QCoreApplication.translate("AVDV", u"-", None))
         self.label_show_version.setText(QCoreApplication.translate("AVDV", u"\u7248\u672c\u53f7", None))
     # retranslateUi
 

@@ -10,6 +10,12 @@
     <height>700</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="font">
    <font>
     <family>Courier</family>
@@ -44,7 +50,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_avdc">
      <widget class="QPushButton" name="pushButton_start_cap">
@@ -2052,9 +2058,9 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
+           <y>-1280</y>
            <width>771</width>
-           <height>1600</height>
+           <height>1880</height>
           </rect>
          </property>
          <widget class="QGroupBox" name="groupBox">
@@ -3938,6 +3944,286 @@ background-color: rgb(246, 246, 246);</string>
            </property>
           </widget>
          </widget>
+         <widget class="QGroupBox" name="groupBox_22">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>1600</y>
+            <width>701</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>739</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Courier</family>
+            <pointsize>13</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="title">
+           <string>使用系列作为合集</string>
+          </property>
+          <widget class="QWidget" name="gridLayoutWidget_15">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>20</y>
+             <width>641</width>
+             <height>80</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_15">
+            <item row="0" column="1">
+             <widget class="QLabel" name="label_40">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>保存nfo时，将系列名称作为合集信息，以便在emby使用合集查看系列</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_42">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>保存nfo时，不写入合集信息</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QRadioButton" name="radioButton_series_as_set_on">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>开</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QRadioButton" name="radioButton_series_as_set_off">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>关</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_34">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>1720</y>
+            <width>701</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>739</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Courier</family>
+            <pointsize>13</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="title">
+           <string>文件名保留番号前缀（还在开发中，目前默认去除）</string>
+          </property>
+          <widget class="QWidget" name="gridLayoutWidget_16">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>20</y>
+             <width>641</width>
+             <height>80</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_16">
+            <item row="0" column="1">
+             <widget class="QLabel" name="label_82">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>比如1pondo_11111_001</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_83">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>比如11111_001</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QRadioButton" name="radioButton_succ_rename_on_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>开</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QRadioButton" name="radioButton_succ_rename_off_3">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>关</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </widget>
        </widget>
       </widget>
@@ -4262,7 +4548,7 @@ background-color: rgb(246, 246, 246);</string>
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
               <property name="text">
-               <string>指把剧照目录exfanart内容再复制到另一个目录，以便剧照可以在emby浏览查看</string>
+               <string>指把剧照目录extrafanart内容再复制到另一个目录，以便剧照可以在emby浏览查看</string>
               </property>
              </widget>
             </item>
@@ -7299,7 +7585,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>40</y>
+       <y>50</y>
        <width>221</width>
        <height>331</height>
       </rect>
@@ -7623,7 +7909,7 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>41</width>
+       <width>91</width>
        <height>41</height>
       </rect>
      </property>
@@ -7681,6 +7967,52 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="text">
          <string>×</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_min">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>20</horstretch>
+          <verstretch>20</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="mouseTracking">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{color:#E0E0E0;background:rgb(246, 186, 76);border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:rgba(246, 186, 76, 230);}
+</string>
+        </property>
+        <property name="text">
+         <string>-</string>
         </property>
        </widget>
       </item>
