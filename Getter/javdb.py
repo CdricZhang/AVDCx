@@ -1,19 +1,19 @@
-from logging import error
 import re
-from PIL.JpegImagePlugin import convert_dict_qtables
-from bs4 import BeautifulSoup, SoupStrainer
 from lxml import etree
 import json
 import cloudscraper
 from Function.getHtml import get_html, post_html, get_cookies, get_proxies, get_proxy
+import urllib3
+urllib3.disable_warnings()
 
 
-def getNumber(html):
-    result1 = str(html.xpath('//strong[contains(text(),"番號:")]/../span/a/text()')).strip(
-        " ['']").replace('_', '-')
-    result2 = str(html.xpath('//strong[contains(text(),"ID:")]/../span/a/text()')).strip(
-        " ['']").replace('_', '-')
-    return str(result2 + result1).strip('+')
+def getNumber(html, number):
+    result = html.xpath('//a[@class="button is-white copy-to-clipboard"]/@data-clipboard-text')
+    if result:
+        result = result[0]
+    else:
+        result = number
+    return result
 
     
 def getTitle(html):
@@ -27,9 +27,12 @@ def getTitle(html):
 
 
 def getActor(html):
-    result1 = str(html.xpath('//strong[text()="演員:"]/../span/strong[@class="symbol female"][last()]/preceding-sibling::a/text()'))
-    result2 = str(html.xpath('//strong[text()="Actor(s):"]/../span/strong[@class="symbol female"][last()]/preceding-sibling::a/text()'))
-    return result1 + result2
+    result = html.xpath('//div[@class="panel-block"]/span[@class="value"]/strong[@class="symbol female"][last()]/preceding-sibling::a/text()')
+    print(result)
+    actor = ''
+    for each in result:
+        actor = actor + ',' + each.strip()
+    return actor
 
 def getActorPhoto(actor):
     actor = actor.split(',')
@@ -172,6 +175,20 @@ def getOutlineScore(number):  # 获取简介
         print('Error in javdb.getOutlineScore : ' + str(error_info1))
     return outline, score
 
+def getRealUrl(html, number):  # 获取详情页链接
+    url_list = html.xpath("//a[@class='box']/@href")
+    if '.' in number:
+        old_date = re.findall('\.\d+\.\d+\.\d+', number)
+        if old_date:
+            old_date = old_date[0]
+            new_date = '.20' + old_date[1:]
+            number = number.replace(old_date, new_date)
+    for each in url_list:
+        text_list = html.xpath("//a[@href=$url]/div/text()", url=each)
+        text_list = str(text_list).strip(" []'").replace("', '", '').replace(' ', '').replace('\\n', '').replace('-', '')
+        if number.upper().replace('.', '').replace('-', '') in text_list.upper():
+            return each
+    return False
 
 def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     req_web += '-> javdb '
@@ -201,33 +218,29 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             )  # returns a CloudScraper instance
             try:
                 html_search = scraper.get(url_search, cookies=cookies, proxies=proxies, timeout=timeout).text
-                # result, html_search = get_html('https://javdb9.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
             except Exception as error_info:
                 log_info += '   >>> JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
                 raise Exception('JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info))
             if "The owner of this website has banned your access based on your browser's behaving" in html_search:
-                log_info += '   >>> JAVDB-请求搜索页：%s\n' % html_search
+                log_info += '   >>> JAVDB-请求搜索页：%s \n' % html_search
                 error_type = 'SearchCloudFlare'
                 raise Exception('JAVDB-请求搜索页：基於你的異常行為，管理員禁止了你的訪問！')
             html = etree.fromstring(html_search, etree.HTMLParser())
-            # print(etree.tostring(html,encoding="utf-8").decode())
             html_title = str(html.xpath('//title/text()')).strip(" ['']")
             if 'Cloudflare' in html_title:
                 real_url = ''
                 log_info += '   >>> JAVDB-请求搜索页：被 5 秒盾拦截！\n'
                 error_type = 'SearchCloudFlare'
                 raise Exception('JAVDB-请求搜索页：被 5 秒盾拦截！')
-            real_url = html.xpath("//div[@class='uid'][contains(text(), $number)]/../@href", number=number)
-            if not real_url:
-                real_url = html.xpath("//div[@class='uid'][contains(text(), $number)]/../@href", number=number.upper())
+            real_url = getRealUrl(html, number)
             if not real_url:
                 log_info += '   >>> JAVDB-搜索结果页：未匹配到番号！\n'
                 error_type = 'Movie data not found'
                 raise Exception('JAVDB-搜索结果页：未匹配到番号')
             else:
-                real_url = 'https://javdb.com' + real_url[0] + '?locale=zh'
-                log_info += '   >>> JAVDB-生成详情页地址：%s\n' % real_url
+                real_url = 'https://javdb.com' + real_url + '?locale=zh'
+                log_info += '   >>> JAVDB-生成详情页地址：%s \n' % real_url
 
         if real_url:
             scraper = cloudscraper.CloudScraper()
@@ -243,7 +256,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             if html_title == 'Please Wait... | Cloudflare':
                 log_info += '   >>> JAVDB-请求详情页：被 5 秒盾拦截！\n'
                 error_type = 'SearchCloudFlare'
-                raise Exception('JAVDB-请求详情页：被 5 秒盾拦截！]')
+                raise Exception('JAVDB-请求详情页：被 5 秒盾拦截！')
             if '登入' in html_title or 'Sign in' in html_title:
                 log_info += '   >>> JAVDB-该番号内容需要登录查看！\n'
                 if cookies:
@@ -254,43 +267,40 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 raise Exception('JAVDB-该番号内容需要登录查看！')
             imagecut = 1
             outline = ''
-            if isuncensored and (re.match('^\d{4,}', number) or re.match('n\d{4}', number)):  # 无码，收集封面、评分
+            if isuncensored and (re.match('^\d{4,}', number) or re.match('n\d{4}', number)): 
                 imagecut = 0
-                score = getScore(html_detail)
+                # score = getScore(html_detail)
             elif 'HEYZO' in number.upper():  # HEYZO，收集封面、评分、简介
                 imagecut = 0
-                outline, score = getOutlineScore(number)
-            else:  # 其他，收集评分、简介
-                outline, score = getOutlineScore(number)
-                score = getScore(html_detail)
+                # outline, score = getOutlineScore(number)
+            # else:  # 其他，收集评分、简介
+                # outline, score = getOutlineScore(number)
+                # score = getScore(html_detail)
             # ========================================================================收集信息
             actor = getActor(html_detail) # 获取actor
-            if len(actor) == 0 and 'FC2-' in number.upper():
-                actor.append('FC2-NoActor')
             actor = str(actor).strip(" [',']").replace('\'', '')
             actor_photo = getActorPhoto(actor)
+            number = getNumber(html, number)
             title = getTitle(html_detail) # 获取标题并去掉头尾歌手名
-            title = title.replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_','-').replace(number.upper(), '').replace(number, '').strip().replace('--', '-')
+            title = title.replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_','-').replace(number.upper(), '').replace(number, '').replace('--', '-').strip()
             if not title:
                 log_info += '   >>> JAVDB- title 获取失败！\n'
                 error_type = 'need login'
-                raise Exception('JAVDB- title 获取失败！]')
+                raise Exception('JAVDB- title 获取失败！')
             cover_url = getCover(html_detail) # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> JAVDB- cover url 获取失败！\n'
                 error_type = 'Cover Url is None!'
-                raise Exception('JAVDB- cover url 获取失败！]')
-            if imagecut == 3 and 'http' not in cover_small:
-                log_info += '   >>> JAVDB- cover url 获取失败！\n'
-                error_type = 'Cover_small Url is None!'
-                raise Exception('JAVDB- cover_small url 获取失败！]')
+                raise Exception('JAVDB- cover url 获取失败！')
             release = getRelease(html_detail)
+            score = getScore(html_detail)
+
             try:
                 dic = {
                     'title': title,
-                    'number': number.upper(),
+                    'number': number,
                     'actor': actor,
-                    'outline': str(outline),
+                    'outline': outline,
                     'tag': getTag(html_detail),
                     'release': str(release),
                     'year': getYear(release),
@@ -300,7 +310,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                     'director': getDirector(html_detail),
                     'studio': getStudio(html_detail),
                     'publisher': getPublisher(html_detail),
-                    'source': 'javdb.main',
+                    'source': 'javdb',
                     'website': str(real_url).replace('?locale=zh', '').strip('[]'),
                     'search_url': str(url_search),
                     'actor_photo': actor_photo,
@@ -334,20 +344,21 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     return js
 
 
+# print(main('SNIS-016', ''))
+# print(main('bangbros18.19.09.17'))
+# print(main('x-art.19.11.03'))
 # print(main('abs-141'))
 # print(main('HYSD-00083'))
 # print(main('IESP-660'))
 # print(main('n1403'))
 # print(main('GANA-1910'))
 # print(main('heyzo-1031'))
-# print(main('x-art.19.11.03'))
 # print(main('032020-001'))
 # print(main('S2M-055'))
 # print(main('LUXU-1217'))
 
 # print(main('SSIS-001', ''))
 # print(main('SSIS-090', ''))
-# print(main('SNIS-016', ''))
 # print(main('HYSD-00083', ''))
 # print(main('IESP-660', ''))
 # print(main('n1403', ''))
