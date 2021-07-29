@@ -52,7 +52,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210729'
+        self.localversion = '20210730'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -1985,7 +1985,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================打印NFO
     def PrintFiles(self, nfo_new_path, folder_new_path, thumb_new_name, poster_new_name, fanart_new_name, c_word, leak, json_data, config):
+        print('111a')
         if os.path.exists(nfo_new_path) or int(config.getint('file_download', 'nfo')) == 0:
+            print('111ab')
             return True
         # self.addTextMain(" ⏳ Start creating nfo... ")
         # 获取字段
@@ -2146,12 +2148,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 self.addTextMain(" 🟢 Movie not moved! \n   >>> The path is '%s'" % file_new_path)
                 return True
             try:    # 路径不同，就重命名
-                shutil.move(file_path, file_new_path)
+                os.rename(file_path, file_new_path)
                 self.addTextMain(" 🟢 Movie renamed! \n   >>> The new name is '%s'" % file_new_path)
                 return True
             except PermissionError:
                 self.addTextMain(' 🔴 Failed to rename the movie! \n   >>> No permission! Please run as Administrator!')
             except Exception as ex:
+                if file_path.upper() == file_new_path.upper():
+                    return True
                 self.addTextMain(' 🔴 Failed to rename the movie! \n   >>> %s' % str(ex))
             return False
         if file_path == file_new_path:          # 当路径相同，不移动
@@ -3272,8 +3276,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.add_mark(poster_new_path, thumb_new_path, c_word, leak, uncensored, config, poster_old, thumb_old)
 
         # =====================================================================================生成nfo文件
-        if self.PrintFiles(nfo_new_path, folder_new_path, thumb_new_name, poster_new_name, fanart_new_name, c_word, leak, json_data, config):
-            return False, json_data                   # 返回AVDC_main, 继续处理下一个文件
+        self.PrintFiles(nfo_new_path, folder_new_path, thumb_new_name, poster_new_name, fanart_new_name, c_word, leak, json_data, config)
 
         # =====================================================================================下载剧照和剧照副本
         self.extrafanartDownload(json_data, folder_new_path, config)
@@ -3294,6 +3297,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         json_data['poster_path'] = poster_new_path
         if os.path.exists(fanart_new_path) and not os.path.exists(thumb_new_path):
             json_data['thumb_path'] = fanart_new_path
+        print('1117')
 
         return True, json_data
 
