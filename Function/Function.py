@@ -211,7 +211,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javbus.main_us(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(javbus.main(file_number, appoint_url, log_info, req_web))
         # =======================================================================MIDE-139
         else:
             json_data = json.loads(iqqtv_new.main(file_number, appoint_url, translate_language))
@@ -255,10 +255,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     elif website_mode == 2:  # 仅从iqqtv
         json_data = json.loads(iqqtv_new.main(file_number, appoint_url, translate_language))
     elif website_mode == 3:  # 仅从javbus
-        if re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
-            json_data = json.loads(javbus.main_us(file_number, appoint_url))
-        else:
-            json_data = json.loads(javbus.main(file_number, appoint_url))
+        json_data = json.loads(javbus.main(file_number, appoint_url))
     elif website_mode == 4:  # 仅从javdb
         if re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
             json_data = json.loads(javdb.main(file_number, appoint_url))
