@@ -2058,9 +2058,9 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-1280</y>
+           <y>-1647</y>
            <width>771</width>
-           <height>1880</height>
+           <height>2200</height>
           </rect>
          </property>
          <widget class="QGroupBox" name="groupBox">
@@ -2212,7 +2212,7 @@ background-color: rgb(246, 246, 246);</string>
             <x>30</x>
             <y>830</y>
             <width>701</width>
-            <height>81</height>
+            <height>101</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -2298,6 +2298,37 @@ background-color: rgb(246, 246, 246);</string>
              </widget>
             </item>
            </layout>
+          </widget>
+          <widget class="QLabel" name="label_84">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>60</y>
+             <width>611</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(8, 128, 128);</string>
+           </property>
+           <property name="text">
+            <string>优先使用刮削网站的中文翻译，如刮削页面无中文时，再使用翻译引擎翻译。</string>
+           </property>
           </widget>
          </widget>
          <widget class="QGroupBox" name="groupBox_5">
@@ -3154,7 +3185,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>1090</y>
+            <y>1110</y>
             <width>701</width>
             <height>151</height>
            </rect>
@@ -3366,9 +3397,9 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>1380</y>
+            <y>1400</y>
             <width>701</width>
-            <height>81</height>
+            <height>371</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -3497,12 +3528,165 @@ background-color: rgb(246, 246, 246);</string>
             </item>
            </layout>
           </widget>
+          <widget class="QLabel" name="label_85">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>70</y>
+             <width>631</width>
+             <height>181</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(8, 128, 128);</string>
+           </property>
+           <property name="text">
+            <string>poster：指封面图，emby视图选择封面图时，会使用poster显示；
+thumb：指缩略图，emby视图选择缩略图时，会使用thumb显示；
+fanart：指艺术图，emby详情页使用fanart作为背景图显示
+extrafanart：指剧照，默认会保存到视频文件目录下的extrafanart目录中（目录名不能修改）。
+         emby添加媒体库时，内容类型选择「家庭视频与照片」，剧照将作为背景图片轮播显示。
+extrafanart副本：指剧照副本，由于剧照目录及其中图片在emby中会被默认隐藏，无法手动浏览查看。
+         因此通过复制extrafanart目录副本，并确保副本目录名字不叫做extrafanart，
+         可以避免被emby隐藏，变相解决手动查看图片的需求。extrafanart副本目录名字可以自定义。
+nfo：指信息文件，记录了影片的简介、标签等各项信息，会在emby详情页展示。</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_50">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>260</y>
+             <width>130</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>130</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>13</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="text">
+            <string>extrafanart
+副本目录：</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEdit_extrafanart_dir">
+           <property name="geometry">
+            <rect>
+             <x>150</x>
+             <y>259</y>
+             <width>509</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>13</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_59">
+           <property name="geometry">
+            <rect>
+             <x>160</x>
+             <y>300</y>
+             <width>509</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(8, 128, 128);</string>
+           </property>
+           <property name="text">
+            <string>目录名字为空或者为「extrafanart」时，将不会创建副本目录。
+如需创建，请使用「extrafanart」以外的其他名字。
+注意：此处只需填写目录名字，请不要填写完整路径！</string>
+           </property>
+          </widget>
          </widget>
          <widget class="QGroupBox" name="groupBox_39">
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>1480</y>
+            <y>1790</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -3638,7 +3822,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>930</y>
+            <y>950</y>
             <width>701</width>
             <height>141</height>
            </rect>
@@ -3781,7 +3965,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>1260</y>
+            <y>1280</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -3948,7 +4132,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>1600</y>
+            <y>1910</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -4088,7 +4272,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>1720</y>
+            <y>2030</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -4259,7 +4443,7 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
+           <y>-327</y>
            <width>769</width>
            <height>1300</height>
           </rect>
@@ -4270,7 +4454,7 @@ background-color: rgb(246, 246, 246);</string>
             <x>30</x>
             <y>10</y>
             <width>701</width>
-            <height>381</height>
+            <height>311</height>
            </rect>
           </property>
           <property name="font">
@@ -4294,12 +4478,12 @@ background-color: rgb(246, 246, 246);</string>
              <x>0</x>
              <y>30</y>
              <width>681</width>
-             <height>341</height>
+             <height>261</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_7">
-            <item row="8" column="0">
-             <widget class="QLabel" name="label_50">
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_46">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -4324,101 +4508,11 @@ background-color: rgb(246, 246, 246);</string>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
               </property>
-              <property name="frameShape">
-               <enum>QFrame::NoFrame</enum>
-              </property>
               <property name="text">
-               <string>剧照副本目录：</string>
+               <string>失败输出目录：</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="1">
-             <widget class="QLabel" name="label_58">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>12</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(8, 128, 128);</string>
-              </property>
-              <property name="text">
-               <string>指不想要刮削的目录，可以填写多个目录，以逗号分开（中英文逗号都可以）</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QLineEdit" name="lineEdit_fail">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>300</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"> font: &quot;Courier&quot;;
- border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="1">
-             <widget class="QLineEdit" name="lineEdit_extrafanart_dir">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>300</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"> font: &quot;Courier&quot;;
- border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
               </property>
              </widget>
             </item>
@@ -4456,6 +4550,124 @@ background-color: rgb(246, 246, 246);</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="lineEdit_movie_path">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>300</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1">
+             <widget class="QLineEdit" name="lineEdit_escape_dir">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>300</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLabel" name="label_29">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>指刮削成功时，视频将移动到这个文件夹。输出目录可以不在待刮削视频目录下</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLineEdit" name="lineEdit_fail">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>300</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
               </property>
              </widget>
             </item>
@@ -4527,31 +4739,6 @@ background-color: rgb(246, 246, 246);</string>
               </property>
              </widget>
             </item>
-            <item row="9" column="1">
-             <widget class="QLabel" name="label_59">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>12</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(8, 128, 128);</string>
-              </property>
-              <property name="text">
-               <string>指把剧照目录extrafanart内容再复制到另一个目录，以便剧照可以在emby浏览查看</string>
-              </property>
-             </widget>
-            </item>
             <item row="1" column="1">
              <widget class="QLabel" name="label_56">
               <property name="sizePolicy">
@@ -4577,40 +4764,6 @@ background-color: rgb(246, 246, 246);</string>
               </property>
              </widget>
             </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_46">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>160</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="text">
-               <string>失败输出目录：</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
             <item row="5" column="1">
              <widget class="QLabel" name="label_57">
               <property name="sizePolicy">
@@ -4633,93 +4786,6 @@ background-color: rgb(246, 246, 246);</string>
               </property>
               <property name="text">
                <string>指刮削失败时，视频将移动到这个文件夹。输出目录可以不在待刮削视频目录下</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QLabel" name="label_29">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>12</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(8, 128, 128);</string>
-              </property>
-              <property name="text">
-               <string>指刮削成功时，视频将移动到这个文件夹。输出目录可以不在待刮削视频目录下</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="lineEdit_movie_path">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>300</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"> font: &quot;Courier&quot;;
- border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="1">
-             <widget class="QLineEdit" name="lineEdit_escape_dir">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>300</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"> font: &quot;Courier&quot;;
- border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
               </property>
              </widget>
             </item>
@@ -4754,6 +4820,31 @@ background-color: rgb(246, 246, 246);</string>
               </property>
              </widget>
             </item>
+            <item row="7" column="1">
+             <widget class="QLabel" name="label_58">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>指不想要刮削的目录，可以填写多个目录，以逗号分开（中英文逗号都可以）</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </widget>
@@ -4761,9 +4852,9 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>410</y>
+            <y>330</y>
             <width>701</width>
-            <height>521</height>
+            <height>581</height>
            </rect>
           </property>
           <property name="font">
@@ -4787,163 +4878,44 @@ background-color: rgb(246, 246, 246);</string>
              <x>0</x>
              <y>30</y>
              <width>681</width>
-             <height>481</height>
+             <height>541</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_8">
-            <item row="6" column="1">
-             <widget class="QLineEdit" name="lineEdit_local_name">
-              <property name="minimumSize">
-               <size>
-                <width>450</width>
-                <height>30</height>
-               </size>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_66">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
               </property>
               <property name="font">
                <font>
                 <family>Courier</family>
-                <pointsize>13</pointsize>
+                <pointsize>12</pointsize>
                 <weight>50</weight>
                 <italic>false</italic>
                 <bold>false</bold>
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true"> font: &quot;Courier&quot;;
- border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>当刮削成功时，为该视频创建一个视频目录，并移动该视频目录到成功输出目录。
+目录名字支持自定义。命名字段有：
+title, actor, number, studio, publisher, year, mosaic,
+runtime, director, release, series, 中文字幕
+注意：1，可以添加命名字段以外的字符，命名时会原样保留；
+2，当留空时，表示不创建视频目录；
+3，当勾选「成功后不移动文件」时，将不会创建视频目录
 </string>
               </property>
              </widget>
             </item>
-            <item row="9" column="1">
-             <widget class="QLabel" name="label_62">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>12</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(8, 128, 128);</string>
-              </property>
-              <property name="text">
-               <string>个别网站有时会在一些标题末尾加上演员名，此时的标题其实 = 标题 演员</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QLabel" name="label_69">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>12</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(8, 128, 128);</string>
-              </property>
-              <property name="text">
-               <string>当有字幕时，文件夹名字后面添加-C。满足以下任一条件，视为有中文字幕：
-1，文件名中含有-C；2，路径中含有「中文」、「字幕」字符</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <layout class="QHBoxLayout" name="horizontalLayout_21">
-              <item>
-               <widget class="QRadioButton" name="radioButton_foldername_C_on">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Courier</family>
-                  <pointsize>13</pointsize>
-                  <weight>50</weight>
-                  <italic>false</italic>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>开</string>
-                </property>
-                <property name="autoExclusive">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="radioButton_foldername_C_off">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Courier</family>
-                  <pointsize>13</pointsize>
-                  <weight>50</weight>
-                  <italic>false</italic>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>关</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
             <item row="6" column="0">
-             <widget class="QLabel" name="label_63">
+             <widget class="QLabel" name="label_89">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -4969,15 +4941,15 @@ background-color: rgb(246, 246, 246);</string>
                <enum>Qt::LeftToRight</enum>
               </property>
               <property name="text">
-               <string>视频标题(本地文件)：</string>
+               <string>中文字幕判断字符：</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="lineEdit_dir_name">
+            <item row="6" column="1">
+             <widget class="QLineEdit" name="lineEdit_cnword_char">
               <property name="minimumSize">
                <size>
                 <width>450</width>
@@ -4993,8 +4965,30 @@ background-color: rgb(246, 246, 246);</string>
                 <bold>false</bold>
                </font>
               </property>
-              <property name="accessibleDescription">
-               <string>测试</string>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLineEdit" name="lineEdit_local_name">
+              <property name="minimumSize">
+               <size>
+                <width>450</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true"> font: &quot;Courier&quot;;
@@ -5004,7 +4998,7 @@ background-color: rgb(246, 246, 246);</string>
               </property>
              </widget>
             </item>
-            <item row="5" column="1">
+            <item row="3" column="1">
              <widget class="QLabel" name="label_68">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -5029,7 +5023,32 @@ background-color: rgb(246, 246, 246);</string>
               </property>
              </widget>
             </item>
-            <item row="8" column="0">
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="lineEdit_media_name">
+              <property name="minimumSize">
+               <size>
+                <width>450</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="0">
              <widget class="QLabel" name="label_71">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -5060,96 +5079,6 @@ background-color: rgb(246, 246, 246);</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_67">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>160</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="text">
-               <string>视频标题(媒体库中)：</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="1">
-             <widget class="QLabel" name="label_61">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>12</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(8, 128, 128);</string>
-              </property>
-              <property name="text">
-               <string>指本地视频文件的标题格式，命名字段同上</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLabel" name="label_66">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>12</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(8, 128, 128);</string>
-              </property>
-              <property name="text">
-               <string>当刮削成功时，为该视频创建一个视频目录，并移动该视频目录到成功输出目录。
-目录名字支持自定义。命名字段有：
-title, actor, number, studio, publisher, year, mosaic,
-runtime, director, release, series
-注意：1，可以添加命名字段以外的字符，命名时会原样保留；
-2，当留空时，表示不创建视频目录；
-3，当勾选「成功后不移动文件」时，将不会创建视频目录</string>
               </property>
              </widget>
             </item>
@@ -5187,8 +5116,8 @@ runtime, director, release, series
               </property>
              </widget>
             </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_51">
+            <item row="8" column="0">
+             <widget class="QLabel" name="label_86">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -5211,18 +5140,18 @@ runtime, director, release, series
                </font>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::RightToLeft</enum>
+               <enum>Qt::LeftToRight</enum>
               </property>
               <property name="text">
-               <string>有字幕时目录添加-C：</string>
+               <string>中文字幕字符样式：</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
-            <item row="4" column="1">
-             <widget class="QLineEdit" name="lineEdit_media_name">
+            <item row="8" column="1">
+             <widget class="QLineEdit" name="lineEdit_cnword_style">
               <property name="minimumSize">
                <size>
                 <width>450</width>
@@ -5246,52 +5175,225 @@ runtime, director, release, series
               </property>
              </widget>
             </item>
-            <item row="8" column="1">
-             <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_63">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>160</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string>视频标题(本地文件)：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="1">
+             <widget class="QLabel" name="label_87">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>指有中文字幕时，重命名文件名时将使用该字符样式表示有中文字幕</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="lineEdit_dir_name">
+              <property name="minimumSize">
+               <size>
+                <width>450</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="accessibleDescription">
+               <string>测试</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QLabel" name="label_61">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>指本地视频文件的标题格式，命名字段同上</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="1">
+             <widget class="QLabel" name="label_88">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>指文件名含有以上字符时，视为该文件有中文字幕，多个以逗号分割</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_67">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>160</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string>视频标题(nfo文件中)：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="1">
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
               <item>
-               <widget class="QGroupBox" name="groupBox_20">
-                <property name="styleSheet">
-                 <string notr="true">border:0px solid rgba(255, 255, 255, 0);
-background-color: rgba(255, 255, 255, 0);</string>
+               <widget class="QRadioButton" name="radioButton_del_actor_on">
+                <property name="text">
+                 <string>开</string>
                 </property>
-                <property name="title">
-                 <string/>
+                <property name="autoExclusive">
+                 <bool>true</bool>
                 </property>
-                <widget class="QRadioButton" name="radioButton_del_actor_on">
-                 <property name="geometry">
-                  <rect>
-                   <x>0</x>
-                   <y>0</y>
-                   <width>508</width>
-                   <height>31</height>
-                  </rect>
-                 </property>
-                 <property name="text">
-                  <string>开</string>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-                <widget class="QRadioButton" name="radioButton_del_actor_off">
-                 <property name="geometry">
-                  <rect>
-                   <x>250</x>
-                   <y>0</y>
-                   <width>508</width>
-                   <height>23</height>
-                  </rect>
-                 </property>
-                 <property name="text">
-                  <string>关</string>
-                 </property>
-                 <property name="autoExclusive">
-                  <bool>true</bool>
-                 </property>
-                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_del_actor_off">
+                <property name="text">
+                 <string>关</string>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
              </layout>
+            </item>
+            <item row="11" column="1">
+             <widget class="QLabel" name="label_62">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>个别网站有时会在一些标题末尾加上演员名，此时的标题其实 = 标题 演员</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -5300,7 +5402,7 @@ background-color: rgba(255, 255, 255, 0);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>1150</y>
+            <y>930</y>
             <width>701</width>
             <height>121</height>
            </rect>
@@ -5330,115 +5432,7 @@ background-color: rgba(255, 255, 255, 0);</string>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_11">
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_72">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>160</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::NoFrame</enum>
-              </property>
-              <property name="text">
-               <string>多余字符串：</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_76">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>160</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="text">
-               <string>异常字符：</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="lineEdit_escape_char">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>500</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>540</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"> font: &quot;Courier&quot;;
- border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
              <widget class="QLineEdit" name="lineEdit_escape_string">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -5475,6 +5469,68 @@ background-color: rgba(255, 255, 255, 0);</string>
               </property>
              </widget>
             </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_72">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>160</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="text">
+               <string>去除多余字符串：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_76">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>识别番号时，将先去除多余字符串再进行识别。（填写时以逗号分割，不用区分大小写）</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </widget>
@@ -5482,7 +5538,7 @@ background-color: rgba(255, 255, 255, 0);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>950</y>
+            <y>1070</y>
             <width>701</width>
             <height>181</height>
            </rect>
