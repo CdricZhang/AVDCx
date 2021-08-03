@@ -36,7 +36,7 @@ def getDataState(json_data):
         return 1
 
 
-# ========================================================================去掉异常字符
+# ========================================================================去掉异常字符（目前没有在用）
 def escapePath(path, Config):  # Remove escape literals
     escapeLiterals = Config['escape']['literals']
     backslash = '\\'
@@ -77,23 +77,20 @@ def movie_lists(escape_folder, movie_type, movie_path):
 # ========================================================================获取番号
 def getNumber(filepath, escape_string):
     filepath = filepath.replace('-C.', '.').replace('-c.', '.').replace(' ', '-')
-    filepath = filepath.upper().replace('HEYDOUGA-', '').replace('HEYDOUGA', '').replace('CARIBBEANCOM', '').replace('CARIB', '').replace('1PONDO', '').replace('1PON', '').replace('PACOMA', '').replace('PACO', '').replace('10MUSUME', '').replace('-10MU', '')
-    filename = os.path.splitext(filepath.split('/')[-1])[0]
+    filepath = filepath.lower().replace('heydouga-', '').replace('heydouga', '').replace('caribbeancom', '').replace('carib', '').replace('1pondo', '').replace('1pon', '').replace('pacoma', '').replace('paco', '').replace('10musume', '').replace('-10mu', '').replace('fc2ppv', 'FC2-').replace('--', '-')
+    filename = os.path.splitext(filepath.split('/')[-1])[0].lower()
     escape_string_list = re.split('[,，]', escape_string)
     for string in escape_string_list:
-        if string in filename:
-            filename = filename.replace(string, '')
+        filename = filename.replace(string.lower(), '')
     part = ''
-    if re.search('-CD\d+', filename):
-        part = re.findall('-CD\d+', filename)[0]
     if re.search('-cd\d+', filename):
         part = re.findall('-cd\d+', filename)[0]
     filename = filename.replace(part, '')
     filename = str(re.sub("-\d{4}-\d{1,2}-\d{1,2}", "", filename))  # 去除文件名中时间
     filename = str(re.sub("\d{4}-\d{1,2}-\d{1,2}-", "", filename))  # 去除文件名中时间
-    if re.search('^\D+\.\d{2}\.\d{2}\.\d{2}', filename):  # 提取欧美番号 sexart.11.11.11
+    if re.search('[^.]+\.\d{2}\.\d{2}\.\d{2}', filename):  # 提取欧美番号 sexart.11.11.11
         try:
-            file_number = re.search('\D+\.\d{2}\.\d{2}\.\d{2}', filename).group()
+            file_number = re.search('[^.]+\.\d{2}\.\d{2}\.\d{2}', filename).group()
             return file_number
         except:
             return os.path.splitext(filepath.split('/')[-1])[0]
@@ -101,10 +98,10 @@ def getNumber(filepath, escape_string):
         file_number = re.search('XXX-AV-\d{4,}', filename.upper()).group()
         return file_number
     elif '-' in filename or '_' in filename:  # 普通提取番号 主要处理包含减号-和_的番号
-        if 'FC2' or 'fc2' in filename:
-            filename = filename.upper().replace('PPV', '').replace('--', '-')
-        if re.search('FC2-\d{5,}', filename):  # 提取类似fc2-111111番号
-            file_number = re.search('FC2-\d{5,}', filename).group()
+        if 'FC2' in filename.upper():
+            filename = filename.upper().replace('PPV', '').replace('_', '-').replace('--', '-')
+            if re.search('FC2-\d{5,}', filename):  # 提取类似fc2-111111番号
+                file_number = re.search('FC2-\d{5,}', filename).group()
         elif re.search('[a-zA-Z]+-\d+', filename):  # 提取类似mkbd-120番号
             file_number = re.search('\w+-\d+', filename).group()
         elif re.search('\d+[a-zA-Z]+-\d+', filename):  # 提取类似259luxu-1111番号
@@ -206,7 +203,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         elif re.match('\D{2,}00\d{3,}', file_number) and '-' not in file_number and '_' not in file_number:
             json_data = json.loads(dmm.main(file_number, appoint_url))
         # =======================================================================sexart.15.06.14
-        elif re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
+        elif re.search('[^.]+\.\d{2}\.\d{2}\.\d{2}', file_number):
             json_data = json.loads(javdb.main(file_number, appoint_url))
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
@@ -257,10 +254,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     elif website_mode == 3:  # 仅从javbus
         json_data = json.loads(javbus.main(file_number, appoint_url))
     elif website_mode == 4:  # 仅从javdb
-        if re.search('\D+\.\d{2}\.\d{2}\.\d{2}', file_number):
-            json_data = json.loads(javdb.main(file_number, appoint_url))
-        else:
-            json_data = json.loads(javdb.main(file_number, appoint_url))
+        json_data = json.loads(javdb.main(file_number, appoint_url))
     elif website_mode == 5:  # 仅从jav321
         json_data = json.loads(jav321.main(file_number, appoint_url))
     elif website_mode == 6:  # 仅从dmm
@@ -290,14 +284,13 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     # ======================================处理得到的信息
     title = json_data['title']
     number = json_data['number']
-    actor_list = str(json_data['actor']).strip("[ ]").replace("'", '').split(',')  # 字符串转列表
+    actor = str(json_data['actor']).strip(" [ ]").replace("'", '').replace(', ', ',').replace('<', '(').replace('>', ')') # 列表转字符串（避免个别网站刮削返回的是列表）
     release = json_data['release']
     try:
         cover_small = json_data['cover_small']
     except:
         cover_small = ''
-    tag = str(json_data['tag']).strip("[ ]").replace("'", '').replace(" ", '').split(',')  # 字符串转列表 @
-    actor = str(actor_list).strip("[ ]").replace("'", '').replace(" ", '')
+    tag = str(json_data['tag']).strip(" [ ]").replace("'", '').replace(', ', ',')  #列表转字符串（避免个别网站刮削返回的是列表）
 
     if config.getint('Name_Rule', 'del_actor_name'):
         title = title.replace((' ' + actor), '').strip(actor)
@@ -419,7 +412,6 @@ def save_config(json_config):
         print("folder_name = " + json_config['folder_name'], file=code)
         print("naming_media = " + json_config['naming_media'], file=code)
         print("naming_file = " + json_config['naming_file'], file=code)
-        print("folder_name_C = " + str(json_config['folder_name_C']), file=code)
         print("del_actor_name = " + str(json_config['del_actor_name']), file=code)
         print("# 命名字段有：title, actor, number, studio, publisher, year, mosaic, runtime, director, release, series", file=code)
         print("", file=code)
@@ -434,11 +426,12 @@ def save_config(json_config):
         print("success_output_folder = " + json_config['success_output_folder'], file=code)
         print("failed_output_folder = " + json_config['failed_output_folder'], file=code)
         print("extrafanart_folder = " + str(json_config['extrafanart_folder']), file=code)
+        print("cnword_char = " + str(json_config['cnword_char']), file=code)
+        print("cnword_style = " + str(json_config['cnword_style']), file=code)
         print("media_type = " + json_config['media_type'], file=code)
         print("sub_type = " + json_config['sub_type'], file=code)
         print("", file=code)
         print("[escape]", file=code)
-        print("literals = " + json_config['literals'], file=code)
         print("folders = " + json_config['folders'], file=code)
         print("string = " + json_config['string'], file=code)
         print("", file=code)
