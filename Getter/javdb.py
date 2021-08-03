@@ -28,7 +28,6 @@ def getTitle(html):
 
 def getActor(html):
     result = html.xpath('//div[@class="panel-block"]/span[@class="value"]/strong[@class="symbol female"][last()]/preceding-sibling::a/text()')
-    print(result)
     actor = ''
     for each in result:
         actor = actor + ',' + each.strip()
@@ -147,6 +146,12 @@ def getScore(html):
         score = ''
     return score
 
+def getMosaic(title):
+    if '無碼' in title or '.' in title or 'Uncensored' in title:
+        mosaic = '无码'
+    else:
+        mosaic = '有码'
+    return mosaic
 
 def getOutlineScore(number):  # 获取简介
     outline = ''
@@ -282,11 +287,12 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             actor_photo = getActorPhoto(actor)
             number = getNumber(html, number)
             title = getTitle(html_detail) # 获取标题并去掉头尾歌手名
-            title = title.replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_','-').replace(number.upper(), '').replace(number, '').replace('--', '-').strip()
             if not title:
                 log_info += '   >>> JAVDB- title 获取失败！\n'
                 error_type = 'need login'
                 raise Exception('JAVDB- title 获取失败！')
+            mosaic = getMosaic(title)
+            title = title.replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_','-').replace(number.upper(), '').replace(number, '').replace('--', '-').strip()
             cover_url = getCover(html_detail) # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> JAVDB- cover url 获取失败！\n'
@@ -322,6 +328,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                     'error_type': '',
                     'error_info': str(error_info),
                     'req_web': req_web,
+                    'mosaic': mosaic,
                 }
                 log_info += '   >>> JAVDB-数据获取成功！\n'
                 dic['log_info'] = log_info
@@ -344,6 +351,8 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     return js
 
 
+
+# print(main('vixen.16.08.02', ''))
 # print(main('SNIS-016', ''))
 # print(main('bangbros18.19.09.17'))
 # print(main('x-art.19.11.03'))

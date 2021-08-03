@@ -181,7 +181,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
     dic = {}
     try:
         if not real_url:
-            real_url = 'https://www.javbus.com/' + number.upper()
+            real_url = 'https://www.javbus.com/' + number
             if '.' in number:
                 real_url = getRealUrl(number, 'us')
                 if not real_url:
@@ -237,7 +237,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
         try:
             dic = {
                 'title': title,
-                'number': number,
+                'number': web_number,
                 'actor': actor,
                 'outline': '',
                 'tag': tag,

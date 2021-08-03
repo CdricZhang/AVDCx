@@ -8,6 +8,21 @@ import urllib3
 urllib3.disable_warnings()
 
 
+def getRealUrl(html, number, domain_2):
+    new_number = number.strip().replace('-', '').upper() + ''
+    result = html.xpath('//div[@id="video_title"]/h3/a/text()')
+    for each in result:
+        if new_number in each.replace('-', '').upper():
+            real_url = html.xpath('//div[@id="video_title"]/h3/a[contains(text(), $title)]/@href', title=each)[0]
+            real_url = 'https://www.javlibrary.com' + real_url
+            return real_url
+    result = html.xpath('//a[contains(@href, "/?v=javli")]/@title')
+    for each in result:
+        if new_number in each.replace('-', '').upper():
+            real_url = html.xpath('//a[contains(@title, $title)]/@href', title=each)[0]
+            real_url = domain_2 + real_url[1:]
+            return real_url      
+
 def getDelActorName():
     config_file = 'config.ini'
     config = RawConfigParser()
@@ -123,7 +138,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     log_info += '   >>> javlibrary-开始使用javlibrary 进行刮削\n'
     proxies = get_proxies()
     proxy_type, proxy, timeout, retry_count = get_proxy()
-    domain = 'http://www.javlibrary.com'
+    domain = 'https://www.javlibrary.com'
     real_url = appoint_url
     title = ''
     cover_url = ''
@@ -132,10 +147,13 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     url_search = ''
     if translate_language == 'zh_cn':
         javlibrary_url = domain + '/cn/vl_searchbyid.php?keyword='
+        domain_2 = 'https://www.javlibrary.com/cn'
     elif translate_language == 'zh_tw':
         javlibrary_url = domain + '/tw/vl_searchbyid.php?keyword='
+        domain_2 = 'https://www.javlibrary.com/tw'
     else:
         javlibrary_url = domain + '/ja/vl_searchbyid.php?keyword='
+        domain_2 = 'https://www.javlibrary.com/ja'
     scraper = cloudscraper.create_scraper(
         browser={
             'browser': 'firefox',
@@ -161,13 +179,12 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 log_info += '   >>> javlibrary-请求搜索页：被 5 秒盾拦截！\n'
                 error_type = 'SearchCloudFlare'
                 raise Exception('javlibrary-请求搜索页：被 5 秒盾拦截！')
-            real_url = html.xpath('//div[@id="video_title"]/h3/a[contains(text(), $number)]/@href', number=number.upper())
+            real_url = getRealUrl(html, number, domain_2)
             if not real_url:
                 log_info += '   >>> javlibrary-搜索结果页：未匹配到番号！\n'
                 error_type = 'Movie data not found'
                 raise Exception('javlibrary-搜索结果页：未匹配到番号')
             else:
-                real_url = domain + real_url[0]
                 log_info += '   >>> javlibrary-生成详情页地址：%s\n' % real_url
 
         if real_url:
@@ -258,6 +275,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
 
 
 
+# print(main(' IPX-071'))
+# print(main('SNIS-003'))
 # print(main('SSIS-118'))
 # print(main('AA-007'))
 # print(main('abs-141'))
