@@ -50,7 +50,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210803'
+        self.localversion = '20210804'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -1982,6 +1982,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # 获取字段
         title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
             json_data)
+        tag = tag.split(',')    # str转list
         # 获取在媒体文件中显示的规则，不需要过滤Windows异常字符
         name_media = json_data['naming_media'].replace('title', title).replace('studio', studio).replace('year',
                                                                                                          year).replace(
