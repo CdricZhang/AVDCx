@@ -293,7 +293,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     tag = str(json_data['tag']).strip(" [ ]").replace("'", '').replace(', ', ',')  #列表转字符串（避免个别网站刮削返回的是列表）
 
     if config.getint('Name_Rule', 'del_actor_name'):
-        title = title.replace((' ' + actor), '').strip(actor)
+        title = title.replace((' ' + actor), '')
 
     # ====================处理异常字符====================== #\/:*?"<>|
     title = title.replace('\\', '')
