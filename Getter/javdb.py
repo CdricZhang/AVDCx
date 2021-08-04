@@ -190,7 +190,7 @@ def getRealUrl(html, number):  # 获取详情页链接
             number = number.replace(old_date, new_date)
     for each in url_list:
         text_list = html.xpath("//a[@href=$url]/div/text()", url=each)
-        text_list = str(text_list).strip(" []'").replace("', '", '').replace(' ', '').replace('\\n', '').replace('-', '')
+        text_list = str(text_list).replace("', '", '').replace(' ', '').replace('\\n', '').replace('-', '').replace('.', '')
         if number.upper().replace('.', '').replace('-', '') in text_list.upper():
             return each
     return False
@@ -352,6 +352,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
 
 
 
+# print(main('vixen.18.07.18', ''))
 # print(main('vixen.16.08.02', ''))
 # print(main('SNIS-016', ''))
 # print(main('bangbros18.19.09.17'))
