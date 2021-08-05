@@ -255,7 +255,6 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 log_info += '   >>> JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
                 raise Exception('JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info))
-            # ========================================================================获取评分、简介
             html_detail = etree.fromstring(html_info, etree.HTMLParser())
             html_title = str(html_detail.xpath('//title/text()')).strip(" ['']")
             if html_title == 'Please Wait... | Cloudflare':
@@ -285,7 +284,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             actor = getActor(html_detail) # 获取actor
             actor = str(actor).strip(" [',']").replace('\'', '')
             actor_photo = getActorPhoto(actor)
-            number = getNumber(html, number)
+            number = getNumber(html_detail, number)
             title = getTitle(html_detail) # 获取标题并去掉头尾歌手名
             if not title:
                 log_info += '   >>> JAVDB- title 获取失败！\n'
@@ -352,6 +351,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
 
 
 
+# print(main('snis-035'))
 # print(main('vixen.18.07.18', ''))
 # print(main('vixen.16.08.02', ''))
 # print(main('SNIS-016', ''))
