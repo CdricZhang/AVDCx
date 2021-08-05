@@ -50,7 +50,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210804'
+        self.localversion = '20210806'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -2344,6 +2344,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             json_data)
         # 去除Windows特殊字符
         title = re.sub(r'[\\/:*?"<>|\r\n]+', '', title)
+        actor = re.sub(r'[\\/:*?"<>|\r\n]+', '', actor)
         # 歌手名替换
         if not series:
             series = '未知系列'
@@ -2366,7 +2367,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.addTextMain('文件夹名过长，取前70个字符!')
             folder_new_name = folder_new_name.replace(title, title[0:70])
         folder_new_path = os.path.join(success_folder, folder_new_name)
-        folder_new_path = folder_new_path.replace('--', '-').replace('\\', '/').strip('-')
+        folder_new_path = folder_new_path.replace('--', '-').replace('\\', '/').strip('- .')
         folder_new_path = self.convert_path(folder_new_path)
         return folder_new_path
 
@@ -2800,11 +2801,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # 获取文件名
         folder_path, file_full_name = os.path.split(file_path)  # 获取去掉文件名的路径、完整文件名（含扩展名）
         file_name, file_ex = os.path.splitext(file_full_name)  # 获取文件名（不含扩展名）、扩展名(含有.)
+        nfo_old_name = file_name + '.nfo'
+        nfo_old_path = os.path.join(folder_path, nfo_old_name)
         # 获取番号
         if appoint_number:      # 如果指定了番号，则使用指定番号
             movie_number = appoint_number
         else:
-            escape_string = self.Ui.lineEdit_escape_string.text()
+            escape_string = config.get('escape', 'string')
             movie_number = getNumber(file_path, escape_string)
         # 判断是否流出
         if '流出' in file_name:
@@ -2814,20 +2817,32 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             part_list = re.search('[-_]cd\d+', file_name.lower())
             if part_list:
                 cd_part = part_list[0].replace('_', '-')
-        # 判断是否中文字幕
+
         cnword_list = config.get('media', 'cnword_char').replace('，', ',').split(',')
         cnword_style = config.get('media', 'cnword_style')
-        for each in cnword_list:
-            if each.upper() in file_path.upper():
-                if '無字幕' not in file_path and '无字幕' not in file_path:
-                    c_word = cnword_style   # 中文字幕影片后缀
         # 查找本地字幕文件
-        sub_type = self.Ui.lineEdit_sub_type.text().split('|')  # 本地字幕后缀
-        for sub in sub_type:    # 查找本地字幕, 可能多个
+        sub_type_list = config.get('media', 'sub_type').split('|')   # 本地字幕后缀
+        for sub in sub_type_list:    # 查找本地字幕, 可能多个
             if os.path.exists(os.path.join(folder_path, (file_name + sub))):
                 sub_list.append(sub)
-                c_word = '-C'
+                c_word = cnword_style   # 中文字幕影片后缀
 
+        # 判断路径名是否有中文字幕字符
+        if not c_word:
+            for each in cnword_list:
+                if each.upper() in file_path.upper():
+                    if '無字幕' not in file_path and '无字幕' not in file_path:
+                        c_word = cnword_style   # 中文字幕影片后缀
+                        break
+        # 判断nfo中是否有中文字幕字样
+        if not c_word and os.path.exists(nfo_old_path):
+            try:
+                with open(nfo_old_path, 'r', encoding='utf-8') as f:
+                    nfo_content = f.read()
+                if '<genre>中文字幕</genre>' in nfo_content:
+                    c_word = cnword_style   # 中文字幕影片后缀
+            except:
+                pass
         file_show_name = str(movie_number) + cd_part + c_word
         file_show_path = self.showFilePath(file_path)
         return movie_number, folder_path, file_name, file_ex, leak, cd_part, c_word, sub_list, file_show_name, file_show_path
@@ -3063,11 +3078,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         if translate_language == 'zh_cn':
             json_data['title'] = zhconv.convert(json_data['title'], 'zh-cn').replace('&', '')
             json_data['outline'] = zhconv.convert(json_data['outline'], 'zh-cn').replace('&', '')
+            json_data['actor'] = zhconv.convert(json_data['actor'], 'zh-cn')
 
         elif translate_language == 'zh_tw':
             json_data['title'] = zhconv.convert(json_data['title'], 'zh-hant').replace('&', '')
             json_data['outline'] = zhconv.convert(json_data['outline'], 'zh-hant').replace('&', '')
             json_data['mosaic'] = zhconv.convert(json_data['mosaic'], 'zh-hant')
+            json_data['actor'] = zhconv.convert(json_data['actor'], 'zh-hant')
         # print('\n简繁转换：\n%s\n%s\n\n' % (movie_title, json_data['outline']))
         # self.addTextMain(' 🟢 Translation done!')
 
