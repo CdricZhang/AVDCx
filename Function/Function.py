@@ -78,28 +78,29 @@ def movie_lists(escape_folder, movie_type, movie_path):
 def getNumber(filepath, escape_string):
     filepath = filepath.replace('-C.', '.').replace('-c.', '.').replace(' ', '-')
     filepath = filepath.lower().replace('heydouga-', '').replace('heydouga', '').replace('caribbeancom', '').replace('carib', '').replace('1pondo', '').replace('1pon', '').replace('pacoma', '').replace('paco', '').replace('10musume', '').replace('-10mu', '').replace('fc2ppv', 'FC2-').replace('--', '-')
-    filename = os.path.splitext(filepath.split('/')[-1])[0].lower()
+    filepath = filepath.upper()
+    filename = os.path.splitext(filepath.split('/')[-1])[0]
     escape_string_list = re.split('[,，]', escape_string)
     for string in escape_string_list:
-        filename = filename.replace(string.lower(), '')
+        filename = filename.replace(string.upper(), '')
     part = ''
-    if re.search('-cd\d+', filename):
-        part = re.findall('-cd\d+', filename)[0]
+    if re.search('-CD\d+', filename):
+        part = re.findall('-CD\d+', filename)[0]
     filename = filename.replace(part, '')
     filename = str(re.sub("-\d{4}-\d{1,2}-\d{1,2}", "", filename))  # 去除文件名中时间
     filename = str(re.sub("\d{4}-\d{1,2}-\d{1,2}-", "", filename))  # 去除文件名中时间
     if re.search('[^.]+\.\d{2}\.\d{2}\.\d{2}', filename):  # 提取欧美番号 sexart.11.11.11
         try:
             file_number = re.search('[^.]+\.\d{2}\.\d{2}\.\d{2}', filename).group()
-            return file_number
+            return file_number.lower()
         except:
-            return os.path.splitext(filepath.split('/')[-1])[0]
-    elif re.search('XXX-AV-\d{4,}', filename.upper()):  # 提取xxx-av-11111
-        file_number = re.search('XXX-AV-\d{4,}', filename.upper()).group()
+            return os.path.splitext(filepath.split('/')[-1])[0].lower()
+    elif re.search('XXX-AV-\d{4,}', filename):  # 提取xxx-av-11111
+        file_number = re.search('XXX-AV-\d{4,}', filename).group()
         return file_number
     elif '-' in filename or '_' in filename:  # 普通提取番号 主要处理包含减号-和_的番号
-        if 'FC2' in filename.upper():
-            filename = filename.upper().replace('PPV', '').replace('_', '-').replace('--', '-')
+        if 'FC2' in filename:
+            filename = filename.replace('PPV', '').replace('_', '-').replace('--', '-')
             if re.search('FC2-\d{5,}', filename):  # 提取类似fc2-111111番号
                 file_number = re.search('FC2-\d{5,}', filename).group()
         elif re.search('[a-zA-Z]+-\d+', filename):  # 提取类似mkbd-120番号
@@ -117,6 +118,9 @@ def getNumber(filepath, escape_string):
         else:
             file_number = filename
         return file_number
+    elif re.search('N\d{4}', filename):  # 提取N1111
+        file_number = re.search('N\d{4}', filename).group()
+        return file_number.lower()
     else:  # 提取不含减号-的番号，FANZA CID 保留ssni00644，将MIDE139改成MIDE-139
         try:
             file_number = os.path.splitext(filename.split('/')[-1])[0]
@@ -150,7 +154,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(avsox.main(file_number, appoint_url, translate_language, log_info, req_web))
+                json_data = json.loads(avsox.main(file_number, appoint_url, log_info, req_web))
             if getDataState(json_data) == 0:
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
@@ -309,7 +313,15 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     # title = title.replace('【', '')
     # title = title.replace('】', '')
     title = title.strip()
-    release = release.replace('/', '-')
+    release = release.replace('/', '-').strip('. ')
+    try:
+        json_data['studio'] = json_data['studio'].strip('. ')
+    except:
+        pass
+    try:
+        json_data['publisher'] = json_data['publisher'].strip('. ')
+    except:
+        pass
     tmpArr = cover_small.split(',')
     if len(tmpArr) > 0:
         cover_small = tmpArr[0].strip('\"').strip('\'')
@@ -322,9 +334,9 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     folder_name = config.get('Name_Rule', 'folder_name')
 
     # 返回处理后的json_data
-    json_data['title'] = title
+    json_data['title'] = title.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
     json_data['number'] = number
-    json_data['actor'] = actor
+    json_data['actor'] = actor.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
     json_data['release'] = release
     json_data['cover_small'] = cover_small
     json_data['tag'] = tag
