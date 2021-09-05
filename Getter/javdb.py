@@ -1,4 +1,5 @@
 import re
+from PyQt5.QtCore import reset
 from lxml import etree
 import json
 import cloudscraper
@@ -146,8 +147,8 @@ def getScore(html):
         score = ''
     return score
 
-def getMosaic(title):
-    if '無碼' in title or '.' in title or 'Uncensored' in title:
+def getMosaic(title, isuncensored):
+    if '無碼' in title or 'Uncensored' in title or isuncensored:
         mosaic = '无码'
     else:
         mosaic = '有码'
@@ -194,6 +195,13 @@ def getRealUrl(html, number):  # 获取详情页链接
         if number.upper().replace('.', '').replace('-', '') in text_list.upper():
             return each
     return False
+
+def getCoverSmall(number, real_url):
+    a = real_url.replace('/v/', '')[:2].lower()
+    result = 'https://jdbimgs.com/thumbs/' + a + real_url.replace('/v/', '/') + '.jpg'
+    if re.findall('\.\d+\.\d+\.\d+', number):
+        result = ''
+    return result
 
 def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     req_web += '-> javdb '
@@ -244,6 +252,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 error_type = 'Movie data not found'
                 raise Exception('JAVDB-搜索结果页：未匹配到番号')
             else:
+                cover_small = getCoverSmall(number, real_url)
                 real_url = 'https://javdb.com' + real_url + '?locale=zh'
                 log_info += '   >>> JAVDB-生成详情页地址：%s \n' % real_url
 
@@ -269,17 +278,12 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                     log_info += '   >>> JAVDB-请到【设置】-【网络设置】中添加 javdb Cookie！\n'
                 error_type = 'need login'
                 raise Exception('JAVDB-该番号内容需要登录查看！')
-            imagecut = 1
             outline = ''
-            if isuncensored and (re.match('^\d{4,}', number) or re.match('n\d{4}', number)): 
-                imagecut = 0
-                # score = getScore(html_detail)
-            elif 'HEYZO' in number.upper():  # HEYZO，收集封面、评分、简介
-                imagecut = 0
-                # outline, score = getOutlineScore(number)
-            # else:  # 其他，收集评分、简介
-                # outline, score = getOutlineScore(number)
-                # score = getScore(html_detail)
+            imagecut = 1
+            if isuncensored:
+                imagecut = 3
+                if cover_small == '':
+                    imagecut = 0
             # ========================================================================收集信息
             actor = getActor(html_detail) # 获取actor
             actor = str(actor).strip(" [',']").replace('\'', '')
@@ -290,7 +294,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 log_info += '   >>> JAVDB- title 获取失败！\n'
                 error_type = 'need login'
                 raise Exception('JAVDB- title 获取失败！')
-            mosaic = getMosaic(title)
+            mosaic = getMosaic(title, isuncensored)
             title = title.replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_','-').replace(number.upper(), '').replace(number, '').replace('--', '-').strip()
             cover_url = getCover(html_detail) # 获取cover
             if 'http' not in cover_url:
@@ -320,7 +324,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                     'search_url': str(url_search),
                     'actor_photo': actor_photo,
                     'cover': str(cover_url),
-                    'cover_small': '',
+                    'cover_small': cover_small,
                     'extrafanart': getExtraFanart(html_detail),
                     'imagecut': imagecut,
                     'log_info': str(log_info),
@@ -351,6 +355,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
 
 
 
+# print(main('SIRO-4042'))
 # print(main('snis-035'))
 # print(main('vixen.18.07.18', ''))
 # print(main('vixen.16.08.02', ''))

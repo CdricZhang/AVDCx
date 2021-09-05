@@ -168,7 +168,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             actor = getActor(html_info) # 获取actor
             actor_photo = getActorPhoto(actor)
             if getDelActorName():
-                title = title.strip(' ' + actor)
+                a = ' ' + actor
+                title = title.replace(a, '').strip(' ')
             cover_url = getCover(html_info) # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> iqqtv- cover url 获取失败！ \n'

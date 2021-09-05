@@ -9,19 +9,23 @@ urllib3.disable_warnings()
 
 
 def getRealUrl(html, number, domain_2):
-    new_number = number.strip().replace('-', '').upper() + ''
+    real_url = ''
+    new_number = number.strip().replace('-', '').upper() + ' '
     result = html.xpath('//div[@id="video_title"]/h3/a/text()')
     for each in result:
         if new_number in each.replace('-', '').upper():
             real_url = html.xpath('//div[@id="video_title"]/h3/a[contains(text(), $title)]/@href', title=each)[0]
             real_url = 'https://www.javlibrary.com' + real_url
             return real_url
-    result = html.xpath('//a[contains(@href, "/?v=javli")]/@title')
+    result = html.xpath('//a[contains(@href, "/?v=jav")]/@title')
     for each in result:
         if new_number in each.replace('-', '').upper():
-            real_url = html.xpath('//a[contains(@title, $title)]/@href', title=each)[0]
+            real_url = html.xpath('//a[@title=$title]/@href', title=each)[0]
             real_url = domain_2 + real_url[1:]
-            return real_url      
+            if 'ブルーレイディスク' not in each:
+                return real_url
+    if real_url:
+        return real_url 
 
 def getDelActorName():
     config_file = 'config.ini'
@@ -165,7 +169,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
         if not real_url:
             # 通过搜索获取real_url
             url_search = javlibrary_url + number
-            log_info += '   >>> javlibrary-生成搜索页地址: %s\n' % url_search
+            log_info += '   >>> javlibrary-生成搜索页地址: %s \n' % url_search
             try:
                 html_search = scraper.get(url_search, proxies=proxies, timeout=timeout).text
             except Exception as error_info:
@@ -275,6 +279,10 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
 
 
 
+# print(main('SSNI-99'))
+# print(main('SSNI-990'))
+# print(main('SSNI-994'))
+# print(main('SSNI-795'))
 # print(main(' IPX-071'))
 # print(main('SNIS-003'))
 # print(main('SSIS-118'))

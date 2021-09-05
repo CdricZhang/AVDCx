@@ -46,24 +46,24 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             if 'title' in translate_content:
                 json_data['title'] = json_data_zh['title']
                 if getDelActorName():
-                    json_data['title'] = json_data['title'].strip(' ' + json_data['actor'])
+                    actor = ' ' + json_data['actor']
+                    json_data['title'] = json_data['title'].replace(actor, '').strip(' ')
             if 'outline' in translate_content:
                 json_data['outline'] = json_data_zh['outline']
             if 'actor' in translate_content:
                 json_data['actor'] = json_data_zh['actor']
             if 'tag' in translate_content:
                 json_data['tag'] = json_data_zh['tag']
-    if main_like:
-        req_web = json_data['req_web']
-        json_data_jav321 = json.loads(javdb.main(number, '', log_info, req_web))
-        if getDataState(json_data_jav321):
-            json_data['req_web'] = json_data_jav321['req_web']
-            json_data['runtime'] = json_data_jav321['runtime']
-            json_data['score'] = json_data_jav321['score']
-            json_data['series'] = json_data_jav321['series']
-            json_data['director'] = json_data_jav321['director']
-            json_data['extrafanart'] = json_data_jav321['extrafanart']
-    # return json_data
+    # if main_like:
+    #     req_web = json_data['req_web']
+    #     json_data_jav321 = json.loads(javdb.main(number, '', log_info, req_web))
+    #     if getDataState(json_data_jav321):
+    #         json_data['req_web'] = json_data_jav321['req_web']
+    #         json_data['runtime'] = json_data_jav321['runtime']
+    #         json_data['score'] = json_data_jav321['score']
+    #         json_data['series'] = json_data_jav321['series']
+    #         json_data['director'] = json_data_jav321['director']
+    #         json_data['extrafanart'] = json_data_jav321['extrafanart']
     js = json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 

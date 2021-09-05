@@ -132,7 +132,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             raise Exception('>>> JAV321- cover url 获取失败！]')
         release = getRelease(response)
         imagecut = 1
-        if 'HEYZO' in number.upper() or isuncensored:
+        if isuncensored:
             imagecut = 3
             if cover_small == '':
                 imagecut = 0
@@ -191,15 +191,13 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
 # print(main('GERK-326'))
 # print(main('msfh-010'))
 
-'''
-print(main('msfh-010'))
-print(main('kavr-065'))
-print(main('ssni-645'))
-print(main('sivr-038'))
-print(main('ara-415'))
-print(main('luxu-1257'))
-print(main('heyzo-1031'))
-print(main('ABP-905'))
-'''
+# print(main('msfh-010'))
+# print(main('kavr-065'))
+# print(main('ssni-645'))
+# print(main('sivr-038'))
+# print(main('ara-415'))
+# print(main('luxu-1257'))
+# print(main('heyzo-1031'))
+# print(main('ABP-905'))
 # print(main('heyzo-1031', ''))
 # print(main('ymdd-173', 'https://www.jav321.com/video/ymdd00173'))

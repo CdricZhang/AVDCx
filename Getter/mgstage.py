@@ -70,6 +70,7 @@ def getTag(html):
 
 def getCoverSmall(html):
     result = str(html.xpath('//*[@id="center_column"]/div[1]/div[1]/div/div/h2/img/@src')).strip(" ['']").replace('/pf_o1', '/pf_e')
+    print(result)
     return result
 
 def getCover(html):
@@ -187,12 +188,12 @@ def main(number, appoint_url='', log_info='', req_web=''):
         }
     js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
-'''
-print(main('200GANA-2240'))
-print(main('SIRO-4042'))
-print(main('300MIUM-382'))
-'''
 
+
+
+# print(main('200GANA-2240'))
+# print(main('SIRO-4042'))
+# print(main('300MIUM-382'))
 # print(main('383reiw-043', ''))
 # print(main('300MIUM-382', ''))
 # print(main('300MIUM-382', 'https://www.mgstage.com/product/product_detail/300MIUM-382/'))
