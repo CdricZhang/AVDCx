@@ -50,7 +50,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_avdc">
      <widget class="QPushButton" name="pushButton_start_cap">
@@ -2043,7 +2043,7 @@ background-color: rgb(246, 246, 246);</string>
          <number>0</number>
         </property>
         <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOff</enum>
+         <enum>Qt::ScrollBarAlwaysOn</enum>
         </property>
         <property name="horizontalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -2057,7 +2057,7 @@ background-color: rgb(246, 246, 246);</string>
            <x>0</x>
            <y>0</y>
            <width>771</width>
-           <height>577</height>
+           <height>650</height>
           </rect>
          </property>
          <widget class="QGroupBox" name="groupBox_16">
@@ -2082,7 +2082,7 @@ background-color: rgb(246, 246, 246);</string>
            <string notr="true">font:&quot;Courier&quot;;</string>
           </property>
           <property name="title">
-           <string>设置目录</string>
+           <string>目录设置</string>
           </property>
           <widget class="QWidget" name="gridLayoutWidget_7">
            <property name="geometry">
@@ -2482,7 +2482,7 @@ background-color: rgb(246, 246, 246);</string>
            <string notr="true">font:&quot;Courier&quot;;</string>
           </property>
           <property name="title">
-           <string>设置文件格式</string>
+           <string>文件格式设置</string>
           </property>
           <widget class="QWidget" name="gridLayoutWidget_16">
            <property name="geometry">
@@ -2633,7 +2633,7 @@ background-color: rgb(246, 246, 246);</string>
             <x>30</x>
             <y>460</y>
             <width>701</width>
-            <height>111</height>
+            <height>171</height>
            </rect>
           </property>
           <property name="font">
@@ -2649,7 +2649,7 @@ background-color: rgb(246, 246, 246);</string>
            <string notr="true">font:&quot;Courier&quot;;</string>
           </property>
           <property name="title">
-           <string>文件名多余字符</string>
+           <string>文件过滤设置</string>
           </property>
           <widget class="QWidget" name="gridLayoutWidget_19">
            <property name="geometry">
@@ -2657,7 +2657,7 @@ background-color: rgb(246, 246, 246);</string>
              <x>0</x>
              <y>20</y>
              <width>681</width>
-             <height>81</height>
+             <height>139</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_19">
@@ -2728,7 +2728,7 @@ background-color: rgb(246, 246, 246);</string>
                <enum>QFrame::NoFrame</enum>
               </property>
               <property name="text">
-               <string>要排除的多余字符：</string>
+               <string>过滤文件名多余字符：</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2757,6 +2757,105 @@ background-color: rgb(246, 246, 246);</string>
               </property>
               <property name="text">
                <string>识别番号时，将先排除多余字符再进行识别。（填写时以逗号分割，不用区分大小写）</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="lineEdit_escape_size">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>500</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>540</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLabel" name="label_94">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>用于过滤本地的一些广告视频，此处填写文件大小，小于该大小的视频将跳过刮削</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_93">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>160</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="text">
+               <string>过滤小文件(MB)：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -3929,7 +4028,7 @@ background-color: rgb(246, 246, 246);</string>
                </font>
               </property>
               <property name="text">
-               <string>javdb   </string>
+               <string>javdb</string>
               </property>
              </widget>
             </item>
@@ -3954,7 +4053,7 @@ background-color: rgb(246, 246, 246);</string>
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
               <property name="text">
-               <string>资源最全，字段全，但缺少简介，个别资源需要补充cookie才能查看</string>
+               <string>资源最全，字段全，但缺少简介，个别资源需要填写cookie才能查看</string>
               </property>
              </widget>
             </item>
