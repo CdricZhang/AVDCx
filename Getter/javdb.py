@@ -272,10 +272,10 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 raise Exception('JAVDB-请求详情页：被 5 秒盾拦截！')
             if '登入' in html_title or 'Sign in' in html_title:
                 log_info += '   >>> JAVDB-该番号内容需要登录查看！\n'
-                if cookies:
+                if cookies['cookie']:
                     log_info += '   >>> JAVDB-Cookie 已失效，请到设置中更新 Cookie！\n'
                 else:
-                    log_info += '   >>> JAVDB-请到【设置】-【网络设置】中添加 javdb Cookie！\n'
+                    log_info += '   >>> JAVDB-请到【设置】-【网络】中添加 javdb Cookie！\n'
                 error_type = 'need login'
                 raise Exception('JAVDB-该番号内容需要登录查看！')
             outline = ''

@@ -68,9 +68,8 @@ def getTag(html):
     result2 = str(html.xpath('//th[contains(text(),"ジャンル：")]/../td/text()')).strip(" ['']")
     return str(result1 + result2).replace('\'', '').replace(' ', '').replace('\\n', '')
 
-def getCoverSmall(html):
-    result = str(html.xpath('//*[@id="center_column"]/div[1]/div[1]/div/div/h2/img/@src')).strip(" ['']").replace('/pf_o1', '/pf_e')
-    print(result)
+def getCoverSmall(cover_url):
+    result = cover_url.replace('/pb_', '/pf_')
     return result
 
 def getCover(html):
@@ -124,8 +123,8 @@ def main(number, appoint_url='', log_info='', req_web=''):
             log_info += '   >>> MGSTAGE-找不到该番号数据！ \n'
             error_type = '找不到该番号数据'
             raise Exception('MGSTAGE-找不到该番号数据！')
-        cover_url = getCover(htmlcode).strip(',') # 获取cover
-        cover_small_url = getCoverSmall(htmlcode).strip(',') # 获取cover
+        cover_url = getCover(htmlcode) # 获取cover
+        cover_small_url = getCoverSmall(cover_url) # 获取cover
         if 'http' not in cover_url:
             log_info += '   >>> MGSTAGE-Cover Url is none! \n'
             error_type = 'Cover Url is None!'
@@ -190,10 +189,12 @@ def main(number, appoint_url='', log_info='', req_web=''):
     return js
 
 
-
+# print(main('300MIUM-382', ''))
+# print(main('345SIMM-653'))
+# print(main('SIRO-4605'))
+# print(main('200GANA-2240'))
 # print(main('200GANA-2240'))
 # print(main('SIRO-4042'))
 # print(main('300MIUM-382'))
 # print(main('383reiw-043', ''))
-# print(main('300MIUM-382', ''))
 # print(main('300MIUM-382', 'https://www.mgstage.com/product/product_detail/300MIUM-382/'))
