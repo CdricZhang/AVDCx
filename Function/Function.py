@@ -70,7 +70,7 @@ def getMoreData(number, appoint_url, config, json_data):
     if not main_like or not more_website:
         return json_data
     # 提取类似259luxu-1111素人番号，使用javdb的演员名字替换
-    if re.search('\d{3,}[a-zA-Z]{3,}-\d{3,}', number):  
+    if re.search('\d{2,}[a-zA-Z]{2,}-\d{3,}', number) or 'SIRO' in number.upper():
         number = re.search('[a-zA-Z]+-\d+', number).group()
         flag_suren = True
     # 使用网站补全
@@ -220,10 +220,10 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         if 'FC2' in file_number.upper():
             file_number = re.search('\d{4,}', file_number).group()
             json_data = json.loads(fc2.main(file_number, appoint_url))
-            if not getDataState(json_data):
-                req_web = json_data['req_web']
-                log_info = json_data['log_info']
-                json_data = json.loads(fc2club.main(file_number, appoint_url, log_info, req_web))
+            # if not getDataState(json_data):   # 暂时屏蔽，该网站目前可用
+            #     req_web = json_data['req_web']
+            #     log_info = json_data['log_info']
+            #     json_data = json.loads(fc2club.main(file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
@@ -520,6 +520,7 @@ def save_config(json_config):
         print("[escape]", file=code)
         print("folders = " + json_config['folders'], file=code)
         print("string = " + json_config['string'], file=code)
+        print("file_size = " + json_config['file_size'], file=code)
         print("", file=code)
         print("[debug_mode]", file=code)
         print("switch = " + str(json_config['switch_debug']), file=code)
