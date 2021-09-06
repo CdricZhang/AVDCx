@@ -50,7 +50,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210906'
+        self.localversion = '20210907'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -589,6 +589,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'del_actor_name': 1,
             'folders': 'JAV_output,examples',
             'string': '1080p,720p,22-sht.me,-HD,bbs2048.org@,hhd800.com@,icao.me@,hhb_000',
+            'file_size': '100.0',
             'emby_url': '192.168.5.191:8096',
             'api_key': 'cb83900340b447fab785cb628a99c3da',
             'media_path': '',
@@ -960,6 +961,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 self.Ui.lineEdit_escape_string_2.setText(config['escape']['string'])
             except:
                 self.Ui.lineEdit_escape_string_2.setText('1080p,720p,22-sht.me,-HD,bbs2048.org@,hhd800.com@,icao.me@,hhb_000')
+            try:    # 多余字符串
+                self.Ui.lineEdit_escape_size.setText(str(config.getfloat('escape', 'file_size')))
+            except:
+                self.Ui.lineEdit_escape_size.setText('100')
 
             # ======================================================================================debug_mode
             if not config.has_section("debug_mode"):
@@ -1431,6 +1436,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'cnword_char': self.Ui.lineEdit_cnword_char.text(),
             'cnword_style': self.Ui.lineEdit_cnword_style.text(),
             'string': self.Ui.lineEdit_escape_string_2.text(),
+            'file_size': self.Ui.lineEdit_escape_size.text(),
             'emby_url': self.Ui.lineEdit_emby_url.text(),
             'api_key': self.Ui.lineEdit_api_key.text(),
             'media_path': self.Ui.lineEdit_movie_path.text(),
@@ -2662,7 +2668,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.show_netstatus(self.current_proxy)
         # 检测网络连通性
         self.addNetTextMain(' 检测网络连通性...')
-        net_info = [['github', 'https://github.com' , ''], ['iqqtv', 'https://iqqtv.cloud' , ''], ['javbus', 'https://www.javbus.com' , ''], ['javdb', 'https://javdb.com', ''], ['jav321', 'https://www.jav321.com' , ''], ['dmm', 'https://www.dmm.co.jp' , ''], ['avsox', 'https://avsox.website' , ''], ['xcity', 'https://xcity.jp' , ''], ['mgstage', 'https://www.mgstage.com', ''], ['fc2', 'https://adult.contents.fc2.com', ''], ['fc2club', 'https://fc2club.net', ''], ['fc2hub', 'https://fc2hub.com', ''], ['airav', 'https://www.airav.wiki' , ''], ['javlibrary', 'http://www.javlibrary.com' , '']]
+        net_info = [['github', 'https://github.com' , ''], ['iqqtv', 'https://iqqtv.cloud' , ''], ['javbus', 'https://www.javbus.com' , ''], ['javdb', 'https://javdb.com', ''], ['jav321', 'https://www.jav321.com' , ''], ['dmm', 'https://www.dmm.co.jp' , ''], ['avsox', 'https://avsox.website' , ''], ['xcity', 'https://xcity.jp' , ''], ['mgstage', 'https://www.mgstage.com', ''], ['fc2', 'https://adult.contents.fc2.com', ''], ['fc2hub', 'https://fc2hub.com', ''], ['airav', 'https://www.airav.wiki' , ''], ['javlibrary', 'http://www.javlibrary.com' , '']]
         for each in net_info:
             proxies = get_proxies()
             proxy_type, proxy, timeout, retry_count = get_proxy()
@@ -3339,21 +3345,32 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # json_data = json.loads(js)
         return dic
 
+
+    # =====================================================================================检查文件
+    def checkFile(self, file_path, file_escape_size):
+        json_data = {
+            'title': '',
+            'actor': '',
+            'website': '',
+            'log_info': '',
+            'error_type': '',
+            'error_info': '',
+        }        
+        if not os.path.exists(file_path):
+            json_data['error_info'] = '文件不存在'
+            json_data['error_type'] = json_data['error_info']
+            return False, json_data
+        file_size = os.path.getsize(file_path)/float(1024*1024)
+        if file_size < file_escape_size:
+            json_data['error_info'] = '文件小于 %s MB 被过滤!（实际大小 %s MB）已跳过刮削！' % (file_escape_size, round(file_size, 2))
+            json_data['error_type'] = json_data['error_info']
+            return False, json_data
+        return True, json_data
+
     # =====================================================================================处理单个文件刮削
     def coreMain(self, file_path, movie_number, config, file_mode, appoint_number='', appoint_url='', jsonfile_data={}):
-        json_data = {}
-        if not os.path.exists(file_path):
-            json_data = {
-                'title': '',
-                'actor': '',
-                'website': '',
-                'log_info': '',
-                'error_type': 'file not exist',
-                'error_info': '文件不存在',
-            }
-            self.addTextMain(" 🔴 File is not exist! \n   >>> The path is '%s'" % file_path)
-            return False, json_data
         # =====================================================================================初始化所需变量
+        json_data = {}
         sub_list = []
         leak = ''
         cd_part = ''
@@ -3366,7 +3383,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         translate_content = config.get('common', 'translate_content')
         translate_by = config.get('common', 'translate_by')
         self.deepl_key = config.get('common', 'deepl_key')
-        main_mode = int(config.getint('common', 'main_mode'))
+        main_mode = config.getint('common', 'main_mode')
+        file_escape_size = config.getfloat('escape', 'file_size')
+
+        # =====================================================================================检查文件
+        result, json_data = self.checkFile(file_path, file_escape_size)
+        if not result:
+            return False, json_data
 
         # =====================================================================================获取文件信息
         movie_number, folder_old_path, file_name, file_ex, leak, cd_part, c_word, sub_list, file_show_name, file_show_path = self.getFileInfo(file_path, appoint_number)
@@ -3378,10 +3401,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 self.showMovieInfo(json_data, config)
                 return True, json_data
 
-        # =====================================================================================获取设置的媒体目录、失败目录、成功目录
-        movie_path, success_folder, failed_folder, escape_folder, extrafanart_folder = self.getMoviePathSetting(config)
-
-        # =====================================================================================获取json_data
+        # =====================================================================================刮削json_data
         json_data = self.getJsonData(file_mode, movie_number, config, appoint_url, translate_language)
 
         # =====================================================================================显示json_data的结果和获取日志
@@ -3393,6 +3413,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
         # =====================================================================================显示json_data
         self.showMovieInfo(json_data, config)
+
+        # =====================================================================================获取设置的媒体目录、失败目录、成功目录
+        movie_path, success_folder, failed_folder, escape_folder, extrafanart_folder = self.getMoviePathSetting(config)
 
         # =====================================================================================生成输出文件夹和输出文件的路径
         folder_new_path, file_new_path, thumb_new_path, poster_new_path, fanart_new_path, nfo_new_path, naming_rule, file_new_name, thumb_new_name, poster_new_name, fanart_new_name, nfo_new_name = self.getOutPutName(file_path, success_folder, json_data, config, c_word, leak, cd_part, file_ex)
@@ -3543,7 +3566,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             else:
                 succ_count -= 1
                 self.showListName(fail_show_name, 'fail', json_data, movie_number)
-                self.addTextMain(' 🔴 [Error] %s' % json_data['error_info'])
+                self.addTextMain(' 🔴 [Info] %s' % json_data['error_info'])
                 self.moveFailedFolder(file_path, folder_old_path, failed_folder, file_ex, config)
         self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
         self.progressBarValue.emit(100)
