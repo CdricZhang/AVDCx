@@ -9,3 +9,4 @@ PySocks==1.7.1
 urllib3==1.25.11
 zhconv
 langid
+opencv-contrib-python-headless==4.4.0.46

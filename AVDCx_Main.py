@@ -32,7 +32,7 @@ import zhconv
 import langid
 import platform
 import cloudscraper
-
+import cv2
 
 class MyMAinWindow(QMainWindow, Ui_AVDV):
     progressBarValue = pyqtSignal(int)  # 进度条信号量
@@ -50,7 +50,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210907'
+        self.localversion = '20210908'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -2052,7 +2052,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             return True
         # self.addTextMain(" ⏳ Start creating nfo... ")
         # 获取字段
-        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
+        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic, definition = get_info(
             json_data)
         tag = tag.split(',')    # str转list
         # 获取在媒体文件中显示的规则，不需要过滤Windows异常字符
@@ -2061,7 +2061,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'runtime',
             runtime).replace(
             'director', director).replace('actor', actor).replace('release', release).replace('number', number).replace(
-            'series', series).replace('publisher', publisher).replace('mosaic', mosaic)
+            'series', series).replace('publisher', publisher).replace('mosaic', mosaic).replace('definition', definition)
         try:
             if not os.path.exists(folder_new_path):
                 os.makedirs(folder_new_path)
@@ -2413,7 +2413,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         if config.getint('common', 'success_file_move') == 0 and config.getint('common', 'soft_link') == 0:
             folder_path = os.path.split(file_path)[0]
             return folder_path
-        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
+        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic, definition = get_info(
             json_data)
         # 去除Windows特殊字符
         title = re.sub(r'[\\/:*?"<>|\r\n]+', '', title)
@@ -2436,7 +2436,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         folder_new_name = folder_name.replace('title', title).replace('studio', studio).replace('year', year).replace('runtime',
                                                                                                            runtime).replace(
             'director', director).replace('actor', actor).replace('release', release).replace('number', number + c_word).replace(
-            'series', series).replace('publisher', publisher).replace('mosaic', mosaic)  # 生成文件夹名
+            'series', series).replace('publisher', publisher).replace('mosaic', mosaic).replace('definition', definition)  # 生成文件夹名
         folder_new_name = folder_new_name.replace('--', '-').strip('-')
         folder_new_name = re.sub(r'[\\:*?"<>|\r\n]+', '', folder_new_name).strip('/')
         if len(folder_new_name) > 100:  # 文件夹名过长 取标题前70个字符
@@ -2454,7 +2454,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             file_name = os.path.split(file_path)[1]
             file_name = os.path.splitext(file_name)[0]
             return file_name
-        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic = get_info(
+        title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic, definition = get_info(
             json_data)
         title = re.sub(r'[\\/:*?"<>|\r\n]+', '', title)
         # 是否勾选文件名添加字幕标识
@@ -2476,14 +2476,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'runtime',
             runtime).replace(
             'director', director).replace('actor', actor).replace('release', release).replace('number', number).replace(
-            'series', series).replace('publisher', publisher).replace('mosaic', mosaic)
+            'series', series).replace('publisher', publisher).replace('mosaic', mosaic).replace('definition', definition)
         file_name = file_name.replace('//', '/').replace('--', '-').strip('-')
         file_name = re.sub(r'[\\/:*?"<>|\r\n]+', '', file_name) # 用在保存文件时的名字，需要过滤window异常字符
         if not file_name:
             file_name = number
-        elif len(file_name) > 100:  # 文件名过长 取标题前70个字符
-            self.addTextMain('🟠 提示：标题名过长，取前70个字作为标题!')
-            file_name = file_name.replace(title, title[0:70])
+        elif len(file_name) > 60:  # 文件名过长 取标题前50个字符
+            self.addTextMain('🟠 提示：标题名过长，取前50个字作为标题!')
+            file_name = file_name.replace(title, title[0:50])
         file_name = file_name.replace('--', '-').strip('-')
 
         return file_name
@@ -3289,7 +3289,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         number = str(nfo_xml.xpath('//num/text()')).strip("[']")
         if not number:
             number = movie_number
-        actor = str(nfo_xml.xpath('//actor/name/text()')).strip("['']").replace("'", '')
+        actor = str(nfo_xml.xpath('//actor/name/text()')).strip("['']").replace("'", '').replace(', ', ',')
         outline = str(nfo_xml.xpath('//outline/text()')).strip("[']")
         if not outline:
             outline = str(nfo_xml.xpath('//plot/text()')).strip("[']")
@@ -3306,9 +3306,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         publisher = str(nfo_xml.xpath('//studio/text()')).strip("[']")
         website = str(nfo_xml.xpath('//website/text()')).strip("[']")
         cover = str(nfo_xml.xpath('//cover/text()')).strip("[']")
-        poster = str(nfo_xml.xpath('//poster/text()')).strip("[']")
-        thumb = str(nfo_xml.xpath('//thumb/text()')).strip("[']")
-        fanart = str(nfo_xml.xpath('//fanart/text()')).strip("[']")
+        poster = str(nfo_xml.xpath('//movie/poster/text()')).strip("[']")
+        thumb = str(nfo_xml.xpath('//movie/thumb/text()')).strip("[']")
+        fanart = str(nfo_xml.xpath('//movie/fanart/text()')).strip("[']")
         poster_path = os.path.join(file_folder, poster)
         thumb_path = os.path.join(file_folder, thumb)
         fanart_path = os.path.join(file_folder, fanart)
@@ -3367,6 +3367,41 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             return False, json_data
         return True, json_data
 
+
+    # =====================================================================================获取视频分辨率
+    def getVideoSize(self, json_data, file_path):
+        definition = ''
+        try:
+            cap = cv2.VideoCapture(file_path)
+            height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        except:
+            height = 0
+        if height >= 4000:
+            definition = '8K'
+        elif height >= 2000:
+            definition = '4K'
+        elif height >= 1400:
+            definition = '1440P'
+        elif height >= 1000:
+            definition = '1080P'
+        elif height >= 900:
+            definition = '960P'
+        elif height >= 700:
+            definition = '720P'
+        elif height >= 500:
+            definition = '540P'
+        elif height >= 300:
+            definition = '360P'
+        elif height >= 100:
+            definition = '144P'
+        json_data['definition'] = definition
+        if json_data['tag'] and definition:
+            json_data['tag'] = json_data['tag'] + ',' + definition
+        else:
+            json_data['tag'] = json_data['tag'] + definition
+        return json_data
+
+
     # =====================================================================================处理单个文件刮削
     def coreMain(self, file_path, movie_number, config, file_mode, appoint_number='', appoint_url='', jsonfile_data={}):
         # =====================================================================================初始化所需变量
@@ -3386,7 +3421,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         main_mode = config.getint('common', 'main_mode')
         file_escape_size = config.getfloat('escape', 'file_size')
 
-        # =====================================================================================检查文件
+        # =====================================================================================检查文件大小
         result, json_data = self.checkFile(file_path, file_escape_size)
         if not result:
             return False, json_data
@@ -3410,6 +3445,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
         # =====================================================================================翻译json_data的标题和介绍
         self.transLanguage(movie_number, jsonfile_data, json_data, translate_language, translate_content, translate_by)
+
+        # =====================================================================================获取视频分辨率
+        json_data = self.getVideoSize(json_data, file_path)
 
         # =====================================================================================显示json_data
         self.showMovieInfo(json_data, config)
