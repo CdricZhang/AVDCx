@@ -10,7 +10,6 @@ from PIL import Image
 from configparser import RawConfigParser
 from Getter import iqqtv_new, javbus, javdb, jav321, dmm, javlibrary_new, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav
 
-
 # ========================================================================补全字段判断缺失字段
 def getTheData(json_data_more, json_data, flag_suren=False):
     json_data['req_web'] = json_data_more['req_web']
@@ -145,14 +144,13 @@ def movie_lists(escape_folder, movie_type, movie_path):
 
 # ========================================================================获取番号
 def getNumber(filepath, escape_string):
-    filepath = filepath.upper()
+    filepath = filepath.upper().replace('1080P', '').replace('720P', '').replace('-C.', '.').replace('.PART', '-CD').replace('-PART', '-CD').replace(' ', '-')
     filename = os.path.splitext(os.path.split(filepath)[1])[0]
     # 排除多余字符
     escape_string_list = re.split('[,，]', escape_string)
     for string in escape_string_list:
         filename = filename.replace(string.upper(), '')
     # 再次排除多余字符
-    filename = filename.replace('-C.', '.').replace('.PART', '-CD').replace(' ', '-')
     filename = filename.replace('HEYDOUGA-', '').replace('HEYDOUGA', '').replace('CARIBBEANCOM', '').replace('CARIB', '').replace('1PONDO', '').replace('1PON', '').replace('PACOMA', '').replace('PACO', '').replace('10MUSUME', '').replace('-10MU', '').replace('FC2PPV', 'FC2-').replace('--', '-')
     part = ''
     if re.search('-CD\d+', filename):
@@ -180,16 +178,16 @@ def getNumber(filepath, escape_string):
             file_number = re.search('\d+[a-zA-Z]+-\d+', filename).group()
         elif re.search('[a-zA-Z]+-[a-zA-Z]\d+', filename):  # 提取类似mkbd-s120番号
             file_number = re.search('[a-zA-Z]+-[a-zA-Z]\d+', filename).group()
-        elif re.search('\d+-[a-zA-Z]+', filename):  # 提取类似 111111-MMMM 番号
-            file_number = re.search('\d+-[a-zA-Z]+', filename).group()
         elif re.search('\d+-\d+', filename):  # 提取类似 111111-000 番号
             file_number = re.search('\d+-\d+', filename).group()
         elif re.search('\d+_\d+', filename):  # 提取类似 111111_000 番号
             file_number = re.search('\d+_\d+', filename).group()
+        elif re.search('\d+-[a-zA-Z]+', filename):  # 提取类似 111111-MMMM 番号
+            file_number = re.search('\d+-[a-zA-Z]+', filename).group()
         else:
             file_number = filename
         return file_number
-    elif re.search('[A-Z]{3,}00\d{3}', filename):  # 提取ssni00644
+    elif re.search('[A-Z]{3,}00\d{3}', filename):  # 提取ssni00644为ssni-644
         file_number = re.search('[A-Z]{3,}00\d{3}', filename).group()
         file_char = re.search('[A-Z]{3,}', file_number).group()
         a = file_char + '00'
@@ -364,7 +362,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         cover_small = json_data['cover_small']
     except:
         cover_small = ''
-    tag = str(json_data['tag']).strip(" [ ]").replace("'", '').replace(', ', ',')  #列表转字符串（避免个别网站刮削返回的是列表）
+    tag = str(json_data['tag']).strip(" [ ]").replace("'", '').replace(', ', ',').replace(',720P', '').replace(',1080P', '')  #列表转字符串（避免个别网站刮削返回的是列表）
 
     # ====================================== 去除标题尾巴的演员名
     if config.getint('Name_Rule', 'del_actor_name'):
@@ -451,8 +449,9 @@ def get_info(json_data):
     website = json_data['website']
     series = json_data['series']
     mosaic = json_data['mosaic']
+    definition = json_data['definition']
 
-    return title, studio, publisher, str(year), outline, str(runtime), director, actor_photo, actor, release, tag, number, cover, website, series, mosaic
+    return title, studio, publisher, str(year), outline, str(runtime), director, actor_photo, actor, release, tag, number, cover, website, series, mosaic, definition
 
 
 # ========================================================================保存配置到config.ini
@@ -501,7 +500,7 @@ def save_config(json_config):
         print("folder_cnword = " + str(json_config['folder_cnword']), file=code)
         print("file_cnword = " + str(json_config['file_cnword']), file=code)
         print("del_actor_name = " + str(json_config['del_actor_name']), file=code)
-        print("# 命名字段有：title, actor, number, studio, publisher, year, mosaic, runtime, director, release, series", file=code)
+        print("# 命名字段有：title, actor, number, studio, publisher, year, mosaic, runtime, director, release, series, definition", file=code)
         print("", file=code)
         print("[update]", file=code)
         print("update_check = " + str(json_config['update_check']), file=code)
