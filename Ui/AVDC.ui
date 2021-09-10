@@ -5141,7 +5141,7 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
              <string>当刮削成功时，将为该视频创建一个视频目录，并移动该视频目录到成功输出目录。
 目录名字支持自定义。命名字段有：
 title, actor, number, studio, publisher, year, mosaic,
-runtime, director, release, series，definition
+runtime, director, release, series, definition, cnword
 注意：1，可以添加命名字段以外的字符，命名时会原样保留；
 2，当留空时，表示不创建视频目录；
 3，当勾选「成功后不移动文件」时，将不会创建视频目录
