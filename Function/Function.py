@@ -69,7 +69,7 @@ def getMoreData(number, appoint_url, config, json_data):
     if not main_like or not more_website:
         return json_data
     # 提取类似259luxu-1111素人番号，使用javdb的演员名字替换
-    if re.search('\d{2,}[a-zA-Z]{2,}-\d{3,}', number) or 'SIRO' in number.upper():
+    if re.search('\d{2,}[a-zA-Z]{2,}-\d{3,}', number) or 'LUXU' in number.upper() or 'SIRO' in number.upper() or 'GANA' in number.upper() or 'ARA-' in number.upper() or 'MIUM' in number.upper():
         number = re.search('[a-zA-Z]+-\d+', number).group()
         flag_suren = True
     # 使用网站补全
@@ -500,7 +500,7 @@ def save_config(json_config):
         print("folder_cnword = " + str(json_config['folder_cnword']), file=code)
         print("file_cnword = " + str(json_config['file_cnword']), file=code)
         print("del_actor_name = " + str(json_config['del_actor_name']), file=code)
-        print("# 命名字段有：title, actor, number, studio, publisher, year, mosaic, runtime, director, release, series, definition", file=code)
+        print("# 命名字段有：title, actor, number, studio, publisher, year, mosaic, runtime, director, release, series, definition, cnword", file=code)
         print("", file=code)
         print("[update]", file=code)
         print("update_check = " + str(json_config['update_check']), file=code)
