@@ -18,8 +18,8 @@ OPTIONS = {
         'CFBundleDisplayName': "AVDCx",
         'CFBundleGetInfoString': "AVDCx",
         'CFBundleIdentifier': "github.com",   # 进程名字
-        'CFBundleVersion': "20210908",
-        'CFBundleShortVersionString': "20210908",   #版本号
+        'CFBundleVersion': "20210910",
+        'CFBundleShortVersionString': "20210910",   #版本号
         'NSHumanReadableCopyright': u"版权所有 © 2021, hermit",
         'Localization native development region':'China',
         }
@@ -29,5 +29,5 @@ setup(
     app=APP,
     data_files=DATA_FILES,
     options={'py2app': OPTIONS},
-    setup_requires=['py2app','lxml','pyquery','cloudscraper','requests','beautifulsoup4','Pillow','PyQt5','PySocks','urllib3','zhconv','langid','opencv-contrib-python-headless'],
+    setup_requires=['py2app','lxml','pyquery','cloudscraper','requests','beautifulsoup4','Pillow','PyQt5','PySocks','urllib3','zhconv','langid'],
 )

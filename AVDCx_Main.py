@@ -50,7 +50,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210908'
+        self.localversion = '20210910'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.thumb_path = ''
@@ -2061,7 +2061,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'runtime',
             runtime).replace(
             'director', director).replace('actor', actor).replace('release', release).replace('number', number).replace(
-            'series', series).replace('publisher', publisher).replace('mosaic', mosaic).replace('definition', definition)
+            'series', series).replace('publisher', publisher).replace('mosaic', mosaic).replace('definition', definition).replace('cnword', c_word)
         try:
             if not os.path.exists(folder_new_path):
                 os.makedirs(folder_new_path)
@@ -2418,6 +2418,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # 去除Windows特殊字符
         title = re.sub(r'[\\/:*?"<>|\r\n]+', '', title)
         actor = re.sub(r'[\\/:*?"<>|\r\n]+', '', actor)
+        cnword = c_word
         # 是否勾选目录名添加字幕标识
         if str(config['Name_Rule']['folder_cnword']) != '1':
             c_word = ''
@@ -2436,7 +2437,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         folder_new_name = folder_name.replace('title', title).replace('studio', studio).replace('year', year).replace('runtime',
                                                                                                            runtime).replace(
             'director', director).replace('actor', actor).replace('release', release).replace('number', number + c_word).replace(
-            'series', series).replace('publisher', publisher).replace('mosaic', mosaic).replace('definition', definition)  # 生成文件夹名
+            'series', series).replace('publisher', publisher).replace('mosaic', mosaic).replace('definition', definition).replace('cnword', cnword)  # 生成文件夹名
         folder_new_name = folder_new_name.replace('--', '-').strip('-')
         folder_new_name = re.sub(r'[\\:*?"<>|\r\n]+', '', folder_new_name).strip('/')
         if len(folder_new_name) > 100:  # 文件夹名过长 取标题前70个字符
@@ -2457,6 +2458,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic, definition = get_info(
             json_data)
         title = re.sub(r'[\\/:*?"<>|\r\n]+', '', title)
+        cnword = c_word
         # 是否勾选文件名添加字幕标识
         if str(config['Name_Rule']['file_cnword']) != '1':
             c_word = ''
@@ -2476,7 +2478,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'runtime',
             runtime).replace(
             'director', director).replace('actor', actor).replace('release', release).replace('number', number).replace(
-            'series', series).replace('publisher', publisher).replace('mosaic', mosaic).replace('definition', definition)
+            'series', series).replace('publisher', publisher).replace('mosaic', mosaic).replace('definition', definition).replace('cnword', cnword)
         file_name = file_name.replace('//', '/').replace('--', '-').strip('-')
         file_name = re.sub(r'[\\/:*?"<>|\r\n]+', '', file_name) # 用在保存文件时的名字，需要过滤window异常字符
         if not file_name:
@@ -2933,10 +2935,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # =====================================================================================有道翻译
     def translateDeepl(self, text, s_lang='JA', t_lang='ZH'):
+        deepl_key = self.deepl_key
+        url = 'https://api.deepl.com/v2/translate'
+        if ':' in deepl_key:
+            url = 'https://api-free.deepl.com/v2/translate'
         proxy_type, proxy, timeout, retry_count = get_proxy()
         proxies = get_proxies()
-        url = 'https://api.deepl.com/v2/translate'
-        deepl_key = self.deepl_key
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded; utf-8'
         }
@@ -2961,10 +2965,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 translate_results = json.loads(result)
             except Exception as ex:
                 if len(result) == 0:
-                    if deepl_key:
-                        self.addTextMain(' 🟠 本次翻译将跳过！deepl API key 无效！请重新输入！')
-                    else:
-                        self.addTextMain(' 🟠 本次翻译将跳过！请在设置里填写 deepl API key 后使用！')
+                    self.addTextMain(' 🟠 本次翻译将跳过！deepl API key 无效！请重新输入！')
                 else:
                     self.addTextMain(' 🟠 本次翻译将跳过！deepl翻译接口返回数据异常1！返回内容：%s' % str(ex))
             else:
@@ -3152,6 +3153,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     json_data['outline'] = trans_outline
                 self.addTextMain(' 🟢 YouDao Translation done!')
             elif translate_by == 'deepl':   # 使用deepl翻译
+                if not self.deepl_key:
+                    self.addTextMain(' 🟠 本次翻译将跳过！请在设置里填写 deepl API key 后使用！')
+                    return
                 if trans_title:
                     json_data['title'] = self.translateDeepl(trans_title)
                 if trans_outline:
