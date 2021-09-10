@@ -280,7 +280,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 raise Exception('JAVDB-该番号内容需要登录查看！')
             outline = ''
             imagecut = 1
-            if isuncensored:
+            if isuncensored or 'LUXU' in number.upper() or 'SIRO' in number.upper() or 'GANA' in number.upper() or 'ARA-' in number.upper() or 'MIUM' in number.upper():
                 imagecut = 3
                 if cover_small == '':
                     imagecut = 0
