@@ -50,7 +50,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_avdc">
      <widget class="QPushButton" name="pushButton_start_cap">
@@ -585,7 +585,7 @@ color:#336699</string>
        <rect>
         <x>50</x>
         <y>390</y>
-        <width>330</width>
+        <width>291</width>
         <height>30</height>
        </rect>
       </property>
@@ -1135,6 +1135,30 @@ background-color: rgb(246, 246, 246);</string>
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>390</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+        <pointsize>13</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>点击图片可手动裁剪</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
      <zorder>label_number1</zorder>
      <zorder>label_number</zorder>
      <zorder>label_13</zorder>
@@ -1175,6 +1199,7 @@ background-color: rgb(246, 246, 246);</string>
      <zorder>pushButton_start_cap</zorder>
      <zorder>line_14</zorder>
      <zorder>label_source</zorder>
+     <zorder>label_19</zorder>
     </widget>
     <widget class="QWidget" name="page_log">
      <widget class="QTextBrowser" name="textBrowser_log_main">
@@ -1411,8 +1436,8 @@ background-color: rgb(246, 246, 246);</string>
         </font>
        </property>
        <property name="text">
-        <string>如不指定番号，则默认使用文件名识别番号进行刮削。
-如指定了刮削网址，则「刮削网站」请选择对应网站！</string>
+        <string>选择文件后，选择「刮削网站」、填写「刮削网址」（该番号的网页地址）
+点击刮削即可！（「影片番号」可不填写）</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_select_file">
@@ -1441,7 +1466,7 @@ background-color: rgb(246, 246, 246);</string>
        <property name="geometry">
         <rect>
          <x>310</x>
-         <y>110</y>
+         <y>30</y>
          <width>430</width>
          <height>30</height>
         </rect>
@@ -1530,7 +1555,7 @@ background-color: rgb(246, 246, 246);</string>
        <property name="geometry">
         <rect>
          <x>230</x>
-         <y>110</y>
+         <y>30</y>
          <width>80</width>
          <height>30</height>
         </rect>
@@ -1545,7 +1570,7 @@ background-color: rgb(246, 246, 246);</string>
         </font>
        </property>
        <property name="text">
-        <string>刮削网站：</string>
+        <string>*刮削网站：</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1594,7 +1619,7 @@ background-color: rgb(246, 246, 246);</string>
         </font>
        </property>
        <property name="text">
-        <string>刮削网址：</string>
+        <string>*刮削网址：</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1604,7 +1629,7 @@ background-color: rgb(246, 246, 246);</string>
        <property name="geometry">
         <rect>
          <x>310</x>
-         <y>30</y>
+         <y>110</y>
          <width>430</width>
          <height>30</height>
         </rect>
@@ -1628,7 +1653,7 @@ background-color: rgb(246, 246, 246);</string>
        <property name="geometry">
         <rect>
          <x>230</x>
-         <y>30</y>
+         <y>110</y>
          <width>80</width>
          <height>30</height>
         </rect>
@@ -1643,7 +1668,7 @@ background-color: rgb(246, 246, 246);</string>
         </font>
        </property>
        <property name="text">
-        <string>影片番号：</string>
+        <string> 影片番号：</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1761,7 +1786,7 @@ background-color: rgb(246, 246, 246);</string>
         </font>
        </property>
        <property name="text">
-        <string>Emby地址：</string>
+        <string>*Emby地址：</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1786,7 +1811,7 @@ background-color: rgb(246, 246, 246);</string>
         </font>
        </property>
        <property name="text">
-        <string>API密钥：</string>
+        <string>*API密钥：</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2464,7 +2489,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>330</y>
+            <y>520</y>
             <width>701</width>
             <height>111</height>
            </rect>
@@ -2631,7 +2656,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>460</y>
+            <y>330</y>
             <width>701</width>
             <height>171</height>
            </rect>
@@ -2908,7 +2933,7 @@ background-color: rgb(246, 246, 246);</string>
            <x>0</x>
            <y>0</y>
            <width>771</width>
-           <height>1010</height>
+           <height>1060</height>
           </rect>
          </property>
          <widget class="QGroupBox" name="groupBox">
@@ -2917,7 +2942,7 @@ background-color: rgb(246, 246, 246);</string>
             <x>30</x>
             <y>110</y>
             <width>701</width>
-            <height>141</height>
+            <height>181</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -2950,10 +2975,26 @@ background-color: rgb(246, 246, 246);</string>
              <x>60</x>
              <y>20</y>
              <width>641</width>
-             <height>121</height>
+             <height>161</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_2">
+            <item row="2" column="0">
+             <widget class="QRadioButton" name="radioButton_read">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>读取模式</string>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="1">
              <widget class="QLabel" name="label_11">
               <property name="sizePolicy">
@@ -3004,22 +3045,6 @@ background-color: rgb(246, 246, 246);</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
-             <widget class="QRadioButton" name="radioButton_sort">
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>整理模式</string>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="0">
              <widget class="QRadioButton" name="radioButton_common">
               <property name="sizePolicy">
@@ -3051,22 +3076,6 @@ background-color: rgb(246, 246, 246);</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="0">
-             <widget class="QRadioButton" name="radioButton_read">
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <pointsize>13</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>读取模式</string>
-              </property>
-             </widget>
-            </item>
             <item row="2" column="1">
              <widget class="QLabel" name="label_16">
               <property name="sizePolicy">
@@ -3088,7 +3097,51 @@ background-color: rgb(246, 246, 246);</string>
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
               <property name="text">
-               <string>本地有nfo文件时，直接读取nfo信息，不进行刮削；当不存在nfo时，正常刮削</string>
+               <string>本地有nfo文件时，直接读取nfo信息，不进行刮削</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QRadioButton" name="radioButton_sort">
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>整理模式</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QCheckBox" name="checkBox_read_no_nfo">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>不存在本地nfo的视频，正常刮削</string>
               </property>
              </widget>
             </item>
@@ -3099,7 +3152,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>270</y>
+            <y>310</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -3386,7 +3439,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>540</y>
+            <y>580</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -3526,7 +3579,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>900</y>
+            <y>940</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -3666,7 +3719,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>660</y>
+            <y>700</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -3809,7 +3862,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>780</y>
+            <y>820</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -3949,7 +4002,7 @@ background-color: rgb(246, 246, 246);</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>390</y>
+            <y>430</y>
             <width>701</width>
             <height>131</height>
            </rect>
@@ -4670,27 +4723,6 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_5">
-            <item row="0" column="0">
-             <widget class="QRadioButton" name="radioButton_poster_cut">
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Courier</family>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>thumb裁剪（清晰）</string>
-              </property>
-             </widget>
-            </item>
             <item row="1" column="0">
              <widget class="QRadioButton" name="radioButton_poster_official">
               <property name="sizePolicy">
@@ -4701,8 +4733,8 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
               </property>
               <property name="minimumSize">
                <size>
-                <width>100</width>
-                <height>30</height>
+                <width>80</width>
+                <height>0</height>
                </size>
               </property>
               <property name="font">
@@ -4715,32 +4747,28 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
                </font>
               </property>
               <property name="text">
-               <string>下载（模糊）</string>
+               <string>下载</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QLabel" name="label_52">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+            <item row="0" column="0">
+             <widget class="QRadioButton" name="radioButton_poster_cut">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
               </property>
               <property name="font">
                <font>
                 <family>Courier</family>
-                <pointsize>12</pointsize>
                 <weight>50</weight>
                 <italic>false</italic>
                 <bold>false</bold>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(8, 128, 128);</string>
-              </property>
               <property name="text">
-               <string>从网络下载图片，一般很不清晰。当没有下载链接时，将自动使用thumb裁剪</string>
+               <string>自动</string>
               </property>
              </widget>
             </item>
@@ -4765,7 +4793,32 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
               <property name="text">
-               <string>推荐，将使用thumb裁剪，图片清晰</string>
+               <string>通过内置规则自动判断，优先使用thumb裁剪（清晰），有需要时再下载poster</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_52">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>优先从网络下载poster（一般不清晰），下载失败时再使用thumb裁剪</string>
               </property>
              </widget>
             </item>

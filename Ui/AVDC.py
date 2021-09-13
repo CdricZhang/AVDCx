@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCiyaDXe.ui'
+## Form generated from reading UI file 'AVDCyfFkfm.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -156,7 +156,7 @@ class Ui_AVDV(object):
         self.label_33.setFont(font)
         self.checkBox_cover = QCheckBox(self.page_avdc)
         self.checkBox_cover.setObjectName(u"checkBox_cover")
-        self.checkBox_cover.setGeometry(QRect(50, 390, 330, 30))
+        self.checkBox_cover.setGeometry(QRect(50, 390, 291, 30))
         self.checkBox_cover.setFont(font)
         self.label_result = QLabel(self.page_avdc)
         self.label_result.setObjectName(u"label_result")
@@ -307,6 +307,11 @@ class Ui_AVDV(object):
         self.label_source.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_source.setFrameShape(QFrame.Box)
         self.label_source.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.label_19 = QLabel(self.page_avdc)
+        self.label_19.setObjectName(u"label_19")
+        self.label_19.setGeometry(QRect(390, 390, 131, 31))
+        self.label_19.setFont(font)
+        self.label_19.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.stackedWidget.addWidget(self.page_avdc)
         self.label_number1.raise_()
         self.label_number.raise_()
@@ -348,6 +353,7 @@ class Ui_AVDV(object):
         self.pushButton_start_cap.raise_()
         self.line_14.raise_()
         self.label_source.raise_()
+        self.label_19.raise_()
         self.page_log = QWidget()
         self.page_log.setObjectName(u"page_log")
         self.textBrowser_log_main = QTextBrowser(self.page_log)
@@ -432,11 +438,11 @@ class Ui_AVDV(object):
         self.comboBox_website.addItem("")
         self.comboBox_website.addItem("")
         self.comboBox_website.setObjectName(u"comboBox_website")
-        self.comboBox_website.setGeometry(QRect(310, 110, 430, 30))
+        self.comboBox_website.setGeometry(QRect(310, 30, 430, 30))
         self.comboBox_website.setFont(font3)
         self.label_2 = QLabel(self.groupBox_7)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(230, 110, 80, 30))
+        self.label_2.setGeometry(QRect(230, 30, 80, 30))
         self.label_2.setFont(font3)
         self.label_2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.lineEdit_appoint_url = QLineEdit(self.groupBox_7)
@@ -453,14 +459,14 @@ class Ui_AVDV(object):
         self.label_10.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.lineEdit_movie_number = QLineEdit(self.groupBox_7)
         self.lineEdit_movie_number.setObjectName(u"lineEdit_movie_number")
-        self.lineEdit_movie_number.setGeometry(QRect(310, 30, 430, 30))
+        self.lineEdit_movie_number.setGeometry(QRect(310, 110, 430, 30))
         self.lineEdit_movie_number.setFont(font3)
         self.lineEdit_movie_number.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
 "")
         self.label_12 = QLabel(self.groupBox_7)
         self.label_12.setObjectName(u"label_12")
-        self.label_12.setGeometry(QRect(230, 30, 80, 30))
+        self.label_12.setGeometry(QRect(230, 110, 80, 30))
         self.label_12.setFont(font3)
         self.label_12.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.pushButton_start_single_file = QPushButton(self.groupBox_7)
@@ -717,7 +723,7 @@ class Ui_AVDV(object):
 
         self.groupBox_9 = QGroupBox(self.scrollAreaWidgetContents_2)
         self.groupBox_9.setObjectName(u"groupBox_9")
-        self.groupBox_9.setGeometry(QRect(30, 330, 701, 111))
+        self.groupBox_9.setGeometry(QRect(30, 520, 701, 111))
         self.groupBox_9.setFont(font3)
         self.groupBox_9.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_16 = QWidget(self.groupBox_9)
@@ -779,7 +785,7 @@ class Ui_AVDV(object):
 
         self.groupBox_32 = QGroupBox(self.scrollAreaWidgetContents_2)
         self.groupBox_32.setObjectName(u"groupBox_32")
-        self.groupBox_32.setGeometry(QRect(30, 460, 701, 171))
+        self.groupBox_32.setGeometry(QRect(30, 330, 701, 171))
         self.groupBox_32.setFont(font3)
         self.groupBox_32.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_19 = QWidget(self.groupBox_32)
@@ -878,19 +884,25 @@ class Ui_AVDV(object):
         self.scrollArea.setWidgetResizable(False)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 771, 1010))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 771, 1060))
         self.groupBox = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setGeometry(QRect(30, 110, 701, 141))
+        self.groupBox.setGeometry(QRect(30, 110, 701, 181))
         self.groupBox.setMinimumSize(QSize(200, 0))
         self.groupBox.setMaximumSize(QSize(739, 16777215))
         self.groupBox.setFont(font3)
         self.gridLayoutWidget_2 = QWidget(self.groupBox)
         self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
-        self.gridLayoutWidget_2.setGeometry(QRect(60, 20, 641, 121))
+        self.gridLayoutWidget_2.setGeometry(QRect(60, 20, 641, 161))
         self.gridLayout_2 = QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.radioButton_read = QRadioButton(self.gridLayoutWidget_2)
+        self.radioButton_read.setObjectName(u"radioButton_read")
+        self.radioButton_read.setFont(font3)
+
+        self.gridLayout_2.addWidget(self.radioButton_read, 2, 0, 1, 1)
+
         self.label_11 = QLabel(self.gridLayoutWidget_2)
         self.label_11.setObjectName(u"label_11")
         sizePolicy4.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
@@ -909,12 +921,6 @@ class Ui_AVDV(object):
 
         self.gridLayout_2.addWidget(self.label_15, 1, 1, 1, 1)
 
-        self.radioButton_sort = QRadioButton(self.gridLayoutWidget_2)
-        self.radioButton_sort.setObjectName(u"radioButton_sort")
-        self.radioButton_sort.setFont(font3)
-
-        self.gridLayout_2.addWidget(self.radioButton_sort, 1, 0, 1, 1)
-
         self.radioButton_common = QRadioButton(self.gridLayoutWidget_2)
         self.radioButton_common.setObjectName(u"radioButton_common")
         sizePolicy3.setHeightForWidth(self.radioButton_common.sizePolicy().hasHeightForWidth())
@@ -925,12 +931,6 @@ class Ui_AVDV(object):
 
         self.gridLayout_2.addWidget(self.radioButton_common, 0, 0, 1, 1)
 
-        self.radioButton_read = QRadioButton(self.gridLayoutWidget_2)
-        self.radioButton_read.setObjectName(u"radioButton_read")
-        self.radioButton_read.setFont(font3)
-
-        self.gridLayout_2.addWidget(self.radioButton_read, 2, 0, 1, 1)
-
         self.label_16 = QLabel(self.gridLayoutWidget_2)
         self.label_16.setObjectName(u"label_16")
         sizePolicy4.setHeightForWidth(self.label_16.sizePolicy().hasHeightForWidth())
@@ -940,9 +940,24 @@ class Ui_AVDV(object):
 
         self.gridLayout_2.addWidget(self.label_16, 2, 1, 1, 1)
 
+        self.radioButton_sort = QRadioButton(self.gridLayoutWidget_2)
+        self.radioButton_sort.setObjectName(u"radioButton_sort")
+        self.radioButton_sort.setFont(font3)
+
+        self.gridLayout_2.addWidget(self.radioButton_sort, 1, 0, 1, 1)
+
+        self.checkBox_read_no_nfo = QCheckBox(self.gridLayoutWidget_2)
+        self.checkBox_read_no_nfo.setObjectName(u"checkBox_read_no_nfo")
+        sizePolicy3.setHeightForWidth(self.checkBox_read_no_nfo.sizePolicy().hasHeightForWidth())
+        self.checkBox_read_no_nfo.setSizePolicy(sizePolicy3)
+        self.checkBox_read_no_nfo.setMinimumSize(QSize(0, 0))
+        self.checkBox_read_no_nfo.setFont(font3)
+
+        self.gridLayout_2.addWidget(self.checkBox_read_no_nfo, 3, 1, 1, 1)
+
         self.groupBox_5 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_5.setObjectName(u"groupBox_5")
-        self.groupBox_5.setGeometry(QRect(30, 270, 701, 101))
+        self.groupBox_5.setGeometry(QRect(30, 310, 701, 101))
         self.groupBox_5.setMinimumSize(QSize(200, 0))
         self.groupBox_5.setMaximumSize(QSize(739, 16777215))
         self.groupBox_5.setFont(font3)
@@ -1018,7 +1033,7 @@ class Ui_AVDV(object):
         self.comboBox_website_all.setFrame(False)
         self.groupBox_2 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_2.setObjectName(u"groupBox_2")
-        self.groupBox_2.setGeometry(QRect(30, 540, 701, 101))
+        self.groupBox_2.setGeometry(QRect(30, 580, 701, 101))
         self.groupBox_2.setMinimumSize(QSize(200, 0))
         self.groupBox_2.setMaximumSize(QSize(739, 16777215))
         self.groupBox_2.setFont(font3)
@@ -1063,7 +1078,7 @@ class Ui_AVDV(object):
 
         self.groupBox_18 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_18.setObjectName(u"groupBox_18")
-        self.groupBox_18.setGeometry(QRect(30, 900, 701, 101))
+        self.groupBox_18.setGeometry(QRect(30, 940, 701, 101))
         self.groupBox_18.setMinimumSize(QSize(200, 0))
         self.groupBox_18.setMaximumSize(QSize(739, 16777215))
         self.groupBox_18.setFont(font3)
@@ -1108,7 +1123,7 @@ class Ui_AVDV(object):
 
         self.groupBox_27 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_27.setObjectName(u"groupBox_27")
-        self.groupBox_27.setGeometry(QRect(30, 660, 701, 101))
+        self.groupBox_27.setGeometry(QRect(30, 700, 701, 101))
         self.groupBox_27.setMinimumSize(QSize(200, 0))
         self.groupBox_27.setMaximumSize(QSize(739, 16777215))
         self.groupBox_27.setFont(font3)
@@ -1153,7 +1168,7 @@ class Ui_AVDV(object):
 
         self.groupBox_15 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_15.setObjectName(u"groupBox_15")
-        self.groupBox_15.setGeometry(QRect(30, 780, 701, 101))
+        self.groupBox_15.setGeometry(QRect(30, 820, 701, 101))
         self.groupBox_15.setMinimumSize(QSize(200, 0))
         self.groupBox_15.setMaximumSize(QSize(739, 16777215))
         self.groupBox_15.setFont(font3)
@@ -1198,7 +1213,7 @@ class Ui_AVDV(object):
 
         self.groupBox_23 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_23.setObjectName(u"groupBox_23")
-        self.groupBox_23.setGeometry(QRect(30, 390, 701, 131))
+        self.groupBox_23.setGeometry(QRect(30, 430, 701, 131))
         self.groupBox_23.setFont(font3)
         self.groupBox_23.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_20 = QWidget(self.groupBox_23)
@@ -1427,9 +1442,18 @@ class Ui_AVDV(object):
         self.gridLayout_5 = QGridLayout(self.gridLayoutWidget_5)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
         self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.radioButton_poster_official = QRadioButton(self.gridLayoutWidget_5)
+        self.radioButton_poster_official.setObjectName(u"radioButton_poster_official")
+        sizePolicy3.setHeightForWidth(self.radioButton_poster_official.sizePolicy().hasHeightForWidth())
+        self.radioButton_poster_official.setSizePolicy(sizePolicy3)
+        self.radioButton_poster_official.setMinimumSize(QSize(80, 0))
+        self.radioButton_poster_official.setFont(font3)
+
+        self.gridLayout_5.addWidget(self.radioButton_poster_official, 1, 0, 1, 1)
+
         self.radioButton_poster_cut = QRadioButton(self.gridLayoutWidget_5)
         self.radioButton_poster_cut.setObjectName(u"radioButton_poster_cut")
-        self.radioButton_poster_cut.setMinimumSize(QSize(100, 30))
+        self.radioButton_poster_cut.setMinimumSize(QSize(80, 0))
         font5 = QFont()
         font5.setFamily(u"Courier")
         font5.setBold(False)
@@ -1439,14 +1463,14 @@ class Ui_AVDV(object):
 
         self.gridLayout_5.addWidget(self.radioButton_poster_cut, 0, 0, 1, 1)
 
-        self.radioButton_poster_official = QRadioButton(self.gridLayoutWidget_5)
-        self.radioButton_poster_official.setObjectName(u"radioButton_poster_official")
-        sizePolicy3.setHeightForWidth(self.radioButton_poster_official.sizePolicy().hasHeightForWidth())
-        self.radioButton_poster_official.setSizePolicy(sizePolicy3)
-        self.radioButton_poster_official.setMinimumSize(QSize(100, 30))
-        self.radioButton_poster_official.setFont(font3)
+        self.label_53 = QLabel(self.gridLayoutWidget_5)
+        self.label_53.setObjectName(u"label_53")
+        sizePolicy4.setHeightForWidth(self.label_53.sizePolicy().hasHeightForWidth())
+        self.label_53.setSizePolicy(sizePolicy4)
+        self.label_53.setFont(font4)
+        self.label_53.setStyleSheet(u"color: rgb(8, 128, 128);")
 
-        self.gridLayout_5.addWidget(self.radioButton_poster_official, 1, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.label_53, 0, 1, 1, 1)
 
         self.label_52 = QLabel(self.gridLayoutWidget_5)
         self.label_52.setObjectName(u"label_52")
@@ -1456,15 +1480,6 @@ class Ui_AVDV(object):
         self.label_52.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_5.addWidget(self.label_52, 1, 1, 1, 1)
-
-        self.label_53 = QLabel(self.gridLayoutWidget_5)
-        self.label_53.setObjectName(u"label_53")
-        sizePolicy4.setHeightForWidth(self.label_53.sizePolicy().hasHeightForWidth())
-        self.label_53.setSizePolicy(sizePolicy4)
-        self.label_53.setFont(font4)
-        self.label_53.setStyleSheet(u"color: rgb(8, 128, 128);")
-
-        self.gridLayout_5.addWidget(self.label_53, 0, 1, 1, 1)
 
         self.groupBox_33 = QGroupBox(self.scrollAreaWidgetContents_6)
         self.groupBox_33.setObjectName(u"groupBox_33")
@@ -2602,7 +2617,7 @@ class Ui_AVDV(object):
 
         self.retranslateUi(AVDV)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2652,6 +2667,7 @@ class Ui_AVDV(object):
 
         self.label_file_path.setText(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u76ee\u5f55\u8bbe\u7f6e\uff1a\u3010\u8bbe\u7f6e\u3011-\u3010\u76ee\u5f55\u8bbe\u7f6e\u3011-\u3010\u89c6\u9891\u76ee\u5f55\u3011\u3002\u7a0b\u5e8f\u5c06\u522e\u524a\u8be5\u76ee\u5f55\u53ca\u5b50\u76ee\u5f55\u7684\u6240\u6709\u6587\u4ef6\u3002", None))
         self.label_source.setText("")
+        self.label_19.setText(QCoreApplication.translate("AVDV", u"\u70b9\u51fb\u56fe\u7247\u53ef\u624b\u52a8\u88c1\u526a", None))
         self.pushButton_start_cap2.setText(QCoreApplication.translate("AVDV", u"\u5f00\u59cb", None))
         self.pushButton_check_net.setText(QCoreApplication.translate("AVDV", u"\u5f00\u59cb\u68c0\u6d4b", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u3001\u5b57\u5e55\u79fb\u52a8", None))
@@ -2660,8 +2676,8 @@ class Ui_AVDV(object):
         self.pushButton_move_mp4.setText(QCoreApplication.translate("AVDV", u"\u5f00\u59cb\u79fb\u52a8", None))
         self.label_41.setText(QCoreApplication.translate("AVDV", u"\u6392\u9664\u76ee\u5f55\uff1a", None))
         self.groupBox_7.setTitle(QCoreApplication.translate("AVDV", u"\u5355\u6587\u4ef6\u522e\u524a", None))
-        self.label.setText(QCoreApplication.translate("AVDV", u"\u5982\u4e0d\u6307\u5b9a\u756a\u53f7\uff0c\u5219\u9ed8\u8ba4\u4f7f\u7528\u6587\u4ef6\u540d\u8bc6\u522b\u756a\u53f7\u8fdb\u884c\u522e\u524a\u3002\n"
-"\u5982\u6307\u5b9a\u4e86\u522e\u524a\u7f51\u5740\uff0c\u5219\u300c\u522e\u524a\u7f51\u7ad9\u300d\u8bf7\u9009\u62e9\u5bf9\u5e94\u7f51\u7ad9\uff01", None))
+        self.label.setText(QCoreApplication.translate("AVDV", u"\u9009\u62e9\u6587\u4ef6\u540e\uff0c\u9009\u62e9\u300c\u522e\u524a\u7f51\u7ad9\u300d\u3001\u586b\u5199\u300c\u522e\u524a\u7f51\u5740\u300d\uff08\u8be5\u756a\u53f7\u7684\u7f51\u9875\u5730\u5740\uff09\n"
+"\u70b9\u51fb\u522e\u524a\u5373\u53ef\uff01\uff08\u300c\u5f71\u7247\u756a\u53f7\u300d\u53ef\u4e0d\u586b\u5199\uff09", None))
         self.pushButton_select_file.setText(QCoreApplication.translate("AVDV", u"\u9009\u62e9\u6587\u4ef6", None))
         self.comboBox_website.setItemText(0, QCoreApplication.translate("AVDV", u"All websites", None))
         self.comboBox_website.setItemText(1, QCoreApplication.translate("AVDV", u"iqqtv", None))
@@ -2678,14 +2694,14 @@ class Ui_AVDV(object):
         self.comboBox_website.setItemText(12, QCoreApplication.translate("AVDV", u"airav", None))
         self.comboBox_website.setItemText(13, QCoreApplication.translate("AVDV", u"javlibrary", None))
 
-        self.label_2.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u7f51\u7ad9\uff1a", None))
-        self.label_10.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u7f51\u5740\uff1a", None))
-        self.label_12.setText(QCoreApplication.translate("AVDV", u"\u5f71\u7247\u756a\u53f7\uff1a", None))
+        self.label_2.setText(QCoreApplication.translate("AVDV", u"*\u522e\u524a\u7f51\u7ad9\uff1a", None))
+        self.label_10.setText(QCoreApplication.translate("AVDV", u"*\u522e\u524a\u7f51\u5740\uff1a", None))
+        self.label_12.setText(QCoreApplication.translate("AVDV", u" \u5f71\u7247\u756a\u53f7\uff1a", None))
         self.pushButton_start_single_file.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a", None))
         self.groupBox_12.setTitle(QCoreApplication.translate("AVDV", u"Emby-\u6f14\u5458\u5934\u50cf", None))
         self.pushButton_add_actor_pic.setText(QCoreApplication.translate("AVDV", u"\u6dfb\u52a0\u5934\u50cf", None))
-        self.label_3.setText(QCoreApplication.translate("AVDV", u"Emby\u5730\u5740\uff1a", None))
-        self.label_4.setText(QCoreApplication.translate("AVDV", u"API\u5bc6\u94a5\uff1a", None))
+        self.label_3.setText(QCoreApplication.translate("AVDV", u"*Emby\u5730\u5740\uff1a", None))
+        self.label_4.setText(QCoreApplication.translate("AVDV", u"*API\u5bc6\u94a5\uff1a", None))
         self.label_5.setText(QCoreApplication.translate("AVDV", u"\u8bf4\u660e:\n"
 "   1\u3001\u5934\u50cf\u8bf7\u653e\u5728\u7a0b\u5e8f\u76ee\u5f55(AVDC\u76ee\u5f55)\u4e0b\u7684Actor\u76ee\u5f55\u4e2d\u3002\n"
 "   2\u3001\u5bc6\u94a5\u521b\u5efa\u65b9\u6cd5\uff1aEmby\u63a7\u5236\u53f0->\u9ad8\u7ea7->API\u5bc6\u94a5->\u6dfb\u52a0(APP\u540d\u79f0\u4efb\u610f)\u3002", None))
@@ -2722,12 +2738,13 @@ class Ui_AVDV(object):
         self.label_93.setText(QCoreApplication.translate("AVDV", u"\u8fc7\u6ee4\u5c0f\u6587\u4ef6(MB)\uff1a", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab2), QCoreApplication.translate("AVDV", u"\u76ee\u5f55", None))
         self.groupBox.setTitle(QCoreApplication.translate("AVDV", u"\u6a21\u5f0f", None))
+        self.radioButton_read.setText(QCoreApplication.translate("AVDV", u"\u8bfb\u53d6\u6a21\u5f0f", None))
         self.label_11.setText(QCoreApplication.translate("AVDV", u"\u5305\u542b\u522e\u524a\u4fe1\u606f\u3001\u7ffb\u8bd1\u6807\u9898\u548c\u7b80\u4ecb\u3001\u4e0b\u8f7d\u56fe\u7247\u548cnfo\u6587\u4ef6\u3001\u91cd\u547d\u540d\u6587\u4ef6\u3001\u79fb\u52a8\u6587\u4ef6\u7b49\u5168\u90e8\u64cd\u4f5c", None))
         self.label_15.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u540e\uff0c\u4e0d\u4e0b\u8f7d\u56fe\u7247\u548cnfo\u6587\u4ef6\uff0c\u4ec5\u91cd\u547d\u540d\u6587\u4ef6", None))
-        self.radioButton_sort.setText(QCoreApplication.translate("AVDV", u"\u6574\u7406\u6a21\u5f0f", None))
         self.radioButton_common.setText(QCoreApplication.translate("AVDV", u"\u6807\u51c6\u6a21\u5f0f", None))
-        self.radioButton_read.setText(QCoreApplication.translate("AVDV", u"\u8bfb\u53d6\u6a21\u5f0f", None))
-        self.label_16.setText(QCoreApplication.translate("AVDV", u"\u672c\u5730\u6709nfo\u6587\u4ef6\u65f6\uff0c\u76f4\u63a5\u8bfb\u53d6nfo\u4fe1\u606f\uff0c\u4e0d\u8fdb\u884c\u522e\u524a\uff1b\u5f53\u4e0d\u5b58\u5728nfo\u65f6\uff0c\u6b63\u5e38\u522e\u524a", None))
+        self.label_16.setText(QCoreApplication.translate("AVDV", u"\u672c\u5730\u6709nfo\u6587\u4ef6\u65f6\uff0c\u76f4\u63a5\u8bfb\u53d6nfo\u4fe1\u606f\uff0c\u4e0d\u8fdb\u884c\u522e\u524a", None))
+        self.radioButton_sort.setText(QCoreApplication.translate("AVDV", u"\u6574\u7406\u6a21\u5f0f", None))
+        self.checkBox_read_no_nfo.setText(QCoreApplication.translate("AVDV", u"\u4e0d\u5b58\u5728\u672c\u5730nfo\u7684\u89c6\u9891\uff0c\u6b63\u5e38\u522e\u524a", None))
         self.groupBox_5.setTitle(QCoreApplication.translate("AVDV", u"\u504f\u597d", None))
         self.radioButton_like_speed.setText(QCoreApplication.translate("AVDV", u"\u5feb\u901f", None))
         self.radioButton_like_more.setText(QCoreApplication.translate("AVDV", u"\u5b57\u6bb5\u5168", None))
@@ -2801,10 +2818,10 @@ class Ui_AVDV(object):
         self.radioButton_series_as_set_on.setText(QCoreApplication.translate("AVDV", u"\u5f00", None))
         self.radioButton_series_as_set_off.setText(QCoreApplication.translate("AVDV", u"\u5173", None))
         self.groupBox_39.setTitle(QCoreApplication.translate("AVDV", u"poster\u5904\u7406\u65b9\u5f0f", None))
-        self.radioButton_poster_cut.setText(QCoreApplication.translate("AVDV", u"thumb\u88c1\u526a\uff08\u6e05\u6670\uff09", None))
-        self.radioButton_poster_official.setText(QCoreApplication.translate("AVDV", u"\u4e0b\u8f7d\uff08\u6a21\u7cca\uff09", None))
-        self.label_52.setText(QCoreApplication.translate("AVDV", u"\u4ece\u7f51\u7edc\u4e0b\u8f7d\u56fe\u7247\uff0c\u4e00\u822c\u5f88\u4e0d\u6e05\u6670\u3002\u5f53\u6ca1\u6709\u4e0b\u8f7d\u94fe\u63a5\u65f6\uff0c\u5c06\u81ea\u52a8\u4f7f\u7528thumb\u88c1\u526a", None))
-        self.label_53.setText(QCoreApplication.translate("AVDV", u"\u63a8\u8350\uff0c\u5c06\u4f7f\u7528thumb\u88c1\u526a\uff0c\u56fe\u7247\u6e05\u6670", None))
+        self.radioButton_poster_official.setText(QCoreApplication.translate("AVDV", u"\u4e0b\u8f7d", None))
+        self.radioButton_poster_cut.setText(QCoreApplication.translate("AVDV", u"\u81ea\u52a8", None))
+        self.label_53.setText(QCoreApplication.translate("AVDV", u"\u901a\u8fc7\u5185\u7f6e\u89c4\u5219\u81ea\u52a8\u5224\u65ad\uff0c\u4f18\u5148\u4f7f\u7528thumb\u88c1\u526a\uff08\u6e05\u6670\uff09\uff0c\u6709\u9700\u8981\u65f6\u518d\u4e0b\u8f7dposter", None))
+        self.label_52.setText(QCoreApplication.translate("AVDV", u"\u4f18\u5148\u4ece\u7f51\u7edc\u4e0b\u8f7dposter\uff08\u4e00\u822c\u4e0d\u6e05\u6670\uff09\uff0c\u4e0b\u8f7d\u5931\u8d25\u65f6\u518d\u4f7f\u7528thumb\u88c1\u526a", None))
         self.groupBox_33.setTitle(QCoreApplication.translate("AVDV", u"\u6709\u672c\u5730\u6587\u4ef6\u65f6\u4e0d\u4e0b\u8f7d", None))
         self.checkBox_old_poster.setText(QCoreApplication.translate("AVDV", u"poster", None))
         self.checkBox_old_thumb.setText(QCoreApplication.translate("AVDV", u"thumb", None))
