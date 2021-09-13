@@ -46,8 +46,10 @@ def getTheData(json_data_more, json_data, flag_suren=False):
         json_data['publisher'] = json_data_more['publisher']
     if not json_data['cover_small']:
         json_data['cover_small'] = json_data_more['cover_small']
+        json_data['image_download'] = json_data_more['image_download']
+        json_data['image_cut'] = json_data_more['image_cut']
     if flag_suren and json_data['cover_small']: # 如果是素人，且有小图，则改成下载poster
-        json_data['imagecut'] = 3
+        json_data['image_download'] = True
     if not json_data['extrafanart']:
         json_data['extrafanart'] = json_data_more['extrafanart']
     try:
@@ -362,7 +364,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         cover_small = json_data['cover_small']
     except:
         cover_small = ''
-    tag = str(json_data['tag']).strip(" [ ]").replace("'", '').replace(', ', ',').replace(',720P', '').replace(',1080P', '')  #列表转字符串（避免个别网站刮削返回的是列表）
+    tag = str(json_data['tag']).strip(" [ ]").replace("'", '').replace(', ', ',').replace(',720P', '').replace(',1080P', '').replace(',720p', '').replace(',1080p', '').replace(',HD高画质', '').replace(',HD高畫質', '').replace(',高画质', '').replace(',高畫質', '')  #列表转字符串（避免个别网站刮削返回的是列表）
 
     # ====================================== 去除标题尾巴的演员名
     if config.getint('Name_Rule', 'del_actor_name'):
@@ -463,6 +465,7 @@ def save_config(json_config):
         print("", file=code)
         print("[common]", file=code)
         print("main_mode = " + str(json_config['main_mode']), file=code)
+        print("no_nfo = " + str(json_config['no_nfo']), file=code)
         print("main_like = " + str(json_config['main_like']), file=code)
         print("more_website = " + str(json_config['more_website']), file=code)
         print("success_file_move = " + str(json_config['success_file_move']), file=code)
@@ -471,14 +474,14 @@ def save_config(json_config):
         print("soft_link = " + str(json_config['soft_link']), file=code)
         print("show_poster = " + str(json_config['show_poster']), file=code)
         print("translate_language = " + json_config['translate_language'], file=code)
-        print("# zh_cn or zh_tw or ja", file=code)
         print("translate_content = " + json_config['translate_content'], file=code)
         print("translate_by = " + json_config['translate_by'], file=code)
-        print("# youdao or deepl", file=code)
         print("deepl_key = " + json_config['deepl_key'], file=code)
         print("website = " + json_config['website'], file=code)
-        print("# all or iqqtv or javbus or javdb or jav321 or dmm or avsox or xcity or mgstage or fc2 or fc2club or fc2hub or airav or javlibrary", file=code)
         print("series_as_set = " + str(json_config['series_as_set']), file=code)
+        print("# translate_language: zh_cn, zh_tw, ja", file=code)
+        print("# translate_by: youdao, deepl", file=code)
+        print("# website: all, iqqtv, javbus, javdb, jav321, dmm, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav, javlibrary", file=code)
         print("", file=code)
         print("[proxy]", file=code)
         print("type = " + json_config['type'], file=code)
@@ -534,13 +537,9 @@ def save_config(json_config):
         print("mark_size = " + str(json_config['mark_size']), file=code)
         print("mark_type = " + json_config['mark_type'], file=code)
         print("mark_pos = " + json_config['mark_pos'], file=code)
-        print("# mark_size : range 1-5", file=code)
-        print("# mark_type : sub, leak, uncensored", file=code)
-        print("# mark_pos  : bottom_right or bottom_left or top_right or top_left", file=code)
-        print("", file=code)
-        print("[uncensored]", file=code)
-        print("uncensored_poster = " + str(json_config['uncensored_poster']), file=code)
-        print("# 0 : official, 1 : cut", file=code)
+        print("# mark_size: range 1-5", file=code)
+        print("# mark_type: sub, leak, uncensored", file=code)
+        print("# mark_pos: bottom_right, bottom_left, top_right, top_left", file=code)
         print("", file=code)
         print("[file_download]", file=code)
         print("old_poster = " + str(json_config['old_poster']), file=code)
@@ -555,6 +554,9 @@ def save_config(json_config):
         print("extrafanart = " + str(json_config['extrafanart_download']), file=code)
         print("extrafanart_copy = " + str(json_config['extrafanart_copy']), file=code)
         print("nfo = " + str(json_config['nfo_download']), file=code)
+        print("poster_source = " + str(json_config['poster_source']), file=code)
+        print("# poster_source: auto, download", file=code)
+
     code.close()
 
 
