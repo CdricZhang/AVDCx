@@ -1,7 +1,6 @@
 import json
-from Getter import javlibrary, jav321
+from Getter import javlibrary
 from configparser import RawConfigParser
-import time
 
 def getDelActorName():
     config_file = 'config.ini'
@@ -16,17 +15,13 @@ def getDataState(json_data):
     else:
         return True
 
-def getMode():
+def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
     config_file = 'config.ini'
     config = RawConfigParser()
     config.read(config_file, encoding='UTF-8')
     translate_language = config.get('common', 'translate_language')
     translate_content = config.get('common', 'translate_content')
-    main_like = config.getint('common', 'main_like')    # 当偏好速度时，只需要请求一次页面，这个决定要不要请求javdb
-    return translate_language, translate_content, main_like
 
-def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
-    translate_language, translate_content, main_like = getMode()
     appoint_url = appoint_url.replace('/cn/', '/ja/').replace('/tw/', '/ja/')
     json_data = json.loads(javlibrary.main(number, appoint_url, 'jp', log_info, req_web))
     if not getDataState(json_data):
@@ -38,7 +33,6 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             appoint_url = json_data['website'].replace('/ja/', '/tw/')
         log_info = json_data['log_info']
         req_web = json_data['req_web']
-        # time.sleep(0.5)
         json_data_zh = json.loads(javlibrary.main(number, appoint_url, translate_language, log_info, req_web))
         if getDataState(json_data_zh):
             json_data['req_web'] = json_data_zh['req_web']
@@ -51,18 +45,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 json_data['actor'] = json_data_zh['actor']
             if 'tag' in translate_content:
                 json_data['tag'] = json_data_zh['tag']
-    # if main_like:
-    #     req_web = json_data['req_web']
-    #     json_data_jav321 = json.loads(jav321.main(number, '', log_info, req_web))
-    #     if getDataState(json_data_jav321):
-    #         json_data['req_web'] = json_data_jav321['req_web']
-    #         json_data['outline'] = json_data_jav321['outline']
-    #         if not json_data['score']:
-    #             json_data['score'] = json_data_jav321['score']
-    #         json_data['series'] = json_data_jav321['series']
-    #         if not json_data['director']:
-    #             json_data['director'] = json_data_jav321['director']
-    #         json_data['extrafanart'] = json_data_jav321['extrafanart']
+
     js = json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 

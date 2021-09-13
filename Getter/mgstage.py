@@ -96,7 +96,9 @@ def main(number, appoint_url='', log_info='', req_web=''):
     real_url = appoint_url
     title = ''
     cover_url = ''
-    cover_small = ''
+    cover_small_url = ''
+    image_download = True
+    image_cut = 'right'
     error_type = ''
     error_info = ''
     dic = {}
@@ -155,13 +157,14 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 'director': '',
                 'studio': studio,
                 'publisher': publisher,
-                'source': 'mgstage.main',
+                'source': 'mgstage',
                 'website': url,
                 'actor_photo': actor_photo,
                 'cover': str(cover_url),
                 'cover_small': cover_small_url,
                 'extrafanart':extrafanart,
-                'imagecut': 0,
+                'image_download': image_download,
+                'image_cut': image_cut,
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),

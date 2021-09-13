@@ -73,6 +73,8 @@ def main(number, appoint_url='', log_info='', req_web=''):
     title = ''
     cover_url = ''
     cover_small_url = ''
+    image_download = False
+    image_cut = 'center'
     error_type = ''
     error_info = ''
     number = number.upper().replace('FC2PPV', '').replace('FC2-PPV-', '').replace('FC2-', '').replace('-', '').strip()
@@ -125,13 +127,14 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 'director': '',
                 'studio': studio,
                 'publisher': studio,
-                'source': 'fc2.main',
+                'source': 'fc2',
                 'website': real_url,
                 'actor_photo': {studio:''},
                 'cover': cover_url,
                 'cover_small': cover_small_url,
                 'extrafanart': extrafanart,
-                'imagecut': 0,
+                'image_download': image_download,
+                'image_cut': image_cut,
                 'mosaic': mosaic,
                 'log_info': str(log_info),
                 'error_type': '',

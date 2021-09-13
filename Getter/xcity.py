@@ -151,6 +151,9 @@ def main(number, appoint_url='', log_info='', req_web=''):
     log_info += '   >>> xcity-开始使用 xcity 进行刮削\n'
     real_url = appoint_url
     cover_url = ''
+    cover_small_url = ''
+    image_download = False
+    image_cut = 'right'
     error_type = ''
     error_info = ''
     dic = {}
@@ -180,7 +183,6 @@ def main(number, appoint_url='', log_info='', req_web=''):
         html = etree.fromstring(html_search, etree.HTMLParser())
         # real_url = html.xpath("//p[@class='x-itemBox-title']/a/@href")
         real_url = html.xpath("//table[@class='resultList']/tr/td/a/@href")
-        print(real_url)
         if not real_url:
             log_info += '   >>> xcity-搜索结果页匹配番号：未匹配到番号！ \n'
             error_type = 'Movie data not found'
@@ -222,7 +224,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
             runtime = getRuntime(html_info)
             director = getDirector(html_info)
             extrafanart = getExtrafanart(html_info)
-            coversmall = getCoverSmall(html_info)
+            cover_small_url = getCoverSmall(html_info)
             score = ''
             series = getSeries(html_info)
             try:
@@ -245,9 +247,10 @@ def main(number, appoint_url='', log_info='', req_web=''):
                     'search_url': url_search,
                     'actor_photo': actor_photo,
                     'cover': cover_url,
-                    'cover_small': coversmall,
+                    'cover_small': cover_small_url,
                     'extrafanart': extrafanart,
-                    'imagecut': 1,
+                    'image_download': image_download,
+                    'image_cut': image_cut,
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),

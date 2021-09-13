@@ -4,7 +4,6 @@ import json
 from Function.getHtml import get_html, post_html
 import urllib3
 urllib3.disable_warnings()
-from Getter import javdb
 from configparser import RawConfigParser
 
 def getDelActorName():
@@ -192,7 +191,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     cover_url = ''
     error_type = ''
     error_info = ''
-    imagecut = 1
+    image_cut = 'right'
+    image_download = False
     url_search = ''
     if translate_language == 'zh_cn':
         airav_url = 'https://cn.airav.wiki'
@@ -220,16 +220,14 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             # print(web_cache_url)
             # with open('11.txt', 'wt') as f:
             #     f.write(web_cache_url)
-            real_url = html.xpath("//a[contains(@href, $number)]/@href", number='/' + number)
+            real_url = html.xpath("//a[contains(@href, $number1)]/@href", number1='/' + number)
 
             if real_url:
                 real_url = airav_url + real_url[0] + airav_lan
-                imagecut = 1
             else:
                 real_url = html.xpath("//a[contains(@href, $number)]/@href", number=number)
                 if real_url:
                     real_url = airav_url + real_url[0] + airav_lan
-                    imagecut = 3
             if real_url:
                 log_info += '   >>> AIRAV-匹配详情页地址： %s \n' % real_url
             else:
@@ -254,9 +252,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 log_info += '   >>> AIRAV- title 获取失败！ \n'
                 error_type = 'AIRAV - title 获取失败！'
                 raise Exception('>>> AIRAV- title 获取失败!')
-            print('111')
             web_number = getWebNumber(html_info)    # 获取番号，用来替换标题里的番号
-            print(web_number)
             title = title.replace(web_number, '').strip()
             actor = getActor(html_info) # 获取actor
             actor_photo = getActorPhoto(actor)
@@ -279,23 +275,6 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             director = ''
             publisher = studio
             extrafanart = ''
-            # mode_like = getModeLike()
-
-            # if mode_like:
-            #     json_data = json.loads(javdb.main(number, '', log_info, req_web))
-            #     if json_data.get('title'):
-            #         req_web = json_data['req_web']
-            #         runtime = json_data['runtime']
-            #         score = json_data['score']
-            #         series = json_data['series']
-            #         director = json_data['director']
-            #         publisher = json_data['publisher']
-            #         studio = json_data['studio']
-            #         extrafanart = json_data['extrafanart']
-            #         actor_photo = json_data['actor_photo'] # 暂时使用javdb的日文名字，避免emby不识别歌手头像
-            #         if '克破' in title or '克破' in outline:
-            #             title = json_data['title']
-            #             outline = json_data['outline']
                         
             try:
                 dic = {
@@ -312,14 +291,15 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                     'director': director,
                     'publisher': publisher,
                     'studio': studio,
-                    'source': 'airav.main',
+                    'source': 'airav',
                     'website': real_url,
                     'search_url': url_search,
                     'actor_photo': actor_photo,
                     'cover': cover_url,
                     'cover_small': '',
                     'extrafanart': extrafanart,
-                    'imagecut': imagecut,
+                    'image_download': image_download,
+                    'image_cut': image_cut,
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),
@@ -346,18 +326,17 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     return js
 
 
-'''
-print(main('abs-141'))
-print(main('HYSD-00083'))
-print(main('IESP-660'))
-print(main('n1403'))
-print(main('GANA-1910'))
-print(main('heyzo-1031'))
-print(main_us('x-art.19.11.03'))
-print(main('032020-001'))
-print(main('S2M-055'))
-print(main('LUXU-1217'))
-'''
+
+# print(main('abs-141'))
+# print(main('HYSD-00083'))
+# print(main('IESP-660'))
+# print(main('n1403'))
+# print(main('GANA-1910'))
+# print(main('heyzo-1031'))
+# print(main('x-art.19.11.03'))
+# print(main('032020-001'))
+# print(main('S2M-055'))
+# print(main('LUXU-1217'))
 
 # print(main('1101132', ''))
 # print(main('OFJE-318'))

@@ -5,6 +5,7 @@ from Function.getHtml import post_html
 
 
 def getActorPhoto(actor):
+    actor = actor.split(',')
     data = {}
     for i in actor:
         actor_photo = {i: ''}
@@ -99,7 +100,9 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     real_url = appoint_url
     title = ''
     cover_url = ''
-    cover_small = ''
+    cover_small_url = ''
+    image_download = False
+    image_cut = 'right'
     error_type = ''
     error_info = ''
     try:
@@ -117,49 +120,57 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             raise Exception('JAV321-未匹配到番号')
         detail_page = etree.fromstring(response, etree.HTMLParser())
         actor = getActor(response)
+        actor_photo = getActorPhoto(actor)
         title = getTitle(response).strip() # 获取标题
         if not title:
             log_info += '   >>> JAV321- title 获取失败！ \n'
             error_type = 'need login'
             raise Exception('>>> JAV321- title 获取失败！]')
         cover_url = getCover(detail_page) # 获取cover
-        cover_small = getCoverSmall(detail_page)
+        cover_small_url = getCoverSmall(detail_page)
         if not cover_url:
-            cover_url = cover_small
+            cover_url = cover_small_url
         if 'http' not in cover_url:
             log_info += '   >>> JAV321- cover url 获取失败！ \n'
             error_type = 'Cover Url is None!'
             raise Exception('>>> JAV321- cover url 获取失败！]')
         release = getRelease(response)
-        imagecut = 1
+        year = getYear(release)
+        runtime = getRuntime(response)
         if isuncensored:
-            imagecut = 3
-            if cover_small == '':
-                imagecut = 0
+            image_cut = 'center'
+        number = getNum(response)
+        outline = getOutline(detail_page)
+        tag = getTag(response)
+        score = getScore(response)
+
         studio = getStudio(detail_page)
         series = getSeries(detail_page)
+        extrafanart = getExtraFanart(detail_page)
+        website = getWebsite(detail_page)
         try:
             dic = {
-                'title': str(title),
-                'number': getNum(response),
+                'title': title,
+                'number': number,
                 'actor': actor,
-                'outline': getOutline(detail_page),
-                'tag': getTag(response),
-                'release': str(release),
-                'year': getYear(release),
-                'runtime': getRuntime(response),
-                'score': getScore(response),
+                'outline': outline,
+                'tag': tag,
+                'release': release,
+                'year': year,
+                'runtime': runtime,
+                'score': score,
                 'series': series,
                 'director': '',
                 'studio': studio,
                 'publisher': studio,
-                'source': 'jav321.main',
-                'website': getWebsite(detail_page),
-                'actor_photo': getActorPhoto(actor.split(',')),
-                'cover': str(cover_url),
-                'cover_small': str(cover_small),
-                'extrafanart': getExtraFanart(detail_page),
-                'imagecut': imagecut,
+                'source': 'jav321',
+                'website': website,
+                'actor_photo': actor_photo,
+                'cover': cover_url,
+                'cover_small': cover_small_url,
+                'extrafanart': extrafanart,
+                'image_download': image_download,
+                'image_cut': image_cut,
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),

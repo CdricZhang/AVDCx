@@ -1,5 +1,4 @@
 import re
-from PyQt5.QtCore import reset
 from lxml import etree
 import json
 import cloudscraper
@@ -212,7 +211,9 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     real_url = appoint_url
     title = ''
     cover_url = ''
-    cover_small = ''
+    cover_small_url = ''
+    image_download = False
+    image_cut = 'right'
     error_type = ''
     error_info = ''
     url_search = ''
@@ -252,7 +253,6 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 error_type = 'Movie data not found'
                 raise Exception('JAVDB-搜索结果页：未匹配到番号')
             else:
-                cover_small = getCoverSmall(number, real_url)
                 real_url = 'https://javdb.com' + real_url + '?locale=zh'
                 log_info += '   >>> JAVDB-生成详情页地址：%s \n' % real_url
 
@@ -279,11 +279,6 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 error_type = 'need login'
                 raise Exception('JAVDB-该番号内容需要登录查看！')
             outline = ''
-            imagecut = 1
-            if isuncensored or 'LUXU' in number.upper() or 'SIRO' in number.upper() or 'GANA' in number.upper() or 'ARA-' in number.upper() or 'MIUM' in number.upper():
-                imagecut = 3
-                if cover_small == '':
-                    imagecut = 0
             # ========================================================================收集信息
             actor = getActor(html_detail) # 获取actor
             actor = str(actor).strip(" [',']").replace('\'', '')
@@ -301,8 +296,33 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 log_info += '   >>> JAVDB- cover url 获取失败！\n'
                 error_type = 'Cover Url is None!'
                 raise Exception('JAVDB- cover url 获取失败！')
+            cover_small_url = cover_url.replace('/covers/', '/thumbs/')
+            tag = getTag(html_detail)
             release = getRelease(html_detail)
+            year = getYear(release)
+            runtime = getRuntime(html_detail)
             score = getScore(html_detail)
+            series = getSeries(html_detail)
+            director = getDirector(html_detail)
+            studio = getStudio(html_detail)
+            publisher = getPublisher(html_detail)
+            extrafanart = getExtraFanart(html_detail)
+            # 封面处理
+            number_list = ['LUXU', 'SIRO', 'GANA', 'ARA-', 'MIUM', 'SHYN', 'SDFK', 'KMHRS'] # 下载封面的番号前缀
+            for each in number_list:
+                if each in number:
+                    image_download = True
+            if 'SOD star' in publisher:   # 下载封面的发行商
+                image_download = True
+            if 'KMHRS' in number:   # 封面改用剧照第一张图
+                if extrafanart:
+                    cover_small_url = extrafanart[0]
+            if series == 'トコダケ' or re.search('^TD-*\d{3,}', number):  # 封面改用海报TD-011
+                image_download = True
+                cover_small_url = cover_url
+                image_cut = 'center'
+            if isuncensored or 'FC2' in number or 'GANA' in number:   # 封面改居中裁剪
+                image_cut = 'center'
 
             try:
                 dic = {
@@ -310,23 +330,24 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                     'number': number,
                     'actor': actor,
                     'outline': outline,
-                    'tag': getTag(html_detail),
-                    'release': str(release),
-                    'year': getYear(release),
-                    'runtime': getRuntime(html_detail),
-                    'score': str(score),
-                    'series': getSeries(html_detail),
-                    'director': getDirector(html_detail),
-                    'studio': getStudio(html_detail),
-                    'publisher': getPublisher(html_detail),
+                    'tag': tag,
+                    'release': release,
+                    'year': year,
+                    'runtime': runtime,
+                    'score': score,
+                    'series': series,
+                    'director': director,
+                    'studio': studio,
+                    'publisher': publisher,
                     'source': 'javdb',
                     'website': str(real_url).replace('?locale=zh', '').strip('[]'),
-                    'search_url': str(url_search),
+                    'search_url': url_search,
                     'actor_photo': actor_photo,
-                    'cover': str(cover_url),
-                    'cover_small': cover_small,
-                    'extrafanart': getExtraFanart(html_detail),
-                    'imagecut': imagecut,
+                    'cover': cover_url,
+                    'cover_small': cover_small_url,
+                    'extrafanart': extrafanart,
+                    'image_download': image_download,
+                    'image_cut': image_cut,
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),
@@ -354,7 +375,11 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     return js
 
 
-
+# print(main('TD-011'))
+# print(main('stars-011'))    # 发行商SOD star，下载封面
+# print(main('stars-198'))  # 发行商SOD star，下载封面
+# print(main('mium-748'))
+# print(main('KMHRS-050'))    # 剧照第一张作为poster
 # print(main('SIRO-4042'))
 # print(main('snis-035'))
 # print(main('vixen.18.07.18', ''))

@@ -3,7 +3,7 @@
 import re
 from lxml import etree
 import json
-from Function.getHtml import get_html, get_cookies
+from Function.getHtml import get_html
 import urllib3
 urllib3.disable_warnings()
 
@@ -135,7 +135,9 @@ def main(number, appoint_url='', log_info='',req_web=''):
     log_info += '   >>> [ DMM ] 开始使用 dmm 进行刮削\n'
     title = ''
     cover_url = ''
-    cover_small = ''
+    cover_small_url = ''
+    image_download = False
+    image_cut = 'right'
     error_type = ''
     error_info = ''
     dic = {}
@@ -164,16 +166,22 @@ def main(number, appoint_url='', log_info='',req_web=''):
         # 解析搜索页，如果是传入url，则跳过此环节
         if not appoint_url:
             # 匹配详情页地址
-            if html.xpath("//a[contains(@href, $val)]", val=num1): # 优先匹配'/cid=snis126/'这样链接的，图上面没有蓝光水印
-                url = html.xpath("//a[contains(@href, $val)]/@href", val=num1)[0]
-            elif html.xpath("//a[contains(@href, 'detail')][contains(@href, $val)]/@href", val=num2): # 如果链接中包含detail和number，则表示找到了
-                url = html.xpath("//a[contains(@href, 'detail')][contains(@href, $val)]/@href", val=num2)[0]
-            else:
+            url = ''
+            url1 = html.xpath("//a[contains(@href, $val)]/@href", val=num1)  # 优先匹配'/cid=snis126/'这样链接的，图上面没有蓝光水印
+            url2 =  html.xpath("//a[contains(@href, 'detail')][contains(@href, $val)]/@href", val=num2)  # /cid=6snis027/ 如果链接中包含detail和number，则表示找到了
+
+            if url1:
+                url = url1[0]
+            elif url2:
+                if re.search('cid=\d+[a-zA-Z]+\d+', url2[0]):
+                    url = url2[0]
+            if not url:
                 error_type = 'not found the movie'
                 error_info = '[ DMM ] 搜索页未匹配到番号！'
                 log_info += '   >>> [ DMM ] 搜索页未匹配到番号！\n' 
-                raise            # 请求详情页
-            url = url.replace('?i3_ref=search&i3_ord=1', '')
+                raise
+            if url.find('?i3_ref=search&i3_ord') != -1: # 去除url中无用的后缀
+                url = url[:url.find('?i3_ref=search&i3_ord')]
             result, htmlcode = get_html(url, cookies=cookies)
             html = etree.fromstring(htmlcode, etree.HTMLParser())
 
@@ -217,7 +225,7 @@ def main(number, appoint_url='', log_info='',req_web=''):
             # number = getNum(html)
             studio = getStudio(html)
             extrafanart = getExtraFanart(html)
-            cover_small = getCoverSmall(html)
+            cover_small_url = getCoverSmall(html)
             actor_photo = getActorPhoto(actor)
         except Exception as error_info:
             error_type = 'error'
@@ -239,13 +247,14 @@ def main(number, appoint_url='', log_info='',req_web=''):
                 'director': director,
                 'studio': studio,
                 'publisher': studio,
-                'source': 'dmm.main',
+                'source': 'dmm',
                 'website': url,
                 'actor_photo': actor_photo,
                 'cover': str(cover_url),
-                'cover_small': cover_small,
+                'cover_small': cover_small_url,
                 'extrafanart': extrafanart,
-                'imagecut': 1,
+                'image_download': image_download,
+                'image_cut': image_cut,
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -274,8 +283,11 @@ def main(number, appoint_url='', log_info='',req_web=''):
 
 
 # print(main('ssni888'))
-# print(main('ssni00999'))
 # print(main('snis-027'))
+# print(main('n1581'))
+# print(main('ssni-888'))
+# print(main('ssni00888'))
+# print(main('ssni00999'))
 # print(main('ipx-292'))
 # print(main('wicp-002'))
 # print(main('ssis-080'))

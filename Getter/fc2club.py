@@ -86,7 +86,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
     real_url = appoint_url
     title = ''
     cover_url = ''
-    cover_small = ''
+    cover_small_url = ''
     error_type = ''
     error_info = ''
     number = number.upper().replace('FC2PPV', '').replace('FC2-PPV-', '').replace('FC2-', '').replace('-', '').strip()
@@ -141,13 +141,14 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 'director': '',
                 'studio': studio,
                 'publisher': studio,
-                'source': 'fc2club.main',
+                'source': 'fc2club',
                 'website': str(real_url).strip('[]'),
                 'actor_photo': actor_photo,
                 'cover': cover_url,
                 'cover_small': '',
                 'extrafanart': extrafanart,
-                'imagecut': 0,
+                'image_download': False,
+                'image_cut': 'center',
                 'mosaic': mosaic,
                 'log_info': str(log_info),
                 'error_type': '',

@@ -119,7 +119,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     cover_url = ''
     error_type = ''
     error_info = ''
-    imagecut = 1
+    image_cut = 'right'
+    image_download = False
     mosaic = '有码'
     url_search = ''
     if translate_language == 'zh_cn':
@@ -141,12 +142,16 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 error_type = 'timeout'
                 raise Exception('iqqtv-请求搜索页：错误！信息：' + html_search)
             html = etree.fromstring(html_search, etree.HTMLParser())
-            real_url = html.xpath("//h3[@class='one_name ga_name' and (contains(text(), $number)) and not (contains(text(), '克破'))]/../@href", number=number)
+            number1 = number
+            if not re.search('\d+[-_]\d+', number):
+                number1 = ' ' + number
+            real_url = html.xpath("//h3[@class='one_name ga_name' and (contains(text(), $number)) and not (contains(text(), '克破'))]/../@href", number=number1)
 
             if real_url:
                 real_url = iqqtv_domain + real_url[0]
-                log_info += '   >>> iqqtv-匹配详情页地址： %s \n' % real_url
+                log_info += '   >>> iqqtv-匹配详情页地址： %s \n' % real_url 
             else:
+                
                 log_info += '   >>> iqqtv-搜索结果页匹配番号：未匹配到番号！ \n'
                 error_type = 'iqqtv-搜索结果页匹配番号：未匹配到番号！'
                 raise Exception('iqqtv-搜索结果页匹配番号：未匹配到番号！')
@@ -181,7 +186,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             tag = getTag(html_info)
             mosaic = getMosaic(tag)
             if mosaic == '无码':
-                imagecut = 3
+                image_cut = 'center'
             studio = getStudio(html_info)
             runtime = getRuntime(html_info)
             score = ''
@@ -211,7 +216,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                     'cover': cover_url,
                     'cover_small': '',
                     'extrafanart': extrafanart,
-                    'imagecut': imagecut,
+                    'image_download': image_download,
+                    'image_cut': image_cut,
                     'log_info': str(log_info),
                     'error_type': '',
                     'error_info': str(error_info),

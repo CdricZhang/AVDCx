@@ -80,10 +80,10 @@ def getCover(htmlcode):
     return result
 
 
-def getCover_small(htmlcode, count):
+def getCoverSmall(htmlcode, count):
     html = etree.fromstring(htmlcode, etree.HTMLParser())
-    cover_small = html.xpath("//div[@id='waterfall']/div[" + str(count) + "]/a/div[@class='photo-frame']/img/@src")[0]
-    return cover_small
+    cover_small_url = html.xpath("//div[@id='waterfall']/div[" + str(count) + "]/a/div[@class='photo-frame']/img/@src")[0]
+    return cover_small_url
 
 
 def getTag(a):  # 获取演员
@@ -118,7 +118,9 @@ def main(number, appoint_url='', log_info='', req_web=''):
     real_url = appoint_url
     title = ''
     cover_url = ''
-    cover_small = ''
+    cover_small_url = ''
+    image_download = True
+    image_cut = 'center'
     error_type = ''
     error_info = ''
     dic = {}
@@ -149,11 +151,17 @@ def main(number, appoint_url='', log_info='', req_web=''):
             log_info += '   >>> AVSOX- cover url 获取失败！ \n'
             error_type = 'Cover Url is None!'
             raise Exception('>>> AVSOX- cover url 获取失败！')
-        cover_small = getCover_small(response, count)
-        if 'http' not in cover_small:
+        cover_small_url = getCoverSmall(response, count)
+        if 'http' not in cover_small_url:
             log_info += '   >>> AVSOX- cover url 获取失败！\n'
-            error_type = 'Cover_small Url is None!'
-            raise Exception('>>> AVSOX- cover_small url 获取失败！')
+            error_type = 'cover_small_url is None!'
+            raise Exception('>>> AVSOX-cover_small_url 获取失败！')
+        actor_photo = getActorPhoto(web)
+        tag = getTag(web)
+        release = getRelease(info)
+        year = getYear(release)
+        runtime = getRuntime(info)
+        series = getSeries(info)
         studio = getStudio(info)
 
         try:
@@ -161,22 +169,23 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 'title': str(title),
                 'number': number,
                 'actor': actor,
+                'actor_photo': actor_photo,
                 'outline': '',
-                'tag': getTag(web),
-                'release': getRelease(info),
-                'year': getYear(getRelease(info)),
-                'runtime': getRuntime(info),
+                'tag': tag,
+                'release': release,
+                'year': year,
+                'runtime': runtime,
                 'score': '',
                 'director': '',
-                'series': getSeries(info),
+                'series': series,
                 'studio': studio,
                 'publisher': studio,
-                'imagecut': 3,
-                'source': 'avsox.website',
+                'image_download': image_download,
+                'image_cut': image_cut,
+                'source': 'avsox',
                 'website': url,
-                'actor_photo': getActorPhoto(web),
-                'cover': str(cover_url),
-                'cover_small': str(cover_small),
+                'cover': cover_url,
+                'cover_small': cover_small_url,
                 'extrafanart': '',
                 'log_info': str(log_info),
                 'error_type': '',

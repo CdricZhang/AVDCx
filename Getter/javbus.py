@@ -1,7 +1,7 @@
 import re
 from lxml import etree
 import json
-from Function.getHtml import get_html, post_html
+from Function.getHtml import get_html
 from configparser import RawConfigParser
 import urllib3
 urllib3.disable_warnings()
@@ -61,6 +61,14 @@ def getCover(html, url):  # 获取封面链接
     else:
         cover_url = ''
     return cover_url
+
+def getCoverSmall(cover_url):  # 获取小封面链接
+    cover_small_url = ''
+    if '/pics/' in cover_url:
+        cover_small_url = cover_url.replace('/cover/', '/thumb/').replace('_b.jpg', '.jpg')
+    elif '/imgs/' in cover_url:
+        cover_small_url = cover_url.replace('/cover/', '/thumbs/').replace('_b.jpg', '.jpg')
+    return cover_small_url
 
 def getRelease(html):  # 获取发行日期
     result = html.xpath('//span[@class="header"][contains(text(), "發行日期:")]/../text()')
@@ -175,13 +183,17 @@ def main(number, appoint_url='', log_info='', req_web=''):
     real_url = appoint_url
     title = ''
     cover_url = ''
+    cover_small_url = ''
     error_type = ''
     error_info = ''
-    imagecut = 1
+    image_download = False
+    image_cut = 'right'
     dic = {}
     try:
         if not real_url:
             real_url = 'https://www.javbus.com/' + number
+            if re.search('[-_]\d{2}[-_]\d{2}[-_]\d{2}', number):    # 欧美影片
+                number = number.replace('-', '.').replace('_', '.')
             if '.' in number:
                 real_url = getRealUrl(number, 'us')
                 if not real_url:
@@ -211,13 +223,14 @@ def main(number, appoint_url='', log_info='', req_web=''):
             log_info += '   >>> javbus-title 获取失败！ \n'
             error_type = 'javbus-title 获取失败！'
             raise Exception('javbus-title 获取失败!')
-        web_number = getWebNumber(html_info)    # 获取番号，用来替换标题里的番号
-        title = title.strip(web_number).strip()
+        number = getWebNumber(html_info)    # 获取番号，用来替换标题里的番号
+        title = title.strip(number).strip()
         actor = getActor(html_info) # 获取actor
         actor_photo = getActorPhoto(html_info, 'https://www.javbus.com')
         if getDelActorName():
             title = title.strip(' ' + actor)
         cover_url = getCover(html_info, 'https://www.javbus.com') # 获取cover
+        cover_small_url = getCoverSmall(cover_url)
         if 'http' not in cover_url:
             log_info += '   >>> javbus-cover url 获取失败！ \n'
             error_type = 'Cover Url is None!'
@@ -227,17 +240,27 @@ def main(number, appoint_url='', log_info='', req_web=''):
         tag = getTag(html_info)
         mosaic = getMosaic(html_info)
         if mosaic == '无码':
-            imagecut = 3
+            image_cut = 'center'
+            if '_' in number and cover_small_url:   # 一本道，并且有小图时，下载poster
+                image_download = True
+            elif 'HEYZO' in number and len(cover_small_url.replace('https://www.javbus.com/imgs/thumbs/', '')) == 7:
+                image_download = True
+            else:
+                cover_small_url = ''    # 非一本道的无码/欧美影片，清空小图地址，因为小图都是未裁剪的低分辨率图片
         runtime = getRuntime(html_info)
         studio = getStudio(html_info)
         publisher = getPublisher(html_info, studio)
         director = getDirector(html_info)
         series = getSeries(html_info)
         extrafanart = getExtraFanart(html_info, 'https://www.javbus.com')
+        if 'KMHRS' in number:   # 剧照第一张是高清图
+            image_download = True
+            if extrafanart:
+                cover_small_url = extrafanart[0]
         try:
             dic = {
                 'title': title,
-                'number': web_number,
+                'number': number,
                 'actor': actor,
                 'outline': '',
                 'tag': tag,
@@ -254,9 +277,10 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 'search_url': '',
                 'actor_photo': actor_photo,
                 'cover': cover_url,
-                'cover_small': '',
+                'cover_small': cover_small_url,
                 'extrafanart': extrafanart,
-                'imagecut': imagecut,
+                'image_download': image_download,
+                'image_cut': image_cut,
                 'log_info': str(log_info),
                 'error_type': '',
                 'error_info': str(error_info),
@@ -283,19 +307,22 @@ def main(number, appoint_url='', log_info='', req_web=''):
     return js
 
 
-# print(main('dv-1175'))
+# print(main('KMHRS-050'))    # 小封面图要下载
+# print(main('070621_001')) # 小封面图要下载
+# print(main('heyzo-1031')) # 小封面图要下载
+# print(main('heyzo-0811')) # 小封面图要下载
+# print(main('heyzo-1673')) # 小封面图不要下载
+# print(main('dv-1175'))    # 有码
 # print(main('dv1175'))
-# print(main('070621_001'))
 # print(main('ssni-644'))
-# print(main('ssni644'))
-# print(main_us('BigTitsatWork-17-09-26'))
-# print(main('BrazzersExxtra.21.02.01'))
-# print(main_us('BrazzersExxtra.21.02.01'))
-# print(main('KA-001'))
 # print(main('010115-001'))
+# print(main('ssni644'))
+# print(main('BigTitsatWork-17-09-26'))
+# print(main('BrazzersExxtra.21.02.01'))
+# print(main('KA-001'))
 # print(main('012715-793'))
-# print(main('heyzo-1031'))
+
 
 # print(main('ssni-644', "https://www.javbus.com/SSNI-644"))
 # print(main('ssni-802', ""))
-# print(main_us('DirtyMasseur.20.07.26', "https://www.javbus.one/DirtyMasseur-20-07-26"))
+# print(main('DirtyMasseur.20.07.26', "https://www.javbus.one/DirtyMasseur-20-07-26"))
