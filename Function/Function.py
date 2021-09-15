@@ -211,16 +211,18 @@ def getNumber(filepath, escape_string):
 
 
 # ========================================================================根据番号获取数据
-def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_language):  # 从JSON返回元数据
+def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_language, json_data):  # 从JSON返回元数据
+    c_word = json_data['c_word']
+    leak = json_data['leak']
+    cd_part = json_data['cd_part']
     # ================================================网站规则添加开始================================================
     isuncensored = is_uncensored(file_number)
-    json_data = {}
     if website_mode == 1:  # 从全部网站刮削
         # =======================================================================FC2-111111
         if 'FC2' in file_number.upper():
             file_number = re.search('\d{4,}', file_number).group()
             json_data = json.loads(fc2.main(file_number, appoint_url))
-            # if not getDataState(json_data):   # 暂时屏蔽，该网站目前可用
+            # if not getDataState(json_data):   # 暂时屏蔽，该网站目前不可用
             #     req_web = json_data['req_web']
             #     log_info = json_data['log_info']
             #     json_data = json.loads(fc2club.main(file_number, appoint_url, log_info, req_web))
@@ -371,19 +373,19 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         title = title.replace((' ' + actor), '')
 
     # ====================处理异常字符====================== #\/:*?"<>|
-    title = title.replace('\\', '')
-    title = title.replace('/', '')
-    title = title.replace(':', '')
-    title = title.replace('*', '')
-    title = title.replace('?', '')
-    title = title.replace('"', '')
-    title = title.replace('<', '')
-    title = title.replace('>', '')
-    title = title.replace('|', '')
-    # title = title.replace(' ', '.')
-    # title = title.replace('【', '')
-    # title = title.replace('】', '')
-    title = title.strip()
+    # title = title.replace('\\', '')
+    # title = title.replace('/', '')
+    # title = title.replace(':', '')
+    # title = title.replace('*', '')
+    # title = title.replace('?', '')
+    # title = title.replace('|', '')
+    # # title = title.replace('"', '')
+    # # title = title.replace('<', '')
+    # # title = title.replace('>', '')
+    # # title = title.replace(' ', '.')
+    # # title = title.replace('【', '')
+    # # title = title.replace('】', '')
+    # title = title.strip()
     release = release.replace('/', '-').strip('. ')
     try:
         json_data['studio'] = json_data['studio'].strip('. ')
@@ -407,13 +409,17 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     # 返回处理后的json_data
     json_data['title'] = title.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
     json_data['number'] = number
-    json_data['actor'] = actor.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
+    json_data['actor'] = actor.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').replace(u'\u3099', '').replace(u'\u0301', '').strip('. ')
     json_data['release'] = release
     json_data['cover_small'] = cover_small
     json_data['tag'] = tag
     json_data['naming_media'] = naming_media
     json_data['naming_file'] = naming_file
     json_data['folder_name'] = folder_name
+    json_data['c_word'] = c_word
+    json_data['leak'] = leak
+    json_data['cd_part'] = cd_part
+
     try:
         json_data['mosaic']
     except:
@@ -471,6 +477,7 @@ def save_config(json_config):
         print("success_file_move = " + str(json_config['success_file_move']), file=code)
         print("failed_file_move = " + str(json_config['failed_file_move']), file=code)
         print("success_file_rename = " + str(json_config['success_file_rename']), file=code)
+        print("del_empty_folder = " + str(json_config['del_empty_folder']), file=code)
         print("soft_link = " + str(json_config['soft_link']), file=code)
         print("show_poster = " + str(json_config['show_poster']), file=code)
         print("translate_language = " + json_config['translate_language'], file=code)
@@ -496,8 +503,10 @@ def save_config(json_config):
         print("", file=code)
         print("[Name_Rule]", file=code)
         print("folder_name = " + json_config['folder_name'], file=code)
-        print("naming_media = " + json_config['naming_media'], file=code)
         print("naming_file = " + json_config['naming_file'], file=code)
+        print("naming_media = " + json_config['naming_media'], file=code)
+        print("pic_name = " + str(json_config['pic_name']), file=code)
+        print("cd_name = " + str(json_config['cd_name']), file=code)
         print("cnword_char = " + str(json_config['cnword_char']), file=code)
         print("cnword_style = " + str(json_config['cnword_style']), file=code)
         print("folder_cnword = " + str(json_config['folder_cnword']), file=code)
