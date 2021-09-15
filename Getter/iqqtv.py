@@ -17,7 +17,7 @@ def getDelActorName():
 def getTitle(html):
     result = html.xpath('//p[@class="movie_txt_nsme"]/text()')
     if result:
-        result = result[0].replace('&', '')
+        result = result[0]
     else:
         result = ''
     return result
@@ -56,7 +56,7 @@ def getCover(html):
 def getOutline(html):
     result = html.xpath('//p[@itemprop="description"]/span/text()')
     if result:
-        result = result[0].strip().replace('&', '')
+        result = result[0].strip()
     else:
         result = ''
     return result

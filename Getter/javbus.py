@@ -16,7 +16,7 @@ def getDelActorName():
 def getTitle(html):
     result = html.xpath('//h3/text()')
     if result:
-        result = result[0].replace('&', '')
+        result = result[0]
     else:
         result = ''
     return result
