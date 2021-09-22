@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from logging import log
-from random import randint
+
 import time
 import re
 import os
 import json
 from PIL import Image
-from configparser import RawConfigParser
 from Getter import iqqtv_new, javbus, javdb, jav321, dmm, javlibrary_new, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav
 
 # ========================================================================补全字段判断缺失字段
@@ -48,7 +46,7 @@ def getTheData(json_data_more, json_data, flag_suren=False):
         json_data['cover_small'] = json_data_more['cover_small']
         json_data['image_download'] = json_data_more['image_download']
         json_data['image_cut'] = json_data_more['image_cut']
-    if flag_suren and json_data['cover_small']: # 如果是素人，且有小图，则改成下载poster
+    if (flag_suren or 'VR' in json_data['tag']) and json_data['cover_small']: # 如果是素人，且有小图，则改成下载poster
         json_data['image_download'] = True
     if not json_data['extrafanart']:
         json_data['extrafanart'] = json_data_more['extrafanart']
@@ -174,10 +172,53 @@ def getNumber(filepath, escape_string):
             filename = filename.replace('PPV', '').replace('_', '-').replace('--', '-')
             if re.search('FC2-\d{5,}', filename):  # 提取类似fc2-111111番号
                 file_number = re.search('FC2-\d{5,}', filename).group()
-        elif re.search('[a-zA-Z]+-\d+', filename):  # 提取类似mkbd-120番号
-            file_number = re.search('\w+-\d+', filename).group()
-        elif re.search('\d+[a-zA-Z]+-\d+', filename):  # 提取类似259luxu-1111番号
+        elif re.search('\d+[a-zA-Z]+-\d+', filename):  # 提取类似259luxu-1456番号
             file_number = re.search('\d+[a-zA-Z]+-\d+', filename).group()
+        elif re.search('[a-zA-Z]+-\d+', filename):  # 提取类似mkbd-120番号
+            if 'LUXU' in filename:  # 提取类似luxu-1111番号
+                file_number = '259' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'GANA' in filename:    #200GANA-2556
+                file_number = '200' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'MAAN' in filename or 'MIUM' in filename or 'NTK-' in filename:    #300MAAN-673/300MIUM-745/300NTK-635
+                file_number = '300' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'JAC-' in filename:    #390JAC-034
+                file_number = '390' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'DCV-' in filename:    #277DCV-102
+                file_number = '277' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'NTR-' in filename:    #348NTR-001
+                file_number = '348' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'ARA-' in filename:    #261ARA-094
+                file_number = '261' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'TEN-' in filename:    #459TEN-024
+                file_number = '459' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'GCB-' in filename:    #485GCB-015
+                file_number = '485' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'SEI-' in filename:    #502SEI-001
+                file_number = '502' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'KNB-' in filename:    #336KNB-172
+                file_number = '336' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'SUKE-' in filename:    #428SUKE-086
+                file_number = '428' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'HHH-' in filename:    #451HHH-027
+                file_number = '451' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'MLA-' in filename:    #476MLA-043
+                file_number = '476' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'KJO-' in filename:    #326KJO-002
+                file_number = '326' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'SIMM-' in filename:    #345SIMM-662
+                file_number = '345' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'MFC-' in filename:    #435MFC-142
+                file_number = '435' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'SHN-' in filename:    #116SHN-045
+                file_number = '116' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'NAMA-' in filename:    #332NAMA-077
+                file_number = '332' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'CUTE-' in filename:    #229SCUTE-953
+                file_number = '229' + re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'KIRAY-' in filename:    #314KIRAY-128
+                file_number = '314' + re.search('[a-zA-Z]+-\d+', filename).group()
+            else:
+                file_number = re.search('[a-zA-Z]+-\d+', filename).group()
         elif re.search('[a-zA-Z]+-[a-zA-Z]\d+', filename):  # 提取类似mkbd-s120番号
             file_number = re.search('[a-zA-Z]+-[a-zA-Z]\d+', filename).group()
         elif re.search('\d+-\d+', filename):  # 提取类似 111111-000 番号
@@ -215,8 +256,10 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     c_word = json_data['c_word']
     leak = json_data['leak']
     cd_part = json_data['cd_part']
+    destroyed = json_data['destroyed']
+    mosaic = json_data['mosaic']
+
     # ================================================网站规则添加开始================================================
-    isuncensored = is_uncensored(file_number)
     if website_mode == 1:  # 从全部网站刮削
         # =======================================================================FC2-111111
         if 'FC2' in file_number.upper():
@@ -250,7 +293,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
                 log_info = json_data['log_info']
                 json_data = json.loads(javbus.main(file_number, appoint_url, log_info, req_web))
           # =======================================================================无码抓取:111111-111,n1111,HEYZO-1111,SMD-115
-        elif isuncensored:
+        elif mosaic == '无码' or mosaic == '無碼':
             json_data = json.loads(iqqtv_new.main(file_number, appoint_url, translate_language))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
@@ -358,50 +401,57 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
         return json_data
 
     # ======================================处理得到的信息
-    title = json_data['title']
+    # 番号
     number = json_data['number']
+
+    # 演员
     actor = str(json_data['actor']).strip(" [ ]").replace("'", '').replace(', ', ',').replace('<', '(').replace('>', ')') # 列表转字符串（避免个别网站刮削返回的是列表）
+
+    # 标题处理，去除标题尾巴的演员名
+    title = json_data['title']
+    if config.getint('Name_Rule', 'del_actor_name'):
+        title = title.replace((' ' + actor), '')
+
+
+    # 发行日期
     release = json_data['release']
+    release = release.replace('/', '-').strip('. ')
+
+    # poster图
     try:
         cover_small = json_data['cover_small']
     except:
         cover_small = ''
+    
+    # 标签
     tag = str(json_data['tag']).strip(" [ ]").replace("'", '').replace(', ', ',').replace(',720P', '').replace(',1080P', '').replace(',720p', '').replace(',1080p', '').replace(',HD高画质', '').replace(',HD高畫質', '').replace(',高画质', '').replace(',高畫質', '')  #列表转字符串（避免个别网站刮削返回的是列表）
 
-    # ====================================== 去除标题尾巴的演员名
-    if config.getint('Name_Rule', 'del_actor_name'):
-        title = title.replace((' ' + actor), '')
-
-    # ====================处理异常字符====================== #\/:*?"<>|
-    # title = title.replace('\\', '')
-    # title = title.replace('/', '')
-    # title = title.replace(':', '')
-    # title = title.replace('*', '')
-    # title = title.replace('?', '')
-    # title = title.replace('|', '')
-    # # title = title.replace('"', '')
-    # # title = title.replace('<', '')
-    # # title = title.replace('>', '')
-    # # title = title.replace(' ', '.')
-    # # title = title.replace('【', '')
-    # # title = title.replace('】', '')
-    # title = title.strip()
-    release = release.replace('/', '-').strip('. ')
+    # studio
     try:
         json_data['studio'] = json_data['studio'].strip('. ')
     except:
-        pass
+        json_data['studio'] = ''
+
+    # publisher
     try:
         json_data['publisher'] = json_data['publisher'].strip('. ')
     except:
-        pass
-    tmpArr = cover_small.split(',')
-    if len(tmpArr) > 0:
-        cover_small = tmpArr[0].strip('\"').strip('\'')
-    for key, value in json_data.items():
-        if key == 'title' or key == 'studio' or key == 'director' or key == 'series' or key == 'publisher':
-            json_data[key] = str(value).replace('/', '')
+        json_data['publisher'] = json_data['studio']
 
+    # 马赛克
+    try:
+        json_data['mosaic']
+    except:
+        json_data['mosaic'] = ''
+    finally:
+        if not json_data['mosaic']:
+            if is_uncensored(number):
+                json_data['mosaic'] = '无码'
+            else:
+                json_data['mosaic']  = '有码'
+        print(number, json_data['mosaic'])
+
+    # 命名规则
     naming_media = config.get('Name_Rule', 'naming_media')
     naming_file = config.get('Name_Rule', 'naming_file')
     folder_name = config.get('Name_Rule', 'folder_name')
@@ -419,19 +469,9 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     json_data['c_word'] = c_word
     json_data['leak'] = leak
     json_data['cd_part'] = cd_part
-
-    try:
-        json_data['mosaic']
-    except:
-        json_data['mosaic'] = ''
-    finally:
-        if not json_data['mosaic']:
-            if is_uncensored(number):
-                json_data['mosaic'] = '无码'
-            else:
-                json_data['mosaic']  = '有码'
-        print(number, json_data['mosaic'])
-
+    json_data['destroyed'] = destroyed
+    json_data['actor_href'] = ''
+        
     return json_data
 
 
@@ -484,15 +524,19 @@ def save_config(json_config):
         print("translate_content = " + json_config['translate_content'], file=code)
         print("translate_by = " + json_config['translate_by'], file=code)
         print("deepl_key = " + json_config['deepl_key'], file=code)
+        print("actor_output = " + json_config['actor_output'], file=code)
+        print("tag_output = " + json_config['tag_output'], file=code)
         print("website = " + json_config['website'], file=code)
         print("series_as_set = " + str(json_config['series_as_set']), file=code)
         print("# translate_language: zh_cn, zh_tw, ja", file=code)
         print("# translate_by: youdao, deepl", file=code)
+        print("# actor_output: zh_cn, zh_tw, jp, no", file=code)
+        print("# tag_output: zh_cn, zh_tw, jp, no", file=code)
         print("# website: all, iqqtv, javbus, javdb, jav321, dmm, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav, javlibrary", file=code)
         print("", file=code)
         print("[proxy]", file=code)
         print("type = " + json_config['type'], file=code)
-        print("proxy = " + json_config['proxy'], file=code)
+        print("proxy = " + str(json_config['proxy']), file=code)
         print("timeout = " + str(json_config['timeout']), file=code)
         print("retry = " + str(json_config['retry']), file=code)
         print("# type: no, http, socks5", file=code)
@@ -505,6 +549,10 @@ def save_config(json_config):
         print("folder_name = " + json_config['folder_name'], file=code)
         print("naming_file = " + json_config['naming_file'], file=code)
         print("naming_media = " + json_config['naming_media'], file=code)
+        print("folder_name_max = " + str(json_config['folder_name_max']), file=code)
+        print("file_name_max = " + str(json_config['file_name_max']), file=code)
+        print("actor_name_max = " + str(json_config['actor_name_max']), file=code)
+        print("actor_name_more = " + str(json_config['actor_name_more']), file=code)
         print("pic_name = " + str(json_config['pic_name']), file=code)
         print("cd_name = " + str(json_config['cd_name']), file=code)
         print("cnword_char = " + str(json_config['cnword_char']), file=code)
