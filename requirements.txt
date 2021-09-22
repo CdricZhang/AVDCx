@@ -4,7 +4,7 @@ cloudscraper==1.2.58
 requests==2.24.0
 beautifulsoup4==4.9.3
 Pillow==8.2.0
-PyQt5==5.15.2
+PyQt5==5.15.4
 PySocks==1.7.1
 urllib3==1.25.11
 zhconv

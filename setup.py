@@ -18,8 +18,8 @@ OPTIONS = {
         'CFBundleDisplayName': "AVDCx",
         'CFBundleGetInfoString': "AVDCx",
         'CFBundleIdentifier': "github.com",   # 进程名字
-        'CFBundleVersion': "20210915",
-        'CFBundleShortVersionString': "20210915",   #版本号
+        'CFBundleVersion': "20210923",
+        'CFBundleShortVersionString': "20210923",   #版本号
         'NSHumanReadableCopyright': u"版权所有 © 2021, hermit",
         'Localization native development region':'China',
         }
