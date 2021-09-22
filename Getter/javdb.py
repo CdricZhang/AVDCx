@@ -314,6 +314,8 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                     image_download = True
             if 'SOD star' in publisher:   # 下载封面的发行商
                 image_download = True
+            if 'VR' in tag:   # 下载封面的标签
+                image_download = True
             if 'KMHRS' in number:   # 封面改用剧照第一张图
                 if extrafanart:
                     cover_small_url = extrafanart[0]

@@ -210,11 +210,11 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 error_type = 'title 获取失败'
                 raise Exception('javlibrary-title 获取失败！')
             web_number = getNumber(html_detail)
-            title = title.strip(web_number + ' ')   # 去掉标题里的番号
+            title = title.replace(web_number + ' ', '')   # 去掉标题里的番号
             actor = getActor(html_detail) # 获取actor
             actor_photo = getActorPhoto(actor)
             if getDelActorName():
-                title = title.strip(' ' + actor)
+                title = title.replace(' ' + actor, '')
             cover_url = getCover(html_detail) # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> javlibrary-cover url 获取失败！\n'
@@ -257,6 +257,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                     'error_type': '',
                     'error_info': str(error_info),
                     'req_web': req_web,
+                    'mosaic': '有码',
                 }
                 log_info += '   >>> javlibrary-数据获取成功！\n'
                 dic['log_info'] = log_info

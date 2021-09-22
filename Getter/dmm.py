@@ -259,6 +259,7 @@ def main(number, appoint_url='', log_info='',req_web=''):
                 'error_type': '',
                 'error_info': str(error_info),
                 'req_web': req_web,
+                'mosaic': '有码',
             }
             log_info += '   >>> [ DMM ] 数据获取成功！\n'
             dic['log_info'] = log_info

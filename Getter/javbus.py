@@ -224,11 +224,11 @@ def main(number, appoint_url='', log_info='', req_web=''):
             error_type = 'javbus-title 获取失败！'
             raise Exception('javbus-title 获取失败!')
         number = getWebNumber(html_info)    # 获取番号，用来替换标题里的番号
-        title = title.strip(number).strip()
+        title = title.replace(number, '').strip()
         actor = getActor(html_info) # 获取actor
         actor_photo = getActorPhoto(html_info, 'https://www.javbus.com')
         if getDelActorName():
-            title = title.strip(' ' + actor)
+            title = title.replace(' ' + actor, '')
         cover_url = getCover(html_info, 'https://www.javbus.com') # 获取cover
         cover_small_url = getCoverSmall(cover_url)
         if 'http' not in cover_url:

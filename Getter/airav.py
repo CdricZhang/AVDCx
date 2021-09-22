@@ -13,12 +13,6 @@ def getDelActorName():
     del_actor_name = config.getint('Name_Rule', 'del_actor_name')
     return del_actor_name
 
-def getModeLike():
-    config_file = 'config.ini'
-    config = RawConfigParser()
-    config.read(config_file, encoding='UTF-8')
-    return config.getint('common', 'main_like')
-
 def getWebNumber(html):
     result = html.xpath('//h5[@class=" d-none d-md-block text-primary mb-3"]/text()')
     if result:
@@ -187,6 +181,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     req_web += '-> airav[%s] ' % translate_language.replace('zh_', '')
     log_info += '   >>> AIRAV-开始使用airav进行刮削\n'
     number = number.upper()
+    if re.match('N\d{4}', number):  #n1403
+        number = number.lower()
     real_url = appoint_url
     cover_url = ''
     error_type = ''
@@ -194,6 +190,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     image_cut = 'right'
     image_download = False
     url_search = ''
+    mosaic = '有码'
     if translate_language == 'zh_cn':
         airav_url = 'https://cn.airav.wiki'
         airav_lan = '?lng=zh-CN'
@@ -220,15 +217,10 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             # print(web_cache_url)
             # with open('11.txt', 'wt') as f:
             #     f.write(web_cache_url)
-            real_url = html.xpath("//a[contains(@href, $number1)]/@href", number1='/' + number)
+            real_url = html.xpath("//div[@class='coverImageBox']/img[@class='img-fluid video-item coverImage' and contains(@alt, $number1) and not(contains(@alt, '克破'))]/../../@href", number1=number)
 
             if real_url:
                 real_url = airav_url + real_url[0] + airav_lan
-            else:
-                real_url = html.xpath("//a[contains(@href, $number)]/@href", number=number)
-                if real_url:
-                    real_url = airav_url + real_url[0] + airav_lan
-            if real_url:
                 log_info += '   >>> AIRAV-匹配详情页地址： %s \n' % real_url
             else:
                 log_info += '   >>> AIRAV-搜索结果页匹配番号：未匹配到番号！ \n'
@@ -257,7 +249,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             actor = getActor(html_info) # 获取actor
             actor_photo = getActorPhoto(actor)
             if getDelActorName():
-                title = title.strip(' ' + actor)
+                title = title.replace(' ' + actor, '')
             cover_url = getCover(html_info) # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> AIRAV- cover url 获取失败！ \n'
@@ -275,6 +267,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             director = ''
             publisher = studio
             extrafanart = ''
+            if '无码' in tag or '無修正' in tag or '無码' in tag or 'uncensored' in tag.lower():
+                mosaic = '无码'
                         
             try:
                 dic = {
@@ -304,6 +298,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                     'error_type': '',
                     'error_info': str(error_info),
                     'req_web': req_web,
+                    'mosaic': mosaic,
                 }
                 log_info += '   >>> AIRAV-数据获取成功！\n'
                 dic['log_info'] = log_info
@@ -326,7 +321,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     return js
 
 
-
+# print(main('PRED-300'))
 # print(main('abs-141'))
 # print(main('HYSD-00083'))
 # print(main('IESP-660'))

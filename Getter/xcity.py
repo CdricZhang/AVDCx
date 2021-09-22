@@ -209,7 +209,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
             actor = getActor(html_info) # 获取actor
             actor_photo = getActorPhoto(actor)
             if getDelActorName():
-                title = title.strip(' ' + actor)
+                title = title.replace(' ' + actor, '')
             cover_url = getCover(html_info) # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> xcity-cover url 获取失败！ \n'
@@ -255,7 +255,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
                     'error_type': '',
                     'error_info': str(error_info),
                     'req_web': req_web,
-                    'mosaic': '',
+                    'mosaic': '有码',
                 }
                 log_info += '   >>> xcity-数据获取成功！\n'
                 dic['log_info'] = log_info
