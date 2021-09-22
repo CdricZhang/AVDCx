@@ -215,6 +215,9 @@ color:#336699</string>
         <bold>false</bold>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
        <string notr="true">border:0px solid rgba(0, 0, 0, 80);
 color:#336699</string>
@@ -893,6 +896,9 @@ font-size:14px;</string>
         <bold>false</bold>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
        <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
       </property>
@@ -943,6 +949,9 @@ font-size:14px;</string>
         <weight>50</weight>
         <bold>false</bold>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">border:1px solid rgba(0, 0, 0, 80);</string>
@@ -2080,7 +2089,7 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-73</y>
+           <y>0</y>
            <width>771</width>
            <height>650</height>
           </rect>
@@ -2931,7 +2940,7 @@ background-color: rgb(246, 246, 246);</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-623</y>
+           <y>0</y>
            <width>771</width>
            <height>1200</height>
           </rect>
@@ -3639,7 +3648,7 @@ background-color: rgb(246, 246, 246);</string>
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
               <property name="text">
-               <string>刮削成功时，按「目录和文件设置」-「命名规则」-「视频标题(本地文件)」重命名文件</string>
+               <string>刮削成功时，按「命名」-「视频命名规则」-「视频文件名」重命名文件</string>
               </property>
              </widget>
             </item>
@@ -5167,9 +5176,9 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-125</y>
+           <y>0</y>
            <width>771</width>
-           <height>780</height>
+           <height>1120</height>
           </rect>
          </property>
          <property name="sizePolicy">
@@ -5182,7 +5191,7 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>650</y>
+            <y>990</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -5615,7 +5624,7 @@ runtime, director, release, series, definition, cnword
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>380</y>
+            <y>720</y>
             <width>701</width>
             <height>101</height>
            </rect>
@@ -5749,7 +5758,7 @@ runtime, director, release, series, definition, cnword
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>500</y>
+            <y>840</y>
             <width>701</width>
             <height>131</height>
            </rect>
@@ -5910,6 +5919,325 @@ runtime, director, release, series, definition, cnword
            </property>
           </widget>
          </widget>
+         <widget class="QGroupBox" name="groupBox_77">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>380</y>
+            <width>701</width>
+            <height>321</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Courier</family>
+            <pointsize>13</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font:&quot;Courier&quot;;</string>
+          </property>
+          <property name="title">
+           <string>长度命名规则</string>
+          </property>
+          <widget class="QWidget" name="gridLayoutWidget_43">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>30</y>
+             <width>691</width>
+             <height>281</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_43">
+            <item row="3" column="1">
+             <widget class="QLabel" name="label_172">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>指文件名最长字符数（Windows单文件名允许最大长度255字符，完整路径最大260字符）
+当超过最大长度时，将通过截短标题字段内容来缩短长度</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_167">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="text">
+               <string>演员名最大显示数量</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="lineEdit_folder_name_max">
+              <property name="minimumSize">
+               <size>
+                <width>450</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="accessibleDescription">
+               <string>测试</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1">
+             <widget class="QLineEdit" name="lineEdit_actor_name_more">
+              <property name="minimumSize">
+               <size>
+                <width>450</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="lineEdit_file_name_max">
+              <property name="minimumSize">
+               <size>
+                <width>450</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QLabel" name="label_168">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>指有多位演员时，命名时最多显示的演员数量。超出的演员将用以下字符替代：</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_171">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>160</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="text">
+               <string>目录名最大长度</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_170">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="text">
+               <string>文件名最大长度</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLineEdit" name="lineEdit_actor_name_max">
+              <property name="minimumSize">
+               <size>
+                <width>450</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="label_169">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>指目录名最长字符数（Windows单目录名允许最大长度255字符，完整路径最大260字符）
+当超过最大长度时，将通过截短标题字段内容来缩短长度</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </widget>
        </widget>
       </widget>
@@ -5923,7 +6251,7 @@ runtime, director, release, series, definition, cnword
           <x>30</x>
           <y>130</y>
           <width>701</width>
-          <height>141</height>
+          <height>101</height>
          </rect>
         </property>
         <property name="minimumSize">
@@ -5992,38 +6320,6 @@ runtime, director, release, series, definition, cnword
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QCheckBox" name="checkBox_translate_actor">
-            <property name="font">
-             <font>
-              <family>Courier</family>
-              <pointsize>13</pointsize>
-              <weight>50</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>演员</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBox_translate_tag">
-            <property name="font">
-             <font>
-              <family>Courier</family>
-              <pointsize>13</pointsize>
-              <weight>50</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>标签</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
         <widget class="QLabel" name="label_74">
@@ -6032,7 +6328,7 @@ runtime, director, release, series, definition, cnword
            <x>60</x>
            <y>70</y>
            <width>611</width>
-           <height>51</height>
+           <height>21</height>
           </rect>
          </property>
          <property name="sizePolicy">
@@ -6054,9 +6350,7 @@ runtime, director, release, series, definition, cnword
           <string notr="true">color: rgb(8, 128, 128);</string>
          </property>
          <property name="text">
-          <string>为避免翻译错误，演员、标签使用的是刮削网站翻译的内容，并不使用有道翻译。
-因此，当刮削网站没有翻译时，演员和标签也不会翻译，显示仍旧为日语。
-另外，为了保证演员头像正常显示，nfo里的演员会默认使用日文名字。</string>
+          <string>优先使用刮削网站的中文翻译，如刮削页面无中文时，再使用翻译引擎翻译。</string>
          </property>
         </widget>
        </widget>
@@ -6064,7 +6358,7 @@ runtime, director, release, series, definition, cnword
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>290</y>
+          <y>250</y>
           <width>701</width>
           <height>151</height>
          </rect>
@@ -6316,22 +6610,6 @@ runtime, director, release, series, definition, cnword
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_18">
           <item>
-           <widget class="QRadioButton" name="radioButton_ja">
-            <property name="font">
-             <font>
-              <family>Courier</family>
-              <pointsize>13</pointsize>
-              <weight>50</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>不翻译</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QRadioButton" name="radioButton_zh_cn">
             <property name="font">
              <font>
@@ -6360,6 +6638,22 @@ runtime, director, release, series, definition, cnword
             </property>
             <property name="text">
              <string>繁体中文</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_ja">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>不翻译</string>
             </property>
            </widget>
           </item>
@@ -6394,6 +6688,411 @@ runtime, director, release, series, definition, cnword
          </property>
          <property name="text">
           <string>优先使用刮削网站的中文翻译，如刮削页面无中文时，再使用翻译引擎翻译。</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_9">
+       <attribute name="title">
+        <string>映射表</string>
+       </attribute>
+       <widget class="QGroupBox" name="groupBox_75">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>10</y>
+          <width>701</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>739</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>演员映射表</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_28">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>160</y>
+           <width>521</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_35">
+          <item>
+           <widget class="QRadioButton" name="radioButton_actor_zh_cn">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>中文简体</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_actor_zh_tw">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>中文繁体</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_actor_jp">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>日语</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_actor_no">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>不使用映射</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+         <zorder>radioButton_actor_zh_tw</zorder>
+         <zorder>radioButton_actor_no</zorder>
+         <zorder>radioButton_actor_jp</zorder>
+         <zorder>radioButton_actor_zh_cn</zorder>
+        </widget>
+        <widget class="QLabel" name="label_162">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>30</y>
+           <width>671</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(8, 128, 128);</string>
+         </property>
+         <property name="text">
+          <string>由于不同网站的演员名不统一，导致刮削后演员命名比较混乱。使用本功能可以使刮削后的演员名整齐统一。
+演员映射表文件名为：actor.xml。可使用文件编辑工具打开并自定义修改。映射表中的字段含义如下：
+1，keyword：匹配词（每个名字前后都要有逗号）。刮削网站获取演员名后，会在keyword的名字中进行匹配。
+2，zh_cn/zh_tw/jp：输出词。当keyword匹配到演员名时，可输出对应语言的名字。</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_163">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>160</y>
+           <width>100</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>输出词：</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_164">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>110</y>
+           <width>611</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(8, 128, 128);</string>
+         </property>
+         <property name="text">
+          <string>注：为了保证emby的演员头像正常显示，nfo里的演员会默认使用日文名字。</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_76">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>240</y>
+          <width>701</width>
+          <height>121</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>739</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Courier</family>
+          <pointsize>13</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>标签映射表</string>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget_29">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>70</y>
+           <width>521</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_36">
+          <item>
+           <widget class="QRadioButton" name="radioButton_tag_zh_cn">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>中文简体</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_tag_zh_tw">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>中文繁体</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_tag_jp">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>日语</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_tag_no">
+            <property name="font">
+             <font>
+              <family>Courier</family>
+              <pointsize>13</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>不使用映射</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QLabel" name="label_165">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>30</y>
+           <width>671</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(8, 128, 128);</string>
+         </property>
+         <property name="text">
+          <string>标签映射表文件名为：tag.xml。作用和演员映射表类似，说明可参考演员映射表。</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_166">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>70</y>
+           <width>100</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Courier</family>
+           <pointsize>13</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>输出词：</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </widget>
@@ -7362,7 +8061,7 @@ font: &quot;Courier&quot;;</string>
              <x>10</x>
              <y>170</y>
              <width>691</width>
-             <height>91</height>
+             <height>101</height>
             </rect>
            </property>
            <property name="sizePolicy">
@@ -7387,7 +8086,8 @@ font: &quot;Courier&quot;;</string>
             <string>Cookie 获取方法：
 使用 Chrome 打开目标网站后，点击鼠标右键，选择 “检查” ，右侧顶部选择：Network -&gt; DOC，
 然后 F5 刷新页面。点击 name 栏加载出来的第一个内容 -&gt; Headers -&gt; Request Headers -&gt; Cookie。
-复制 Cookie 对应的全部值填人上面输入框。 （注意：Cookie 存在有效期，过期无效时请重新获取。）</string>
+复制 Cookie 对应的全部值填人上面输入框。 （注意：Cookie 存在有效期，过期无效时请重新获取。）
+方法可参考：https://tieba.baidu.com/p/5492736764</string>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
