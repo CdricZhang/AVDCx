@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# import traceback
+# import faulthandler
+# faulthandler.enable()
 import threading
 import json
 from PyQt5 import QtWidgets
@@ -38,6 +41,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     main_logs_show = pyqtSignal(str) # 刮削日志信号
     net_logs_show = pyqtSignal(str) # 网络检测日志信号
     set_javdb_cookie = pyqtSignal(str) # 加载javdb cookie文本内容到设置页面
+    set_label_file_path = pyqtSignal(str)
+    set_tree_child = pyqtSignal(str, str)
+    set_main_info = pyqtSignal(object)
 
     def __init__(self, parent=None):
         super(MyMAinWindow, self).__init__(parent)
@@ -49,7 +55,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210924'
+        self.localversion = '20210925'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.json_data = {}
@@ -60,20 +66,22 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.default_poster = self.resource_path('Img/default-poster.jpg')
         self.default_thumb = self.resource_path('Img/default-thumb.jpg')
         self.c_numuber_jsonfile = self.resource_path(self.c_numberPath())
-        self.tag_file = self.resource_path(self.tagPath())
+        self.tag_file = self.resource_path(self.infoPath())
         self.actor_file = self.resource_path(self.actorPath())
         self.m_drag = False
         self.m_DragPosition = 0
         self.count_claw = 0  # 批量刮削次数
         self.item_succ = self.Ui.treeWidget_number.topLevelItem(0)
         self.item_fail = self.Ui.treeWidget_number.topLevelItem(1)
+        self.set_tree_child.connect(self.addTreeChild)
+        self.set_main_info.connect(self.add_label_info_Thread)
         self.select_file_path = ''
         self.json_array = {}
         self.current_proxy = ''  # 代理设置
         self.github_project_url = 'https://github.com/Hermit10/AVDCx/'  # 项目主页
         self.Init()
         self.Load_config()
-        self.Ui.label_file_path.setText('🎈 设置-目录设置-待刮削视频目录，然后点击开始！\n')
+        self.set_label_file_path.emit('🎈 设置-目录设置-待刮削视频目录，然后点击开始！\n')
         self.show_version() # 启动后在【日志】页面显示版本信息
         self.new_proxy = self.check_proxyChange()
         self.addNetTextMain('\n🏠 代理设置在:【设置】 - 【网络设置】 - 【代理设置】。\n') 
@@ -94,6 +102,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.main_logs_show.connect(self.Ui.textBrowser_log_main.append)
         self.net_logs_show.connect(self.Ui.textBrowser_net_main.append)
         self.set_javdb_cookie.connect(self.Ui.plainTextEdit_cookie_javdb.setPlainText)
+        self.set_label_file_path.connect(self.Ui.label_file_path.setText)
         self.setWindowFlag(Qt.FramelessWindowHint)  # 隐藏边框
         # self.setWindowOpacity(0.98)  # 设置窗口透明度
         self.setAttribute(Qt.WA_TranslucentBackground)  # 设置窗口背景透明
@@ -267,7 +276,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================按钮点击事件
     def Init(self):
-        self.Ui.treeWidget_number.clicked.connect(self.treeWidget_number_clicked)
+        # self.Ui.treeWidget_number.clicked.connect(self.treeWidget_number_clicked)
+        self.Ui.treeWidget_number.selectionModel().selectionChanged.connect(self.treeWidget_number_clicked)
         self.Ui.pushButton_close.clicked.connect(self.close_win)
         self.Ui.pushButton_min.clicked.connect(self.min_win)
         self.Ui.pushButton_main.clicked.connect(self.pushButton_main_clicked)
@@ -293,6 +303,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.Ui.horizontalSlider_mark_size.valueChanged.connect(self.lcdNumber_mark_size_change)
         self.Ui.label_thumb.mousePressEvent = self.test_clicked
         self.Ui.label_poster.mousePressEvent = self.test_clicked
+        self.Ui.label_download_acotr_zip.mousePressEvent = self.download_actor_zip_clicked
+        self.Ui.label_get_cookie_url.mousePressEvent = self.get_cookie_url_clicked
 
 
     #  打包前（虚拟机py运行）
@@ -335,19 +347,19 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             c_numberPath ='Data/c_number/c_number.json'
         return c_numberPath
 
-    def tagPath(self):
+    def infoPath(self):
         if getattr(sys, 'frozen', False): #是否Bundle Resource，是否打包成exe运行
-            tagPath ='map/tag.xml'
+            infoPath ='mapping_table/mapping_info.xml'
         else:
-            tagPath ='Data/map/tag.xml'
-        return tagPath
+            infoPath ='Data/mapping_table/mapping_info.xml'
+        return infoPath
 
     def actorPath(self):
         if getattr(sys, 'frozen', False): #是否Bundle Resource，是否打包成exe运行
-            tagPath ='map/actor.xml'
+            actorPath ='mapping_table/mapping_actor.xml'
         else:
-            tagPath ='Data/map/actor.xml'
-        return tagPath
+            actorPath ='Data/mapping_table/mapping_actor.xml'
+        return actorPath
 
 
     # ======================================================================================显示版本号
@@ -371,6 +383,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     def test_clicked(self, test):
         newWin2.showimage(self.img_path, self.json_data)
         newWin2.show()
+
+    def download_actor_zip_clicked(self, test):
+        webbrowser.open('https://github.com/moyy996/AVDC/releases/tag/%E5%A4%B4%E5%83%8F%E5%8C%85-2')
+
+    def get_cookie_url_clicked(self, test):
+        webbrowser.open('https://tieba.baidu.com/p/5492736764')
 
     # ======================================================================================鼠标拖动窗口
     def mousePressEvent(self, e):
@@ -595,7 +613,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'translate_by': 'youdao',
             'deepl_key': '',
             'actor_output': 'zh_cn',
-            'tag_output': 'zh_cn',
+            'info_output': 'zh_cn',
             'save_log': 1,
             'website': 'all',
             'failed_output_folder': 'failed',
@@ -661,10 +679,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             # ======================================================================================当配置读取失败时重置
             try:
                 config.read(config_file, encoding='UTF-8')
-            except:
+            except Exception as error_info:
                 # ini损坏，重新创建
-                print('ini损坏，重新创建')
-                self.addTextMain('config.ini 读取失败，可能文件编码不是UTF-8。程序将重置为初始值！\n')
+                print('ini损坏，重新创建。错误信息：\n %s' % error_info)
+                self.addTextMain('config.ini 读取失败！错误信息：\n%s \nconfig.ini 将重置为初始值！\n' % error_info)
                 self.init_config_clicked()
                 return
             # ======================================================================================modified_time
@@ -820,13 +838,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             except:
                 self.Ui.radioButton_actor_zh_cn.setChecked(True)
             try:    # 标签映射表输出
-                if config['common']['tag_output'] == 'zh_cn':
+                if config['common']['info_output'] == 'zh_cn':
                     self.Ui.radioButton_tag_zh_cn.setChecked(True)
-                elif config['common']['tag_output'] == 'zh_tw':
+                elif config['common']['info_output'] == 'zh_tw':
                     self.Ui.radioButton_tag_zh_tw.setChecked(True)
-                elif config['common']['tag_output'] == 'ja':
+                elif config['common']['info_output'] == 'ja':
                     self.Ui.radioButton_tag_jp.setChecked(True)
-                elif config['common']['tag_output'] == 'no':
+                elif config['common']['info_output'] == 'no':
                     self.Ui.radioButton_tag_no.setChecked(True)
                 else:
                     self.Ui.radioButton_tag_zh_cn.setChecked(True)
@@ -1290,7 +1308,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         translate_content = ''
         translate_by = 'youdao'
         actor_output = 'zh_cn'
-        tag_output = 'zh_cn'
+        info_output = 'zh_cn'
         del_actor_name = 1
         pic_name = 0
         cd_name = 0
@@ -1356,13 +1374,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         elif self.Ui.radioButton_actor_no.isChecked():  # 演员名不映射
             actor_output = 'no'
         if self.Ui.radioButton_tag_zh_cn.isChecked():  # 标签名输出简体
-            tag_output = 'zh_cn'
+            info_output = 'zh_cn'
         elif self.Ui.radioButton_tag_zh_tw.isChecked():  # 标签名输出繁体
-            tag_output = 'zh_tw'
+            info_output = 'zh_tw'
         elif self.Ui.radioButton_tag_jp.isChecked():  # 标签名输出日文
-            tag_output = 'ja'
+            info_output = 'ja'
         elif self.Ui.radioButton_tag_no.isChecked():  # 标签名不映射
-            tag_output = 'no'
+            info_output = 'no'
         if self.Ui.radioButton_zh_cn.isChecked():  # 翻译简体
             translate_language = 'zh_cn'
         elif self.Ui.radioButton_zh_tw.isChecked():  # 翻译繁体
@@ -1554,7 +1572,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             'translate_content': translate_content.strip(','),
             'translate_by': translate_by,
             'actor_output': actor_output,
-            'tag_output': tag_output,
+            'info_output': info_output,
             'deepl_key': self.Ui.lineEdit_deepl_key.text(),
             'del_actor_name': del_actor_name,
             'pic_name': pic_name,
@@ -1717,7 +1735,10 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         sub_type = self.Ui.lineEdit_sub_type_2.text().split('|')
         if not movie_path:  # 没有输入视频目录时，获取程序当前路径
             # movie_path = os.path.abspath(".")
-            movie_path = os.path.split(os.path.realpath(__file__))[0]
+            try:
+                movie_path = os.path.split(os.path.realpath(__file__))[0]
+            except Exception as e:
+                print('move_file_thread: %s' % e)
         movie_list = movie_lists(escape_dir, movie_type, movie_path)
         des_path = os.path.join(movie_path, 'Movie_moved')
         if not os.path.exists(des_path):
@@ -1840,7 +1861,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.addTextMain('可添加头像的女优!')
         path = 'Actor'
         if not os.path.exists(path):
-            self.addTextMain('Actor folder not exist! Please download Actor.zip first:\nhttps://github.com/moyy996/AVDC/releases/tag/%E5%A4%B4%E5%83%8F%E5%8C%85-2')
+            self.addTextMain('Actor folder not exist! Please download Actor.zip first:\n https://github.com/moyy996/AVDC/releases/tag/%E5%A4%B4%E5%83%8F%E5%8C%85-2')
             self.addTextMain("================================================================================")
             return
         path_success = 'Actor/Success'
@@ -2197,8 +2218,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # 获取字段
         translate_language = config.get('common', 'translate_language')
         c_word = json_data['c_word']
-        leak = json_data['leak']
-        destroyed = json_data['destroyed']
         title, studio, publisher, year, outline, runtime, director, actor_photo, actor, release, tag, number, cover, website, series, mosaic, definition = get_info(
             json_data)
         # 获取在媒体文件中显示的规则，不需要过滤Windows异常字符
@@ -2306,59 +2325,20 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                             print("  </actor>", file=code)
                 print("  <label>", file=code)
                 print("  </label>", file=code)
-                # 输出tag and genre
+                # 输出 tag
                 try:
                     for i in tag:
                         if i:
                             print("  <tag>" + i + "</tag>", file=code)
                 except Exception as ex:
                     self.addTextMain('Error in tag: ' + str(ex))
-                if mosaic:
-                    print("  <tag>" + mosaic + "</tag>", file=code)
-                if leak:
-                    print("  <tag>流出</tag>", file=code)
-                if c_word:
-                    print("  <tag>中文字幕</tag>", file=code)
-                if destroyed:
-                    print("  <tag>%s</tag>" % destroyed.replace('.', ''), file=code)
-                if series:
-                    print("  <tag>" + '系列:' + series + "</tag>", file=code)
-                if studio:
-                    if translate_language == 'zh_cn':
-                        print("  <tag>" + '制作：' + studio + "</tag>", file=code)
-                    else:
-                        print("  <tag>" + '製作：' + studio + "</tag>", file=code)
-                if publisher:
-                    if translate_language == 'zh_cn':
-                        print("  <tag>" + '发行：' + publisher + "</tag>", file=code)
-                    else:
-                        print("  <tag>" + '發行：' + publisher + "</tag>", file=code)
+                # 输出 genre
                 try:
                     for i in tag:
                         if i:
                             print("  <genre>" + i + "</genre>", file=code)
                 except Exception as ex:
                     self.addTextMain(' 🔴 Error when print genre to nfo\n   >>> ' + str(ex))
-                if mosaic:
-                    print("  <genre>" + mosaic + "</genre>", file=code)
-                if leak:
-                    print("  <genre>流出</genre>", file=code)
-                if c_word:
-                    print("  <genre>中文字幕</genre>", file=code)
-                if destroyed:
-                    print("  <genre>%s</genre>" % destroyed.replace('.', ''), file=code)
-                if series:
-                    print("  <genre>" + '系列:' + series + "</genre>", file=code)
-                if studio:
-                    if translate_language == 'zh_cn':
-                        print("  <genre>" + '制作：' + studio + "</genre>", file=code)
-                    else:
-                        print("  <genre>" + '製作：' + studio + "</genre>", file=code)
-                if publisher:
-                    if translate_language == 'zh_cn':
-                        print("  <genre>" + '发行：' + publisher + "</genre>", file=code)
-                    else:
-                        print("  <genre>" + '發行：' + publisher + "</genre>", file=code)
                 print("  <website>" + website + "</website>", file=code)
                 print("</movie>", file=code)
                 self.addTextMain(" 🟢 Nfo done!")
@@ -2630,7 +2610,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         acotr_list = actor.split(',')
         if len(acotr_list) > actor_name_max:  # 演员多于设置值时
             cut_index = actor_name_max - len(acotr_list)
-            self.addTextMain(' 🟠 演员数量%s，最大数量为%s，目录命名时将去除后%s个演员!' % (len(acotr_list), actor_name_max, abs(cut_index)))
+            self.addTextMain(' 🟠 当前演员数量：%s，最大显示数量：%s，目录命名时将去除后%s个演员!' % (len(acotr_list), actor_name_max, abs(cut_index)))
             actor = ''
             for i in range(actor_name_max):
                 actor = actor + acotr_list[i] + ','
@@ -2648,7 +2628,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         folder_name_max = config.getint('Name_Rule', 'folder_name_max')
         if len(folder_new_name) > folder_name_max:
             cut_index = folder_name_max - len(folder_new_name)
-            self.addTextMain(' 🟠 目录名长度%s，最大长度为%s，目录命名时将去除标题后%s个字符!' % (len(folder_new_name), folder_name_max, abs(cut_index)))
+            self.addTextMain(' 🟠 当前目录名长度：%s，最大允许长度：%s，目录命名时将去除标题后%s个字符!' % (len(folder_new_name), folder_name_max, abs(cut_index)))
             folder_new_name = folder_new_name.replace(title, title[0:cut_index])
 
         # 生成文件夹名
@@ -2698,7 +2678,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         acotr_list = actor.split(',')
         if len(acotr_list) > actor_name_max:  # 演员多于设置值时
             cut_index = actor_name_max - len(acotr_list)
-            self.addTextMain(' 🟠 演员数量%s，最大数量为%s，文件命名时将去除后%s个演员!' % (len(acotr_list), actor_name_max, abs(cut_index)))
+            self.addTextMain(' 🟠 当前演员数量：%s，最大显示数量：%s，文件命名时将去除后%s个演员!' % (len(acotr_list), actor_name_max, abs(cut_index)))
             actor = ''
             for i in range(actor_name_max):
                 actor = actor + acotr_list[i] + ','
@@ -2715,7 +2695,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         file_name_max = config.getint('Name_Rule', 'file_name_max')
         if len(file_name) > file_name_max:
             cut_index = file_name_max - len(file_name)
-            self.addTextMain(' 🟠 文件名长度%s，最大长度为%s，文件命名时将去除标题后%s个字符!' % (len(file_name), file_name_max, abs(cut_index)))
+            self.addTextMain(' 🟠 当前文件名长度%s，最大允许长度：%s，文件命名时将去除标题后%s个字符!' % (len(file_name), file_name_max, abs(cut_index)))
             file_name = file_name.replace(title, title[0:cut_index])
         if not file_name:   # 文件名不能为空
             file_name = number
@@ -2769,83 +2749,88 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
     # ======================================================================================json_data添加到主界面
     def add_label_info(self, json_data):
-        try:
-            t = threading.Thread(target=self.add_label_info_Thread, args=(json_data,))
-            t.start()  # 启动线程,即让线程开始执行
-        except Exception as ex:
-            self.addTextMain('Error add_label_info: ' + str(ex))
+        self.set_main_info.emit(json_data)
+        # try:
+        #     t = threading.Thread(target=self.add_label_info_Thread, args=(json_data,))
+        #     t.start()  # 启动线程,即让线程开始执行
+        # except Exception as ex:
+        #     self.addTextMain('Error add_label_info: ' + str(ex))
 
     def add_label_info_Thread(self, json_data):
-        if not json_data:
-            json_data = {
-                'number': '',
-                'actor': '',
-                'source': '',
-                'website': '',
-                'title': '',
-                'outline': '',
-                'tag': '',
-                'release': '',
-                'year': '',
-                'runtime': '',
-                'director': '',
-                'series': '',
-                'studio': '',
-                'publisher': '',
-                'poster_path': '',
-                'thumb_path': '',
-                'fanart_path': '',
-                'img_path': '',
-                'c_word': '',
-                'leak': '',
-                'cd_part': '',
-                'mosaic': '',
-                'destroyed': '',
-                'actor_href': '',
-            }
-        self.Ui.label_number.setText(json_data['number'])
-        self.laberl_number_url = json_data['website']
-        self.Ui.label_actor.setText(json_data['actor'])
-        self.laberl_actor_url = json_data['actor_href']
-        if json_data.get('source'):
-            self.Ui.label_source.setText('数据：' + json_data['source'].replace('.main_us','').replace('.main',''))
-        else:
-            self.Ui.label_source.setText('')
-        self.Ui.label_title.setText(json_data['title'])
-        self.Ui.label_outline.setText(json_data['outline'])
-        self.Ui.label_tag.setText(str(json_data['tag']).strip(" [',']").replace('\'', ''))
-        self.Ui.label_release.setText(json_data['release'])
-        if json_data['runtime']:
-            self.Ui.label_runtime.setText(str(json_data['runtime']) + ' 分钟')
-        else:
-            self.Ui.label_runtime.setText(json_data['runtime'])
-        self.Ui.label_director.setText(json_data['director'])
-        self.Ui.label_series.setText(json_data['series'])
-        self.Ui.label_studio.setText(json_data['studio'])
-        self.Ui.label_publish.setText(json_data['publisher'])
-        # 生成img_path，用来裁剪使用
-        if os.path.isfile(json_data['fanart_path']):
-            json_data['img_path'] = json_data['fanart_path']
-        else:
-            json_data['img_path'] = json_data['thumb_path']
-        # 主界面显示封面和缩略图
-        if self.Ui.checkBox_cover.isChecked():
-            poster_path = json_data['poster_path']
-            thumb_path = json_data['thumb_path']
-            fanart_path = json_data['fanart_path']
-            if not os.path.exists(poster_path):
-                poster_path = self.default_poster
-            if not os.path.exists(thumb_path):
-                if os.path.exists(fanart_path):
-                    thumb_path = fanart_path
-                else:
-                    thumb_path = self.default_thumb
-            pix = QPixmap(poster_path)
-            self.Ui.label_poster.setScaledContents(True)
-            self.Ui.label_poster.setPixmap(pix)  # 添加封面图
-            pix = QPixmap(thumb_path)
-            self.Ui.label_thumb.setScaledContents(True)
-            self.Ui.label_thumb.setPixmap(pix)  # 添加缩略图
+        try:
+            if not json_data:
+                json_data = {
+                    'number': '',
+                    'actor': '',
+                    'source': '',
+                    'website': '',
+                    'title': '',
+                    'outline': '',
+                    'tag': '',
+                    'release': '',
+                    'year': '',
+                    'runtime': '',
+                    'director': '',
+                    'series': '',
+                    'studio': '',
+                    'publisher': '',
+                    'poster_path': '',
+                    'thumb_path': '',
+                    'fanart_path': '',
+                    'img_path': '',
+                    'c_word': '',
+                    'leak': '',
+                    'cd_part': '',
+                    'mosaic': '',
+                    'destroyed': '',
+                    'actor_href': '',
+                }
+            self.Ui.label_number.setText(json_data['number'])
+            self.laberl_number_url = json_data['website']
+            self.Ui.label_actor.setText(json_data['actor'])
+            self.laberl_actor_url = json_data['actor_href']
+            if json_data.get('source'):
+                self.Ui.label_source.setText('数据：' + json_data['source'].replace('.main_us','').replace('.main',''))
+            else:
+                self.Ui.label_source.setText('')
+            self.Ui.label_title.setText(json_data['title'])
+            self.Ui.label_outline.setText(json_data['outline'])
+            self.Ui.label_tag.setText(str(json_data['tag']).strip(" [',']").replace('\'', ''))
+            self.Ui.label_release.setText(json_data['release'])
+            if json_data['runtime']:
+                self.Ui.label_runtime.setText(str(json_data['runtime']) + ' 分钟')
+            else:
+                self.Ui.label_runtime.setText(json_data['runtime'])
+            self.Ui.label_director.setText(json_data['director'])
+            self.Ui.label_series.setText(json_data['series'])
+            self.Ui.label_studio.setText(json_data['studio'])
+            self.Ui.label_publish.setText(json_data['publisher'])
+            # 生成img_path，用来裁剪使用
+            if os.path.isfile(json_data['fanart_path']):
+                json_data['img_path'] = json_data['fanart_path']
+            else:
+                json_data['img_path'] = json_data['thumb_path']
+            # 主界面显示封面和缩略图
+            if self.Ui.checkBox_cover.isChecked():
+                poster_path = json_data['poster_path']
+                thumb_path = json_data['thumb_path']
+                fanart_path = json_data['fanart_path']
+                if not os.path.exists(poster_path):
+                    poster_path = self.default_poster
+                if not os.path.exists(thumb_path):
+                    if os.path.exists(fanart_path):
+                        thumb_path = fanart_path
+                    else:
+                        thumb_path = self.default_thumb
+                pix = QPixmap(poster_path)
+                self.Ui.label_poster.setScaledContents(True)
+                self.Ui.label_poster.setPixmap(pix)  # 添加封面图
+                pix = QPixmap(thumb_path)
+                self.Ui.label_thumb.setScaledContents(True)
+                self.Ui.label_thumb.setPixmap(pix)  # 添加缩略图
+        except Exception as e:
+            # print(traceback.format_exc())
+            print('add_label_info_Thread: %s'% e)
 
         self.json_data = json_data
         self.img_path = json_data['img_path']
@@ -3030,7 +3015,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             if flag:
                 self.addTextMain('='*80)
 
-    def showListName(self, filename, result, json_data, real_number=''):
+    def addTreeChild(self, result, filename):
         if result == 'succ':
             node = QTreeWidgetItem(self.item_succ)
             node.setText(0, filename)
@@ -3039,6 +3024,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             node = QTreeWidgetItem(self.item_fail)
             node.setText(0, filename)
             self.item_fail.addChild(node)
+
+
+    def showListName(self, filename, result, json_data, real_number=''):
+        # 添加树状节点
+        self.set_tree_child.emit(result, filename)
+
+        # 解析json_data，以在主界面左侧显示
         if not json_data.get('number'):
             json_data['number'] = real_number
         if not json_data.get('actor'):
@@ -3092,6 +3084,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         appoint_url = ''
         movie_type = config.get('media', 'media_type').lower()
         if file_mode == 'default_folder':                                       # 刮削默认视频目录的文件
+            self.set_label_file_path.emit('正在遍历待刮削视频目录中的所有视频，请等待...\n %s' % movie_path)
             movie_list = movie_lists(escape_folder, movie_type, movie_path)     # 获取所有需要刮削的影片列表
             count_all = len(movie_list)
 
@@ -3142,101 +3135,102 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         return movie_path, success_folder, failed_folder, escape_folder, extrafanart_folder
 
     # =====================================================================================获取文件的相关信息
-    def getFileInfo(self, file_path, appoint_number=''):
-        config_file = 'config.ini'
-        config = RawConfigParser()
-        config.read(config_file, encoding='UTF-8')
-        file_path = file_path.replace('\\', '/')
-        translate_language = config.get('common', 'translate_language')
-        json_data = {}
-        c_word = ''
-        cd_part = ''
-        leak = ''
-        destroyed = ''
-        mosaic = ''
-        movie_number = ''
-        sub_list = []
-        # 获取文件名
-        folder_path, file_full_name = os.path.split(file_path)  # 获取去掉文件名的路径、完整文件名（含扩展名）
-        file_name, file_ex = os.path.splitext(file_full_name)  # 获取文件名（不含扩展名）、扩展名(含有.)
-        nfo_old_name = file_name + '.nfo'
-        nfo_old_path = os.path.join(folder_path, nfo_old_name)
-        # 获取番号
-        if appoint_number:      # 如果指定了番号，则使用指定番号
-            movie_number = appoint_number
-        else:
-            escape_string = config.get('escape', 'string')
-            movie_number = getNumber(file_path, escape_string)
-        # 判断是否流出
-        if '流出' in file_name:
-            leak = '-流出'
-        # 判断是否分集及分集序号
-        file_name1 = file_name.lower().replace('_', '-').replace('.', '-') + '.'    # .作为结尾
-        file_name1 = file_name1.replace('-part', '-cd').replace('-a.', '-cd1').replace('-b.', '-cd2').replace('-d.', '-cd4').replace('-e.', '-cd5').replace('-f.', '-cd6').replace('-g.', '-cd7').replace('-hd1.', '-cd1').replace('-hd2.', '-cd2').replace('-hd3.', '-cd3').replace('-hd4.', '-cd4').replace('-hd5.', '-cd5')
-        if 'cd' in file_name1:
-            part_list = re.search('[-_]cd\d+', file_name1)
-            if part_list:
-                cd_part = part_list[0].replace('_', '-')
-        else:
-            part_list = re.search('[-_]\d{1}\.', file_name1)
-            if part_list:
-                cd_part = '-cd' + str(re.search('\d', part_list[0])[0])
-        # 判断分集命名规则是否大写
-        if config.getint('Name_Rule', 'cd_name') == 1:
-            cd_part = cd_part.upper()
+    def getFileInfo(self, file_path, config, appoint_number=''):
+        try:
+            file_path = file_path.replace('\\', '/')
+            translate_language = config.get('common', 'translate_language')
+            json_data = {}
+            c_word = ''
+            cd_part = ''
+            leak = ''
+            destroyed = ''
+            mosaic = ''
+            movie_number = ''
+            sub_list = []
+            # 获取文件名
+            folder_path, file_full_name = os.path.split(file_path)  # 获取去掉文件名的路径、完整文件名（含扩展名）
+            file_name, file_ex = os.path.splitext(file_full_name)  # 获取文件名（不含扩展名）、扩展名(含有.)
+            nfo_old_name = file_name + '.nfo'
+            nfo_old_path = os.path.join(folder_path, nfo_old_name)
+            # 获取番号
+            if appoint_number:      # 如果指定了番号，则使用指定番号
+                movie_number = appoint_number
+            else:
+                escape_string = config.get('escape', 'string')
+                movie_number = getNumber(file_path, escape_string)
+            # 判断是否流出
+            if '流出' in file_name:
+                leak = '-流出'
+            # 判断是否分集及分集序号
+            file_name1 = file_name.lower().replace('_', '-').replace('.', '-') + '.'    # .作为结尾
+            file_name1 = file_name1.replace('-part', '-cd').replace('-a.', '-cd1').replace('-b.', '-cd2').replace('-d.', '-cd4').replace('-e.', '-cd5').replace('-f.', '-cd6').replace('-g.', '-cd7').replace('-hd1.', '-cd1').replace('-hd2.', '-cd2').replace('-hd3.', '-cd3').replace('-hd4.', '-cd4').replace('-hd5.', '-cd5')
+            if 'cd' in file_name1:
+                part_list = re.search('[-_]cd\d+', file_name1)
+                if part_list:
+                    cd_part = part_list[0].replace('_', '-')
+            else:
+                part_list = re.search('[-_]\d{1}\.', file_name1)
+                if part_list:
+                    cd_part = '-cd' + str(re.search('\d', part_list[0])[0])
+            # 判断分集命名规则是否大写
+            if config.getint('Name_Rule', 'cd_name') == 1:
+                cd_part = cd_part.upper()
 
-        cnword_list = config.get('Name_Rule', 'cnword_char').replace('，', ',').split(',')
-        cnword_style = str(config.get('Name_Rule', 'cnword_style'))
-        # 查找本地字幕文件
-        sub_type_list = config.get('media', 'sub_type').split('|')   # 本地字幕后缀
-        for sub in sub_type_list:    # 查找本地字幕, 可能多个
-            if os.path.exists(os.path.join(folder_path, (file_name + sub))):
-                sub_list.append(sub)
-                c_word = cnword_style   # 中文字幕影片后缀
-
-        # 判断路径名是否有中文字幕字符
-        if not c_word:
-            file_temp_path = file_path.upper().replace('CD', '').replace('CARIB', '') # 去掉cd/carib，避免-c误判
-            for each in cnword_list:
-                if each.upper() in file_temp_path:
-                    if '無字幕' not in file_path and '无字幕' not in file_path:
-                        c_word = cnword_style   # 中文字幕影片后缀
-                        break
-
-        # 判断nfo中是否有中文字幕字样
-        if not c_word and os.path.exists(nfo_old_path):
-            try:
-                with open(nfo_old_path, 'r', encoding='utf-8') as f:
-                    nfo_content = f.read()
-                if '<genre>中文字幕</genre>' in nfo_content:
+            cnword_list = config.get('Name_Rule', 'cnword_char').replace('，', ',').split(',')
+            cnword_style = str(config.get('Name_Rule', 'cnword_style'))
+            # 查找本地字幕文件
+            sub_type_list = config.get('media', 'sub_type').split('|')   # 本地字幕后缀
+            for sub in sub_type_list:    # 查找本地字幕, 可能多个
+                if os.path.exists(os.path.join(folder_path, (file_name + sub))):
+                    sub_list.append(sub)
                     c_word = cnword_style   # 中文字幕影片后缀
-            except:
-                pass
 
-        # 判断文件名是否包含待命名的中文字幕样式
-        if not c_word and cnword_style:
-            file_temp_name = str(movie_number) + leak + cd_part + cnword_style
-            if file_temp_name.upper() in file_temp_path:
-                c_word = cnword_style
+            # 判断路径名是否有中文字幕字符
+            if not c_word:
+                file_temp_path = file_path.upper().replace('CD', '').replace('CARIB', '') # 去掉cd/carib，避免-c误判
+                for each in cnword_list:
+                    if each.upper() in file_temp_path:
+                        if '無字幕' not in file_path and '无字幕' not in file_path:
+                            c_word = cnword_style   # 中文字幕影片后缀
+                            break
 
-        # 判断是否是马赛克破坏版
-        if 'uncensored' in file_path.lower() or '无码破解' in file_path or '無碼破解' in file_path or '克破' in file_path:
-            destroyed = '.马赛克破坏版'
-            if translate_language != 'zh_cn':
-                destroyed = '.馬賽克破壞版'
+            # 判断nfo中是否有中文字幕字样
+            if not c_word and os.path.exists(nfo_old_path):
+                try:
+                    with open(nfo_old_path, 'r', encoding='utf-8') as f:
+                        nfo_content = f.read()
+                    if '<genre>中文字幕</genre>' in nfo_content:
+                        c_word = cnword_style   # 中文字幕影片后缀
+                except:
+                    pass
 
-        # 判断是否无码
-        if is_uncensored(movie_number):
-            mosaic == '无码'
+            # 判断文件名是否包含待命名的中文字幕样式
+            if not c_word and cnword_style:
+                file_temp_name = str(movie_number) + leak + cd_part + cnword_style
+                if file_temp_name.upper() in file_temp_path:
+                    c_word = cnword_style
 
-        file_show_name = str(movie_number) + cd_part + c_word + destroyed
-        file_show_path = self.showFilePath(file_path)
-        json_data['c_word'] = c_word
-        json_data['cd_part'] = cd_part
-        json_data['leak'] = leak
-        json_data['destroyed'] = destroyed
-        json_data['mosaic'] = mosaic
-        json_data['actor_href'] = ''
+            # 判断是否是马赛克破坏版
+            if 'uncensored' in file_path.lower() or '无码破解' in file_path or '無碼破解' in file_path or '克破' in file_path:
+                destroyed = '.马赛克破坏版'
+                if translate_language != 'zh_cn':
+                    destroyed = '.馬賽克破壞版'
+
+            # 判断是否无码
+            if is_uncensored(movie_number):
+                mosaic == '无码'
+
+            file_show_name = str(movie_number) + cd_part + c_word + destroyed
+            file_show_path = self.showFilePath(file_path)
+            json_data['c_word'] = c_word
+            json_data['cd_part'] = cd_part
+            json_data['leak'] = leak
+            json_data['destroyed'] = destroyed
+            json_data['mosaic'] = mosaic
+            json_data['actor_href'] = ''
+        except Exception as e:
+            # print(traceback.format_exc())
+            print(e)
 
         return (movie_number, folder_path, file_name, file_ex, sub_list, file_show_name, file_show_path, json_data)
 
@@ -3630,20 +3624,21 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         json_data['actor_href'] = ''
         actor_new = ''
         for each_actor in actor_list:
-            actor_name = ',%s,' % each_actor.upper()
-            actor_output_name = ''
-            if actor_output == 'zh_cn':
-                actor_output_name= actor_xml.xpath('a[contains(@keyword, $name)]/@zh_cn', name=actor_name)
-            elif actor_output == 'zh_tw':
-                actor_output_name= actor_xml.xpath('a[contains(@keyword, $name)]/@zh_tw', name=actor_name)
-            elif actor_output == 'ja':
-                actor_output_name= actor_xml.xpath('a[contains(@keyword, $name)]/@jp', name=actor_name)
-            if actor_output_name:
-                each_actor = actor_output_name[0]
-            actor_new = actor_new + ',' + each_actor
-            actor_href = actor_xml.xpath('a[contains(@keyword, $name)]/@href', name=actor_name)
-            if actor_href:
-                actor_href_list.append(actor_href[0])
+            if each_actor:
+                actor_name = ',%s,' % each_actor.upper()
+                actor_output_name = ''
+                if actor_output == 'zh_cn':
+                    actor_output_name= actor_xml.xpath('a[contains(@keyword, $name)]/@zh_cn', name=actor_name)
+                elif actor_output == 'zh_tw':
+                    actor_output_name= actor_xml.xpath('a[contains(@keyword, $name)]/@zh_tw', name=actor_name)
+                elif actor_output == 'ja':
+                    actor_output_name= actor_xml.xpath('a[contains(@keyword, $name)]/@jp', name=actor_name)
+                if actor_output_name:
+                    each_actor = actor_output_name[0]
+                actor_new = actor_new + ',' + each_actor
+                actor_href = actor_xml.xpath('a[contains(@keyword, $name)]/@href', name=actor_name)
+                if actor_href:
+                    actor_href_list.append(actor_href[0])
         actor = actor_new.strip(',')
         json_data['actor'] = actor
 
@@ -3655,32 +3650,126 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
 
         return json_data
 
-    # =====================================================================================演员名映射输出处理
-    def getTagData(self, json_data, config):
+    # =====================================================================================信息（tag、series、studio、publisher、director）映射输出处理
+    def getInfoData(self, json_data, config):
         # 如果不映射，直接返回
-        tag_xml = self.tag_xml
-        tag_output = config.get('common', 'tag_output')
-        if tag_output == 'no' or not tag_xml:
+        info_xml = self.info_xml
+        info_output = config.get('common', 'info_output')
+        if info_output == 'no' or not info_xml:
             return json_data
+
+        # 处理tag映射
         tag = json_data['tag']
         tag_list = tag.split(',')
         tag_new = ''
-        for each_tag in tag_list:
-            tag_name = ',%s,' % each_tag.upper()
-            tag_output_name = ''
-            if tag_output == 'zh_cn':
-                tag_output_name= tag_xml.xpath('a[contains(@keyword, $name)]/@zh_cn', name=tag_name)
-            elif tag_output == 'zh_tw':
-                tag_output_name= tag_xml.xpath('a[contains(@keyword, $name)]/@zh_tw', name=tag_name)
-            elif tag_output == 'ja':
-                tag_output_name= tag_xml.xpath('a[contains(@keyword, $name)]/@jp', name=tag_name)
-            if tag_output_name:
-                each_tag = tag_output_name[0]
-            if each_tag != '删除':
-                tag_new = tag_new + ',' + each_tag
-
+        for each_info in tag_list:
+            if each_info:   # 为空时会多出来一个,
+                tag_name = ',%s,' % each_info.upper()
+                info_output_name = ''
+                if info_output == 'zh_cn':
+                    info_output_name= info_xml.xpath('a[contains(@keyword, $name)]/@zh_cn', name=tag_name)
+                elif info_output == 'zh_tw':
+                    info_output_name= info_xml.xpath('a[contains(@keyword, $name)]/@zh_tw', name=tag_name)
+                elif info_output == 'ja':
+                    info_output_name= info_xml.xpath('a[contains(@keyword, $name)]/@jp', name=tag_name)
+                if info_output_name:
+                    each_info = info_output_name[0]
+                if each_info != '删除':
+                    tag_new = tag_new + ',' + each_info
         tag = tag_new.strip(',')
-        json_data['tag'] = tag
+
+        # 处理其他信息并且一部分添加到tag中
+        mosaic = json_data['mosaic']
+        leak = json_data['leak']
+        c_word = json_data['c_word']
+        destroyed = json_data['destroyed']
+        series = json_data['series']
+        studio = json_data['studio']
+        publisher = json_data['publisher']
+        director = json_data['director']
+        if mosaic:
+            tag += ',' + mosaic
+        if leak:
+            tag += ',流出'
+        if c_word:
+            tag += ',中文字幕'
+        if destroyed:
+            tag += ',' + destroyed.replace('.', '')
+        # 中文简体
+        if info_output == 'zh_cn':
+            if series:  # 为空时会匹配所有
+                series_output = info_xml.xpath('a[contains(@keyword, $name)]/@zh_cn', name=series)
+                if series_output and series_output[0] !='删除':
+                    series = series_output[0]
+                tag += ',系列：' + series
+            if studio:
+                studio_output = info_xml.xpath('a[contains(@keyword, $name)]/@zh_cn', name=studio)
+                if studio_output and studio_output[0] !='删除':
+                    studio = studio_output[0]
+                tag += ',制作：' + studio
+            if not publisher:
+                publisher = studio
+            if publisher:
+                publisher_output = info_xml.xpath('a[contains(@keyword, $name)]/@zh_cn', name=publisher)
+                if publisher_output and publisher_output[0] !='删除':
+                    publisher = publisher_output[0]
+                tag += ',发行：' + publisher
+            if director:
+                director_output = info_xml.xpath('a[contains(@keyword, $name)]/@zh_cn', name=director)
+                if director_output and director_output[0] !='删除':
+                    director = director_output[0]
+        # 中文繁体
+        elif info_output == 'zh_tw':
+            if series:  # 为空时会匹配所有
+                series_output = info_xml.xpath('a[contains(@keyword, $name)]/@zh_tw', name=series)
+                if series_output and series_output[0] !='删除':
+                    series = series_output[0]
+                tag += ',系列：' + series
+            if studio:
+                studio_output = info_xml.xpath('a[contains(@keyword, $name)]/@zh_tw', name=studio)
+                if studio_output and studio_output[0] !='删除':
+                    studio = studio_output[0]
+                tag += ',製作：' + studio
+            if not publisher:
+                publisher = studio
+            if publisher:
+                publisher_output = info_xml.xpath('a[contains(@keyword, $name)]/@zh_tw', name=publisher)
+                if publisher_output and publisher_output[0] !='删除':
+                    publisher = publisher_output[0]
+                tag += ',發行：' + publisher
+            if director:
+                director_output = info_xml.xpath('a[contains(@keyword, $name)]/@zh_tw', name=director)
+                if director_output and director_output[0] !='删除':
+                    director = director_output[0]
+        # 日语
+        elif info_output == 'ja':
+            if series:  # 为空时会匹配所有
+                series_output = info_xml.xpath('a[contains(@keyword, $name)]/@jp', name=series)
+                if series_output and series_output[0] !='删除':
+                    series = series_output[0]
+                tag += ',系列：' + series
+            if studio:
+                studio_output = info_xml.xpath('a[contains(@keyword, $name)]/@jp', name=studio)
+                if studio_output and studio_output[0] !='删除':
+                    studio = studio_output[0]
+                tag += ',製作：' + studio
+            if not publisher:
+                publisher = studio
+            if publisher:
+                publisher_output = info_xml.xpath('a[contains(@keyword, $name)]/@jp', name=publisher)
+                if publisher_output and publisher_output[0] !='删除':
+                    publisher = publisher_output[0]
+                tag += ',發行：' + publisher
+            if director:
+                director_output = info_xml.xpath('a[contains(@keyword, $name)]/@jp', name=director)
+                if director_output and director_output[0] !='删除':
+                    director = director_output[0]
+
+        json_data['tag'] = tag.strip(',')
+        json_data['series'] = series
+        json_data['studio'] = studio
+        json_data['publisher'] = publisher
+        json_data['director'] = director
         return json_data
 
 
@@ -3840,6 +3929,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             result, json_data = self.getNfoData(file_path, movie_number, json_data)
             if result:
                 self.showMovieInfo(json_data, config)
+                # time.sleep(0.01)
                 return True, json_data
             if no_nfo == 0: # 无nfo时不刮削
                 return False, json_data
@@ -3851,9 +3941,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         if not self.showDataResult(json_data, config):
             return False, json_data                 # 返回AVDC_main, 继续处理下一个文件
 
-        # =====================================================================================映射输出演员名/标签名
+        # =====================================================================================映射输出演员名/信息
         self.getActorData(json_data, config)
-        self.getTagData(json_data, config)
+        self.getInfoData(json_data, config)
 
         # =====================================================================================翻译json_data（标题/介绍）
         self.transLanguage(movie_number, jsonfile_data, json_data, translate_language, translate_content, translate_by)
@@ -3966,14 +4056,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         with open(self.c_numuber_jsonfile, encoding='UTF-8') as data:
             jsonfile_data = json.load(data)
         # 载入acotr.xml/tag.xml数据
-        actor_xml_file = 'actor.xml'
-        tag_xml_file = 'tag.xml'
+        actor_xml_file = 'mapping_actor.xml'
+        info_xml_file = 'mapping_info.xml'
         if not os.path.exists(actor_xml_file):
             shutil.copy(self.actor_file, os.path.join(self.main_path, actor_xml_file))
         self.actor_xml = etree.parse(actor_xml_file)
-        if not os.path.exists(tag_xml_file):
-            shutil.copy(self.tag_file, os.path.join(self.main_path, tag_xml_file))
-        self.tag_xml = etree.parse(tag_xml_file)
+        if not os.path.exists(info_xml_file):
+            shutil.copy(self.tag_file, os.path.join(self.main_path, info_xml_file))
+        self.info_xml = etree.parse(info_xml_file)
 
         # 处理视频列表
         for file_path in movie_list:
@@ -3982,20 +4072,21 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     file_path = os.path.realpath(file_path)  # 如果文件本身是一个符号连接，这时使用它的真实地址
                 else:
                     os.remove(file_path)   # 清理失效的软链接文件
-            except:
-                pass
+            except Exception as e:
+                # print(traceback.format_exc())
+                print('movie_list: %s ' % e)
             count += 1
             # 获取进度
             progress_value = count / count_all * 100    
             progress_percentage = '%.2f' % progress_value + '%'                     
 
             # 获取文件基础信息
-            file_info = self.getFileInfo(file_path, appoint_number)
+            file_info = self.getFileInfo(file_path, config, appoint_number)
             movie_number, folder_old_path, file_name, file_ex, sub_list, file_show_name, file_show_path, json_data = file_info
 
             # 显示刮削信息
-            self.Ui.label_file_path.setText('正在刮削： ' + str(count) + '/' + str(count_all) + ' （' + progress_percentage + '）\n' + self.convert_path(file_show_path))
-            self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
+            self.set_label_file_path.emit('正在刮削： ' + str(count) + '/' + str(count_all) + ' （' + progress_percentage + '）\n' + self.convert_path(file_show_path))
+            self.Ui.label_result.setText(' 成功：%s  失败：%s' % (succ_count, fail_count))
             self.progressBarValue.emit(int(progress_value))
             self.addTextMain('\n%d/%d (%s) round(%s) %s' % (count, count_all, progress_percentage, self.count_claw, file_name+file_ex))
             self.addTextMain('='*80)
@@ -4021,9 +4112,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 self.showListName(fail_show_name, 'fail', json_data, movie_number)
                 self.addTextMain(' 🔴 [Info] %s' % json_data['error_info'])
                 self.moveFailedFolder(file_path, folder_old_path, failed_folder, file_ex, config)
-        self.Ui.label_result.setText('成功：%s  失败：%s' % (succ_count, fail_count))
+        self.Ui.label_result.setText(' 成功：%s  失败：%s' % (succ_count, fail_count))
         self.progressBarValue.emit(100)
-        self.Ui.label_file_path.setText('🎉 恭喜！全部刮削完成！共 %s 个文件！' % count_all)
+        self.set_label_file_path.emit('🎉 恭喜！全部刮削完成！共 %s 个文件！' % count_all)
         self.addTextMain("================================================================================")
         self.CEF(movie_path)
         self.addTextMain(" 🎉🎉🎉 All finished!!! Total %s , Success %s , Failed %s" % (count_all, succ_count, fail_count))
@@ -4294,7 +4385,7 @@ class CutWindow(QDialog, Ui_Dialog_cut_poster):
                         if '.nfo' in each:
                             temp_path = os.path.join(img_folder, each)
                             break
-                movie_number, folder_old_path, file_name, file_ex, sub_list, file_show_name, file_show_path, json_data = ui.getFileInfo(temp_path)
+                movie_number, folder_old_path, file_name, file_ex, sub_list, file_show_name, file_show_path, json_data = ui.getFileInfo(temp_path, config)
 
             # 获取水印信息
             c_word = json_data['c_word']
@@ -4407,7 +4498,6 @@ if __name__ == '__main__':
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
     QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
     QCoreApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
-
     app = QApplication(sys.argv)
     ui = MyMAinWindow()
     ui.show()
