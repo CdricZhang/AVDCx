@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
+    <width>1021</width>
     <height>700</height>
    </rect>
   </property>
@@ -50,7 +50,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_avdc">
      <widget class="QPushButton" name="pushButton_start_cap">
@@ -580,7 +580,7 @@ color:#336699</string>
        </font>
       </property>
       <property name="text">
-       <string>类别：</string>
+       <string>标签：</string>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_cover">
@@ -607,9 +607,9 @@ color:#336699</string>
      <widget class="QLabel" name="label_result">
       <property name="geometry">
        <rect>
-        <x>580</x>
+        <x>570</x>
         <y>70</y>
-        <width>201</width>
+        <width>211</width>
         <height>40</height>
        </rect>
       </property>
@@ -635,8 +635,8 @@ color:#336699</string>
        <font>
         <family>Courier</family>
         <pointsize>-1</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="cursor">
@@ -647,14 +647,14 @@ color:#336699</string>
       </property>
       <property name="styleSheet">
        <string notr="true">border:0px solid rgba(0, 0, 0, 80);
-background-color: rgb(246, 246, 246);
+background-color: rgb(255, 255, 255);
 font-size:14px;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>等待开始 ...</string>
+       <string> 等待开始 ...</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -992,8 +992,8 @@ font-size:14px;</string>
        <rect>
         <x>570</x>
         <y>110</y>
-        <width>200</width>
-        <height>561</height>
+        <width>211</width>
+        <height>580</height>
        </rect>
       </property>
       <property name="font">
@@ -1005,8 +1005,7 @@ font-size:14px;</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border:0px solid rgba(0, 0, 0, 80);
-background-color: rgb(246, 246, 246);</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
@@ -1017,12 +1016,42 @@ background-color: rgb(246, 246, 246);</string>
       <property name="lineWidth">
        <number>0</number>
       </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+      </property>
+      <property name="tabKeyNavigation">
+       <bool>false</bool>
+      </property>
+      <property name="showDropIndicator" stdset="0">
+       <bool>true</bool>
+      </property>
+      <property name="indentation">
+       <number>10</number>
+      </property>
+      <property name="rootIsDecorated">
+       <bool>true</bool>
+      </property>
+      <property name="uniformRowHeights">
+       <bool>true</bool>
+      </property>
       <property name="itemsExpandable">
        <bool>true</bool>
+      </property>
+      <property name="sortingEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="animated">
+       <bool>false</bool>
+      </property>
+      <property name="allColumnsShowFocus">
+       <bool>false</bool>
       </property>
       <property name="headerHidden">
        <bool>true</bool>
       </property>
+      <attribute name="headerShowSortIndicator" stdset="0">
+       <bool>false</bool>
+      </attribute>
       <column>
        <property name="text">
         <string>111</string>
@@ -1087,7 +1116,7 @@ background-color: rgb(246, 246, 246);</string>
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>视频目录设置：【设置】-【目录设置】-【视频目录】。程序将刮削该目录及子目录的所有文件。</string>
+       <string>视频目录设置：【设置】-【目录】-【待刮削视频目录】。程序将刮削该目录及子目录的所有文件。</string>
       </property>
      </widget>
      <widget class="Line" name="line_14">
@@ -1160,6 +1189,9 @@ background-color: rgb(246, 246, 246);</string>
         <weight>50</weight>
         <bold>false</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgba(0, 0, 0, 153);</string>
       </property>
       <property name="text">
        <string>点击图片可手动裁剪</string>
@@ -1870,7 +1902,7 @@ background-color: rgb(246, 246, 246);</string>
        </property>
        <property name="text">
         <string>说明:
-   1、头像请放在程序目录(AVDC目录)下的Actor目录中。
+   1、头像图片请放在程序目录(AVDCx目录)下的Actor目录中。
    2、密钥创建方法：Emby控制台-&gt;高级-&gt;API密钥-&gt;添加(APP名称任意)。</string>
        </property>
       </widget>
@@ -1934,6 +1966,49 @@ background-color: rgb(246, 246, 246);</string>
          <string>所有演员</string>
         </property>
        </item>
+      </widget>
+      <widget class="QLabel" name="label_download_acotr_zip">
+       <property name="geometry">
+        <rect>
+         <x>620</x>
+         <y>130</y>
+         <width>111</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier</family>
+         <pointsize>13</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(10, 52, 255);</string>
+       </property>
+       <property name="text">
+        <string>点此下载头像包</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="openExternalLinks">
+        <bool>false</bool>
+       </property>
+       <property name="textInteractionFlags">
+        <set>Qt::TextBrowserInteraction</set>
+       </property>
       </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_13">
@@ -5469,6 +5544,9 @@ runtime, director, release, series, definition, cnword
 3，当勾选「成功后不移动文件」时，将不会创建视频目录
 </string>
               </property>
+              <property name="textInteractionFlags">
+               <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+              </property>
              </widget>
             </item>
             <item row="2" column="0">
@@ -6838,7 +6916,7 @@ runtime, director, release, series, definition, cnword
          </property>
          <property name="text">
           <string>由于不同网站的演员名不统一，导致刮削后演员命名比较混乱。使用本功能可以使刮削后的演员名整齐统一。
-演员映射表文件名为：actor.xml。可使用文件编辑工具打开并自定义修改。映射表中的字段含义如下：
+演员映射表文件名为：mapping_actor.xml。可使用文件编辑工具打开并自定义修改。映射表中的字段含义如下：
 1，keyword：匹配词（每个名字前后都要有逗号）。刮削网站获取演员名后，会在keyword的名字中进行匹配。
 2，zh_cn/zh_tw/jp：输出词。当keyword匹配到演员名时，可输出对应语言的名字。</string>
          </property>
@@ -6946,7 +7024,7 @@ runtime, director, release, series, definition, cnword
          </font>
         </property>
         <property name="title">
-         <string>标签映射表</string>
+         <string>信息映射表（标签、导演、系列、制作、发行）</string>
         </property>
         <widget class="QWidget" name="horizontalLayoutWidget_29">
          <property name="geometry">
@@ -7052,7 +7130,7 @@ runtime, director, release, series, definition, cnword
           <string notr="true">color: rgb(8, 128, 128);</string>
          </property>
          <property name="text">
-          <string>标签映射表文件名为：tag.xml。作用和演员映射表类似，说明可参考演员映射表。</string>
+          <string>信息映射表文件名为：mapping_info.xml。作用和演员映射表类似，说明可参考演员映射表。</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_166">
@@ -8087,10 +8165,56 @@ font: &quot;Courier&quot;;</string>
 使用 Chrome 打开目标网站后，点击鼠标右键，选择 “检查” ，右侧顶部选择：Network -&gt; DOC，
 然后 F5 刷新页面。点击 name 栏加载出来的第一个内容 -&gt; Headers -&gt; Request Headers -&gt; Cookie。
 复制 Cookie 对应的全部值填人上面输入框。 （注意：Cookie 存在有效期，过期无效时请重新获取。）
-方法可参考：https://tieba.baidu.com/p/5492736764</string>
+方法可参考：</string>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_get_cookie_url">
+           <property name="geometry">
+            <rect>
+             <x>90</x>
+             <y>240</y>
+             <width>431</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>13</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="mouseTracking">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(10, 52, 255);</string>
+           </property>
+           <property name="text">
+            <string>https://tieba.baidu.com/p/5492736764</string>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+           <property name="openExternalLinks">
+            <bool>false</bool>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::TextBrowserInteraction</set>
            </property>
           </widget>
          </widget>
