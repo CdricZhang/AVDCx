@@ -15,17 +15,16 @@ def getDataState(json_data):
     else:
         return True
 
-def getMode():
+
+def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
     config_file = 'config.ini'
     config = RawConfigParser()
     config.read(config_file, encoding='UTF-8')
     translate_language = config.get('common', 'translate_language')
     translate_content = config.get('common', 'translate_content')
-    main_like = config.getint('common', 'main_like')    # 当偏好速度时，只需要请求一次页面，这个决定要不要请求javdb
-    return translate_language, translate_content, main_like
+    actor_output = config.get('common', 'actor_output')
+    info_output = config.get('common', 'info_output')
 
-def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
-    translate_language, translate_content, main_like = getMode()
     if 'cn.airav.wiki' in appoint_url:
         appoint_url = appoint_url.replace('cn.airav.wiki', 'jp.airav.wiki').replace('?lng=zh-CN', '') + '?lng=jp'
     elif 'www.airav.wiki' in appoint_url:
@@ -49,12 +48,12 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             if 'title' in translate_content:
                 json_data['title'] = json_data_zh['title']
                 if getDelActorName():
-                    json_data['title'] = json_data['title'].strip(' ' + json_data['actor'])
+                    json_data['title'] = json_data['title'].replace(' ' + json_data['actor'], '').strip(' ')
             if 'outline' in translate_content:
                 json_data['outline'] = json_data_zh['outline']
-            if 'actor' in translate_content:
+            if actor_output != 'ja':
                 json_data['actor'] = json_data_zh['actor']
-            if 'tag' in translate_content:
+            if info_output != 'ja':
                 json_data['tag'] = json_data_zh['tag']
 
     js = json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')

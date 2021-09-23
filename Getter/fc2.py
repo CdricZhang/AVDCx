@@ -112,6 +112,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
         release = getRelease(html_info)
         studio = getStudio(html_info) # 使用卖家作为厂商
         mosaic = getMosaic(tag, title)
+        tag = tag.replace('無修正,', '').replace('無修正', '').strip(',')
         try:
             dic = {
                 'title': title,

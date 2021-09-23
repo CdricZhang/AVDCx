@@ -21,6 +21,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     config.read(config_file, encoding='UTF-8')
     translate_language = config.get('common', 'translate_language')
     translate_content = config.get('common', 'translate_content')
+    actor_output = config.get('common', 'actor_output')
+    info_output = config.get('common', 'info_output')
     
     appoint_url = appoint_url.replace('/cn/', '/jp/').replace('iqqtv.cloud/player', 'iqqtv.cloud/jp/player')
     json_data = json.loads(iqqtv.main(number, appoint_url, translate_language='jp'))
@@ -44,9 +46,9 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                     json_data['title'] = json_data['title'].replace(actor, '').strip(' ')
             if 'outline' in translate_content:
                 json_data['outline'] = json_data_zh['outline']
-            if 'actor' in translate_content:
+            if actor_output != 'ja':
                 json_data['actor'] = json_data_zh['actor']
-            if 'tag' in translate_content:
+            if info_output != 'ja':
                 json_data['tag'] = json_data_zh['tag']
 
     js = json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')

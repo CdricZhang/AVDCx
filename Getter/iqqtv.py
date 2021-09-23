@@ -121,7 +121,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     error_info = ''
     image_cut = 'right'
     image_download = False
-    mosaic = '有码'
+    mosaic = ''
     url_search = ''
     if translate_language == 'zh_cn':
         iqqtv_url = 'https://iqqtv.cloud/cn/'
@@ -194,6 +194,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             director = ''
             publisher = studio
             extrafanart = ''
+            tag = tag.replace('无码片', '').replace('無碼片', '').replace('無修正', '')
             try:
                 dic = {
                     'title': title,

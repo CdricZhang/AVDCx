@@ -21,6 +21,8 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     config.read(config_file, encoding='UTF-8')
     translate_language = config.get('common', 'translate_language')
     translate_content = config.get('common', 'translate_content')
+    actor_output = config.get('common', 'actor_output')
+    info_output = config.get('common', 'info_output')
 
     appoint_url = appoint_url.replace('/cn/', '/ja/').replace('/tw/', '/ja/')
     json_data = json.loads(javlibrary.main(number, appoint_url, 'jp', log_info, req_web))
@@ -40,10 +42,10 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             if 'title' in translate_content:
                 json_data['title'] = json_data_zh['title']
                 if getDelActorName():
-                    json_data['title'] = json_data['title'].strip(' ' + json_data['actor'])
-            if 'actor' in translate_content:
+                    json_data['title'] = json_data['title'].replace(' ' + json_data['actor'], '').strip(' ')
+            if actor_output != 'ja':
                 json_data['actor'] = json_data_zh['actor']
-            if 'tag' in translate_content:
+            if info_output != 'ja':
                 json_data['tag'] = json_data_zh['tag']
 
     js = json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')

@@ -105,6 +105,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     image_cut = 'right'
     error_type = ''
     error_info = ''
+    mosaic = '有码'
     try:
         result_url = "https://www.jav321.com/search"
         if appoint_url != '':
@@ -148,6 +149,12 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
         series = getSeries(detail_page)
         extrafanart = getExtraFanart(detail_page)
         website = getWebsite(detail_page)
+        # 判断无码
+        uncensorted_list = ['一本道', 'HEYZO', 'サムライポルノ', 'キャットウォーク', 'サイクロン', 'ルチャリブレ', 'スーパーモデルメディア', 'スタジオテリヤキ', 'レッドホットコレクション', 'スカイハイエンターテインメント', '小天狗', 'オリエンタルドリーム', 'Climax Zipang', 'CATCHEYE', 'ファイブスター', 'アジアンアイズ', 'ゴリラ', 'ラフォーレ ガール', 'MIKADO', 'ムゲンエンターテインメント', 'ツバキハウス', 'ザーメン二郎', 'トラトラトラ', 'メルシーボークー', '神風', 'Queen 8', 'SASUKE', 'ファンタドリーム', 'マツエンターテインメント', 'ピンクパンチャー', 'ワンピース', 'ゴールデンドラゴン', 'Tokyo Hot', 'Caribbean']
+        for each in uncensorted_list:
+            if each == studio:
+                mosaic = '无码'
+                break
         try:
             dic = {
                 'title': title,
@@ -175,7 +182,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 'error_type': '',
                 'error_info': str(error_info),
                 'req_web': req_web,
-                'mosaic':'有码',
+                'mosaic':mosaic,
             }
             log_info += '   >>> JAV321-数据获取成功！\n'
             dic['log_info'] = log_info
