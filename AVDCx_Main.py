@@ -49,7 +49,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210923'
+        self.localversion = '20210924'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.json_data = {}
@@ -3631,11 +3631,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         actor_new = ''
         for each_actor in actor_list:
             actor_name = ',%s,' % each_actor.upper()
+            actor_output_name = ''
             if actor_output == 'zh_cn':
                 actor_output_name= actor_xml.xpath('a[contains(@keyword, $name)]/@zh_cn', name=actor_name)
             elif actor_output == 'zh_tw':
                 actor_output_name= actor_xml.xpath('a[contains(@keyword, $name)]/@zh_tw', name=actor_name)
-            elif actor_output == 'jp':
+            elif actor_output == 'ja':
                 actor_output_name= actor_xml.xpath('a[contains(@keyword, $name)]/@jp', name=actor_name)
             if actor_output_name:
                 each_actor = actor_output_name[0]
@@ -3666,11 +3667,12 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         tag_new = ''
         for each_tag in tag_list:
             tag_name = ',%s,' % each_tag.upper()
+            tag_output_name = ''
             if tag_output == 'zh_cn':
                 tag_output_name= tag_xml.xpath('a[contains(@keyword, $name)]/@zh_cn', name=tag_name)
             elif tag_output == 'zh_tw':
                 tag_output_name= tag_xml.xpath('a[contains(@keyword, $name)]/@zh_tw', name=tag_name)
-            elif tag_output == 'jp':
+            elif tag_output == 'ja':
                 tag_output_name= tag_xml.xpath('a[contains(@keyword, $name)]/@jp', name=tag_name)
             if tag_output_name:
                 each_tag = tag_output_name[0]
@@ -3754,9 +3756,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         json_data['website'] = website
         json_data['cover'] = cover
         json_data['req_web'] = 'nfo'
-        json_data['poster_path'] = 'poster_path'
-        json_data['thumb_path'] = 'thumb_path'
-        json_data['fanart_path'] = 'fanart_path'
+        json_data['poster_path'] = poster_path
+        json_data['thumb_path'] = thumb_path
+        json_data['fanart_path'] = fanart_path
 
         return True, json_data
 
