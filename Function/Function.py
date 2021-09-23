@@ -51,7 +51,7 @@ def getTheData(json_data_more, json_data, flag_suren=False):
     if not json_data['extrafanart']:
         json_data['extrafanart'] = json_data_more['extrafanart']
     try:
-        if json_data_more['mosaic']:
+        if json_data_more['mosaic'] and not json_data['mosaic']:
             json_data['mosaic'] = json_data_more['mosaic']
     except:
         pass
@@ -303,7 +303,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
                 json_data = json.loads(javdb.main(file_number, appoint_url, log_info, req_web, True))
-            if not getDataState(json_data) and 'HEYZO' in file_number.upper():
+            if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
                 json_data = json.loads(jav321.main(file_number, appoint_url, log_info, req_web, True))
@@ -426,15 +426,21 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     # 标签
     tag = str(json_data['tag']).strip(" [ ]").replace("'", '').replace(', ', ',').replace(',720P', '').replace(',1080P', '').replace(',720p', '').replace(',1080p', '').replace(',HD高画质', '').replace(',HD高畫質', '').replace(',高画质', '').replace(',高畫質', '')  #列表转字符串（避免个别网站刮削返回的是列表）
 
+    # outline
+    try:
+        json_data['outline'] = json_data['outline'].replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
+    except:
+        json_data['outline'] = ''
+
     # studio
     try:
-        json_data['studio'] = json_data['studio'].strip('. ')
+        json_data['studio'] = json_data['studio'].replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
     except:
         json_data['studio'] = ''
 
     # publisher
     try:
-        json_data['publisher'] = json_data['publisher'].strip('. ')
+        json_data['publisher'] = json_data['publisher'].replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
     except:
         json_data['publisher'] = json_data['studio']
 
@@ -459,10 +465,10 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     # 返回处理后的json_data
     json_data['title'] = title.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
     json_data['number'] = number
-    json_data['actor'] = actor.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').replace(u'\u3099', '').replace(u'\u0301', '').strip('. ')
+    json_data['actor'] = actor.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
     json_data['release'] = release
     json_data['cover_small'] = cover_small
-    json_data['tag'] = tag
+    json_data['tag'] = tag.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
     json_data['naming_media'] = naming_media
     json_data['naming_file'] = naming_file
     json_data['folder_name'] = folder_name
@@ -525,13 +531,13 @@ def save_config(json_config):
         print("translate_by = " + json_config['translate_by'], file=code)
         print("deepl_key = " + json_config['deepl_key'], file=code)
         print("actor_output = " + json_config['actor_output'], file=code)
-        print("tag_output = " + json_config['tag_output'], file=code)
+        print("info_output = " + json_config['info_output'], file=code)
         print("website = " + json_config['website'], file=code)
         print("series_as_set = " + str(json_config['series_as_set']), file=code)
         print("# translate_language: zh_cn, zh_tw, ja", file=code)
         print("# translate_by: youdao, deepl", file=code)
-        print("# actor_output: zh_cn, zh_tw, jp, no", file=code)
-        print("# tag_output: zh_cn, zh_tw, jp, no", file=code)
+        print("# actor_output: zh_cn, zh_tw, ja, no", file=code)
+        print("# info_output: zh_cn, zh_tw, ja, no", file=code)
         print("# website: all, iqqtv, javbus, javdb, jav321, dmm, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav, javlibrary", file=code)
         print("", file=code)
         print("[proxy]", file=code)
