@@ -55,7 +55,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210926'
+        self.localversion = '20210927'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.json_data = {}
@@ -187,7 +187,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             '''
             * {
                     font-family:Courier;
-                    font-size:13px;
+                    font-size:12px;
+            }
+            QTextBrowser{
+                    font-family:Courier;
+                    font-size:12px;
+                    border:0px solid #BEBEBE;
+                    background-color:rgba(246,246,246,0);
+                    padding:2px 4px;
             }
             ''')
         # 设置页
@@ -211,7 +218,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             }
             QLabel{
                     font-size:13px;
-                    background-color: rgb(246, 246, 246);
                     border:0px solid rgba(0, 0, 0, 80);
             }
             QLineEdit{
@@ -255,7 +261,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     border-radius:5px;
            }            
             QTextBrowser{
-                    font-size:13px;
+                    font-size:12px;
                     border:0px solid #BEBEBE;
                     background-color:rgba(246,246,246,0);
                     padding:2px 4px;
@@ -2854,28 +2860,28 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     # ======================================================================================检查更新
     def updateCheck(self):
         if self.Ui.radioButton_update_on.isChecked():
-            self.addTextMain('Update Checking...'.center(80))                 
+            self.addTextMain('The current version is AVDCx %s' % self.localversion)                 
             try:
                 result, html_content = get_html('https://api.github.com/repos/Hermit10/AVDCx/releases/latest')
                 if not result:
-                    self.addTextMain(('UpdateCheck Failed! reason: ' + html_content).center(80))
+                    self.addTextMain('UpdateCheck Failed! reason: ' + html_content)
                     self.addTextMain("================================================================================")
                     return False
                 data = json.loads(html_content)
             except Exception as ex:
-                self.addTextMain(('UpdateCheck Failed! Error info: ' + str(ex)).center(80))
+                self.addTextMain('UpdateCheck Failed! Error info: ' + str(ex))
                 self.addTextMain("================================================================================")
                 return False
             if not data.get('tag_name'):
                 try:
                     result, html_content = get_html('https://api.github.com/repos/Hermit10/temp/releases/latest')
                     if not result:
-                        self.addTextMain(('UpdateCheck Failed! reason: ' + html_content).center(80))
+                        self.addTextMain('UpdateCheck Failed! reason: ' + html_content)
                         self.addTextMain("================================================================================")
                         return False
                     data = json.loads(html_content)
                 except Exception as ex:
-                    self.addTextMain(('UpdateCheck Failed! Error info: ' + str(ex)).center(80))
+                    self.addTextMain('UpdateCheck Failed! Error info: ' + str(ex))
                     self.addTextMain("================================================================================")
                     return False
             if data.get('tag_name'):
@@ -2886,15 +2892,15 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 new_content = str(data["body"].replace(".","")).replace('====', '').replace('===', '').replace('\r\n', '\n   ')
                 if localversion < remote:
                     self.Ui.label_show_version.setText('🍉 New! update ' + str(data["tag_name"]))
-                    self.addTextMain(('* New update ' + str(data["tag_name"]) + ' is Available *').center(80))
+                    self.addTextMain('* New update AVDCx ' + str(data["tag_name"]) + ' is Available! *')
                     self.addTextMain("" + ("").center(80, '='))
                     self.addTextMain('   更新内容:' + new_content)
                     self.addTextMain('   \n   下载地址: https://github.com/Hermit10/AVDCx/releases')
                 else:
-                    self.addTextMain('No Newer Version Available!'.center(80))
+                    self.addTextMain('You are using the latest version!')
                 self.addTextMain("================================================================================")
             else:
-                self.addTextMain(('UpdateCheck Failed!').center(80))
+                self.addTextMain('UpdateCheck Failed!')
                 self.addTextMain("================================================================================")
         return True
 
@@ -3015,7 +3021,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         if del_empty_folder == 0:
             return
         self.set_label_file_path.emit('🗑 正在清理空文件夹，请等待...')
-        self.addTextMain(' ⌛ Cleaning empty folders, please wait!')
+        self.addTextMain(' ⌛ Cleaning empty folders...')
         if os.path.exists(path):
             all_info = os.walk(path, topdown=False)
             for root, dirs, files in all_info:
@@ -3102,7 +3108,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         movie_type = config.get('media', 'media_type').lower()
         if file_mode == 'default_folder':                                       # 刮削默认视频目录的文件
             self.set_label_file_path.emit('正在遍历待刮削视频目录中的所有视频，请等待...\n %s' % movie_path)
-            self.addTextMain(' 🔎 Searching all videos, please wait!')
+            self.addTextMain(' 🔎 Searching all videos...')
             movie_list = movie_lists(escape_folder, movie_type, movie_path)     # 获取所有需要刮削的影片列表
             count_all = len(movie_list)
 
@@ -4071,23 +4077,26 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # 日志页面显示软链接信息
         if config['common']['soft_link'] == '1':
             self.addTextMain(' 🎈 Soft link mode is ENABLE!')
-        # 日志页面显示路径信息
+
+        # 日志页面显示开始时间和路径信息
+        start_time = time.time()
+        self.addTextMain('\n ⏰ Start time: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
         self.addTextMain(' 🖥 Movie path: ' + movie_path)
+
         # 获取待刮削文件列表的相关信息
         movie_list, count_all, appoint_number, appoint_url = self.getMovieList(file_mode, movie_path, escape_folder, config)
 
+        # 显示视频数量
+        self.addTextMain(' 📺 Find ' + str(count_all) + ' movies')
         if count_all == 0:
             self.progressBarValue.emit(int(100))
         else:
             self.count_claw += 1
 
-
-        self.addTextMain(' 📺 Find ' + str(count_all) + ' movies')
-
         # 载入c_numuber.json数据
         with open(self.c_numuber_jsonfile, encoding='UTF-8') as data:
             jsonfile_data = json.load(data)
-        # 载入acotr.xml/tag.xml数据
+        # 载入acotr.xml和info.xml数据
         actor_xml_file = 'mapping_actor.xml'
         info_xml_file = 'mapping_info.xml'
         if not os.path.exists(actor_xml_file):
@@ -4148,9 +4157,16 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.progressBarValue.emit(100)
         self.addTextMain("================================================================================")
         self.CEF(movie_path)
-        self.set_label_file_path.emit('🎉 恭喜！全部刮削完成！共 %s 个文件！' % count_all)
-        self.addTextMain(" 🎉🎉🎉 All finished!!! Total %s , Success %s , Failed %s" % (count_all, succ_count, fail_count))
+        end_time = time.time()
+        used_time = str(round((end_time - start_time), 2))
+        if count_all:
+            average_time = str(round((end_time - start_time)/count_all, 2))
+        else:
+            average_time = used_time
+        self.set_label_file_path.emit('🎉 恭喜！全部刮削完成！共 %s 个文件！用时 %s 秒' % (count_all, used_time))
+        self.addTextMain(" 🎉🎉🎉 All finished!!! Total %s , Success %s , Failed %s " % (count_all, succ_count, fail_count))
         self.addTextMain("================================================================================")
+        self.addTextMain(' 🏁 End time: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '  Used time: %s S  Per time: %s S\n\n'% (used_time, average_time))
         self.Ui.pushButton_start_cap.setEnabled(True)
         self.Ui.pushButton_start_cap2.setEnabled(True)
         self.Ui.pushButton_start_cap.setText('开始')
