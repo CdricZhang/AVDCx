@@ -59,6 +59,9 @@
         <height>40</height>
        </rect>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>番号：</string>
       </property>
@@ -83,7 +86,7 @@ color:#336699</string>
        <enum>QFrame::Box</enum>
       </property>
       <property name="lineWidth">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="text">
        <string/>
@@ -97,6 +100,9 @@ color:#336699</string>
         <width>50</width>
         <height>40</height>
        </rect>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
       </property>
       <property name="text">
        <string>日期：</string>
@@ -117,6 +123,9 @@ color:#336699</string>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -129,6 +138,9 @@ color:#336699</string>
         <width>50</width>
         <height>40</height>
        </rect>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
       </property>
       <property name="text">
        <string>演员：</string>
@@ -154,7 +166,7 @@ color:#336699</string>
        <enum>QFrame::Box</enum>
       </property>
       <property name="lineWidth">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="text">
        <string/>
@@ -176,7 +188,7 @@ color:#336699</string>
        <enum>QFrame::Box</enum>
       </property>
       <property name="lineWidth">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="text">
        <string/>
@@ -190,6 +202,9 @@ color:#336699</string>
         <width>50</width>
         <height>40</height>
        </rect>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
       </property>
       <property name="text">
        <string>简介：</string>
@@ -211,7 +226,7 @@ color:#336699</string>
        <enum>QFrame::Box</enum>
       </property>
       <property name="lineWidth">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="text">
        <string/>
@@ -225,6 +240,9 @@ color:#336699</string>
         <width>50</width>
         <height>40</height>
        </rect>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
       </property>
       <property name="text">
        <string>标题：</string>
@@ -246,7 +264,7 @@ color:#336699</string>
        <enum>QFrame::Box</enum>
       </property>
       <property name="lineWidth">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="text">
        <string/>
@@ -267,6 +285,9 @@ color:#336699</string>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -280,6 +301,9 @@ color:#336699</string>
         <height>40</height>
        </rect>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>导演：</string>
       </property>
@@ -292,6 +316,9 @@ color:#336699</string>
         <width>50</width>
         <height>40</height>
        </rect>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
       </property>
       <property name="text">
        <string>发行：</string>
@@ -313,7 +340,7 @@ color:#336699</string>
        <enum>QFrame::Box</enum>
       </property>
       <property name="lineWidth">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="text">
        <string/>
@@ -334,6 +361,9 @@ color:#336699</string>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -347,6 +377,9 @@ color:#336699</string>
         <height>40</height>
        </rect>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>制作：</string>
       </property>
@@ -359,6 +392,9 @@ color:#336699</string>
         <width>50</width>
         <height>40</height>
        </rect>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
       </property>
       <property name="text">
        <string>系列：</string>
@@ -380,7 +416,7 @@ color:#336699</string>
        <enum>QFrame::Box</enum>
       </property>
       <property name="lineWidth">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="text">
        <string/>
@@ -394,6 +430,9 @@ color:#336699</string>
         <width>50</width>
         <height>40</height>
        </rect>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
       </property>
       <property name="text">
        <string>标签：</string>
@@ -470,6 +509,9 @@ color:#336699</string>
         <height>40</height>
        </rect>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>时长：</string>
       </property>
@@ -488,6 +530,9 @@ color:#336699</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
       </property>
       <property name="text">
        <string/>
@@ -680,6 +725,9 @@ color:#336699</string>
         <height>40</height>
        </rect>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>封面：</string>
       </property>
@@ -792,6 +840,9 @@ color:#336699</string>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>视频目录设置：【设置】-【目录】-【待刮削视频目录】。程序将刮削该目录及子目录的所有文件。</string>
       </property>
@@ -827,6 +878,9 @@ color:#336699</string>
       <property name="frameShape">
        <enum>QFrame::Box</enum>
       </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -845,6 +899,9 @@ color:#336699</string>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgba(0, 0, 0, 153);</string>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
       </property>
       <property name="text">
        <string>点击图片可手动裁剪</string>
@@ -984,10 +1041,10 @@ color:#336699</string>
       <widget class="QPushButton" name="pushButton_move_mp4">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>200</width>
-         <height>50</height>
+         <x>19</x>
+         <y>40</y>
+         <width>181</width>
+         <height>40</height>
         </rect>
        </property>
        <property name="text">
@@ -1015,7 +1072,7 @@ color:#336699</string>
         <rect>
          <x>310</x>
          <y>30</y>
-         <width>430</width>
+         <width>421</width>
          <height>30</height>
         </rect>
        </property>
@@ -1058,10 +1115,10 @@ color:#336699</string>
       <widget class="QPushButton" name="pushButton_select_file">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>200</width>
-         <height>50</height>
+         <x>19</x>
+         <y>40</y>
+         <width>181</width>
+         <height>40</height>
         </rect>
        </property>
        <property name="text">
@@ -1073,7 +1130,7 @@ color:#336699</string>
         <rect>
          <x>310</x>
          <y>30</y>
-         <width>430</width>
+         <width>421</width>
          <height>30</height>
         </rect>
        </property>
@@ -1169,7 +1226,7 @@ color:#336699</string>
         <rect>
          <x>310</x>
          <y>70</y>
-         <width>430</width>
+         <width>421</width>
          <height>30</height>
         </rect>
        </property>
@@ -1200,7 +1257,7 @@ color:#336699</string>
         <rect>
          <x>310</x>
          <y>110</y>
-         <width>430</width>
+         <width>421</width>
          <height>30</height>
         </rect>
        </property>
@@ -1229,10 +1286,10 @@ color:#336699</string>
       <widget class="QPushButton" name="pushButton_start_single_file">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>100</y>
-         <width>200</width>
-         <height>50</height>
+         <x>19</x>
+         <y>110</y>
+         <width>181</width>
+         <height>40</height>
         </rect>
        </property>
        <property name="text">
@@ -1258,10 +1315,10 @@ color:#336699</string>
       <widget class="QPushButton" name="pushButton_add_actor_pic">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>20</x>
          <y>30</y>
-         <width>200</width>
-         <height>50</height>
+         <width>181</width>
+         <height>40</height>
         </rect>
        </property>
        <property name="text">
@@ -1273,7 +1330,7 @@ color:#336699</string>
         <rect>
          <x>310</x>
          <y>30</y>
-         <width>430</width>
+         <width>421</width>
          <height>30</height>
         </rect>
        </property>
@@ -1320,7 +1377,7 @@ color:#336699</string>
         <rect>
          <x>310</x>
          <y>70</y>
-         <width>430</width>
+         <width>421</width>
          <height>30</height>
         </rect>
        </property>
@@ -1348,10 +1405,10 @@ color:#336699</string>
       <widget class="QPushButton" name="pushButton_show_pic_actor">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>19</x>
          <y>130</y>
-         <width>200</width>
-         <height>50</height>
+         <width>181</width>
+         <height>40</height>
         </rect>
        </property>
        <property name="text">
@@ -1361,9 +1418,9 @@ color:#336699</string>
       <widget class="QComboBox" name="comboBox_pic_actor">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>29</x>
          <y>90</y>
-         <width>200</width>
+         <width>171</width>
          <height>30</height>
         </rect>
        </property>
@@ -1441,10 +1498,10 @@ color:#336699</string>
       <widget class="QPushButton" name="pushButton_select_thumb">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>200</width>
-         <height>50</height>
+         <x>19</x>
+         <y>40</y>
+         <width>181</width>
+         <height>40</height>
         </rect>
        </property>
        <property name="text">
@@ -1542,7 +1599,7 @@ color:#336699</string>
            <x>0</x>
            <y>0</y>
            <width>771</width>
-           <height>650</height>
+           <height>680</height>
           </rect>
          </property>
          <widget class="QGroupBox" name="groupBox_16">
@@ -1551,7 +1608,7 @@ color:#336699</string>
             <x>30</x>
             <y>10</y>
             <width>701</width>
-            <height>301</height>
+            <height>311</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -1563,9 +1620,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget_7">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>681</width>
+             <x>20</x>
+             <y>30</y>
+             <width>661</width>
              <height>271</height>
             </rect>
            </property>
@@ -1580,12 +1637,12 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="text">
                <string>失败输出目录：</string>
@@ -1605,12 +1662,12 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="frameShape">
                <enum>QFrame::NoFrame</enum>
@@ -1633,7 +1690,7 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>300</width>
+                <width>0</width>
                 <height>30</height>
                </size>
               </property>
@@ -1655,7 +1712,7 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>300</width>
+                <width>0</width>
                 <height>30</height>
                </size>
               </property>
@@ -1693,7 +1750,7 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>300</width>
+                <width>0</width>
                 <height>30</height>
                </size>
               </property>
@@ -1708,19 +1765,19 @@ color:#336699</string>
             <item row="6" column="0">
              <widget class="QLabel" name="label_48">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>130</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="text">
                <string>排除目录：</string>
@@ -1740,12 +1797,12 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="text">
                <string>待刮削视频目录：</string>
@@ -1797,7 +1854,7 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>300</width>
+                <width>0</width>
                 <height>30</height>
                </size>
               </property>
@@ -1832,9 +1889,9 @@ color:#336699</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>520</y>
+            <y>540</y>
             <width>701</width>
-            <height>111</height>
+            <height>121</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -1846,9 +1903,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget_16">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>681</width>
+             <x>20</x>
+             <y>30</y>
+             <width>661</width>
              <height>81</height>
             </rect>
            </property>
@@ -1863,8 +1920,8 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>130</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
@@ -1888,7 +1945,7 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>300</width>
+                <width>0</width>
                 <height>30</height>
                </size>
               </property>
@@ -1910,12 +1967,12 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
+                <width>0</width>
                 <height>30</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="text">
                <string>字幕格式：</string>
@@ -1935,7 +1992,7 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>300</width>
+                <width>0</width>
                 <height>30</height>
                </size>
               </property>
@@ -1954,9 +2011,9 @@ color:#336699</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>330</y>
+            <y>340</y>
             <width>701</width>
-            <height>171</height>
+            <height>181</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -1968,9 +2025,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget_19">
            <property name="geometry">
             <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>681</width>
+             <x>20</x>
+             <y>30</y>
+             <width>662</width>
              <height>139</height>
             </rect>
            </property>
@@ -1985,13 +2042,13 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>500</width>
+                <width>0</width>
                 <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>540</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -2013,12 +2070,12 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>130</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="frameShape">
                <enum>QFrame::NoFrame</enum>
@@ -2057,13 +2114,13 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>500</width>
+                <width>0</width>
                 <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>540</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -2094,19 +2151,19 @@ color:#336699</string>
             <item row="2" column="0">
              <widget class="QLabel" name="label_93">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="frameShape">
                <enum>QFrame::NoFrame</enum>
@@ -2168,7 +2225,7 @@ color:#336699</string>
            <x>0</x>
            <y>0</y>
            <width>771</width>
-           <height>1200</height>
+           <height>1270</height>
           </rect>
          </property>
          <widget class="QGroupBox" name="groupBox">
@@ -2177,7 +2234,7 @@ color:#336699</string>
             <x>30</x>
             <y>110</y>
             <width>701</width>
-            <height>181</height>
+            <height>191</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -2198,9 +2255,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget_2">
            <property name="geometry">
             <rect>
-             <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <x>50</x>
+             <y>30</y>
+             <width>641</width>
              <height>131</height>
             </rect>
            </property>
@@ -2321,8 +2378,8 @@ color:#336699</string>
           <widget class="QCheckBox" name="checkBox_read_no_nfo">
            <property name="geometry">
             <rect>
-             <x>150</x>
-             <y>150</y>
+             <x>140</x>
+             <y>160</y>
              <width>261</width>
              <height>16</height>
             </rect>
@@ -2348,9 +2405,9 @@ color:#336699</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>310</y>
+            <y>320</y>
             <width>701</width>
-            <height>101</height>
+            <height>111</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -2371,9 +2428,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget">
            <property name="geometry">
             <rect>
-             <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <x>50</x>
+             <y>30</y>
+             <width>641</width>
              <height>71</height>
             </rect>
            </property>
@@ -2460,9 +2517,9 @@ color:#336699</string>
           <widget class="QComboBox" name="comboBox_website_all">
            <property name="geometry">
             <rect>
-             <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <x>20</x>
+             <y>30</y>
+             <width>661</width>
              <height>40</height>
             </rect>
            </property>
@@ -2572,9 +2629,9 @@ color:#336699</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>580</y>
+            <y>610</y>
             <width>701</width>
-            <height>101</height>
+            <height>111</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -2595,9 +2652,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget_4">
            <property name="geometry">
             <rect>
-             <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <x>50</x>
+             <y>30</y>
+             <width>649</width>
              <height>71</height>
             </rect>
            </property>
@@ -2667,9 +2724,9 @@ color:#336699</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>940</y>
+            <y>1000</y>
             <width>701</width>
-            <height>101</height>
+            <height>111</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -2690,9 +2747,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget_13">
            <property name="geometry">
             <rect>
-             <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <x>50</x>
+             <y>30</y>
+             <width>641</width>
              <height>71</height>
             </rect>
            </property>
@@ -2762,9 +2819,9 @@ color:#336699</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>700</y>
+            <y>740</y>
             <width>701</width>
-            <height>101</height>
+            <height>111</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -2785,9 +2842,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget_6">
            <property name="geometry">
             <rect>
-             <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <x>50</x>
+             <y>30</y>
+             <width>641</width>
              <height>71</height>
             </rect>
            </property>
@@ -2860,9 +2917,9 @@ color:#336699</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>820</y>
+            <y>870</y>
             <width>701</width>
-            <height>101</height>
+            <height>111</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -2883,9 +2940,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget_3">
            <property name="geometry">
             <rect>
-             <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <x>50</x>
+             <y>30</y>
+             <width>641</width>
              <height>71</height>
             </rect>
            </property>
@@ -2955,9 +3012,9 @@ color:#336699</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>430</y>
+            <y>450</y>
             <width>701</width>
-            <height>131</height>
+            <height>141</height>
            </rect>
           </property>
           <property name="title">
@@ -2966,9 +3023,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget_20">
            <property name="geometry">
             <rect>
-             <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <x>50</x>
+             <y>30</y>
+             <width>641</width>
              <height>101</height>
             </rect>
            </property>
@@ -2985,7 +3042,7 @@ color:#336699</string>
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
               <property name="text">
-               <string>资源不全，字段全，有简介</string>
+               <string>资源较全，字段全，有简介</string>
               </property>
              </widget>
             </item>
@@ -3016,6 +3073,12 @@ color:#336699</string>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
@@ -3034,7 +3097,7 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>80</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
@@ -3053,7 +3116,7 @@ color:#336699</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>80</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
@@ -3085,9 +3148,9 @@ color:#336699</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>1060</y>
+            <y>1130</y>
             <width>701</width>
-            <height>101</height>
+            <height>111</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -3108,9 +3171,9 @@ color:#336699</string>
           <widget class="QWidget" name="gridLayoutWidget_23">
            <property name="geometry">
             <rect>
-             <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <x>50</x>
+             <y>30</y>
+             <width>641</width>
              <height>71</height>
             </rect>
            </property>
@@ -3222,16 +3285,16 @@ color:#336699</string>
            <x>0</x>
            <y>0</y>
            <width>771</width>
-           <height>720</height>
+           <height>760</height>
           </rect>
          </property>
          <widget class="QGroupBox" name="groupBox_34">
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>170</y>
+            <y>180</y>
             <width>701</width>
-            <height>171</height>
+            <height>181</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -3246,9 +3309,9 @@ color:#336699</string>
           <widget class="QWidget" name="horizontalLayoutWidget_19">
            <property name="geometry">
             <rect>
-             <x>59</x>
-             <y>20</y>
-             <width>631</width>
+             <x>60</x>
+             <y>30</y>
+             <width>391</width>
              <height>37</height>
             </rect>
            </property>
@@ -3267,36 +3330,14 @@ color:#336699</string>
               </property>
              </widget>
             </item>
-            <item>
-             <widget class="QLineEdit" name="lineEdit_extrafanart_dir">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>300</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"> font: &quot;Courier&quot;;
- border: 1px solid rgba(0,0,0, 50);
- border-radius: 15px;
-</string>
-              </property>
-             </widget>
-            </item>
            </layout>
           </widget>
           <widget class="QLabel" name="label_82">
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>60</y>
-             <width>631</width>
+             <y>70</y>
+             <width>641</width>
              <height>41</height>
             </rect>
            </property>
@@ -3318,8 +3359,8 @@ color:#336699</string>
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>100</y>
-             <width>631</width>
+             <y>110</y>
+             <width>641</width>
              <height>61</height>
             </rect>
            </property>
@@ -3338,6 +3379,34 @@ color:#336699</string>
 注意：此处只需填写目录名字，请不要填写完整路径！</string>
            </property>
           </widget>
+          <widget class="QLineEdit" name="lineEdit_extrafanart_dir">
+           <property name="geometry">
+            <rect>
+             <x>370</x>
+             <y>30</y>
+             <width>311</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+           </property>
+          </widget>
          </widget>
          <widget class="QGroupBox" name="groupBox_24">
           <property name="geometry">
@@ -3345,7 +3414,7 @@ color:#336699</string>
             <x>30</x>
             <y>10</y>
             <width>701</width>
-            <height>141</height>
+            <height>151</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -3360,9 +3429,9 @@ color:#336699</string>
           <widget class="QWidget" name="horizontalLayoutWidget_14">
            <property name="geometry">
             <rect>
-             <x>59</x>
-             <y>20</y>
-             <width>631</width>
+             <x>60</x>
+             <y>30</y>
+             <width>621</width>
              <height>31</height>
             </rect>
            </property>
@@ -3401,8 +3470,8 @@ color:#336699</string>
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>50</y>
-             <width>631</width>
+             <y>60</y>
+             <width>641</width>
              <height>81</height>
             </rect>
            </property>
@@ -3427,9 +3496,9 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>590</y>
+            <y>630</y>
             <width>701</width>
-            <height>101</height>
+            <height>111</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -3451,8 +3520,8 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>71</height>
             </rect>
            </property>
@@ -3522,9 +3591,9 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>470</y>
+            <y>500</y>
             <width>701</width>
-            <height>101</height>
+            <height>111</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -3537,8 +3606,8 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>71</height>
             </rect>
            </property>
@@ -3614,9 +3683,9 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>360</y>
+            <y>380</y>
             <width>701</width>
-            <height>91</height>
+            <height>101</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -3631,9 +3700,9 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
           <widget class="QWidget" name="horizontalLayoutWidget_18">
            <property name="geometry">
             <rect>
-             <x>59</x>
-             <y>20</y>
-             <width>631</width>
+             <x>60</x>
+             <y>30</y>
+             <width>621</width>
              <height>31</height>
             </rect>
            </property>
@@ -3686,8 +3755,8 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>50</y>
-             <width>631</width>
+             <y>60</y>
+             <width>641</width>
              <height>31</height>
             </rect>
            </property>
@@ -3742,7 +3811,7 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
            <x>0</x>
            <y>0</y>
            <width>771</width>
-           <height>1100</height>
+           <height>1130</height>
           </rect>
          </property>
          <property name="sizePolicy">
@@ -3755,9 +3824,9 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>960</y>
+            <y>990</y>
             <width>701</width>
-            <height>101</height>
+            <height>111</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -3779,8 +3848,8 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>71</height>
             </rect>
            </property>
@@ -3864,7 +3933,7 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
             <x>30</x>
             <y>10</y>
             <width>701</width>
-            <height>331</height>
+            <height>341</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -3877,8 +3946,8 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
            <property name="geometry">
             <rect>
              <x>10</x>
-             <y>20</y>
-             <width>681</width>
+             <y>30</y>
+             <width>671</width>
              <height>301</height>
             </rect>
            </property>
@@ -3893,8 +3962,8 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
               </property>
               <property name="minimumSize">
                <size>
-                <width>100</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
@@ -3975,8 +4044,8 @@ runtime, director, release, series, definition, cnword
               </property>
               <property name="minimumSize">
                <size>
-                <width>100</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
@@ -4035,8 +4104,8 @@ runtime, director, release, series, definition, cnword
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>130</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
@@ -4073,9 +4142,9 @@ runtime, director, release, series, definition, cnword
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>690</y>
+            <y>710</y>
             <width>701</width>
-            <height>101</height>
+            <height>111</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -4097,8 +4166,8 @@ runtime, director, release, series, definition, cnword
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>71</height>
             </rect>
            </property>
@@ -4115,7 +4184,7 @@ runtime, director, release, series, definition, cnword
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
               <property name="text">
-               <string>同理：视频文件名-thumb.jpg，视频文件名-fanart.jpg</string>
+               <string>视频文件名-thumb.jpg，视频文件名-fanart.jpg</string>
               </property>
              </widget>
             </item>
@@ -4131,7 +4200,7 @@ runtime, director, release, series, definition, cnword
                <string notr="true">color: rgb(8, 128, 128);</string>
               </property>
               <property name="text">
-               <string>同理：thumb.jpg，fanart.jpg</string>
+               <string>humb.jpg，fanart.jpg</string>
               </property>
              </widget>
             </item>
@@ -4180,9 +4249,9 @@ runtime, director, release, series, definition, cnword
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>810</y>
+            <y>830</y>
             <width>701</width>
-            <height>131</height>
+            <height>141</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -4204,8 +4273,8 @@ runtime, director, release, series, definition, cnword
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>80</height>
             </rect>
            </property>
@@ -4286,7 +4355,7 @@ runtime, director, release, series, definition, cnword
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>100</y>
+             <y>110</y>
              <width>631</width>
              <height>20</height>
             </rect>
@@ -4309,9 +4378,9 @@ runtime, director, release, series, definition, cnword
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>360</y>
+            <y>370</y>
             <width>701</width>
-            <height>311</height>
+            <height>321</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -4324,8 +4393,8 @@ runtime, director, release, series, definition, cnword
            <property name="geometry">
             <rect>
              <x>10</x>
-             <y>20</y>
-             <width>681</width>
+             <y>30</y>
+             <width>671</width>
              <height>281</height>
             </rect>
            </property>
@@ -4357,8 +4426,8 @@ runtime, director, release, series, definition, cnword
               </property>
               <property name="minimumSize">
                <size>
-                <width>100</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
@@ -4449,8 +4518,8 @@ runtime, director, release, series, definition, cnword
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>130</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
@@ -4474,8 +4543,8 @@ runtime, director, release, series, definition, cnword
               </property>
               <property name="minimumSize">
                <size>
-                <width>100</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
@@ -4536,9 +4605,9 @@ runtime, director, release, series, definition, cnword
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>120</y>
+          <y>130</y>
           <width>701</width>
-          <height>91</height>
+          <height>101</height>
          </rect>
         </property>
         <property name="minimumSize">
@@ -4560,8 +4629,8 @@ runtime, director, release, series, definition, cnword
          <property name="geometry">
           <rect>
            <x>60</x>
-           <y>20</y>
-           <width>631</width>
+           <y>30</y>
+           <width>621</width>
            <height>31</height>
           </rect>
          </property>
@@ -4586,7 +4655,7 @@ runtime, director, release, series, definition, cnword
          <property name="geometry">
           <rect>
            <x>60</x>
-           <y>60</y>
+           <y>70</y>
            <width>611</width>
            <height>21</height>
           </rect>
@@ -4609,9 +4678,9 @@ runtime, director, release, series, definition, cnword
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>230</y>
+          <y>250</y>
           <width>701</width>
-          <height>141</height>
+          <height>151</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -4624,8 +4693,8 @@ runtime, director, release, series, definition, cnword
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>20</y>
-           <width>681</width>
+           <y>30</y>
+           <width>671</width>
            <height>111</height>
           </rect>
          </property>
@@ -4760,7 +4829,7 @@ runtime, director, release, series, definition, cnword
           <x>30</x>
           <y>10</y>
           <width>701</width>
-          <height>91</height>
+          <height>101</height>
          </rect>
         </property>
         <property name="minimumSize">
@@ -4782,8 +4851,8 @@ runtime, director, release, series, definition, cnword
          <property name="geometry">
           <rect>
            <x>60</x>
-           <y>20</y>
-           <width>631</width>
+           <y>30</y>
+           <width>621</width>
            <height>31</height>
           </rect>
          </property>
@@ -4815,7 +4884,7 @@ runtime, director, release, series, definition, cnword
          <property name="geometry">
           <rect>
            <x>60</x>
-           <y>50</y>
+           <y>60</y>
            <width>611</width>
            <height>31</height>
           </rect>
@@ -5115,7 +5184,7 @@ runtime, director, release, series, definition, cnword
           <x>30</x>
           <y>10</y>
           <width>701</width>
-          <height>181</height>
+          <height>191</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -5127,9 +5196,9 @@ runtime, director, release, series, definition, cnword
         <widget class="QWidget" name="gridLayoutWidget_17">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>20</y>
-           <width>681</width>
+           <x>20</x>
+           <y>30</y>
+           <width>661</width>
            <height>151</height>
           </rect>
          </property>
@@ -5160,12 +5229,12 @@ runtime, director, release, series, definition, cnword
             </property>
             <property name="minimumSize">
              <size>
-              <width>160</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
+             <enum>Qt::RightToLeft</enum>
             </property>
             <property name="text">
              <string>中文字幕命名字符：</string>
@@ -5185,12 +5254,12 @@ runtime, director, release, series, definition, cnword
             </property>
             <property name="minimumSize">
              <size>
-              <width>160</width>
-              <height>30</height>
+              <width>130</width>
+              <height>0</height>
              </size>
             </property>
             <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
+             <enum>Qt::RightToLeft</enum>
             </property>
             <property name="text">
              <string>中文字幕判断字符：</string>
@@ -5255,9 +5324,9 @@ runtime, director, release, series, definition, cnword
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>210</y>
+          <y>220</y>
           <width>701</width>
-          <height>71</height>
+          <height>81</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -5270,8 +5339,8 @@ runtime, director, release, series, definition, cnword
          <property name="geometry">
           <rect>
            <x>60</x>
-           <y>20</y>
-           <width>631</width>
+           <y>30</y>
+           <width>621</width>
            <height>41</height>
           </rect>
          </property>
@@ -5361,7 +5430,7 @@ runtime, director, release, series, definition, cnword
             <x>30</x>
             <y>10</y>
             <width>701</width>
-            <height>71</height>
+            <height>81</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -5377,8 +5446,8 @@ runtime, director, release, series, definition, cnword
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>41</height>
             </rect>
            </property>
@@ -5428,9 +5497,9 @@ runtime, director, release, series, definition, cnword
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>190</y>
+            <y>210</y>
             <width>701</width>
-            <height>71</height>
+            <height>81</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -5443,8 +5512,8 @@ runtime, director, release, series, definition, cnword
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>41</height>
             </rect>
            </property>
@@ -5532,9 +5601,9 @@ runtime, director, release, series, definition, cnword
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>100</y>
+            <y>110</y>
             <width>701</width>
-            <height>71</height>
+            <height>81</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -5547,8 +5616,8 @@ runtime, director, release, series, definition, cnword
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>41</height>
             </rect>
            </property>
@@ -5617,7 +5686,7 @@ runtime, director, release, series, definition, cnword
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>280</y>
+            <y>310</y>
             <width>701</width>
             <height>71</height>
            </rect>
@@ -5633,7 +5702,7 @@ runtime, director, release, series, definition, cnword
             <rect>
              <x>60</x>
              <y>20</y>
-             <width>631</width>
+             <width>621</width>
              <height>41</height>
             </rect>
            </property>
@@ -5765,7 +5834,7 @@ runtime, director, release, series, definition, cnword
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>260</y>
+            <y>270</y>
             <width>701</width>
             <height>281</height>
            </rect>
@@ -5780,9 +5849,9 @@ runtime, director, release, series, definition, cnword
            <property name="geometry">
             <rect>
              <x>10</x>
-             <y>20</y>
-             <width>681</width>
-             <height>141</height>
+             <y>30</y>
+             <width>671</width>
+             <height>131</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_10">
@@ -5811,7 +5880,7 @@ font: &quot;Courier&quot;;</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
+                <width>130</width>
                 <height>30</height>
                </size>
               </property>
@@ -5835,7 +5904,7 @@ font: &quot;Courier&quot;;</string>
              <x>10</x>
              <y>170</y>
              <width>681</width>
-             <height>101</height>
+             <height>81</height>
             </rect>
            </property>
            <property name="sizePolicy">
@@ -5851,8 +5920,7 @@ font: &quot;Courier&quot;;</string>
             <string>Cookie 获取方法：
 使用 Chrome 打开目标网站后，点击鼠标右键，选择 “检查” ，右侧顶部选择：Network -&gt; DOC，
 然后 F5 刷新页面。点击 name 栏加载出来的第一个内容 -&gt; Headers -&gt; Request Headers -&gt; Cookie。
-复制 Cookie 对应的全部值填人上面输入框。 （注意：Cookie 存在有效期，过期无效时请重新获取。）
-方法可参考：</string>
+复制 Cookie 对应的全部值填人上面输入框。 （注意：Cookie 存在有效期，过期无效时请重新获取。）</string>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -5864,7 +5932,7 @@ font: &quot;Courier&quot;;</string>
           <widget class="QLabel" name="label_get_cookie_url">
            <property name="geometry">
             <rect>
-             <x>90</x>
+             <x>100</x>
              <y>250</y>
              <width>431</width>
              <height>21</height>
@@ -5895,6 +5963,22 @@ font: &quot;Courier&quot;;</string>
             <set>Qt::TextBrowserInteraction</set>
            </property>
           </widget>
+          <widget class="QLabel" name="label_7">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>250</y>
+             <width>81</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(8, 128, 128);</string>
+           </property>
+           <property name="text">
+            <string>方法可参考：</string>
+           </property>
+          </widget>
          </widget>
          <widget class="QGroupBox" name="groupBox_28">
           <property name="geometry">
@@ -5902,7 +5986,7 @@ font: &quot;Courier&quot;;</string>
             <x>30</x>
             <y>10</y>
             <width>701</width>
-            <height>231</height>
+            <height>241</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -5915,8 +5999,8 @@ font: &quot;Courier&quot;;</string>
            <property name="geometry">
             <rect>
              <x>10</x>
-             <y>20</y>
-             <width>681</width>
+             <y>30</y>
+             <width>671</width>
              <height>201</height>
             </rect>
            </property>
@@ -5931,12 +6015,12 @@ font: &quot;Courier&quot;;</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="text">
                <string>重试次数：</string>
@@ -5956,12 +6040,12 @@ font: &quot;Courier&quot;;</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="text">
                <string>超时时间：</string>
@@ -5981,12 +6065,12 @@ font: &quot;Courier&quot;;</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>0</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="frameShape">
                <enum>QFrame::NoFrame</enum>
@@ -6202,12 +6286,12 @@ font: &quot;Courier&quot;;</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>160</width>
-                <height>30</height>
+                <width>130</width>
+                <height>0</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="text">
                <string>代理：</string>
@@ -6286,9 +6370,9 @@ font: &quot;Courier&quot;;</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>190</y>
+            <y>210</y>
             <width>701</width>
-            <height>71</height>
+            <height>81</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -6310,8 +6394,8 @@ font: &quot;Courier&quot;;</string>
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>41</height>
             </rect>
            </property>
@@ -6337,9 +6421,9 @@ font: &quot;Courier&quot;;</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>100</y>
+            <y>110</y>
             <width>701</width>
-            <height>71</height>
+            <height>81</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -6361,8 +6445,8 @@ font: &quot;Courier&quot;;</string>
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>41</height>
             </rect>
            </property>
@@ -6390,7 +6474,7 @@ font: &quot;Courier&quot;;</string>
             <x>30</x>
             <y>10</y>
             <width>701</width>
-            <height>71</height>
+            <height>81</height>
            </rect>
           </property>
           <property name="minimumSize">
@@ -6412,8 +6496,8 @@ font: &quot;Courier&quot;;</string>
            <property name="geometry">
             <rect>
              <x>60</x>
-             <y>20</y>
-             <width>631</width>
+             <y>30</y>
+             <width>621</width>
              <height>41</height>
             </rect>
            </property>
@@ -6487,101 +6571,119 @@ font: &quot;Courier&quot;;</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;AVDCx 是基于 AV_Data_Capture 的 GUI 版本 AVDC 再次修改的版本。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;· AV_Data_Capture 项目地址：https://github.com/yoshiko2/AV_Data_Capture&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;· AVDC 项目地址：https://github.com/moyy996/AVDC&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;· AVDCx 项目地址：https://github.com/Hermit10/AVDCx&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;使用说明 （内容来自 AVDC ：https://github.com/moyy996/AVDC ）&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;———————————————————————————————————————————————————————&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;目录&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;一、功能简介&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;二、项目简介&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;三、常见番号命名参考&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;四、设置说明&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;一、功能简介&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  日本电影元数据抓取工具/刮削器，配合本地影片管理软件EMBY,KODI，PLEX等管理本地影片，该软件起到分类与元数据抓取作用，利用元数据信息来分类，供本地影片分类整理使用。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;二、项目简介&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  Gui made by moyy996，Core made by yoshiko2&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  tg官方电报群: https://t.me/joinchat/J54y1g3-a7nxJ_-WS4-KFQ&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  命令行版项目地址：https://github.com/yoshiko2/AV_Data_Capture&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  GUI版项目地址：https://github.com/moyy996/AVDC&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  GUI版EXE下载地址：https://github.com/moyy996/AVDC/releases&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;三、常见番号命名参考&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;不区分大小写、刮削前尽量命名规范！！！！&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;3.1.标准有码&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  Javdb、Javbus:SSNI-111&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  Dmm：ssni00111&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;3.2.无码&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  Javdb、Javbus、Avsox:111111-1111、111111_111、HEYZO-1111、n1111&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;3.3.素人&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  Mgstage:259LUXU-1111&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  Javdb:LUXU-1111&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  Fc2club:FC2-111111、FC2-PPV-111111、FC2PPV-111111&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;3.4.欧美&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  Javdb、Javbus:sexart.11.11.11(系列.年.月.日)&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;3.5.自带字幕影片&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  可以把电影命名为类似ssni-xxx-c.mp4,ssni-xxx-C.mp4，abp-xxx-CD1-C.mp4 的规则。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;3.6.多集影片&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  可以把多集电影按照集数后缀命名为类似ssni-xxx-cd1.mp4, ssni-xxx-cd2.mp4, abp-xxx-CD1-C.mp4的规则，只要含有-CDn/-cdn类似命名规则，即可使用分集功能.**不支持-A -B -1 -2,容易跟字幕的-C混淆**.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;3.7.多集、字幕顺序&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  abp-xxx-CD1-C.mp4，分集在前，字幕在后，字幕必须与拓展名靠近，-C.mp4.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;3.8.外挂字幕文件&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  字幕文件名必须与影片文件名一致，才可以一起移动到新目录，目前支持srt ass sub类型的字幕文件。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;四、设置说明&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;详细的说明： https://github.com/moyy996/AVDC/blob/master/README.md&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.1.刮削模式/整理模式&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  1、刮削模式：通过番号刮削数据，包括元数据、封面图、缩略图、背景图。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  2、整理模式：仅根据女优把电影命名为番号并分类到女优名称的文件夹下。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.2.软链接模式：使用此模式，要以管理员身份运行。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  刮削完不移动视频，而是在相应目录创建软链接（类似于快捷方式），方便PT下载完既想刮削又想继续上传的仓鼠党同志。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  但是，只能在媒体库展示，不能在媒体库播放。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.3.调试模式&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  输出番号的元数据，包括封面，导演，演员，简介等。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.4.排除目录&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  在多层目录刮削时排除所填目录。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.5.视频目录&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  要整理的视频的目录，会遍历此目录下的所有视频，包括子目录中。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.6.命名规则&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  1、目录命名：存放视频数据的目录名，支持多层目录，支持自定义符号，例：[actor]/studio/number-【title】。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  2、视频标题（媒体库中）：nfo中的标题命名。例：number-[title]。可以自定义符号。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  3、视频标题（本地文件）：本地视频、图片的命名。例：number-[title]。可以自定义符号。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  4、可选项为title（片名）、actor（演员）、studio（制作商）、director（导演）、release（发售日）、year（发行年份）、number（番号）、runtime（时长）、series（系列）、publisher（发行商）&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.7.代理设置&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  1、代理&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  proxy=127.0.0.1:1080&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  proxy行设置本地代理地址和端口，支持Shadowxxxx/X,V2XXX本地代理端口，代理软件开全局模式 ,建议使用日本代理。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  如果一直报Connect Failed! Please check your Proxy or Network!错误，请检查端口号是否正确，或者把proxy=后面的地址和端口删除，并开启代理软件全局模式，或者重启电脑，代理软件，网卡。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  2、连接超时重试设置&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  timeout=10 &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  10为超时重试时间 单位：秒，可选范围3-10&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  3、连接重试次数设置&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  retry=3 &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  3即为重试次数，可选范围2-5&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.8.媒体库选择&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  如果是PLEX，请安装插件：XBMCnfoMoviesImporter&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.9.排除指定字符和目录，字符串&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  1、排除字符:指定字符删除，例如排除字符： \()，删除创建文件夹时的\()字符&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  2、排除目录:指定目录，例如排除目录： failed,JAV_output，多目录刮削时跳过failed,JAV_output&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  3、排除字符串:提取番号时，先删除指定字符串，提高成功率，字符串之间用','隔开。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.10.网站选择&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  可以使用所有网站，或者指定网站（avsox,javbus,dmm,javdb,fc2club，mgstage）进行刮削。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  仅使用javdb进行刮削，尽量不要用，刮削30左右会被JAVDB封IP一段时间。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.11.保存日志&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  开启后日志保存在程序目录的Log目录下的txt文件内，每次运行会产生一个txt文件，txt文件可以删除，不影响程序运行。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;&quot;&gt;4.12.失败后移动文件&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt;  如果刮削不到影片信息，可选择不移动视频，或者自动移动到失败输出目录中。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12pt; vertical-align:sub;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;AVDCx 是基于 AV_Data_Capture 的 GUI 版本 AVDC 再次修改的版本。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;· AV_Data_Capture 项目地址：https://github.com/yoshiko2/AV_Data_Capture&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;· AVDC 项目地址：https://github.com/moyy996/AVDC&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;· AVDCx 项目地址：https://github.com/Hermit10/AVDCx&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;使用说明 （内容来自 AVDC ：https://github.com/moyy996/AVDC ）&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;———————————————————————————————————————————————————————&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;目录&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;一、功能简介&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;二、项目简介&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;三、常见番号命名参考&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;四、设置说明&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;一、功能简介&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  日本电影元数据抓取工具/刮削器，配合本地影片管理软件EMBY,KODI，PLEX等管理本地影片，该软件起到分类与元数据抓取作用，利用元数据信息来分类，供本地影片分类整理使用。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;二、项目简介&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  Gui made by moyy996，Core made by yoshiko2&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  tg官方电报群: https://t.me/joinchat/J54y1g3-a7nxJ_-WS4-KFQ&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  命令行版项目地址：https://github.com/yoshiko2/AV_Data_Capture&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  GUI版项目地址：https://github.com/moyy996/AVDC&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  GUI版EXE下载地址：https://github.com/moyy996/AVDC/releases&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;三、常见番号命名参考&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;不区分大小写、刮削前尽量命名规范！！！！&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;3.1.标准有码&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  Javdb、Javbus:SSNI-111&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  Dmm：ssni00111&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;3.2.无码&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  Javdb、Javbus、Avsox:111111-1111、111111_111、HEYZO-1111、n1111&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;3.3.素人&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  Mgstage:259LUXU-1111&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  Javdb:LUXU-1111&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  Fc2club:FC2-111111、FC2-PPV-111111、FC2PPV-111111&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;3.4.欧美&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  Javdb、Javbus:sexart.11.11.11(系列.年.月.日)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;3.5.自带字幕影片&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  可以把电影命名为类似ssni-xxx-c.mp4,ssni-xxx-C.mp4，abp-xxx-CD1-C.mp4 的规则。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;3.6.多集影片&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  可以把多集电影按照集数后缀命名为类似ssni-xxx-cd1.mp4, ssni-xxx-cd2.mp4, abp-xxx-CD1-C.mp4的规则，只要含有-CDn/-cdn类似命名规则，即可使用分集功能.**不支持-A -B -1 -2,容易跟字幕的-C混淆**.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;3.7.多集、字幕顺序&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  abp-xxx-CD1-C.mp4，分集在前，字幕在后，字幕必须与拓展名靠近，-C.mp4.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;3.8.外挂字幕文件&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  字幕文件名必须与影片文件名一致，才可以一起移动到新目录，目前支持srt ass sub类型的字幕文件。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;四、设置说明&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;详细的说明： https://github.com/moyy996/AVDC/blob/master/README.md&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.1.刮削模式/整理模式&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  1、刮削模式：通过番号刮削数据，包括元数据、封面图、缩略图、背景图。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  2、整理模式：仅根据女优把电影命名为番号并分类到女优名称的文件夹下。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.2.软链接模式：使用此模式，要以管理员身份运行。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  刮削完不移动视频，而是在相应目录创建软链接（类似于快捷方式），方便PT下载完既想刮削又想继续上传的仓鼠党同志。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  但是，只能在媒体库展示，不能在媒体库播放。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.3.调试模式&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  输出番号的元数据，包括封面，导演，演员，简介等。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.4.排除目录&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  在多层目录刮削时排除所填目录。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.5.视频目录&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  要整理的视频的目录，会遍历此目录下的所有视频，包括子目录中。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.6.命名规则&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  1、目录命名：存放视频数据的目录名，支持多层目录，支持自定义符号，例：[actor]/studio/number-【title】。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  2、视频标题（媒体库中）：nfo中的标题命名。例：number-[title]。可以自定义符号。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  3、视频标题（本地文件）：本地视频、图片的命名。例：number-[title]。可以自定义符号。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  4、可选项为title（片名）、actor（演员）、studio（制作商）、director（导演）、release（发售日）、year（发行年份）、number（番号）、runtime（时长）、series（系列）、publisher（发行商）&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.7.代理设置&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  1、代理&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  proxy=127.0.0.1:1080&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  proxy行设置本地代理地址和端口，支持Shadowxxxx/X,V2XXX本地代理端口，代理软件开全局模式 ,建议使用日本代理。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  如果一直报Connect Failed! Please check your Proxy or Network!错误，请检查端口号是否正确，或者把proxy=后面的地址和端口删除，并开启代理软件全局模式，或者重启电脑，代理软件，网卡。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  2、连接超时重试设置&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  timeout=10 &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  10为超时重试时间 单位：秒，可选范围3-10&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  3、连接重试次数设置&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  retry=3 &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  3即为重试次数，可选范围2-5&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.8.媒体库选择&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  如果是PLEX，请安装插件：XBMCnfoMoviesImporter&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.9.排除指定字符和目录，字符串&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  1、排除字符:指定字符删除，例如排除字符： \()，删除创建文件夹时的\()字符&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  2、排除目录:指定目录，例如排除目录： failed,JAV_output，多目录刮削时跳过failed,JAV_output&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  3、排除字符串:提取番号时，先删除指定字符串，提高成功率，字符串之间用','隔开。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.10.网站选择&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  可以使用所有网站，或者指定网站（avsox,javbus,dmm,javdb,fc2club，mgstage）进行刮削。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  仅使用javdb进行刮削，尽量不要用，刮削30左右会被JAVDB封IP一段时间。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.11.保存日志&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  开启后日志保存在程序目录的Log目录下的txt文件内，每次运行会产生一个txt文件，txt文件可以删除，不影响程序运行。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px; font-weight:600;&quot;&gt;4.12.失败后移动文件&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt;  如果刮削不到影片信息，可选择不移动视频，或者自动移动到失败输出目录中。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Courier'; font-size:12px;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -6713,7 +6815,7 @@ p, li { white-space: pre-wrap; }
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_setting">
+       <widget class="QPushButton" name="pushButton_tool">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -6727,7 +6829,7 @@ p, li { white-space: pre-wrap; }
          </size>
         </property>
         <property name="text">
-         <string>设置</string>
+         <string>工具</string>
         </property>
        </widget>
       </item>
@@ -6748,7 +6850,7 @@ p, li { white-space: pre-wrap; }
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_tool">
+       <widget class="QPushButton" name="pushButton_setting">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -6762,7 +6864,7 @@ p, li { white-space: pre-wrap; }
          </size>
         </property>
         <property name="text">
-         <string>工具</string>
+         <string>设置</string>
         </property>
        </widget>
       </item>
