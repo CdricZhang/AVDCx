@@ -258,6 +258,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     cd_part = json_data['cd_part']
     destroyed = json_data['destroyed']
     mosaic = json_data['mosaic']
+    version = json_data['version']
 
     # ================================================网站规则添加开始================================================
     if website_mode == 1:  # 从全部网站刮削
@@ -477,6 +478,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     json_data['cd_part'] = cd_part
     json_data['destroyed'] = destroyed
     json_data['actor_href'] = ''
+    json_data['version'] = version
         
     return json_data
 
