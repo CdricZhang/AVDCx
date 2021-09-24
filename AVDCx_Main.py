@@ -55,7 +55,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         self.pushButton_main_clicked()
         # 初始化需要的变量
         # self.version = '3.963'
-        self.localversion = '20210925'
+        self.localversion = '20210926'
         self.Ui.label_show_version.setText('version ' + self.localversion)
         self.Ui.label_show_version.mousePressEvent = self.version_clicked
         self.json_data = {}
@@ -148,11 +148,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             QLabel#label_number1,#label_actor1,#label_title1,#label_poster1,#label_number,#label_actor,#label_title,#label_poster1{
                     font-size:16px;
                     font-weight:bold;
+                    background-color: rgb(246, 246, 246);
                     border:0px solid rgba(0, 0, 0, 80);
             }
             QLabel#label_file_path{
                     font-size:16px;
                     color: black;
+                    background-color: rgb(246, 246, 246);
                     font-weight:bold;
                     border:0px solid rgba(0, 0, 0, 80);
             }
@@ -180,6 +182,14 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     font-size:13px;
             }
             ''')
+        # 使用帮助页
+        self.Ui.page_about.setStyleSheet(
+            '''
+            * {
+                    font-family:Courier;
+                    font-size:13px;
+            }
+            ''')
         # 设置页
         self.Ui.page_setting.setStyleSheet(
             '''
@@ -201,6 +211,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             }
             QLabel{
                     font-size:13px;
+                    background-color: rgb(246, 246, 246);
                     border:0px solid rgba(0, 0, 0, 80);
             }
             QLineEdit{
@@ -231,7 +242,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             * {
                     font-family:Courier;
                     font-size:13px;
-            }       
+            }
+            QTreeWidget
+            {
+                    background-color: rgb(246, 246, 246);
+                    font-size: 12px;
+                    border:0px solid rgb(120,120,120);
+            }
             QWidget#centralwidget{
                     background:#F6F6F6;
                     border:1px solid #BEBEBE;
@@ -410,7 +427,6 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
     # ======================================================================================左侧按钮点击事件响应函数
     def close_win(self):
         config_file = 'config.ini'
-        # config = RawConfigParser()
         config = RawConfigParser()
         config.read(config_file, encoding='UTF-8')
         show_poster = config.getint('common', 'show_poster')
@@ -421,7 +437,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             else:
                 config.set('common', 'show_poster', 0)
             try:
-                code = open(config_file, 'w')
+                code = open(config_file, 'w', encoding='UTF-8')
                 config.write(code)   
                 code.close()
                 self.Load_config()
@@ -887,7 +903,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             except:
                 self.Ui.radioButton_youdao.setChecked(True)
             try:    # deepl_key
-                self.Ui.lineEdit_deepl_key.setText(config['common']['deepl_key'])
+                self.Ui.lineEdit_deepl_key.setText(str(config['common']['deepl_key']))
             except:
                 self.Ui.lineEdit_deepl_key.setText('')
 
@@ -907,7 +923,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 self.Ui.radioButton_proxy_nouse.setChecked(True)
             
             try:    # 代理地址
-                self.Ui.lineEdit_proxy.setText(config['proxy']['proxy'])
+                self.Ui.lineEdit_proxy.setText(str(config['proxy']['proxy']))
             except:
                 self.Ui.lineEdit_proxy.setText('127.0.0.1:7890')
             
@@ -932,38 +948,38 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             if not config.has_section("Name_Rule"):
                 config.add_section("Name_Rule")
             try:    # 视频目录命名
-                self.Ui.lineEdit_dir_name.setText(config['Name_Rule']['folder_name'])
+                self.Ui.lineEdit_dir_name.setText(str(config['Name_Rule']['folder_name']))
             except:
                 self.Ui.lineEdit_dir_name.setText('actor/number actor')
             try:    # 视频文件名命名（本地文件）
-                self.Ui.lineEdit_local_name.setText(config['Name_Rule']['naming_file'])
+                self.Ui.lineEdit_local_name.setText(str(config['Name_Rule']['naming_file']))
             except:
                 self.Ui.lineEdit_local_name.setText('number')
             try:    # emby视频标题（nfo文件）
-                self.Ui.lineEdit_media_name.setText(config['Name_Rule']['naming_media'])
+                self.Ui.lineEdit_media_name.setText(str(config['Name_Rule']['naming_media']))
             except:
                 self.Ui.lineEdit_media_name.setText('number title')
 
             try:    # 长度命名规则-目录
                 folder_name_max = config.getint('Name_Rule', 'folder_name_max')
-                if folder_name_max <=0 or folder_name_max > 255:
+                if folder_name_max <= 0 or folder_name_max > 255:
                     folder_name_max = 70
-                self.Ui.lineEdit_folder_name_max.setText(folder_name_max)
-            except:
+                self.Ui.lineEdit_folder_name_max.setText(str(folder_name_max))
+            except Exception as e:
                 self.Ui.lineEdit_folder_name_max.setText('70')
             try:    # 长度命名规则-文件名
                 file_name_max = config.getint('Name_Rule', 'file_name_max')
-                if file_name_max <=0 or file_name_max > 255:
+                if file_name_max <= 0 or file_name_max > 255:
                     file_name_max = 70
-                self.Ui.lineEdit_file_name_max.setText(file_name_max)
+                self.Ui.lineEdit_file_name_max.setText(str(file_name_max))
             except:
                 self.Ui.lineEdit_file_name_max.setText('70')
             try:    # 长度命名规则-演员名
-                self.Ui.lineEdit_actor_name_max.setText(config.getint('Name_Rule', 'actor_name_max'))
+                self.Ui.lineEdit_actor_name_max.setText(str(config.getint('Name_Rule', 'actor_name_max')))
             except:
                 self.Ui.lineEdit_actor_name_max.setText('3')
             try:    # 长度命名规则-演员名更多
-                self.Ui.lineEdit_actor_name_more.setText(config['Name_Rule']['actor_name_more'])
+                self.Ui.lineEdit_actor_name_more.setText(str(config['Name_Rule']['actor_name_more']))
             except:
                 self.Ui.lineEdit_actor_name_more.setText('等演员')
 
@@ -1018,31 +1034,31 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 config['media']['media_path'] = ''
                 self.Ui.lineEdit_movie_path.setText('')
             try:    # 成功目录
-                self.Ui.lineEdit_success.setText(config['media']['success_output_folder'])
+                self.Ui.lineEdit_success.setText(str(config['media']['success_output_folder']))
             except:
                 self.Ui.lineEdit_success.setText('JAV_output')
             try:    # 失败目录
-                self.Ui.lineEdit_fail.setText(config['media']['failed_output_folder'])
+                self.Ui.lineEdit_fail.setText(str(config['media']['failed_output_folder']))
             except:
                 self.Ui.lineEdit_fail.setText('failed')
             try:    # 剧照目录
-                self.Ui.lineEdit_extrafanart_dir.setText(config['media']['extrafanart_folder'])
+                self.Ui.lineEdit_extrafanart_dir.setText(str(config['media']['extrafanart_folder']))
             except:
                 try:    # 剧照目录
-                    self.Ui.lineEdit_extrafanart_dir.setText(config['extrafanart']['extrafanart_folder'])
+                    self.Ui.lineEdit_extrafanart_dir.setText(str(config['extrafanart']['extrafanart_folder']))
                 except:
                     self.Ui.lineEdit_extrafanart_dir.setText('')
             try:    # 视频类型
-                self.Ui.lineEdit_movie_type_2.setText(config['media']['media_type'])
+                self.Ui.lineEdit_movie_type_2.setText(str(config['media']['media_type']))
             except:
                 self.Ui.lineEdit_movie_type_2.setText('.mp4|.avi|.rmvb|.wmv|.mov|.mkv|.flv|.ts|.webm|.iso|.mpg')
             try:    # 字幕类型
-                self.Ui.lineEdit_sub_type_2.setText(config['media']['sub_type'])
+                self.Ui.lineEdit_sub_type_2.setText(str(config['media']['sub_type']))
             except:
                 self.Ui.lineEdit_sub_type_2.setText('.smi|.srt|.idx|.sub|.sup|.psb|.ssa|.ass|.txt|.usf|.xss|.ssf|.rt|.lrc|.sbv|.vtt|.ttml')
             # ======================================================================================字幕
             try:    # 中文字幕判断字符
-                self.Ui.lineEdit_cnword_char.setText(config['Name_Rule']['cnword_char'])
+                self.Ui.lineEdit_cnword_char.setText(str(config['Name_Rule']['cnword_char']))
             except:
                 self.Ui.lineEdit_cnword_char.setText('-C.,中文,字幕')
             try:    # 中文字幕字符样式
@@ -1067,15 +1083,15 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             if not config.has_section("escape"):
                 config.add_section("escape")
             try:    # 排除目录
-                self.Ui.lineEdit_escape_dir.setText(config['escape']['folders'])
+                self.Ui.lineEdit_escape_dir.setText(str(config['escape']['folders']))
             except:
                 self.Ui.lineEdit_escape_dir.setText('JAV_output')
             try:    # 排除目录-工具页面
-                self.Ui.lineEdit_escape_dir_move.setText(config['escape']['folders'])
+                self.Ui.lineEdit_escape_dir_move.setText(str(config['escape']['folders']))
             except:
                 self.Ui.lineEdit_escape_dir_move.setText('JAV_output')
             try:    # 多余字符串
-                self.Ui.lineEdit_escape_string_2.setText(config['escape']['string'])
+                self.Ui.lineEdit_escape_string_2.setText(str(config['escape']['string']))
             except:
                 self.Ui.lineEdit_escape_string_2.setText('1080p,720p,22-sht.me,-HD,bbs2048.org@,hhd800.com@,icao.me@,hhb_000')
             try:    # 多余字符串
@@ -1097,11 +1113,11 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             if not config.has_section("emby"):
                 config.add_section("emby")
             try:    # emby地址
-                self.Ui.lineEdit_emby_url.setText(config['emby']['emby_url'])
+                self.Ui.lineEdit_emby_url.setText(str(config['emby']['emby_url']))
             except:
                 self.Ui.lineEdit_emby_url.setText('192.168.5.191:8096')
             try:    # emby密钥
-                self.Ui.lineEdit_api_key.setText(config['emby']['api_key'])
+                self.Ui.lineEdit_api_key.setText(str(config['emby']['api_key']))
             except:
                 self.Ui.lineEdit_api_key.setText('cb83900340b447fab785cb628a99c3da')
             # ======================================================================================mark
@@ -1669,7 +1685,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             # path = os.path.split(os.path.realpath(__file__))[0]
             path = self.main_path
         file_path, fileType = QtWidgets.QFileDialog.getOpenFileName(self, "选取缩略图", path,
-                                                                   "Picture Files(*.jpg);;All Files(*)")
+                                                                   "Picture Files(*.jpg *.png);;All Files(*)")
         img_name, img_ex = os.path.splitext(file_path)
         if file_path != '':
             newWin2.showimage(file_path)
@@ -2785,26 +2801,26 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                     'destroyed': '',
                     'actor_href': '',
                 }
-            self.Ui.label_number.setText(json_data['number'])
+            self.Ui.label_number.setText(str(json_data['number']))
             self.laberl_number_url = json_data['website']
-            self.Ui.label_actor.setText(json_data['actor'])
+            self.Ui.label_actor.setText(str(json_data['actor']))
             self.laberl_actor_url = json_data['actor_href']
             if json_data.get('source'):
                 self.Ui.label_source.setText('数据：' + json_data['source'].replace('.main_us','').replace('.main',''))
             else:
                 self.Ui.label_source.setText('')
-            self.Ui.label_title.setText(json_data['title'])
-            self.Ui.label_outline.setText(json_data['outline'])
+            self.Ui.label_title.setText(str(json_data['title']))
+            self.Ui.label_outline.setText(str(json_data['outline']))
             self.Ui.label_tag.setText(str(json_data['tag']).strip(" [',']").replace('\'', ''))
-            self.Ui.label_release.setText(json_data['release'])
+            self.Ui.label_release.setText(str(json_data['release']))
             if json_data['runtime']:
                 self.Ui.label_runtime.setText(str(json_data['runtime']) + ' 分钟')
             else:
-                self.Ui.label_runtime.setText(json_data['runtime'])
-            self.Ui.label_director.setText(json_data['director'])
-            self.Ui.label_series.setText(json_data['series'])
-            self.Ui.label_studio.setText(json_data['studio'])
-            self.Ui.label_publish.setText(json_data['publisher'])
+                self.Ui.label_runtime.setText('')
+            self.Ui.label_director.setText(str(json_data['director']))
+            self.Ui.label_series.setText(str(json_data['series']))
+            self.Ui.label_studio.setText(str(json_data['studio']))
+            self.Ui.label_publish.setText(str(json_data['publisher']))
             # 生成img_path，用来裁剪使用
             if os.path.isfile(json_data['fanart_path']):
                 json_data['img_path'] = json_data['fanart_path']
@@ -2998,22 +3014,23 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         del_empty_folder = config.getint('common', 'del_empty_folder')
         if del_empty_folder == 0:
             return
-        flag = False
+        self.set_label_file_path.emit('🗑 正在清理空文件夹，请等待...')
+        self.addTextMain(' ⌛ Cleaning empty folders, please wait!')
         if os.path.exists(path):
-            for root, dirs, files in os.walk(path):
-                for dir in dirs:
+            all_info = os.walk(path, topdown=False)
+            for root, dirs, files in all_info:
+                hidden_file = os.path.join(root, '.DS_Store')
+                if os.path.exists(hidden_file):
+                    os.remove(hidden_file)  # 删除隐藏文件
+                if not os.listdir(root):
                     try:
-                        dir_path = os.path.join(root.replace('\\', '/'), dir)
-                        hidden_file = os.path.join(dir_path, '.DS_Store')
-                        if os.path.exists(hidden_file):
-                            os.remove(hidden_file)  # 删除隐藏文件
-                        os.removedirs(dir_path)  # 删除这个空文件夹
-                        self.addTextMain('Deleting empty folder: ' + self.convert_path(dir_path))
-                        flag = True
-                    except:
-                        delete_empty_folder_failed = ''
-            if flag:
-                self.addTextMain('='*80)
+                        os.rmdir(root)
+                        self.addTextMain(' 🗑 Delete empty folder: ' + self.convert_path(root))
+                    except Exception as e:
+                        self.addTextMain(' 🔴 Delete empty folder error: %s' % e)
+
+        self.addTextMain(' 🟢 Clean done!')
+        self.addTextMain('='*80)
 
     def addTreeChild(self, result, filename):
         if result == 'succ':
@@ -3085,6 +3102,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         movie_type = config.get('media', 'media_type').lower()
         if file_mode == 'default_folder':                                       # 刮削默认视频目录的文件
             self.set_label_file_path.emit('正在遍历待刮削视频目录中的所有视频，请等待...\n %s' % movie_path)
+            self.addTextMain(' 🔎 Searching all videos, please wait!')
             movie_list = movie_lists(escape_folder, movie_type, movie_path)     # 获取所有需要刮削的影片列表
             count_all = len(movie_list)
 
@@ -3140,6 +3158,7 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             file_path = file_path.replace('\\', '/')
             translate_language = config.get('common', 'translate_language')
             json_data = {}
+            json_data['version'] = self.localversion
             c_word = ''
             cd_part = ''
             leak = ''
@@ -3786,6 +3805,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         file_folder = os.path.split(file_path)[0]
         if not os.path.exists(local_nfo_path):
             json_data['error_info'] = 'nfo文件不存在'
+            json_data['outline'] = os.path.split(file_path)[1]
+            json_data['tag'] = file_path
             return False, json_data
         nfo_xml = etree.parse(local_nfo_path)
         # print(etree.tostring(nfo_xml,encoding = 'utf-8').decode('utf-8'))   # 查看解析出的tree的内容
@@ -3794,6 +3815,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         # 获取不到标题，表示xml错误，重新刮削
         if not title:
             json_data['error_info'] = 'nfo文件损坏'
+            json_data['outline'] = os.path.split(file_path)[1]
+            json_data['tag'] = file_path
             return False, json_data
         number = str(nfo_xml.xpath('//num/text()')).strip("[']")
         if not number:
@@ -3857,11 +3880,15 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         if not os.path.exists(file_path):
             json_data['error_info'] = '文件不存在'
             json_data['error_type'] = json_data['error_info']
+            json_data['outline'] = os.path.split(file_path)[1]
+            json_data['tag'] = file_path
             return False, json_data
         file_size = os.path.getsize(file_path)/float(1024*1024)
         if file_size < file_escape_size:
             json_data['error_info'] = '文件小于 %s MB 被过滤!（实际大小 %s MB）已跳过刮削！' % (file_escape_size, round(file_size, 2))
             json_data['error_type'] = json_data['error_info']
+            json_data['outline'] = os.path.split(file_path)[1]
+            json_data['tag'] = file_path
             return False, json_data
         return True, json_data
 
@@ -4039,6 +4066,13 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
         config.read(config_file, encoding='UTF-8')
         # 获取设置的媒体目录、失败目录、成功目录
         movie_path, success_folder, failed_folder, escape_folder, extrafanart_folder = self.getMoviePathSetting(config)
+
+
+        # 日志页面显示软链接信息
+        if config['common']['soft_link'] == '1':
+            self.addTextMain(' 🎈 Soft link mode is ENABLE!')
+        # 日志页面显示路径信息
+        self.addTextMain(' 🖥 Movie path: ' + movie_path)
         # 获取待刮削文件列表的相关信息
         movie_list, count_all, appoint_number, appoint_url = self.getMovieList(file_mode, movie_path, escape_folder, config)
 
@@ -4046,10 +4080,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             self.progressBarValue.emit(int(100))
         else:
             self.count_claw += 1
-            if config['common']['soft_link'] == '1':
-                self.addTextMain(' 🎈 Soft link mode is ENABLE!')
-        # 日志页面显示信息
-        self.addTextMain(' 🖥 Movie path: ' + movie_path)
+
+
         self.addTextMain(' 📺 Find ' + str(count_all) + ' movies')
 
         # 载入c_numuber.json数据
@@ -4114,9 +4146,9 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
                 self.moveFailedFolder(file_path, folder_old_path, failed_folder, file_ex, config)
         self.Ui.label_result.setText(' 成功：%s  失败：%s' % (succ_count, fail_count))
         self.progressBarValue.emit(100)
-        self.set_label_file_path.emit('🎉 恭喜！全部刮削完成！共 %s 个文件！' % count_all)
         self.addTextMain("================================================================================")
         self.CEF(movie_path)
+        self.set_label_file_path.emit('🎉 恭喜！全部刮削完成！共 %s 个文件！' % count_all)
         self.addTextMain(" 🎉🎉🎉 All finished!!! Total %s , Success %s , Failed %s" % (count_all, succ_count, fail_count))
         self.addTextMain("================================================================================")
         self.Ui.pushButton_start_cap.setEnabled(True)
@@ -4286,7 +4318,7 @@ class CutWindow(QDialog, Ui_Dialog_cut_poster):
 
         self.rect_x, self.rect_y, self.rect_w, self.rect_h = self.Ui.pushButton_select_cutrange.geometry().getRect()
         self.rect_h_w_ratio = 1 + abc / 10000   # 更新高宽比
-        self.Ui.label_cut_ratio.setText('%.2f' % self.rect_h_w_ratio)
+        self.Ui.label_cut_ratio.setText(str('%.2f' % self.rect_h_w_ratio))
 
         # 计算裁剪框大小
         if self.pic_h_w_ratio <= 1.5: # 如果高宽比小时，固定高度，右边水平移动
@@ -4308,7 +4340,7 @@ class CutWindow(QDialog, Ui_Dialog_cut_poster):
 
         self.rect_x, self.rect_y, self.rect_w, self.rect_h = self.Ui.pushButton_select_cutrange.geometry().getRect()
         self.rect_h_w_ratio = 2 - abc / 10000   # 更新高宽比
-        self.Ui.label_cut_ratio.setText('%.2f' % self.rect_h_w_ratio)
+        self.Ui.label_cut_ratio.setText(str('%.2f' % self.rect_h_w_ratio))
         # 计算裁剪框大小
         if self.pic_h_w_ratio <= 1.5: # 如果高宽比小时，固定高度，右边水平移动
             self.rect_w = int (self.rect_h / self.rect_h_w_ratio)
@@ -4353,7 +4385,7 @@ class CutWindow(QDialog, Ui_Dialog_cut_poster):
             pic = QPixmap(img_path)
             self.pic_w = pic.width()
             self.pic_h = pic.height()
-            self.Ui.label_origin_size.setText('%s, %s' % (str(self.pic_w), str(self.pic_h)))    # 显示宽高
+            self.Ui.label_origin_size.setText(str('%s, %s' % (str(self.pic_w), str(self.pic_h))))    # 显示宽高
             self.pic_h_w_ratio = self.pic_h / self.pic_w    # 图片高宽比
             abc = int((self.rect_h_w_ratio - 1) * 10000)
             self.Ui.horizontalSlider_left.setValue(abc)
