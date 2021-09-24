@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCVJowhr.ui'
+## Form generated from reading UI file 'AVDCllPPPg.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -23,35 +23,25 @@ class Ui_AVDV(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(AVDV.sizePolicy().hasHeightForWidth())
         AVDV.setSizePolicy(sizePolicy)
-        font = QFont()
-        font.setFamily(u"Courier")
-        font.setPointSize(13)
-        font.setBold(False)
-        font.setWeight(50)
-        AVDV.setFont(font)
         icon = QIcon()
-        icon.addFile(u"../Img/ico.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"../../Users/gaogao/.designer/Img/ico.png", QSize(), QIcon.Normal, QIcon.Off)
         AVDV.setWindowIcon(icon)
         self.centralwidget = QWidget(AVDV)
         self.centralwidget.setObjectName(u"centralwidget")
         self.stackedWidget = QStackedWidget(self.centralwidget)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setGeometry(QRect(240, 9, 780, 691))
-        self.stackedWidget.setFont(font)
         self.page_avdc = QWidget()
         self.page_avdc.setObjectName(u"page_avdc")
         self.pushButton_start_cap = QPushButton(self.page_avdc)
         self.pushButton_start_cap.setObjectName(u"pushButton_start_cap")
         self.pushButton_start_cap.setGeometry(QRect(650, 13, 120, 40))
-        self.pushButton_start_cap.setFont(font)
         self.label_number1 = QLabel(self.page_avdc)
         self.label_number1.setObjectName(u"label_number1")
         self.label_number1.setGeometry(QRect(0, 70, 50, 40))
-        self.label_number1.setFont(font)
         self.label_number = QLabel(self.page_avdc)
         self.label_number.setObjectName(u"label_number")
         self.label_number.setGeometry(QRect(50, 70, 161, 40))
-        self.label_number.setFont(font)
         self.label_number.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_number.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);\n"
 "color:#336699")
@@ -60,21 +50,17 @@ class Ui_AVDV(object):
         self.label_13 = QLabel(self.page_avdc)
         self.label_13.setObjectName(u"label_13")
         self.label_13.setGeometry(QRect(0, 530, 50, 40))
-        self.label_13.setFont(font)
         self.label_release = QLabel(self.page_avdc)
         self.label_release.setObjectName(u"label_release")
         self.label_release.setGeometry(QRect(50, 530, 220, 40))
-        self.label_release.setFont(font)
         self.label_release.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_release.setFrameShape(QFrame.Box)
         self.label_actor1 = QLabel(self.page_avdc)
         self.label_actor1.setObjectName(u"label_actor1")
         self.label_actor1.setGeometry(QRect(220, 70, 50, 40))
-        self.label_actor1.setFont(font)
         self.label_actor = QLabel(self.page_avdc)
         self.label_actor.setObjectName(u"label_actor")
         self.label_actor.setGeometry(QRect(270, 70, 161, 40))
-        self.label_actor.setFont(font)
         self.label_actor.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_actor.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);\n"
 "color:#336699")
@@ -83,82 +69,67 @@ class Ui_AVDV(object):
         self.label_outline = QLabel(self.page_avdc)
         self.label_outline.setObjectName(u"label_outline")
         self.label_outline.setGeometry(QRect(50, 430, 500, 40))
-        self.label_outline.setFont(font)
         self.label_outline.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_outline.setFrameShape(QFrame.Box)
         self.label_outline.setLineWidth(1)
         self.label_18 = QLabel(self.page_avdc)
         self.label_18.setObjectName(u"label_18")
         self.label_18.setGeometry(QRect(0, 430, 50, 40))
-        self.label_18.setFont(font)
         self.label_title = QLabel(self.page_avdc)
         self.label_title.setObjectName(u"label_title")
         self.label_title.setGeometry(QRect(50, 110, 500, 40))
-        self.label_title.setFont(font)
         self.label_title.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_title.setFrameShape(QFrame.Box)
         self.label_title.setLineWidth(1)
         self.label_title1 = QLabel(self.page_avdc)
         self.label_title1.setObjectName(u"label_title1")
         self.label_title1.setGeometry(QRect(0, 110, 50, 40))
-        self.label_title1.setFont(font)
         self.label_director = QLabel(self.page_avdc)
         self.label_director.setObjectName(u"label_director")
         self.label_director.setGeometry(QRect(50, 580, 220, 40))
-        self.label_director.setFont(font)
         self.label_director.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_director.setFrameShape(QFrame.Box)
         self.label_director.setLineWidth(1)
         self.label_publish = QLabel(self.page_avdc)
         self.label_publish.setObjectName(u"label_publish")
         self.label_publish.setGeometry(QRect(330, 630, 220, 40))
-        self.label_publish.setFont(font)
         self.label_publish.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_publish.setFrameShape(QFrame.Box)
         self.label_23 = QLabel(self.page_avdc)
         self.label_23.setObjectName(u"label_23")
         self.label_23.setGeometry(QRect(0, 580, 50, 40))
-        self.label_23.setFont(font)
         self.label_24 = QLabel(self.page_avdc)
         self.label_24.setObjectName(u"label_24")
         self.label_24.setGeometry(QRect(280, 630, 50, 40))
-        self.label_24.setFont(font)
         self.label_studio = QLabel(self.page_avdc)
         self.label_studio.setObjectName(u"label_studio")
         self.label_studio.setGeometry(QRect(50, 630, 220, 40))
-        self.label_studio.setFont(font)
         self.label_studio.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_studio.setFrameShape(QFrame.Box)
         self.label_studio.setLineWidth(1)
         self.label_series = QLabel(self.page_avdc)
         self.label_series.setObjectName(u"label_series")
         self.label_series.setGeometry(QRect(330, 580, 220, 40))
-        self.label_series.setFont(font)
         self.label_series.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_series.setFrameShape(QFrame.Box)
         self.label_30 = QLabel(self.page_avdc)
         self.label_30.setObjectName(u"label_30")
         self.label_30.setGeometry(QRect(0, 630, 50, 40))
-        self.label_30.setFont(font)
         self.label_31 = QLabel(self.page_avdc)
         self.label_31.setObjectName(u"label_31")
         self.label_31.setGeometry(QRect(280, 580, 50, 40))
-        self.label_31.setFont(font)
         self.label_tag = QLabel(self.page_avdc)
         self.label_tag.setObjectName(u"label_tag")
         self.label_tag.setGeometry(QRect(50, 480, 500, 40))
-        self.label_tag.setFont(font)
         self.label_tag.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_tag.setFrameShape(QFrame.Box)
         self.label_tag.setLineWidth(1)
         self.label_33 = QLabel(self.page_avdc)
         self.label_33.setObjectName(u"label_33")
         self.label_33.setGeometry(QRect(0, 480, 50, 40))
-        self.label_33.setFont(font)
         self.checkBox_cover = QCheckBox(self.page_avdc)
         self.checkBox_cover.setObjectName(u"checkBox_cover")
         self.checkBox_cover.setGeometry(QRect(50, 390, 291, 30))
-        self.checkBox_cover.setFont(font)
         self.label_result = QLabel(self.page_avdc)
         self.label_result.setObjectName(u"label_result")
         self.label_result.setGeometry(QRect(570, 70, 211, 40))
@@ -169,81 +140,64 @@ class Ui_AVDV(object):
         self.label_result.setSizePolicy(sizePolicy1)
         self.label_result.setMinimumSize(QSize(0, 0))
         self.label_result.setMaximumSize(QSize(16777215, 16777215))
-        font1 = QFont()
-        font1.setFamily(u"Courier")
-        font1.setBold(True)
-        font1.setWeight(75)
-        self.label_result.setFont(font1)
         self.label_result.setCursor(QCursor(Qt.ArrowCursor))
         self.label_result.setLayoutDirection(Qt.LeftToRight)
-        self.label_result.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);\n"
-"background-color: rgb(255, 255, 255);\n"
-"font-size:14px;")
+        self.label_result.setAutoFillBackground(False)
         self.label_result.setFrameShape(QFrame.Box)
+        self.label_result.setLineWidth(0)
         self.label_result.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.label_22 = QLabel(self.page_avdc)
         self.label_22.setObjectName(u"label_22")
         self.label_22.setGeometry(QRect(280, 530, 50, 40))
-        self.label_22.setFont(font)
         self.label_runtime = QLabel(self.page_avdc)
         self.label_runtime.setObjectName(u"label_runtime")
         self.label_runtime.setGeometry(QRect(330, 530, 220, 40))
-        self.label_runtime.setFont(font)
         self.label_runtime.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_runtime.setFrameShape(QFrame.Box)
         self.line_6 = QFrame(self.page_avdc)
         self.line_6.setObjectName(u"line_6")
         self.line_6.setGeometry(QRect(50, 460, 500, 20))
-        self.line_6.setFont(font)
         self.line_6.setFrameShape(QFrame.HLine)
         self.line_6.setFrameShadow(QFrame.Sunken)
         self.line_7 = QFrame(self.page_avdc)
         self.line_7.setObjectName(u"line_7")
         self.line_7.setGeometry(QRect(50, 510, 500, 20))
-        self.line_7.setFont(font)
         self.line_7.setFrameShape(QFrame.HLine)
         self.line_7.setFrameShadow(QFrame.Sunken)
         self.line_8 = QFrame(self.page_avdc)
         self.line_8.setObjectName(u"line_8")
         self.line_8.setGeometry(QRect(50, 560, 220, 20))
-        self.line_8.setFont(font)
         self.line_8.setFrameShape(QFrame.HLine)
         self.line_8.setFrameShadow(QFrame.Sunken)
         self.line_9 = QFrame(self.page_avdc)
         self.line_9.setObjectName(u"line_9")
         self.line_9.setGeometry(QRect(330, 560, 220, 20))
-        self.line_9.setFont(font)
         self.line_9.setFrameShape(QFrame.HLine)
         self.line_9.setFrameShadow(QFrame.Sunken)
         self.line_10 = QFrame(self.page_avdc)
         self.line_10.setObjectName(u"line_10")
         self.line_10.setGeometry(QRect(330, 610, 220, 20))
-        self.line_10.setFont(font)
         self.line_10.setFrameShape(QFrame.HLine)
         self.line_10.setFrameShadow(QFrame.Sunken)
         self.line_11 = QFrame(self.page_avdc)
         self.line_11.setObjectName(u"line_11")
         self.line_11.setGeometry(QRect(330, 660, 220, 20))
-        self.line_11.setFont(font)
         self.line_11.setFrameShape(QFrame.HLine)
         self.line_11.setFrameShadow(QFrame.Sunken)
         self.line_12 = QFrame(self.page_avdc)
         self.line_12.setObjectName(u"line_12")
         self.line_12.setGeometry(QRect(50, 610, 220, 20))
-        self.line_12.setFont(font)
         self.line_12.setFrameShape(QFrame.HLine)
         self.line_12.setFrameShadow(QFrame.Sunken)
         self.line_13 = QFrame(self.page_avdc)
         self.line_13.setObjectName(u"line_13")
         self.line_13.setGeometry(QRect(50, 660, 220, 20))
-        self.line_13.setFont(font)
         self.line_13.setFrameShape(QFrame.HLine)
         self.line_13.setFrameShadow(QFrame.Sunken)
         self.label_thumb = QLabel(self.page_avdc)
         self.label_thumb.setObjectName(u"label_thumb")
         self.label_thumb.setEnabled(True)
         self.label_thumb.setGeometry(QRect(222, 160, 328, 220))
-        self.label_thumb.setFont(font)
         self.label_thumb.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_thumb.setStyleSheet(u"border:1px solid rgba(0, 0, 0, 80);")
         self.label_thumb.setFrameShape(QFrame.Box)
@@ -256,7 +210,6 @@ class Ui_AVDV(object):
         self.label_poster.setSizePolicy(sizePolicy1)
         self.label_poster.setMinimumSize(QSize(156, 220))
         self.label_poster.setMaximumSize(QSize(156, 220))
-        self.label_poster.setFont(font)
         self.label_poster.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_poster.setStyleSheet(u"border:1px solid rgba(0, 0, 0, 80);")
         self.label_poster.setFrameShape(QFrame.Box)
@@ -264,32 +217,30 @@ class Ui_AVDV(object):
         self.label_poster1 = QLabel(self.page_avdc)
         self.label_poster1.setObjectName(u"label_poster1")
         self.label_poster1.setGeometry(QRect(0, 150, 50, 40))
-        self.label_poster1.setFont(font)
         self.treeWidget_number = QTreeWidget(self.page_avdc)
-        brush = QBrush(QColor(0, 0, 0, 255))
-        brush.setStyle(Qt.SolidPattern)
-        font2 = QFont()
-        font2.setFamily(u"Courier")
-        font2.setPointSize(13)
-        font2.setBold(True)
-        font2.setWeight(75)
+        font = QFont()
+        font.setFamily(u"Courier")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
         __qtreewidgetitem = QTreeWidgetItem()
-        __qtreewidgetitem.setFont(0, font2);
-        __qtreewidgetitem.setBackground(0, QColor(85, 170, 255));
-        __qtreewidgetitem.setForeground(0, brush);
+        __qtreewidgetitem.setFont(0, font);
         self.treeWidget_number.setHeaderItem(__qtreewidgetitem)
         QTreeWidgetItem(self.treeWidget_number)
         QTreeWidgetItem(self.treeWidget_number)
         self.treeWidget_number.setObjectName(u"treeWidget_number")
-        self.treeWidget_number.setGeometry(QRect(570, 110, 211, 580))
-        self.treeWidget_number.setFont(font)
-        self.treeWidget_number.setStyleSheet(u"")
-        self.treeWidget_number.setFrameShape(QFrame.NoFrame)
+        self.treeWidget_number.setGeometry(QRect(570, 110, 202, 563))
+        self.treeWidget_number.setFrameShape(QFrame.Box)
         self.treeWidget_number.setFrameShadow(QFrame.Plain)
         self.treeWidget_number.setLineWidth(0)
+        self.treeWidget_number.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.treeWidget_number.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.treeWidget_number.setAutoScrollMargin(2)
         self.treeWidget_number.setEditTriggers(QAbstractItemView.DoubleClicked|QAbstractItemView.EditKeyPressed)
         self.treeWidget_number.setTabKeyNavigation(False)
         self.treeWidget_number.setProperty("showDropIndicator", True)
+        self.treeWidget_number.setTextElideMode(Qt.ElideRight)
+        self.treeWidget_number.setVerticalScrollMode(QAbstractItemView.ScrollPerItem)
         self.treeWidget_number.setIndentation(10)
         self.treeWidget_number.setRootIsDecorated(True)
         self.treeWidget_number.setUniformRowHeights(True)
@@ -302,19 +253,16 @@ class Ui_AVDV(object):
         self.label_file_path = QLabel(self.page_avdc)
         self.label_file_path.setObjectName(u"label_file_path")
         self.label_file_path.setGeometry(QRect(0, 10, 800, 50))
-        self.label_file_path.setFont(font)
         self.label_file_path.setStyleSheet(u"")
         self.label_file_path.setFrameShape(QFrame.Box)
         self.line_14 = QFrame(self.page_avdc)
         self.line_14.setObjectName(u"line_14")
         self.line_14.setGeometry(QRect(0, 60, 771, 20))
-        self.line_14.setFont(font)
         self.line_14.setFrameShape(QFrame.HLine)
         self.line_14.setFrameShadow(QFrame.Sunken)
         self.label_source = QLabel(self.page_avdc)
         self.label_source.setObjectName(u"label_source")
         self.label_source.setGeometry(QRect(430, 70, 121, 40))
-        self.label_source.setFont(font)
         self.label_source.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_source.setStyleSheet(u"border:0px solid rgba(0, 0, 0, 80);")
         self.label_source.setFrameShape(QFrame.Box)
@@ -322,7 +270,6 @@ class Ui_AVDV(object):
         self.label_19 = QLabel(self.page_avdc)
         self.label_19.setObjectName(u"label_19")
         self.label_19.setGeometry(QRect(390, 390, 131, 31))
-        self.label_19.setFont(font)
         self.label_19.setStyleSheet(u"color: rgba(0, 0, 0, 153);")
         self.label_19.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.stackedWidget.addWidget(self.page_avdc)
@@ -376,7 +323,6 @@ class Ui_AVDV(object):
         self.pushButton_start_cap2 = QPushButton(self.page_log)
         self.pushButton_start_cap2.setObjectName(u"pushButton_start_cap2")
         self.pushButton_start_cap2.setGeometry(QRect(650, 13, 120, 40))
-        self.pushButton_start_cap2.setFont(font)
         self.stackedWidget.addWidget(self.page_log)
         self.page_net = QWidget()
         self.page_net.setObjectName(u"page_net")
@@ -387,54 +333,39 @@ class Ui_AVDV(object):
         self.pushButton_check_net = QPushButton(self.page_net)
         self.pushButton_check_net.setObjectName(u"pushButton_check_net")
         self.pushButton_check_net.setGeometry(QRect(650, 13, 120, 40))
-        self.pushButton_check_net.setFont(font)
         self.stackedWidget.addWidget(self.page_net)
         self.page_tool = QWidget()
         self.page_tool.setObjectName(u"page_tool")
         self.groupBox_6 = QGroupBox(self.page_tool)
         self.groupBox_6.setObjectName(u"groupBox_6")
         self.groupBox_6.setGeometry(QRect(10, 10, 751, 121))
-        font3 = QFont()
-        font3.setFamily(u"Courier")
-        font3.setPointSize(13)
-        font3.setBold(False)
-        font3.setItalic(False)
-        font3.setWeight(50)
-        self.groupBox_6.setFont(font3)
         self.groupBox_6.setStyleSheet(u"font:\"Courier\";")
         self.label_8 = QLabel(self.groupBox_6)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setGeometry(QRect(230, 70, 511, 41))
-        self.label_8.setFont(font3)
         self.pushButton_move_mp4 = QPushButton(self.groupBox_6)
         self.pushButton_move_mp4.setObjectName(u"pushButton_move_mp4")
         self.pushButton_move_mp4.setGeometry(QRect(10, 30, 200, 50))
-        self.pushButton_move_mp4.setFont(font3)
         self.label_41 = QLabel(self.groupBox_6)
         self.label_41.setObjectName(u"label_41")
         self.label_41.setGeometry(QRect(230, 30, 80, 30))
-        self.label_41.setFont(font3)
         self.label_41.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.lineEdit_escape_dir_move = QLineEdit(self.groupBox_6)
         self.lineEdit_escape_dir_move.setObjectName(u"lineEdit_escape_dir_move")
         self.lineEdit_escape_dir_move.setGeometry(QRect(310, 30, 430, 30))
-        self.lineEdit_escape_dir_move.setFont(font3)
         self.lineEdit_escape_dir_move.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
 "")
         self.groupBox_7 = QGroupBox(self.page_tool)
         self.groupBox_7.setObjectName(u"groupBox_7")
         self.groupBox_7.setGeometry(QRect(10, 140, 751, 201))
-        self.groupBox_7.setFont(font3)
         self.groupBox_7.setStyleSheet(u"font:\"Courier\";")
         self.label = QLabel(self.groupBox_7)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(230, 150, 511, 41))
-        self.label.setFont(font3)
         self.pushButton_select_file = QPushButton(self.groupBox_7)
         self.pushButton_select_file.setObjectName(u"pushButton_select_file")
         self.pushButton_select_file.setGeometry(QRect(10, 30, 200, 50))
-        self.pushButton_select_file.setFont(font3)
         self.comboBox_website = QComboBox(self.groupBox_7)
         self.comboBox_website.addItem("")
         self.comboBox_website.addItem("")
@@ -452,81 +383,66 @@ class Ui_AVDV(object):
         self.comboBox_website.addItem("")
         self.comboBox_website.setObjectName(u"comboBox_website")
         self.comboBox_website.setGeometry(QRect(310, 30, 430, 30))
-        self.comboBox_website.setFont(font3)
         self.label_2 = QLabel(self.groupBox_7)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(230, 30, 80, 30))
-        self.label_2.setFont(font3)
         self.label_2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.lineEdit_appoint_url = QLineEdit(self.groupBox_7)
         self.lineEdit_appoint_url.setObjectName(u"lineEdit_appoint_url")
         self.lineEdit_appoint_url.setGeometry(QRect(310, 70, 430, 30))
-        self.lineEdit_appoint_url.setFont(font3)
         self.lineEdit_appoint_url.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
 "")
         self.label_10 = QLabel(self.groupBox_7)
         self.label_10.setObjectName(u"label_10")
         self.label_10.setGeometry(QRect(230, 70, 80, 30))
-        self.label_10.setFont(font3)
         self.label_10.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.lineEdit_movie_number = QLineEdit(self.groupBox_7)
         self.lineEdit_movie_number.setObjectName(u"lineEdit_movie_number")
         self.lineEdit_movie_number.setGeometry(QRect(310, 110, 430, 30))
-        self.lineEdit_movie_number.setFont(font3)
         self.lineEdit_movie_number.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
 "")
         self.label_12 = QLabel(self.groupBox_7)
         self.label_12.setObjectName(u"label_12")
         self.label_12.setGeometry(QRect(230, 110, 80, 30))
-        self.label_12.setFont(font3)
         self.label_12.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.pushButton_start_single_file = QPushButton(self.groupBox_7)
         self.pushButton_start_single_file.setObjectName(u"pushButton_start_single_file")
         self.pushButton_start_single_file.setGeometry(QRect(10, 100, 200, 50))
-        self.pushButton_start_single_file.setFont(font3)
         self.groupBox_12 = QGroupBox(self.page_tool)
         self.groupBox_12.setObjectName(u"groupBox_12")
         self.groupBox_12.setGeometry(QRect(10, 350, 751, 191))
-        self.groupBox_12.setFont(font3)
         self.groupBox_12.setStyleSheet(u"font:\"Courier\";")
         self.pushButton_add_actor_pic = QPushButton(self.groupBox_12)
         self.pushButton_add_actor_pic.setObjectName(u"pushButton_add_actor_pic")
         self.pushButton_add_actor_pic.setGeometry(QRect(10, 30, 200, 50))
-        self.pushButton_add_actor_pic.setFont(font3)
         self.lineEdit_emby_url = QLineEdit(self.groupBox_12)
         self.lineEdit_emby_url.setObjectName(u"lineEdit_emby_url")
         self.lineEdit_emby_url.setGeometry(QRect(310, 30, 430, 30))
-        self.lineEdit_emby_url.setFont(font3)
         self.lineEdit_emby_url.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
 "")
         self.label_3 = QLabel(self.groupBox_12)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setGeometry(QRect(230, 30, 80, 30))
-        self.label_3.setFont(font3)
         self.label_3.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.label_4 = QLabel(self.groupBox_12)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(230, 74, 80, 30))
-        self.label_4.setFont(font3)
         self.label_4.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.lineEdit_api_key = QLineEdit(self.groupBox_12)
         self.lineEdit_api_key.setObjectName(u"lineEdit_api_key")
         self.lineEdit_api_key.setGeometry(QRect(310, 70, 430, 30))
-        self.lineEdit_api_key.setFont(font3)
         self.lineEdit_api_key.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
 "")
         self.label_5 = QLabel(self.groupBox_12)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setGeometry(QRect(230, 110, 511, 71))
-        self.label_5.setFont(font3)
         self.pushButton_show_pic_actor = QPushButton(self.groupBox_12)
         self.pushButton_show_pic_actor.setObjectName(u"pushButton_show_pic_actor")
         self.pushButton_show_pic_actor.setGeometry(QRect(10, 130, 200, 50))
-        self.pushButton_show_pic_actor.setFont(font3)
         self.comboBox_pic_actor = QComboBox(self.groupBox_12)
         self.comboBox_pic_actor.addItem("")
         self.comboBox_pic_actor.addItem("")
@@ -534,11 +450,9 @@ class Ui_AVDV(object):
         self.comboBox_pic_actor.addItem("")
         self.comboBox_pic_actor.setObjectName(u"comboBox_pic_actor")
         self.comboBox_pic_actor.setGeometry(QRect(10, 90, 200, 30))
-        self.comboBox_pic_actor.setFont(font3)
         self.label_download_acotr_zip = QLabel(self.groupBox_12)
         self.label_download_acotr_zip.setObjectName(u"label_download_acotr_zip")
         self.label_download_acotr_zip.setGeometry(QRect(620, 130, 111, 30))
-        self.label_download_acotr_zip.setFont(font3)
         self.label_download_acotr_zip.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_download_acotr_zip.setMouseTracking(False)
         self.label_download_acotr_zip.setStyleSheet(u"color: rgb(10, 52, 255);")
@@ -549,23 +463,19 @@ class Ui_AVDV(object):
         self.groupBox_13 = QGroupBox(self.page_tool)
         self.groupBox_13.setObjectName(u"groupBox_13")
         self.groupBox_13.setGeometry(QRect(10, 550, 751, 111))
-        self.groupBox_13.setFont(font3)
         self.groupBox_13.setStyleSheet(u"font:\"Courier\";")
         self.pushButton_select_thumb = QPushButton(self.groupBox_13)
         self.pushButton_select_thumb.setObjectName(u"pushButton_select_thumb")
         self.pushButton_select_thumb.setGeometry(QRect(10, 30, 200, 50))
-        self.pushButton_select_thumb.setFont(font3)
         self.label_6 = QLabel(self.groupBox_13)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setGeometry(QRect(230, 20, 511, 71))
-        self.label_6.setFont(font3)
         self.stackedWidget.addWidget(self.page_tool)
         self.page_setting = QWidget()
         self.page_setting.setObjectName(u"page_setting")
         self.tabWidget = QTabWidget(self.page_setting)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setGeometry(QRect(0, 10, 771, 606))
-        self.tabWidget.setFont(font3)
         self.tabWidget.setAutoFillBackground(False)
         self.tabWidget.setIconSize(QSize(16, 20))
         self.tabWidget.setElideMode(Qt.ElideNone)
@@ -592,11 +502,10 @@ class Ui_AVDV(object):
         self.groupBox_16 = QGroupBox(self.scrollAreaWidgetContents_2)
         self.groupBox_16.setObjectName(u"groupBox_16")
         self.groupBox_16.setGeometry(QRect(30, 10, 701, 301))
-        self.groupBox_16.setFont(font3)
         self.groupBox_16.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_7 = QWidget(self.groupBox_16)
         self.gridLayoutWidget_7.setObjectName(u"gridLayoutWidget_7")
-        self.gridLayoutWidget_7.setGeometry(QRect(0, 30, 681, 261))
+        self.gridLayoutWidget_7.setGeometry(QRect(10, 20, 681, 271))
         self.gridLayout_7 = QGridLayout(self.gridLayoutWidget_7)
         self.gridLayout_7.setObjectName(u"gridLayout_7")
         self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -608,7 +517,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_46.sizePolicy().hasHeightForWidth())
         self.label_46.setSizePolicy(sizePolicy3)
         self.label_46.setMinimumSize(QSize(160, 30))
-        self.label_46.setFont(font3)
         self.label_46.setLayoutDirection(Qt.LeftToRight)
         self.label_46.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -619,7 +527,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_47.sizePolicy().hasHeightForWidth())
         self.label_47.setSizePolicy(sizePolicy3)
         self.label_47.setMinimumSize(QSize(160, 30))
-        self.label_47.setFont(font3)
         self.label_47.setLayoutDirection(Qt.LeftToRight)
         self.label_47.setFrameShape(QFrame.NoFrame)
         self.label_47.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
@@ -634,7 +541,6 @@ class Ui_AVDV(object):
         sizePolicy4.setHeightForWidth(self.lineEdit_movie_path.sizePolicy().hasHeightForWidth())
         self.lineEdit_movie_path.setSizePolicy(sizePolicy4)
         self.lineEdit_movie_path.setMinimumSize(QSize(300, 30))
-        self.lineEdit_movie_path.setFont(font3)
         self.lineEdit_movie_path.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -647,7 +553,6 @@ class Ui_AVDV(object):
         sizePolicy4.setHeightForWidth(self.lineEdit_escape_dir.sizePolicy().hasHeightForWidth())
         self.lineEdit_escape_dir.setSizePolicy(sizePolicy4)
         self.lineEdit_escape_dir.setMinimumSize(QSize(300, 30))
-        self.lineEdit_escape_dir.setFont(font3)
         self.lineEdit_escape_dir.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -659,13 +564,6 @@ class Ui_AVDV(object):
         self.label_29.setObjectName(u"label_29")
         sizePolicy4.setHeightForWidth(self.label_29.sizePolicy().hasHeightForWidth())
         self.label_29.setSizePolicy(sizePolicy4)
-        font4 = QFont()
-        font4.setFamily(u"Courier")
-        font4.setPointSize(12)
-        font4.setBold(False)
-        font4.setItalic(False)
-        font4.setWeight(50)
-        self.label_29.setFont(font4)
         self.label_29.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_7.addWidget(self.label_29, 3, 1, 1, 1)
@@ -675,7 +573,6 @@ class Ui_AVDV(object):
         sizePolicy4.setHeightForWidth(self.lineEdit_fail.sizePolicy().hasHeightForWidth())
         self.lineEdit_fail.setSizePolicy(sizePolicy4)
         self.lineEdit_fail.setMinimumSize(QSize(300, 30))
-        self.lineEdit_fail.setFont(font3)
         self.lineEdit_fail.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -688,7 +585,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_48.sizePolicy().hasHeightForWidth())
         self.label_48.setSizePolicy(sizePolicy3)
         self.label_48.setMinimumSize(QSize(160, 30))
-        self.label_48.setFont(font3)
         self.label_48.setLayoutDirection(Qt.LeftToRight)
         self.label_48.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -699,7 +595,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_49.sizePolicy().hasHeightForWidth())
         self.label_49.setSizePolicy(sizePolicy3)
         self.label_49.setMinimumSize(QSize(160, 30))
-        self.label_49.setFont(font3)
         self.label_49.setLayoutDirection(Qt.LeftToRight)
         self.label_49.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -709,7 +604,6 @@ class Ui_AVDV(object):
         self.label_56.setObjectName(u"label_56")
         sizePolicy4.setHeightForWidth(self.label_56.sizePolicy().hasHeightForWidth())
         self.label_56.setSizePolicy(sizePolicy4)
-        self.label_56.setFont(font4)
         self.label_56.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_7.addWidget(self.label_56, 1, 1, 1, 1)
@@ -718,7 +612,6 @@ class Ui_AVDV(object):
         self.label_57.setObjectName(u"label_57")
         sizePolicy4.setHeightForWidth(self.label_57.sizePolicy().hasHeightForWidth())
         self.label_57.setSizePolicy(sizePolicy4)
-        self.label_57.setFont(font4)
         self.label_57.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_7.addWidget(self.label_57, 5, 1, 1, 1)
@@ -728,7 +621,6 @@ class Ui_AVDV(object):
         sizePolicy4.setHeightForWidth(self.lineEdit_success.sizePolicy().hasHeightForWidth())
         self.lineEdit_success.setSizePolicy(sizePolicy4)
         self.lineEdit_success.setMinimumSize(QSize(300, 30))
-        self.lineEdit_success.setFont(font3)
         self.lineEdit_success.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -740,19 +632,17 @@ class Ui_AVDV(object):
         self.label_58.setObjectName(u"label_58")
         sizePolicy4.setHeightForWidth(self.label_58.sizePolicy().hasHeightForWidth())
         self.label_58.setSizePolicy(sizePolicy4)
-        self.label_58.setFont(font4)
         self.label_58.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_7.addWidget(self.label_58, 7, 1, 1, 1)
 
         self.groupBox_9 = QGroupBox(self.scrollAreaWidgetContents_2)
         self.groupBox_9.setObjectName(u"groupBox_9")
-        self.groupBox_9.setGeometry(QRect(30, 520, 701, 121))
-        self.groupBox_9.setFont(font3)
+        self.groupBox_9.setGeometry(QRect(30, 520, 701, 111))
         self.groupBox_9.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_16 = QWidget(self.groupBox_9)
         self.gridLayoutWidget_16.setObjectName(u"gridLayoutWidget_16")
-        self.gridLayoutWidget_16.setGeometry(QRect(0, 30, 681, 81))
+        self.gridLayoutWidget_16.setGeometry(QRect(10, 20, 681, 81))
         self.gridLayout_16 = QGridLayout(self.gridLayoutWidget_16)
         self.gridLayout_16.setObjectName(u"gridLayout_16")
         self.gridLayout_16.setContentsMargins(0, 0, 0, 0)
@@ -764,7 +654,6 @@ class Ui_AVDV(object):
         sizePolicy5.setHeightForWidth(self.label_50.sizePolicy().hasHeightForWidth())
         self.label_50.setSizePolicy(sizePolicy5)
         self.label_50.setMinimumSize(QSize(160, 30))
-        self.label_50.setFont(font3)
         self.label_50.setLayoutDirection(Qt.RightToLeft)
         self.label_50.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -775,7 +664,6 @@ class Ui_AVDV(object):
         sizePolicy4.setHeightForWidth(self.lineEdit_sub_type_2.sizePolicy().hasHeightForWidth())
         self.lineEdit_sub_type_2.setSizePolicy(sizePolicy4)
         self.lineEdit_sub_type_2.setMinimumSize(QSize(300, 30))
-        self.lineEdit_sub_type_2.setFont(font3)
         self.lineEdit_sub_type_2.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -788,7 +676,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_78.sizePolicy().hasHeightForWidth())
         self.label_78.setSizePolicy(sizePolicy3)
         self.label_78.setMinimumSize(QSize(160, 30))
-        self.label_78.setFont(font3)
         self.label_78.setLayoutDirection(Qt.LeftToRight)
         self.label_78.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -799,7 +686,6 @@ class Ui_AVDV(object):
         sizePolicy4.setHeightForWidth(self.lineEdit_movie_type_2.sizePolicy().hasHeightForWidth())
         self.lineEdit_movie_type_2.setSizePolicy(sizePolicy4)
         self.lineEdit_movie_type_2.setMinimumSize(QSize(300, 30))
-        self.lineEdit_movie_type_2.setFont(font3)
         self.lineEdit_movie_type_2.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -809,12 +695,11 @@ class Ui_AVDV(object):
 
         self.groupBox_32 = QGroupBox(self.scrollAreaWidgetContents_2)
         self.groupBox_32.setObjectName(u"groupBox_32")
-        self.groupBox_32.setGeometry(QRect(30, 330, 701, 181))
-        self.groupBox_32.setFont(font3)
+        self.groupBox_32.setGeometry(QRect(30, 330, 701, 171))
         self.groupBox_32.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_19 = QWidget(self.groupBox_32)
         self.gridLayoutWidget_19.setObjectName(u"gridLayoutWidget_19")
-        self.gridLayoutWidget_19.setGeometry(QRect(0, 30, 681, 139))
+        self.gridLayoutWidget_19.setGeometry(QRect(10, 20, 681, 139))
         self.gridLayout_19 = QGridLayout(self.gridLayoutWidget_19)
         self.gridLayout_19.setObjectName(u"gridLayout_19")
         self.gridLayout_19.setContentsMargins(0, 0, 0, 0)
@@ -827,7 +712,6 @@ class Ui_AVDV(object):
         self.lineEdit_escape_string_2.setSizePolicy(sizePolicy6)
         self.lineEdit_escape_string_2.setMinimumSize(QSize(500, 30))
         self.lineEdit_escape_string_2.setMaximumSize(QSize(540, 16777215))
-        self.lineEdit_escape_string_2.setFont(font3)
         self.lineEdit_escape_string_2.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -840,7 +724,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_83.sizePolicy().hasHeightForWidth())
         self.label_83.setSizePolicy(sizePolicy3)
         self.label_83.setMinimumSize(QSize(160, 30))
-        self.label_83.setFont(font3)
         self.label_83.setLayoutDirection(Qt.LeftToRight)
         self.label_83.setFrameShape(QFrame.NoFrame)
         self.label_83.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
@@ -851,7 +734,6 @@ class Ui_AVDV(object):
         self.label_88.setObjectName(u"label_88")
         sizePolicy4.setHeightForWidth(self.label_88.sizePolicy().hasHeightForWidth())
         self.label_88.setSizePolicy(sizePolicy4)
-        self.label_88.setFont(font4)
         self.label_88.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_19.addWidget(self.label_88, 1, 1, 1, 1)
@@ -862,7 +744,6 @@ class Ui_AVDV(object):
         self.lineEdit_escape_size.setSizePolicy(sizePolicy6)
         self.lineEdit_escape_size.setMinimumSize(QSize(500, 30))
         self.lineEdit_escape_size.setMaximumSize(QSize(540, 16777215))
-        self.lineEdit_escape_size.setFont(font3)
         self.lineEdit_escape_size.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -874,7 +755,6 @@ class Ui_AVDV(object):
         self.label_94.setObjectName(u"label_94")
         sizePolicy4.setHeightForWidth(self.label_94.sizePolicy().hasHeightForWidth())
         self.label_94.setSizePolicy(sizePolicy4)
-        self.label_94.setFont(font4)
         self.label_94.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_19.addWidget(self.label_94, 3, 1, 1, 1)
@@ -884,7 +764,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_93.sizePolicy().hasHeightForWidth())
         self.label_93.setSizePolicy(sizePolicy3)
         self.label_93.setMinimumSize(QSize(160, 30))
-        self.label_93.setFont(font3)
         self.label_93.setLayoutDirection(Qt.LeftToRight)
         self.label_93.setFrameShape(QFrame.NoFrame)
         self.label_93.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
@@ -914,16 +793,17 @@ class Ui_AVDV(object):
         self.groupBox.setGeometry(QRect(30, 110, 701, 181))
         self.groupBox.setMinimumSize(QSize(200, 0))
         self.groupBox.setMaximumSize(QSize(739, 16777215))
-        self.groupBox.setFont(font3)
         self.gridLayoutWidget_2 = QWidget(self.groupBox)
         self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
-        self.gridLayoutWidget_2.setGeometry(QRect(60, 20, 641, 161))
+        self.gridLayoutWidget_2.setGeometry(QRect(60, 20, 631, 131))
         self.gridLayout_2 = QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.radioButton_read = QRadioButton(self.gridLayoutWidget_2)
         self.radioButton_read.setObjectName(u"radioButton_read")
-        self.radioButton_read.setFont(font3)
+        sizePolicy3.setHeightForWidth(self.radioButton_read.sizePolicy().hasHeightForWidth())
+        self.radioButton_read.setSizePolicy(sizePolicy3)
+        self.radioButton_read.setMinimumSize(QSize(0, 0))
 
         self.gridLayout_2.addWidget(self.radioButton_read, 2, 0, 1, 1)
 
@@ -931,63 +811,58 @@ class Ui_AVDV(object):
         self.label_11.setObjectName(u"label_11")
         sizePolicy4.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
         self.label_11.setSizePolicy(sizePolicy4)
-        self.label_11.setFont(font4)
         self.label_11.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_2.addWidget(self.label_11, 0, 1, 1, 1)
-
-        self.label_15 = QLabel(self.gridLayoutWidget_2)
-        self.label_15.setObjectName(u"label_15")
-        sizePolicy4.setHeightForWidth(self.label_15.sizePolicy().hasHeightForWidth())
-        self.label_15.setSizePolicy(sizePolicy4)
-        self.label_15.setFont(font4)
-        self.label_15.setStyleSheet(u"color: rgb(8, 128, 128);")
-
-        self.gridLayout_2.addWidget(self.label_15, 1, 1, 1, 1)
-
-        self.radioButton_common = QRadioButton(self.gridLayoutWidget_2)
-        self.radioButton_common.setObjectName(u"radioButton_common")
-        sizePolicy3.setHeightForWidth(self.radioButton_common.sizePolicy().hasHeightForWidth())
-        self.radioButton_common.setSizePolicy(sizePolicy3)
-        self.radioButton_common.setMinimumSize(QSize(80, 0))
-        self.radioButton_common.setFont(font3)
-        self.radioButton_common.setAutoRepeatDelay(300)
-
-        self.gridLayout_2.addWidget(self.radioButton_common, 0, 0, 1, 1)
 
         self.label_16 = QLabel(self.gridLayoutWidget_2)
         self.label_16.setObjectName(u"label_16")
         sizePolicy4.setHeightForWidth(self.label_16.sizePolicy().hasHeightForWidth())
         self.label_16.setSizePolicy(sizePolicy4)
-        self.label_16.setFont(font4)
         self.label_16.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_2.addWidget(self.label_16, 2, 1, 1, 1)
 
         self.radioButton_sort = QRadioButton(self.gridLayoutWidget_2)
         self.radioButton_sort.setObjectName(u"radioButton_sort")
-        self.radioButton_sort.setFont(font3)
+        sizePolicy3.setHeightForWidth(self.radioButton_sort.sizePolicy().hasHeightForWidth())
+        self.radioButton_sort.setSizePolicy(sizePolicy3)
+        self.radioButton_sort.setMinimumSize(QSize(0, 0))
 
         self.gridLayout_2.addWidget(self.radioButton_sort, 1, 0, 1, 1)
 
-        self.checkBox_read_no_nfo = QCheckBox(self.gridLayoutWidget_2)
+        self.radioButton_common = QRadioButton(self.gridLayoutWidget_2)
+        self.radioButton_common.setObjectName(u"radioButton_common")
+        self.radioButton_common.setEnabled(True)
+        sizePolicy3.setHeightForWidth(self.radioButton_common.sizePolicy().hasHeightForWidth())
+        self.radioButton_common.setSizePolicy(sizePolicy3)
+        self.radioButton_common.setMinimumSize(QSize(80, 0))
+        self.radioButton_common.setAutoRepeatDelay(300)
+
+        self.gridLayout_2.addWidget(self.radioButton_common, 0, 0, 1, 1)
+
+        self.label_15 = QLabel(self.gridLayoutWidget_2)
+        self.label_15.setObjectName(u"label_15")
+        sizePolicy4.setHeightForWidth(self.label_15.sizePolicy().hasHeightForWidth())
+        self.label_15.setSizePolicy(sizePolicy4)
+        self.label_15.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_2.addWidget(self.label_15, 1, 1, 1, 1)
+
+        self.checkBox_read_no_nfo = QCheckBox(self.groupBox)
         self.checkBox_read_no_nfo.setObjectName(u"checkBox_read_no_nfo")
+        self.checkBox_read_no_nfo.setGeometry(QRect(150, 150, 261, 16))
         sizePolicy3.setHeightForWidth(self.checkBox_read_no_nfo.sizePolicy().hasHeightForWidth())
         self.checkBox_read_no_nfo.setSizePolicy(sizePolicy3)
         self.checkBox_read_no_nfo.setMinimumSize(QSize(0, 0))
-        self.checkBox_read_no_nfo.setFont(font3)
-
-        self.gridLayout_2.addWidget(self.checkBox_read_no_nfo, 3, 1, 1, 1)
-
         self.groupBox_5 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_5.setObjectName(u"groupBox_5")
         self.groupBox_5.setGeometry(QRect(30, 310, 701, 101))
         self.groupBox_5.setMinimumSize(QSize(200, 0))
         self.groupBox_5.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_5.setFont(font3)
         self.gridLayoutWidget = QWidget(self.groupBox_5)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(60, 20, 641, 81))
+        self.gridLayoutWidget.setGeometry(QRect(60, 20, 631, 71))
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -996,14 +871,12 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.radioButton_like_speed.sizePolicy().hasHeightForWidth())
         self.radioButton_like_speed.setSizePolicy(sizePolicy3)
         self.radioButton_like_speed.setMinimumSize(QSize(80, 0))
-        self.radioButton_like_speed.setFont(font3)
         self.radioButton_like_speed.setLayoutDirection(Qt.LeftToRight)
 
         self.gridLayout.addWidget(self.radioButton_like_speed, 0, 0, 1, 1)
 
         self.radioButton_like_more = QRadioButton(self.gridLayoutWidget)
         self.radioButton_like_more.setObjectName(u"radioButton_like_more")
-        self.radioButton_like_more.setFont(font3)
 
         self.gridLayout.addWidget(self.radioButton_like_more, 1, 0, 1, 1)
 
@@ -1011,7 +884,6 @@ class Ui_AVDV(object):
         self.label_28.setObjectName(u"label_28")
         sizePolicy4.setHeightForWidth(self.label_28.sizePolicy().hasHeightForWidth())
         self.label_28.setSizePolicy(sizePolicy4)
-        self.label_28.setFont(font4)
         self.label_28.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout.addWidget(self.label_28, 0, 1, 1, 1)
@@ -1020,7 +892,6 @@ class Ui_AVDV(object):
         self.label_32.setObjectName(u"label_32")
         sizePolicy4.setHeightForWidth(self.label_32.sizePolicy().hasHeightForWidth())
         self.label_32.setSizePolicy(sizePolicy4)
-        self.label_32.setFont(font4)
         self.label_32.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout.addWidget(self.label_32, 1, 1, 1, 1)
@@ -1028,7 +899,6 @@ class Ui_AVDV(object):
         self.groupBox_11 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_11.setObjectName(u"groupBox_11")
         self.groupBox_11.setGeometry(QRect(30, 10, 701, 81))
-        self.groupBox_11.setFont(font3)
         self.groupBox_11.setStyleSheet(u"")
         self.comboBox_website_all = QComboBox(self.groupBox_11)
         self.comboBox_website_all.addItem("")
@@ -1046,13 +916,12 @@ class Ui_AVDV(object):
         self.comboBox_website_all.addItem("")
         self.comboBox_website_all.addItem("")
         self.comboBox_website_all.setObjectName(u"comboBox_website_all")
-        self.comboBox_website_all.setGeometry(QRect(60, 30, 631, 40))
+        self.comboBox_website_all.setGeometry(QRect(60, 20, 631, 40))
         sizePolicy6.setHeightForWidth(self.comboBox_website_all.sizePolicy().hasHeightForWidth())
         self.comboBox_website_all.setSizePolicy(sizePolicy6)
         self.comboBox_website_all.setMinimumSize(QSize(400, 40))
         self.comboBox_website_all.setMaximumSize(QSize(16000, 40))
         self.comboBox_website_all.setSizeIncrement(QSize(0, 0))
-        self.comboBox_website_all.setFont(font3)
         self.comboBox_website_all.setStyleSheet(u"")
         self.comboBox_website_all.setFrame(False)
         self.groupBox_2 = QGroupBox(self.scrollAreaWidgetContents)
@@ -1060,10 +929,9 @@ class Ui_AVDV(object):
         self.groupBox_2.setGeometry(QRect(30, 580, 701, 101))
         self.groupBox_2.setMinimumSize(QSize(200, 0))
         self.groupBox_2.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_2.setFont(font3)
         self.gridLayoutWidget_4 = QWidget(self.groupBox_2)
         self.gridLayoutWidget_4.setObjectName(u"gridLayoutWidget_4")
-        self.gridLayoutWidget_4.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayoutWidget_4.setGeometry(QRect(60, 20, 631, 71))
         self.gridLayout_4 = QGridLayout(self.gridLayoutWidget_4)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -1071,7 +939,6 @@ class Ui_AVDV(object):
         self.label_36.setObjectName(u"label_36")
         sizePolicy4.setHeightForWidth(self.label_36.sizePolicy().hasHeightForWidth())
         self.label_36.setSizePolicy(sizePolicy4)
-        self.label_36.setFont(font4)
         self.label_36.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_4.addWidget(self.label_36, 0, 1, 1, 1)
@@ -1080,7 +947,6 @@ class Ui_AVDV(object):
         self.label_37.setObjectName(u"label_37")
         sizePolicy4.setHeightForWidth(self.label_37.sizePolicy().hasHeightForWidth())
         self.label_37.setSizePolicy(sizePolicy4)
-        self.label_37.setFont(font4)
         self.label_37.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_4.addWidget(self.label_37, 1, 1, 1, 1)
@@ -1090,13 +956,11 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.radioButton_soft_on.sizePolicy().hasHeightForWidth())
         self.radioButton_soft_on.setSizePolicy(sizePolicy3)
         self.radioButton_soft_on.setMinimumSize(QSize(80, 0))
-        self.radioButton_soft_on.setFont(font3)
 
         self.gridLayout_4.addWidget(self.radioButton_soft_on, 0, 0, 1, 1)
 
         self.radioButton_soft_off = QRadioButton(self.gridLayoutWidget_4)
         self.radioButton_soft_off.setObjectName(u"radioButton_soft_off")
-        self.radioButton_soft_off.setFont(font3)
 
         self.gridLayout_4.addWidget(self.radioButton_soft_off, 1, 0, 1, 1)
 
@@ -1105,10 +969,9 @@ class Ui_AVDV(object):
         self.groupBox_18.setGeometry(QRect(30, 940, 701, 101))
         self.groupBox_18.setMinimumSize(QSize(200, 0))
         self.groupBox_18.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_18.setFont(font3)
         self.gridLayoutWidget_13 = QWidget(self.groupBox_18)
         self.gridLayoutWidget_13.setObjectName(u"gridLayoutWidget_13")
-        self.gridLayoutWidget_13.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayoutWidget_13.setGeometry(QRect(60, 20, 631, 71))
         self.gridLayout_13 = QGridLayout(self.gridLayoutWidget_13)
         self.gridLayout_13.setObjectName(u"gridLayout_13")
         self.gridLayout_13.setContentsMargins(0, 0, 0, 0)
@@ -1116,7 +979,6 @@ class Ui_AVDV(object):
         self.label_38.setObjectName(u"label_38")
         sizePolicy4.setHeightForWidth(self.label_38.sizePolicy().hasHeightForWidth())
         self.label_38.setSizePolicy(sizePolicy4)
-        self.label_38.setFont(font4)
         self.label_38.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_13.addWidget(self.label_38, 0, 1, 1, 1)
@@ -1125,7 +987,6 @@ class Ui_AVDV(object):
         self.label_39.setObjectName(u"label_39")
         sizePolicy4.setHeightForWidth(self.label_39.sizePolicy().hasHeightForWidth())
         self.label_39.setSizePolicy(sizePolicy4)
-        self.label_39.setFont(font4)
         self.label_39.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_13.addWidget(self.label_39, 1, 1, 1, 1)
@@ -1135,13 +996,11 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.radioButton_succ_rename_on.sizePolicy().hasHeightForWidth())
         self.radioButton_succ_rename_on.setSizePolicy(sizePolicy3)
         self.radioButton_succ_rename_on.setMinimumSize(QSize(80, 0))
-        self.radioButton_succ_rename_on.setFont(font3)
 
         self.gridLayout_13.addWidget(self.radioButton_succ_rename_on, 0, 0, 1, 1)
 
         self.radioButton_succ_rename_off = QRadioButton(self.gridLayoutWidget_13)
         self.radioButton_succ_rename_off.setObjectName(u"radioButton_succ_rename_off")
-        self.radioButton_succ_rename_off.setFont(font3)
 
         self.gridLayout_13.addWidget(self.radioButton_succ_rename_off, 1, 0, 1, 1)
 
@@ -1150,10 +1009,9 @@ class Ui_AVDV(object):
         self.groupBox_27.setGeometry(QRect(30, 700, 701, 101))
         self.groupBox_27.setMinimumSize(QSize(200, 0))
         self.groupBox_27.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_27.setFont(font3)
         self.gridLayoutWidget_6 = QWidget(self.groupBox_27)
         self.gridLayoutWidget_6.setObjectName(u"gridLayoutWidget_6")
-        self.gridLayoutWidget_6.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayoutWidget_6.setGeometry(QRect(60, 20, 631, 71))
         self.gridLayout_6 = QGridLayout(self.gridLayoutWidget_6)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
         self.gridLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -1161,7 +1019,6 @@ class Ui_AVDV(object):
         self.label_54.setObjectName(u"label_54")
         sizePolicy4.setHeightForWidth(self.label_54.sizePolicy().hasHeightForWidth())
         self.label_54.setSizePolicy(sizePolicy4)
-        self.label_54.setFont(font4)
         self.label_54.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_6.addWidget(self.label_54, 0, 1, 1, 1)
@@ -1170,7 +1027,6 @@ class Ui_AVDV(object):
         self.label_55.setObjectName(u"label_55")
         sizePolicy4.setHeightForWidth(self.label_55.sizePolicy().hasHeightForWidth())
         self.label_55.setSizePolicy(sizePolicy4)
-        self.label_55.setFont(font4)
         self.label_55.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_6.addWidget(self.label_55, 1, 1, 1, 1)
@@ -1180,13 +1036,11 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.radioButton_succ_move_on.sizePolicy().hasHeightForWidth())
         self.radioButton_succ_move_on.setSizePolicy(sizePolicy3)
         self.radioButton_succ_move_on.setMinimumSize(QSize(80, 0))
-        self.radioButton_succ_move_on.setFont(font3)
 
         self.gridLayout_6.addWidget(self.radioButton_succ_move_on, 0, 0, 1, 1)
 
         self.radioButton_succ_move_off = QRadioButton(self.gridLayoutWidget_6)
         self.radioButton_succ_move_off.setObjectName(u"radioButton_succ_move_off")
-        self.radioButton_succ_move_off.setFont(font3)
 
         self.gridLayout_6.addWidget(self.radioButton_succ_move_off, 1, 0, 1, 1)
 
@@ -1195,10 +1049,9 @@ class Ui_AVDV(object):
         self.groupBox_15.setGeometry(QRect(30, 820, 701, 101))
         self.groupBox_15.setMinimumSize(QSize(200, 0))
         self.groupBox_15.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_15.setFont(font3)
         self.gridLayoutWidget_3 = QWidget(self.groupBox_15)
         self.gridLayoutWidget_3.setObjectName(u"gridLayoutWidget_3")
-        self.gridLayoutWidget_3.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayoutWidget_3.setGeometry(QRect(60, 20, 631, 71))
         self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_3)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -1206,7 +1059,6 @@ class Ui_AVDV(object):
         self.label_34.setObjectName(u"label_34")
         sizePolicy4.setHeightForWidth(self.label_34.sizePolicy().hasHeightForWidth())
         self.label_34.setSizePolicy(sizePolicy4)
-        self.label_34.setFont(font4)
         self.label_34.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_3.addWidget(self.label_34, 0, 1, 1, 1)
@@ -1215,7 +1067,6 @@ class Ui_AVDV(object):
         self.label_35.setObjectName(u"label_35")
         sizePolicy4.setHeightForWidth(self.label_35.sizePolicy().hasHeightForWidth())
         self.label_35.setSizePolicy(sizePolicy4)
-        self.label_35.setFont(font4)
         self.label_35.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_3.addWidget(self.label_35, 1, 1, 1, 1)
@@ -1225,24 +1076,20 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.radioButton_fail_move_on.sizePolicy().hasHeightForWidth())
         self.radioButton_fail_move_on.setSizePolicy(sizePolicy3)
         self.radioButton_fail_move_on.setMinimumSize(QSize(80, 0))
-        self.radioButton_fail_move_on.setFont(font3)
 
         self.gridLayout_3.addWidget(self.radioButton_fail_move_on, 0, 0, 1, 1)
 
         self.radioButton_fail_move_off = QRadioButton(self.gridLayoutWidget_3)
         self.radioButton_fail_move_off.setObjectName(u"radioButton_fail_move_off")
-        self.radioButton_fail_move_off.setFont(font3)
 
         self.gridLayout_3.addWidget(self.radioButton_fail_move_off, 1, 0, 1, 1)
 
         self.groupBox_23 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_23.setObjectName(u"groupBox_23")
         self.groupBox_23.setGeometry(QRect(30, 430, 701, 131))
-        self.groupBox_23.setFont(font3)
-        self.groupBox_23.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_20 = QWidget(self.groupBox_23)
         self.gridLayoutWidget_20.setObjectName(u"gridLayoutWidget_20")
-        self.gridLayoutWidget_20.setGeometry(QRect(60, 20, 641, 111))
+        self.gridLayoutWidget_20.setGeometry(QRect(60, 20, 631, 101))
         self.gridLayout_20 = QGridLayout(self.gridLayoutWidget_20)
         self.gridLayout_20.setObjectName(u"gridLayout_20")
         self.gridLayout_20.setContentsMargins(0, 0, 0, 0)
@@ -1250,7 +1097,6 @@ class Ui_AVDV(object):
         self.label_71.setObjectName(u"label_71")
         sizePolicy4.setHeightForWidth(self.label_71.sizePolicy().hasHeightForWidth())
         self.label_71.setSizePolicy(sizePolicy4)
-        self.label_71.setFont(font4)
         self.label_71.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_20.addWidget(self.label_71, 1, 1, 1, 1)
@@ -1260,7 +1106,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.checkBox_more_javdb.sizePolicy().hasHeightForWidth())
         self.checkBox_more_javdb.setSizePolicy(sizePolicy3)
         self.checkBox_more_javdb.setMinimumSize(QSize(80, 0))
-        self.checkBox_more_javdb.setFont(font3)
 
         self.gridLayout_20.addWidget(self.checkBox_more_javdb, 0, 0, 1, 1)
 
@@ -1268,7 +1113,6 @@ class Ui_AVDV(object):
         self.label_62.setObjectName(u"label_62")
         sizePolicy4.setHeightForWidth(self.label_62.sizePolicy().hasHeightForWidth())
         self.label_62.setSizePolicy(sizePolicy4)
-        self.label_62.setFont(font4)
         self.label_62.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_20.addWidget(self.label_62, 0, 1, 1, 1)
@@ -1278,7 +1122,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.checkBox_more_jav321.sizePolicy().hasHeightForWidth())
         self.checkBox_more_jav321.setSizePolicy(sizePolicy3)
         self.checkBox_more_jav321.setMinimumSize(QSize(80, 0))
-        self.checkBox_more_jav321.setFont(font3)
 
         self.gridLayout_20.addWidget(self.checkBox_more_jav321, 1, 0, 1, 1)
 
@@ -1287,7 +1130,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.checkBox_more_dmm.sizePolicy().hasHeightForWidth())
         self.checkBox_more_dmm.setSizePolicy(sizePolicy3)
         self.checkBox_more_dmm.setMinimumSize(QSize(80, 0))
-        self.checkBox_more_dmm.setFont(font3)
 
         self.gridLayout_20.addWidget(self.checkBox_more_dmm, 2, 0, 1, 1)
 
@@ -1295,7 +1137,6 @@ class Ui_AVDV(object):
         self.label_92.setObjectName(u"label_92")
         sizePolicy4.setHeightForWidth(self.label_92.sizePolicy().hasHeightForWidth())
         self.label_92.setSizePolicy(sizePolicy4)
-        self.label_92.setFont(font4)
         self.label_92.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_20.addWidget(self.label_92, 2, 1, 1, 1)
@@ -1305,10 +1146,9 @@ class Ui_AVDV(object):
         self.groupBox_30.setGeometry(QRect(30, 1060, 701, 101))
         self.groupBox_30.setMinimumSize(QSize(200, 0))
         self.groupBox_30.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_30.setFont(font3)
         self.gridLayoutWidget_23 = QWidget(self.groupBox_30)
         self.gridLayoutWidget_23.setObjectName(u"gridLayoutWidget_23")
-        self.gridLayoutWidget_23.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayoutWidget_23.setGeometry(QRect(60, 20, 631, 71))
         self.gridLayout_23 = QGridLayout(self.gridLayoutWidget_23)
         self.gridLayout_23.setObjectName(u"gridLayout_23")
         self.gridLayout_23.setContentsMargins(0, 0, 0, 0)
@@ -1316,7 +1156,6 @@ class Ui_AVDV(object):
         self.label_44.setObjectName(u"label_44")
         sizePolicy4.setHeightForWidth(self.label_44.sizePolicy().hasHeightForWidth())
         self.label_44.setSizePolicy(sizePolicy4)
-        self.label_44.setFont(font4)
         self.label_44.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_23.addWidget(self.label_44, 0, 1, 1, 1)
@@ -1325,7 +1164,6 @@ class Ui_AVDV(object):
         self.label_51.setObjectName(u"label_51")
         sizePolicy4.setHeightForWidth(self.label_51.sizePolicy().hasHeightForWidth())
         self.label_51.setSizePolicy(sizePolicy4)
-        self.label_51.setFont(font4)
         self.label_51.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_23.addWidget(self.label_51, 1, 1, 1, 1)
@@ -1335,13 +1173,11 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.radioButton_del_empty_folder_on.sizePolicy().hasHeightForWidth())
         self.radioButton_del_empty_folder_on.setSizePolicy(sizePolicy3)
         self.radioButton_del_empty_folder_on.setMinimumSize(QSize(80, 0))
-        self.radioButton_del_empty_folder_on.setFont(font3)
 
         self.gridLayout_23.addWidget(self.radioButton_del_empty_folder_on, 0, 0, 1, 1)
 
         self.radioButton_del_empty_folder_off = QRadioButton(self.gridLayoutWidget_23)
         self.radioButton_del_empty_folder_off.setObjectName(u"radioButton_del_empty_folder_off")
-        self.radioButton_del_empty_folder_off.setFont(font3)
 
         self.gridLayout_23.addWidget(self.radioButton_del_empty_folder_off, 1, 0, 1, 1)
 
@@ -1362,27 +1198,24 @@ class Ui_AVDV(object):
         self.scrollArea_6.setWidgetResizable(False)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 771, 780))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 771, 720))
         self.groupBox_34 = QGroupBox(self.scrollAreaWidgetContents_6)
         self.groupBox_34.setObjectName(u"groupBox_34")
-        self.groupBox_34.setGeometry(QRect(30, 190, 701, 191))
+        self.groupBox_34.setGeometry(QRect(30, 170, 701, 171))
         self.groupBox_34.setMinimumSize(QSize(500, 0))
-        self.groupBox_34.setFont(font3)
         self.horizontalLayoutWidget_19 = QWidget(self.groupBox_34)
         self.horizontalLayoutWidget_19.setObjectName(u"horizontalLayoutWidget_19")
-        self.horizontalLayoutWidget_19.setGeometry(QRect(59, 30, 641, 37))
+        self.horizontalLayoutWidget_19.setGeometry(QRect(59, 20, 631, 37))
         self.horizontalLayout_24 = QHBoxLayout(self.horizontalLayoutWidget_19)
         self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
         self.horizontalLayout_24.setContentsMargins(0, 0, 0, 0)
         self.checkBox_download_extrafanart = QCheckBox(self.horizontalLayoutWidget_19)
         self.checkBox_download_extrafanart.setObjectName(u"checkBox_download_extrafanart")
-        self.checkBox_download_extrafanart.setFont(font3)
 
         self.horizontalLayout_24.addWidget(self.checkBox_download_extrafanart)
 
         self.checkBox_download_extrafanart_copy = QCheckBox(self.horizontalLayoutWidget_19)
         self.checkBox_download_extrafanart_copy.setObjectName(u"checkBox_download_extrafanart_copy")
-        self.checkBox_download_extrafanart_copy.setFont(font3)
 
         self.horizontalLayout_24.addWidget(self.checkBox_download_extrafanart_copy)
 
@@ -1391,7 +1224,6 @@ class Ui_AVDV(object):
         sizePolicy4.setHeightForWidth(self.lineEdit_extrafanart_dir.sizePolicy().hasHeightForWidth())
         self.lineEdit_extrafanart_dir.setSizePolicy(sizePolicy4)
         self.lineEdit_extrafanart_dir.setMinimumSize(QSize(300, 30))
-        self.lineEdit_extrafanart_dir.setFont(font3)
         self.lineEdit_extrafanart_dir.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -1401,69 +1233,60 @@ class Ui_AVDV(object):
 
         self.label_82 = QLabel(self.groupBox_34)
         self.label_82.setObjectName(u"label_82")
-        self.label_82.setGeometry(QRect(60, 80, 631, 31))
+        self.label_82.setGeometry(QRect(60, 60, 631, 41))
         sizePolicy4.setHeightForWidth(self.label_82.sizePolicy().hasHeightForWidth())
         self.label_82.setSizePolicy(sizePolicy4)
-        self.label_82.setFont(font4)
         self.label_82.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.label_59 = QLabel(self.groupBox_34)
         self.label_59.setObjectName(u"label_59")
-        self.label_59.setGeometry(QRect(60, 120, 631, 61))
+        self.label_59.setGeometry(QRect(60, 100, 631, 61))
         sizePolicy4.setHeightForWidth(self.label_59.sizePolicy().hasHeightForWidth())
         self.label_59.setSizePolicy(sizePolicy4)
-        self.label_59.setFont(font4)
         self.label_59.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.groupBox_24 = QGroupBox(self.scrollAreaWidgetContents_6)
         self.groupBox_24.setObjectName(u"groupBox_24")
-        self.groupBox_24.setGeometry(QRect(30, 10, 701, 161))
+        self.groupBox_24.setGeometry(QRect(30, 10, 701, 141))
         self.groupBox_24.setMinimumSize(QSize(500, 0))
-        self.groupBox_24.setFont(font3)
         self.horizontalLayoutWidget_14 = QWidget(self.groupBox_24)
         self.horizontalLayoutWidget_14.setObjectName(u"horizontalLayoutWidget_14")
-        self.horizontalLayoutWidget_14.setGeometry(QRect(59, 30, 641, 31))
+        self.horizontalLayoutWidget_14.setGeometry(QRect(59, 20, 631, 31))
         self.horizontalLayout_16 = QHBoxLayout(self.horizontalLayoutWidget_14)
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
         self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
         self.checkBox_download_poster = QCheckBox(self.horizontalLayoutWidget_14)
         self.checkBox_download_poster.setObjectName(u"checkBox_download_poster")
-        self.checkBox_download_poster.setFont(font3)
 
         self.horizontalLayout_16.addWidget(self.checkBox_download_poster)
 
         self.checkBox_download_thumb = QCheckBox(self.horizontalLayoutWidget_14)
         self.checkBox_download_thumb.setObjectName(u"checkBox_download_thumb")
-        self.checkBox_download_thumb.setFont(font3)
 
         self.horizontalLayout_16.addWidget(self.checkBox_download_thumb)
 
         self.checkBox_download_fanart = QCheckBox(self.horizontalLayoutWidget_14)
         self.checkBox_download_fanart.setObjectName(u"checkBox_download_fanart")
-        self.checkBox_download_fanart.setFont(font3)
 
         self.horizontalLayout_16.addWidget(self.checkBox_download_fanart)
 
         self.checkBox_download_nfo = QCheckBox(self.horizontalLayoutWidget_14)
         self.checkBox_download_nfo.setObjectName(u"checkBox_download_nfo")
-        self.checkBox_download_nfo.setFont(font3)
 
         self.horizontalLayout_16.addWidget(self.checkBox_download_nfo)
 
         self.label_85 = QLabel(self.groupBox_24)
         self.label_85.setObjectName(u"label_85")
-        self.label_85.setGeometry(QRect(60, 70, 631, 81))
+        self.label_85.setGeometry(QRect(60, 50, 631, 81))
         sizePolicy4.setHeightForWidth(self.label_85.sizePolicy().hasHeightForWidth())
         self.label_85.setSizePolicy(sizePolicy4)
-        self.label_85.setFont(font4)
         self.label_85.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.groupBox_22 = QGroupBox(self.scrollAreaWidgetContents_6)
         self.groupBox_22.setObjectName(u"groupBox_22")
-        self.groupBox_22.setGeometry(QRect(30, 640, 701, 101))
+        self.groupBox_22.setGeometry(QRect(30, 590, 701, 101))
         self.groupBox_22.setMinimumSize(QSize(200, 0))
         self.groupBox_22.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_22.setFont(font3)
         self.gridLayoutWidget_15 = QWidget(self.groupBox_22)
         self.gridLayoutWidget_15.setObjectName(u"gridLayoutWidget_15")
-        self.gridLayoutWidget_15.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayoutWidget_15.setGeometry(QRect(60, 20, 631, 71))
         self.gridLayout_15 = QGridLayout(self.gridLayoutWidget_15)
         self.gridLayout_15.setObjectName(u"gridLayout_15")
         self.gridLayout_15.setContentsMargins(0, 0, 0, 0)
@@ -1471,7 +1294,6 @@ class Ui_AVDV(object):
         self.label_40.setObjectName(u"label_40")
         sizePolicy4.setHeightForWidth(self.label_40.sizePolicy().hasHeightForWidth())
         self.label_40.setSizePolicy(sizePolicy4)
-        self.label_40.setFont(font4)
         self.label_40.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_15.addWidget(self.label_40, 0, 1, 1, 1)
@@ -1480,7 +1302,6 @@ class Ui_AVDV(object):
         self.label_42.setObjectName(u"label_42")
         sizePolicy4.setHeightForWidth(self.label_42.sizePolicy().hasHeightForWidth())
         self.label_42.setSizePolicy(sizePolicy4)
-        self.label_42.setFont(font4)
         self.label_42.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_15.addWidget(self.label_42, 1, 1, 1, 1)
@@ -1490,24 +1311,21 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.radioButton_series_as_set_on.sizePolicy().hasHeightForWidth())
         self.radioButton_series_as_set_on.setSizePolicy(sizePolicy3)
         self.radioButton_series_as_set_on.setMinimumSize(QSize(80, 0))
-        self.radioButton_series_as_set_on.setFont(font3)
 
         self.gridLayout_15.addWidget(self.radioButton_series_as_set_on, 0, 0, 1, 1)
 
         self.radioButton_series_as_set_off = QRadioButton(self.gridLayoutWidget_15)
         self.radioButton_series_as_set_off.setObjectName(u"radioButton_series_as_set_off")
-        self.radioButton_series_as_set_off.setFont(font3)
 
         self.gridLayout_15.addWidget(self.radioButton_series_as_set_off, 1, 0, 1, 1)
 
         self.groupBox_39 = QGroupBox(self.scrollAreaWidgetContents_6)
         self.groupBox_39.setObjectName(u"groupBox_39")
-        self.groupBox_39.setGeometry(QRect(30, 520, 701, 101))
-        self.groupBox_39.setFont(font3)
+        self.groupBox_39.setGeometry(QRect(30, 470, 701, 101))
         self.groupBox_39.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_5 = QWidget(self.groupBox_39)
         self.gridLayoutWidget_5.setObjectName(u"gridLayoutWidget_5")
-        self.gridLayoutWidget_5.setGeometry(QRect(60, 20, 641, 81))
+        self.gridLayoutWidget_5.setGeometry(QRect(60, 20, 631, 71))
         self.gridLayout_5 = QGridLayout(self.gridLayoutWidget_5)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
         self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
@@ -1516,19 +1334,12 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.radioButton_poster_official.sizePolicy().hasHeightForWidth())
         self.radioButton_poster_official.setSizePolicy(sizePolicy3)
         self.radioButton_poster_official.setMinimumSize(QSize(80, 0))
-        self.radioButton_poster_official.setFont(font3)
 
         self.gridLayout_5.addWidget(self.radioButton_poster_official, 1, 0, 1, 1)
 
         self.radioButton_poster_cut = QRadioButton(self.gridLayoutWidget_5)
         self.radioButton_poster_cut.setObjectName(u"radioButton_poster_cut")
         self.radioButton_poster_cut.setMinimumSize(QSize(80, 0))
-        font5 = QFont()
-        font5.setFamily(u"Courier")
-        font5.setBold(False)
-        font5.setItalic(False)
-        font5.setWeight(50)
-        self.radioButton_poster_cut.setFont(font5)
 
         self.gridLayout_5.addWidget(self.radioButton_poster_cut, 0, 0, 1, 1)
 
@@ -1536,7 +1347,6 @@ class Ui_AVDV(object):
         self.label_53.setObjectName(u"label_53")
         sizePolicy4.setHeightForWidth(self.label_53.sizePolicy().hasHeightForWidth())
         self.label_53.setSizePolicy(sizePolicy4)
-        self.label_53.setFont(font4)
         self.label_53.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_5.addWidget(self.label_53, 0, 1, 1, 1)
@@ -1545,64 +1355,55 @@ class Ui_AVDV(object):
         self.label_52.setObjectName(u"label_52")
         sizePolicy4.setHeightForWidth(self.label_52.sizePolicy().hasHeightForWidth())
         self.label_52.setSizePolicy(sizePolicy4)
-        self.label_52.setFont(font4)
         self.label_52.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_5.addWidget(self.label_52, 1, 1, 1, 1)
 
         self.groupBox_33 = QGroupBox(self.scrollAreaWidgetContents_6)
         self.groupBox_33.setObjectName(u"groupBox_33")
-        self.groupBox_33.setGeometry(QRect(30, 400, 701, 101))
+        self.groupBox_33.setGeometry(QRect(30, 360, 701, 91))
         self.groupBox_33.setMinimumSize(QSize(500, 0))
-        self.groupBox_33.setFont(font3)
         self.horizontalLayoutWidget_18 = QWidget(self.groupBox_33)
         self.horizontalLayoutWidget_18.setObjectName(u"horizontalLayoutWidget_18")
-        self.horizontalLayoutWidget_18.setGeometry(QRect(59, 30, 641, 31))
+        self.horizontalLayoutWidget_18.setGeometry(QRect(59, 20, 631, 31))
         self.horizontalLayout_23 = QHBoxLayout(self.horizontalLayoutWidget_18)
         self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
         self.horizontalLayout_23.setContentsMargins(0, 0, 0, 0)
         self.checkBox_old_poster = QCheckBox(self.horizontalLayoutWidget_18)
         self.checkBox_old_poster.setObjectName(u"checkBox_old_poster")
-        self.checkBox_old_poster.setFont(font3)
 
         self.horizontalLayout_23.addWidget(self.checkBox_old_poster)
 
         self.checkBox_old_thumb = QCheckBox(self.horizontalLayoutWidget_18)
         self.checkBox_old_thumb.setObjectName(u"checkBox_old_thumb")
-        self.checkBox_old_thumb.setFont(font3)
 
         self.horizontalLayout_23.addWidget(self.checkBox_old_thumb)
 
         self.checkBox_old_fanart = QCheckBox(self.horizontalLayoutWidget_18)
         self.checkBox_old_fanart.setObjectName(u"checkBox_old_fanart")
-        self.checkBox_old_fanart.setFont(font3)
 
         self.horizontalLayout_23.addWidget(self.checkBox_old_fanart)
 
         self.checkBox_old_nfo = QCheckBox(self.horizontalLayoutWidget_18)
         self.checkBox_old_nfo.setObjectName(u"checkBox_old_nfo")
-        self.checkBox_old_nfo.setFont(font3)
 
         self.horizontalLayout_23.addWidget(self.checkBox_old_nfo)
 
         self.checkBox_old_extrafanart = QCheckBox(self.horizontalLayoutWidget_18)
         self.checkBox_old_extrafanart.setObjectName(u"checkBox_old_extrafanart")
-        self.checkBox_old_extrafanart.setFont(font3)
 
         self.horizontalLayout_23.addWidget(self.checkBox_old_extrafanart)
 
         self.checkBox_old_extrafanart_copy = QCheckBox(self.horizontalLayoutWidget_18)
         self.checkBox_old_extrafanart_copy.setObjectName(u"checkBox_old_extrafanart_copy")
-        self.checkBox_old_extrafanart_copy.setFont(font3)
 
         self.horizontalLayout_23.addWidget(self.checkBox_old_extrafanart_copy)
 
         self.label_79 = QLabel(self.groupBox_33)
         self.label_79.setObjectName(u"label_79")
-        self.label_79.setGeometry(QRect(60, 60, 631, 31))
+        self.label_79.setGeometry(QRect(60, 50, 631, 31))
         sizePolicy4.setHeightForWidth(self.label_79.sizePolicy().hasHeightForWidth())
         self.label_79.setSizePolicy(sizePolicy4)
-        self.label_79.setFont(font4)
         self.label_79.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.scrollArea_6.setWidget(self.scrollAreaWidgetContents_6)
         self.tabWidget.addTab(self.tab_4, "")
@@ -1618,18 +1419,17 @@ class Ui_AVDV(object):
         self.scrollArea_7.setWidgetResizable(False)
         self.scrollAreaWidgetContents_7 = QWidget()
         self.scrollAreaWidgetContents_7.setObjectName(u"scrollAreaWidgetContents_7")
-        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 771, 1120))
+        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 771, 1100))
         sizePolicy1.setHeightForWidth(self.scrollAreaWidgetContents_7.sizePolicy().hasHeightForWidth())
         self.scrollAreaWidgetContents_7.setSizePolicy(sizePolicy1)
         self.groupBox_35 = QGroupBox(self.scrollAreaWidgetContents_7)
         self.groupBox_35.setObjectName(u"groupBox_35")
-        self.groupBox_35.setGeometry(QRect(30, 990, 701, 101))
+        self.groupBox_35.setGeometry(QRect(30, 960, 701, 101))
         self.groupBox_35.setMinimumSize(QSize(200, 0))
         self.groupBox_35.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_35.setFont(font3)
         self.gridLayoutWidget_18 = QWidget(self.groupBox_35)
         self.gridLayoutWidget_18.setObjectName(u"gridLayoutWidget_18")
-        self.gridLayoutWidget_18.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayoutWidget_18.setGeometry(QRect(60, 20, 631, 71))
         self.gridLayout_18 = QGridLayout(self.gridLayoutWidget_18)
         self.gridLayout_18.setObjectName(u"gridLayout_18")
         self.gridLayout_18.setContentsMargins(0, 0, 0, 0)
@@ -1637,7 +1437,6 @@ class Ui_AVDV(object):
         self.label_86.setObjectName(u"label_86")
         sizePolicy4.setHeightForWidth(self.label_86.sizePolicy().hasHeightForWidth())
         self.label_86.setSizePolicy(sizePolicy4)
-        self.label_86.setFont(font4)
         self.label_86.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_18.addWidget(self.label_86, 0, 1, 1, 1)
@@ -1646,7 +1445,6 @@ class Ui_AVDV(object):
         self.label_87.setObjectName(u"label_87")
         sizePolicy4.setHeightForWidth(self.label_87.sizePolicy().hasHeightForWidth())
         self.label_87.setSizePolicy(sizePolicy4)
-        self.label_87.setFont(font4)
         self.label_87.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_18.addWidget(self.label_87, 1, 1, 1, 1)
@@ -1669,12 +1467,11 @@ class Ui_AVDV(object):
 
         self.groupBox_8 = QGroupBox(self.scrollAreaWidgetContents_7)
         self.groupBox_8.setObjectName(u"groupBox_8")
-        self.groupBox_8.setGeometry(QRect(30, 10, 701, 351))
-        self.groupBox_8.setFont(font3)
+        self.groupBox_8.setGeometry(QRect(30, 10, 701, 331))
         self.groupBox_8.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_8 = QWidget(self.groupBox_8)
         self.gridLayoutWidget_8.setObjectName(u"gridLayoutWidget_8")
-        self.gridLayoutWidget_8.setGeometry(QRect(0, 30, 691, 311))
+        self.gridLayoutWidget_8.setGeometry(QRect(10, 20, 681, 301))
         self.gridLayout_8 = QGridLayout(self.gridLayoutWidget_8)
         self.gridLayout_8.setObjectName(u"gridLayout_8")
         self.gridLayout_8.setContentsMargins(0, 0, 0, 0)
@@ -1683,7 +1480,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_67.sizePolicy().hasHeightForWidth())
         self.label_67.setSizePolicy(sizePolicy3)
         self.label_67.setMinimumSize(QSize(100, 30))
-        self.label_67.setFont(font3)
         self.label_67.setLayoutDirection(Qt.RightToLeft)
         self.label_67.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -1693,7 +1489,6 @@ class Ui_AVDV(object):
         self.label_68.setObjectName(u"label_68")
         sizePolicy4.setHeightForWidth(self.label_68.sizePolicy().hasHeightForWidth())
         self.label_68.setSizePolicy(sizePolicy4)
-        self.label_68.setFont(font4)
         self.label_68.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_8.addWidget(self.label_68, 5, 1, 1, 1)
@@ -1701,7 +1496,6 @@ class Ui_AVDV(object):
         self.lineEdit_media_name = QLineEdit(self.gridLayoutWidget_8)
         self.lineEdit_media_name.setObjectName(u"lineEdit_media_name")
         self.lineEdit_media_name.setMinimumSize(QSize(450, 30))
-        self.lineEdit_media_name.setFont(font3)
         self.lineEdit_media_name.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -1713,7 +1507,6 @@ class Ui_AVDV(object):
         self.label_66.setObjectName(u"label_66")
         sizePolicy4.setHeightForWidth(self.label_66.sizePolicy().hasHeightForWidth())
         self.label_66.setSizePolicy(sizePolicy4)
-        self.label_66.setFont(font4)
         self.label_66.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.label_66.setTextInteractionFlags(Qt.LinksAccessibleByMouse|Qt.TextSelectableByKeyboard|Qt.TextSelectableByMouse)
 
@@ -1724,7 +1517,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_63.sizePolicy().hasHeightForWidth())
         self.label_63.setSizePolicy(sizePolicy3)
         self.label_63.setMinimumSize(QSize(100, 30))
-        self.label_63.setFont(font3)
         self.label_63.setLayoutDirection(Qt.RightToLeft)
         self.label_63.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -1733,7 +1525,6 @@ class Ui_AVDV(object):
         self.lineEdit_local_name = QLineEdit(self.gridLayoutWidget_8)
         self.lineEdit_local_name.setObjectName(u"lineEdit_local_name")
         self.lineEdit_local_name.setMinimumSize(QSize(450, 30))
-        self.lineEdit_local_name.setFont(font3)
         self.lineEdit_local_name.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -1744,7 +1535,6 @@ class Ui_AVDV(object):
         self.lineEdit_dir_name = QLineEdit(self.gridLayoutWidget_8)
         self.lineEdit_dir_name.setObjectName(u"lineEdit_dir_name")
         self.lineEdit_dir_name.setMinimumSize(QSize(450, 30))
-        self.lineEdit_dir_name.setFont(font3)
         self.lineEdit_dir_name.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -1757,7 +1547,6 @@ class Ui_AVDV(object):
         sizePolicy5.setHeightForWidth(self.label_43.sizePolicy().hasHeightForWidth())
         self.label_43.setSizePolicy(sizePolicy5)
         self.label_43.setMinimumSize(QSize(160, 30))
-        self.label_43.setFont(font3)
         self.label_43.setLayoutDirection(Qt.RightToLeft)
         self.label_43.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -1767,20 +1556,18 @@ class Ui_AVDV(object):
         self.label_61.setObjectName(u"label_61")
         sizePolicy4.setHeightForWidth(self.label_61.sizePolicy().hasHeightForWidth())
         self.label_61.setSizePolicy(sizePolicy4)
-        self.label_61.setFont(font4)
         self.label_61.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_8.addWidget(self.label_61, 3, 1, 1, 1)
 
         self.groupBox_37 = QGroupBox(self.scrollAreaWidgetContents_7)
         self.groupBox_37.setObjectName(u"groupBox_37")
-        self.groupBox_37.setGeometry(QRect(30, 720, 701, 101))
+        self.groupBox_37.setGeometry(QRect(30, 690, 701, 101))
         self.groupBox_37.setMinimumSize(QSize(200, 0))
         self.groupBox_37.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_37.setFont(font3)
         self.gridLayoutWidget_21 = QWidget(self.groupBox_37)
         self.gridLayoutWidget_21.setObjectName(u"gridLayoutWidget_21")
-        self.gridLayoutWidget_21.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayoutWidget_21.setGeometry(QRect(60, 20, 631, 71))
         self.gridLayout_21 = QGridLayout(self.gridLayoutWidget_21)
         self.gridLayout_21.setObjectName(u"gridLayout_21")
         self.gridLayout_21.setContentsMargins(0, 0, 0, 0)
@@ -1788,7 +1575,6 @@ class Ui_AVDV(object):
         self.label_95.setObjectName(u"label_95")
         sizePolicy4.setHeightForWidth(self.label_95.sizePolicy().hasHeightForWidth())
         self.label_95.setSizePolicy(sizePolicy4)
-        self.label_95.setFont(font4)
         self.label_95.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_21.addWidget(self.label_95, 0, 1, 1, 1)
@@ -1797,7 +1583,6 @@ class Ui_AVDV(object):
         self.label_96.setObjectName(u"label_96")
         sizePolicy4.setHeightForWidth(self.label_96.sizePolicy().hasHeightForWidth())
         self.label_96.setSizePolicy(sizePolicy4)
-        self.label_96.setFont(font4)
         self.label_96.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_21.addWidget(self.label_96, 1, 1, 1, 1)
@@ -1820,13 +1605,12 @@ class Ui_AVDV(object):
 
         self.groupBox_38 = QGroupBox(self.scrollAreaWidgetContents_7)
         self.groupBox_38.setObjectName(u"groupBox_38")
-        self.groupBox_38.setGeometry(QRect(30, 840, 701, 131))
+        self.groupBox_38.setGeometry(QRect(30, 810, 701, 131))
         self.groupBox_38.setMinimumSize(QSize(200, 0))
         self.groupBox_38.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_38.setFont(font3)
         self.gridLayoutWidget_22 = QWidget(self.groupBox_38)
         self.gridLayoutWidget_22.setObjectName(u"gridLayoutWidget_22")
-        self.gridLayoutWidget_22.setGeometry(QRect(60, 20, 641, 80))
+        self.gridLayoutWidget_22.setGeometry(QRect(60, 20, 631, 80))
         self.gridLayout_22 = QGridLayout(self.gridLayoutWidget_22)
         self.gridLayout_22.setObjectName(u"gridLayout_22")
         self.gridLayout_22.setContentsMargins(0, 0, 0, 0)
@@ -1834,7 +1618,6 @@ class Ui_AVDV(object):
         self.label_97.setObjectName(u"label_97")
         sizePolicy4.setHeightForWidth(self.label_97.sizePolicy().hasHeightForWidth())
         self.label_97.setSizePolicy(sizePolicy4)
-        self.label_97.setFont(font4)
         self.label_97.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_22.addWidget(self.label_97, 0, 1, 1, 1)
@@ -1843,7 +1626,6 @@ class Ui_AVDV(object):
         self.label_98.setObjectName(u"label_98")
         sizePolicy4.setHeightForWidth(self.label_98.sizePolicy().hasHeightForWidth())
         self.label_98.setSizePolicy(sizePolicy4)
-        self.label_98.setFont(font4)
         self.label_98.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_22.addWidget(self.label_98, 1, 1, 1, 1)
@@ -1866,19 +1648,17 @@ class Ui_AVDV(object):
 
         self.label_99 = QLabel(self.groupBox_38)
         self.label_99.setObjectName(u"label_99")
-        self.label_99.setGeometry(QRect(60, 100, 641, 20))
+        self.label_99.setGeometry(QRect(60, 100, 631, 20))
         sizePolicy4.setHeightForWidth(self.label_99.sizePolicy().hasHeightForWidth())
         self.label_99.setSizePolicy(sizePolicy4)
-        self.label_99.setFont(font4)
         self.label_99.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.groupBox_77 = QGroupBox(self.scrollAreaWidgetContents_7)
         self.groupBox_77.setObjectName(u"groupBox_77")
-        self.groupBox_77.setGeometry(QRect(30, 380, 701, 321))
-        self.groupBox_77.setFont(font3)
+        self.groupBox_77.setGeometry(QRect(30, 360, 701, 311))
         self.groupBox_77.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_43 = QWidget(self.groupBox_77)
         self.gridLayoutWidget_43.setObjectName(u"gridLayoutWidget_43")
-        self.gridLayoutWidget_43.setGeometry(QRect(0, 30, 691, 281))
+        self.gridLayoutWidget_43.setGeometry(QRect(10, 20, 681, 281))
         self.gridLayout_43 = QGridLayout(self.gridLayoutWidget_43)
         self.gridLayout_43.setObjectName(u"gridLayout_43")
         self.gridLayout_43.setContentsMargins(0, 0, 0, 0)
@@ -1886,7 +1666,6 @@ class Ui_AVDV(object):
         self.label_172.setObjectName(u"label_172")
         sizePolicy4.setHeightForWidth(self.label_172.sizePolicy().hasHeightForWidth())
         self.label_172.setSizePolicy(sizePolicy4)
-        self.label_172.setFont(font4)
         self.label_172.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_43.addWidget(self.label_172, 3, 1, 1, 1)
@@ -1896,7 +1675,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_167.sizePolicy().hasHeightForWidth())
         self.label_167.setSizePolicy(sizePolicy3)
         self.label_167.setMinimumSize(QSize(100, 30))
-        self.label_167.setFont(font3)
         self.label_167.setLayoutDirection(Qt.RightToLeft)
         self.label_167.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -1905,7 +1683,6 @@ class Ui_AVDV(object):
         self.lineEdit_folder_name_max = QLineEdit(self.gridLayoutWidget_43)
         self.lineEdit_folder_name_max.setObjectName(u"lineEdit_folder_name_max")
         self.lineEdit_folder_name_max.setMinimumSize(QSize(450, 30))
-        self.lineEdit_folder_name_max.setFont(font3)
         self.lineEdit_folder_name_max.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -1916,7 +1693,6 @@ class Ui_AVDV(object):
         self.lineEdit_actor_name_more = QLineEdit(self.gridLayoutWidget_43)
         self.lineEdit_actor_name_more.setObjectName(u"lineEdit_actor_name_more")
         self.lineEdit_actor_name_more.setMinimumSize(QSize(450, 30))
-        self.lineEdit_actor_name_more.setFont(font3)
         self.lineEdit_actor_name_more.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -1927,7 +1703,6 @@ class Ui_AVDV(object):
         self.lineEdit_file_name_max = QLineEdit(self.gridLayoutWidget_43)
         self.lineEdit_file_name_max.setObjectName(u"lineEdit_file_name_max")
         self.lineEdit_file_name_max.setMinimumSize(QSize(450, 30))
-        self.lineEdit_file_name_max.setFont(font3)
         self.lineEdit_file_name_max.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -1939,7 +1714,6 @@ class Ui_AVDV(object):
         self.label_168.setObjectName(u"label_168")
         sizePolicy4.setHeightForWidth(self.label_168.sizePolicy().hasHeightForWidth())
         self.label_168.setSizePolicy(sizePolicy4)
-        self.label_168.setFont(font4)
         self.label_168.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_43.addWidget(self.label_168, 5, 1, 1, 1)
@@ -1949,7 +1723,6 @@ class Ui_AVDV(object):
         sizePolicy5.setHeightForWidth(self.label_171.sizePolicy().hasHeightForWidth())
         self.label_171.setSizePolicy(sizePolicy5)
         self.label_171.setMinimumSize(QSize(160, 30))
-        self.label_171.setFont(font3)
         self.label_171.setLayoutDirection(Qt.RightToLeft)
         self.label_171.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -1960,7 +1733,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_170.sizePolicy().hasHeightForWidth())
         self.label_170.setSizePolicy(sizePolicy3)
         self.label_170.setMinimumSize(QSize(100, 30))
-        self.label_170.setFont(font3)
         self.label_170.setLayoutDirection(Qt.RightToLeft)
         self.label_170.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -1969,7 +1741,6 @@ class Ui_AVDV(object):
         self.lineEdit_actor_name_max = QLineEdit(self.gridLayoutWidget_43)
         self.lineEdit_actor_name_max.setObjectName(u"lineEdit_actor_name_max")
         self.lineEdit_actor_name_max.setMinimumSize(QSize(450, 30))
-        self.lineEdit_actor_name_max.setFont(font3)
         self.lineEdit_actor_name_max.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -1981,7 +1752,6 @@ class Ui_AVDV(object):
         self.label_169.setObjectName(u"label_169")
         sizePolicy4.setHeightForWidth(self.label_169.sizePolicy().hasHeightForWidth())
         self.label_169.setSizePolicy(sizePolicy4)
-        self.label_169.setFont(font4)
         self.label_169.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_43.addWidget(self.label_169, 1, 1, 1, 1)
@@ -1992,43 +1762,38 @@ class Ui_AVDV(object):
         self.tab.setObjectName(u"tab")
         self.groupBox_26 = QGroupBox(self.tab)
         self.groupBox_26.setObjectName(u"groupBox_26")
-        self.groupBox_26.setGeometry(QRect(30, 130, 701, 101))
+        self.groupBox_26.setGeometry(QRect(30, 120, 701, 91))
         self.groupBox_26.setMinimumSize(QSize(200, 0))
         self.groupBox_26.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_26.setFont(font3)
         self.horizontalLayoutWidget_17 = QWidget(self.groupBox_26)
         self.horizontalLayoutWidget_17.setObjectName(u"horizontalLayoutWidget_17")
-        self.horizontalLayoutWidget_17.setGeometry(QRect(60, 30, 641, 31))
+        self.horizontalLayoutWidget_17.setGeometry(QRect(60, 20, 631, 31))
         self.horizontalLayout_22 = QHBoxLayout(self.horizontalLayoutWidget_17)
         self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
         self.horizontalLayout_22.setContentsMargins(0, 0, 0, 0)
         self.checkBox_translate_title = QCheckBox(self.horizontalLayoutWidget_17)
         self.checkBox_translate_title.setObjectName(u"checkBox_translate_title")
-        self.checkBox_translate_title.setFont(font3)
 
         self.horizontalLayout_22.addWidget(self.checkBox_translate_title)
 
         self.checkBox_translate_outline = QCheckBox(self.horizontalLayoutWidget_17)
         self.checkBox_translate_outline.setObjectName(u"checkBox_translate_outline")
-        self.checkBox_translate_outline.setFont(font3)
 
         self.horizontalLayout_22.addWidget(self.checkBox_translate_outline)
 
         self.label_74 = QLabel(self.groupBox_26)
         self.label_74.setObjectName(u"label_74")
-        self.label_74.setGeometry(QRect(60, 70, 611, 21))
+        self.label_74.setGeometry(QRect(60, 60, 611, 21))
         sizePolicy4.setHeightForWidth(self.label_74.sizePolicy().hasHeightForWidth())
         self.label_74.setSizePolicy(sizePolicy4)
-        self.label_74.setFont(font4)
         self.label_74.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.groupBox_31 = QGroupBox(self.tab)
         self.groupBox_31.setObjectName(u"groupBox_31")
-        self.groupBox_31.setGeometry(QRect(30, 250, 701, 151))
-        self.groupBox_31.setFont(font3)
+        self.groupBox_31.setGeometry(QRect(30, 230, 701, 141))
         self.groupBox_31.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_14 = QWidget(self.groupBox_31)
         self.gridLayoutWidget_14.setObjectName(u"gridLayoutWidget_14")
-        self.gridLayoutWidget_14.setGeometry(QRect(10, 30, 681, 111))
+        self.gridLayoutWidget_14.setGeometry(QRect(10, 20, 681, 111))
         self.gridLayout_14 = QGridLayout(self.gridLayoutWidget_14)
         self.gridLayout_14.setObjectName(u"gridLayout_14")
         self.gridLayout_14.setContentsMargins(0, 0, 0, 0)
@@ -2037,14 +1802,12 @@ class Ui_AVDV(object):
         self.radioButton_youdao = QRadioButton(self.gridLayoutWidget_14)
         self.radioButton_youdao.setObjectName(u"radioButton_youdao")
         self.radioButton_youdao.setMinimumSize(QSize(93, 30))
-        self.radioButton_youdao.setFont(font3)
 
         self.horizontalLayout_20.addWidget(self.radioButton_youdao)
 
         self.radioButton_deepl = QRadioButton(self.gridLayoutWidget_14)
         self.radioButton_deepl.setObjectName(u"radioButton_deepl")
         self.radioButton_deepl.setMinimumSize(QSize(93, 30))
-        self.radioButton_deepl.setFont(font3)
 
         self.horizontalLayout_20.addWidget(self.radioButton_deepl)
 
@@ -2056,7 +1819,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_81.sizePolicy().hasHeightForWidth())
         self.label_81.setSizePolicy(sizePolicy3)
         self.label_81.setMinimumSize(QSize(130, 30))
-        self.label_81.setFont(font3)
         self.label_81.setLayoutDirection(Qt.LeftToRight)
         self.label_81.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -2067,7 +1829,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_80.sizePolicy().hasHeightForWidth())
         self.label_80.setSizePolicy(sizePolicy3)
         self.label_80.setMinimumSize(QSize(130, 30))
-        self.label_80.setFont(font3)
         self.label_80.setLayoutDirection(Qt.LeftToRight)
         self.label_80.setFrameShape(QFrame.NoFrame)
         self.label_80.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
@@ -2079,7 +1840,6 @@ class Ui_AVDV(object):
         sizePolicy4.setHeightForWidth(self.lineEdit_deepl_key.sizePolicy().hasHeightForWidth())
         self.lineEdit_deepl_key.setSizePolicy(sizePolicy4)
         self.lineEdit_deepl_key.setMinimumSize(QSize(300, 30))
-        self.lineEdit_deepl_key.setFont(font3)
         self.lineEdit_deepl_key.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -2091,47 +1851,41 @@ class Ui_AVDV(object):
         self.label_60.setObjectName(u"label_60")
         sizePolicy4.setHeightForWidth(self.label_60.sizePolicy().hasHeightForWidth())
         self.label_60.setSizePolicy(sizePolicy4)
-        self.label_60.setFont(font4)
         self.label_60.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_14.addWidget(self.label_60, 2, 1, 1, 1)
 
         self.groupBox_25 = QGroupBox(self.tab)
         self.groupBox_25.setObjectName(u"groupBox_25")
-        self.groupBox_25.setGeometry(QRect(30, 10, 701, 101))
+        self.groupBox_25.setGeometry(QRect(30, 10, 701, 91))
         self.groupBox_25.setMinimumSize(QSize(200, 0))
         self.groupBox_25.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_25.setFont(font3)
         self.horizontalLayoutWidget_15 = QWidget(self.groupBox_25)
         self.horizontalLayoutWidget_15.setObjectName(u"horizontalLayoutWidget_15")
-        self.horizontalLayoutWidget_15.setGeometry(QRect(60, 30, 641, 31))
+        self.horizontalLayoutWidget_15.setGeometry(QRect(60, 20, 631, 31))
         self.horizontalLayout_18 = QHBoxLayout(self.horizontalLayoutWidget_15)
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
         self.horizontalLayout_18.setContentsMargins(0, 0, 0, 0)
         self.radioButton_zh_cn = QRadioButton(self.horizontalLayoutWidget_15)
         self.radioButton_zh_cn.setObjectName(u"radioButton_zh_cn")
-        self.radioButton_zh_cn.setFont(font3)
 
         self.horizontalLayout_18.addWidget(self.radioButton_zh_cn)
 
         self.radioButton_zh_tw = QRadioButton(self.horizontalLayoutWidget_15)
         self.radioButton_zh_tw.setObjectName(u"radioButton_zh_tw")
-        self.radioButton_zh_tw.setFont(font3)
 
         self.horizontalLayout_18.addWidget(self.radioButton_zh_tw)
 
         self.radioButton_ja = QRadioButton(self.horizontalLayoutWidget_15)
         self.radioButton_ja.setObjectName(u"radioButton_ja")
-        self.radioButton_ja.setFont(font3)
 
         self.horizontalLayout_18.addWidget(self.radioButton_ja)
 
         self.label_84 = QLabel(self.groupBox_25)
         self.label_84.setObjectName(u"label_84")
-        self.label_84.setGeometry(QRect(60, 60, 611, 41))
+        self.label_84.setGeometry(QRect(60, 50, 611, 31))
         sizePolicy4.setHeightForWidth(self.label_84.sizePolicy().hasHeightForWidth())
         self.label_84.setSizePolicy(sizePolicy4)
-        self.label_84.setFont(font4)
         self.label_84.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.tabWidget.addTab(self.tab, "")
         self.tab_9 = QWidget()
@@ -2141,7 +1895,6 @@ class Ui_AVDV(object):
         self.groupBox_75.setGeometry(QRect(30, 10, 701, 211))
         self.groupBox_75.setMinimumSize(QSize(200, 0))
         self.groupBox_75.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_75.setFont(font3)
         self.horizontalLayoutWidget_28 = QWidget(self.groupBox_75)
         self.horizontalLayoutWidget_28.setObjectName(u"horizontalLayoutWidget_28")
         self.horizontalLayoutWidget_28.setGeometry(QRect(130, 160, 521, 31))
@@ -2150,25 +1903,21 @@ class Ui_AVDV(object):
         self.horizontalLayout_35.setContentsMargins(0, 0, 0, 0)
         self.radioButton_actor_zh_cn = QRadioButton(self.horizontalLayoutWidget_28)
         self.radioButton_actor_zh_cn.setObjectName(u"radioButton_actor_zh_cn")
-        self.radioButton_actor_zh_cn.setFont(font3)
 
         self.horizontalLayout_35.addWidget(self.radioButton_actor_zh_cn)
 
         self.radioButton_actor_zh_tw = QRadioButton(self.horizontalLayoutWidget_28)
         self.radioButton_actor_zh_tw.setObjectName(u"radioButton_actor_zh_tw")
-        self.radioButton_actor_zh_tw.setFont(font3)
 
         self.horizontalLayout_35.addWidget(self.radioButton_actor_zh_tw)
 
         self.radioButton_actor_jp = QRadioButton(self.horizontalLayoutWidget_28)
         self.radioButton_actor_jp.setObjectName(u"radioButton_actor_jp")
-        self.radioButton_actor_jp.setFont(font3)
 
         self.horizontalLayout_35.addWidget(self.radioButton_actor_jp)
 
         self.radioButton_actor_no = QRadioButton(self.horizontalLayoutWidget_28)
         self.radioButton_actor_no.setObjectName(u"radioButton_actor_no")
-        self.radioButton_actor_no.setFont(font3)
 
         self.horizontalLayout_35.addWidget(self.radioButton_actor_no)
 
@@ -2178,10 +1927,9 @@ class Ui_AVDV(object):
         self.radioButton_actor_zh_cn.raise_()
         self.label_162 = QLabel(self.groupBox_75)
         self.label_162.setObjectName(u"label_162")
-        self.label_162.setGeometry(QRect(20, 30, 671, 91))
+        self.label_162.setGeometry(QRect(20, 20, 671, 91))
         sizePolicy4.setHeightForWidth(self.label_162.sizePolicy().hasHeightForWidth())
         self.label_162.setSizePolicy(sizePolicy4)
-        self.label_162.setFont(font4)
         self.label_162.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.label_163 = QLabel(self.groupBox_75)
         self.label_163.setObjectName(u"label_163")
@@ -2189,7 +1937,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_163.sizePolicy().hasHeightForWidth())
         self.label_163.setSizePolicy(sizePolicy3)
         self.label_163.setMinimumSize(QSize(100, 30))
-        self.label_163.setFont(font3)
         self.label_163.setLayoutDirection(Qt.LeftToRight)
         self.label_163.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.label_164 = QLabel(self.groupBox_75)
@@ -2197,14 +1944,12 @@ class Ui_AVDV(object):
         self.label_164.setGeometry(QRect(20, 110, 611, 41))
         sizePolicy4.setHeightForWidth(self.label_164.sizePolicy().hasHeightForWidth())
         self.label_164.setSizePolicy(sizePolicy4)
-        self.label_164.setFont(font4)
         self.label_164.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.groupBox_76 = QGroupBox(self.tab_9)
         self.groupBox_76.setObjectName(u"groupBox_76")
         self.groupBox_76.setGeometry(QRect(30, 240, 701, 121))
         self.groupBox_76.setMinimumSize(QSize(200, 0))
         self.groupBox_76.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_76.setFont(font3)
         self.horizontalLayoutWidget_29 = QWidget(self.groupBox_76)
         self.horizontalLayoutWidget_29.setObjectName(u"horizontalLayoutWidget_29")
         self.horizontalLayoutWidget_29.setGeometry(QRect(130, 70, 521, 31))
@@ -2213,25 +1958,21 @@ class Ui_AVDV(object):
         self.horizontalLayout_36.setContentsMargins(0, 0, 0, 0)
         self.radioButton_tag_zh_cn = QRadioButton(self.horizontalLayoutWidget_29)
         self.radioButton_tag_zh_cn.setObjectName(u"radioButton_tag_zh_cn")
-        self.radioButton_tag_zh_cn.setFont(font3)
 
         self.horizontalLayout_36.addWidget(self.radioButton_tag_zh_cn)
 
         self.radioButton_tag_zh_tw = QRadioButton(self.horizontalLayoutWidget_29)
         self.radioButton_tag_zh_tw.setObjectName(u"radioButton_tag_zh_tw")
-        self.radioButton_tag_zh_tw.setFont(font3)
 
         self.horizontalLayout_36.addWidget(self.radioButton_tag_zh_tw)
 
         self.radioButton_tag_jp = QRadioButton(self.horizontalLayoutWidget_29)
         self.radioButton_tag_jp.setObjectName(u"radioButton_tag_jp")
-        self.radioButton_tag_jp.setFont(font3)
 
         self.horizontalLayout_36.addWidget(self.radioButton_tag_jp)
 
         self.radioButton_tag_no = QRadioButton(self.horizontalLayoutWidget_29)
         self.radioButton_tag_no.setObjectName(u"radioButton_tag_no")
-        self.radioButton_tag_no.setFont(font3)
 
         self.horizontalLayout_36.addWidget(self.radioButton_tag_no)
 
@@ -2240,7 +1981,6 @@ class Ui_AVDV(object):
         self.label_165.setGeometry(QRect(20, 30, 671, 21))
         sizePolicy4.setHeightForWidth(self.label_165.sizePolicy().hasHeightForWidth())
         self.label_165.setSizePolicy(sizePolicy4)
-        self.label_165.setFont(font4)
         self.label_165.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.label_166 = QLabel(self.groupBox_76)
         self.label_166.setObjectName(u"label_166")
@@ -2248,7 +1988,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_166.sizePolicy().hasHeightForWidth())
         self.label_166.setSizePolicy(sizePolicy3)
         self.label_166.setMinimumSize(QSize(100, 30))
-        self.label_166.setFont(font3)
         self.label_166.setLayoutDirection(Qt.LeftToRight)
         self.label_166.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.tabWidget.addTab(self.tab_9, "")
@@ -2256,12 +1995,11 @@ class Ui_AVDV(object):
         self.tab_2.setObjectName(u"tab_2")
         self.groupBox_20 = QGroupBox(self.tab_2)
         self.groupBox_20.setObjectName(u"groupBox_20")
-        self.groupBox_20.setGeometry(QRect(30, 10, 701, 191))
-        self.groupBox_20.setFont(font3)
+        self.groupBox_20.setGeometry(QRect(30, 10, 701, 181))
         self.groupBox_20.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_17 = QWidget(self.groupBox_20)
         self.gridLayoutWidget_17.setObjectName(u"gridLayoutWidget_17")
-        self.gridLayoutWidget_17.setGeometry(QRect(10, 30, 681, 151))
+        self.gridLayoutWidget_17.setGeometry(QRect(10, 20, 681, 151))
         self.gridLayout_17 = QGridLayout(self.gridLayoutWidget_17)
         self.gridLayout_17.setObjectName(u"gridLayout_17")
         self.gridLayout_17.setContentsMargins(0, 0, 0, 0)
@@ -2269,7 +2007,6 @@ class Ui_AVDV(object):
         self.label_91.setObjectName(u"label_91")
         sizePolicy4.setHeightForWidth(self.label_91.sizePolicy().hasHeightForWidth())
         self.label_91.setSizePolicy(sizePolicy4)
-        self.label_91.setFont(font4)
         self.label_91.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_17.addWidget(self.label_91, 1, 1, 1, 1)
@@ -2279,7 +2016,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_69.sizePolicy().hasHeightForWidth())
         self.label_69.setSizePolicy(sizePolicy3)
         self.label_69.setMinimumSize(QSize(160, 30))
-        self.label_69.setFont(font3)
         self.label_69.setLayoutDirection(Qt.LeftToRight)
         self.label_69.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -2290,7 +2026,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_89.sizePolicy().hasHeightForWidth())
         self.label_89.setSizePolicy(sizePolicy3)
         self.label_89.setMinimumSize(QSize(160, 30))
-        self.label_89.setFont(font3)
         self.label_89.setLayoutDirection(Qt.LeftToRight)
         self.label_89.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -2300,7 +2035,6 @@ class Ui_AVDV(object):
         self.label_90.setObjectName(u"label_90")
         sizePolicy4.setHeightForWidth(self.label_90.sizePolicy().hasHeightForWidth())
         self.label_90.setSizePolicy(sizePolicy4)
-        self.label_90.setFont(font4)
         self.label_90.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_17.addWidget(self.label_90, 3, 1, 1, 1)
@@ -2308,7 +2042,6 @@ class Ui_AVDV(object):
         self.lineEdit_cnword_style = QLineEdit(self.gridLayoutWidget_17)
         self.lineEdit_cnword_style.setObjectName(u"lineEdit_cnword_style")
         self.lineEdit_cnword_style.setMinimumSize(QSize(450, 30))
-        self.lineEdit_cnword_style.setFont(font3)
         self.lineEdit_cnword_style.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -2319,7 +2052,6 @@ class Ui_AVDV(object):
         self.lineEdit_cnword_char = QLineEdit(self.gridLayoutWidget_17)
         self.lineEdit_cnword_char.setObjectName(u"lineEdit_cnword_char")
         self.lineEdit_cnword_char.setMinimumSize(QSize(450, 30))
-        self.lineEdit_cnword_char.setFont(font3)
         self.lineEdit_cnword_char.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -2329,12 +2061,11 @@ class Ui_AVDV(object):
 
         self.groupBox_36 = QGroupBox(self.tab_2)
         self.groupBox_36.setObjectName(u"groupBox_36")
-        self.groupBox_36.setGeometry(QRect(30, 220, 701, 81))
-        self.groupBox_36.setFont(font3)
+        self.groupBox_36.setGeometry(QRect(30, 210, 701, 71))
         self.groupBox_36.setStyleSheet(u"font:\"Courier\";")
         self.horizontalLayoutWidget_8 = QWidget(self.groupBox_36)
         self.horizontalLayoutWidget_8.setObjectName(u"horizontalLayoutWidget_8")
-        self.horizontalLayoutWidget_8.setGeometry(QRect(60, 30, 641, 41))
+        self.horizontalLayoutWidget_8.setGeometry(QRect(60, 20, 631, 41))
         self.horizontalLayout_10 = QHBoxLayout(self.horizontalLayoutWidget_8)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -2343,7 +2074,6 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.checkBox_foldername.sizePolicy().hasHeightForWidth())
         self.checkBox_foldername.setSizePolicy(sizePolicy6)
         self.checkBox_foldername.setMinimumSize(QSize(100, 30))
-        self.checkBox_foldername.setFont(font3)
 
         self.horizontalLayout_10.addWidget(self.checkBox_foldername)
 
@@ -2352,7 +2082,6 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.checkBox_filename.sizePolicy().hasHeightForWidth())
         self.checkBox_filename.setSizePolicy(sizePolicy6)
         self.checkBox_filename.setMinimumSize(QSize(100, 30))
-        self.checkBox_filename.setFont(font3)
 
         self.horizontalLayout_10.addWidget(self.checkBox_filename)
 
@@ -2372,12 +2101,11 @@ class Ui_AVDV(object):
         self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 771, 577))
         self.groupBox_29 = QGroupBox(self.scrollAreaWidgetContents_4)
         self.groupBox_29.setObjectName(u"groupBox_29")
-        self.groupBox_29.setGeometry(QRect(30, 10, 701, 81))
+        self.groupBox_29.setGeometry(QRect(30, 10, 701, 71))
         self.groupBox_29.setMinimumSize(QSize(500, 0))
-        self.groupBox_29.setFont(font3)
         self.horizontalLayoutWidget_5 = QWidget(self.groupBox_29)
         self.horizontalLayoutWidget_5.setObjectName(u"horizontalLayoutWidget_5")
-        self.horizontalLayoutWidget_5.setGeometry(QRect(60, 30, 641, 41))
+        self.horizontalLayoutWidget_5.setGeometry(QRect(60, 20, 631, 41))
         self.horizontalLayout_7 = QHBoxLayout(self.horizontalLayoutWidget_5)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -2386,7 +2114,6 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.checkBox_poster_mark.sizePolicy().hasHeightForWidth())
         self.checkBox_poster_mark.setSizePolicy(sizePolicy6)
         self.checkBox_poster_mark.setMinimumSize(QSize(100, 30))
-        self.checkBox_poster_mark.setFont(font3)
 
         self.horizontalLayout_7.addWidget(self.checkBox_poster_mark)
 
@@ -2395,18 +2122,16 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.checkBox_thumb_mark.sizePolicy().hasHeightForWidth())
         self.checkBox_thumb_mark.setSizePolicy(sizePolicy6)
         self.checkBox_thumb_mark.setMinimumSize(QSize(100, 30))
-        self.checkBox_thumb_mark.setFont(font3)
 
         self.horizontalLayout_7.addWidget(self.checkBox_thumb_mark)
 
         self.groupBox_19 = QGroupBox(self.scrollAreaWidgetContents_4)
         self.groupBox_19.setObjectName(u"groupBox_19")
-        self.groupBox_19.setGeometry(QRect(30, 210, 701, 81))
-        self.groupBox_19.setFont(font3)
+        self.groupBox_19.setGeometry(QRect(30, 190, 701, 71))
         self.groupBox_19.setStyleSheet(u"font:\"Courier\";")
         self.horizontalLayoutWidget_2 = QWidget(self.groupBox_19)
         self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
-        self.horizontalLayoutWidget_2.setGeometry(QRect(60, 30, 641, 41))
+        self.horizontalLayoutWidget_2.setGeometry(QRect(60, 20, 631, 41))
         self.horizontalLayout_4 = QHBoxLayout(self.horizontalLayoutWidget_2)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -2415,7 +2140,6 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.radioButton_top_left.sizePolicy().hasHeightForWidth())
         self.radioButton_top_left.setSizePolicy(sizePolicy6)
         self.radioButton_top_left.setMinimumSize(QSize(0, 30))
-        self.radioButton_top_left.setFont(font3)
 
         self.horizontalLayout_4.addWidget(self.radioButton_top_left)
 
@@ -2424,7 +2148,6 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.radioButton_bottom_left.sizePolicy().hasHeightForWidth())
         self.radioButton_bottom_left.setSizePolicy(sizePolicy6)
         self.radioButton_bottom_left.setMinimumSize(QSize(0, 30))
-        self.radioButton_bottom_left.setFont(font3)
 
         self.horizontalLayout_4.addWidget(self.radioButton_bottom_left)
 
@@ -2433,7 +2156,6 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.radioButton_top_right.sizePolicy().hasHeightForWidth())
         self.radioButton_top_right.setSizePolicy(sizePolicy6)
         self.radioButton_top_right.setMinimumSize(QSize(0, 30))
-        self.radioButton_top_right.setFont(font3)
 
         self.horizontalLayout_4.addWidget(self.radioButton_top_right)
 
@@ -2442,18 +2164,16 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.radioButton_bottom_right.sizePolicy().hasHeightForWidth())
         self.radioButton_bottom_right.setSizePolicy(sizePolicy6)
         self.radioButton_bottom_right.setMinimumSize(QSize(0, 30))
-        self.radioButton_bottom_right.setFont(font3)
 
         self.horizontalLayout_4.addWidget(self.radioButton_bottom_right)
 
         self.groupBox_14 = QGroupBox(self.scrollAreaWidgetContents_4)
         self.groupBox_14.setObjectName(u"groupBox_14")
-        self.groupBox_14.setGeometry(QRect(30, 110, 701, 81))
-        self.groupBox_14.setFont(font3)
+        self.groupBox_14.setGeometry(QRect(30, 100, 701, 71))
         self.groupBox_14.setStyleSheet(u"font:\"Courier\";")
         self.horizontalLayoutWidget_3 = QWidget(self.groupBox_14)
         self.horizontalLayoutWidget_3.setObjectName(u"horizontalLayoutWidget_3")
-        self.horizontalLayoutWidget_3.setGeometry(QRect(60, 30, 641, 41))
+        self.horizontalLayoutWidget_3.setGeometry(QRect(60, 20, 631, 41))
         self.horizontalLayout_5 = QHBoxLayout(self.horizontalLayoutWidget_3)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
@@ -2462,7 +2182,6 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.checkBox_sub.sizePolicy().hasHeightForWidth())
         self.checkBox_sub.setSizePolicy(sizePolicy6)
         self.checkBox_sub.setMinimumSize(QSize(100, 30))
-        self.checkBox_sub.setFont(font3)
 
         self.horizontalLayout_5.addWidget(self.checkBox_sub)
 
@@ -2471,7 +2190,6 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.checkBox_leak.sizePolicy().hasHeightForWidth())
         self.checkBox_leak.setSizePolicy(sizePolicy6)
         self.checkBox_leak.setMinimumSize(QSize(100, 30))
-        self.checkBox_leak.setFont(font3)
 
         self.horizontalLayout_5.addWidget(self.checkBox_leak)
 
@@ -2480,18 +2198,16 @@ class Ui_AVDV(object):
         sizePolicy6.setHeightForWidth(self.checkBox_uncensored.sizePolicy().hasHeightForWidth())
         self.checkBox_uncensored.setSizePolicy(sizePolicy6)
         self.checkBox_uncensored.setMinimumSize(QSize(100, 30))
-        self.checkBox_uncensored.setFont(font3)
 
         self.horizontalLayout_5.addWidget(self.checkBox_uncensored)
 
         self.groupBox_21 = QGroupBox(self.scrollAreaWidgetContents_4)
         self.groupBox_21.setObjectName(u"groupBox_21")
-        self.groupBox_21.setGeometry(QRect(30, 310, 701, 71))
-        self.groupBox_21.setFont(font3)
+        self.groupBox_21.setGeometry(QRect(30, 280, 701, 71))
         self.groupBox_21.setStyleSheet(u"font:\"Courier\";")
         self.horizontalLayoutWidget_4 = QWidget(self.groupBox_21)
         self.horizontalLayoutWidget_4.setObjectName(u"horizontalLayoutWidget_4")
-        self.horizontalLayoutWidget_4.setGeometry(QRect(60, 20, 641, 41))
+        self.horizontalLayoutWidget_4.setGeometry(QRect(60, 20, 631, 41))
         self.horizontalLayout_6 = QHBoxLayout(self.horizontalLayoutWidget_4)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -2525,7 +2241,6 @@ class Ui_AVDV(object):
         self.label_9 = QLabel(self.scrollAreaWidgetContents_4)
         self.label_9.setObjectName(u"label_9")
         self.label_9.setGeometry(QRect(500, 600, 171, 101))
-        self.label_9.setFont(font3)
         self.label_9.setStyleSheet(u"font:\"Courier\";")
         self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_4)
         self.tabWidget.addTab(self.tab4, "")
@@ -2544,12 +2259,11 @@ class Ui_AVDV(object):
         self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 771, 577))
         self.groupBox_10 = QGroupBox(self.scrollAreaWidgetContents_3)
         self.groupBox_10.setObjectName(u"groupBox_10")
-        self.groupBox_10.setGeometry(QRect(30, 270, 701, 281))
-        self.groupBox_10.setFont(font3)
+        self.groupBox_10.setGeometry(QRect(30, 260, 701, 281))
         self.groupBox_10.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_10 = QWidget(self.groupBox_10)
         self.gridLayoutWidget_10.setObjectName(u"gridLayoutWidget_10")
-        self.gridLayoutWidget_10.setGeometry(QRect(0, 30, 681, 131))
+        self.gridLayoutWidget_10.setGeometry(QRect(10, 20, 681, 141))
         self.gridLayout_10 = QGridLayout(self.gridLayoutWidget_10)
         self.gridLayout_10.setObjectName(u"gridLayout_10")
         self.gridLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -2567,7 +2281,6 @@ class Ui_AVDV(object):
         sizePolicy5.setHeightForWidth(self.label_45.sizePolicy().hasHeightForWidth())
         self.label_45.setSizePolicy(sizePolicy5)
         self.label_45.setMinimumSize(QSize(160, 30))
-        self.label_45.setFont(font3)
         self.label_45.setLayoutDirection(Qt.RightToLeft)
         self.label_45.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -2575,17 +2288,15 @@ class Ui_AVDV(object):
 
         self.label_75 = QLabel(self.groupBox_10)
         self.label_75.setObjectName(u"label_75")
-        self.label_75.setGeometry(QRect(10, 170, 691, 101))
+        self.label_75.setGeometry(QRect(10, 170, 681, 101))
         sizePolicy4.setHeightForWidth(self.label_75.sizePolicy().hasHeightForWidth())
         self.label_75.setSizePolicy(sizePolicy4)
-        self.label_75.setFont(font4)
         self.label_75.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.label_75.setScaledContents(True)
         self.label_75.setTextInteractionFlags(Qt.LinksAccessibleByKeyboard|Qt.LinksAccessibleByMouse|Qt.TextBrowserInteraction|Qt.TextSelectableByKeyboard|Qt.TextSelectableByMouse)
         self.label_get_cookie_url = QLabel(self.groupBox_10)
         self.label_get_cookie_url.setObjectName(u"label_get_cookie_url")
-        self.label_get_cookie_url.setGeometry(QRect(90, 240, 431, 41))
-        self.label_get_cookie_url.setFont(font3)
+        self.label_get_cookie_url.setGeometry(QRect(90, 250, 431, 21))
         self.label_get_cookie_url.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_get_cookie_url.setMouseTracking(False)
         self.label_get_cookie_url.setStyleSheet(u"color: rgb(10, 52, 255);")
@@ -2595,12 +2306,11 @@ class Ui_AVDV(object):
         self.label_get_cookie_url.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.groupBox_28 = QGroupBox(self.scrollAreaWidgetContents_3)
         self.groupBox_28.setObjectName(u"groupBox_28")
-        self.groupBox_28.setGeometry(QRect(30, 10, 701, 241))
-        self.groupBox_28.setFont(font3)
+        self.groupBox_28.setGeometry(QRect(30, 10, 701, 231))
         self.groupBox_28.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_9 = QWidget(self.groupBox_28)
         self.gridLayoutWidget_9.setObjectName(u"gridLayoutWidget_9")
-        self.gridLayoutWidget_9.setGeometry(QRect(0, 30, 681, 201))
+        self.gridLayoutWidget_9.setGeometry(QRect(10, 20, 681, 201))
         self.gridLayout_9 = QGridLayout(self.gridLayoutWidget_9)
         self.gridLayout_9.setObjectName(u"gridLayout_9")
         self.gridLayout_9.setContentsMargins(0, 0, 0, 0)
@@ -2609,7 +2319,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_65.sizePolicy().hasHeightForWidth())
         self.label_65.setSizePolicy(sizePolicy3)
         self.label_65.setMinimumSize(QSize(160, 30))
-        self.label_65.setFont(font3)
         self.label_65.setLayoutDirection(Qt.LeftToRight)
         self.label_65.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -2620,7 +2329,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_73.sizePolicy().hasHeightForWidth())
         self.label_73.setSizePolicy(sizePolicy3)
         self.label_73.setMinimumSize(QSize(160, 30))
-        self.label_73.setFont(font3)
         self.label_73.setLayoutDirection(Qt.LeftToRight)
         self.label_73.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -2631,7 +2339,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_64.sizePolicy().hasHeightForWidth())
         self.label_64.setSizePolicy(sizePolicy3)
         self.label_64.setMinimumSize(QSize(160, 30))
-        self.label_64.setFont(font3)
         self.label_64.setLayoutDirection(Qt.LeftToRight)
         self.label_64.setFrameShape(QFrame.NoFrame)
         self.label_64.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
@@ -2649,7 +2356,6 @@ class Ui_AVDV(object):
         self.horizontalSlider_timeout.setSizePolicy(sizePolicy8)
         self.horizontalSlider_timeout.setMinimumSize(QSize(300, 30))
         self.horizontalSlider_timeout.setMaximumSize(QSize(66666, 30))
-        self.horizontalSlider_timeout.setFont(font5)
         self.horizontalSlider_timeout.setLayoutDirection(Qt.LeftToRight)
         self.horizontalSlider_timeout.setAutoFillBackground(False)
         self.horizontalSlider_timeout.setMinimum(3)
@@ -2667,7 +2373,6 @@ class Ui_AVDV(object):
         self.lcdNumber_timeout.setSizePolicy(sizePolicy7)
         self.lcdNumber_timeout.setMinimumSize(QSize(30, 30))
         self.lcdNumber_timeout.setMaximumSize(QSize(70, 30))
-        self.lcdNumber_timeout.setFont(font5)
         self.lcdNumber_timeout.setDigitCount(5)
         self.lcdNumber_timeout.setProperty("intValue", 7)
 
@@ -2684,7 +2389,6 @@ class Ui_AVDV(object):
         self.horizontalSlider_retry.setSizePolicy(sizePolicy8)
         self.horizontalSlider_retry.setMinimumSize(QSize(300, 30))
         self.horizontalSlider_retry.setMaximumSize(QSize(66666, 30))
-        self.horizontalSlider_retry.setFont(font5)
         self.horizontalSlider_retry.setMouseTracking(False)
         self.horizontalSlider_retry.setLayoutDirection(Qt.LeftToRight)
         self.horizontalSlider_retry.setMinimum(2)
@@ -2704,7 +2408,6 @@ class Ui_AVDV(object):
         self.lcdNumber_retry.setSizePolicy(sizePolicy9)
         self.lcdNumber_retry.setMinimumSize(QSize(30, 30))
         self.lcdNumber_retry.setMaximumSize(QSize(70, 30))
-        self.lcdNumber_retry.setFont(font5)
         self.lcdNumber_retry.setProperty("intValue", 3)
 
         self.horizontalLayout_retry.addWidget(self.lcdNumber_retry)
@@ -2717,21 +2420,18 @@ class Ui_AVDV(object):
         self.radioButton_proxy_http = QRadioButton(self.gridLayoutWidget_9)
         self.radioButton_proxy_http.setObjectName(u"radioButton_proxy_http")
         self.radioButton_proxy_http.setMinimumSize(QSize(93, 30))
-        self.radioButton_proxy_http.setFont(font3)
 
         self.horizontalLayout_17.addWidget(self.radioButton_proxy_http)
 
         self.radioButton_proxy_socks5 = QRadioButton(self.gridLayoutWidget_9)
         self.radioButton_proxy_socks5.setObjectName(u"radioButton_proxy_socks5")
         self.radioButton_proxy_socks5.setMinimumSize(QSize(93, 30))
-        self.radioButton_proxy_socks5.setFont(font3)
 
         self.horizontalLayout_17.addWidget(self.radioButton_proxy_socks5)
 
         self.radioButton_proxy_nouse = QRadioButton(self.gridLayoutWidget_9)
         self.radioButton_proxy_nouse.setObjectName(u"radioButton_proxy_nouse")
         self.radioButton_proxy_nouse.setMinimumSize(QSize(93, 30))
-        self.radioButton_proxy_nouse.setFont(font3)
 
         self.horizontalLayout_17.addWidget(self.radioButton_proxy_nouse)
 
@@ -2743,7 +2443,6 @@ class Ui_AVDV(object):
         sizePolicy3.setHeightForWidth(self.label_70.sizePolicy().hasHeightForWidth())
         self.label_70.setSizePolicy(sizePolicy3)
         self.label_70.setMinimumSize(QSize(160, 30))
-        self.label_70.setFont(font3)
         self.label_70.setLayoutDirection(Qt.LeftToRight)
         self.label_70.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -2754,7 +2453,6 @@ class Ui_AVDV(object):
         sizePolicy4.setHeightForWidth(self.lineEdit_proxy.sizePolicy().hasHeightForWidth())
         self.lineEdit_proxy.setSizePolicy(sizePolicy4)
         self.lineEdit_proxy.setMinimumSize(QSize(300, 30))
-        self.lineEdit_proxy.setFont(font3)
         self.lineEdit_proxy.setStyleSheet(u" font: \"Courier\";\n"
 " border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
@@ -2782,22 +2480,19 @@ class Ui_AVDV(object):
         self.groupBox_17.setGeometry(QRect(30, 190, 701, 71))
         self.groupBox_17.setMinimumSize(QSize(200, 0))
         self.groupBox_17.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_17.setFont(font3)
         self.horizontalLayoutWidget_11 = QWidget(self.groupBox_17)
         self.horizontalLayoutWidget_11.setObjectName(u"horizontalLayoutWidget_11")
-        self.horizontalLayoutWidget_11.setGeometry(QRect(60, 20, 641, 41))
+        self.horizontalLayoutWidget_11.setGeometry(QRect(60, 20, 631, 41))
         self.horizontalLayout_13 = QHBoxLayout(self.horizontalLayoutWidget_11)
         self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
         self.horizontalLayout_13.setContentsMargins(0, 0, 0, 0)
         self.radioButton_log_on = QRadioButton(self.horizontalLayoutWidget_11)
         self.radioButton_log_on.setObjectName(u"radioButton_log_on")
-        self.radioButton_log_on.setFont(font3)
 
         self.horizontalLayout_13.addWidget(self.radioButton_log_on)
 
         self.radioButton_log_off = QRadioButton(self.horizontalLayoutWidget_11)
         self.radioButton_log_off.setObjectName(u"radioButton_log_off")
-        self.radioButton_log_off.setFont(font3)
 
         self.horizontalLayout_13.addWidget(self.radioButton_log_off)
 
@@ -2806,22 +2501,19 @@ class Ui_AVDV(object):
         self.groupBox_3.setGeometry(QRect(30, 100, 701, 71))
         self.groupBox_3.setMinimumSize(QSize(200, 0))
         self.groupBox_3.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_3.setFont(font3)
         self.horizontalLayoutWidget_9 = QWidget(self.groupBox_3)
         self.horizontalLayoutWidget_9.setObjectName(u"horizontalLayoutWidget_9")
-        self.horizontalLayoutWidget_9.setGeometry(QRect(60, 20, 641, 41))
+        self.horizontalLayoutWidget_9.setGeometry(QRect(60, 20, 631, 41))
         self.horizontalLayout_11 = QHBoxLayout(self.horizontalLayoutWidget_9)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.radioButton_debug_on = QRadioButton(self.horizontalLayoutWidget_9)
         self.radioButton_debug_on.setObjectName(u"radioButton_debug_on")
-        self.radioButton_debug_on.setFont(font3)
 
         self.horizontalLayout_11.addWidget(self.radioButton_debug_on)
 
         self.radioButton_debug_off = QRadioButton(self.horizontalLayoutWidget_9)
         self.radioButton_debug_off.setObjectName(u"radioButton_debug_off")
-        self.radioButton_debug_off.setFont(font3)
 
         self.horizontalLayout_11.addWidget(self.radioButton_debug_off)
 
@@ -2830,22 +2522,19 @@ class Ui_AVDV(object):
         self.groupBox_4.setGeometry(QRect(30, 10, 701, 71))
         self.groupBox_4.setMinimumSize(QSize(200, 0))
         self.groupBox_4.setMaximumSize(QSize(739, 16777215))
-        self.groupBox_4.setFont(font3)
         self.horizontalLayoutWidget_7 = QWidget(self.groupBox_4)
         self.horizontalLayoutWidget_7.setObjectName(u"horizontalLayoutWidget_7")
-        self.horizontalLayoutWidget_7.setGeometry(QRect(60, 20, 641, 41))
+        self.horizontalLayoutWidget_7.setGeometry(QRect(60, 20, 631, 41))
         self.horizontalLayout_9 = QHBoxLayout(self.horizontalLayoutWidget_7)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.radioButton_update_on = QRadioButton(self.horizontalLayoutWidget_7)
         self.radioButton_update_on.setObjectName(u"radioButton_update_on")
-        self.radioButton_update_on.setFont(font3)
 
         self.horizontalLayout_9.addWidget(self.radioButton_update_on)
 
         self.radioButton_update_off = QRadioButton(self.horizontalLayoutWidget_7)
         self.radioButton_update_off.setObjectName(u"radioButton_update_off")
-        self.radioButton_update_off.setFont(font3)
 
         self.horizontalLayout_9.addWidget(self.radioButton_update_off)
 
@@ -2854,17 +2543,9 @@ class Ui_AVDV(object):
         self.pushButton_save_config = QPushButton(self.page_setting)
         self.pushButton_save_config.setObjectName(u"pushButton_save_config")
         self.pushButton_save_config.setGeometry(QRect(320, 620, 350, 50))
-        font6 = QFont()
-        font6.setFamily(u"Courier")
-        font6.setPointSize(14)
-        font6.setBold(False)
-        font6.setItalic(False)
-        font6.setWeight(50)
-        self.pushButton_save_config.setFont(font6)
         self.pushButton_init_config = QPushButton(self.page_setting)
         self.pushButton_init_config.setObjectName(u"pushButton_init_config")
         self.pushButton_init_config.setGeometry(QRect(90, 620, 160, 50))
-        self.pushButton_init_config.setFont(font6)
         self.stackedWidget.addWidget(self.page_setting)
         self.tabWidget.raise_()
         self.pushButton_init_config.raise_()
@@ -2879,16 +2560,13 @@ class Ui_AVDV(object):
         self.widget_setting = QWidget(self.centralwidget)
         self.widget_setting.setObjectName(u"widget_setting")
         self.widget_setting.setGeometry(QRect(0, 0, 220, 700))
-        self.widget_setting.setFont(font)
         self.label_ico = QLabel(self.widget_setting)
         self.label_ico.setObjectName(u"label_ico")
         self.label_ico.setGeometry(QRect(40, 540, 141, 141))
-        self.label_ico.setFont(font)
         self.label_ico.setAlignment(Qt.AlignCenter)
         self.layoutWidget = QWidget(self.widget_setting)
         self.layoutWidget.setObjectName(u"layoutWidget")
         self.layoutWidget.setGeometry(QRect(0, 50, 221, 331))
-        self.layoutWidget.setFont(font)
         self.verticalLayout = QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -2899,7 +2577,6 @@ class Ui_AVDV(object):
         self.pushButton_main.setSizePolicy(sizePolicy)
         self.pushButton_main.setMinimumSize(QSize(0, 40))
         self.pushButton_main.setMaximumSize(QSize(16777215, 40))
-        self.pushButton_main.setFont(font)
 
         self.verticalLayout.addWidget(self.pushButton_main)
 
@@ -2911,7 +2588,6 @@ class Ui_AVDV(object):
         self.pushButton_log.setObjectName(u"pushButton_log")
         self.pushButton_log.setMinimumSize(QSize(0, 40))
         self.pushButton_log.setMaximumSize(QSize(16777215, 40))
-        self.pushButton_log.setFont(font)
 
         self.verticalLayout.addWidget(self.pushButton_log)
 
@@ -2919,13 +2595,12 @@ class Ui_AVDV(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
-        self.pushButton_net = QPushButton(self.layoutWidget)
-        self.pushButton_net.setObjectName(u"pushButton_net")
-        self.pushButton_net.setMinimumSize(QSize(0, 40))
-        self.pushButton_net.setMaximumSize(QSize(16777215, 40))
-        self.pushButton_net.setFont(font)
+        self.pushButton_setting = QPushButton(self.layoutWidget)
+        self.pushButton_setting.setObjectName(u"pushButton_setting")
+        self.pushButton_setting.setMinimumSize(QSize(0, 40))
+        self.pushButton_setting.setMaximumSize(QSize(16777215, 40))
 
-        self.verticalLayout.addWidget(self.pushButton_net)
+        self.verticalLayout.addWidget(self.pushButton_setting)
 
         self.verticalSpacer_6 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
@@ -2935,7 +2610,6 @@ class Ui_AVDV(object):
         self.pushButton_tool.setObjectName(u"pushButton_tool")
         self.pushButton_tool.setMinimumSize(QSize(0, 40))
         self.pushButton_tool.setMaximumSize(QSize(16777215, 40))
-        self.pushButton_tool.setFont(font)
 
         self.verticalLayout.addWidget(self.pushButton_tool)
 
@@ -2943,13 +2617,12 @@ class Ui_AVDV(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_4)
 
-        self.pushButton_setting = QPushButton(self.layoutWidget)
-        self.pushButton_setting.setObjectName(u"pushButton_setting")
-        self.pushButton_setting.setMinimumSize(QSize(0, 40))
-        self.pushButton_setting.setMaximumSize(QSize(16777215, 40))
-        self.pushButton_setting.setFont(font)
+        self.pushButton_net = QPushButton(self.layoutWidget)
+        self.pushButton_net.setObjectName(u"pushButton_net")
+        self.pushButton_net.setMinimumSize(QSize(0, 40))
+        self.pushButton_net.setMaximumSize(QSize(16777215, 40))
 
-        self.verticalLayout.addWidget(self.pushButton_setting)
+        self.verticalLayout.addWidget(self.pushButton_net)
 
         self.verticalSpacer_5 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
@@ -2959,14 +2632,12 @@ class Ui_AVDV(object):
         self.pushButton_about.setObjectName(u"pushButton_about")
         self.pushButton_about.setMinimumSize(QSize(0, 40))
         self.pushButton_about.setMaximumSize(QSize(16777215, 40))
-        self.pushButton_about.setFont(font)
 
         self.verticalLayout.addWidget(self.pushButton_about)
 
         self.layoutWidget1 = QWidget(self.widget_setting)
         self.layoutWidget1.setObjectName(u"layoutWidget1")
         self.layoutWidget1.setGeometry(QRect(0, 0, 91, 41))
-        self.layoutWidget1.setFont(font)
         self.horizontalLayout = QHBoxLayout(self.layoutWidget1)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -2981,7 +2652,6 @@ class Ui_AVDV(object):
         self.pushButton_close.setMinimumSize(QSize(20, 20))
         self.pushButton_close.setMaximumSize(QSize(20, 20))
         self.pushButton_close.setBaseSize(QSize(0, 0))
-        self.pushButton_close.setFont(font)
         self.pushButton_close.setMouseTracking(False)
         self.pushButton_close.setStyleSheet(u"QPushButton{color:#E0E0E0;background:#F14C4C;border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:#FF6058;}")
 
@@ -2994,7 +2664,6 @@ class Ui_AVDV(object):
         self.pushButton_min.setMinimumSize(QSize(20, 20))
         self.pushButton_min.setMaximumSize(QSize(20, 20))
         self.pushButton_min.setBaseSize(QSize(0, 0))
-        self.pushButton_min.setFont(font)
         self.pushButton_min.setMouseTracking(False)
         self.pushButton_min.setStyleSheet(u"QPushButton{color:#E0E0E0;background:rgb(246, 186, 76);border-radius:10px;}QPushButton:hover{color:white;font:Tahoma;background:rgba(246, 186, 76, 230);}\n"
 "")
@@ -3004,7 +2673,6 @@ class Ui_AVDV(object):
         self.label_show_version = QLabel(self.widget_setting)
         self.label_show_version.setObjectName(u"label_show_version")
         self.label_show_version.setGeometry(QRect(0, 660, 220, 30))
-        self.label_show_version.setFont(font)
         self.label_show_version.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_show_version.setStyleSheet(u"color: rgba(255, 255, 255, 151);")
         self.label_show_version.setAlignment(Qt.AlignCenter)
@@ -3014,7 +2682,6 @@ class Ui_AVDV(object):
         self.progressBar_avdc.setMinimumSize(QSize(0, 2))
         self.progressBar_avdc.setSizeIncrement(QSize(0, 0))
         self.progressBar_avdc.setBaseSize(QSize(0, 0))
-        self.progressBar_avdc.setFont(font)
         self.progressBar_avdc.setStyleSheet(u"QProgressBar::chunk {\n"
 "   background-color: #336699;\n"
 "   width: 3px;\n"
@@ -3157,10 +2824,10 @@ class Ui_AVDV(object):
         self.groupBox.setTitle(QCoreApplication.translate("AVDV", u"\u6a21\u5f0f", None))
         self.radioButton_read.setText(QCoreApplication.translate("AVDV", u"\u8bfb\u53d6\u6a21\u5f0f", None))
         self.label_11.setText(QCoreApplication.translate("AVDV", u"\u5305\u542b\u522e\u524a\u4fe1\u606f\u3001\u7ffb\u8bd1\u6807\u9898\u548c\u7b80\u4ecb\u3001\u4e0b\u8f7d\u56fe\u7247\u548cnfo\u6587\u4ef6\u3001\u91cd\u547d\u540d\u6587\u4ef6\u3001\u79fb\u52a8\u6587\u4ef6\u7b49\u5168\u90e8\u64cd\u4f5c", None))
-        self.label_15.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u540e\uff0c\u4e0d\u4e0b\u8f7d\u56fe\u7247\u548cnfo\u6587\u4ef6\uff0c\u4ec5\u91cd\u547d\u540d\u6587\u4ef6", None))
-        self.radioButton_common.setText(QCoreApplication.translate("AVDV", u"\u6807\u51c6\u6a21\u5f0f", None))
         self.label_16.setText(QCoreApplication.translate("AVDV", u"\u672c\u5730\u6709nfo\u6587\u4ef6\u65f6\uff0c\u76f4\u63a5\u8bfb\u53d6nfo\u4fe1\u606f\uff0c\u4e0d\u8fdb\u884c\u522e\u524a", None))
         self.radioButton_sort.setText(QCoreApplication.translate("AVDV", u"\u6574\u7406\u6a21\u5f0f", None))
+        self.radioButton_common.setText(QCoreApplication.translate("AVDV", u"\u6807\u51c6\u6a21\u5f0f", None))
+        self.label_15.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u540e\uff0c\u4e0d\u4e0b\u8f7d\u56fe\u7247\u548cnfo\u6587\u4ef6\uff0c\u4ec5\u91cd\u547d\u540d\u6587\u4ef6", None))
         self.checkBox_read_no_nfo.setText(QCoreApplication.translate("AVDV", u"\u4e0d\u5b58\u5728\u672c\u5730nfo\u7684\u89c6\u9891\uff0c\u6b63\u5e38\u522e\u524a", None))
         self.groupBox_5.setTitle(QCoreApplication.translate("AVDV", u"\u504f\u597d", None))
         self.radioButton_like_speed.setText(QCoreApplication.translate("AVDV", u"\u5feb\u901f", None))
@@ -3267,8 +2934,7 @@ class Ui_AVDV(object):
 "runtime, director, release, series, definition, cnword\n"
 "\u6ce8\u610f\uff1a1\uff0c\u53ef\u4ee5\u6dfb\u52a0\u547d\u540d\u5b57\u6bb5\u4ee5\u5916\u7684\u5b57\u7b26\uff0c\u547d\u540d\u65f6\u4f1a\u539f\u6837\u4fdd\u7559\uff1b\n"
 "2\uff0c\u5f53\u7559\u7a7a\u65f6\uff0c\u8868\u793a\u4e0d\u521b\u5efa\u89c6\u9891\u76ee\u5f55\uff1b\n"
-"3\uff0c\u5f53\u52fe\u9009\u300c\u6210\u529f\u540e\u4e0d\u79fb\u52a8\u6587\u4ef6\u300d\u65f6\uff0c\u5c06\u4e0d\u4f1a\u521b\u5efa\u89c6\u9891\u76ee\u5f55\n"
-"", None))
+"3\uff0c\u5f53\u52fe\u9009\u300c\u6210\u529f\u540e\u4e0d\u79fb\u52a8\u6587\u4ef6\u300d\u65f6\uff0c\u5c06\u4e0d\u4f1a\u521b\u5efa\u89c6\u9891\u76ee\u5f55", None))
         self.label_63.setText(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u6587\u4ef6\u540d\uff1a", None))
 #if QT_CONFIG(accessibility)
         self.lineEdit_dir_name.setAccessibleDescription(QCoreApplication.translate("AVDV", u"\u6d4b\u8bd5", None))
@@ -3393,159 +3059,138 @@ class Ui_AVDV(object):
         self.textBrowser_about.setHtml(QCoreApplication.translate("AVDV", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Courier','Courier'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:20pt; font-weight:600;\">AVDCx</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier';\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:16pt; font-weight:600;\">AVDCx \u662f\u57fa\u4e8e AV_Data_Capture \u7684 GUI \u7248\u672c AVDC "
-                        "\u518d\u6b21\u4fee\u6539\u7684\u7248\u672c\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:18pt; font-weight:600;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt;\">\u00b7 AV_Data_Capture \u9879\u76ee\u5730\u5740\uff1a</span><a href=\"https://github.com/yoshiko2/AV_Data_Capture\"><span style=\" font-family:'Courier'; font-size:12pt; text-decoration: underline; color:#0068da;\">https://github.com/yoshiko2/AV_Data_Capture</span></a></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt;\">\u00b7 AVDC \u9879\u76ee\u5730\u5740\uff1a</span><a href=\"https://github.com/moyy996/AVDC\"><span style=\" font"
-                        "-family:'Courier'; font-size:12pt; text-decoration: underline; color:#0068da;\">https://github.com/moyy996/AVDC</span></a></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt;\">\u00b7 AVDCx \u9879\u76ee\u5730\u5740\uff1a</span><a href=\"https://github.com/Hermit10/temp\"><span style=\" font-family:'Courier'; font-size:12pt; text-decoration: underline; color:#0068da;\">https://github.com/Hermit10/AVDCx</span></a></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:14pt;\"><br /></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:24pt; font-weight:600;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin"
-                        "-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:24pt; font-weight:600;\">\u4f7f\u7528\u8bf4\u660e</span><span style=\" font-family:'Courier';\"> \uff08\u5185\u5bb9\u6765\u81ea AVDC \uff1a</span><a href=\"https://github.com/Hermit10/temp\"><span style=\" font-family:'Courier'; text-decoration: underline; color:#0068da;\">https://github.com/moyy996/AVDC</span></a><span style=\" font-family:'Courier';\"> \uff09</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:14pt;\">\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014</span></p>\n"
-"<p styl"
-                        "e=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier';\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:14pt; font-weight:600;\">\u76ee\u5f55</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"#_\u4e00\u3001\u529f\u80fd\u7b80\u4ecb\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;\">\u4e00\u3001\u529f\u80fd\u7b80\u4ecb</span></a></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"#_\u4e8c\u3001\u9879\u76ee\u7b80\u4ecb\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000"
-                        "ff;\">\u4e8c\u3001\u9879\u76ee\u7b80\u4ecb</span></a></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"#_\u4e09\u3001\u5e38\u89c1\u756a\u53f7\u547d\u540d\u53c2\u8003\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;\">\u4e09\u3001\u5e38\u89c1\u756a\u53f7\u547d\u540d\u53c2\u8003</span></a></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"#_\u8bbe\u7f6e\u8bf4\u660e\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;\">\u56db\u3001\u8bbe\u7f6e\u8bf4\u660e</span></a></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600;\"> </span></p>\n"
-"<h1 style=\" margin-top:0p"
-                        "x; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a name=\"_\u4e00\u3001\u529f\u80fd\u7b80\u4ecb\"></a><span style=\" font-family:'Courier'; font-size:22pt; font-weight:600;\">\u4e00</span><span style=\" font-family:'Courier'; font-size:22pt; font-weight:600;\">\u3001\u529f\u80fd\u7b80\u4ecb</span></h1>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  \u65e5\u672c\u7535\u5f71</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">\u5143\u6570\u636e\u6293\u53d6\u5de5\u5177</span><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">/\u522e\u524a\u5668\uff0c\u914d\u5408\u672c\u5730\u5f71\u7247\u7ba1\u7406\u8f6f\u4ef6</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-wei"
-                        "ght:600; color:#ff0000; background-color:#ffffff;\">EMBY,KODI\uff0cPLEX</span><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">\u7b49\u7ba1\u7406\u672c\u5730\u5f71\u7247\uff0c\u8be5\u8f6f\u4ef6\u8d77\u5230\u5206\u7c7b\u4e0e\u5143\u6570\u636e\u6293\u53d6\u4f5c\u7528\uff0c\u5229\u7528\u5143\u6570\u636e\u4fe1\u606f\u6765\u5206\u7c7b\uff0c\u4f9b\u672c\u5730\u5f71\u7247</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">\u5206\u7c7b\u6574\u7406</span><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">\u4f7f\u7528\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\"> </span></p>\n"
-"<h1 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-b"
-                        "lock-indent:0; text-indent:0px;\"><a name=\"_\u4e8c\u3001\u9879\u76ee\u7b80\u4ecb\"></a><span style=\" font-family:'Courier'; font-size:22pt; font-weight:600;\">\u4e8c</span><span style=\" font-family:'Courier'; font-size:22pt; font-weight:600;\">\u3001\u9879\u76ee\u7b80\u4ecb</span></h1>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt;\">Gui made by </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">moyy996</span><span style=\" font-family:'Courier'; font-size:12pt;\">\uff0cCore made by </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">yoshiko2</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style"
-                        "=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt;\">tg\u5b98\u65b9\u7535\u62a5\u7fa4:</span><a href=\"https://t.me/joinchat/J54y1g3-a7nxJ_-WS4-KFQ\"><span style=\" font-family:'Courier'; font-size:12pt; text-decoration: underline; color:#0000ff;\"> </span></a><a href=\"https://t.me/joinchat/J54y1g3-a7nxJ_-WS4-KFQ\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;\">https://t.me/joinchat/J54y1g3-a7nxJ_-WS4-KFQ</span></a></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt;\">\u547d\u4ee4\u884c\u7248\u9879\u76ee\u5730\u5740\uff1a</span><a href=\"https://github.com/yoshiko2/AV_Data_Capture\"><span style=\" font-family:"
-                        "'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;\">https://github.com/yoshiko2/AV_Data_Capture</span></a></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt;\">GUI\u7248\u9879\u76ee\u5730\u5740\uff1a</span><a href=\"https://github.com/moyy996/AVDC\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;\">https://github.com/moyy996/AVDC</span></a></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt;\">GUI\u7248EXE\u4e0b\u8f7d\u5730\u5740\uff1a</span"
-                        "><a href=\"https://github.com/moyy996/AVDC/releases\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;\">https://github.com/moyy996/AVDC/releases</span></a></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt;\"> </span></p>\n"
-"<h1 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a name=\"_\u4e09\u3001\u5e38\u89c1\u756a\u53f7\u547d\u540d\u53c2\u8003\"></a><span style=\" font-family:'Courier'; font-size:22pt; font-weight:600;\">\u4e09</span><span style=\" font-family:'Courier'; font-size:22pt; font-weight:600;\">\u3001\u5e38\u89c1\u756a\u53f7\u547d\u540d\u53c2\u8003</span></h1>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:"
-                        "10.5pt; font-weight:600; color:#ff0000;\">\u4e0d\u533a\u5206\u5927\u5c0f\u5199\u3001\u522e\u524a\u524d\u5c3d\u91cf\u547d\u540d\u89c4\u8303\uff01\uff01\uff01\uff01</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">1\u3001\u6807\u51c6\u6709\u7801</span></h4>\n"
-"<h4 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">Javdb\u3001Javbus:</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">SSNI-111</span></h4>\n"
-"<h4 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px"
-                        ";\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">Dmm\uff1a</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">ssni00111</span></h4>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">2\u3001\u65e0\u7801</span></h4>\n"
-"<h4 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">Javdb\u3001Javbus\u3001Avsox:</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#"
-                        "ff0000; background-color:#ffffff;\">111111-1111\u3001111111_111\u3001HEYZO-1111\u3001n1111</span></h4>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">3\u3001\u7d20\u4eba</span></h4>\n"
-"<h4 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">Mgstage:</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">259LUXU-1111</span></h4>\n"
-"<h4 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e"
-                        "; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">Javdb:</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">LUXU-1111</span></h4>\n"
-"<h4 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">Fc2club:</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">FC2-111111\u3001FC2-PPV-111111\u3001FC2PPV-111111</span></h4>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4\u3001\u6b27\u7f8e</span></h4>\n"
-"<h4 style=\""
-                        " margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">Javdb\u3001Javbus:</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">sexart.11.11.11(\u7cfb\u5217.\u5e74.\u6708.\u65e5)</span></h4>\n"
-"<h4 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\"> </span></h4>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">5\u3001\u81ea\u5e26\u5b57\u5e55\u5f71\u7247</span></h4>\n"
-""
-                        "<h4 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">\u53ef\u4ee5\u628a\u7535\u5f71\u547d\u540d\u4e3a\u7c7b\u4f3c</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">ssni-xxx-c.mp4</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">,</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">ssni-xxx-C.mp4</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">\uff0c</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">abp-xxx-CD1-C.mp4 </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">\u7684\u89c4\u5219\u3002</span></h4>\n"
-"<h4 style=\" margin-top:12p"
-                        "x; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">6\u3001\u591a\u96c6\u5f71\u7247</span></h4>\n"
-"<h4 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">\u53ef\u4ee5\u628a\u591a\u96c6\u7535\u5f71\u6309\u7167\u96c6\u6570\u540e\u7f00\u547d\u540d\u4e3a\u7c7b\u4f3c</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">ssni-xxx-cd1.mp4</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">, </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">ssni-xxx-cd2.mp4</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600"
-                        ";\">, </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">abp-xxx-CD1-C.mp4</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">\u7684\u89c4\u5219\uff0c\u53ea\u8981\u542b\u6709</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">-CDn/-cdn</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">\u7c7b\u4f3c\u547d\u540d\u89c4\u5219\uff0c\u5373\u53ef\u4f7f\u7528\u5206\u96c6\u529f\u80fd.**\u4e0d\u652f\u6301-A -B -1 -2,\u5bb9\u6613\u8ddf\u5b57\u5e55\u7684-C\u6df7\u6dc6**.</span></h4>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">7\u3001\u591a\u96c6\u3001\u5b57\u5e55\u987a\u5e8f</span></h4>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ff"
-                        "ffff;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">abp-xxx-CD1-C.mp4</span><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">\uff0c</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">\u5206\u96c6\u5728\u524d\uff0c\u5b57\u5e55\u5728\u540e</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">\uff0c</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">\u5b57\u5e55\u5fc5\u987b\u4e0e\u62d3\u5c55\u540d\u9760\u8fd1</span><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">\uff0c-</span><span style=\" font-family:'Courier'; font-si"
-                        "ze:9.5pt; font-weight:600; color:#ff0000; background-color:#ffffff;\">C.mp4</span><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">.</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">8\u3001\u5916\u6302\u5b57\u5e55\u6587\u4ef6</span></h4>\n"
-"<h4 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">\u5b57\u5e55\u6587\u4ef6\u540d</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">\u5fc5\u987b\u4e0e</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">\u5f71\u7247\u6587"
-                        "\u4ef6\u540d</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">\u4e00\u81f4\uff0c\u624d\u53ef\u4ee5\u4e00\u8d77\u79fb\u52a8\u5230\u65b0\u76ee\u5f55\uff0c\u76ee\u524d\u652f\u6301</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; color:#ff0000;\">srt ass sub</span><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">\u7c7b\u578b\u7684\u5b57\u5e55\u6587\u4ef6\u3002</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:10.5pt;\"> </span></p>\n"
-"<h1 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a name=\"_\u8bbe\u7f6e\u8bf4\u660e\"></a><span style=\" font-family:'Courier'; font-size:22pt; font-weight:600;\">\u56db</span><span style=\" font-family:'Courier'; font-size:22pt; font-weight:600;\">\u3001\u8bbe\u7f6e\u8bf4\u660e</span></h1>\n"
-""
-                        "<h1 style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:22pt; font-weight:600;\"><br /></h1>\n"
-"<h1 style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#24292e; background-color:#ffffff;\">\u8be6\u7ec6\u7684\u8bf4\u660e\uff1a </span><a href=\"https://github.com/moyy996/AVDC/blob/master/README.md\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;\">https://github.com/moyy996/AVDC/blob/master/README.md</span></a></h1>\n"
-"<h1 style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;\"><br /></h1>\n"
-"<h4 st"
-                        "yle=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.1.\u522e\u524a\u6a21\u5f0f/\u6574\u7406\u6a21\u5f0f</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">1\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u522e\u524a\u6a21\u5f0f</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff1a\u901a\u8fc7\u756a\u53f7\u522e\u524a\u6570\u636e\uff0c\u5305\u62ec\u5143\u6570\u636e\u3001\u5c01\u9762\u56fe\u3001\u7f29\u7565\u56fe\u3001\u80cc\u666f\u56fe\u3002</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-inden"
-                        "t:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">2\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u6574\u7406\u6a21\u5f0f</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff1a\u4ec5\u6839\u636e\u5973\u4f18\u628a\u7535\u5f71\u547d\u540d\u4e3a\u756a\u53f7\u5e76\u5206\u7c7b\u5230\u5973\u4f18\u540d\u79f0\u7684\u6587\u4ef6\u5939\u4e0b\u3002</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.2.\u8f6f\u94fe\u63a5\u6a21\u5f0f\uff1a\u4f7f\u7528\u6b64\u6a21\u5f0f\uff0c\u8981\u4ee5\u7ba1\u7406\u5458\u8eab\u4efd\u8fd0\u884c\u3002</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
-                        "indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u522e\u524a\u5b8c\u4e0d\u79fb\u52a8\u89c6\u9891\uff0c\u800c\u662f\u5728\u76f8\u5e94\u76ee\u5f55</span><span style=\" font-family:'Courier'; font-size:10.5pt; color:#ff0000;\">\u521b\u5efa\u8f6f\u94fe\u63a5</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u7c7b\u4f3c\u4e8e\u5feb\u6377\u65b9\u5f0f\uff09\uff0c\u65b9\u4fbfPT\u4e0b\u8f7d\u5b8c\u65e2\u60f3\u522e\u524a\u53c8\u60f3\u7ee7\u7eed\u4e0a\u4f20\u7684\u4ed3\u9f20\u515a\u540c\u5fd7\u3002</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u4f46\u662f\uff0c\u53ea\u80fd\u5728\u5a92\u4f53\u5e93\u5c55\u793a\uff0c\u4e0d"
-                        "</span><span style=\" font-family:'Courier'; font-size:10.5pt; color:#ff0000;\">\u80fd\u5728\u5a92\u4f53\u5e93\u64ad\u653e</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u3002</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.3.\u8c03\u8bd5\u6a21\u5f0f</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u8f93\u51fa\u756a\u53f7\u7684\u5143\u6570\u636e\uff0c\u5305\u62ec\u5c01\u9762\uff0c\u5bfc\u6f14\uff0c\u6f14\u5458\uff0c\u7b80\u4ecb\u7b49\u3002</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><s"
-                        "pan style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.4.\u6392\u9664\u76ee\u5f55</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u5728\u591a\u5c42\u76ee\u5f55\u522e\u524a\u65f6</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u6392\u9664\u6240\u586b\u76ee\u5f55</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u3002</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.5.\u89c6\u9891\u76ee\u5f55</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-in"
-                        "dent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u8981\u6574\u7406\u7684\u89c6\u9891\u7684\u76ee\u5f55\uff0c\u4f1a\u904d\u5386\u6b64\u76ee\u5f55\u4e0b\u7684\u6240\u6709\u89c6\u9891\uff0c</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u5305\u62ec\u5b50\u76ee\u5f55</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u4e2d\u3002</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.6.\u547d\u540d\u89c4\u5219</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" fon"
-                        "t-family:'Courier'; font-size:10.5pt;\">1\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u76ee\u5f55\u547d\u540d</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff1a\u5b58\u653e\u89c6\u9891\u6570\u636e\u7684\u76ee\u5f55\u540d\uff0c\u652f\u6301</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u591a\u5c42\u76ee\u5f55</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff0c\u652f\u6301</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u81ea\u5b9a\u4e49\u7b26\u53f7</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff0c\u4f8b\uff1a[actor]/studio/number-\u3010title\u3011\u3002</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><sp"
-                        "an style=\" font-family:'Courier'; font-size:10.5pt;\">2\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u89c6\u9891\u6807\u9898</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u5a92\u4f53\u5e93\u4e2d\uff09\uff1a</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">nfo</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u4e2d\u7684\u6807\u9898\u547d\u540d\u3002\u4f8b\uff1anumber-[title]\u3002\u53ef\u4ee5\u81ea\u5b9a\u4e49\u7b26\u53f7\u3002</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">3\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u89c6\u9891\u6807\u9898</span><span sty"
-                        "le=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u672c\u5730\u6587\u4ef6\uff09\uff1a\u672c\u5730\u89c6\u9891\u3001\u56fe\u7247\u7684\u547d\u540d\u3002\u4f8b\uff1anumber-[title]\u3002\u53ef\u4ee5\u81ea\u5b9a\u4e49\u7b26\u53f7\u3002</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">4\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u53ef\u9009\u9879</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u4e3a</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">title</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u7247\u540d\uff09\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;"
-                        "\">actor</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u6f14\u5458\uff09\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">studio</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u5236\u4f5c\u5546\uff09\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">director</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u5bfc\u6f14\uff09\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">release</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u53d1\u552e\u65e5\uff09\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">year</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u53d1\u884c\u5e74\u4efd\uff09\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">number</"
-                        "span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u756a\u53f7\uff09\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">runtime</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u65f6\u957f\uff09\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">series</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u7cfb\u5217\uff09\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">publisher</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08\u53d1\u884c\u5546\uff09</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.7.\u4ee3\u7406\u8bbe\u7f6e</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-rig"
-                        "ht:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:10.5pt;\">(1).\u4ee3\u7406</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">proxy=127.0.0.1:1080</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">proxy\u884c\u8bbe\u7f6e</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u672c\u5730\u4ee3\u7406\u5730\u5740\u548c\u7aef\u53e3</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff0c\u652f\u6301Shadowxxxx/X,V2XXX\u672c"
-                        "\u5730\u4ee3\u7406\u7aef\u53e3\uff0c\u4ee3\u7406\u8f6f\u4ef6\u5f00</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u5168\u5c40\u6a21\u5f0f</span><span style=\" font-family:'Courier'; font-size:10.5pt;\"> ,\u5efa\u8bae\u4f7f\u7528</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u65e5\u672c\u4ee3\u7406</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u3002</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u5982\u679c\u4e00\u76f4\u62a5Connect Failed! Please check your Proxy or Network!\u9519\u8bef\uff0c\u8bf7</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u68c0\u67e5\u7aef\u53e3\u53f7</span><span style="
-                        "\" font-family:'Courier'; font-size:10.5pt;\">\u662f\u5426\u6b63\u786e\uff0c\u6216\u8005\u628aproxy=\u540e\u9762\u7684\u5730\u5740\u548c\u7aef\u53e3</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u5220\u9664</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff0c\u5e76\u5f00\u542f\u4ee3\u7406\u8f6f\u4ef6</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u5168\u5c40\u6a21\u5f0f</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff0c\u6216\u8005\u91cd\u542f\u7535\u8111\uff0c\u4ee3\u7406\u8f6f\u4ef6\uff0c\u7f51\u5361\u3002</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:10.5pt;\">(2).\u8fde\u63a5\u8d85\u65f6\u91cd\u8bd5\u8bbe\u7f6e</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text"
-                        "-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">timeout=10 </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">10\u4e3a\u8d85\u65f6\u91cd\u8bd5\u65f6\u95f4 \u5355\u4f4d\uff1a\u79d2\uff0c\u53ef\u9009\u8303\u56f43-10</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:10.5pt;\">(3).\u8fde\u63a5\u91cd\u8bd5\u6b21\u6570\u8bbe\u7f6e</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; f"
-                        "ont-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">retry=3 </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">3\u5373\u4e3a\u91cd\u8bd5\u6b21\u6570\uff0c\u53ef\u9009\u8303\u56f42-5</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.8.\u5a92\u4f53\u5e93\u9009\u62e9</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-fam"
-                        "ily:'Courier'; font-size:10.5pt;\">\u5982\u679c\u662fPLEX\uff0c\u8bf7\u5b89\u88c5\u63d2\u4ef6\uff1a</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">XBMCnfoMoviesImporter</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.9.\u6392\u9664\u6307\u5b9a\u5b57\u7b26\u548c\u76ee\u5f55\uff0c\u5b57\u7b26\u4e32</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">1\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u6392\u9664\u5b57\u7b26</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">:\u6307\u5b9a\u5b57"
-                        "\u7b26\u5220\u9664\uff0c\u4f8b\u5982\u6392\u9664\u5b57\u7b26\uff1a \\()\uff0c\u5220\u9664</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u521b\u5efa\u6587\u4ef6\u5939\u65f6</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u7684\\()\u5b57\u7b26</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">2\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u6392\u9664\u76ee\u5f55</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">:\u6307\u5b9a\u76ee\u5f55\uff0c\u4f8b\u5982\u6392\u9664\u76ee\u5f55\uff1a failed,JAV_output\uff0c\u591a\u76ee\u5f55\u522e\u524a\u65f6</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:"
-                        "#ff0000;\">\u8df3\u8fc7</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">failed,JAV_output</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">3\u3001</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u6392\u9664\u5b57\u7b26\u4e32</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">:\u63d0\u53d6\u756a\u53f7\u65f6\uff0c\u5148\u5220\u9664\u6307\u5b9a\u5b57\u7b26\u4e32\uff0c\u63d0\u9ad8\u6210\u529f\u7387\uff0c\u5b57\u7b26\u4e32\u4e4b\u95f4\u7528','\u9694\u5f00\u3002</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.10.\u7f51\u7ad9\u9009"
-                        "\u62e9</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u53ef\u4ee5\u4f7f\u7528</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u6240\u6709\u7f51\u7ad9</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff0c\u6216\u8005</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u6307\u5b9a\u7f51\u7ad9</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff08</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">avsox,javbus,dmm,javdb,fc2club\uff0cmgstage</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff09\u8fdb\u884c\u522e\u524a\u3002</span></p>\n"
-"<p style=\" margin-top:12px; margin-b"
-                        "ottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u4ec5\u4f7f\u7528javdb\u8fdb\u884c\u522e\u524a\uff0c</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u5c3d\u91cf\u4e0d\u8981\u7528</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff0c\u522e\u524a30\u5de6\u53f3\u4f1a\u88abJAVDB</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u5c01IP</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u4e00\u6bb5\u65f6\u95f4\u3002</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.11.\u4fdd\u5b58\u65e5\u5fd7</span></h4>\n"
-"<p style=\" margin-to"
-                        "p:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u5f00\u542f\u540e\u65e5\u5fd7\u4fdd\u5b58\u5728</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u7a0b\u5e8f\u76ee\u5f55\u7684Log\u76ee\u5f55\u4e0b</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u7684txt\u6587\u4ef6\u5185\uff0c\u6bcf\u6b21\u8fd0\u884c\u4f1a\u4ea7\u751f\u4e00\u4e2atxt\u6587\u4ef6\uff0ctxt\u6587\u4ef6</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u53ef\u4ee5\u5220\u9664</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff0c\u4e0d\u5f71\u54cd\u7a0b\u5e8f\u8fd0\u884c\u3002</span></p>\n"
-"<h4 style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0"
-                        "px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600;\">4.12.\u5931\u8d25\u540e\u79fb\u52a8\u6587\u4ef6</span></h4>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:9.5pt; color:#24292e; background-color:#ffffff;\">  </span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\u5982\u679c\u522e\u524a\u4e0d\u5230\u5f71\u7247\u4fe1\u606f\uff0c</span><span style=\" font-family:'Courier'; font-size:10.5pt; font-weight:600; color:#ff0000;\">\u53ef\u9009\u62e9\u4e0d\u79fb\u52a8\u89c6\u9891</span><span style=\" font-family:'Courier'; font-size:10.5pt;\">\uff0c\u6216\u8005\u81ea\u52a8\u79fb\u52a8\u5230\u5931\u8d25\u8f93\u51fa\u76ee\u5f55\u4e2d\u3002</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:10.5pt;\"> </span></p>\n"
-"<p style"
-                        "=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:10.5pt;\"> </span></p></body></html>", None))
+"</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">AVDCx \u662f\u57fa\u4e8e AV_Data_Capture \u7684 GUI \u7248\u672c AVDC \u518d\u6b21\u4fee\u6539\u7684\u7248\u672c\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; vertical-align:sub;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+                        "family:'Courier'; font-size:12pt; vertical-align:sub;\">\u00b7 AV_Data_Capture \u9879\u76ee\u5730\u5740\uff1ahttps://github.com/yoshiko2/AV_Data_Capture</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">\u00b7 AVDC \u9879\u76ee\u5730\u5740\uff1ahttps://github.com/moyy996/AVDC</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">\u00b7 AVDCx \u9879\u76ee\u5730\u5740\uff1ahttps://github.com/Hermit10/AVDCx</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; vertical-align:sub;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bo"
+                        "ttom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; vertical-align:sub;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">\u4f7f\u7528\u8bf4\u660e \uff08\u5185\u5bb9\u6765\u81ea AVDC \uff1ahttps://github.com/moyy996/AVDC \uff09</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014</span></p>\n"
+"<p sty"
+                        "le=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; vertical-align:sub;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">\u76ee\u5f55</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">\u4e00\u3001\u529f\u80fd\u7b80\u4ecb</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">\u4e8c\u3001\u9879\u76ee\u7b80\u4ecb</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-"
+                        "left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">\u4e09\u3001\u5e38\u89c1\u756a\u53f7\u547d\u540d\u53c2\u8003</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">\u56db\u3001\u8bbe\u7f6e\u8bf4\u660e</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">\u4e00\u3001\u529f\u80fd\u7b80\u4ecb</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0"
+                        "px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u65e5\u672c\u7535\u5f71\u5143\u6570\u636e\u6293\u53d6\u5de5\u5177/\u522e\u524a\u5668\uff0c\u914d\u5408\u672c\u5730\u5f71\u7247\u7ba1\u7406\u8f6f\u4ef6EMBY,KODI\uff0cPLEX\u7b49\u7ba1\u7406\u672c\u5730\u5f71\u7247\uff0c\u8be5\u8f6f\u4ef6\u8d77\u5230\u5206\u7c7b\u4e0e\u5143\u6570\u636e\u6293\u53d6\u4f5c\u7528\uff0c\u5229\u7528\u5143\u6570\u636e\u4fe1\u606f\u6765\u5206\u7c7b\uff0c\u4f9b\u672c\u5730\u5f71\u7247\u5206\u7c7b\u6574\u7406\u4f7f\u7528\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:"
+                        "600; vertical-align:sub;\">\u4e8c\u3001\u9879\u76ee\u7b80\u4ecb</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  Gui made by moyy996\uff0cCore made by yoshiko2</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  tg\u5b98\u65b9\u7535\u62a5\u7fa4: https://t.me/joinchat/J54y1g3-a7nxJ_-WS4-KFQ</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u547d\u4ee4\u884c\u7248\u9879\u76ee\u5730\u5740\uff1ahttps://github.com/yoshiko2/AV_Data_Capture</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px"
+                        "; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  GUI\u7248\u9879\u76ee\u5730\u5740\uff1ahttps://github.com/moyy996/AVDC</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  GUI\u7248EXE\u4e0b\u8f7d\u5730\u5740\uff1ahttps://github.com/moyy996/AVDC/releases</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">\u4e09\u3001\u5e38\u89c1\u756a\u53f7\u547d\u540d\u53c2\u8003</span></p>\n"
+"<p style=\" margin-"
+                        "top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">\u4e0d\u533a\u5206\u5927\u5c0f\u5199\u3001\u522e\u524a\u524d\u5c3d\u91cf\u547d\u540d\u89c4\u8303\uff01\uff01\uff01\uff01</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">3.1.\u6807\u51c6\u6709\u7801</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  Javdb\u3001Javbus:SSNI-111</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  Dmm\uff1assni"
+                        "00111</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">3.2.\u65e0\u7801</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  Javdb\u3001Javbus\u3001Avsox:111111-1111\u3001111111_111\u3001HEYZO-1111\u3001n1111</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">3.3.\u7d20\u4eba</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  Mgstage:259LUXU"
+                        "-1111</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  Javdb:LUXU-1111</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  Fc2club:FC2-111111\u3001FC2-PPV-111111\u3001FC2PPV-111111</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">3.4.\u6b27\u7f8e</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  Javdb\u3001Javbus:sexart.11.11.11(\u7cfb\u5217.\u5e74.\u6708"
+                        ".\u65e5)</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">3.5.\u81ea\u5e26\u5b57\u5e55\u5f71\u7247</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u53ef\u4ee5\u628a\u7535\u5f71\u547d\u540d\u4e3a\u7c7b\u4f3cssni-xxx-c.mp4,ssni-xxx-C.mp4\uff0cabp-xxx-CD1-C.mp4 \u7684\u89c4\u5219\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">3.6.\u591a\u96c6\u5f71\u7247</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">"
+                        "<span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u53ef\u4ee5\u628a\u591a\u96c6\u7535\u5f71\u6309\u7167\u96c6\u6570\u540e\u7f00\u547d\u540d\u4e3a\u7c7b\u4f3cssni-xxx-cd1.mp4, ssni-xxx-cd2.mp4, abp-xxx-CD1-C.mp4\u7684\u89c4\u5219\uff0c\u53ea\u8981\u542b\u6709-CDn/-cdn\u7c7b\u4f3c\u547d\u540d\u89c4\u5219\uff0c\u5373\u53ef\u4f7f\u7528\u5206\u96c6\u529f\u80fd.**\u4e0d\u652f\u6301-A -B -1 -2,\u5bb9\u6613\u8ddf\u5b57\u5e55\u7684-C\u6df7\u6dc6**.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">3.7.\u591a\u96c6\u3001\u5b57\u5e55\u987a\u5e8f</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  abp-xxx-CD1-C.mp4\uff0c\u5206\u96c6\u5728\u524d\uff0c\u5b57\u5e55"
+                        "\u5728\u540e\uff0c\u5b57\u5e55\u5fc5\u987b\u4e0e\u62d3\u5c55\u540d\u9760\u8fd1\uff0c-C.mp4.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">3.8.\u5916\u6302\u5b57\u5e55\u6587\u4ef6</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u5b57\u5e55\u6587\u4ef6\u540d\u5fc5\u987b\u4e0e\u5f71\u7247\u6587\u4ef6\u540d\u4e00\u81f4\uff0c\u624d\u53ef\u4ee5\u4e00\u8d77\u79fb\u52a8\u5230\u65b0\u76ee\u5f55\uff0c\u76ee\u524d\u652f\u6301srt ass sub\u7c7b\u578b\u7684\u5b57\u5e55\u6587\u4ef6\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertica"
+                        "l-align:sub;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">\u56db\u3001\u8bbe\u7f6e\u8bf4\u660e</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">\u8be6\u7ec6\u7684\u8bf4\u660e\uff1a https://github.com/moyy996/AVDC/blob/master/README.md</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12pt; vert"
+                        "ical-align:sub;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.1.\u522e\u524a\u6a21\u5f0f/\u6574\u7406\u6a21\u5f0f</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  1\u3001\u522e\u524a\u6a21\u5f0f\uff1a\u901a\u8fc7\u756a\u53f7\u522e\u524a\u6570\u636e\uff0c\u5305\u62ec\u5143\u6570\u636e\u3001\u5c01\u9762\u56fe\u3001\u7f29\u7565\u56fe\u3001\u80cc\u666f\u56fe\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  2\u3001\u6574\u7406\u6a21\u5f0f\uff1a\u4ec5\u6839\u636e\u5973\u4f18\u628a\u7535\u5f71\u547d\u540d"
+                        "\u4e3a\u756a\u53f7\u5e76\u5206\u7c7b\u5230\u5973\u4f18\u540d\u79f0\u7684\u6587\u4ef6\u5939\u4e0b\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.2.\u8f6f\u94fe\u63a5\u6a21\u5f0f\uff1a\u4f7f\u7528\u6b64\u6a21\u5f0f\uff0c\u8981\u4ee5\u7ba1\u7406\u5458\u8eab\u4efd\u8fd0\u884c\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u522e\u524a\u5b8c\u4e0d\u79fb\u52a8\u89c6\u9891\uff0c\u800c\u662f\u5728\u76f8\u5e94\u76ee\u5f55\u521b\u5efa\u8f6f\u94fe\u63a5\uff08\u7c7b\u4f3c\u4e8e\u5feb\u6377\u65b9\u5f0f\uff09\uff0c\u65b9\u4fbfPT\u4e0b\u8f7d\u5b8c\u65e2\u60f3\u522e\u524a\u53c8\u60f3\u7ee7\u7eed\u4e0a\u4f20\u7684\u4ed3\u9f20\u515a\u540c\u5fd7\u3002</span></p>\n"
+"<p sty"
+                        "le=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u4f46\u662f\uff0c\u53ea\u80fd\u5728\u5a92\u4f53\u5e93\u5c55\u793a\uff0c\u4e0d\u80fd\u5728\u5a92\u4f53\u5e93\u64ad\u653e\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.3.\u8c03\u8bd5\u6a21\u5f0f</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u8f93\u51fa\u756a\u53f7\u7684\u5143\u6570\u636e\uff0c\u5305\u62ec\u5c01\u9762\uff0c\u5bfc\u6f14\uff0c\u6f14\u5458\uff0c\u7b80\u4ecb\u7b49\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-ri"
+                        "ght:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.4.\u6392\u9664\u76ee\u5f55</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u5728\u591a\u5c42\u76ee\u5f55\u522e\u524a\u65f6\u6392\u9664\u6240\u586b\u76ee\u5f55\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.5.\u89c6\u9891\u76ee\u5f55</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u8981\u6574\u7406\u7684\u89c6\u9891\u7684\u76ee\u5f55\uff0c\u4f1a\u904d\u5386"
+                        "\u6b64\u76ee\u5f55\u4e0b\u7684\u6240\u6709\u89c6\u9891\uff0c\u5305\u62ec\u5b50\u76ee\u5f55\u4e2d\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.6.\u547d\u540d\u89c4\u5219</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  1\u3001\u76ee\u5f55\u547d\u540d\uff1a\u5b58\u653e\u89c6\u9891\u6570\u636e\u7684\u76ee\u5f55\u540d\uff0c\u652f\u6301\u591a\u5c42\u76ee\u5f55\uff0c\u652f\u6301\u81ea\u5b9a\u4e49\u7b26\u53f7\uff0c\u4f8b\uff1a[actor]/studio/number-\u3010title\u3011\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-"
+                        "align:sub;\">  2\u3001\u89c6\u9891\u6807\u9898\uff08\u5a92\u4f53\u5e93\u4e2d\uff09\uff1anfo\u4e2d\u7684\u6807\u9898\u547d\u540d\u3002\u4f8b\uff1anumber-[title]\u3002\u53ef\u4ee5\u81ea\u5b9a\u4e49\u7b26\u53f7\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  3\u3001\u89c6\u9891\u6807\u9898\uff08\u672c\u5730\u6587\u4ef6\uff09\uff1a\u672c\u5730\u89c6\u9891\u3001\u56fe\u7247\u7684\u547d\u540d\u3002\u4f8b\uff1anumber-[title]\u3002\u53ef\u4ee5\u81ea\u5b9a\u4e49\u7b26\u53f7\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  4\u3001\u53ef\u9009\u9879\u4e3atitle\uff08\u7247\u540d\uff09\u3001actor\uff08\u6f14\u5458\uff09\u3001studio\uff08\u5236\u4f5c\u5546\uff09\u3001director\uff08\u5bfc"
+                        "\u6f14\uff09\u3001release\uff08\u53d1\u552e\u65e5\uff09\u3001year\uff08\u53d1\u884c\u5e74\u4efd\uff09\u3001number\uff08\u756a\u53f7\uff09\u3001runtime\uff08\u65f6\u957f\uff09\u3001series\uff08\u7cfb\u5217\uff09\u3001publisher\uff08\u53d1\u884c\u5546\uff09</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.7.\u4ee3\u7406\u8bbe\u7f6e</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  1\u3001\u4ee3\u7406</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  proxy=127.0.0.1:1080</span></p>\n"
+"<p style=\" margin-top:0px;"
+                        " margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  proxy\u884c\u8bbe\u7f6e\u672c\u5730\u4ee3\u7406\u5730\u5740\u548c\u7aef\u53e3\uff0c\u652f\u6301Shadowxxxx/X,V2XXX\u672c\u5730\u4ee3\u7406\u7aef\u53e3\uff0c\u4ee3\u7406\u8f6f\u4ef6\u5f00\u5168\u5c40\u6a21\u5f0f ,\u5efa\u8bae\u4f7f\u7528\u65e5\u672c\u4ee3\u7406\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u5982\u679c\u4e00\u76f4\u62a5Connect Failed! Please check your Proxy or Network!\u9519\u8bef\uff0c\u8bf7\u68c0\u67e5\u7aef\u53e3\u53f7\u662f\u5426\u6b63\u786e\uff0c\u6216\u8005\u628aproxy=\u540e\u9762\u7684\u5730\u5740\u548c\u7aef\u53e3\u5220\u9664\uff0c\u5e76\u5f00\u542f\u4ee3\u7406\u8f6f\u4ef6\u5168\u5c40\u6a21\u5f0f\uff0c\u6216\u8005\u91cd\u542f\u7535\u8111\uff0c\u4ee3"
+                        "\u7406\u8f6f\u4ef6\uff0c\u7f51\u5361\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  2\u3001\u8fde\u63a5\u8d85\u65f6\u91cd\u8bd5\u8bbe\u7f6e</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  timeout=10 </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  10\u4e3a\u8d85\u65f6\u91cd\u8bd5\u65f6\u95f4 \u5355\u4f4d\uff1a\u79d2\uff0c\u53ef\u9009\u8303\u56f43-10</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Cour"
+                        "ier'; font-size:12pt; vertical-align:sub;\">  3\u3001\u8fde\u63a5\u91cd\u8bd5\u6b21\u6570\u8bbe\u7f6e</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  retry=3 </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  3\u5373\u4e3a\u91cd\u8bd5\u6b21\u6570\uff0c\u53ef\u9009\u8303\u56f42-5</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.8.\u5a92\u4f53\u5e93\u9009\u62e9</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+                        "font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u5982\u679c\u662fPLEX\uff0c\u8bf7\u5b89\u88c5\u63d2\u4ef6\uff1aXBMCnfoMoviesImporter</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.9.\u6392\u9664\u6307\u5b9a\u5b57\u7b26\u548c\u76ee\u5f55\uff0c\u5b57\u7b26\u4e32</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  1\u3001\u6392\u9664\u5b57\u7b26:\u6307\u5b9a\u5b57\u7b26\u5220\u9664\uff0c\u4f8b\u5982\u6392\u9664\u5b57\u7b26\uff1a \\()\uff0c\u5220\u9664\u521b\u5efa\u6587\u4ef6\u5939\u65f6\u7684\\()\u5b57\u7b26</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" f"
+                        "ont-family:'Courier'; font-size:12pt; vertical-align:sub;\">  2\u3001\u6392\u9664\u76ee\u5f55:\u6307\u5b9a\u76ee\u5f55\uff0c\u4f8b\u5982\u6392\u9664\u76ee\u5f55\uff1a failed,JAV_output\uff0c\u591a\u76ee\u5f55\u522e\u524a\u65f6\u8df3\u8fc7failed,JAV_output</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  3\u3001\u6392\u9664\u5b57\u7b26\u4e32:\u63d0\u53d6\u756a\u53f7\u65f6\uff0c\u5148\u5220\u9664\u6307\u5b9a\u5b57\u7b26\u4e32\uff0c\u63d0\u9ad8\u6210\u529f\u7387\uff0c\u5b57\u7b26\u4e32\u4e4b\u95f4\u7528','\u9694\u5f00\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.10.\u7f51\u7ad9\u9009\u62e9</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:"
+                        "0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u53ef\u4ee5\u4f7f\u7528\u6240\u6709\u7f51\u7ad9\uff0c\u6216\u8005\u6307\u5b9a\u7f51\u7ad9\uff08avsox,javbus,dmm,javdb,fc2club\uff0cmgstage\uff09\u8fdb\u884c\u522e\u524a\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u4ec5\u4f7f\u7528javdb\u8fdb\u884c\u522e\u524a\uff0c\u5c3d\u91cf\u4e0d\u8981\u7528\uff0c\u522e\u524a30\u5de6\u53f3\u4f1a\u88abJAVDB\u5c01IP\u4e00\u6bb5\u65f6\u95f4\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.11.\u4fdd\u5b58\u65e5\u5fd7</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; mar"
+                        "gin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u5f00\u542f\u540e\u65e5\u5fd7\u4fdd\u5b58\u5728\u7a0b\u5e8f\u76ee\u5f55\u7684Log\u76ee\u5f55\u4e0b\u7684txt\u6587\u4ef6\u5185\uff0c\u6bcf\u6b21\u8fd0\u884c\u4f1a\u4ea7\u751f\u4e00\u4e2atxt\u6587\u4ef6\uff0ctxt\u6587\u4ef6\u53ef\u4ee5\u5220\u9664\uff0c\u4e0d\u5f71\u54cd\u7a0b\u5e8f\u8fd0\u884c\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; font-weight:600; vertical-align:sub;\">4.12.\u5931\u8d25\u540e\u79fb\u52a8\u6587\u4ef6</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\">  \u5982\u679c\u522e\u524a\u4e0d\u5230\u5f71\u7247\u4fe1\u606f\uff0c\u53ef\u9009\u62e9"
+                        "\u4e0d\u79fb\u52a8\u89c6\u9891\uff0c\u6216\u8005\u81ea\u52a8\u79fb\u52a8\u5230\u5931\u8d25\u8f93\u51fa\u76ee\u5f55\u4e2d\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12pt; vertical-align:sub;\"> </span></p></body></html>", None))
         self.label_ico.setText(QCoreApplication.translate("AVDV", u"\u56fe\u6807", None))
         self.pushButton_main.setText(QCoreApplication.translate("AVDV", u"\u4e3b\u754c\u9762", None))
         self.pushButton_log.setText(QCoreApplication.translate("AVDV", u"\u65e5\u5fd7", None))
-        self.pushButton_net.setText(QCoreApplication.translate("AVDV", u"\u68c0\u6d4b\u7f51\u7edc", None))
-        self.pushButton_tool.setText(QCoreApplication.translate("AVDV", u"\u5de5\u5177", None))
         self.pushButton_setting.setText(QCoreApplication.translate("AVDV", u"\u8bbe\u7f6e", None))
-        self.pushButton_about.setText(QCoreApplication.translate("AVDV", u"\u5173\u4e8e", None))
+        self.pushButton_tool.setText(QCoreApplication.translate("AVDV", u"\u5de5\u5177", None))
+        self.pushButton_net.setText(QCoreApplication.translate("AVDV", u"\u68c0\u6d4b\u7f51\u7edc", None))
+        self.pushButton_about.setText(QCoreApplication.translate("AVDV", u"\u4f7f\u7528\u8bf4\u660e", None))
         self.pushButton_close.setText(QCoreApplication.translate("AVDV", u"\u00d7", None))
         self.pushButton_min.setText(QCoreApplication.translate("AVDV", u"-", None))
         self.label_show_version.setText(QCoreApplication.translate("AVDV", u"\u7248\u672c\u53f7", None))
