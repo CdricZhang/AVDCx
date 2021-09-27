@@ -3,7 +3,7 @@
 1，官网下载安装 python（3.7.6版本支持win7）
 https://www.python.org/
 2，命令行运行：
-cd C:\AVDCx-py-20210926
+cd C:\AVDCx-py-20210928
 3，命令行安装所需模块
 pip install -r requirements.txt
 4，命令行安装打包工具
