@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCOEOmBG.ui'
+## Form generated from reading UI file 'AVDCQwYJGW.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -357,34 +357,33 @@ class Ui_AVDV(object):
         self.page_tool.setObjectName(u"page_tool")
         self.groupBox_6 = QGroupBox(self.page_tool)
         self.groupBox_6.setObjectName(u"groupBox_6")
-        self.groupBox_6.setGeometry(QRect(10, 10, 751, 121))
+        self.groupBox_6.setGeometry(QRect(30, 10, 701, 161))
         self.groupBox_6.setStyleSheet(u"font:\"Courier\";")
-        self.label_8 = QLabel(self.groupBox_6)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(230, 70, 511, 41))
         self.pushButton_move_mp4 = QPushButton(self.groupBox_6)
         self.pushButton_move_mp4.setObjectName(u"pushButton_move_mp4")
-        self.pushButton_move_mp4.setGeometry(QRect(19, 40, 181, 40))
+        self.pushButton_move_mp4.setGeometry(QRect(140, 70, 341, 40))
         self.label_41 = QLabel(self.groupBox_6)
         self.label_41.setObjectName(u"label_41")
-        self.label_41.setGeometry(QRect(230, 30, 80, 30))
+        self.label_41.setGeometry(QRect(70, 30, 80, 30))
         self.label_41.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.lineEdit_escape_dir_move = QLineEdit(self.groupBox_6)
         self.lineEdit_escape_dir_move.setObjectName(u"lineEdit_escape_dir_move")
-        self.lineEdit_escape_dir_move.setGeometry(QRect(310, 30, 421, 30))
+        self.lineEdit_escape_dir_move.setGeometry(QRect(140, 30, 341, 30))
         self.lineEdit_escape_dir_move.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
 "")
+        self.label_8 = QLabel(self.groupBox_6)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setGeometry(QRect(70, 120, 591, 31))
+        self.label_8.setStyleSheet(u"color: rgb(8, 128, 128);")
+        self.label_8.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.groupBox_7 = QGroupBox(self.page_tool)
         self.groupBox_7.setObjectName(u"groupBox_7")
-        self.groupBox_7.setGeometry(QRect(10, 140, 751, 201))
+        self.groupBox_7.setGeometry(QRect(30, 190, 701, 301))
         self.groupBox_7.setStyleSheet(u"font:\"Courier\";")
-        self.label = QLabel(self.groupBox_7)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(230, 150, 511, 41))
         self.pushButton_select_file = QPushButton(self.groupBox_7)
         self.pushButton_select_file.setObjectName(u"pushButton_select_file")
-        self.pushButton_select_file.setGeometry(QRect(19, 40, 181, 40))
+        self.pushButton_select_file.setGeometry(QRect(510, 40, 151, 40))
         self.comboBox_website = QComboBox(self.groupBox_7)
         self.comboBox_website.addItem("")
         self.comboBox_website.addItem("")
@@ -401,100 +400,70 @@ class Ui_AVDV(object):
         self.comboBox_website.addItem("")
         self.comboBox_website.addItem("")
         self.comboBox_website.setObjectName(u"comboBox_website")
-        self.comboBox_website.setGeometry(QRect(310, 30, 421, 30))
+        self.comboBox_website.setGeometry(QRect(140, 80, 351, 30))
         self.label_2 = QLabel(self.groupBox_7)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(230, 30, 80, 30))
+        self.label_2.setGeometry(QRect(60, 80, 80, 30))
         self.label_2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.lineEdit_appoint_url = QLineEdit(self.groupBox_7)
         self.lineEdit_appoint_url.setObjectName(u"lineEdit_appoint_url")
-        self.lineEdit_appoint_url.setGeometry(QRect(310, 70, 421, 30))
+        self.lineEdit_appoint_url.setGeometry(QRect(140, 120, 351, 30))
         self.lineEdit_appoint_url.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
 "")
         self.label_10 = QLabel(self.groupBox_7)
         self.label_10.setObjectName(u"label_10")
-        self.label_10.setGeometry(QRect(230, 70, 80, 30))
+        self.label_10.setGeometry(QRect(60, 120, 80, 30))
         self.label_10.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.lineEdit_movie_number = QLineEdit(self.groupBox_7)
         self.lineEdit_movie_number.setObjectName(u"lineEdit_movie_number")
-        self.lineEdit_movie_number.setGeometry(QRect(310, 110, 421, 30))
+        self.lineEdit_movie_number.setGeometry(QRect(140, 160, 351, 30))
         self.lineEdit_movie_number.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
 "")
         self.label_12 = QLabel(self.groupBox_7)
         self.label_12.setObjectName(u"label_12")
-        self.label_12.setGeometry(QRect(230, 110, 80, 30))
+        self.label_12.setGeometry(QRect(60, 160, 80, 30))
         self.label_12.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.pushButton_start_single_file = QPushButton(self.groupBox_7)
         self.pushButton_start_single_file.setObjectName(u"pushButton_start_single_file")
-        self.pushButton_start_single_file.setGeometry(QRect(19, 110, 181, 40))
-        self.groupBox_12 = QGroupBox(self.page_tool)
-        self.groupBox_12.setObjectName(u"groupBox_12")
-        self.groupBox_12.setGeometry(QRect(10, 350, 751, 191))
-        self.groupBox_12.setStyleSheet(u"font:\"Courier\";")
-        self.pushButton_add_actor_pic = QPushButton(self.groupBox_12)
-        self.pushButton_add_actor_pic.setObjectName(u"pushButton_add_actor_pic")
-        self.pushButton_add_actor_pic.setGeometry(QRect(20, 30, 181, 40))
-        self.lineEdit_emby_url = QLineEdit(self.groupBox_12)
-        self.lineEdit_emby_url.setObjectName(u"lineEdit_emby_url")
-        self.lineEdit_emby_url.setGeometry(QRect(310, 30, 421, 30))
-        self.lineEdit_emby_url.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
-" border-radius: 15px;\n"
-"")
-        self.label_3 = QLabel(self.groupBox_12)
+        self.pushButton_start_single_file.setGeometry(QRect(140, 200, 351, 40))
+        self.label_3 = QLabel(self.groupBox_7)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(230, 30, 80, 30))
+        self.label_3.setGeometry(QRect(60, 40, 80, 30))
         self.label_3.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-        self.label_4 = QLabel(self.groupBox_12)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(230, 74, 80, 30))
-        self.label_4.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-        self.lineEdit_api_key = QLineEdit(self.groupBox_12)
-        self.lineEdit_api_key.setObjectName(u"lineEdit_api_key")
-        self.lineEdit_api_key.setGeometry(QRect(310, 70, 421, 30))
-        self.lineEdit_api_key.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
+        self.label = QLabel(self.groupBox_7)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(60, 250, 611, 41))
+        self.label.setStyleSheet(u"color: rgb(8, 128, 128);")
+        self.label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.lineEdit_single_file_path = QLineEdit(self.groupBox_7)
+        self.lineEdit_single_file_path.setObjectName(u"lineEdit_single_file_path")
+        self.lineEdit_single_file_path.setGeometry(QRect(140, 40, 351, 30))
+        self.lineEdit_single_file_path.setStyleSheet(u" border: 1px solid rgba(0,0,0, 50);\n"
 " border-radius: 15px;\n"
 "")
-        self.label_5 = QLabel(self.groupBox_12)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(230, 110, 511, 71))
-        self.pushButton_show_pic_actor = QPushButton(self.groupBox_12)
-        self.pushButton_show_pic_actor.setObjectName(u"pushButton_show_pic_actor")
-        self.pushButton_show_pic_actor.setGeometry(QRect(19, 130, 181, 40))
-        self.comboBox_pic_actor = QComboBox(self.groupBox_12)
-        self.comboBox_pic_actor.addItem("")
-        self.comboBox_pic_actor.addItem("")
-        self.comboBox_pic_actor.addItem("")
-        self.comboBox_pic_actor.addItem("")
-        self.comboBox_pic_actor.setObjectName(u"comboBox_pic_actor")
-        self.comboBox_pic_actor.setGeometry(QRect(29, 90, 171, 30))
-        self.label_download_acotr_zip = QLabel(self.groupBox_12)
-        self.label_download_acotr_zip.setObjectName(u"label_download_acotr_zip")
-        self.label_download_acotr_zip.setGeometry(QRect(620, 130, 111, 30))
-        self.label_download_acotr_zip.setCursor(QCursor(Qt.PointingHandCursor))
-        self.label_download_acotr_zip.setMouseTracking(False)
-        self.label_download_acotr_zip.setStyleSheet(u"color: rgb(10, 52, 255);")
-        self.label_download_acotr_zip.setScaledContents(False)
-        self.label_download_acotr_zip.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-        self.label_download_acotr_zip.setOpenExternalLinks(False)
-        self.label_download_acotr_zip.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        self.pushButton_select_file_clear_info = QPushButton(self.groupBox_7)
+        self.pushButton_select_file_clear_info.setObjectName(u"pushButton_select_file_clear_info")
+        self.pushButton_select_file_clear_info.setGeometry(QRect(510, 110, 151, 40))
         self.groupBox_13 = QGroupBox(self.page_tool)
         self.groupBox_13.setObjectName(u"groupBox_13")
-        self.groupBox_13.setGeometry(QRect(10, 550, 751, 111))
+        self.groupBox_13.setGeometry(QRect(30, 510, 701, 141))
         self.groupBox_13.setStyleSheet(u"font:\"Courier\";")
         self.pushButton_select_thumb = QPushButton(self.groupBox_13)
         self.pushButton_select_thumb.setObjectName(u"pushButton_select_thumb")
-        self.pushButton_select_thumb.setGeometry(QRect(19, 40, 181, 40))
+        self.pushButton_select_thumb.setGeometry(QRect(140, 80, 351, 40))
         self.label_6 = QLabel(self.groupBox_13)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(230, 20, 511, 71))
+        self.label_6.setGeometry(QRect(40, 30, 551, 31))
+        self.label_6.setStyleSheet(u"color: rgb(8, 128, 128);")
+        self.label_6.setAlignment(Qt.AlignCenter)
         self.stackedWidget.addWidget(self.page_tool)
         self.page_setting = QWidget()
         self.page_setting.setObjectName(u"page_setting")
         self.tabWidget = QTabWidget(self.page_setting)
         self.tabWidget.setObjectName(u"tabWidget")
-        self.tabWidget.setGeometry(QRect(0, 10, 771, 606))
+        self.tabWidget.setGeometry(QRect(0, 10, 781, 681))
         self.tabWidget.setAutoFillBackground(False)
         self.tabWidget.setIconSize(QSize(16, 20))
         self.tabWidget.setElideMode(Qt.ElideNone)
@@ -509,7 +478,7 @@ class Ui_AVDV(object):
         self.tab2.setSizePolicy(sizePolicy2)
         self.scrollArea_2 = QScrollArea(self.tab2)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setGeometry(QRect(0, 0, 771, 577))
+        self.scrollArea_2.setGeometry(QRect(0, 0, 771, 654))
         self.scrollArea_2.setFrameShape(QFrame.Box)
         self.scrollArea_2.setLineWidth(0)
         self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
@@ -517,7 +486,7 @@ class Ui_AVDV(object):
         self.scrollArea_2.setWidgetResizable(False)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 771, 680))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, -123, 771, 777))
         self.groupBox_16 = QGroupBox(self.scrollAreaWidgetContents_2)
         self.groupBox_16.setObjectName(u"groupBox_16")
         self.groupBox_16.setGeometry(QRect(30, 10, 701, 311))
@@ -657,26 +626,35 @@ class Ui_AVDV(object):
 
         self.groupBox_9 = QGroupBox(self.scrollAreaWidgetContents_2)
         self.groupBox_9.setObjectName(u"groupBox_9")
-        self.groupBox_9.setGeometry(QRect(30, 540, 701, 121))
+        self.groupBox_9.setGeometry(QRect(30, 540, 701, 131))
         self.groupBox_9.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_16 = QWidget(self.groupBox_9)
         self.gridLayoutWidget_16.setObjectName(u"gridLayoutWidget_16")
-        self.gridLayoutWidget_16.setGeometry(QRect(20, 30, 661, 81))
+        self.gridLayoutWidget_16.setGeometry(QRect(20, 30, 661, 91))
         self.gridLayout_16 = QGridLayout(self.gridLayoutWidget_16)
         self.gridLayout_16.setObjectName(u"gridLayout_16")
         self.gridLayout_16.setContentsMargins(0, 0, 0, 0)
-        self.label_50 = QLabel(self.gridLayoutWidget_16)
-        self.label_50.setObjectName(u"label_50")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.label_50.sizePolicy().hasHeightForWidth())
-        self.label_50.setSizePolicy(sizePolicy5)
-        self.label_50.setMinimumSize(QSize(130, 0))
-        self.label_50.setLayoutDirection(Qt.RightToLeft)
-        self.label_50.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.lineEdit_movie_type_2 = QLineEdit(self.gridLayoutWidget_16)
+        self.lineEdit_movie_type_2.setObjectName(u"lineEdit_movie_type_2")
+        sizePolicy4.setHeightForWidth(self.lineEdit_movie_type_2.sizePolicy().hasHeightForWidth())
+        self.lineEdit_movie_type_2.setSizePolicy(sizePolicy4)
+        self.lineEdit_movie_type_2.setMinimumSize(QSize(0, 30))
+        self.lineEdit_movie_type_2.setStyleSheet(u" font: \"Courier\";\n"
+" border: 1px solid rgba(0,0,0, 50);\n"
+" border-radius: 15px;\n"
+"")
 
-        self.gridLayout_16.addWidget(self.label_50, 0, 0, 1, 1)
+        self.gridLayout_16.addWidget(self.lineEdit_movie_type_2, 0, 1, 1, 1)
+
+        self.label_78 = QLabel(self.gridLayoutWidget_16)
+        self.label_78.setObjectName(u"label_78")
+        sizePolicy3.setHeightForWidth(self.label_78.sizePolicy().hasHeightForWidth())
+        self.label_78.setSizePolicy(sizePolicy3)
+        self.label_78.setMinimumSize(QSize(0, 30))
+        self.label_78.setLayoutDirection(Qt.RightToLeft)
+        self.label_78.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_16.addWidget(self.label_78, 1, 0, 1, 1)
 
         self.lineEdit_sub_type_2 = QLineEdit(self.gridLayoutWidget_16)
         self.lineEdit_sub_type_2.setObjectName(u"lineEdit_sub_type_2")
@@ -690,27 +668,18 @@ class Ui_AVDV(object):
 
         self.gridLayout_16.addWidget(self.lineEdit_sub_type_2, 1, 1, 1, 1)
 
-        self.label_78 = QLabel(self.gridLayoutWidget_16)
-        self.label_78.setObjectName(u"label_78")
-        sizePolicy3.setHeightForWidth(self.label_78.sizePolicy().hasHeightForWidth())
-        self.label_78.setSizePolicy(sizePolicy3)
-        self.label_78.setMinimumSize(QSize(0, 30))
-        self.label_78.setLayoutDirection(Qt.RightToLeft)
-        self.label_78.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.label_50 = QLabel(self.gridLayoutWidget_16)
+        self.label_50.setObjectName(u"label_50")
+        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.label_50.sizePolicy().hasHeightForWidth())
+        self.label_50.setSizePolicy(sizePolicy5)
+        self.label_50.setMinimumSize(QSize(130, 0))
+        self.label_50.setLayoutDirection(Qt.RightToLeft)
+        self.label_50.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_16.addWidget(self.label_78, 1, 0, 1, 1)
-
-        self.lineEdit_movie_type_2 = QLineEdit(self.gridLayoutWidget_16)
-        self.lineEdit_movie_type_2.setObjectName(u"lineEdit_movie_type_2")
-        sizePolicy4.setHeightForWidth(self.lineEdit_movie_type_2.sizePolicy().hasHeightForWidth())
-        self.lineEdit_movie_type_2.setSizePolicy(sizePolicy4)
-        self.lineEdit_movie_type_2.setMinimumSize(QSize(0, 30))
-        self.lineEdit_movie_type_2.setStyleSheet(u" font: \"Courier\";\n"
-" border: 1px solid rgba(0,0,0, 50);\n"
-" border-radius: 15px;\n"
-"")
-
-        self.gridLayout_16.addWidget(self.lineEdit_movie_type_2, 0, 1, 1, 1)
+        self.gridLayout_16.addWidget(self.label_50, 0, 0, 1, 1)
 
         self.groupBox_32 = QGroupBox(self.scrollAreaWidgetContents_2)
         self.groupBox_32.setObjectName(u"groupBox_32")
@@ -795,7 +764,7 @@ class Ui_AVDV(object):
         self.tab1.setObjectName(u"tab1")
         self.scrollArea = QScrollArea(self.tab1)
         self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setGeometry(QRect(0, 0, 771, 577))
+        self.scrollArea.setGeometry(QRect(0, 0, 771, 654))
         sizePolicy2.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
         self.scrollArea.setSizePolicy(sizePolicy2)
         self.scrollArea.setFrameShape(QFrame.Box)
@@ -806,7 +775,7 @@ class Ui_AVDV(object):
         self.scrollArea.setWidgetResizable(False)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 771, 1270))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, -288, 771, 1388))
         self.groupBox = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(30, 110, 701, 191))
@@ -868,12 +837,12 @@ class Ui_AVDV(object):
 
         self.gridLayout_2.addWidget(self.label_15, 1, 1, 1, 1)
 
-        self.checkBox_read_no_nfo = QCheckBox(self.groupBox)
-        self.checkBox_read_no_nfo.setObjectName(u"checkBox_read_no_nfo")
-        self.checkBox_read_no_nfo.setGeometry(QRect(140, 160, 261, 16))
-        sizePolicy3.setHeightForWidth(self.checkBox_read_no_nfo.sizePolicy().hasHeightForWidth())
-        self.checkBox_read_no_nfo.setSizePolicy(sizePolicy3)
-        self.checkBox_read_no_nfo.setMinimumSize(QSize(0, 0))
+        self.checkBox_read_no_nfo_scrape = QCheckBox(self.groupBox)
+        self.checkBox_read_no_nfo_scrape.setObjectName(u"checkBox_read_no_nfo_scrape")
+        self.checkBox_read_no_nfo_scrape.setGeometry(QRect(140, 160, 261, 16))
+        sizePolicy3.setHeightForWidth(self.checkBox_read_no_nfo_scrape.sizePolicy().hasHeightForWidth())
+        self.checkBox_read_no_nfo_scrape.setSizePolicy(sizePolicy3)
+        self.checkBox_read_no_nfo_scrape.setMinimumSize(QSize(0, 0))
         self.groupBox_5 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_5.setObjectName(u"groupBox_5")
         self.groupBox_5.setGeometry(QRect(30, 320, 701, 111))
@@ -945,7 +914,7 @@ class Ui_AVDV(object):
         self.comboBox_website_all.setFrame(False)
         self.groupBox_2 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_2.setObjectName(u"groupBox_2")
-        self.groupBox_2.setGeometry(QRect(30, 610, 701, 111))
+        self.groupBox_2.setGeometry(QRect(30, 650, 701, 111))
         self.groupBox_2.setMinimumSize(QSize(200, 0))
         self.groupBox_2.setMaximumSize(QSize(739, 16777215))
         self.gridLayoutWidget_4 = QWidget(self.groupBox_2)
@@ -985,7 +954,7 @@ class Ui_AVDV(object):
 
         self.groupBox_18 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_18.setObjectName(u"groupBox_18")
-        self.groupBox_18.setGeometry(QRect(30, 1000, 701, 111))
+        self.groupBox_18.setGeometry(QRect(30, 1040, 701, 111))
         self.groupBox_18.setMinimumSize(QSize(200, 0))
         self.groupBox_18.setMaximumSize(QSize(739, 16777215))
         self.gridLayoutWidget_13 = QWidget(self.groupBox_18)
@@ -1025,7 +994,7 @@ class Ui_AVDV(object):
 
         self.groupBox_27 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_27.setObjectName(u"groupBox_27")
-        self.groupBox_27.setGeometry(QRect(30, 740, 701, 111))
+        self.groupBox_27.setGeometry(QRect(30, 780, 701, 111))
         self.groupBox_27.setMinimumSize(QSize(200, 0))
         self.groupBox_27.setMaximumSize(QSize(739, 16777215))
         self.gridLayoutWidget_6 = QWidget(self.groupBox_27)
@@ -1065,7 +1034,7 @@ class Ui_AVDV(object):
 
         self.groupBox_15 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_15.setObjectName(u"groupBox_15")
-        self.groupBox_15.setGeometry(QRect(30, 870, 701, 111))
+        self.groupBox_15.setGeometry(QRect(30, 910, 701, 111))
         self.groupBox_15.setMinimumSize(QSize(200, 0))
         self.groupBox_15.setMaximumSize(QSize(739, 16777215))
         self.gridLayoutWidget_3 = QWidget(self.groupBox_15)
@@ -1105,13 +1074,29 @@ class Ui_AVDV(object):
 
         self.groupBox_23 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_23.setObjectName(u"groupBox_23")
-        self.groupBox_23.setGeometry(QRect(30, 450, 701, 141))
+        self.groupBox_23.setGeometry(QRect(30, 450, 701, 181))
         self.gridLayoutWidget_20 = QWidget(self.groupBox_23)
         self.gridLayoutWidget_20.setObjectName(u"gridLayoutWidget_20")
-        self.gridLayoutWidget_20.setGeometry(QRect(50, 30, 641, 101))
+        self.gridLayoutWidget_20.setGeometry(QRect(50, 30, 641, 141))
         self.gridLayout_20 = QGridLayout(self.gridLayoutWidget_20)
         self.gridLayout_20.setObjectName(u"gridLayout_20")
         self.gridLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.checkBox_more_dmm = QCheckBox(self.gridLayoutWidget_20)
+        self.checkBox_more_dmm.setObjectName(u"checkBox_more_dmm")
+        sizePolicy3.setHeightForWidth(self.checkBox_more_dmm.sizePolicy().hasHeightForWidth())
+        self.checkBox_more_dmm.setSizePolicy(sizePolicy3)
+        self.checkBox_more_dmm.setMinimumSize(QSize(0, 0))
+
+        self.gridLayout_20.addWidget(self.checkBox_more_dmm, 3, 0, 1, 1)
+
+        self.checkBox_more_jav321 = QCheckBox(self.gridLayoutWidget_20)
+        self.checkBox_more_jav321.setObjectName(u"checkBox_more_jav321")
+        sizePolicy3.setHeightForWidth(self.checkBox_more_jav321.sizePolicy().hasHeightForWidth())
+        self.checkBox_more_jav321.setSizePolicy(sizePolicy3)
+        self.checkBox_more_jav321.setMinimumSize(QSize(0, 0))
+
+        self.gridLayout_20.addWidget(self.checkBox_more_jav321, 1, 0, 1, 1)
+
         self.label_71 = QLabel(self.gridLayoutWidget_20)
         self.label_71.setObjectName(u"label_71")
         sizePolicy4.setHeightForWidth(self.label_71.sizePolicy().hasHeightForWidth())
@@ -1137,33 +1122,33 @@ class Ui_AVDV(object):
 
         self.gridLayout_20.addWidget(self.label_62, 0, 1, 1, 1)
 
-        self.checkBox_more_jav321 = QCheckBox(self.gridLayoutWidget_20)
-        self.checkBox_more_jav321.setObjectName(u"checkBox_more_jav321")
-        sizePolicy3.setHeightForWidth(self.checkBox_more_jav321.sizePolicy().hasHeightForWidth())
-        self.checkBox_more_jav321.setSizePolicy(sizePolicy3)
-        self.checkBox_more_jav321.setMinimumSize(QSize(0, 0))
-
-        self.gridLayout_20.addWidget(self.checkBox_more_jav321, 1, 0, 1, 1)
-
-        self.checkBox_more_dmm = QCheckBox(self.gridLayoutWidget_20)
-        self.checkBox_more_dmm.setObjectName(u"checkBox_more_dmm")
-        sizePolicy3.setHeightForWidth(self.checkBox_more_dmm.sizePolicy().hasHeightForWidth())
-        self.checkBox_more_dmm.setSizePolicy(sizePolicy3)
-        self.checkBox_more_dmm.setMinimumSize(QSize(0, 0))
-
-        self.gridLayout_20.addWidget(self.checkBox_more_dmm, 2, 0, 1, 1)
-
         self.label_92 = QLabel(self.gridLayoutWidget_20)
         self.label_92.setObjectName(u"label_92")
         sizePolicy4.setHeightForWidth(self.label_92.sizePolicy().hasHeightForWidth())
         self.label_92.setSizePolicy(sizePolicy4)
         self.label_92.setStyleSheet(u"color: rgb(8, 128, 128);")
 
-        self.gridLayout_20.addWidget(self.label_92, 2, 1, 1, 1)
+        self.gridLayout_20.addWidget(self.label_92, 3, 1, 1, 1)
+
+        self.checkBox_more_javlibrary = QCheckBox(self.gridLayoutWidget_20)
+        self.checkBox_more_javlibrary.setObjectName(u"checkBox_more_javlibrary")
+        sizePolicy3.setHeightForWidth(self.checkBox_more_javlibrary.sizePolicy().hasHeightForWidth())
+        self.checkBox_more_javlibrary.setSizePolicy(sizePolicy3)
+        self.checkBox_more_javlibrary.setMinimumSize(QSize(0, 0))
+
+        self.gridLayout_20.addWidget(self.checkBox_more_javlibrary, 2, 0, 1, 1)
+
+        self.label_72 = QLabel(self.gridLayoutWidget_20)
+        self.label_72.setObjectName(u"label_72")
+        sizePolicy4.setHeightForWidth(self.label_72.sizePolicy().hasHeightForWidth())
+        self.label_72.setSizePolicy(sizePolicy4)
+        self.label_72.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_20.addWidget(self.label_72, 2, 1, 1, 1)
 
         self.groupBox_30 = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox_30.setObjectName(u"groupBox_30")
-        self.groupBox_30.setGeometry(QRect(30, 1130, 701, 111))
+        self.groupBox_30.setGeometry(QRect(30, 1170, 701, 111))
         self.groupBox_30.setMinimumSize(QSize(200, 0))
         self.groupBox_30.setMaximumSize(QSize(739, 16777215))
         self.gridLayoutWidget_23 = QWidget(self.groupBox_30)
@@ -1208,7 +1193,7 @@ class Ui_AVDV(object):
         self.scrollArea_6 = QScrollArea(self.tab_4)
         self.scrollArea_6.setObjectName(u"scrollArea_6")
         self.scrollArea_6.setEnabled(True)
-        self.scrollArea_6.setGeometry(QRect(0, 0, 771, 577))
+        self.scrollArea_6.setGeometry(QRect(0, 0, 771, 654))
         sizePolicy2.setHeightForWidth(self.scrollArea_6.sizePolicy().hasHeightForWidth())
         self.scrollArea_6.setSizePolicy(sizePolicy2)
         self.scrollArea_6.setFrameShape(QFrame.Box)
@@ -1218,7 +1203,7 @@ class Ui_AVDV(object):
         self.scrollArea_6.setWidgetResizable(False)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 771, 760))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, -192, 771, 846))
         self.groupBox_34 = QGroupBox(self.scrollAreaWidgetContents_6)
         self.groupBox_34.setObjectName(u"groupBox_34")
         self.groupBox_34.setGeometry(QRect(30, 180, 701, 181))
@@ -1429,7 +1414,7 @@ class Ui_AVDV(object):
         self.tab_3.setObjectName(u"tab_3")
         self.scrollArea_7 = QScrollArea(self.tab_3)
         self.scrollArea_7.setObjectName(u"scrollArea_7")
-        self.scrollArea_7.setGeometry(QRect(0, 0, 771, 577))
+        self.scrollArea_7.setGeometry(QRect(0, 0, 771, 654))
         self.scrollArea_7.setFrameShape(QFrame.Box)
         self.scrollArea_7.setLineWidth(0)
         self.scrollArea_7.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
@@ -1437,12 +1422,12 @@ class Ui_AVDV(object):
         self.scrollArea_7.setWidgetResizable(False)
         self.scrollAreaWidgetContents_7 = QWidget()
         self.scrollAreaWidgetContents_7.setObjectName(u"scrollAreaWidgetContents_7")
-        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 771, 1130))
+        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, -695, 771, 1349))
         sizePolicy1.setHeightForWidth(self.scrollAreaWidgetContents_7.sizePolicy().hasHeightForWidth())
         self.scrollAreaWidgetContents_7.setSizePolicy(sizePolicy1)
         self.groupBox_35 = QGroupBox(self.scrollAreaWidgetContents_7)
         self.groupBox_35.setObjectName(u"groupBox_35")
-        self.groupBox_35.setGeometry(QRect(30, 990, 701, 111))
+        self.groupBox_35.setGeometry(QRect(30, 1130, 701, 111))
         self.groupBox_35.setMinimumSize(QSize(200, 0))
         self.groupBox_35.setMaximumSize(QSize(739, 16777215))
         self.gridLayoutWidget_18 = QWidget(self.groupBox_35)
@@ -1580,7 +1565,7 @@ class Ui_AVDV(object):
 
         self.groupBox_37 = QGroupBox(self.scrollAreaWidgetContents_7)
         self.groupBox_37.setObjectName(u"groupBox_37")
-        self.groupBox_37.setGeometry(QRect(30, 710, 701, 111))
+        self.groupBox_37.setGeometry(QRect(30, 840, 701, 111))
         self.groupBox_37.setMinimumSize(QSize(200, 0))
         self.groupBox_37.setMaximumSize(QSize(739, 16777215))
         self.gridLayoutWidget_21 = QWidget(self.groupBox_37)
@@ -1589,22 +1574,6 @@ class Ui_AVDV(object):
         self.gridLayout_21 = QGridLayout(self.gridLayoutWidget_21)
         self.gridLayout_21.setObjectName(u"gridLayout_21")
         self.gridLayout_21.setContentsMargins(0, 0, 0, 0)
-        self.label_95 = QLabel(self.gridLayoutWidget_21)
-        self.label_95.setObjectName(u"label_95")
-        sizePolicy4.setHeightForWidth(self.label_95.sizePolicy().hasHeightForWidth())
-        self.label_95.setSizePolicy(sizePolicy4)
-        self.label_95.setStyleSheet(u"color: rgb(8, 128, 128);")
-
-        self.gridLayout_21.addWidget(self.label_95, 0, 1, 1, 1)
-
-        self.label_96 = QLabel(self.gridLayoutWidget_21)
-        self.label_96.setObjectName(u"label_96")
-        sizePolicy4.setHeightForWidth(self.label_96.sizePolicy().hasHeightForWidth())
-        self.label_96.setSizePolicy(sizePolicy4)
-        self.label_96.setStyleSheet(u"color: rgb(8, 128, 128);")
-
-        self.gridLayout_21.addWidget(self.label_96, 1, 1, 1, 1)
-
         self.radioButton_pic_file_poster = QRadioButton(self.gridLayoutWidget_21)
         self.radioButton_pic_file_poster.setObjectName(u"radioButton_pic_file_poster")
         sizePolicy3.setHeightForWidth(self.radioButton_pic_file_poster.sizePolicy().hasHeightForWidth())
@@ -1612,18 +1581,34 @@ class Ui_AVDV(object):
         self.radioButton_pic_file_poster.setMinimumSize(QSize(80, 0))
         self.radioButton_pic_file_poster.setAutoExclusive(True)
 
-        self.gridLayout_21.addWidget(self.radioButton_pic_file_poster, 0, 0, 1, 1)
+        self.gridLayout_21.addWidget(self.radioButton_pic_file_poster, 1, 0, 1, 1)
 
         self.radioButton_pic_poster = QRadioButton(self.gridLayoutWidget_21)
         self.radioButton_pic_poster.setObjectName(u"radioButton_pic_poster")
         self.radioButton_pic_poster.setMinimumSize(QSize(80, 0))
         self.radioButton_pic_poster.setAutoExclusive(True)
 
-        self.gridLayout_21.addWidget(self.radioButton_pic_poster, 1, 0, 1, 1)
+        self.gridLayout_21.addWidget(self.radioButton_pic_poster, 0, 0, 1, 1)
+
+        self.label_95 = QLabel(self.gridLayoutWidget_21)
+        self.label_95.setObjectName(u"label_95")
+        sizePolicy4.setHeightForWidth(self.label_95.sizePolicy().hasHeightForWidth())
+        self.label_95.setSizePolicy(sizePolicy4)
+        self.label_95.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_21.addWidget(self.label_95, 1, 1, 1, 1)
+
+        self.label_96 = QLabel(self.gridLayoutWidget_21)
+        self.label_96.setObjectName(u"label_96")
+        sizePolicy4.setHeightForWidth(self.label_96.sizePolicy().hasHeightForWidth())
+        self.label_96.setSizePolicy(sizePolicy4)
+        self.label_96.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_21.addWidget(self.label_96, 0, 1, 1, 1)
 
         self.groupBox_38 = QGroupBox(self.scrollAreaWidgetContents_7)
         self.groupBox_38.setObjectName(u"groupBox_38")
-        self.groupBox_38.setGeometry(QRect(30, 830, 701, 141))
+        self.groupBox_38.setGeometry(QRect(30, 970, 701, 141))
         self.groupBox_38.setMinimumSize(QSize(200, 0))
         self.groupBox_38.setMaximumSize(QSize(739, 16777215))
         self.gridLayoutWidget_22 = QWidget(self.groupBox_38)
@@ -1773,6 +1758,45 @@ class Ui_AVDV(object):
         self.label_169.setStyleSheet(u"color: rgb(8, 128, 128);")
 
         self.gridLayout_43.addWidget(self.label_169, 1, 1, 1, 1)
+
+        self.groupBox_40 = QGroupBox(self.scrollAreaWidgetContents_7)
+        self.groupBox_40.setObjectName(u"groupBox_40")
+        self.groupBox_40.setGeometry(QRect(30, 710, 701, 111))
+        self.groupBox_40.setMinimumSize(QSize(200, 0))
+        self.groupBox_40.setMaximumSize(QSize(739, 16777215))
+        self.gridLayoutWidget_26 = QWidget(self.groupBox_40)
+        self.gridLayoutWidget_26.setObjectName(u"gridLayoutWidget_26")
+        self.gridLayoutWidget_26.setGeometry(QRect(10, 30, 671, 71))
+        self.gridLayout_26 = QGridLayout(self.gridLayoutWidget_26)
+        self.gridLayout_26.setObjectName(u"gridLayout_26")
+        self.gridLayout_26.setContentsMargins(0, 0, 0, 0)
+        self.label_100 = QLabel(self.gridLayoutWidget_26)
+        self.label_100.setObjectName(u"label_100")
+        sizePolicy4.setHeightForWidth(self.label_100.sizePolicy().hasHeightForWidth())
+        self.label_100.setSizePolicy(sizePolicy4)
+        self.label_100.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_26.addWidget(self.label_100, 1, 1, 1, 1)
+
+        self.label_173 = QLabel(self.gridLayoutWidget_26)
+        self.label_173.setObjectName(u"label_173")
+        sizePolicy3.setHeightForWidth(self.label_173.sizePolicy().hasHeightForWidth())
+        self.label_173.setSizePolicy(sizePolicy3)
+        self.label_173.setMinimumSize(QSize(130, 0))
+        self.label_173.setLayoutDirection(Qt.RightToLeft)
+        self.label_173.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_26.addWidget(self.label_173, 0, 0, 1, 1)
+
+        self.lineEdit_actor_no_name = QLineEdit(self.gridLayoutWidget_26)
+        self.lineEdit_actor_no_name.setObjectName(u"lineEdit_actor_no_name")
+        self.lineEdit_actor_no_name.setMinimumSize(QSize(450, 30))
+        self.lineEdit_actor_no_name.setStyleSheet(u" font: \"Courier\";\n"
+" border: 1px solid rgba(0,0,0, 50);\n"
+" border-radius: 15px;\n"
+"")
+
+        self.gridLayout_26.addWidget(self.lineEdit_actor_no_name, 0, 1, 1, 1)
 
         self.scrollArea_7.setWidget(self.scrollAreaWidgetContents_7)
         self.tabWidget.addTab(self.tab_3, "")
@@ -2009,6 +2033,181 @@ class Ui_AVDV(object):
         self.label_166.setLayoutDirection(Qt.LeftToRight)
         self.label_166.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.tabWidget.addTab(self.tab_9, "")
+        self.tab_5 = QWidget()
+        self.tab_5.setObjectName(u"tab_5")
+        self.groupBox_42 = QGroupBox(self.tab_5)
+        self.groupBox_42.setObjectName(u"groupBox_42")
+        self.groupBox_42.setGeometry(QRect(30, 10, 701, 111))
+        self.groupBox_42.setStyleSheet(u"font:\"Courier\";")
+        self.gridLayoutWidget_24 = QWidget(self.groupBox_42)
+        self.gridLayoutWidget_24.setObjectName(u"gridLayoutWidget_24")
+        self.gridLayoutWidget_24.setGeometry(QRect(20, 30, 661, 71))
+        self.gridLayout_24 = QGridLayout(self.gridLayoutWidget_24)
+        self.gridLayout_24.setObjectName(u"gridLayout_24")
+        self.gridLayout_24.setContentsMargins(0, 0, 0, 0)
+        self.label_77 = QLabel(self.gridLayoutWidget_24)
+        self.label_77.setObjectName(u"label_77")
+        sizePolicy4.setHeightForWidth(self.label_77.sizePolicy().hasHeightForWidth())
+        self.label_77.setSizePolicy(sizePolicy4)
+        self.label_77.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_24.addWidget(self.label_77, 1, 1, 1, 1)
+
+        self.label_101 = QLabel(self.gridLayoutWidget_24)
+        self.label_101.setObjectName(u"label_101")
+        sizePolicy3.setHeightForWidth(self.label_101.sizePolicy().hasHeightForWidth())
+        self.label_101.setSizePolicy(sizePolicy3)
+        self.label_101.setMinimumSize(QSize(130, 30))
+        self.label_101.setLayoutDirection(Qt.LeftToRight)
+        self.label_101.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_24.addWidget(self.label_101, 0, 0, 1, 1)
+
+        self.lineEdit_actor_photo_folder = QLineEdit(self.gridLayoutWidget_24)
+        self.lineEdit_actor_photo_folder.setObjectName(u"lineEdit_actor_photo_folder")
+        sizePolicy4.setHeightForWidth(self.lineEdit_actor_photo_folder.sizePolicy().hasHeightForWidth())
+        self.lineEdit_actor_photo_folder.setSizePolicy(sizePolicy4)
+        self.lineEdit_actor_photo_folder.setMinimumSize(QSize(300, 30))
+        self.lineEdit_actor_photo_folder.setStyleSheet(u" font: \"Courier\";\n"
+" border: 1px solid rgba(0,0,0, 50);\n"
+" border-radius: 15px;\n"
+"")
+
+        self.gridLayout_24.addWidget(self.lineEdit_actor_photo_folder, 0, 1, 1, 1)
+
+        self.groupBox_43 = QGroupBox(self.tab_5)
+        self.groupBox_43.setObjectName(u"groupBox_43")
+        self.groupBox_43.setGeometry(QRect(30, 140, 701, 161))
+        self.groupBox_43.setStyleSheet(u"font:\"Courier\";")
+        self.gridLayoutWidget_25 = QWidget(self.groupBox_43)
+        self.gridLayoutWidget_25.setObjectName(u"gridLayoutWidget_25")
+        self.gridLayoutWidget_25.setGeometry(QRect(20, 30, 661, 121))
+        self.gridLayout_25 = QGridLayout(self.gridLayoutWidget_25)
+        self.gridLayout_25.setObjectName(u"gridLayout_25")
+        self.gridLayout_25.setContentsMargins(0, 0, 0, 0)
+        self.lineEdit_api_key = QLineEdit(self.gridLayoutWidget_25)
+        self.lineEdit_api_key.setObjectName(u"lineEdit_api_key")
+        sizePolicy4.setHeightForWidth(self.lineEdit_api_key.sizePolicy().hasHeightForWidth())
+        self.lineEdit_api_key.setSizePolicy(sizePolicy4)
+        self.lineEdit_api_key.setMinimumSize(QSize(300, 30))
+        self.lineEdit_api_key.setStyleSheet(u" font: \"Courier\";\n"
+" border: 1px solid rgba(0,0,0, 50);\n"
+" border-radius: 15px;\n"
+"")
+
+        self.gridLayout_25.addWidget(self.lineEdit_api_key, 1, 1, 1, 1)
+
+        self.label_104 = QLabel(self.gridLayoutWidget_25)
+        self.label_104.setObjectName(u"label_104")
+        sizePolicy3.setHeightForWidth(self.label_104.sizePolicy().hasHeightForWidth())
+        self.label_104.setSizePolicy(sizePolicy3)
+        self.label_104.setMinimumSize(QSize(130, 30))
+        self.label_104.setLayoutDirection(Qt.LeftToRight)
+        self.label_104.setFrameShape(QFrame.NoFrame)
+        self.label_104.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_25.addWidget(self.label_104, 0, 0, 1, 1)
+
+        self.label_105 = QLabel(self.gridLayoutWidget_25)
+        self.label_105.setObjectName(u"label_105")
+        sizePolicy4.setHeightForWidth(self.label_105.sizePolicy().hasHeightForWidth())
+        self.label_105.setSizePolicy(sizePolicy4)
+        self.label_105.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_25.addWidget(self.label_105, 2, 1, 1, 1)
+
+        self.lineEdit_emby_url = QLineEdit(self.gridLayoutWidget_25)
+        self.lineEdit_emby_url.setObjectName(u"lineEdit_emby_url")
+        sizePolicy4.setHeightForWidth(self.lineEdit_emby_url.sizePolicy().hasHeightForWidth())
+        self.lineEdit_emby_url.setSizePolicy(sizePolicy4)
+        self.lineEdit_emby_url.setMinimumSize(QSize(300, 30))
+        self.lineEdit_emby_url.setStyleSheet(u" font: \"Courier\";\n"
+" border: 1px solid rgba(0,0,0, 50);\n"
+" border-radius: 15px;\n"
+"")
+
+        self.gridLayout_25.addWidget(self.lineEdit_emby_url, 0, 1, 1, 1)
+
+        self.label_107 = QLabel(self.gridLayoutWidget_25)
+        self.label_107.setObjectName(u"label_107")
+        sizePolicy3.setHeightForWidth(self.label_107.sizePolicy().hasHeightForWidth())
+        self.label_107.setSizePolicy(sizePolicy3)
+        self.label_107.setMinimumSize(QSize(130, 30))
+        self.label_107.setLayoutDirection(Qt.LeftToRight)
+        self.label_107.setFrameShape(QFrame.NoFrame)
+        self.label_107.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_25.addWidget(self.label_107, 1, 0, 1, 1)
+
+        self.groupBox_41 = QGroupBox(self.tab_5)
+        self.groupBox_41.setObjectName(u"groupBox_41")
+        self.groupBox_41.setGeometry(QRect(30, 320, 701, 181))
+        self.groupBox_41.setMinimumSize(QSize(200, 0))
+        self.groupBox_41.setMaximumSize(QSize(739, 16777215))
+        self.gridLayoutWidget_11 = QWidget(self.groupBox_41)
+        self.gridLayoutWidget_11.setObjectName(u"gridLayoutWidget_11")
+        self.gridLayoutWidget_11.setGeometry(QRect(20, 30, 661, 71))
+        self.gridLayout_11 = QGridLayout(self.gridLayoutWidget_11)
+        self.gridLayout_11.setObjectName(u"gridLayout_11")
+        self.gridLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_19 = QHBoxLayout()
+        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
+        self.radioButton_actor_photo_upload_on = QRadioButton(self.gridLayoutWidget_11)
+        self.radioButton_actor_photo_upload_on.setObjectName(u"radioButton_actor_photo_upload_on")
+        self.radioButton_actor_photo_upload_on.setMinimumSize(QSize(0, 30))
+
+        self.horizontalLayout_19.addWidget(self.radioButton_actor_photo_upload_on)
+
+        self.radioButton_actor_photo_upload_off = QRadioButton(self.gridLayoutWidget_11)
+        self.radioButton_actor_photo_upload_off.setObjectName(u"radioButton_actor_photo_upload_off")
+
+        self.horizontalLayout_19.addWidget(self.radioButton_actor_photo_upload_off)
+
+
+        self.gridLayout_11.addLayout(self.horizontalLayout_19, 0, 1, 1, 1)
+
+        self.label_103 = QLabel(self.gridLayoutWidget_11)
+        self.label_103.setObjectName(u"label_103")
+        sizePolicy3.setHeightForWidth(self.label_103.sizePolicy().hasHeightForWidth())
+        self.label_103.setSizePolicy(sizePolicy3)
+        self.label_103.setMinimumSize(QSize(130, 0))
+        self.label_103.setLayoutDirection(Qt.RightToLeft)
+        self.label_103.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_11.addWidget(self.label_103, 0, 0, 1, 1)
+
+        self.label_106 = QLabel(self.gridLayoutWidget_11)
+        self.label_106.setObjectName(u"label_106")
+        sizePolicy4.setHeightForWidth(self.label_106.sizePolicy().hasHeightForWidth())
+        self.label_106.setSizePolicy(sizePolicy4)
+        self.label_106.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_11.addWidget(self.label_106, 1, 1, 1, 1)
+
+        self.pushButton_add_actor_pic = QPushButton(self.groupBox_41)
+        self.pushButton_add_actor_pic.setObjectName(u"pushButton_add_actor_pic")
+        self.pushButton_add_actor_pic.setGeometry(QRect(390, 120, 181, 40))
+        self.pushButton_show_pic_actor = QPushButton(self.groupBox_41)
+        self.pushButton_show_pic_actor.setObjectName(u"pushButton_show_pic_actor")
+        self.pushButton_show_pic_actor.setGeometry(QRect(220, 120, 141, 40))
+        self.pushButton_show_pic_actor.setStyleSheet(u"")
+        self.comboBox_pic_actor = QComboBox(self.groupBox_41)
+        self.comboBox_pic_actor.addItem("")
+        self.comboBox_pic_actor.addItem("")
+        self.comboBox_pic_actor.addItem("")
+        self.comboBox_pic_actor.setObjectName(u"comboBox_pic_actor")
+        self.comboBox_pic_actor.setGeometry(QRect(60, 120, 151, 40))
+        self.label_download_acotr_zip = QLabel(self.tab_5)
+        self.label_download_acotr_zip.setObjectName(u"label_download_acotr_zip")
+        self.label_download_acotr_zip.setGeometry(QRect(520, 80, 93, 30))
+        sizePolicy3.setHeightForWidth(self.label_download_acotr_zip.sizePolicy().hasHeightForWidth())
+        self.label_download_acotr_zip.setSizePolicy(sizePolicy3)
+        self.label_download_acotr_zip.setMinimumSize(QSize(0, 0))
+        self.label_download_acotr_zip.setCursor(QCursor(Qt.OpenHandCursor))
+        self.label_download_acotr_zip.setLayoutDirection(Qt.RightToLeft)
+        self.label_download_acotr_zip.setStyleSheet(u"color: rgb(10, 52, 255);")
+        self.label_download_acotr_zip.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.tabWidget.addTab(self.tab_5, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
         self.groupBox_20 = QGroupBox(self.tab_2)
@@ -2562,16 +2761,17 @@ class Ui_AVDV(object):
 
         self.scrollArea_5.setWidget(self.scrollAreaWidgetContents_5)
         self.tabWidget.addTab(self.tab5, "")
-        self.pushButton_save_config = QPushButton(self.page_setting)
-        self.pushButton_save_config.setObjectName(u"pushButton_save_config")
-        self.pushButton_save_config.setGeometry(QRect(320, 620, 350, 50))
+        self.label_4 = QLabel(self.page_setting)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(0, 620, 741, 71))
+        self.label_4.setStyleSheet(u"background-color: rgba(246, 246, 246, 220);")
         self.pushButton_init_config = QPushButton(self.page_setting)
         self.pushButton_init_config.setObjectName(u"pushButton_init_config")
-        self.pushButton_init_config.setGeometry(QRect(90, 620, 160, 50))
+        self.pushButton_init_config.setGeometry(QRect(110, 630, 160, 41))
+        self.pushButton_save_config = QPushButton(self.page_setting)
+        self.pushButton_save_config.setObjectName(u"pushButton_save_config")
+        self.pushButton_save_config.setGeometry(QRect(360, 630, 301, 50))
         self.stackedWidget.addWidget(self.page_setting)
-        self.tabWidget.raise_()
-        self.pushButton_init_config.raise_()
-        self.pushButton_save_config.raise_()
         self.page_about = QWidget()
         self.page_about.setObjectName(u"page_about")
         self.textBrowser_about = QTextBrowser(self.page_about)
@@ -2722,7 +2922,7 @@ class Ui_AVDV(object):
 
         self.retranslateUi(AVDV)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(4)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2775,14 +2975,11 @@ class Ui_AVDV(object):
         self.label_19.setText(QCoreApplication.translate("AVDV", u"\u70b9\u51fb\u56fe\u7247\u53ef\u624b\u52a8\u88c1\u526a", None))
         self.pushButton_start_cap2.setText(QCoreApplication.translate("AVDV", u"\u5f00\u59cb", None))
         self.pushButton_check_net.setText(QCoreApplication.translate("AVDV", u"\u5f00\u59cb\u68c0\u6d4b", None))
-        self.groupBox_6.setTitle(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u3001\u5b57\u5e55\u79fb\u52a8", None))
-        self.label_8.setText(QCoreApplication.translate("AVDV", u"\u79fb\u52a8\u300c\u5f85\u522e\u524a\u89c6\u9891\u76ee\u5f55\u300d\u4e2d\u7684\u6240\u6709\u89c6\u9891\u5230\u300c\u5f85\u522e\u524a\u89c6\u9891\u76ee\u5f55\u300d\u7684\n"
-"\u300cMovie_moved\u300d\u76ee\u5f55\u4e0b\u3002\u4e0d\u5305\u62ec\u300c\u6392\u9664\u76ee\u5f55\u300d\u4e0b\u7684\u89c6\u9891\u53ca\u540c\u540d\u5b57\u5e55", None))
+        self.groupBox_6.setTitle(QCoreApplication.translate("AVDV", u"\u79fb\u52a8\u89c6\u9891\u3001\u5b57\u5e55", None))
         self.pushButton_move_mp4.setText(QCoreApplication.translate("AVDV", u"\u5f00\u59cb\u79fb\u52a8", None))
         self.label_41.setText(QCoreApplication.translate("AVDV", u"\u6392\u9664\u76ee\u5f55\uff1a", None))
+        self.label_8.setText(QCoreApplication.translate("AVDV", u"\u79fb\u52a8\u300c\u5f85\u522e\u524a\u89c6\u9891\u76ee\u5f55\u300d\u4e2d\u7684\u6240\u6709\u89c6\u9891\u548c\u5b57\u5e55\u5230\u300c\u5f85\u522e\u524a\u89c6\u9891\u76ee\u5f55\u300d\u4e0b\u7684\u300cMovie_moved\u300d\u76ee\u5f55\u4e0b\u3002", None))
         self.groupBox_7.setTitle(QCoreApplication.translate("AVDV", u"\u5355\u6587\u4ef6\u522e\u524a", None))
-        self.label.setText(QCoreApplication.translate("AVDV", u"\u9009\u62e9\u6587\u4ef6\u540e\uff0c\u9009\u62e9\u300c\u522e\u524a\u7f51\u7ad9\u300d\u3001\u586b\u5199\u300c\u522e\u524a\u7f51\u5740\u300d\uff08\u8be5\u756a\u53f7\u7684\u7f51\u9875\u5730\u5740\uff09\n"
-"\u70b9\u51fb\u522e\u524a\u5373\u53ef\uff01\uff08\u300c\u5f71\u7247\u756a\u53f7\u300d\u53ef\u4e0d\u586b\u5199\uff09", None))
         self.pushButton_select_file.setText(QCoreApplication.translate("AVDV", u"\u9009\u62e9\u6587\u4ef6", None))
         self.comboBox_website.setItemText(0, QCoreApplication.translate("AVDV", u"All websites", None))
         self.comboBox_website.setItemText(1, QCoreApplication.translate("AVDV", u"iqqtv", None))
@@ -2803,25 +3000,13 @@ class Ui_AVDV(object):
         self.label_10.setText(QCoreApplication.translate("AVDV", u"*\u522e\u524a\u7f51\u5740\uff1a", None))
         self.label_12.setText(QCoreApplication.translate("AVDV", u" \u5f71\u7247\u756a\u53f7\uff1a", None))
         self.pushButton_start_single_file.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a", None))
-        self.groupBox_12.setTitle(QCoreApplication.translate("AVDV", u"Emby-\u6f14\u5458\u5934\u50cf", None))
-        self.pushButton_add_actor_pic.setText(QCoreApplication.translate("AVDV", u"\u6dfb\u52a0\u5934\u50cf", None))
-        self.label_3.setText(QCoreApplication.translate("AVDV", u"*Emby\u5730\u5740\uff1a", None))
-        self.label_4.setText(QCoreApplication.translate("AVDV", u"*API\u5bc6\u94a5\uff1a", None))
-        self.label_5.setText(QCoreApplication.translate("AVDV", u"\u8bf4\u660e:\n"
-"   1\u3001\u5934\u50cf\u56fe\u7247\u8bf7\u653e\u5728\u7a0b\u5e8f\u76ee\u5f55(AVDCx\u76ee\u5f55)\u4e0b\u7684Actor\u76ee\u5f55\u4e2d\u3002\n"
-"   2\u3001\u5bc6\u94a5\u521b\u5efa\u65b9\u6cd5\uff1aEmby\u63a7\u5236\u53f0->\u9ad8\u7ea7->API\u5bc6\u94a5->\u6dfb\u52a0(APP\u540d\u79f0\u4efb\u610f)\u3002", None))
-        self.pushButton_show_pic_actor.setText(QCoreApplication.translate("AVDV", u"\u67e5\u770b", None))
-        self.comboBox_pic_actor.setItemText(0, QCoreApplication.translate("AVDV", u"\u53ef\u6dfb\u52a0\u5934\u50cf\u7684\u6f14\u5458", None))
-        self.comboBox_pic_actor.setItemText(1, QCoreApplication.translate("AVDV", u"\u6ca1\u6709\u5934\u50cf\u7684\u6f14\u5458", None))
-        self.comboBox_pic_actor.setItemText(2, QCoreApplication.translate("AVDV", u"\u5df2\u6709\u5934\u50cf\u7684\u6f14\u5458", None))
-        self.comboBox_pic_actor.setItemText(3, QCoreApplication.translate("AVDV", u"\u6240\u6709\u6f14\u5458", None))
-
-        self.label_download_acotr_zip.setText(QCoreApplication.translate("AVDV", u"\u70b9\u6b64\u4e0b\u8f7d\u5934\u50cf\u5305", None))
-        self.groupBox_13.setTitle(QCoreApplication.translate("AVDV", u"\u88c1\u526a\u5c01\u9762\u56fe", None))
-        self.pushButton_select_thumb.setText(QCoreApplication.translate("AVDV", u"\u9009\u62e9\u7f29\u7565\u56fe", None))
-        self.label_6.setText(QCoreApplication.translate("AVDV", u"\u8bf4\u660e:\n"
-"  1\u3001\u5bf9\u6709\u4e9b\u5c01\u9762\u56fe(poster)\u4e0d\u6ee1\u610f\uff0c\u6bd4\u4f8b\u4e0d\u5bf9\u6216\u8005\u5206\u8fa8\u7387\u592a\u4f4e\uff0c\u53ef\u4f7f\u7528\u6b64\u5de5\u5177\u3002\n"
-"  2\u3001\u6b64\u5de5\u5177\u652f\u6301\u624b\u52a8\u9009\u62e9\u88c1\u526a\u8303\u56f4\uff0c\u53ef\u4ee5\u5c06\u7f29\u7565\u56fe(thumb)\u88c1\u526a\u4e3a\u5c01\u9762\u56fe\u3002", None))
+        self.label_3.setText(QCoreApplication.translate("AVDV", u"*\u6587\u4ef6\u8def\u5f84\uff1a", None))
+        self.label.setText(QCoreApplication.translate("AVDV", u"\u9009\u62e9\u6587\u4ef6\u540e\uff0c\u9009\u62e9\u300c\u522e\u524a\u7f51\u7ad9\u300d\u3001\u586b\u5199\u300c\u522e\u524a\u7f51\u5740\u300d\uff08\u8be5\u756a\u53f7\u7684\u7f51\u9875\u5730\u5740\uff09\u70b9\u51fb\u522e\u524a\u5373\u53ef\uff01\n"
+"\u300c\u5f71\u7247\u756a\u53f7\u300d\u53ef\u4e0d\u586b\u5199", None))
+        self.pushButton_select_file_clear_info.setText(QCoreApplication.translate("AVDV", u"\u6e05\u7a7a\u4fe1\u606f", None))
+        self.groupBox_13.setTitle(QCoreApplication.translate("AVDV", u"\u88c1\u526a\u56fe\u7247", None))
+        self.pushButton_select_thumb.setText(QCoreApplication.translate("AVDV", u"\u9009\u62e9\u56fe\u7247", None))
+        self.label_6.setText(QCoreApplication.translate("AVDV", u"\u6b64\u5de5\u5177\u652f\u6301\u62d6\u52a8\u9009\u62e9\u88c1\u526a\u8303\u56f4\uff0c\u53ef\u5c06\u56fe\u7247\u88c1\u526a\u4e3a\u5c01\u9762\u56fe\uff08poster\uff09\u3002", None))
 #if QT_CONFIG(accessibility)
         self.tabWidget.setAccessibleDescription("")
 #endif // QT_CONFIG(accessibility)
@@ -2835,8 +3020,8 @@ class Ui_AVDV(object):
         self.label_57.setText(QCoreApplication.translate("AVDV", u"\u6307\u522e\u524a\u5931\u8d25\u65f6\uff0c\u89c6\u9891\u5c06\u79fb\u52a8\u5230\u8fd9\u4e2a\u6587\u4ef6\u5939\u3002\u8f93\u51fa\u76ee\u5f55\u53ef\u4ee5\u4e0d\u5728\u5f85\u522e\u524a\u89c6\u9891\u76ee\u5f55\u4e0b", None))
         self.label_58.setText(QCoreApplication.translate("AVDV", u"\u6307\u4e0d\u60f3\u8981\u522e\u524a\u7684\u76ee\u5f55\uff0c\u53ef\u4ee5\u586b\u5199\u591a\u4e2a\u76ee\u5f55\uff0c\u4ee5\u9017\u53f7\u5206\u5f00\uff08\u4e2d\u82f1\u6587\u9017\u53f7\u90fd\u53ef\u4ee5\uff09", None))
         self.groupBox_9.setTitle(QCoreApplication.translate("AVDV", u"\u6587\u4ef6\u683c\u5f0f\u8bbe\u7f6e", None))
-        self.label_50.setText(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u683c\u5f0f\uff1a", None))
         self.label_78.setText(QCoreApplication.translate("AVDV", u"\u5b57\u5e55\u683c\u5f0f\uff1a", None))
+        self.label_50.setText(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u683c\u5f0f\uff1a", None))
         self.groupBox_32.setTitle(QCoreApplication.translate("AVDV", u"\u6587\u4ef6\u8fc7\u6ee4\u8bbe\u7f6e", None))
         self.label_83.setText(QCoreApplication.translate("AVDV", u"\u8fc7\u6ee4\u6587\u4ef6\u540d\u591a\u4f59\u5b57\u7b26\uff1a", None))
         self.label_88.setText(QCoreApplication.translate("AVDV", u"\u8bc6\u522b\u756a\u53f7\u65f6\uff0c\u5c06\u5148\u6392\u9664\u591a\u4f59\u5b57\u7b26\u518d\u8fdb\u884c\u8bc6\u522b\u3002\uff08\u586b\u5199\u65f6\u4ee5\u9017\u53f7\u5206\u5272\uff0c\u4e0d\u7528\u533a\u5206\u5927\u5c0f\u5199\uff09", None))
@@ -2850,7 +3035,7 @@ class Ui_AVDV(object):
         self.radioButton_sort.setText(QCoreApplication.translate("AVDV", u"\u6574\u7406\u6a21\u5f0f", None))
         self.radioButton_common.setText(QCoreApplication.translate("AVDV", u"\u6807\u51c6\u6a21\u5f0f", None))
         self.label_15.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u540e\uff0c\u4e0d\u4e0b\u8f7d\u56fe\u7247\u548cnfo\u6587\u4ef6\uff0c\u4ec5\u91cd\u547d\u540d\u6587\u4ef6", None))
-        self.checkBox_read_no_nfo.setText(QCoreApplication.translate("AVDV", u"\u4e0d\u5b58\u5728\u672c\u5730nfo\u7684\u89c6\u9891\uff0c\u6b63\u5e38\u522e\u524a", None))
+        self.checkBox_read_no_nfo_scrape.setText(QCoreApplication.translate("AVDV", u"\u4e0d\u5b58\u5728\u672c\u5730nfo\u7684\u89c6\u9891\uff0c\u6b63\u5e38\u522e\u524a", None))
         self.groupBox_5.setTitle(QCoreApplication.translate("AVDV", u"\u504f\u597d", None))
         self.radioButton_like_speed.setText(QCoreApplication.translate("AVDV", u"\u5feb\u901f", None))
         self.radioButton_like_more.setText(QCoreApplication.translate("AVDV", u"\u5b57\u6bb5\u5168", None))
@@ -2894,12 +3079,14 @@ class Ui_AVDV(object):
         self.radioButton_fail_move_on.setText(QCoreApplication.translate("AVDV", u"\u5f00", None))
         self.radioButton_fail_move_off.setText(QCoreApplication.translate("AVDV", u"\u5173", None))
         self.groupBox_23.setTitle(QCoreApplication.translate("AVDV", u"\u5b57\u6bb5\u8865\u5168\u7f51\u7ad9", None))
+        self.checkBox_more_dmm.setText(QCoreApplication.translate("AVDV", u"dmm", None))
+        self.checkBox_more_jav321.setText(QCoreApplication.translate("AVDV", u"jav321", None))
         self.label_71.setText(QCoreApplication.translate("AVDV", u"\u8d44\u6e90\u8f83\u5168\uff0c\u5b57\u6bb5\u5168\uff0c\u6709\u7b80\u4ecb", None))
         self.checkBox_more_javdb.setText(QCoreApplication.translate("AVDV", u"javdb", None))
         self.label_62.setText(QCoreApplication.translate("AVDV", u"\u8d44\u6e90\u6700\u5168\uff0c\u5b57\u6bb5\u5168\uff0c\u4f46\u7f3a\u5c11\u7b80\u4ecb\uff0c\u4e2a\u522b\u8d44\u6e90\u9700\u8981\u586b\u5199cookie\u624d\u80fd\u67e5\u770b", None))
-        self.checkBox_more_jav321.setText(QCoreApplication.translate("AVDV", u"jav321", None))
-        self.checkBox_more_dmm.setText(QCoreApplication.translate("AVDV", u"dmm", None))
         self.label_92.setText(QCoreApplication.translate("AVDV", u"\u8d44\u6e90\u4e0d\u5168\uff0c\u5b57\u6bb5\u5168\uff0c\u6709\u7b80\u4ecb\uff0c\u9700\u8981\u65e5\u672c\u8282\u70b9\u8bbf\u95ee", None))
+        self.checkBox_more_javlibrary.setText(QCoreApplication.translate("AVDV", u"javlibrary", None))
+        self.label_72.setText(QCoreApplication.translate("AVDV", u"\u8d44\u6e90\u8f83\u5168\uff0c\u5b57\u6bb5\u5168\uff0c\u65e0\u7b80\u4ecb\uff0c\u6f14\u5458\u4fe1\u606f\u8f83\u5168", None))
         self.groupBox_30.setTitle(QCoreApplication.translate("AVDV", u"\u7ed3\u675f\u540e\u5220\u9664\u7a7a\u6587\u4ef6\u5939", None))
         self.label_44.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u7ed3\u675f\u540e\uff0c\u5220\u9664\u522e\u524a\u76ee\u5f55\u4e2d\u7684\u6240\u6709\u7a7a\u6587\u4ef6\u5939", None))
         self.label_51.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u7ed3\u675f\u540e\uff0c\u4e0d\u5220\u9664\u7a7a\u6587\u4ef6\u5939", None))
@@ -2912,7 +3099,7 @@ class Ui_AVDV(object):
         self.label_82.setText(QCoreApplication.translate("AVDV", u"\u5267\u7167\uff1aemby\u5a92\u4f53\u5e93\u7c7b\u578b\u9009\u62e9\u300c\u5bb6\u5ead\u89c6\u9891\u4e0e\u7167\u7247\u300d\u65f6\uff0c\u5267\u7167\u53ef\u4f5c\u4e3a\u80cc\u666f\u56fe\u7247\u8f6e\u64ad\u663e\u793a\u3002\n"
 "\u6ce8\u610f\uff1a\u5267\u7167\u9ed8\u8ba4\u4fdd\u5b58\u5230\u89c6\u9891\u6587\u4ef6\u76ee\u5f55\u5185\u7684\u300cextrafanart\u300d\u76ee\u5f55\u4e2d", None))
         self.label_59.setText(QCoreApplication.translate("AVDV", u"\u5267\u7167\u526f\u672c\u76ee\u5f55\uff1aemby\u5267\u7167\u4f1a\u88ab\u9690\u85cf\uff0c\u5982\u9700\u5728emby\u4e2d\u624b\u52a8\u67e5\u770b\u5267\u7167\uff0c\u53ef\u521b\u5efa\u5267\u7167\u76ee\u5f55\u526f\u672c\u3002\n"
-"\u76ee\u5f55\u540d\u5b57\u4e3a\u7a7a\u6216\u8005\u4e3a\u300cextrafanart\u300d\u65f6\uff0c\u5c06\u4e0d\u4f1a\u521b\u5efa\u526f\u672c\u76ee\u5f55\u3002\u8bf7\u4f7f\u7528\u300cextrafanart\u300d\u4ee5\u5916\u7684\u5176\u4ed6\u540d\u5b57\u3002\n"
+"\u76ee\u5f55\u540d\u5b57\u4e3a\u7a7a\u6216\u8005\u300cextrafanart\u300d\u65f6\uff0c\u5c06\u4e0d\u4f1a\u521b\u5efa\u526f\u672c\u76ee\u5f55\u3002\u8bf7\u4f7f\u7528\u300cextrafanart\u300d\u4ee5\u5916\u7684\u5176\u4ed6\u540d\u5b57\u3002\n"
 "\u6ce8\u610f\uff1a\u6b64\u5904\u53ea\u9700\u586b\u5199\u76ee\u5f55\u540d\u5b57\uff0c\u8bf7\u4e0d\u8981\u586b\u5199\u5b8c\u6574\u8def\u5f84\uff01", None))
         self.groupBox_24.setTitle(QCoreApplication.translate("AVDV", u"\u4e0b\u8f7d\u56fe\u7247\u548cnfo\u6587\u4ef6", None))
         self.checkBox_download_poster.setText(QCoreApplication.translate("AVDV", u"poster", None))
@@ -2964,10 +3151,10 @@ class Ui_AVDV(object):
         self.label_43.setText(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u76ee\u5f55\u540d\uff1a", None))
         self.label_61.setText(QCoreApplication.translate("AVDV", u"\u6307\u672c\u5730\u89c6\u9891\u6587\u4ef6\u7684\u6587\u4ef6\u540d\u683c\u5f0f\uff0c\u547d\u540d\u5b57\u6bb5\u540c\u4e0a", None))
         self.groupBox_37.setTitle(QCoreApplication.translate("AVDV", u"\u56fe\u7247\u547d\u540d\u89c4\u5219", None))
-        self.label_95.setText(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u6587\u4ef6\u540d-thumb.jpg\uff0c\u89c6\u9891\u6587\u4ef6\u540d-fanart.jpg", None))
-        self.label_96.setText(QCoreApplication.translate("AVDV", u"humb.jpg\uff0cfanart.jpg", None))
         self.radioButton_pic_file_poster.setText(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u6587\u4ef6\u540d-poster.jpg", None))
         self.radioButton_pic_poster.setText(QCoreApplication.translate("AVDV", u"poster.jpg", None))
+        self.label_95.setText(QCoreApplication.translate("AVDV", u"\u89c6\u9891\u6587\u4ef6\u540d-thumb.jpg\uff0c\u89c6\u9891\u6587\u4ef6\u540d-fanart.jpg", None))
+        self.label_96.setText(QCoreApplication.translate("AVDV", u"thumb.jpg\uff0cfanart.jpg", None))
         self.groupBox_38.setTitle(QCoreApplication.translate("AVDV", u"\u5206\u96c6\u547d\u540d\u89c4\u5219", None))
         self.label_97.setText(QCoreApplication.translate("AVDV", u"\u5c0f\u5199\uff0c-cd1\uff0c-cd2", None))
         self.label_98.setText(QCoreApplication.translate("AVDV", u"\u5927\u5199\uff0c-CD1\u3001-CD2", None))
@@ -2977,15 +3164,18 @@ class Ui_AVDV(object):
         self.groupBox_77.setTitle(QCoreApplication.translate("AVDV", u"\u957f\u5ea6\u547d\u540d\u89c4\u5219", None))
         self.label_172.setText(QCoreApplication.translate("AVDV", u"\u6307\u6587\u4ef6\u540d\u6700\u957f\u5b57\u7b26\u6570\uff08Windows\u5355\u6587\u4ef6\u540d\u5141\u8bb8\u6700\u5927\u957f\u5ea6255\u5b57\u7b26\uff0c\u5b8c\u6574\u8def\u5f84\u6700\u5927260\u5b57\u7b26\uff09\n"
 "\u5f53\u8d85\u8fc7\u6700\u5927\u957f\u5ea6\u65f6\uff0c\u5c06\u901a\u8fc7\u622a\u77ed\u6807\u9898\u5b57\u6bb5\u5185\u5bb9\u6765\u7f29\u77ed\u957f\u5ea6", None))
-        self.label_167.setText(QCoreApplication.translate("AVDV", u"\u6f14\u5458\u540d\u6700\u5927\u663e\u793a\u6570\u91cf", None))
+        self.label_167.setText(QCoreApplication.translate("AVDV", u"\u6f14\u5458\u540d\u6700\u5927\u6570\u91cf\uff1a", None))
 #if QT_CONFIG(accessibility)
         self.lineEdit_folder_name_max.setAccessibleDescription(QCoreApplication.translate("AVDV", u"\u6d4b\u8bd5", None))
 #endif // QT_CONFIG(accessibility)
         self.label_168.setText(QCoreApplication.translate("AVDV", u"\u6307\u6709\u591a\u4f4d\u6f14\u5458\u65f6\uff0c\u547d\u540d\u65f6\u6700\u591a\u663e\u793a\u7684\u6f14\u5458\u6570\u91cf\u3002\u8d85\u51fa\u7684\u6f14\u5458\u5c06\u7528\u4ee5\u4e0b\u5b57\u7b26\u66ff\u4ee3\uff1a", None))
-        self.label_171.setText(QCoreApplication.translate("AVDV", u"\u76ee\u5f55\u540d\u6700\u5927\u957f\u5ea6", None))
-        self.label_170.setText(QCoreApplication.translate("AVDV", u"\u6587\u4ef6\u540d\u6700\u5927\u957f\u5ea6", None))
+        self.label_171.setText(QCoreApplication.translate("AVDV", u"\u76ee\u5f55\u540d\u6700\u5927\u957f\u5ea6\uff1a", None))
+        self.label_170.setText(QCoreApplication.translate("AVDV", u"\u6587\u4ef6\u540d\u6700\u5927\u957f\u5ea6\uff1a", None))
         self.label_169.setText(QCoreApplication.translate("AVDV", u"\u6307\u76ee\u5f55\u540d\u6700\u957f\u5b57\u7b26\u6570\uff08Windows\u5355\u76ee\u5f55\u540d\u5141\u8bb8\u6700\u5927\u957f\u5ea6255\u5b57\u7b26\uff0c\u5b8c\u6574\u8def\u5f84\u6700\u5927260\u5b57\u7b26\uff09\n"
 "\u5f53\u8d85\u8fc7\u6700\u5927\u957f\u5ea6\u65f6\uff0c\u5c06\u901a\u8fc7\u622a\u77ed\u6807\u9898\u5b57\u6bb5\u5185\u5bb9\u6765\u7f29\u77ed\u957f\u5ea6", None))
+        self.groupBox_40.setTitle(QCoreApplication.translate("AVDV", u"\u5b57\u6bb5\u547d\u540d\u89c4\u5219", None))
+        self.label_100.setText(QCoreApplication.translate("AVDV", u"\u5f53\u6f14\u5458\u540d\u4e0d\u5b58\u5728\u65f6\uff0c\u5728\u4f7f\u7528\u547d\u540d\u5b57\u6bb5\u547d\u540d\u65f6\uff0c\u4f7f\u7528\u4ee5\u4e0a\u5b57\u7b26\u66ff\u4ee3", None))
+        self.label_173.setText(QCoreApplication.translate("AVDV", u"\u672a\u77e5\u6f14\u5458\uff1a", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("AVDV", u"\u547d\u540d", None))
         self.groupBox_26.setTitle(QCoreApplication.translate("AVDV", u"\u7ffb\u8bd1\u5185\u5bb9", None))
         self.checkBox_translate_title.setText(QCoreApplication.translate("AVDV", u"\u6807\u9898", None))
@@ -3003,7 +3193,7 @@ class Ui_AVDV(object):
         self.radioButton_ja.setText(QCoreApplication.translate("AVDV", u"\u4e0d\u7ffb\u8bd1", None))
         self.label_84.setText(QCoreApplication.translate("AVDV", u"\u4f18\u5148\u4f7f\u7528\u522e\u524a\u7f51\u7ad9\u7684\u4e2d\u6587\u7ffb\u8bd1\uff0c\u5982\u522e\u524a\u9875\u9762\u65e0\u4e2d\u6587\u65f6\uff0c\u518d\u4f7f\u7528\u7ffb\u8bd1\u5f15\u64ce\u7ffb\u8bd1\u3002", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("AVDV", u"\u7ffb\u8bd1", None))
-        self.groupBox_75.setTitle(QCoreApplication.translate("AVDV", u"\u6f14\u5458\u6620\u5c04\u8868", None))
+        self.groupBox_75.setTitle(QCoreApplication.translate("AVDV", u"\u6f14\u5458\u540d\u6620\u5c04", None))
         self.radioButton_actor_zh_cn.setText(QCoreApplication.translate("AVDV", u"\u4e2d\u6587\u7b80\u4f53", None))
         self.radioButton_actor_zh_tw.setText(QCoreApplication.translate("AVDV", u"\u4e2d\u6587\u7e41\u4f53", None))
         self.radioButton_actor_jp.setText(QCoreApplication.translate("AVDV", u"\u65e5\u8bed", None))
@@ -3014,14 +3204,34 @@ class Ui_AVDV(object):
 "2\uff0czh_cn/zh_tw/jp\uff1a\u8f93\u51fa\u8bcd\u3002\u5f53keyword\u5339\u914d\u5230\u6f14\u5458\u540d\u65f6\uff0c\u53ef\u8f93\u51fa\u5bf9\u5e94\u8bed\u8a00\u7684\u540d\u5b57\u3002", None))
         self.label_163.setText(QCoreApplication.translate("AVDV", u"\u8f93\u51fa\u8bcd\uff1a", None))
         self.label_164.setText(QCoreApplication.translate("AVDV", u"\u6ce8\uff1a\u4e3a\u4e86\u4fdd\u8bc1emby\u7684\u6f14\u5458\u5934\u50cf\u6b63\u5e38\u663e\u793a\uff0cnfo\u91cc\u7684\u6f14\u5458\u4f1a\u9ed8\u8ba4\u4f7f\u7528\u65e5\u6587\u540d\u5b57\u3002", None))
-        self.groupBox_76.setTitle(QCoreApplication.translate("AVDV", u"\u4fe1\u606f\u6620\u5c04\u8868\uff08\u6807\u7b7e\u3001\u5bfc\u6f14\u3001\u7cfb\u5217\u3001\u5236\u4f5c\u3001\u53d1\u884c\uff09", None))
+        self.groupBox_76.setTitle(QCoreApplication.translate("AVDV", u"\u4fe1\u606f\u6620\u5c04\uff08\u6807\u7b7e\u3001\u5bfc\u6f14\u3001\u7cfb\u5217\u3001\u5236\u4f5c\u3001\u53d1\u884c\uff09", None))
         self.radioButton_tag_zh_cn.setText(QCoreApplication.translate("AVDV", u"\u4e2d\u6587\u7b80\u4f53", None))
         self.radioButton_tag_zh_tw.setText(QCoreApplication.translate("AVDV", u"\u4e2d\u6587\u7e41\u4f53", None))
         self.radioButton_tag_jp.setText(QCoreApplication.translate("AVDV", u"\u65e5\u8bed", None))
         self.radioButton_tag_no.setText(QCoreApplication.translate("AVDV", u"\u4e0d\u4f7f\u7528\u6620\u5c04", None))
         self.label_165.setText(QCoreApplication.translate("AVDV", u"\u4fe1\u606f\u6620\u5c04\u8868\u6587\u4ef6\u540d\u4e3a\uff1amapping_info.xml\u3002\u4f5c\u7528\u548c\u6f14\u5458\u6620\u5c04\u8868\u7c7b\u4f3c\uff0c\u8bf4\u660e\u53ef\u53c2\u8003\u6f14\u5458\u6620\u5c04\u8868\u3002", None))
         self.label_166.setText(QCoreApplication.translate("AVDV", u"\u8f93\u51fa\u8bcd\uff1a", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_9), QCoreApplication.translate("AVDV", u"\u6620\u5c04\u8868", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_9), QCoreApplication.translate("AVDV", u"\u6620\u5c04", None))
+        self.groupBox_42.setTitle(QCoreApplication.translate("AVDV", u"\u5934\u50cf\u76ee\u5f55", None))
+        self.label_77.setText(QCoreApplication.translate("AVDV", u"\u4e0b\u8f7d\u5934\u50cf\u5305\u89e3\u538b\uff0c\u586b\u5199\u5934\u50cf\u56fe\u7247\u76ee\u5f55\u7684\u8def\u5f84", None))
+        self.label_101.setText(QCoreApplication.translate("AVDV", u"\u5934\u50cf\u56fe\u7247\u76ee\u5f55\uff1a", None))
+        self.groupBox_43.setTitle(QCoreApplication.translate("AVDV", u"Emby\u4fe1\u606f", None))
+        self.label_104.setText(QCoreApplication.translate("AVDV", u"Emby\u5730\u5740\uff1a", None))
+        self.label_105.setText(QCoreApplication.translate("AVDV", u"API\u5bc6\u94a5\u521b\u5efa\u65b9\u6cd5\uff1aEmby\u63a7\u5236\u53f0->\u9ad8\u7ea7->API\u5bc6\u94a5->\u6dfb\u52a0(APP\u540d\u79f0\u4efb\u610f)\u3002", None))
+        self.label_107.setText(QCoreApplication.translate("AVDV", u"API\u5bc6\u94a5\uff1a", None))
+        self.groupBox_41.setTitle(QCoreApplication.translate("AVDV", u"\u4e0a\u4f20\u5934\u50cf", None))
+        self.radioButton_actor_photo_upload_on.setText(QCoreApplication.translate("AVDV", u"\u5f00", None))
+        self.radioButton_actor_photo_upload_off.setText(QCoreApplication.translate("AVDV", u"\u5173", None))
+        self.label_103.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u540e\u81ea\u52a8\u4e0a\u4f20\u5934\u50cf\uff1a", None))
+        self.label_106.setText(QCoreApplication.translate("AVDV", u"\u522e\u524a\u540e\uff0c\u4f1a\u68c0\u67e5emby\u4e2d\u7f3a\u5931\u7684\u6f14\u5458\u5934\u50cf\uff0c\u5982\u5934\u50cf\u5305\u4e2d\u6709\u5bf9\u5e94\u56fe\u7247\u5c06\u81ea\u52a8\u4e0a\u4f20\u3002", None))
+        self.pushButton_add_actor_pic.setText(QCoreApplication.translate("AVDV", u"\u70b9\u51fb\u4e0a\u4f20\u5934\u50cf", None))
+        self.pushButton_show_pic_actor.setText(QCoreApplication.translate("AVDV", u"\u67e5\u770b\u6f14\u5458\u5217\u8868", None))
+        self.comboBox_pic_actor.setItemText(0, QCoreApplication.translate("AVDV", u"\u6ca1\u6709\u5934\u50cf\u7684\u6f14\u5458", None))
+        self.comboBox_pic_actor.setItemText(1, QCoreApplication.translate("AVDV", u"\u5df2\u6709\u5934\u50cf\u7684\u6f14\u5458", None))
+        self.comboBox_pic_actor.setItemText(2, QCoreApplication.translate("AVDV", u"\u6240\u6709\u6f14\u5458", None))
+
+        self.label_download_acotr_zip.setText(QCoreApplication.translate("AVDV", u"\u70b9\u51fb\u4e0b\u8f7d\u5934\u50cf\u5305", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QCoreApplication.translate("AVDV", u"\u5934\u50cf", None))
         self.groupBox_20.setTitle(QCoreApplication.translate("AVDV", u"\u4e2d\u6587\u5b57\u5e55\u5b57\u7b26", None))
         self.label_91.setText(QCoreApplication.translate("AVDV", u"\u6307\u6587\u4ef6\u8def\u5f84\u4e2d\u542b\u6709\u4ee5\u4e0a\u5b57\u7b26\u65f6\uff0c\u89c6\u4e3a\u8be5\u6587\u4ef6\u6709\u4e2d\u6587\u5b57\u5e55\uff0c\u591a\u4e2a\u4ee5\u9017\u53f7\u5206\u5272", None))
         self.label_69.setText(QCoreApplication.translate("AVDV", u"\u4e2d\u6587\u5b57\u5e55\u547d\u540d\u5b57\u7b26\uff1a", None))
@@ -3076,156 +3286,157 @@ class Ui_AVDV(object):
         self.radioButton_update_on.setText(QCoreApplication.translate("AVDV", u"\u5f00", None))
         self.radioButton_update_off.setText(QCoreApplication.translate("AVDV", u"\u5173", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab5), QCoreApplication.translate("AVDV", u"\u5176\u4ed6", None))
-        self.pushButton_save_config.setText(QCoreApplication.translate("AVDV", u"\u4fdd\u5b58", None))
+        self.label_4.setText("")
         self.pushButton_init_config.setText(QCoreApplication.translate("AVDV", u"\u6062\u590d\u9ed8\u8ba4", None))
+        self.pushButton_save_config.setText(QCoreApplication.translate("AVDV", u"\u4fdd\u5b58", None))
         self.textBrowser_about.setHtml(QCoreApplication.translate("AVDV", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">AVDCx \u662f\u57fa\u4e8e AV_Data_Capture \u7684 GUI \u7248\u672c AVDC \u518d\u6b21\u4fee\u6539\u7684\u7248\u672c\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">\u00b7"
-                        " AV_Data_Capture \u9879\u76ee\u5730\u5740\uff1ahttps://github.com/yoshiko2/AV_Data_Capture</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">\u00b7 AVDC \u9879\u76ee\u5730\u5740\uff1ahttps://github.com/moyy996/AVDC</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">\u00b7 AVDCx \u9879\u76ee\u5730\u5740\uff1ahttps://github.com/Hermit10/AVDCx</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\""
-                        "><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">\u4f7f\u7528\u8bf4\u660e \uff08\u5185\u5bb9\u6765\u81ea AVDC \uff1ahttps://github.com/moyy996/AVDC \uff09</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br"
-                        " /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">\u76ee\u5f55</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">\u4e00\u3001\u529f\u80fd\u7b80\u4ecb</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">\u4e8c\u3001\u9879\u76ee\u7b80\u4ecb</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">\u4e09\u3001\u5e38\u89c1\u756a\u53f7\u547d\u540d\u53c2\u8003</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px"
-                        "; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">\u56db\u3001\u8bbe\u7f6e\u8bf4\u660e</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">\u4e00\u3001\u529f\u80fd\u7b80\u4ecb</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u65e5\u672c\u7535\u5f71\u5143\u6570\u636e\u6293\u53d6\u5de5\u5177/\u522e\u524a\u5668\uff0c\u914d\u5408\u672c\u5730\u5f71\u7247\u7ba1\u7406\u8f6f\u4ef6EMBY,KODI\uff0cPLEX\u7b49\u7ba1\u7406\u672c\u5730\u5f71\u7247\uff0c\u8be5\u8f6f\u4ef6\u8d77\u5230\u5206\u7c7b"
-                        "\u4e0e\u5143\u6570\u636e\u6293\u53d6\u4f5c\u7528\uff0c\u5229\u7528\u5143\u6570\u636e\u4fe1\u606f\u6765\u5206\u7c7b\uff0c\u4f9b\u672c\u5730\u5f71\u7247\u5206\u7c7b\u6574\u7406\u4f7f\u7528\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">\u4e8c\u3001\u9879\u76ee\u7b80\u4ecb</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  Gui made by moyy996\uff0cCore made by yoshiko2</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
-                        "font-family:'Courier'; font-size:12px;\">  tg\u5b98\u65b9\u7535\u62a5\u7fa4: https://t.me/joinchat/J54y1g3-a7nxJ_-WS4-KFQ</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u547d\u4ee4\u884c\u7248\u9879\u76ee\u5730\u5740\uff1ahttps://github.com/yoshiko2/AV_Data_Capture</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  GUI\u7248\u9879\u76ee\u5730\u5740\uff1ahttps://github.com/moyy996/AVDC</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  GUI\u7248EXE\u4e0b\u8f7d\u5730\u5740\uff1ahttps://github.com/moyy996/AVDC/releases</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-"
-                        "left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">\u4e09\u3001\u5e38\u89c1\u756a\u53f7\u547d\u540d\u53c2\u8003</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">\u4e0d\u533a\u5206\u5927\u5c0f\u5199\u3001\u522e\u524a\u524d\u5c3d\u91cf\u547d\u540d\u89c4\u8303\uff01\uff01\uff01\uff01</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">3.1.\u6807\u51c6\u6709\u7801</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
-                        "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  Javdb\u3001Javbus:SSNI-111</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  Dmm\uff1assni00111</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">3.2.\u65e0\u7801</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  Javdb\u3001Javbus\u3001Avsox:111111-1111\u30011111"
-                        "11_111\u3001HEYZO-1111\u3001n1111</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">3.3.\u7d20\u4eba</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  Mgstage:259LUXU-1111</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  Javdb:LUXU-1111</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><spa"
-                        "n style=\" font-family:'Courier'; font-size:12px;\">  Fc2club:FC2-111111\u3001FC2-PPV-111111\u3001FC2PPV-111111</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">3.4.\u6b27\u7f8e</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  Javdb\u3001Javbus:sexart.11.11.11(\u7cfb\u5217.\u5e74.\u6708.\u65e5)</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style="
-                        "\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">3.5.\u81ea\u5e26\u5b57\u5e55\u5f71\u7247</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u53ef\u4ee5\u628a\u7535\u5f71\u547d\u540d\u4e3a\u7c7b\u4f3cssni-xxx-c.mp4,ssni-xxx-C.mp4\uff0cabp-xxx-CD1-C.mp4 \u7684\u89c4\u5219\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">3.6.\u591a\u96c6\u5f71\u7247</span></p>\n"
-"<p style=\" ma"
-                        "rgin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u53ef\u4ee5\u628a\u591a\u96c6\u7535\u5f71\u6309\u7167\u96c6\u6570\u540e\u7f00\u547d\u540d\u4e3a\u7c7b\u4f3cssni-xxx-cd1.mp4, ssni-xxx-cd2.mp4, abp-xxx-CD1-C.mp4\u7684\u89c4\u5219\uff0c\u53ea\u8981\u542b\u6709-CDn/-cdn\u7c7b\u4f3c\u547d\u540d\u89c4\u5219\uff0c\u5373\u53ef\u4f7f\u7528\u5206\u96c6\u529f\u80fd.**\u4e0d\u652f\u6301-A -B -1 -2,\u5bb9\u6613\u8ddf\u5b57\u5e55\u7684-C\u6df7\u6dc6**.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">3.7.\u591a\u96c6\u3001\u5b57\u5e55\u987a\u5e8f</span></p"
-                        ">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  abp-xxx-CD1-C.mp4\uff0c\u5206\u96c6\u5728\u524d\uff0c\u5b57\u5e55\u5728\u540e\uff0c\u5b57\u5e55\u5fc5\u987b\u4e0e\u62d3\u5c55\u540d\u9760\u8fd1\uff0c-C.mp4.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">3.8.\u5916\u6302\u5b57\u5e55\u6587\u4ef6</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u5b57\u5e55\u6587\u4ef6\u540d\u5fc5\u987b"
-                        "\u4e0e\u5f71\u7247\u6587\u4ef6\u540d\u4e00\u81f4\uff0c\u624d\u53ef\u4ee5\u4e00\u8d77\u79fb\u52a8\u5230\u65b0\u76ee\u5f55\uff0c\u76ee\u524d\u652f\u6301srt ass sub\u7c7b\u578b\u7684\u5b57\u5e55\u6587\u4ef6\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">\u56db\u3001\u8bbe\u7f6e\u8bf4\u660e</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px; font-weight:600;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-fa"
-                        "mily:'Courier'; font-size:12px;\">\u8be6\u7ec6\u7684\u8bf4\u660e\uff1a https://github.com/moyy996/AVDC/blob/master/README.md</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.1.\u522e\u524a\u6a21\u5f0f/\u6574\u7406\u6a21\u5f0f</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  1\u3001\u522e\u524a\u6a21\u5f0f\uff1a\u901a\u8fc7\u756a\u53f7\u522e\u524a\u6570\u636e\uff0c\u5305\u62ec\u5143\u6570\u636e\u3001\u5c01\u9762\u56fe\u3001\u7f29\u7565\u56fe\u3001\u80cc\u666f\u56fe\u3002</span></p>\n"
-"<p style=\" margin-top:0px; "
-                        "margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  2\u3001\u6574\u7406\u6a21\u5f0f\uff1a\u4ec5\u6839\u636e\u5973\u4f18\u628a\u7535\u5f71\u547d\u540d\u4e3a\u756a\u53f7\u5e76\u5206\u7c7b\u5230\u5973\u4f18\u540d\u79f0\u7684\u6587\u4ef6\u5939\u4e0b\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.2.\u8f6f\u94fe\u63a5\u6a21\u5f0f\uff1a\u4f7f\u7528\u6b64\u6a21\u5f0f\uff0c\u8981\u4ee5\u7ba1\u7406\u5458\u8eab\u4efd\u8fd0\u884c\u3002</span></p>\n"
+"</style></head><body style=\" font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">AVDCx \u662f\u57fa\u4e8e AV_Data_Capture \u7684 GUI \u7248\u672c AVDC \u518d\u6b21\u4fee\u6539\u7684\u7248\u672c\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size"
+                        ":13px;\">\u00b7 AV_Data_Capture \u9879\u76ee\u5730\u5740\uff1ahttps://github.com/yoshiko2/AV_Data_Capture</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">\u00b7 AVDC \u9879\u76ee\u5730\u5740\uff1ahttps://github.com/moyy996/AVDC</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">\u00b7 AVDCx \u9879\u76ee\u5730\u5740\uff1ahttps://github.com/Hermit10/AVDCx</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; fo"
+                        "nt-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">\u4f7f\u7528\u8bf4\u660e \uff08\u5185\u5bb9\u6765\u81ea AVDC \uff1ahttps://github.com/moyy996/AVDC \uff09</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-s"
+                        "ize:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">\u76ee\u5f55</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">\u4e00\u3001\u529f\u80fd\u7b80\u4ecb</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">\u4e8c\u3001\u9879\u76ee\u7b80\u4ecb</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">\u4e09\u3001\u5e38\u89c1\u756a\u53f7\u547d\u540d\u53c2\u8003</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; m"
+                        "argin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">\u56db\u3001\u8bbe\u7f6e\u8bf4\u660e</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">\u4e00\u3001\u529f\u80fd\u7b80\u4ecb</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u65e5\u672c\u7535\u5f71\u5143\u6570\u636e\u6293\u53d6\u5de5\u5177/\u522e\u524a\u5668\uff0c\u914d\u5408\u672c\u5730\u5f71\u7247\u7ba1\u7406\u8f6f\u4ef6EMBY,KODI\uff0cPLEX\u7b49\u7ba1\u7406\u672c\u5730\u5f71\u7247\uff0c\u8be5\u8f6f\u4ef6\u8d77"
+                        "\u5230\u5206\u7c7b\u4e0e\u5143\u6570\u636e\u6293\u53d6\u4f5c\u7528\uff0c\u5229\u7528\u5143\u6570\u636e\u4fe1\u606f\u6765\u5206\u7c7b\uff0c\u4f9b\u672c\u5730\u5f71\u7247\u5206\u7c7b\u6574\u7406\u4f7f\u7528\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">\u4e8c\u3001\u9879\u76ee\u7b80\u4ecb</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  Gui made by moyy996\uff0cCore made by yoshiko2</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"
+                        "\"><span style=\" font-family:'Courier'; font-size:13px;\">  tg\u5b98\u65b9\u7535\u62a5\u7fa4: https://t.me/joinchat/Sp_Ec-XNbUlLj4oV</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u547d\u4ee4\u884c\u7248\u9879\u76ee\u5730\u5740\uff1ahttps://github.com/yoshiko2/AV_Data_Capture</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  GUI\u7248\u9879\u76ee\u5730\u5740\uff1ahttps://github.com/moyy996/AVDC</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  GUI\u7248EXE\u4e0b\u8f7d\u5730\u5740\uff1ahttps://github.com/moyy996/AVDC/releases</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:"
+                        "0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">\u4e09\u3001\u5e38\u89c1\u756a\u53f7\u547d\u540d\u53c2\u8003</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">\u4e0d\u533a\u5206\u5927\u5c0f\u5199\u3001\u522e\u524a\u524d\u5c3d\u91cf\u547d\u540d\u89c4\u8303\uff01\uff01\uff01\uff01</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">3.1.\u6807\u51c6\u6709\u7801</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margi"
+                        "n-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  Javdb\u3001Javbus:SSNI-111</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  Dmm\uff1assni00111</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">3.2.\u65e0\u7801</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  Javdb\u3001Javbus\u3001Avsox:111111-11"
+                        "11\u3001111111_111\u3001HEYZO-1111\u3001n1111</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">3.3.\u7d20\u4eba</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  Mgstage:259LUXU-1111</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  Javdb:LUXU-1111</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent"
-                        ":0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u522e\u524a\u5b8c\u4e0d\u79fb\u52a8\u89c6\u9891\uff0c\u800c\u662f\u5728\u76f8\u5e94\u76ee\u5f55\u521b\u5efa\u8f6f\u94fe\u63a5\uff08\u7c7b\u4f3c\u4e8e\u5feb\u6377\u65b9\u5f0f\uff09\uff0c\u65b9\u4fbfPT\u4e0b\u8f7d\u5b8c\u65e2\u60f3\u522e\u524a\u53c8\u60f3\u7ee7\u7eed\u4e0a\u4f20\u7684\u4ed3\u9f20\u515a\u540c\u5fd7\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u4f46\u662f\uff0c\u53ea\u80fd\u5728\u5a92\u4f53\u5e93\u5c55\u793a\uff0c\u4e0d\u80fd\u5728\u5a92\u4f53\u5e93\u64ad\u653e\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
-                        "text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.3.\u8c03\u8bd5\u6a21\u5f0f</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u8f93\u51fa\u756a\u53f7\u7684\u5143\u6570\u636e\uff0c\u5305\u62ec\u5c01\u9762\uff0c\u5bfc\u6f14\uff0c\u6f14\u5458\uff0c\u7b80\u4ecb\u7b49\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.4.\u6392\u9664\u76ee\u5f55</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-inden"
-                        "t:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u5728\u591a\u5c42\u76ee\u5f55\u522e\u524a\u65f6\u6392\u9664\u6240\u586b\u76ee\u5f55\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.5.\u89c6\u9891\u76ee\u5f55</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u8981\u6574\u7406\u7684\u89c6\u9891\u7684\u76ee\u5f55\uff0c\u4f1a\u904d\u5386\u6b64\u76ee\u5f55\u4e0b\u7684\u6240\u6709\u89c6\u9891\uff0c\u5305\u62ec\u5b50\u76ee\u5f55\u4e2d\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; ma"
-                        "rgin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.6.\u547d\u540d\u89c4\u5219</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  1\u3001\u76ee\u5f55\u547d\u540d\uff1a\u5b58\u653e\u89c6\u9891\u6570\u636e\u7684\u76ee\u5f55\u540d\uff0c\u652f\u6301\u591a\u5c42\u76ee\u5f55\uff0c\u652f\u6301\u81ea\u5b9a\u4e49\u7b26\u53f7\uff0c\u4f8b\uff1a[actor]/studio/number-\u3010title\u3011\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  2\u3001"
-                        "\u89c6\u9891\u6807\u9898\uff08\u5a92\u4f53\u5e93\u4e2d\uff09\uff1anfo\u4e2d\u7684\u6807\u9898\u547d\u540d\u3002\u4f8b\uff1anumber-[title]\u3002\u53ef\u4ee5\u81ea\u5b9a\u4e49\u7b26\u53f7\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  3\u3001\u89c6\u9891\u6807\u9898\uff08\u672c\u5730\u6587\u4ef6\uff09\uff1a\u672c\u5730\u89c6\u9891\u3001\u56fe\u7247\u7684\u547d\u540d\u3002\u4f8b\uff1anumber-[title]\u3002\u53ef\u4ee5\u81ea\u5b9a\u4e49\u7b26\u53f7\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  4\u3001\u53ef\u9009\u9879\u4e3atitle\uff08\u7247\u540d\uff09\u3001actor\uff08\u6f14\u5458\uff09\u3001studio\uff08\u5236\u4f5c\u5546\uff09\u3001director\uff08\u5bfc\u6f14\uff09\u3001release\uff08\u53d1\u552e\u65e5\uff09\u3001y"
-                        "ear\uff08\u53d1\u884c\u5e74\u4efd\uff09\u3001number\uff08\u756a\u53f7\uff09\u3001runtime\uff08\u65f6\u957f\uff09\u3001series\uff08\u7cfb\u5217\uff09\u3001publisher\uff08\u53d1\u884c\u5546\uff09</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.7.\u4ee3\u7406\u8bbe\u7f6e</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  1\u3001\u4ee3\u7406</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-"
-                        "size:12px;\">  proxy=127.0.0.1:1080</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  proxy\u884c\u8bbe\u7f6e\u672c\u5730\u4ee3\u7406\u5730\u5740\u548c\u7aef\u53e3\uff0c\u652f\u6301Shadowxxxx/X,V2XXX\u672c\u5730\u4ee3\u7406\u7aef\u53e3\uff0c\u4ee3\u7406\u8f6f\u4ef6\u5f00\u5168\u5c40\u6a21\u5f0f ,\u5efa\u8bae\u4f7f\u7528\u65e5\u672c\u4ee3\u7406\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u5982\u679c\u4e00\u76f4\u62a5Connect Failed! Please check your Proxy or Network!\u9519\u8bef\uff0c\u8bf7\u68c0\u67e5\u7aef\u53e3\u53f7\u662f\u5426\u6b63\u786e\uff0c\u6216\u8005\u628aproxy=\u540e\u9762\u7684\u5730\u5740\u548c\u7aef\u53e3\u5220\u9664\uff0c\u5e76\u5f00\u542f\u4ee3\u7406\u8f6f\u4ef6\u5168\u5c40\u6a21\u5f0f\uff0c\u6216\u8005"
-                        "\u91cd\u542f\u7535\u8111\uff0c\u4ee3\u7406\u8f6f\u4ef6\uff0c\u7f51\u5361\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  2\u3001\u8fde\u63a5\u8d85\u65f6\u91cd\u8bd5\u8bbe\u7f6e</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  timeout=10 </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  10\u4e3a\u8d85\u65f6\u91cd\u8bd5\u65f6\u95f4 \u5355\u4f4d\uff1a\u79d2\uff0c\u53ef\u9009\u8303\u56f43-10</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">"
-                        "  3\u3001\u8fde\u63a5\u91cd\u8bd5\u6b21\u6570\u8bbe\u7f6e</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  retry=3 </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  3\u5373\u4e3a\u91cd\u8bd5\u6b21\u6570\uff0c\u53ef\u9009\u8303\u56f42-5</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.8.\u5a92\u4f53\u5e93\u9009\u62e9</span></p>\n"
-"<p style=\" margin-top:0px; margin-botto"
-                        "m:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u5982\u679c\u662fPLEX\uff0c\u8bf7\u5b89\u88c5\u63d2\u4ef6\uff1aXBMCnfoMoviesImporter</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.9.\u6392\u9664\u6307\u5b9a\u5b57\u7b26\u548c\u76ee\u5f55\uff0c\u5b57\u7b26\u4e32</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  1\u3001\u6392\u9664\u5b57\u7b26:\u6307\u5b9a\u5b57\u7b26\u5220\u9664\uff0c\u4f8b\u5982\u6392\u9664\u5b57\u7b26\uff1a"
-                        " \\()\uff0c\u5220\u9664\u521b\u5efa\u6587\u4ef6\u5939\u65f6\u7684\\()\u5b57\u7b26</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  2\u3001\u6392\u9664\u76ee\u5f55:\u6307\u5b9a\u76ee\u5f55\uff0c\u4f8b\u5982\u6392\u9664\u76ee\u5f55\uff1a failed,JAV_output\uff0c\u591a\u76ee\u5f55\u522e\u524a\u65f6\u8df3\u8fc7failed,JAV_output</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  3\u3001\u6392\u9664\u5b57\u7b26\u4e32:\u63d0\u53d6\u756a\u53f7\u65f6\uff0c\u5148\u5220\u9664\u6307\u5b9a\u5b57\u7b26\u4e32\uff0c\u63d0\u9ad8\u6210\u529f\u7387\uff0c\u5b57\u7b26\u4e32\u4e4b\u95f4\u7528','\u9694\u5f00\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:"
-                        "0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.10.\u7f51\u7ad9\u9009\u62e9</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u53ef\u4ee5\u4f7f\u7528\u6240\u6709\u7f51\u7ad9\uff0c\u6216\u8005\u6307\u5b9a\u7f51\u7ad9\uff08avsox,javbus,dmm,javdb,fc2club\uff0cmgstage\uff09\u8fdb\u884c\u522e\u524a\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u4ec5\u4f7f\u7528javdb\u8fdb\u884c\u522e\u524a\uff0c\u5c3d\u91cf\u4e0d\u8981\u7528\uff0c\u522e\u524a30\u5de6\u53f3\u4f1a\u88abJAVDB\u5c01IP\u4e00\u6bb5\u65f6\u95f4"
-                        "\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.11.\u4fdd\u5b58\u65e5\u5fd7</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u5f00\u542f\u540e\u65e5\u5fd7\u4fdd\u5b58\u5728\u7a0b\u5e8f\u76ee\u5f55\u7684Log\u76ee\u5f55\u4e0b\u7684txt\u6587\u4ef6\u5185\uff0c\u6bcf\u6b21\u8fd0\u884c\u4f1a\u4ea7\u751f\u4e00\u4e2atxt\u6587\u4ef6\uff0ctxt\u6587\u4ef6\u53ef\u4ee5\u5220\u9664\uff0c\u4e0d\u5f71\u54cd\u7a0b\u5e8f\u8fd0\u884c\u3002</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0p"
-                        "x; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px; font-weight:600;\">4.12.\u5931\u8d25\u540e\u79fb\u52a8\u6587\u4ef6</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\">  \u5982\u679c\u522e\u524a\u4e0d\u5230\u5f71\u7247\u4fe1\u606f\uff0c\u53ef\u9009\u62e9\u4e0d\u79fb\u52a8\u89c6\u9891\uff0c\u6216\u8005\u81ea\u52a8\u79fb\u52a8\u5230\u5931\u8d25\u8f93\u51fa\u76ee\u5f55\u4e2d\u3002</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:12px;\"> </span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; m"
-                        "argin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:12px;\"><br /></p></body></html>", None))
+                        ":0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  Fc2club:FC2-111111\u3001FC2-PPV-111111\u3001FC2PPV-111111</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">3.4.\u6b27\u7f8e</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  Javdb\u3001Javbus:sexart.11.11.11(\u7cfb\u5217.\u5e74.\u6708.\u65e5)</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+""
+                        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">3.5.\u81ea\u5e26\u5b57\u5e55\u5f71\u7247</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u53ef\u4ee5\u628a\u7535\u5f71\u547d\u540d\u4e3a\u7c7b\u4f3cssni-xxx-c.mp4,ssni-xxx-C.mp4\uff0cabp-xxx-CD1-C.mp4 \u7684\u89c4\u5219\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">3.6.\u591a\u96c6\u5f71\u7247</span></p>\n"
+"<p st"
+                        "yle=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u53ef\u4ee5\u628a\u591a\u96c6\u7535\u5f71\u6309\u7167\u96c6\u6570\u540e\u7f00\u547d\u540d\u4e3a\u7c7b\u4f3cssni-xxx-cd1.mp4, ssni-xxx-cd2.mp4, abp-xxx-CD1-C.mp4\u7684\u89c4\u5219\uff0c\u53ea\u8981\u542b\u6709-CDn/-cdn\u7c7b\u4f3c\u547d\u540d\u89c4\u5219\uff0c\u5373\u53ef\u4f7f\u7528\u5206\u96c6\u529f\u80fd.**\u4e0d\u652f\u6301-A -B -1 -2,\u5bb9\u6613\u8ddf\u5b57\u5e55\u7684-C\u6df7\u6dc6**.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">3.7.\u591a\u96c6\u3001\u5b57\u5e55\u987a\u5e8f<"
+                        "/span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  abp-xxx-CD1-C.mp4\uff0c\u5206\u96c6\u5728\u524d\uff0c\u5b57\u5e55\u5728\u540e\uff0c\u5b57\u5e55\u5fc5\u987b\u4e0e\u62d3\u5c55\u540d\u9760\u8fd1\uff0c-C.mp4.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">3.8.\u5916\u6302\u5b57\u5e55\u6587\u4ef6</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u5b57\u5e55\u6587\u4ef6\u540d"
+                        "\u5fc5\u987b\u4e0e\u5f71\u7247\u6587\u4ef6\u540d\u4e00\u81f4\uff0c\u624d\u53ef\u4ee5\u4e00\u8d77\u79fb\u52a8\u5230\u65b0\u76ee\u5f55\uff0c\u76ee\u524d\u652f\u6301srt ass sub\u7c7b\u578b\u7684\u5b57\u5e55\u6587\u4ef6\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">\u56db\u3001\u8bbe\u7f6e\u8bf4\u660e</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px; font-weight:600;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span styl"
+                        "e=\" font-family:'Courier'; font-size:13px;\">\u8be6\u7ec6\u7684\u8bf4\u660e\uff1a https://github.com/moyy996/AVDC/blob/master/README.md</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.1.\u522e\u524a\u6a21\u5f0f/\u6574\u7406\u6a21\u5f0f</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  1\u3001\u522e\u524a\u6a21\u5f0f\uff1a\u901a\u8fc7\u756a\u53f7\u522e\u524a\u6570\u636e\uff0c\u5305\u62ec\u5143\u6570\u636e\u3001\u5c01\u9762\u56fe\u3001\u7f29\u7565\u56fe\u3001\u80cc\u666f\u56fe\u3002</span></p>\n"
+"<p style=\" marg"
+                        "in-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  2\u3001\u6574\u7406\u6a21\u5f0f\uff1a\u4ec5\u6839\u636e\u5973\u4f18\u628a\u7535\u5f71\u547d\u540d\u4e3a\u756a\u53f7\u5e76\u5206\u7c7b\u5230\u5973\u4f18\u540d\u79f0\u7684\u6587\u4ef6\u5939\u4e0b\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.2.\u8f6f\u94fe\u63a5\u6a21\u5f0f\uff1a\u4f7f\u7528\u6b64\u6a21\u5f0f\uff0c\u8981\u4ee5\u7ba1\u7406\u5458\u8eab\u4efd\u8fd0\u884c\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0;"
+                        " text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u522e\u524a\u5b8c\u4e0d\u79fb\u52a8\u89c6\u9891\uff0c\u800c\u662f\u5728\u76f8\u5e94\u76ee\u5f55\u521b\u5efa\u8f6f\u94fe\u63a5\uff08\u7c7b\u4f3c\u4e8e\u5feb\u6377\u65b9\u5f0f\uff09\uff0c\u65b9\u4fbfPT\u4e0b\u8f7d\u5b8c\u65e2\u60f3\u522e\u524a\u53c8\u60f3\u7ee7\u7eed\u4e0a\u4f20\u7684\u4ed3\u9f20\u515a\u540c\u5fd7\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u4f46\u662f\uff0c\u53ea\u80fd\u5728\u5a92\u4f53\u5e93\u5c55\u793a\uff0c\u4e0d\u80fd\u5728\u5a92\u4f53\u5e93\u64ad\u653e\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-bloc"
+                        "k-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.3.\u8c03\u8bd5\u6a21\u5f0f</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u8f93\u51fa\u756a\u53f7\u7684\u5143\u6570\u636e\uff0c\u5305\u62ec\u5c01\u9762\uff0c\u5bfc\u6f14\uff0c\u6f14\u5458\uff0c\u7b80\u4ecb\u7b49\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.4.\u6392\u9664\u76ee\u5f55</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0"
+                        "; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u5728\u591a\u5c42\u76ee\u5f55\u522e\u524a\u65f6\u6392\u9664\u6240\u586b\u76ee\u5f55\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.5.\u89c6\u9891\u76ee\u5f55</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u8981\u6574\u7406\u7684\u89c6\u9891\u7684\u76ee\u5f55\uff0c\u4f1a\u904d\u5386\u6b64\u76ee\u5f55\u4e0b\u7684\u6240\u6709\u89c6\u9891\uff0c\u5305\u62ec\u5b50\u76ee\u5f55\u4e2d\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-ty"
+                        "pe:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.6.\u547d\u540d\u89c4\u5219</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  1\u3001\u76ee\u5f55\u547d\u540d\uff1a\u5b58\u653e\u89c6\u9891\u6570\u636e\u7684\u76ee\u5f55\u540d\uff0c\u652f\u6301\u591a\u5c42\u76ee\u5f55\uff0c\u652f\u6301\u81ea\u5b9a\u4e49\u7b26\u53f7\uff0c\u4f8b\uff1a[actor]/studio/number-\u3010title\u3011\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:"
+                        "13px;\">  2\u3001\u89c6\u9891\u6807\u9898\uff08\u5a92\u4f53\u5e93\u4e2d\uff09\uff1anfo\u4e2d\u7684\u6807\u9898\u547d\u540d\u3002\u4f8b\uff1anumber-[title]\u3002\u53ef\u4ee5\u81ea\u5b9a\u4e49\u7b26\u53f7\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  3\u3001\u89c6\u9891\u6807\u9898\uff08\u672c\u5730\u6587\u4ef6\uff09\uff1a\u672c\u5730\u89c6\u9891\u3001\u56fe\u7247\u7684\u547d\u540d\u3002\u4f8b\uff1anumber-[title]\u3002\u53ef\u4ee5\u81ea\u5b9a\u4e49\u7b26\u53f7\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  4\u3001\u53ef\u9009\u9879\u4e3atitle\uff08\u7247\u540d\uff09\u3001actor\uff08\u6f14\u5458\uff09\u3001studio\uff08\u5236\u4f5c\u5546\uff09\u3001director\uff08\u5bfc\u6f14\uff09\u3001release\uff08\u53d1\u552e\u65e5"
+                        "\uff09\u3001year\uff08\u53d1\u884c\u5e74\u4efd\uff09\u3001number\uff08\u756a\u53f7\uff09\u3001runtime\uff08\u65f6\u957f\uff09\u3001series\uff08\u7cfb\u5217\uff09\u3001publisher\uff08\u53d1\u884c\u5546\uff09</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.7.\u4ee3\u7406\u8bbe\u7f6e</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  1\u3001\u4ee3\u7406</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Co"
+                        "urier'; font-size:13px;\">  proxy=127.0.0.1:1080</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  proxy\u884c\u8bbe\u7f6e\u672c\u5730\u4ee3\u7406\u5730\u5740\u548c\u7aef\u53e3\uff0c\u652f\u6301Shadowxxxx/X,V2XXX\u672c\u5730\u4ee3\u7406\u7aef\u53e3\uff0c\u4ee3\u7406\u8f6f\u4ef6\u5f00\u5168\u5c40\u6a21\u5f0f ,\u5efa\u8bae\u4f7f\u7528\u65e5\u672c\u4ee3\u7406\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u5982\u679c\u4e00\u76f4\u62a5Connect Failed! Please check your Proxy or Network!\u9519\u8bef\uff0c\u8bf7\u68c0\u67e5\u7aef\u53e3\u53f7\u662f\u5426\u6b63\u786e\uff0c\u6216\u8005\u628aproxy=\u540e\u9762\u7684\u5730\u5740\u548c\u7aef\u53e3\u5220\u9664\uff0c\u5e76\u5f00\u542f\u4ee3\u7406\u8f6f\u4ef6\u5168\u5c40\u6a21\u5f0f\uff0c"
+                        "\u6216\u8005\u91cd\u542f\u7535\u8111\uff0c\u4ee3\u7406\u8f6f\u4ef6\uff0c\u7f51\u5361\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  2\u3001\u8fde\u63a5\u8d85\u65f6\u91cd\u8bd5\u8bbe\u7f6e</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  timeout=10 </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  10\u4e3a\u8d85\u65f6\u91cd\u8bd5\u65f6\u95f4 \u5355\u4f4d\uff1a\u79d2\uff0c\u53ef\u9009\u8303\u56f43-10</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-s"
+                        "ize:13px;\">  3\u3001\u8fde\u63a5\u91cd\u8bd5\u6b21\u6570\u8bbe\u7f6e</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  retry=3 </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  3\u5373\u4e3a\u91cd\u8bd5\u6b21\u6570\uff0c\u53ef\u9009\u8303\u56f42-5</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.8.\u5a92\u4f53\u5e93\u9009\u62e9</span></p>\n"
+"<p style=\" margin-top:0px; "
+                        "margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u5982\u679c\u662fPLEX\uff0c\u8bf7\u5b89\u88c5\u63d2\u4ef6\uff1aXBMCnfoMoviesImporter</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.9.\u6392\u9664\u6307\u5b9a\u5b57\u7b26\u548c\u76ee\u5f55\uff0c\u5b57\u7b26\u4e32</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  1\u3001\u6392\u9664\u5b57\u7b26:\u6307\u5b9a\u5b57\u7b26\u5220\u9664\uff0c\u4f8b\u5982\u6392\u9664\u5b57"
+                        "\u7b26\uff1a \\()\uff0c\u5220\u9664\u521b\u5efa\u6587\u4ef6\u5939\u65f6\u7684\\()\u5b57\u7b26</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  2\u3001\u6392\u9664\u76ee\u5f55:\u6307\u5b9a\u76ee\u5f55\uff0c\u4f8b\u5982\u6392\u9664\u76ee\u5f55\uff1a failed,JAV_output\uff0c\u591a\u76ee\u5f55\u522e\u524a\u65f6\u8df3\u8fc7failed,JAV_output</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  3\u3001\u6392\u9664\u5b57\u7b26\u4e32:\u63d0\u53d6\u756a\u53f7\u65f6\uff0c\u5148\u5220\u9664\u6307\u5b9a\u5b57\u7b26\u4e32\uff0c\u63d0\u9ad8\u6210\u529f\u7387\uff0c\u5b57\u7b26\u4e32\u4e4b\u95f4\u7528','\u9694\u5f00\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-b"
+                        "lock-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.10.\u7f51\u7ad9\u9009\u62e9</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u53ef\u4ee5\u4f7f\u7528\u6240\u6709\u7f51\u7ad9\uff0c\u6216\u8005\u6307\u5b9a\u7f51\u7ad9\uff08avsox,javbus,dmm,javdb,fc2club\uff0cmgstage\uff09\u8fdb\u884c\u522e\u524a\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u4ec5\u4f7f\u7528javdb\u8fdb\u884c\u522e\u524a\uff0c\u5c3d\u91cf\u4e0d\u8981\u7528\uff0c\u522e\u524a30\u5de6\u53f3\u4f1a\u88abJAVDB\u5c01IP\u4e00\u6bb5"
+                        "\u65f6\u95f4\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.11.\u4fdd\u5b58\u65e5\u5fd7</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u5f00\u542f\u540e\u65e5\u5fd7\u4fdd\u5b58\u5728\u7a0b\u5e8f\u76ee\u5f55\u7684Log\u76ee\u5f55\u4e0b\u7684txt\u6587\u4ef6\u5185\uff0c\u6bcf\u6b21\u8fd0\u884c\u4f1a\u4ea7\u751f\u4e00\u4e2atxt\u6587\u4ef6\uff0ctxt\u6587\u4ef6\u53ef\u4ee5\u5220\u9664\uff0c\u4e0d\u5f71\u54cd\u7a0b\u5e8f\u8fd0\u884c\u3002</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; marg"
+                        "in-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px; font-weight:600;\">4.12.\u5931\u8d25\u540e\u79fb\u52a8\u6587\u4ef6</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\">  \u5982\u679c\u522e\u524a\u4e0d\u5230\u5f71\u7247\u4fe1\u606f\uff0c\u53ef\u9009\u62e9\u4e0d\u79fb\u52a8\u89c6\u9891\uff0c\u6216\u8005\u81ea\u52a8\u79fb\u52a8\u5230\u5931\u8d25\u8f93\u51fa\u76ee\u5f55\u4e2d\u3002</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Courier'; font-size:13px;\"> </span></p>\n"
+"<p style=\"-qt-paragraph-t"
+                        "ype:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Courier'; font-size:13px;\"><br /></p></body></html>", None))
         self.label_ico.setText(QCoreApplication.translate("AVDV", u"\u56fe\u6807", None))
         self.pushButton_main.setText(QCoreApplication.translate("AVDV", u"\u4e3b\u754c\u9762", None))
         self.pushButton_log.setText(QCoreApplication.translate("AVDV", u"\u65e5\u5fd7", None))
