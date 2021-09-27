@@ -2,7 +2,7 @@ import re
 from lxml import etree
 import json
 import cloudscraper
-from Function.getHtml import get_html, post_html, get_cookies, get_proxies, get_proxy
+from Function.getHtml import get_proxy_info, get_html, post_html
 import urllib3
 urllib3.disable_warnings()
 
@@ -204,10 +204,11 @@ def getCoverSmall(number, real_url):
 
 def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     req_web += '-> javdb '
-    cookies = get_cookies('javdb')
-    proxies = get_proxies()
-    proxy_type, proxy, timeout, retry_count = get_proxy()
     log_info += '   >>> JAVDB-开始使用 javdb 进行刮削\n'
+    proxy_info = get_proxy_info()
+    proxies = proxy_info.get('proxies')
+    timeout = proxy_info.get('timeout')
+    cookies = proxy_info.get('cookie')
     real_url = appoint_url
     title = ''
     cover_url = ''

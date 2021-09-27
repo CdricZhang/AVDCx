@@ -213,10 +213,6 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 error_type = 'timeout'
                 raise Exception('>>> AIRAV-请求搜索页：错误！信息：' + html_search)
             html = etree.fromstring(html_search, etree.HTMLParser())
-            # web_cache_url = etree.tostring(html,encoding="utf-8").decode() # 将element对象转化为字符串
-            # print(web_cache_url)
-            # with open('11.txt', 'wt') as f:
-            #     f.write(web_cache_url)
             real_url = html.xpath("//div[@class='coverImageBox']/img[@class='img-fluid video-item coverImage' and contains(@alt, $number1) and not(contains(@alt, '克破'))]/../../@href", number1=number)
 
             if real_url:
@@ -235,10 +231,6 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 error_type = 'timeout'
                 raise Exception('>>> AIRAV-请求详情页：出错！错误信息：%s \n' % str(error_info))          
             html_info = etree.fromstring(html_content, etree.HTMLParser())
-            # web_cache_url = etree.tostring(html_info,encoding="utf-8").decode() # 将element对象转化为字符串
-            # print(web_cache_url)
-            # with open('11.txt', 'wt') as f:
-            #     f.write(web_cache_url)
             title = getTitle(html_info) # 获取标题
             if not title:
                 log_info += '   >>> AIRAV- title 获取失败！ \n'

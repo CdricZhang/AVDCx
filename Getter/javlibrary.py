@@ -2,7 +2,7 @@ import re
 from lxml import etree
 import json
 import cloudscraper
-from Function.getHtml import get_proxies, get_proxy
+from Function.getHtml import get_proxy_info
 from configparser import RawConfigParser
 import urllib3
 urllib3.disable_warnings()
@@ -140,8 +140,9 @@ def getDirector(html):
 def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_web='', isuncensored=False):
     req_web += '-> javlibrary[%s] ' % translate_language.replace('zh_', '')
     log_info += '   >>> javlibrary-开始使用javlibrary 进行刮削\n'
-    proxies = get_proxies()
-    proxy_type, proxy, timeout, retry_count = get_proxy()
+    proxy_info = get_proxy_info()
+    proxies = proxy_info.get('proxies')
+    timeout = proxy_info.get('timeout')
     domain = 'https://www.javlibrary.com'
     real_url = appoint_url
     title = ''

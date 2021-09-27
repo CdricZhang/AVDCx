@@ -2,12 +2,6 @@ import json
 from Getter import iqqtv
 from configparser import RawConfigParser
 
-def getDelActorName():
-    config_file = 'config.ini'
-    config = RawConfigParser()
-    config.read(config_file, encoding='UTF-8')
-    del_actor_name = config.getint('Name_Rule', 'del_actor_name')
-    return del_actor_name
 
 def getDataState(json_data):
     if json_data['title'] == '' or json_data['title'] == 'None' or json_data['title'] == 'null':
@@ -23,6 +17,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     translate_content = config.get('common', 'translate_content')
     actor_output = config.get('common', 'actor_output')
     info_output = config.get('common', 'info_output')
+    del_actor_name = config.getint('Name_Rule', 'del_actor_name')
     
     appoint_url = appoint_url.replace('/cn/', '/jp/').replace('iqqtv.cloud/player', 'iqqtv.cloud/jp/player')
     json_data = json.loads(iqqtv.main(number, appoint_url, translate_language='jp'))
@@ -41,7 +36,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             json_data['website'] = json_data_zh['website']
             if 'title' in translate_content:
                 json_data['title'] = json_data_zh['title']
-                if getDelActorName():
+                if del_actor_name:
                     actor = ' ' + json_data['actor']
                     json_data['title'] = json_data['title'].replace(actor, '').strip(' ')
             if 'outline' in translate_content:
