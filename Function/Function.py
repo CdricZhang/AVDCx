@@ -7,6 +7,8 @@ import os
 import json
 from PIL import Image
 from Getter import iqqtv_new, javbus, javdb, jav321, dmm, javlibrary_new, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav
+from configparser import RawConfigParser
+
 
 # ========================================================================补全字段判断缺失字段
 def getTheData(json_data_more, json_data, flag_suren=False):
@@ -80,6 +82,11 @@ def getMoreData(number, appoint_url, config, json_data):
         log_info = json_data['log_info']
     if 'jav321' in more_website and 'jav321' not in req_web:
         json_data_more = json.loads(jav321.main(number, appoint_url, log_info, req_web))
+        json_data = getTheData(json_data_more, json_data)
+        req_web = json_data['req_web']
+        log_info = json_data['log_info']
+    if 'javlibrary' in more_website and 'javlibrary' not in req_web:
+        json_data_more = json.loads(javlibrary_new.main(number, appoint_url, log_info, req_web))
         json_data = getTheData(json_data_more, json_data)
         req_web = json_data['req_web']
         log_info = json_data['log_info']
@@ -167,6 +174,9 @@ def getNumber(filepath, escape_string):
     elif re.search('XXX-AV-\d{4,}', filename):  # 提取xxx-av-11111
         file_number = re.search('XXX-AV-\d{4,}', filename).group()
         return file_number
+    elif re.search('TH101-\d{3,}-\d{5,}', filename):  # 提取th101-140-112594
+        file_number = re.search('TH101-\d{3,}-\d{5,}', filename).group().lower()
+        return file_number
     elif '-' in filename or '_' in filename:  # 普通提取番号 主要处理包含减号-和_的番号
         if 'FC2' in filename:
             filename = filename.replace('PPV', '').replace('_', '-').replace('--', '-')
@@ -252,7 +262,10 @@ def getNumber(filepath, escape_string):
 
 
 # ========================================================================根据番号获取数据
-def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_language, json_data):  # 从JSON返回元数据
+def getDataFromJSON(file_number, website_mode, appoint_url, translate_language, json_data):  # 从JSON返回元数据
+    config_file = 'config.ini'
+    config = RawConfigParser()
+    config.read(config_file, encoding='UTF-8')
     c_word = json_data['c_word']
     leak = json_data['leak']
     cd_part = json_data['cd_part']
@@ -358,7 +371,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javlibrary_new.main(file_number, appoint_url, translate_language, log_info, req_web))
+                json_data = json.loads(javlibrary_new.main(file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
@@ -392,7 +405,7 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     elif website_mode == 13:  # 仅从airav
         json_data = json.loads(airav.main(file_number, appoint_url, translate_language))
     elif website_mode == 14:  # 仅从javlibrary
-        json_data = json.loads(javlibrary_new.main(file_number, appoint_url, translate_language))
+        json_data = json.loads(javlibrary_new.main(file_number, appoint_url))
     # ================================================网站规则添加结束================================================
     # ======================================补全字段
     json_data = getMoreData(file_number, appoint_url, config, json_data)
@@ -406,13 +419,15 @@ def getDataFromJSON(file_number, config, website_mode, appoint_url, translate_la
     number = json_data['number']
 
     # 演员
-    actor = str(json_data['actor']).strip(" [ ]").replace("'", '').replace(', ', ',').replace('<', '(').replace('>', ')') # 列表转字符串（避免个别网站刮削返回的是列表）
+    actor = str(json_data['actor']).strip(" [ ]").replace("'", '').replace(', ', ',').replace('<', '(').replace('>', ')').strip(',') # 列表转字符串（避免个别网站刮削返回的是列表）
 
     # 标题处理，去除标题尾巴的演员名
     title = json_data['title']
     if config.getint('Name_Rule', 'del_actor_name'):
         title = title.replace((' ' + actor), '')
 
+    if not actor:
+        actor = config.get('Name_Rule', 'actor_no_name')
 
     # 发行日期
     release = json_data['release']
@@ -519,7 +534,7 @@ def save_config(json_config):
         print("", file=code)
         print("[common]", file=code)
         print("main_mode = " + str(json_config['main_mode']), file=code)
-        print("no_nfo = " + str(json_config['no_nfo']), file=code)
+        print("no_nfo_scrape = " + str(json_config['no_nfo_scrape']), file=code)
         print("main_like = " + str(json_config['main_like']), file=code)
         print("more_website = " + str(json_config['more_website']), file=code)
         print("success_file_move = " + str(json_config['success_file_move']), file=code)
@@ -528,13 +543,13 @@ def save_config(json_config):
         print("del_empty_folder = " + str(json_config['del_empty_folder']), file=code)
         print("soft_link = " + str(json_config['soft_link']), file=code)
         print("show_poster = " + str(json_config['show_poster']), file=code)
-        print("translate_language = " + json_config['translate_language'], file=code)
-        print("translate_content = " + json_config['translate_content'], file=code)
-        print("translate_by = " + json_config['translate_by'], file=code)
-        print("deepl_key = " + json_config['deepl_key'], file=code)
-        print("actor_output = " + json_config['actor_output'], file=code)
-        print("info_output = " + json_config['info_output'], file=code)
-        print("website = " + json_config['website'], file=code)
+        print("translate_language = " + str(json_config['translate_language']), file=code)
+        print("translate_content = " + str(json_config['translate_content']), file=code)
+        print("translate_by = " + str(json_config['translate_by']), file=code)
+        print("deepl_key = " + str(json_config['deepl_key']), file=code)
+        print("actor_output = " + str(json_config['actor_output']), file=code)
+        print("info_output = " + str(json_config['info_output']), file=code)
+        print("website = " + str(json_config['website']), file=code)
         print("series_as_set = " + str(json_config['series_as_set']), file=code)
         print("# translate_language: zh_cn, zh_tw, ja", file=code)
         print("# translate_by: youdao, deepl", file=code)
@@ -550,17 +565,18 @@ def save_config(json_config):
         print("# type: no, http, socks5", file=code)
         print("", file=code)
         print("[Cookies]", file=code)
-        print("javdb = " + json_config['javdb'], file=code)
+        print("javdb = " + str(json_config['javdb']), file=code)
         print("# cookies存在有效期，记得更新", file=code)
         print("", file=code)
         print("[Name_Rule]", file=code)
-        print("folder_name = " + json_config['folder_name'], file=code)
-        print("naming_file = " + json_config['naming_file'], file=code)
-        print("naming_media = " + json_config['naming_media'], file=code)
+        print("folder_name = " + str(json_config['folder_name']), file=code)
+        print("naming_file = " + str(json_config['naming_file']), file=code)
+        print("naming_media = " + str(json_config['naming_media']), file=code)
         print("folder_name_max = " + str(json_config['folder_name_max']), file=code)
         print("file_name_max = " + str(json_config['file_name_max']), file=code)
         print("actor_name_max = " + str(json_config['actor_name_max']), file=code)
         print("actor_name_more = " + str(json_config['actor_name_more']), file=code)
+        print("actor_no_name = " + str(json_config['actor_no_name']), file=code)
         print("pic_name = " + str(json_config['pic_name']), file=code)
         print("cd_name = " + str(json_config['cd_name']), file=code)
         print("cnword_char = " + str(json_config['cnword_char']), file=code)
@@ -570,59 +586,62 @@ def save_config(json_config):
         print("del_actor_name = " + str(json_config['del_actor_name']), file=code)
         print("# 命名字段有：title, actor, number, studio, publisher, year, mosaic, runtime, director, release, series, definition, cnword", file=code)
         print("", file=code)
-        print("[update]", file=code)
-        print("update_check = " + str(json_config['update_check']), file=code)
-        print("", file=code)
-        print("[log]", file=code)
-        print("save_log = " + str(json_config['save_log']), file=code)
-        print("", file=code)
         print("[media]", file=code)
-        print("media_path = " + json_config['media_path'], file=code)
-        print("success_output_folder = " + json_config['success_output_folder'], file=code)
-        print("failed_output_folder = " + json_config['failed_output_folder'], file=code)
+        print("media_path = " + str(json_config['media_path']), file=code)
+        print("success_output_folder = " + str(json_config['success_output_folder']), file=code)
+        print("failed_output_folder = " + str(json_config['failed_output_folder']), file=code)
         print("extrafanart_folder = " + str(json_config['extrafanart_folder']), file=code)
-        print("media_type = " + json_config['media_type'], file=code)
-        print("sub_type = " + json_config['sub_type'], file=code)
+        print("media_type = " + str(json_config['media_type']), file=code)
+        print("sub_type = " + str(json_config['sub_type']), file=code)
         print("", file=code)
         print("[escape]", file=code)
-        print("folders = " + json_config['folders'], file=code)
-        print("string = " + json_config['string'], file=code)
-        print("file_size = " + json_config['file_size'], file=code)
-        print("", file=code)
-        print("[debug_mode]", file=code)
-        print("switch = " + str(json_config['switch_debug']), file=code)
+        print("folders = " + str(json_config['folders']), file=code)
+        print("string = " + str(json_config['string']), file=code)
+        print("file_size = " + str(json_config['file_size']), file=code)
         print("", file=code)
         print("[emby]", file=code)
-        print("emby_url = " + json_config['emby_url'], file=code)
-        print("api_key = " + json_config['api_key'], file=code)
+        print("emby_url = " + str(json_config['emby_url']), file=code)
+        print("api_key = " + str(json_config['api_key']), file=code)
+        print("actor_photo_folder = " + str(json_config['actor_photo_folder']), file=code)
+        print("actor_photo_upload = " + str(json_config['actor_photo_upload']), file=code)
         print("", file=code)
         print("[mark]", file=code)
         print("poster_mark = " + str(json_config['poster_mark']), file=code)
         print("thumb_mark = " + str(json_config['thumb_mark']), file=code)
         print("mark_size = " + str(json_config['mark_size']), file=code)
-        print("mark_type = " + json_config['mark_type'], file=code)
-        print("mark_pos = " + json_config['mark_pos'], file=code)
+        print("mark_type = " + str(json_config['mark_type']), file=code)
+        print("mark_pos = " + str(json_config['mark_pos']), file=code)
         print("# mark_size: range 1-5", file=code)
         print("# mark_type: sub, leak, uncensored", file=code)
         print("# mark_pos: bottom_right, bottom_left, top_right, top_left", file=code)
         print("", file=code)
         print("[file_download]", file=code)
-        print("old_poster = " + str(json_config['old_poster']), file=code)
-        print("old_thumb = " + str(json_config['old_thumb']), file=code)
-        print("old_fanart = " + str(json_config['old_fanart']), file=code)
-        print("old_extrafanart = " + str(json_config['old_extrafanart']), file=code)
-        print("old_extrafanart_copy = " + str(json_config['old_extrafanart_copy']), file=code)
-        print("old_nfo = " + str(json_config['old_nfo']), file=code)
-        print("poster = " + str(json_config['poster_download']), file=code)
-        print("thumb = " + str(json_config['thumb_download']), file=code)
-        print("fanart = " + str(json_config['fanart_download']), file=code)
-        print("extrafanart = " + str(json_config['extrafanart_download']), file=code)
-        print("extrafanart_copy = " + str(json_config['extrafanart_copy']), file=code)
-        print("nfo = " + str(json_config['nfo_download']), file=code)
-        print("poster_source = " + str(json_config['poster_source']), file=code)
-        print("# poster_source: auto, download", file=code)
+        print("download_nfo = " + str(json_config['download_nfo']), file=code)
+        print("download_poster = " + str(json_config['download_poster']), file=code)
+        print("download_thumb = " + str(json_config['download_thumb']), file=code)
+        print("download_fanart = " + str(json_config['download_fanart']), file=code)
+        print("download_extrafanart = " + str(json_config['download_extrafanart']), file=code)
+        print("download_extrafanart_copy = " + str(json_config['download_extrafanart_copy']), file=code)
+        print("keep_local_nfo = " + str(json_config['keep_local_nfo']), file=code)
+        print("keep_local_poster = " + str(json_config['keep_local_poster']), file=code)
+        print("keep_local_thumb = " + str(json_config['keep_local_thumb']), file=code)
+        print("keep_local_fanart = " + str(json_config['keep_local_fanart']), file=code)
+        print("keep_local_extrafanart = " + str(json_config['keep_local_extrafanart']), file=code)
+        print("keep_local_extrafanart_copy = " + str(json_config['keep_local_extrafanart_copy']), file=code)
+        print("poster_from = " + str(json_config['poster_from']), file=code)
+        print("# poster_from: auto, download", file=code)
+        print("", file=code)
+        print("[update]", file=code)
+        print("update_check = " + str(json_config['update_check']), file=code)
+        print("", file=code)
+        print("[debug_mode]", file=code)
+        print("switch = " + str(json_config['switch_debug']), file=code)
+        print("", file=code)
+        print("[log]", file=code)
+        print("save_log = " + str(json_config['save_log']), file=code)
 
     code.close()
+    print('config.ini save done!')
 
 
 def check_pic(path_pic):
