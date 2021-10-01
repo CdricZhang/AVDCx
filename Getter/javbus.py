@@ -1,17 +1,14 @@
+import sys
+sys.path.append('../')  # NOQA: E402
 import re
 from lxml import etree
 import json
 from Function.getHtml import get_html
-from configparser import RawConfigParser
+import Function.config as cf
 import urllib3
 urllib3.disable_warnings()
+# import traceback
 
-def getDelActorName():
-    config_file = 'config.ini'
-    config = RawConfigParser()
-    config.read(config_file, encoding='UTF-8')
-    del_actor_name = config.getint('Name_Rule', 'del_actor_name')
-    return del_actor_name
 
 def getTitle(html):
     result = html.xpath('//h3/text()')
@@ -21,20 +18,25 @@ def getTitle(html):
         result = ''
     return result
 
+
 def getWebNumber(html):
-    result = html.xpath('//span[@class="header"][contains(text(), "識別碼:")]/../span[2]/text()')
+    result = html.xpath(
+        '//span[@class="header"][contains(text(), "識別碼:")]/../span[2]/text()')
     if result:
         result = result[0]
     else:
         result = ''
     return result
 
+
 def getActor(html):
     try:
-        result = str(html.xpath('//div[@class="star-name"]/a/text()')).strip(" ['']").replace("'", '').replace(', ', ',')
+        result = str(html.xpath('//div[@class="star-name"]/a/text()')
+                     ).strip(" ['']").replace("'", '').replace(', ', ',')
     except:
         result = ''
     return result
+
 
 def getActorPhoto(html, url):
     actor = html.xpath('//div[@class="star-name"]/../a/img/@title')
@@ -51,6 +53,7 @@ def getActorPhoto(html, url):
             data[each] = ''
     return data
 
+
 def getCover(html, url):  # 获取封面链接
     result = html.xpath('//a[@class="bigImage"]/@href')
     if result:
@@ -62,21 +65,27 @@ def getCover(html, url):  # 获取封面链接
         cover_url = ''
     return cover_url
 
+
 def getCoverSmall(cover_url):  # 获取小封面链接
     cover_small_url = ''
     if '/pics/' in cover_url:
-        cover_small_url = cover_url.replace('/cover/', '/thumb/').replace('_b.jpg', '.jpg')
+        cover_small_url = cover_url.replace(
+            '/cover/', '/thumb/').replace('_b.jpg', '.jpg')
     elif '/imgs/' in cover_url:
-        cover_small_url = cover_url.replace('/cover/', '/thumbs/').replace('_b.jpg', '.jpg')
+        cover_small_url = cover_url.replace(
+            '/cover/', '/thumbs/').replace('_b.jpg', '.jpg')
     return cover_small_url
 
+
 def getRelease(html):  # 获取发行日期
-    result = html.xpath('//span[@class="header"][contains(text(), "發行日期:")]/../text()')
+    result = html.xpath(
+        '//span[@class="header"][contains(text(), "發行日期:")]/../text()')
     if result:
         result = result[0].strip()
     else:
         result = ''
     return result
+
 
 def getYear(release):
     try:
@@ -84,6 +93,7 @@ def getYear(release):
         return result
     except:
         return release[:4]
+
 
 def getMosaic(html):
     select_tab = str(html.xpath('//li[@class="active"]/a/text()'))
@@ -93,8 +103,10 @@ def getMosaic(html):
         mosaic = '无码'
     return mosaic
 
+
 def getRuntime(html):
-    result = html.xpath('//span[@class="header"][contains(text(), "長度:")]/../text()')
+    result = html.xpath(
+        '//span[@class="header"][contains(text(), "長度:")]/../text()')
     if result:
         result = result[0].strip()
         result = re.findall('\d+', result)
@@ -106,6 +118,7 @@ def getRuntime(html):
         result = ''
     return result
 
+
 def getStudio(html):
     result = html.xpath('//a[contains(@href, "/studio/")]/text()')
     if result:
@@ -113,6 +126,7 @@ def getStudio(html):
     else:
         result = ''
     return result
+
 
 def getPublisher(html, studio):  # 获取发行商
     result = html.xpath('//a[contains(@href, "/label/")]/text()')
@@ -122,6 +136,7 @@ def getPublisher(html, studio):  # 获取发行商
         result = studio
     return result
 
+
 def getDirector(html):  # 获取导演
     result = html.xpath('//a[contains(@href, "/director/")]/text()')
     if result:
@@ -129,6 +144,7 @@ def getDirector(html):  # 获取导演
     else:
         result = ''
     return result
+
 
 def getSeries(html):
     result = html.xpath('//a[contains(@href, "/series/")]/text()')
@@ -151,36 +167,50 @@ def getExtraFanart(html, url):  # 获取封面链接
         new_list = ''
     return new_list
 
+
 def getTag(html):  # 获取标签
-    result = html.xpath('//span[@class="genre"]/label/a[contains(@href, "/genre/")]/text()')
+    result = html.xpath(
+        '//span[@class="genre"]/label/a[contains(@href, "/genre/")]/text()')
     if result:
         result = str(result).strip(" ['']").replace("'", "").replace(', ', ',')
     else:
         result = ''
     return result
 
-def getRealUrl(number, url_type):  # 获取详情页链接
+
+def getRealUrl(number, url_type, javbus_url):  # 获取详情页链接
     if url_type == 'us':
         url_search = 'https://www.javbus.red/search/' + number
     elif url_type == 'censored':
-        url_search = 'https://www.javbus.com/search/' + number + '&type=&parent=ce'
+        url_search = javbus_url + '/search/' + number + '&type=&parent=ce'
     else:
-        url_search = 'https://www.javbus.com/uncensored/search/' + number + '&type=0&parent=uc'
+        url_search = javbus_url + '/uncensored/search/' + number + '&type=0&parent=uc'
     # ========================================================================搜索番号
     result, html_search = get_html(url_search)
     if not result:
         return False
     html = etree.fromstring(html_search, etree.HTMLParser())
     url_list = html.xpath("//a[@class='movie-box']/@href")
+    print(url_list)
     for each in url_list:
-        if number.upper().replace('.', '').replace('-', '') in each.upper().replace('-', ''):
+        each_url = each.upper().replace('-', '')
+        number_1 = number.upper().replace('.', '').replace('-', '')
+        number_2 = number_1 + '_'
+        if each_url.endswith(number_1) or number_2 in each_url:
             return each
     return False
+
 
 def main(number, appoint_url='', log_info='', req_web=''):
     req_web += '-> javbus '
     log_info += '   >>> javbus-开始使用 javbus 进行刮削\n'
     real_url = appoint_url
+    javbus_url = 'https://www.javbus.com'
+    config = cf.get_config()
+    del_actor_name = config.get('del_actor_name')
+    javbus_website = config.get('javbus_website')
+    if javbus_website:
+        javbus_url = 'https://' + javbus_website
     title = ''
     cover_url = ''
     cover_small_url = ''
@@ -191,32 +221,33 @@ def main(number, appoint_url='', log_info='', req_web=''):
     dic = {}
     try:
         if not real_url:
-            real_url = 'https://www.javbus.com/' + number
+            real_url = javbus_url + '/' + number
             if re.search('[-_]\d{2}[-_]\d{2}[-_]\d{2}', number):    # 欧美影片
                 number = number.replace('-', '.').replace('_', '.')
             if '.' in number:
-                real_url = getRealUrl(number, 'us')
+                real_url = getRealUrl(number, 'us', javbus_url)
                 if not real_url:
                     log_info += '   >>> javbus-未匹配到番号！'
                     error_type = 'not found'
-                    raise Exception('javbus-未匹配到番号！')                    
+                    raise Exception('javbus-未匹配到番号！')
         result, htmlcode = get_html(real_url)
         if not result:
             log_info += '   >>> javbus-请求详情页：错误！信息：' + htmlcode
             error_type = 'timeout'
             raise Exception('javbus请求详情页：错误！信息：' + htmlcode)
         if '404 Page Not Found!' in htmlcode:
-            real_url = getRealUrl(number, 'censored')
+            real_url = getRealUrl(number, 'censored', javbus_url)
+            print(real_url)
             if real_url:
                 result, htmlcode = get_html(real_url)
             else:
-                real_url = getRealUrl(number, 'uncensored')
+                real_url = getRealUrl(number, 'uncensored', javbus_url)
                 if real_url:
                     result, htmlcode = get_html(real_url)
                 else:
                     log_info += '   >>> javbus-未匹配到番号！'
                     error_type = 'not found'
-                    raise Exception('javbus-未匹配到番号！')           
+                    raise Exception('javbus-未匹配到番号！')
         html_info = etree.fromstring(htmlcode, etree.HTMLParser())
         title = getTitle(html_info)
         if not title:
@@ -225,11 +256,11 @@ def main(number, appoint_url='', log_info='', req_web=''):
             raise Exception('javbus-title 获取失败!')
         number = getWebNumber(html_info)    # 获取番号，用来替换标题里的番号
         title = title.replace(number, '').strip()
-        actor = getActor(html_info) # 获取actor
-        actor_photo = getActorPhoto(html_info, 'https://www.javbus.com')
-        if getDelActorName():
+        actor = getActor(html_info)  # 获取actor
+        actor_photo = getActorPhoto(html_info, javbus_url)
+        if del_actor_name:
             title = title.replace(' ' + actor, '')
-        cover_url = getCover(html_info, 'https://www.javbus.com') # 获取cover
+        cover_url = getCover(html_info, javbus_url)  # 获取cover
         cover_small_url = getCoverSmall(cover_url)
         if 'http' not in cover_url:
             log_info += '   >>> javbus-cover url 获取失败！ \n'
@@ -243,7 +274,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
             image_cut = 'center'
             if '_' in number and cover_small_url:   # 一本道，并且有小图时，下载poster
                 image_download = True
-            elif 'HEYZO' in number and len(cover_small_url.replace('https://www.javbus.com/imgs/thumbs/', '')) == 7:
+            elif 'HEYZO' in number and len(cover_small_url.replace(javbus_url + '/imgs/thumbs/', '')) == 7:
                 image_download = True
             else:
                 cover_small_url = ''    # 非一本道的无码/欧美影片，清空小图地址，因为小图都是未裁剪的低分辨率图片
@@ -252,7 +283,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
         publisher = getPublisher(html_info, studio)
         director = getDirector(html_info)
         series = getSeries(html_info)
-        extrafanart = getExtraFanart(html_info, 'https://www.javbus.com')
+        extrafanart = getExtraFanart(html_info, javbus_url)
         if 'KMHRS' in number:   # 剧照第一张是高清图
             image_download = True
             if extrafanart:
@@ -292,8 +323,9 @@ def main(number, appoint_url='', log_info='', req_web=''):
         except Exception as error_info:
             log_info += '   >>> javbus-生成数据字典：出错！ 错误信息：%s \n' % str(error_info)
             error_info = str(error_info)
-            raise Exception(log_info)        
+            raise Exception(log_info)
     except Exception as error_info:
+        # print(traceback.format_exc())
         dic = {
             'title': '',
             'cover': '',
@@ -303,26 +335,28 @@ def main(number, appoint_url='', log_info='', req_web=''):
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
+                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 
-# print(main('KMHRS-050'))    # 小封面图要下载
-# print(main('070621_001')) # 小封面图要下载
-# print(main('heyzo-1031')) # 小封面图要下载
-# print(main('heyzo-0811')) # 小封面图要下载
-# print(main('heyzo-1673')) # 小封面图不要下载
-# print(main('dv-1175'))    # 有码
-# print(main('dv1175'))
-# print(main('ssni-644'))
-# print(main('010115-001'))
-# print(main('ssni644'))
-# print(main('BigTitsatWork-17-09-26'))
-# print(main('BrazzersExxtra.21.02.01'))
-# print(main('KA-001'))
-# print(main('012715-793'))
+if __name__ == '__main__':
+    # print(main('KMHRS-050'))    # 小封面图要下载
+    # print(main('KV-115'))    # 误匹配KV-1151
+    # print(main('070621_001')) # 小封面图要下载
+    # print(main('heyzo-1031')) # 小封面图要下载
+    # print(main('heyzo-0811')) # 小封面图要下载
+    # print(main('heyzo-1673')) # 小封面图不要下载
+    # print(main('dv-1175'))    # 有码
+    print(main('dv1175'))
+    # print(main('ssni-644'))
+    # print(main('010115-001'))
+    # print(main('ssni644'))
+    # print(main('BigTitsatWork-17-09-26'))
+    # print(main('BrazzersExxtra.21.02.01'))
+    # print(main('KA-001'))
+    # print(main('012715-793'))
 
-
-# print(main('ssni-644', "https://www.javbus.com/SSNI-644"))
-# print(main('ssni-802', ""))
-# print(main('DirtyMasseur.20.07.26', "https://www.javbus.one/DirtyMasseur-20-07-26"))
+    # print(main('ssni-644', "https://www.javbus.com/SSNI-644"))
+    # print(main('ssni-802', ""))
+    # print(main('DirtyMasseur.20.07.26', "https://www.javbus.one/DirtyMasseur-20-07-26"))

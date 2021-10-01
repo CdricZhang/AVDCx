@@ -1,8 +1,12 @@
+import sys  # NOQA: E402
+sys.path.append('../')  # NOQA: E402
 import json
 import re
 from bs4 import BeautifulSoup
 from lxml import etree
 from Function.getHtml import get_html
+import urllib3
+urllib3.disable_warnings()
 
 
 def getActorPhoto(htmlcode):  # //*[@id="star_qdt"]/li/a/img
@@ -20,7 +24,8 @@ def getActorPhoto(htmlcode):  # //*[@id="star_qdt"]/li/a/img
 def getTitle(a):
     try:
         html = etree.fromstring(a, etree.HTMLParser())
-        result = str(html.xpath('/html/body/div[2]/h3/text()')).strip(" ['']")  # [0]
+        result = str(html.xpath(
+            '/html/body/div[2]/h3/text()')).strip(" ['']")  # [0]
         return result.replace('/', '')
     except:
         return ''
@@ -36,27 +41,34 @@ def getActor(a):  # //*[@id="center_column"]/div[2]/div[1]/div/table/tbody/tr[1]
 
 
 def getStudio(a):
-    html = etree.fromstring(a, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
+    # //table/tr[1]/td[1]/text()
+    html = etree.fromstring(a, etree.HTMLParser())
     result1 = str(html.xpath('//p[contains(text(),"制作商: ")]/following-sibling::p[1]/a/text()')).strip(" ['']").replace(
         "', '", ' ')
     return result1
 
 
 def getRuntime(a):
-    html = etree.fromstring(a, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
-    result1 = str(html.xpath('//span[contains(text(),"长度:")]/../text()')).strip(" ['分钟']")
+    # //table/tr[1]/td[1]/text()
+    html = etree.fromstring(a, etree.HTMLParser())
+    result1 = str(html.xpath(
+        '//span[contains(text(),"长度:")]/../text()')).strip(" ['分钟']")
     return result1
 
 
 def getSeries(a):
-    html = etree.fromstring(a, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
-    result1 = str(html.xpath('//p[contains(text(),"系列:")]/following-sibling::p[1]/a/text()')).strip(" ['']")
+    # //table/tr[1]/td[1]/text()
+    html = etree.fromstring(a, etree.HTMLParser())
+    result1 = str(html.xpath(
+        '//p[contains(text(),"系列:")]/following-sibling::p[1]/a/text()')).strip(" ['']")
     return result1
 
 
 def getNum(a):
-    html = etree.fromstring(a, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
-    result1 = str(html.xpath('//span[contains(text(),"识别码:")]/../span[2]/text()')).strip(" ['']")
+    # //table/tr[1]/td[1]/text()
+    html = etree.fromstring(a, etree.HTMLParser())
+    result1 = str(html.xpath(
+        '//span[contains(text(),"识别码:")]/../span[2]/text()')).strip(" ['']")
     return result1
 
 
@@ -69,20 +81,24 @@ def getYear(release):
 
 
 def getRelease(a):
-    html = etree.fromstring(a, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
-    result1 = str(html.xpath('//span[contains(text(),"发行时间:")]/../text()')).strip(" ['']")
+    # //table/tr[1]/td[1]/text()
+    html = etree.fromstring(a, etree.HTMLParser())
+    result1 = str(html.xpath(
+        '//span[contains(text(),"发行时间:")]/../text()')).strip(" ['']")
     return result1
 
 
 def getCover(htmlcode):
     html = etree.fromstring(htmlcode, etree.HTMLParser())
-    result = str(html.xpath('/html/body/div[2]/div[1]/div[1]/a/img/@src')).strip(" ['']")
+    result = str(html.xpath(
+        '/html/body/div[2]/div[1]/div[1]/a/img/@src')).strip(" ['']")
     return result
 
 
 def getCoverSmall(htmlcode, count):
     html = etree.fromstring(htmlcode, etree.HTMLParser())
-    cover_small_url = html.xpath("//div[@id='waterfall']/div[" + str(count) + "]/a/div[@class='photo-frame']/img/@src")[0]
+    cover_small_url = html.xpath(
+        "//div[@id='waterfall']/div[" + str(count) + "]/a/div[@class='photo-frame']/img/@src")[0]
     return cover_small_url
 
 
@@ -97,7 +113,8 @@ def getTag(a):  # 获取演员
 
 def getUrl(number):
     result, response = get_html('https://avsox.website/cn/search/' + number)
-    html = etree.fromstring(response, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
+    # //table/tr[1]/td[1]/text()
+    html = etree.fromstring(response, etree.HTMLParser())
     url_list = html.xpath('//*[@id="waterfall"]/div/a/@href')
 
     if len(url_list) > 0:
@@ -141,12 +158,12 @@ def main(number, appoint_url='', log_info='', req_web=''):
         soup = BeautifulSoup(web, 'lxml')
         info = str(soup.find(attrs={'class': 'row movie'}))
         actor = getActor(web)
-        title = getTitle(web).strip() # 获取标题
+        title = getTitle(web).strip()  # 获取标题
         if not title:
             log_info += '   >>> AVSOX- title 获取失败！ \n'
             error_type = 'need login'
             raise Exception('>>> AVSOX- title 获取失败！')
-        cover_url = getCover(web) # 获取cover
+        cover_url = getCover(web)  # 获取cover
         if 'http' not in cover_url:
             log_info += '   >>> AVSOX- cover url 获取失败！ \n'
             error_type = 'Cover Url is None!'
@@ -210,10 +227,12 @@ def main(number, appoint_url='', log_info='', req_web=''):
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
+                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 
-# print(main('051119-917'))
-# print(main('032620_001'))
-# print(main('032620_001', 'https://avsox.website/cn/movie/cb8d28437cff4e90'))
+if __name__ == '__main__':
+    print(main('051119-917'))
+    # print(main('032620_001'))
+    # print(main('032620_001', 'https://avsox.website/cn/movie/cb8d28437cff4e90'))

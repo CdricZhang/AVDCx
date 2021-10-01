@@ -1,7 +1,10 @@
+import sys
+sys.path.append('../')  # NOQA: E402
 import re
 from lxml import etree
 import json
 from Function.getHtml import post_html
+# import traceback
 
 
 def getActorPhoto(actor):
@@ -28,15 +31,18 @@ def getActor(response):
 
 
 def getStudio(html):
-    result = str(html.xpath('//div[@class="col-md-9"]/a[contains(@href,"/company/")]/text()')).strip(" ['']")
+    result = str(html.xpath(
+        '//div[@class="col-md-9"]/a[contains(@href,"/company/")]/text()')).strip(" ['']")
     return result
+
 
 def getRuntime(response):
     return str(re.findall(r'<b>収録時間</b>: (\d+) \S+<br>', response)).strip(" ['']")
 
 
 def getSeries(html):
-    result = str(html.xpath('//div[@class="col-md-9"]/a[contains(@href,"/series/")]/text()')).strip(" ['']")
+    result = str(html.xpath(
+        '//div[@class="col-md-9"]/a[contains(@href,"/series/")]/text()')).strip(" ['']")
     return result
 
 
@@ -50,7 +56,8 @@ def getNum(response):
 
 def getScore(response):
     if re.search(r'<b>平均評価</b>: <img data-original="/img/(\d+).gif" />', response):
-        score = re.findall(r'<b>平均評価</b>: <img data-original="/img/(\d+).gif" />', response)[0]
+        score = re.findall(
+            r'<b>平均評価</b>: <img data-original="/img/(\d+).gif" />', response)[0]
         return str(float(score) / 10.0)
     else:
         return str(re.findall(r'<b>平均評価</b>: ([^<]+)<br>', response)).strip(" [',']").replace('\'', '')
@@ -78,7 +85,8 @@ def getCover(detail_page):
 
 
 def getExtraFanart(htmlcode):
-    extrafanart_list = htmlcode.xpath("/html/body/div[@class='row'][2]/div[@class='col-md-3']/div[@class='col-xs-12 col-md-12']/p/a/img[@class='img-responsive']/@src")
+    extrafanart_list = htmlcode.xpath(
+        "/html/body/div[@class='row'][2]/div[@class='col-md-3']/div[@class='col-xs-12 col-md-12']/p/a/img[@class='img-responsive']/@src")
     return extrafanart_list
 
 
@@ -122,12 +130,12 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
         detail_page = etree.fromstring(response, etree.HTMLParser())
         actor = getActor(response)
         actor_photo = getActorPhoto(actor)
-        title = getTitle(response).strip() # 获取标题
+        title = getTitle(response).strip()  # 获取标题
         if not title:
             log_info += '   >>> JAV321- title 获取失败！ \n'
             error_type = 'need login'
             raise Exception('>>> JAV321- title 获取失败！]')
-        cover_url = getCover(detail_page) # 获取cover
+        cover_url = getCover(detail_page)  # 获取cover
         cover_small_url = getCoverSmall(detail_page)
         if not cover_url:
             cover_url = cover_small_url
@@ -150,7 +158,8 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
         extrafanart = getExtraFanart(detail_page)
         website = getWebsite(detail_page)
         # 判断无码
-        uncensorted_list = ['一本道', 'HEYZO', 'サムライポルノ', 'キャットウォーク', 'サイクロン', 'ルチャリブレ', 'スーパーモデルメディア', 'スタジオテリヤキ', 'レッドホットコレクション', 'スカイハイエンターテインメント', '小天狗', 'オリエンタルドリーム', 'Climax Zipang', 'CATCHEYE', 'ファイブスター', 'アジアンアイズ', 'ゴリラ', 'ラフォーレ ガール', 'MIKADO', 'ムゲンエンターテインメント', 'ツバキハウス', 'ザーメン二郎', 'トラトラトラ', 'メルシーボークー', '神風', 'Queen 8', 'SASUKE', 'ファンタドリーム', 'マツエンターテインメント', 'ピンクパンチャー', 'ワンピース', 'ゴールデンドラゴン', 'Tokyo Hot', 'Caribbean']
+        uncensorted_list = ['一本道', 'HEYZO', 'サムライポルノ', 'キャットウォーク', 'サイクロン', 'ルチャリブレ', 'スーパーモデルメディア', 'スタジオテリヤキ', 'レッドホットコレクション', 'スカイハイエンターテインメント', '小天狗', 'オリエンタルドリーム', 'Climax Zipang', 'CATCHEYE', 'ファイブスター', 'アジアンアイズ',
+                            'ゴリラ', 'ラフォーレ ガール', 'MIKADO', 'ムゲンエンターテインメント', 'ツバキハウス', 'ザーメン二郎', 'トラトラトラ', 'メルシーボークー', '神風', 'Queen 8', 'SASUKE', 'ファンタドリーム', 'マツエンターテインメント', 'ピンクパンチャー', 'ワンピース', 'ゴールデンドラゴン', 'Tokyo Hot', 'Caribbean']
         for each in uncensorted_list:
             if each == studio:
                 mosaic = '无码'
@@ -182,7 +191,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 'error_type': '',
                 'error_info': str(error_info),
                 'req_web': req_web,
-                'mosaic':mosaic,
+                'mosaic': mosaic,
             }
             log_info += '   >>> JAV321-数据获取成功！\n'
             dic['log_info'] = log_info
@@ -192,6 +201,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             raise Exception(log_info)
 
     except Exception as error_info:
+        # print(traceback.format_exc())
         dic = {
             'title': '',
             'cover': '',
@@ -201,22 +211,24 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
+                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
     return js
 
 
-# print(main('blk-495'))
-# print(main('snis-333'))
-# print(main('GERK-326'))
-# print(main('msfh-010'))
+if __name__ == '__main__':
+    print(main('blk-495'))
+    # print(main('snis-333'))
+    # print(main('GERK-326'))
+    # print(main('msfh-010'))
 
-# print(main('msfh-010'))
-# print(main('kavr-065'))
-# print(main('ssni-645'))
-# print(main('sivr-038'))
-# print(main('ara-415'))
-# print(main('luxu-1257'))
-# print(main('heyzo-1031'))
-# print(main('ABP-905'))
-# print(main('heyzo-1031', ''))
-# print(main('ymdd-173', 'https://www.jav321.com/video/ymdd00173'))
+    # print(main('msfh-010'))
+    # print(main('kavr-065'))
+    # print(main('ssni-645'))
+    # print(main('sivr-038'))
+    # print(main('ara-415'))
+    # print(main('luxu-1257'))
+    # print(main('heyzo-1031'))
+    # print(main('ABP-905'))
+    # print(main('heyzo-1031', ''))
+    # print(main('ymdd-173', 'https://www.jav321.com/video/ymdd00173'))
