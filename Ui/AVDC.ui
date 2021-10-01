@@ -1473,7 +1473,7 @@ color:#336699</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-123</y>
+           <y>0</y>
            <width>771</width>
            <height>777</height>
           </rect>
@@ -2099,7 +2099,7 @@ color:#336699</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-288</y>
+           <y>0</y>
            <width>771</width>
            <height>1388</height>
           </rect>
@@ -3194,7 +3194,7 @@ color:#336699</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-192</y>
+           <y>0</y>
            <width>771</width>
            <height>846</height>
           </rect>
@@ -3720,7 +3720,7 @@ nfo：指信息文件，记录影片的简介、标签等各项信息，会在em
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-695</y>
+           <y>0</y>
            <width>771</width>
            <height>1349</height>
           </rect>
@@ -4083,7 +4083,7 @@ runtime, director, release, series, definition, cnword
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_21">
-            <item row="1" column="0">
+            <item row="0" column="0">
              <widget class="QRadioButton" name="radioButton_pic_file_poster">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -4105,7 +4105,7 @@ runtime, director, release, series, definition, cnword
               </property>
              </widget>
             </item>
-            <item row="0" column="0">
+            <item row="1" column="0">
              <widget class="QRadioButton" name="radioButton_pic_poster">
               <property name="minimumSize">
                <size>
@@ -4121,7 +4121,7 @@ runtime, director, release, series, definition, cnword
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
+            <item row="0" column="1">
              <widget class="QLabel" name="label_95">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -4137,7 +4137,7 @@ runtime, director, release, series, definition, cnword
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
+            <item row="1" column="1">
              <widget class="QLabel" name="label_96">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -6241,7 +6241,7 @@ runtime, director, release, series, definition, cnword
           <x>0</x>
           <y>0</y>
           <width>771</width>
-          <height>577</height>
+          <height>654</height>
          </rect>
         </property>
         <property name="frameShape">
@@ -6251,21 +6251,21 @@ runtime, director, release, series, definition, cnword
          <number>0</number>
         </property>
         <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAsNeeded</enum>
+         <enum>Qt::ScrollBarAlwaysOn</enum>
         </property>
         <property name="horizontalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>
         </property>
         <property name="widgetResizable">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
         <widget class="QWidget" name="scrollAreaWidgetContents_3">
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
-           <width>771</width>
-           <height>577</height>
+           <y>-135</y>
+           <width>756</width>
+           <height>790</height>
           </rect>
          </property>
          <widget class="QGroupBox" name="groupBox_10">
@@ -6274,7 +6274,7 @@ runtime, director, release, series, definition, cnword
             <x>30</x>
             <y>270</y>
             <width>701</width>
-            <height>281</height>
+            <height>231</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -6289,7 +6289,7 @@ runtime, director, release, series, definition, cnword
              <x>10</x>
              <y>30</y>
              <width>671</width>
-             <height>131</height>
+             <height>81</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_10">
@@ -6340,7 +6340,7 @@ font: &quot;Courier&quot;;</string>
            <property name="geometry">
             <rect>
              <x>10</x>
-             <y>170</y>
+             <y>120</y>
              <width>681</width>
              <height>81</height>
             </rect>
@@ -6371,7 +6371,7 @@ font: &quot;Courier&quot;;</string>
            <property name="geometry">
             <rect>
              <x>100</x>
-             <y>250</y>
+             <y>200</y>
              <width>431</width>
              <height>21</height>
             </rect>
@@ -6405,7 +6405,7 @@ font: &quot;Courier&quot;;</string>
            <property name="geometry">
             <rect>
              <x>10</x>
-             <y>250</y>
+             <y>200</y>
              <width>81</width>
              <height>21</height>
             </rect>
@@ -6758,6 +6758,147 @@ font: &quot;Courier&quot;;</string>
  border: 1px solid rgba(0,0,0, 50);
  border-radius: 15px;
 </string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_44">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>520</y>
+            <width>701</width>
+            <height>161</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font:&quot;Courier&quot;;</string>
+          </property>
+          <property name="title">
+           <string>网址设置</string>
+          </property>
+          <widget class="QWidget" name="gridLayoutWidget_12">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>30</y>
+             <width>671</width>
+             <height>121</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_12">
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="lineEdit_javdb_website">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>300</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_109">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>130</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="text">
+               <string>javbus：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_108">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="text">
+               <string>javdb：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="lineEdit_javbus_website">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>300</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> font: &quot;Courier&quot;;
+ border: 1px solid rgba(0,0,0, 50);
+ border-radius: 15px;
+</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="label_110">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(8, 128, 128);</string>
+              </property>
+              <property name="text">
+               <string>当填写网址时，优先使用此处填写的网址</string>
               </property>
              </widget>
             </item>

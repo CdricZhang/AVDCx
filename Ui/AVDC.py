@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'AVDCQwYJGW.ui'
+## Form generated from reading UI file 'AVDCTOgPNa.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -486,7 +486,7 @@ class Ui_AVDV(object):
         self.scrollArea_2.setWidgetResizable(False)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, -123, 771, 777))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 771, 777))
         self.groupBox_16 = QGroupBox(self.scrollAreaWidgetContents_2)
         self.groupBox_16.setObjectName(u"groupBox_16")
         self.groupBox_16.setGeometry(QRect(30, 10, 701, 311))
@@ -775,7 +775,7 @@ class Ui_AVDV(object):
         self.scrollArea.setWidgetResizable(False)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, -288, 771, 1388))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 771, 1388))
         self.groupBox = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(30, 110, 701, 191))
@@ -1203,7 +1203,7 @@ class Ui_AVDV(object):
         self.scrollArea_6.setWidgetResizable(False)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, -192, 771, 846))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 771, 846))
         self.groupBox_34 = QGroupBox(self.scrollAreaWidgetContents_6)
         self.groupBox_34.setObjectName(u"groupBox_34")
         self.groupBox_34.setGeometry(QRect(30, 180, 701, 181))
@@ -1422,7 +1422,7 @@ class Ui_AVDV(object):
         self.scrollArea_7.setWidgetResizable(False)
         self.scrollAreaWidgetContents_7 = QWidget()
         self.scrollAreaWidgetContents_7.setObjectName(u"scrollAreaWidgetContents_7")
-        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, -695, 771, 1349))
+        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 771, 1349))
         sizePolicy1.setHeightForWidth(self.scrollAreaWidgetContents_7.sizePolicy().hasHeightForWidth())
         self.scrollAreaWidgetContents_7.setSizePolicy(sizePolicy1)
         self.groupBox_35 = QGroupBox(self.scrollAreaWidgetContents_7)
@@ -1581,14 +1581,14 @@ class Ui_AVDV(object):
         self.radioButton_pic_file_poster.setMinimumSize(QSize(80, 0))
         self.radioButton_pic_file_poster.setAutoExclusive(True)
 
-        self.gridLayout_21.addWidget(self.radioButton_pic_file_poster, 1, 0, 1, 1)
+        self.gridLayout_21.addWidget(self.radioButton_pic_file_poster, 0, 0, 1, 1)
 
         self.radioButton_pic_poster = QRadioButton(self.gridLayoutWidget_21)
         self.radioButton_pic_poster.setObjectName(u"radioButton_pic_poster")
         self.radioButton_pic_poster.setMinimumSize(QSize(80, 0))
         self.radioButton_pic_poster.setAutoExclusive(True)
 
-        self.gridLayout_21.addWidget(self.radioButton_pic_poster, 0, 0, 1, 1)
+        self.gridLayout_21.addWidget(self.radioButton_pic_poster, 1, 0, 1, 1)
 
         self.label_95 = QLabel(self.gridLayoutWidget_21)
         self.label_95.setObjectName(u"label_95")
@@ -1596,7 +1596,7 @@ class Ui_AVDV(object):
         self.label_95.setSizePolicy(sizePolicy4)
         self.label_95.setStyleSheet(u"color: rgb(8, 128, 128);")
 
-        self.gridLayout_21.addWidget(self.label_95, 1, 1, 1, 1)
+        self.gridLayout_21.addWidget(self.label_95, 0, 1, 1, 1)
 
         self.label_96 = QLabel(self.gridLayoutWidget_21)
         self.label_96.setObjectName(u"label_96")
@@ -1604,7 +1604,7 @@ class Ui_AVDV(object):
         self.label_96.setSizePolicy(sizePolicy4)
         self.label_96.setStyleSheet(u"color: rgb(8, 128, 128);")
 
-        self.gridLayout_21.addWidget(self.label_96, 0, 1, 1, 1)
+        self.gridLayout_21.addWidget(self.label_96, 1, 1, 1, 1)
 
         self.groupBox_38 = QGroupBox(self.scrollAreaWidgetContents_7)
         self.groupBox_38.setObjectName(u"groupBox_38")
@@ -2465,22 +2465,22 @@ class Ui_AVDV(object):
         self.tab3.setObjectName(u"tab3")
         self.scrollArea_3 = QScrollArea(self.tab3)
         self.scrollArea_3.setObjectName(u"scrollArea_3")
-        self.scrollArea_3.setGeometry(QRect(0, 0, 771, 577))
+        self.scrollArea_3.setGeometry(QRect(0, 0, 771, 654))
         self.scrollArea_3.setFrameShape(QFrame.Box)
         self.scrollArea_3.setLineWidth(0)
-        self.scrollArea_3.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollArea_3.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea_3.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea_3.setWidgetResizable(True)
+        self.scrollArea_3.setWidgetResizable(False)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 771, 577))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, -135, 756, 790))
         self.groupBox_10 = QGroupBox(self.scrollAreaWidgetContents_3)
         self.groupBox_10.setObjectName(u"groupBox_10")
-        self.groupBox_10.setGeometry(QRect(30, 270, 701, 281))
+        self.groupBox_10.setGeometry(QRect(30, 270, 701, 231))
         self.groupBox_10.setStyleSheet(u"font:\"Courier\";")
         self.gridLayoutWidget_10 = QWidget(self.groupBox_10)
         self.gridLayoutWidget_10.setObjectName(u"gridLayoutWidget_10")
-        self.gridLayoutWidget_10.setGeometry(QRect(10, 30, 671, 131))
+        self.gridLayoutWidget_10.setGeometry(QRect(10, 30, 671, 81))
         self.gridLayout_10 = QGridLayout(self.gridLayoutWidget_10)
         self.gridLayout_10.setObjectName(u"gridLayout_10")
         self.gridLayout_10.setContentsMargins(0, 0, 0, 0)
@@ -2505,7 +2505,7 @@ class Ui_AVDV(object):
 
         self.label_75 = QLabel(self.groupBox_10)
         self.label_75.setObjectName(u"label_75")
-        self.label_75.setGeometry(QRect(10, 170, 681, 81))
+        self.label_75.setGeometry(QRect(10, 120, 681, 81))
         sizePolicy4.setHeightForWidth(self.label_75.sizePolicy().hasHeightForWidth())
         self.label_75.setSizePolicy(sizePolicy4)
         self.label_75.setStyleSheet(u"color: rgb(8, 128, 128);")
@@ -2513,7 +2513,7 @@ class Ui_AVDV(object):
         self.label_75.setTextInteractionFlags(Qt.LinksAccessibleByKeyboard|Qt.LinksAccessibleByMouse|Qt.TextBrowserInteraction|Qt.TextSelectableByKeyboard|Qt.TextSelectableByMouse)
         self.label_get_cookie_url = QLabel(self.groupBox_10)
         self.label_get_cookie_url.setObjectName(u"label_get_cookie_url")
-        self.label_get_cookie_url.setGeometry(QRect(100, 250, 431, 21))
+        self.label_get_cookie_url.setGeometry(QRect(100, 200, 431, 21))
         self.label_get_cookie_url.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_get_cookie_url.setMouseTracking(False)
         self.label_get_cookie_url.setStyleSheet(u"color: rgb(10, 52, 255);")
@@ -2523,7 +2523,7 @@ class Ui_AVDV(object):
         self.label_get_cookie_url.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.label_7 = QLabel(self.groupBox_10)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(10, 250, 81, 21))
+        self.label_7.setGeometry(QRect(10, 200, 81, 21))
         self.label_7.setStyleSheet(u"color: rgb(8, 128, 128);")
         self.groupBox_28 = QGroupBox(self.scrollAreaWidgetContents_3)
         self.groupBox_28.setObjectName(u"groupBox_28")
@@ -2680,6 +2680,69 @@ class Ui_AVDV(object):
 "")
 
         self.gridLayout_9.addWidget(self.lineEdit_proxy, 1, 1, 1, 1)
+
+        self.groupBox_44 = QGroupBox(self.scrollAreaWidgetContents_3)
+        self.groupBox_44.setObjectName(u"groupBox_44")
+        self.groupBox_44.setGeometry(QRect(30, 520, 701, 161))
+        self.groupBox_44.setStyleSheet(u"font:\"Courier\";")
+        self.gridLayoutWidget_12 = QWidget(self.groupBox_44)
+        self.gridLayoutWidget_12.setObjectName(u"gridLayoutWidget_12")
+        self.gridLayoutWidget_12.setGeometry(QRect(10, 30, 671, 121))
+        self.gridLayout_12 = QGridLayout(self.gridLayoutWidget_12)
+        self.gridLayout_12.setObjectName(u"gridLayout_12")
+        self.gridLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.lineEdit_javdb_website = QLineEdit(self.gridLayoutWidget_12)
+        self.lineEdit_javdb_website.setObjectName(u"lineEdit_javdb_website")
+        sizePolicy4.setHeightForWidth(self.lineEdit_javdb_website.sizePolicy().hasHeightForWidth())
+        self.lineEdit_javdb_website.setSizePolicy(sizePolicy4)
+        self.lineEdit_javdb_website.setMinimumSize(QSize(300, 30))
+        self.lineEdit_javdb_website.setStyleSheet(u" font: \"Courier\";\n"
+" border: 1px solid rgba(0,0,0, 50);\n"
+" border-radius: 15px;\n"
+"")
+
+        self.gridLayout_12.addWidget(self.lineEdit_javdb_website, 1, 1, 1, 1)
+
+        self.label_109 = QLabel(self.gridLayoutWidget_12)
+        self.label_109.setObjectName(u"label_109")
+        sizePolicy3.setHeightForWidth(self.label_109.sizePolicy().hasHeightForWidth())
+        self.label_109.setSizePolicy(sizePolicy3)
+        self.label_109.setMinimumSize(QSize(130, 0))
+        self.label_109.setLayoutDirection(Qt.RightToLeft)
+        self.label_109.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_12.addWidget(self.label_109, 0, 0, 1, 1)
+
+        self.label_108 = QLabel(self.gridLayoutWidget_12)
+        self.label_108.setObjectName(u"label_108")
+        sizePolicy3.setHeightForWidth(self.label_108.sizePolicy().hasHeightForWidth())
+        self.label_108.setSizePolicy(sizePolicy3)
+        self.label_108.setMinimumSize(QSize(0, 0))
+        self.label_108.setLayoutDirection(Qt.RightToLeft)
+        self.label_108.setFrameShape(QFrame.NoFrame)
+        self.label_108.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_12.addWidget(self.label_108, 1, 0, 1, 1)
+
+        self.lineEdit_javbus_website = QLineEdit(self.gridLayoutWidget_12)
+        self.lineEdit_javbus_website.setObjectName(u"lineEdit_javbus_website")
+        sizePolicy4.setHeightForWidth(self.lineEdit_javbus_website.sizePolicy().hasHeightForWidth())
+        self.lineEdit_javbus_website.setSizePolicy(sizePolicy4)
+        self.lineEdit_javbus_website.setMinimumSize(QSize(300, 30))
+        self.lineEdit_javbus_website.setStyleSheet(u" font: \"Courier\";\n"
+" border: 1px solid rgba(0,0,0, 50);\n"
+" border-radius: 15px;\n"
+"")
+
+        self.gridLayout_12.addWidget(self.lineEdit_javbus_website, 0, 1, 1, 1)
+
+        self.label_110 = QLabel(self.gridLayoutWidget_12)
+        self.label_110.setObjectName(u"label_110")
+        sizePolicy4.setHeightForWidth(self.label_110.sizePolicy().hasHeightForWidth())
+        self.label_110.setSizePolicy(sizePolicy4)
+        self.label_110.setStyleSheet(u"color: rgb(8, 128, 128);")
+
+        self.gridLayout_12.addWidget(self.label_110, 2, 1, 1, 1)
 
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
         self.tabWidget.addTab(self.tab3, "")
@@ -3275,6 +3338,10 @@ class Ui_AVDV(object):
         self.radioButton_proxy_socks5.setText(QCoreApplication.translate("AVDV", u"socks5", None))
         self.radioButton_proxy_nouse.setText(QCoreApplication.translate("AVDV", u"\u4e0d\u4f7f\u7528", None))
         self.label_70.setText(QCoreApplication.translate("AVDV", u"\u4ee3\u7406\uff1a", None))
+        self.groupBox_44.setTitle(QCoreApplication.translate("AVDV", u"\u7f51\u5740\u8bbe\u7f6e", None))
+        self.label_109.setText(QCoreApplication.translate("AVDV", u"javbus\uff1a", None))
+        self.label_108.setText(QCoreApplication.translate("AVDV", u"javdb\uff1a", None))
+        self.label_110.setText(QCoreApplication.translate("AVDV", u"\u5f53\u586b\u5199\u7f51\u5740\u65f6\uff0c\u4f18\u5148\u4f7f\u7528\u6b64\u5904\u586b\u5199\u7684\u7f51\u5740", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab3), QCoreApplication.translate("AVDV", u"\u7f51\u7edc", None))
         self.groupBox_17.setTitle(QCoreApplication.translate("AVDV", u"\u4fdd\u5b58\u65e5\u5fd7", None))
         self.radioButton_log_on.setText(QCoreApplication.translate("AVDV", u"\u5f00", None))
