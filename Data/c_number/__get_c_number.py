@@ -9,6 +9,7 @@ import re
 headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36'}
 
+
 def save_log(error_info):
     with open('_错误信息.txt', 'a', encoding='utf-8') as f:
         f.write(error_info)
@@ -87,19 +88,22 @@ def get_c_number():
                     elif re.findall('^[A-Za-z0-9-_ ]+', post_title):
                         number = re.findall('^[A-Za-z0-9-]+', post_title)[0]
                         title = post_title.replace(number, '').strip()
-                    else:    
+                    else:
                         number = post_title[:post_title.find(' ')]
                         title = post_title[post_title.find(' ') + 1:]
-                    number = number.upper().replace(' - ', '').replace(' -', '').replace('- ', '').strip()
-                    title = title.replace('[高清中文字幕]', '').replace('[高清中文字幕', '').replace('高清中文字幕]', '').replace('【高清中文字幕】', '').strip()
+                    number = number.upper().replace(' - ', '').replace(' -',
+                                                                       '').replace('- ', '').strip()
+                    title = title.replace('[高清中文字幕]', '').replace(
+                        '[高清中文字幕', '').replace('高清中文字幕]', '').replace('【高清中文字幕】', '').strip()
                     json_data[number] = title
                     print(j)
                     print(post_title)
                     print(number + ' : ' + title)
             print('\n当前第 %s 页数据...\n页面地址：%s' % (i, url))
             print('**'*20)
-            with open (json_filename, 'w', encoding='utf-8') as f:
-                json.dump(json_data, f, ensure_ascii=False, sort_keys=True, indent=4, separators=(',', ':'), )
+            with open(json_filename, 'w', encoding='utf-8') as f:
+                json.dump(json_data, f, ensure_ascii=False,
+                          sort_keys=True, indent=4, separators=(',', ':'), )
             if i < int(page_total):
                 i += 1
             else:
