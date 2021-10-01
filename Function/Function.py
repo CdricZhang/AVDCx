@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-import time
 import re
 import os
 import json
 from PIL import Image
 from Getter import iqqtv_new, javbus, javdb, jav321, dmm, javlibrary_new, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav
-from configparser import RawConfigParser
+import Function.config as cf
 
 
 # ========================================================================补全字段判断缺失字段
@@ -48,7 +46,8 @@ def getTheData(json_data_more, json_data, flag_suren=False):
         json_data['cover_small'] = json_data_more['cover_small']
         json_data['image_download'] = json_data_more['image_download']
         json_data['image_cut'] = json_data_more['image_cut']
-    if (flag_suren or 'VR' in json_data['tag']) and json_data['cover_small']: # 如果是素人，且有小图，则改成下载poster
+    # 如果是素人，且有小图，则改成下载poster
+    if (flag_suren or 'VR' in json_data['tag']) and json_data['cover_small']:
         json_data['image_download'] = True
     if not json_data['extrafanart']:
         json_data['extrafanart'] = json_data_more['extrafanart']
@@ -61,9 +60,10 @@ def getTheData(json_data_more, json_data, flag_suren=False):
 
 
 # ========================================================================补全字段
-def getMoreData(number, appoint_url, config, json_data):
-    main_like = config.getint('common', 'main_like')
-    more_website = config.get('common', 'more_website')
+def getMoreData(number, appoint_url, json_data):
+    config = cf.get_config()
+    main_like = config.get('main_like')
+    more_website = config.get('more_website')
     req_web = json_data['req_web']
     log_info = json_data['log_info']
     flag_suren = False
@@ -76,22 +76,26 @@ def getMoreData(number, appoint_url, config, json_data):
         flag_suren = True
     # 使用网站补全
     if 'javdb' in more_website and 'javdb' not in req_web:
-        json_data_more = json.loads(javdb.main(number, appoint_url, log_info, req_web))
+        json_data_more = json.loads(javdb.main(
+            number, appoint_url, log_info, req_web))
         json_data = getTheData(json_data_more, json_data, flag_suren)
         req_web = json_data['req_web']
         log_info = json_data['log_info']
     if 'jav321' in more_website and 'jav321' not in req_web:
-        json_data_more = json.loads(jav321.main(number, appoint_url, log_info, req_web))
+        json_data_more = json.loads(jav321.main(
+            number, appoint_url, log_info, req_web))
         json_data = getTheData(json_data_more, json_data)
         req_web = json_data['req_web']
         log_info = json_data['log_info']
     if 'javlibrary' in more_website and 'javlibrary' not in req_web:
-        json_data_more = json.loads(javlibrary_new.main(number, appoint_url, log_info, req_web))
+        json_data_more = json.loads(javlibrary_new.main(
+            number, appoint_url, log_info, req_web))
         json_data = getTheData(json_data_more, json_data)
         req_web = json_data['req_web']
         log_info = json_data['log_info']
     if 'dmm' in more_website and 'dmm' not in req_web:
-        json_data_more = json.loads(dmm.main(number, appoint_url, log_info, req_web))
+        json_data_more = json.loads(
+            dmm.main(number, appoint_url, log_info, req_web))
         json_data = getTheData(json_data_more, json_data)
     return json_data
 
@@ -110,14 +114,6 @@ def getDataState(json_data):
         return False
     else:
         return True
-
-# ========================================================================去掉异常字符（目前没有在用）
-def escapePath(path, Config):  # Remove escape literals
-    escapeLiterals = Config['escape']['literals']
-    backslash = '\\'
-    for literal in escapeLiterals:
-        path = path.replace(backslash + literal, '')
-    return path
 
 
 # ========================================================================获取视频列表
@@ -151,14 +147,16 @@ def movie_lists(escape_folder, movie_type, movie_path):
 
 # ========================================================================获取番号
 def getNumber(filepath, escape_string):
-    filepath = filepath.upper().replace('1080P', '').replace('720P', '').replace('-C.', '.').replace('.PART', '-CD').replace('-PART', '-CD').replace(' ', '-')
+    filepath = filepath.upper().replace('1080P', '').replace('720P', '').replace(
+        '-C.', '.').replace('.PART', '-CD').replace('-PART', '-CD').replace(' ', '-')
     filename = os.path.splitext(os.path.split(filepath)[1])[0]
     # 排除多余字符
     escape_string_list = re.split('[,，]', escape_string)
     for string in escape_string_list:
         filename = filename.replace(string.upper(), '')
     # 再次排除多余字符
-    filename = filename.replace('HEYDOUGA-', '').replace('HEYDOUGA', '').replace('CARIBBEANCOM', '').replace('CARIB', '').replace('1PONDO', '').replace('1PON', '').replace('PACOMA', '').replace('PACO', '').replace('10MUSUME', '').replace('-10MU', '').replace('FC2PPV', 'FC2-').replace('--', '-')
+    filename = filename.replace('HEYDOUGA-', '').replace('HEYDOUGA', '').replace('CARIBBEANCOM', '').replace('CARIB', '').replace('1PONDO', '').replace(
+        '1PON', '').replace('PACOMA', '').replace('PACO', '').replace('10MUSUME', '').replace('-10MU', '').replace('FC2PPV', 'FC2-').replace('--', '-')
     part = ''
     if re.search('-CD\d+', filename):
         part = re.findall('-CD\d+', filename)[0]
@@ -167,7 +165,8 @@ def getNumber(filepath, escape_string):
     filename = str(re.sub("\d{4}-\d{1,2}-\d{1,2}-", "", filename))  # 去除文件名中时间
     if re.search('[^.]+\.\d{2}\.\d{2}\.\d{2}', filename):  # 提取欧美番号 sexart.11.11.11
         try:
-            file_number = re.search('[^.]+\.\d{2}\.\d{2}\.\d{2}', filename).group()
+            file_number = re.search(
+                '[^.]+\.\d{2}\.\d{2}\.\d{2}', filename).group()
             return file_number.lower()
         except:
             return filename.lower()
@@ -175,58 +174,81 @@ def getNumber(filepath, escape_string):
         file_number = re.search('XXX-AV-\d{4,}', filename).group()
         return file_number
     elif re.search('TH101-\d{3,}-\d{5,}', filename):  # 提取th101-140-112594
-        file_number = re.search('TH101-\d{3,}-\d{5,}', filename).group().lower()
+        file_number = re.search(
+            'TH101-\d{3,}-\d{5,}', filename).group().lower()
         return file_number
     elif '-' in filename or '_' in filename:  # 普通提取番号 主要处理包含减号-和_的番号
         if 'FC2' in filename:
-            filename = filename.replace('PPV', '').replace('_', '-').replace('--', '-')
+            filename = filename.replace('PPV', '').replace(
+                '_', '-').replace('--', '-')
             if re.search('FC2-\d{5,}', filename):  # 提取类似fc2-111111番号
                 file_number = re.search('FC2-\d{5,}', filename).group()
         elif re.search('\d+[a-zA-Z]+-\d+', filename):  # 提取类似259luxu-1456番号
             file_number = re.search('\d+[a-zA-Z]+-\d+', filename).group()
         elif re.search('[a-zA-Z]+-\d+', filename):  # 提取类似mkbd-120番号
             if 'LUXU' in filename:  # 提取类似luxu-1111番号
-                file_number = '259' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'GANA' in filename:    #200GANA-2556
-                file_number = '200' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'MAAN' in filename or 'MIUM' in filename or 'NTK-' in filename:    #300MAAN-673/300MIUM-745/300NTK-635
-                file_number = '300' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'JAC-' in filename:    #390JAC-034
-                file_number = '390' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'DCV-' in filename:    #277DCV-102
-                file_number = '277' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'NTR-' in filename:    #348NTR-001
-                file_number = '348' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'ARA-' in filename:    #261ARA-094
-                file_number = '261' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'TEN-' in filename:    #459TEN-024
-                file_number = '459' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'GCB-' in filename:    #485GCB-015
-                file_number = '485' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'SEI-' in filename:    #502SEI-001
-                file_number = '502' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'KNB-' in filename:    #336KNB-172
-                file_number = '336' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'SUKE-' in filename:    #428SUKE-086
-                file_number = '428' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'HHH-' in filename:    #451HHH-027
-                file_number = '451' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'MLA-' in filename:    #476MLA-043
-                file_number = '476' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'KJO-' in filename:    #326KJO-002
-                file_number = '326' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'SIMM-' in filename:    #345SIMM-662
-                file_number = '345' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'MFC-' in filename:    #435MFC-142
-                file_number = '435' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'SHN-' in filename:    #116SHN-045
-                file_number = '116' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'NAMA-' in filename:    #332NAMA-077
-                file_number = '332' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'CUTE-' in filename:    #229SCUTE-953
-                file_number = '229' + re.search('[a-zA-Z]+-\d+', filename).group()
-            elif 'KIRAY-' in filename:    #314KIRAY-128
-                file_number = '314' + re.search('[a-zA-Z]+-\d+', filename).group()
+                file_number = '259' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'GANA' in filename:  # 200GANA-2556
+                file_number = '200' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'MAAN' in filename or 'MIUM' in filename or 'NTK-' in filename:  # 300MAAN-673/300MIUM-745/300NTK-635
+                file_number = '300' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'JAC-' in filename:  # 390JAC-034
+                file_number = '390' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'DCV-' in filename:  # 277DCV-102
+                file_number = '277' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'NTR-' in filename:  # 348NTR-001
+                file_number = '348' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'ARA-' in filename:  # 261ARA-094
+                file_number = '261' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'TEN-' in filename:  # 459TEN-024
+                file_number = '459' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'GCB-' in filename:  # 485GCB-015
+                file_number = '485' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'SEI-' in filename:  # 502SEI-001
+                file_number = '502' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'KNB-' in filename:  # 336KNB-172
+                file_number = '336' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'SUKE-' in filename:  # 428SUKE-086
+                file_number = '428' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'HHH-' in filename:  # 451HHH-027
+                file_number = '451' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'MLA-' in filename:  # 476MLA-043
+                file_number = '476' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'KJO-' in filename:  # 326KJO-002
+                file_number = '326' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'SIMM-' in filename:  # 345SIMM-662
+                file_number = '345' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'MFC-' in filename:  # 435MFC-142
+                file_number = '435' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'SHN-' in filename:  # 116SHN-045
+                file_number = '116' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'NAMA-' in filename:  # 332NAMA-077
+                file_number = '332' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'CUTE-' in filename:  # 229SCUTE-953
+                file_number = '229' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
+            elif 'KIRAY-' in filename:  # 314KIRAY-128
+                file_number = '314' + \
+                    re.search('[a-zA-Z]+-\d+', filename).group()
             else:
                 file_number = re.search('[a-zA-Z]+-\d+', filename).group()
         elif re.search('[a-zA-Z]+-[a-zA-Z]\d+', filename):  # 提取类似mkbd-s120番号
@@ -263,9 +285,6 @@ def getNumber(filepath, escape_string):
 
 # ========================================================================根据番号获取数据
 def getDataFromJSON(file_number, website_mode, appoint_url, translate_language, json_data):  # 从JSON返回元数据
-    config_file = 'config.ini'
-    config = RawConfigParser()
-    config.read(config_file, encoding='UTF-8')
     c_word = json_data['c_word']
     leak = json_data['leak']
     cd_part = json_data['cd_part']
@@ -286,49 +305,60 @@ def getDataFromJSON(file_number, website_mode, appoint_url, translate_language, 
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(fc2hub.main(file_number, appoint_url, log_info ,req_web))
+                json_data = json.loads(fc2hub.main(
+                    file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(avsox.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(avsox.main(
+                    file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(airav.main(file_number, appoint_url, translate_language, log_info, req_web))
+                json_data = json.loads(airav.main(
+                    file_number, appoint_url, translate_language, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javdb.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(javdb.main(
+                    file_number, appoint_url, log_info, req_web))
         # =======================================================================sexart.15.06.14
         elif re.search('[^.]+\.\d{2}\.\d{2}\.\d{2}', file_number):
             json_data = json.loads(javdb.main(file_number, appoint_url))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javbus.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(javbus.main(
+                    file_number, appoint_url, log_info, req_web))
           # =======================================================================无码抓取:111111-111,n1111,HEYZO-1111,SMD-115
         elif mosaic == '无码' or mosaic == '無碼':
-            json_data = json.loads(iqqtv_new.main(file_number, appoint_url, translate_language))
+            json_data = json.loads(iqqtv_new.main(
+                file_number, appoint_url, translate_language))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javbus.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(javbus.main(
+                    file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javdb.main(file_number, appoint_url, log_info, req_web, True))
+                json_data = json.loads(javdb.main(
+                    file_number, appoint_url, log_info, req_web, True))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(jav321.main(file_number, appoint_url, log_info, req_web, True))
+                json_data = json.loads(jav321.main(
+                    file_number, appoint_url, log_info, req_web, True))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(avsox.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(avsox.main(
+                    file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(airav.main(file_number, appoint_url, translate_language, log_info, req_web))
+                json_data = json.loads(airav.main(
+                    file_number, appoint_url, translate_language, log_info, req_web))
         # =======================================================================259LUXU-1111
         elif re.match('\d+[a-zA-Z]+-\d+', file_number) or 'SIRO' in file_number.upper():
             json_data = json.loads(mgstage.main(file_number, appoint_url))
@@ -336,52 +366,64 @@ def getDataFromJSON(file_number, website_mode, appoint_url, translate_language, 
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(jav321.main(file_number1, appoint_url, log_info, req_web))
+                json_data = json.loads(jav321.main(
+                    file_number1, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javdb.main(file_number1, appoint_url, log_info, req_web))
+                json_data = json.loads(javdb.main(
+                    file_number1, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javbus.main(file_number1, appoint_url, log_info, req_web))
+                json_data = json.loads(javbus.main(
+                    file_number1, appoint_url, log_info, req_web))
 
         # =======================================================================ssni00321
         elif re.match('\D{2,}00\d{3,}', file_number) and '-' not in file_number and '_' not in file_number:
             json_data = json.loads(dmm.main(file_number, appoint_url))
         # =======================================================================MIDE-139
         else:
-            json_data = json.loads(iqqtv_new.main(file_number, appoint_url, translate_language))
+            json_data = json.loads(iqqtv_new.main(
+                file_number, appoint_url, translate_language))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javbus.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(javbus.main(
+                    file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javdb.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(javdb.main(
+                    file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(jav321.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(jav321.main(
+                    file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(airav.main(file_number, appoint_url, translate_language, log_info, req_web))
+                json_data = json.loads(airav.main(
+                    file_number, appoint_url, translate_language, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(javlibrary_new.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(javlibrary_new.main(
+                    file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(xcity.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(xcity.main(
+                    file_number, appoint_url, log_info, req_web))
             if not getDataState(json_data):
                 req_web = json_data['req_web']
                 log_info = json_data['log_info']
-                json_data = json.loads(avsox.main(file_number, appoint_url, log_info, req_web))
+                json_data = json.loads(avsox.main(
+                    file_number, appoint_url, log_info, req_web))
     elif website_mode == 2:  # 仅从iqqtv
-        json_data = json.loads(iqqtv_new.main(file_number, appoint_url, translate_language))
+        json_data = json.loads(iqqtv_new.main(
+            file_number, appoint_url, translate_language))
     elif website_mode == 3:  # 仅从javbus
         json_data = json.loads(javbus.main(file_number, appoint_url))
     elif website_mode == 4:  # 仅从javdb
@@ -403,31 +445,34 @@ def getDataFromJSON(file_number, website_mode, appoint_url, translate_language, 
     elif website_mode == 12:  # 仅从fc2hub
         json_data = json.loads(fc2hub.main(file_number, appoint_url))
     elif website_mode == 13:  # 仅从airav
-        json_data = json.loads(airav.main(file_number, appoint_url, translate_language))
+        json_data = json.loads(airav.main(
+            file_number, appoint_url, translate_language))
     elif website_mode == 14:  # 仅从javlibrary
         json_data = json.loads(javlibrary_new.main(file_number, appoint_url))
     # ================================================网站规则添加结束================================================
     # ======================================补全字段
-    json_data = getMoreData(file_number, appoint_url, config, json_data)
+    json_data = getMoreData(file_number, appoint_url, json_data)
 
     # ======================================超时或未找到返回
     if json_data['error_type'] or json_data['title'] == '':
         return json_data
 
     # ======================================处理得到的信息
+    config = cf.get_config()
     # 番号
     number = json_data['number']
 
     # 演员
-    actor = str(json_data['actor']).strip(" [ ]").replace("'", '').replace(', ', ',').replace('<', '(').replace('>', ')').strip(',') # 列表转字符串（避免个别网站刮削返回的是列表）
+    actor = str(json_data['actor']).strip(" [ ]").replace("'", '').replace(
+        ', ', ',').replace('<', '(').replace('>', ')').strip(',')  # 列表转字符串（避免个别网站刮削返回的是列表）
 
     # 标题处理，去除标题尾巴的演员名
     title = json_data['title']
-    if config.getint('Name_Rule', 'del_actor_name'):
+    if config.get('del_actor_name'):
         title = title.replace((' ' + actor), '')
 
     if not actor:
-        actor = config.get('Name_Rule', 'actor_no_name')
+        actor = config.get('actor_no_name')
 
     # 发行日期
     release = json_data['release']
@@ -438,25 +483,29 @@ def getDataFromJSON(file_number, website_mode, appoint_url, translate_language, 
         cover_small = json_data['cover_small']
     except:
         cover_small = ''
-    
+
     # 标签
-    tag = str(json_data['tag']).strip(" [ ]").replace("'", '').replace(', ', ',').replace(',720P', '').replace(',1080P', '').replace(',720p', '').replace(',1080p', '').replace(',HD高画质', '').replace(',HD高畫質', '').replace(',高画质', '').replace(',高畫質', '')  #列表转字符串（避免个别网站刮削返回的是列表）
+    tag = str(json_data['tag']).strip(" [ ]").replace("'", '').replace(', ', ',').replace(',720P', '').replace(',1080P', '').replace(
+        ',720p', '').replace(',1080p', '').replace(',HD高画质', '').replace(',HD高畫質', '').replace(',高画质', '').replace(',高畫質', '')  # 列表转字符串（避免个别网站刮削返回的是列表）
 
     # outline
     try:
-        json_data['outline'] = json_data['outline'].replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
+        json_data['outline'] = json_data['outline'].replace(u'\xa0', '').replace(
+            u'\u3000', '').replace(u'\u2800', '').strip('. ')
     except:
         json_data['outline'] = ''
 
     # studio
     try:
-        json_data['studio'] = json_data['studio'].replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
+        json_data['studio'] = json_data['studio'].replace(u'\xa0', '').replace(
+            u'\u3000', '').replace(u'\u2800', '').strip('. ')
     except:
         json_data['studio'] = ''
 
     # publisher
     try:
-        json_data['publisher'] = json_data['publisher'].replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
+        json_data['publisher'] = json_data['publisher'].replace(
+            u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
     except:
         json_data['publisher'] = json_data['studio']
 
@@ -470,21 +519,24 @@ def getDataFromJSON(file_number, website_mode, appoint_url, translate_language, 
             if is_uncensored(number):
                 json_data['mosaic'] = '无码'
             else:
-                json_data['mosaic']  = '有码'
+                json_data['mosaic'] = '有码'
         print(number, json_data['mosaic'])
 
     # 命名规则
-    naming_media = config.get('Name_Rule', 'naming_media')
-    naming_file = config.get('Name_Rule', 'naming_file')
-    folder_name = config.get('Name_Rule', 'folder_name')
+    naming_media = config.get('naming_media')
+    naming_file = config.get('naming_file')
+    folder_name = config.get('folder_name')
 
     # 返回处理后的json_data
-    json_data['title'] = title.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
+    json_data['title'] = title.replace(u'\xa0', '').replace(
+        u'\u3000', '').replace(u'\u2800', '').strip('. ')
     json_data['number'] = number
-    json_data['actor'] = actor.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
+    json_data['actor'] = actor.replace(u'\xa0', '').replace(
+        u'\u3000', '').replace(u'\u2800', '').strip('. ')
     json_data['release'] = release
     json_data['cover_small'] = cover_small
-    json_data['tag'] = tag.replace(u'\xa0', '').replace(u'\u3000', '').replace(u'\u2800', '').strip('. ')
+    json_data['tag'] = tag.replace(u'\xa0', '').replace(
+        u'\u3000', '').replace(u'\u2800', '').strip('. ')
     json_data['naming_media'] = naming_media
     json_data['naming_file'] = naming_file
     json_data['folder_name'] = folder_name
@@ -494,7 +546,7 @@ def getDataFromJSON(file_number, website_mode, appoint_url, translate_language, 
     json_data['destroyed'] = destroyed
     json_data['actor_href'] = ''
     json_data['version'] = version
-        
+
     return json_data
 
 
@@ -525,125 +577,6 @@ def get_info(json_data):
     return title, studio, publisher, str(year), outline, str(runtime), director, actor_photo, actor, release, tag, number, cover, website, series, mosaic, definition
 
 
-# ========================================================================保存配置到config.ini
-def save_config(json_config):
-    config_file = 'config.ini'
-    with open(config_file, "wt", encoding='UTF-8') as code:
-        print("[modified_time]", file=code)
-        print("modified_time = " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), file=code)
-        print("", file=code)
-        print("[common]", file=code)
-        print("main_mode = " + str(json_config['main_mode']), file=code)
-        print("no_nfo_scrape = " + str(json_config['no_nfo_scrape']), file=code)
-        print("main_like = " + str(json_config['main_like']), file=code)
-        print("more_website = " + str(json_config['more_website']), file=code)
-        print("success_file_move = " + str(json_config['success_file_move']), file=code)
-        print("failed_file_move = " + str(json_config['failed_file_move']), file=code)
-        print("success_file_rename = " + str(json_config['success_file_rename']), file=code)
-        print("del_empty_folder = " + str(json_config['del_empty_folder']), file=code)
-        print("soft_link = " + str(json_config['soft_link']), file=code)
-        print("show_poster = " + str(json_config['show_poster']), file=code)
-        print("translate_language = " + str(json_config['translate_language']), file=code)
-        print("translate_content = " + str(json_config['translate_content']), file=code)
-        print("translate_by = " + str(json_config['translate_by']), file=code)
-        print("deepl_key = " + str(json_config['deepl_key']), file=code)
-        print("actor_output = " + str(json_config['actor_output']), file=code)
-        print("info_output = " + str(json_config['info_output']), file=code)
-        print("website = " + str(json_config['website']), file=code)
-        print("series_as_set = " + str(json_config['series_as_set']), file=code)
-        print("# translate_language: zh_cn, zh_tw, ja", file=code)
-        print("# translate_by: youdao, deepl", file=code)
-        print("# actor_output: zh_cn, zh_tw, ja, no", file=code)
-        print("# info_output: zh_cn, zh_tw, ja, no", file=code)
-        print("# website: all, iqqtv, javbus, javdb, jav321, dmm, avsox, xcity, mgstage, fc2, fc2club, fc2hub, airav, javlibrary", file=code)
-        print("", file=code)
-        print("[proxy]", file=code)
-        print("type = " + json_config['type'], file=code)
-        print("proxy = " + str(json_config['proxy']), file=code)
-        print("timeout = " + str(json_config['timeout']), file=code)
-        print("retry = " + str(json_config['retry']), file=code)
-        print("# type: no, http, socks5", file=code)
-        print("", file=code)
-        print("[Cookies]", file=code)
-        print("javdb = " + str(json_config['javdb']), file=code)
-        print("# cookies存在有效期，记得更新", file=code)
-        print("", file=code)
-        print("[Name_Rule]", file=code)
-        print("folder_name = " + str(json_config['folder_name']), file=code)
-        print("naming_file = " + str(json_config['naming_file']), file=code)
-        print("naming_media = " + str(json_config['naming_media']), file=code)
-        print("folder_name_max = " + str(json_config['folder_name_max']), file=code)
-        print("file_name_max = " + str(json_config['file_name_max']), file=code)
-        print("actor_name_max = " + str(json_config['actor_name_max']), file=code)
-        print("actor_name_more = " + str(json_config['actor_name_more']), file=code)
-        print("actor_no_name = " + str(json_config['actor_no_name']), file=code)
-        print("pic_name = " + str(json_config['pic_name']), file=code)
-        print("cd_name = " + str(json_config['cd_name']), file=code)
-        print("cnword_char = " + str(json_config['cnword_char']), file=code)
-        print("cnword_style = " + str(json_config['cnword_style']), file=code)
-        print("folder_cnword = " + str(json_config['folder_cnword']), file=code)
-        print("file_cnword = " + str(json_config['file_cnword']), file=code)
-        print("del_actor_name = " + str(json_config['del_actor_name']), file=code)
-        print("# 命名字段有：title, actor, number, studio, publisher, year, mosaic, runtime, director, release, series, definition, cnword", file=code)
-        print("", file=code)
-        print("[media]", file=code)
-        print("media_path = " + str(json_config['media_path']), file=code)
-        print("success_output_folder = " + str(json_config['success_output_folder']), file=code)
-        print("failed_output_folder = " + str(json_config['failed_output_folder']), file=code)
-        print("extrafanart_folder = " + str(json_config['extrafanart_folder']), file=code)
-        print("media_type = " + str(json_config['media_type']), file=code)
-        print("sub_type = " + str(json_config['sub_type']), file=code)
-        print("", file=code)
-        print("[escape]", file=code)
-        print("folders = " + str(json_config['folders']), file=code)
-        print("string = " + str(json_config['string']), file=code)
-        print("file_size = " + str(json_config['file_size']), file=code)
-        print("", file=code)
-        print("[emby]", file=code)
-        print("emby_url = " + str(json_config['emby_url']), file=code)
-        print("api_key = " + str(json_config['api_key']), file=code)
-        print("actor_photo_folder = " + str(json_config['actor_photo_folder']), file=code)
-        print("actor_photo_upload = " + str(json_config['actor_photo_upload']), file=code)
-        print("", file=code)
-        print("[mark]", file=code)
-        print("poster_mark = " + str(json_config['poster_mark']), file=code)
-        print("thumb_mark = " + str(json_config['thumb_mark']), file=code)
-        print("mark_size = " + str(json_config['mark_size']), file=code)
-        print("mark_type = " + str(json_config['mark_type']), file=code)
-        print("mark_pos = " + str(json_config['mark_pos']), file=code)
-        print("# mark_size: range 1-5", file=code)
-        print("# mark_type: sub, leak, uncensored", file=code)
-        print("# mark_pos: bottom_right, bottom_left, top_right, top_left", file=code)
-        print("", file=code)
-        print("[file_download]", file=code)
-        print("download_nfo = " + str(json_config['download_nfo']), file=code)
-        print("download_poster = " + str(json_config['download_poster']), file=code)
-        print("download_thumb = " + str(json_config['download_thumb']), file=code)
-        print("download_fanart = " + str(json_config['download_fanart']), file=code)
-        print("download_extrafanart = " + str(json_config['download_extrafanart']), file=code)
-        print("download_extrafanart_copy = " + str(json_config['download_extrafanart_copy']), file=code)
-        print("keep_local_nfo = " + str(json_config['keep_local_nfo']), file=code)
-        print("keep_local_poster = " + str(json_config['keep_local_poster']), file=code)
-        print("keep_local_thumb = " + str(json_config['keep_local_thumb']), file=code)
-        print("keep_local_fanart = " + str(json_config['keep_local_fanart']), file=code)
-        print("keep_local_extrafanart = " + str(json_config['keep_local_extrafanart']), file=code)
-        print("keep_local_extrafanart_copy = " + str(json_config['keep_local_extrafanart_copy']), file=code)
-        print("poster_from = " + str(json_config['poster_from']), file=code)
-        print("# poster_from: auto, download", file=code)
-        print("", file=code)
-        print("[update]", file=code)
-        print("update_check = " + str(json_config['update_check']), file=code)
-        print("", file=code)
-        print("[debug_mode]", file=code)
-        print("switch = " + str(json_config['switch_debug']), file=code)
-        print("", file=code)
-        print("[log]", file=code)
-        print("save_log = " + str(json_config['save_log']), file=code)
-
-    code.close()
-    print('config.ini save done!')
-
-
 def check_pic(path_pic):
     if os.path.exists(path_pic):
         try:
@@ -657,4 +590,3 @@ def check_pic(path_pic):
                 pass
             # print('文件损坏')
     return False
-
