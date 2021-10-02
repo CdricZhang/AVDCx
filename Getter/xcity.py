@@ -1,14 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import sys
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import re
 from lxml import etree
 import json
 from Function.getHtml import get_html
 import Function.config as cf
 import urllib3
-urllib3.disable_warnings()
+urllib3.disable_warnings()  # yapf: disable
 
 
 def getTitle(html):
@@ -31,8 +31,7 @@ def getWebNumber(html):
 
 def getActor(html):
     try:
-        result = str(html.xpath(
-            '//li[@class="credit-links"]/a/text()')).strip("['']").replace("'", '')
+        result = str(html.xpath('//li[@class="credit-links"]/a/text()')).strip("['']").replace("'", '')
     except:
         result = ''
     return result
@@ -67,9 +66,8 @@ def getOutline(html):
 
 
 def getRelease(html):
-    result = html.xpath(
-        '//li/span[@class="koumoku" and (contains(text(), "発売日"))]/../text()')
-    result = re.findall('[\d]+/[\d]+/[\d]+', str(result))
+    result = html.xpath('//li/span[@class="koumoku" and (contains(text(), "発売日"))]/../text()')
+    result = re.findall(r'[\d]+/[\d]+/[\d]+', str(result))
     if result:
         result = result[0].replace('/', '-')
     else:
@@ -79,7 +77,7 @@ def getRelease(html):
 
 def getYear(release):
     try:
-        result = str(re.search('\d{4}', release).group())
+        result = str(re.search(r'\d{4}', release).group())
         return result
     except:
         return release[:4]
@@ -88,8 +86,7 @@ def getYear(release):
 def getTag(html):
     result = html.xpath('//a[@class="genre"]/text()')
     if result:
-        result = str(result).strip(" ['']").replace("'", "").replace(
-            ', ', ',').replace('\\n', '').replace('\\t', '')
+        result = str(result).strip(" ['']").replace("'", "").replace(', ', ',').replace('\\n', '').replace('\\t', '')
     else:
         result = ''
     return result
@@ -114,9 +111,8 @@ def getPublisher(html):
 
 
 def getRuntime(html):
-    result = str(html.xpath(
-        '//span[@class="koumoku"][contains(text(), "収録時間")]/../text()'))
-    result = re.findall('[\d]+', result)
+    result = str(html.xpath('//span[@class="koumoku"][contains(text(), "収録時間")]/../text()'))
+    result = re.findall(r'[\d]+', result)
     if result:
         result = result[0].strip()
     else:
@@ -136,8 +132,7 @@ def getDirector(html):
 def getExtrafanart(html):
     result = html.xpath('//a[contains(@class, "thumb")]/@href')
     if result:
-        result = str(result).replace('//faws.xcity.jp/scene/small/',
-                                     'https://faws.xcity.jp/').strip(' []').replace("'", '').replace(', ', ',')
+        result = str(result).replace('//faws.xcity.jp/scene/small/', 'https://faws.xcity.jp/').strip(' []').replace("'", '').replace(', ', ',')
         result = result.split(',')
     else:
         result = ''
@@ -213,25 +208,23 @@ def main(number, appoint_url='', log_info='', req_web=''):
             try:
                 result, html_content = get_html(real_url)
             except Exception as error_info:
-                log_info += '   >>> xcity-请求详情页：出错！错误信息：%s \n' % str(
-                    error_info)
+                log_info += '   >>> xcity-请求详情页：出错！错误信息：%s \n' % str(error_info)
                 error_type = 'timeout'
-                raise Exception('>>> xcity-请求详情页：出错！错误信息：%s \n' %
-                                str(error_info))
+                raise Exception('>>> xcity-请求详情页：出错！错误信息：%s \n' % str(error_info))
             html_info = etree.fromstring(html_content, etree.HTMLParser())
 
-            title = getTitle(html_info)  # 获取标题
+            title = getTitle(html_info)                                        # 获取标题
             if not title:
                 log_info += '   >>> xcity-title 获取失败！ \n'
                 error_type = 'xcity-title 获取失败！'
                 raise Exception('xcity-title 获取失败!')
-            web_number = getWebNumber(html_info)    # 获取番号，用来替换标题里的番号
+            web_number = getWebNumber(html_info)                               # 获取番号，用来替换标题里的番号
             title = title.replace(' %s' % web_number, '').strip()
-            actor = getActor(html_info)  # 获取actor
+            actor = getActor(html_info)                                        # 获取actor
             actor_photo = getActorPhoto(actor)
             if del_actor_name:
                 title = title.replace(' ' + actor, '')
-            cover_url = getCover(html_info)  # 获取cover
+            cover_url = getCover(html_info)                                    # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> xcity-cover url 获取失败！ \n'
                 error_type = 'Cover Url is None!'
@@ -281,8 +274,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 log_info += '   >>> xcity-数据获取成功！\n'
                 dic['log_info'] = log_info
             except Exception as error_info:
-                log_info += '   >>> xcity-生成数据字典：出错！ 错误信息：%s\n' % str(
-                    error_info)
+                log_info += '   >>> xcity-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
                 error_info = str(error_info)
                 raise Exception(log_info)
 
@@ -296,8 +288,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'))  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':')) # .encode('UTF-8')
     return js
 
 

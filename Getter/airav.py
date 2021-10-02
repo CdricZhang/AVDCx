@@ -1,17 +1,16 @@
-import sys  # NOQA: E402
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import re
 from lxml import etree
 import json
 from Function.getHtml import get_html
 import Function.config as cf
 import urllib3
-urllib3.disable_warnings()
+urllib3.disable_warnings()  # yapf: disable
 
 
 def getWebNumber(html):
-    result = html.xpath(
-        '//h5[@class=" d-none d-md-block text-primary mb-3"]/text()')
+    result = html.xpath('//h5[@class=" d-none d-md-block text-primary mb-3"]/text()')
     if result:
         result = result[0].strip()
     else:
@@ -20,15 +19,13 @@ def getWebNumber(html):
 
 
 def getTitle(html):
-    result = str(html.xpath(
-        '//h5[@class=" d-none d-md-block"]/text()')).strip(" ['']")
+    result = str(html.xpath('//h5[@class=" d-none d-md-block"]/text()')).strip(" ['']")
     return result
 
 
 def getActor(html):
     try:
-        result = str(html.xpath(
-            '//li[@class="videoAvstarListItem"]/a/text()')).strip("['']").replace("'", '')
+        result = str(html.xpath('//li[@class="videoAvstarListItem"]/a/text()')).strip("['']").replace("'", '')
     except:
         result = ''
     return result
@@ -44,35 +41,31 @@ def getActorPhoto(actor):
 
 
 def getStudio(html):
-    result = str(html.xpath(
-        '//a[contains(@href,"video_factory")]/text()')).strip(" ['']")
+    result = str(html.xpath('//a[contains(@href,"video_factory")]/text()')).strip(" ['']")
     return result
 
 
 def getRelease(html):
-    result = str(html.xpath(
-        '//ul[@class="list-unstyled pl-2 "]/li/text()')[-1]).strip(" ['']")
+    result = str(html.xpath('//ul[@class="list-unstyled pl-2 "]/li/text()')[-1]).strip(" ['']")
     return result
 
 
 def getYear(getRelease):
     try:
-        result = str(re.search('\d{4}', getRelease).group())
+        result = str(re.search(r'\d{4}', getRelease).group())
         return result
     except:
         return getRelease
 
 
 def getTag(html):
-    result = str(html.xpath(
-        '//div[@class="tagBtnMargin"]/a/text()')).strip(" ['']").replace("'", "")
+    result = str(html.xpath('//div[@class="tagBtnMargin"]/a/text()')).strip(" ['']").replace("'", "")
     return result
 
 
 def getCover(html):
     try:
-        result = str(html.xpath(
-            '//div[@class="videoPlayerMobile d-none "]/div/img/@src')[0]).strip(" ['']")
+        result = str(html.xpath('//div[@class="videoPlayerMobile d-none "]/div/img/@src')[0]).strip(" ['']")
     except:
         result = ''
     return result
@@ -80,15 +73,13 @@ def getCover(html):
 
 def getOutline(html, translate_language, real_url):
     if translate_language == 'zh_cn':
-        real_url = real_url.replace(
-            'cn.airav.wiki', 'www.airav.wiki').replace('zh-CN', 'zh-TW')
+        real_url = real_url.replace('cn.airav.wiki', 'www.airav.wiki').replace('zh-CN', 'zh-TW')
         try:
             result, html_content = get_html(real_url)
-        except Exception as error_info:
+        except:
             pass
         html = etree.fromstring(html_content, etree.HTMLParser())
-    result = str(html.xpath(
-        '//div[@class="synopsis"]/p/text()')).strip(" ['']")
+    result = str(html.xpath('//div[@class="synopsis"]/p/text()')).strip(" ['']")
     return result
 
 
@@ -98,7 +89,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     config = cf.get_config()
     del_actor_name = config.get('del_actor_name')
     number = number.upper()
-    if re.match('N\d{4}', number):  # n1403
+    if re.match(r'N\d{4}', number):                                            # n1403
         number = number.lower()
     real_url = appoint_url
     cover_url = ''
@@ -118,11 +109,13 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
         airav_url = 'https://jp.airav.wiki'
         airav_lan = '?lng=jp'
 
-    try:  # 捕获主动抛出的异常
+    try:                                                                       # 捕获主动抛出的异常
         if not real_url:
+
             # 通过搜索获取real_url
             url_search = airav_url + '/?search=' + number
             log_info += '   >>> AIRAV-生成搜索页地址: %s \n' % url_search
+
             # ========================================================================搜索番号
             result, html_search = get_html(url_search)
             if not result:
@@ -130,8 +123,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 error_type = 'timeout'
                 raise Exception('>>> AIRAV-请求搜索页：错误！信息：' + html_search)
             html = etree.fromstring(html_search, etree.HTMLParser())
-            real_url = html.xpath(
-                "//div[@class='coverImageBox']/img[@class='img-fluid video-item coverImage' and contains(@alt, $number1) and not(contains(@alt, '克破'))]/../../@href", number1=number)
+            real_url = html.xpath("//div[@class='coverImageBox']/img[@class='img-fluid video-item coverImage' and contains(@alt, $number1) and not(contains(@alt, '克破'))]/../../@href", number1=number)
 
             if real_url:
                 real_url = airav_url + real_url[0] + airav_lan
@@ -145,24 +137,22 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             try:
                 result, html_content = get_html(real_url)
             except Exception as error_info:
-                log_info += '   >>> AIRAV-请求详情页：出错！错误信息：%s \n' % str(
-                    error_info)
+                log_info += '   >>> AIRAV-请求详情页：出错！错误信息：%s \n' % str(error_info)
                 error_type = 'timeout'
-                raise Exception('>>> AIRAV-请求详情页：出错！错误信息：%s \n' %
-                                str(error_info))
+                raise Exception('>>> AIRAV-请求详情页：出错！错误信息：%s \n' % str(error_info))
             html_info = etree.fromstring(html_content, etree.HTMLParser())
-            title = getTitle(html_info)  # 获取标题
+            title = getTitle(html_info)                                        # 获取标题
             if not title:
                 log_info += '   >>> AIRAV- title 获取失败！ \n'
                 error_type = 'AIRAV - title 获取失败！'
                 raise Exception('>>> AIRAV- title 获取失败!')
-            web_number = getWebNumber(html_info)    # 获取番号，用来替换标题里的番号
+            web_number = getWebNumber(html_info)                               # 获取番号，用来替换标题里的番号
             title = title.replace(web_number, '').strip()
-            actor = getActor(html_info)  # 获取actor
+            actor = getActor(html_info)                                        # 获取actor
             actor_photo = getActorPhoto(actor)
             if del_actor_name:
                 title = title.replace(' ' + actor, '')
-            cover_url = getCover(html_info)  # 获取cover
+            cover_url = getCover(html_info)                                    # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> AIRAV- cover url 获取失败！ \n'
                 error_type = 'Cover Url is None!'
@@ -214,8 +204,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 log_info += '   >>> AIRAV-数据获取成功！\n'
                 dic['log_info'] = log_info
             except Exception as error_info:
-                log_info += '   >>> AIRAV-生成数据字典：出错！ 错误信息：%s \n' % str(
-                    error_info)
+                log_info += '   >>> AIRAV-生成数据字典：出错！ 错误信息：%s \n' % str(error_info)
                 error_info = str(error_info)
                 raise Exception(log_info)
 
@@ -229,8 +218,13 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(
+        dic,
+        ensure_ascii=False,
+        sort_keys=False,
+        indent=4,
+        separators=(',', ':'),
+    )                                                                          # .encode('UTF-8')
     return js
 
 

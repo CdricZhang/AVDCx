@@ -1,5 +1,5 @@
-import sys
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import json
 from Getter import iqqtv
 import Function.config as cf
@@ -20,12 +20,16 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     info_output = config.get('info_output')
     del_actor_name = config.get('del_actor_name')
 
-    appoint_url = appoint_url.replace(
-        '/cn/', '/jp/').replace('iqqtv.cloud/player', 'iqqtv.cloud/jp/player')
-    json_data = json.loads(iqqtv.main(
-        number, appoint_url, translate_language='jp'))
+    appoint_url = appoint_url.replace('/cn/', '/jp/').replace('iqqtv.cloud/player', 'iqqtv.cloud/jp/player')
+    json_data = json.loads(iqqtv.main(number, appoint_url, translate_language='jp'))
     if not getDataState(json_data):
-        return json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )
+        return json.dumps(
+            json_data,
+            ensure_ascii=False,
+            sort_keys=False,
+            indent=4,
+            separators=(',', ':'),
+        )
     if translate_language != 'ja':
         if translate_language == 'zh_cn':
             appoint_url = json_data['website'].replace('/jp/', '/cn/')
@@ -33,8 +37,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             appoint_url = json_data['website'].replace('/jp/', '/')
         log_info = json_data['log_info']
         req_web = json_data['req_web']
-        json_data_zh = json.loads(iqqtv.main(
-            number, appoint_url, translate_language, log_info, req_web))
+        json_data_zh = json.loads(iqqtv.main(number, appoint_url, translate_language, log_info, req_web))
         if getDataState(json_data_zh):
             json_data['req_web'] = json_data_zh['req_web']
             json_data['website'] = json_data_zh['website']
@@ -42,8 +45,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 json_data['title'] = json_data_zh['title']
                 if del_actor_name:
                     actor = ' ' + json_data['actor']
-                    json_data['title'] = json_data['title'].replace(
-                        actor, '').strip(' ')
+                    json_data['title'] = json_data['title'].replace(actor, '').strip(' ')
             if 'outline' in translate_content:
                 json_data['outline'] = json_data_zh['outline']
             if actor_output != 'ja':
@@ -51,8 +53,13 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             if info_output != 'ja':
                 json_data['tag'] = json_data_zh['tag']
 
-    js = json.dumps(json_data, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(
+        json_data,
+        ensure_ascii=False,
+        sort_keys=False,
+        indent=4,
+        separators=(',', ':'),
+    )                                                                          # .encode('UTF-8')
     return js
 
 

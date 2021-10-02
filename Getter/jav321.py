@@ -1,5 +1,5 @@
-import sys
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import re
 from lxml import etree
 import json
@@ -24,15 +24,13 @@ def getActor(response):
     if re.search(r'<a href="/star/\S+">(\S+)</a> &nbsp;', response):
         return str(re.findall(r'<a href="/star/\S+">(\S+)</a> &nbsp;', response)).strip(" [',']").replace('\'', '')
     elif re.search(r'<a href="/heyzo_star/\S+">(\S+)</a> &nbsp;', response):
-        return str(re.findall(r'<a href="/heyzo_star/\S+">(\S+)</a> &nbsp;', response)).strip(" [',']").replace('\'',
-                                                                                                                '')
+        return str(re.findall(r'<a href="/heyzo_star/\S+">(\S+)</a> &nbsp;', response)).strip(" [',']").replace('\'', '')
     else:
         return str(re.findall(r'<b>出演者</b>: ([^<]+) &nbsp; <br>', response)).strip(" [',']").replace('\'', '')
 
 
 def getStudio(html):
-    result = str(html.xpath(
-        '//div[@class="col-md-9"]/a[contains(@href,"/company/")]/text()')).strip(" ['']")
+    result = str(html.xpath('//div[@class="col-md-9"]/a[contains(@href,"/company/")]/text()')).strip(" ['']")
     return result
 
 
@@ -41,8 +39,7 @@ def getRuntime(response):
 
 
 def getSeries(html):
-    result = str(html.xpath(
-        '//div[@class="col-md-9"]/a[contains(@href,"/series/")]/text()')).strip(" ['']")
+    result = str(html.xpath('//div[@class="col-md-9"]/a[contains(@href,"/series/")]/text()')).strip(" ['']")
     return result
 
 
@@ -56,8 +53,7 @@ def getNum(response):
 
 def getScore(response):
     if re.search(r'<b>平均評価</b>: <img data-original="/img/(\d+).gif" />', response):
-        score = re.findall(
-            r'<b>平均評価</b>: <img data-original="/img/(\d+).gif" />', response)[0]
+        score = re.findall(r'<b>平均評価</b>: <img data-original="/img/(\d+).gif" />', response)[0]
         return str(float(score) / 10.0)
     else:
         return str(re.findall(r'<b>平均評価</b>: ([^<]+)<br>', response)).strip(" [',']").replace('\'', '')
@@ -65,7 +61,7 @@ def getScore(response):
 
 def getYear(release):
     try:
-        result = str(re.search('\d{4}', release).group())
+        result = str(re.search(r'\d{4}', release).group())
         return result
     except:
         return release
@@ -76,17 +72,14 @@ def getRelease(response):
 
 
 def getCover(detail_page):
-    cover_url = str(detail_page.xpath("/html/body/div[@class='row'][2]/div[@class='col-md-3']/div[@class='col-xs-12 "
-                                      "col-md-12'][1]/p/a/img[@class='img-responsive']/@src")).strip(" ['']")
+    cover_url = str(detail_page.xpath("/html/body/div[@class='row'][2]/div[@class='col-md-3']/div[@class='col-xs-12 " "col-md-12'][1]/p/a/img[@class='img-responsive']/@src")).strip(" ['']")
     if cover_url == '':
-        cover_url = str(
-            detail_page.xpath("//*[@id='vjs_sample_player']/@poster")).strip(" ['']")
+        cover_url = str(detail_page.xpath("//*[@id='vjs_sample_player']/@poster")).strip(" ['']")
     return cover_url
 
 
 def getExtraFanart(htmlcode):
-    extrafanart_list = htmlcode.xpath(
-        "/html/body/div[@class='row'][2]/div[@class='col-md-3']/div[@class='col-xs-12 col-md-12']/p/a/img[@class='img-responsive']/@src")
+    extrafanart_list = htmlcode.xpath("/html/body/div[@class='row'][2]/div[@class='col-md-3']/div[@class='col-xs-12 col-md-12']/p/a/img[@class='img-responsive']/@src")
     return extrafanart_list
 
 
@@ -94,7 +87,7 @@ def getCoverSmall(detail_page):
     return str(detail_page.xpath('//img[@class="img-responsive"]/@src')[0])
 
 
-def getTag(response):  # 获取演员
+def getTag(response):                                                          # 获取演员
     return re.findall(r'<a href="/genre/\S+">(\S+)</a>', response)
 
 
@@ -130,12 +123,12 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
         detail_page = etree.fromstring(response, etree.HTMLParser())
         actor = getActor(response)
         actor_photo = getActorPhoto(actor)
-        title = getTitle(response).strip()  # 获取标题
+        title = getTitle(response).strip()                                     # 获取标题
         if not title:
             log_info += '   >>> JAV321- title 获取失败！ \n'
             error_type = 'need login'
             raise Exception('>>> JAV321- title 获取失败！]')
-        cover_url = getCover(detail_page)  # 获取cover
+        cover_url = getCover(detail_page)                                      # 获取cover
         cover_small_url = getCoverSmall(detail_page)
         if not cover_url:
             cover_url = cover_small_url
@@ -158,8 +151,10 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
         extrafanart = getExtraFanart(detail_page)
         website = getWebsite(detail_page)
         # 判断无码
-        uncensorted_list = ['一本道', 'HEYZO', 'サムライポルノ', 'キャットウォーク', 'サイクロン', 'ルチャリブレ', 'スーパーモデルメディア', 'スタジオテリヤキ', 'レッドホットコレクション', 'スカイハイエンターテインメント', '小天狗', 'オリエンタルドリーム', 'Climax Zipang', 'CATCHEYE', 'ファイブスター', 'アジアンアイズ',
-                            'ゴリラ', 'ラフォーレ ガール', 'MIKADO', 'ムゲンエンターテインメント', 'ツバキハウス', 'ザーメン二郎', 'トラトラトラ', 'メルシーボークー', '神風', 'Queen 8', 'SASUKE', 'ファンタドリーム', 'マツエンターテインメント', 'ピンクパンチャー', 'ワンピース', 'ゴールデンドラゴン', 'Tokyo Hot', 'Caribbean']
+        uncensorted_list = [
+            '一本道', 'HEYZO', 'サムライポルノ', 'キャットウォーク', 'サイクロン', 'ルチャリブレ', 'スーパーモデルメディア', 'スタジオテリヤキ', 'レッドホットコレクション', 'スカイハイエンターテインメント', '小天狗', 'オリエンタルドリーム', 'Climax Zipang', 'CATCHEYE', 'ファイブスター', 'アジアンアイズ', 'ゴリラ', 'ラフォーレ ガール', 'MIKADO', 'ムゲンエンターテインメント', 'ツバキハウス', 'ザーメン二郎', 'トラトラトラ', 'メルシーボークー', '神風', 'Queen 8', 'SASUKE', 'ファンタドリーム', 'マツエンターテインメント', 'ピンクパンチャー', 'ワンピース', 'ゴールデンドラゴン', 'Tokyo Hot',
+            'Caribbean'
+        ]
         for each in uncensorted_list:
             if each == studio:
                 mosaic = '无码'
@@ -211,8 +206,13 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(
+        dic,
+        ensure_ascii=False,
+        sort_keys=False,
+        indent=4,
+        separators=(',', ':'),
+    )                                                                          # .encode('UTF-8')
     return js
 
 

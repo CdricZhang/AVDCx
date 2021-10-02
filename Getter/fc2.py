@@ -1,14 +1,14 @@
-import sys  # NOQA: E402
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import re
 from lxml import etree
 import json
 from Function.getHtml import get_html
 import urllib3
-urllib3.disable_warnings()
+urllib3.disable_warnings()  # yapf: disable
 
 
-def getTitle(html):  # 获取标题
+def getTitle(html):                                                            # 获取标题
     result = html.xpath('//h3/text()')
     if result:
         result = result[0]
@@ -17,9 +17,8 @@ def getTitle(html):  # 获取标题
     return result
 
 
-def getCover(html):  # 获取封面
-    extrafanart = html.xpath(
-        '//ul[@class="items_article_SampleImagesArea"]/li/a/@href')
+def getCover(html):                                                            # 获取封面
+    extrafanart = html.xpath('//ul[@class="items_article_SampleImagesArea"]/li/a/@href')
     if extrafanart:
         result = extrafanart[0]
     else:
@@ -27,9 +26,8 @@ def getCover(html):  # 获取封面
     return result, extrafanart
 
 
-def getCoverSmall(html):  # 获取小图
-    result = html.xpath(
-        '//div[@class="items_article_MainitemThumb"]/span/img/@src')
+def getCoverSmall(html):                                                       # 获取小图
+    result = html.xpath('//div[@class="items_article_MainitemThumb"]/span/img/@src')
     if result:
         result = 'https:' + result[0]
     else:
@@ -39,7 +37,7 @@ def getCoverSmall(html):  # 获取小图
 
 def getRelease(html):
     result = html.xpath('//div[@class="items_article_Releasedate"]/p/text()')
-    result = re.findall('\d+/\d+/\d+', str(result))
+    result = re.findall(r'\d+/\d+/\d+', str(result))
     if result:
         result = result[0].replace('/', '-')
     else:
@@ -47,9 +45,8 @@ def getRelease(html):
     return result
 
 
-def getStudio(html):  # 使用卖家作为厂家
-    result = html.xpath(
-        '//div[@class="items_article_headerInfo"]/ul/li[last()]/a/text()')
+def getStudio(html):                                                           # 使用卖家作为厂家
+    result = html.xpath('//div[@class="items_article_headerInfo"]/ul/li[last()]/a/text()')
     if result:
         result = result[0].strip()
     else:
@@ -57,13 +54,13 @@ def getStudio(html):  # 使用卖家作为厂家
     return result
 
 
-def getTag(html):  # 获取标签
+def getTag(html):                                                              # 获取标签
     result = html.xpath('//a[@class="tag tagTag"]/text()')
     result = str(result).strip(" ['']").replace("', '", ",")
     return result
 
 
-def getOutline(html):  # 获取简介
+def getOutline(html):                                                          # 获取简介
     result = html.xpath('//meta[@name="description"]/@content')
     if result:
         result = result[0]
@@ -72,7 +69,7 @@ def getOutline(html):  # 获取简介
     return result
 
 
-def getMosaic(tag, title):  # 获取马赛克
+def getMosaic(tag, title):                                                     # 获取马赛克
     if '無修正' in tag or '無修正' in title:
         result = '无码'
     else:
@@ -91,14 +88,15 @@ def main(number, appoint_url='', log_info='', req_web=''):
     image_cut = 'center'
     error_type = ''
     error_info = ''
-    number = number.upper().replace('FC2PPV', '').replace(
-        'FC2-PPV-', '').replace('FC2-', '').replace('-', '').strip()
+    number = number.upper().replace('FC2PPV', '').replace('FC2-PPV-', '').replace('FC2-', '').replace('-', '').strip()
     dic = {}
-    try:  # 捕获主动抛出的异常
+    try:                                                                       # 捕获主动抛出的异常
         if not real_url:
+
             # 通过搜索获取real_url
             real_url = 'https://adult.contents.fc2.com/article/%s/' % number
         log_info += '   >>> FC2.COM-请求详情页地址: %s \n' % real_url
+
         # ========================================================================搜索番号
         result, html_content = get_html(real_url)
         # with open('11.txt', 'wt') as f:
@@ -109,13 +107,13 @@ def main(number, appoint_url='', log_info='', req_web=''):
             raise Exception('FC2.COM-请求详情页：错误！信息：' + html_content)
         html_info = etree.fromstring(html_content, etree.HTMLParser())
 
-        title = getTitle(html_info)  # 获取标题
+        title = getTitle(html_info)                                            # 获取标题
         if 'お探しの商品が見つかりません' in title:
             log_info += '   >>> FC2.COM-找不到该番号数据！\n'
             error_type = '找不到该番号数据'
             raise Exception('FC2.COM-找不到该番号数据！')
 
-        cover_url, extrafanart = getCover(html_info)  # 获取cover,extrafanart
+        cover_url, extrafanart = getCover(html_info)                           # 获取cover,extrafanart
         if 'http' not in cover_url:
             log_info += '   >>> FC2.COM-cover url is none!\n'
             error_type = 'Cover Url is None!'
@@ -125,7 +123,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
         outline = getOutline(html_info)
         tag = getTag(html_info)
         release = getRelease(html_info)
-        studio = getStudio(html_info)  # 使用卖家作为厂商
+        studio = getStudio(html_info)                                          # 使用卖家作为厂商
         mosaic = getMosaic(tag, title)
         tag = tag.replace('無修正,', '').replace('無修正', '').strip(',')
         try:
@@ -145,7 +143,9 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 'publisher': studio,
                 'source': 'fc2',
                 'website': real_url,
-                'actor_photo': {studio: ''},
+                'actor_photo': {
+                    studio: ''
+                },
                 'cover': cover_url,
                 'cover_small': cover_small_url,
                 'extrafanart': extrafanart,
@@ -160,8 +160,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
             log_info += '   >>> FC2.COM-数据获取成功！\n'
             dic['log_info'] = log_info
         except Exception as error_info:
-            log_info += '   >>> FC2.COM-生成数据字典：出错！ 错误信息：%s \n' % str(
-                error_info)
+            log_info += '   >>> FC2.COM-生成数据字典：出错！ 错误信息：%s \n' % str(error_info)
             error_info = str(error_info)
             raise Exception(log_info)
     except Exception as error_info:
@@ -174,12 +173,18 @@ def main(number, appoint_url='', log_info='', req_web=''):
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'), )
+    js = json.dumps(
+        dic,
+        ensure_ascii=False,
+        sort_keys=False,
+        indent=4,
+        separators=(',', ':'),
+    )
     return js
 
 
 if __name__ == '__main__':
+    # yapf: disable
     print(main('1723984', ''))  # 有码
     # print(main('1924776', ''))
     # print(main('1860858', ''))

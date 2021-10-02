@@ -1,13 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import sys  # NOQA: E402
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import re
 from lxml import etree
 import json
 from Function.getHtml import get_html
 import urllib3
-urllib3.disable_warnings()
+urllib3.disable_warnings()  # yapf: disable
 
 
 def getTitle(html):
@@ -23,8 +23,7 @@ def getTitle(html):
 
 
 def getActor(html):
-    result = str(html.xpath("//span[@id='performer']/a/text()")).strip(" ['']").replace(
-        "', '", ',')
+    result = str(html.xpath("//span[@id='performer']/a/text()")).strip(" ['']").replace("', '", ',')
     return result
 
 
@@ -45,24 +44,21 @@ def getStudio(html):
 
 
 def getRuntime(html):
-    result = html.xpath(
-        "//td[contains(text(),'収録時間')]/following-sibling::td/text()")
+    result = html.xpath("//td[contains(text(),'収録時間')]/following-sibling::td/text()")
     if result:
-        return re.search('\d+', str(result[0])).group()
+        return re.search(r'\d+', str(result[0])).group()
     return ''
 
 
 def getSeries(html):
-    result = html.xpath(
-        "//td[contains(text(),'シリーズ：')]/following-sibling::td/a/text()")
+    result = html.xpath("//td[contains(text(),'シリーズ：')]/following-sibling::td/a/text()")
     if result:
         return result[0]
     return ''
 
 
 def getNum(html):
-    result = html.xpath(
-        "//td[contains(text(),'品番：')]/following-sibling::td/text()")
+    result = html.xpath("//td[contains(text(),'品番：')]/following-sibling::td/text()")
     if result:
         return result[0]
     return ''
@@ -70,23 +66,21 @@ def getNum(html):
 
 def getYear(release):
     try:
-        result = str(re.search('\d{4}', release).group())
+        result = str(re.search(r'\d{4}', release).group())
         return result
     except:
         return release[:4]
 
 
 def getRelease(html):
-    result = html.xpath(
-        "//td[contains(text(),'発売日：')]/following-sibling::td/text()")
+    result = html.xpath("//td[contains(text(),'発売日：')]/following-sibling::td/text()")
     if result:
         return result[0].lstrip('\n')
     return ''
 
 
 def getTag(html):
-    result = str(html.xpath(
-        "//td[contains(text(),'ジャンル：')]/following-sibling::td/a/text()"))
+    result = str(html.xpath("//td[contains(text(),'ジャンル：')]/following-sibling::td/a/text()"))
     if result:
         return str(result).strip(" ['']").replace("', '", ",")
     return ''
@@ -114,8 +108,7 @@ def getExtraFanart(html):
 
 
 def getDirector(html):
-    result = html.xpath(
-        "//td[contains(text(),'監督：')]/following-sibling::td/a/text()")
+    result = html.xpath("//td[contains(text(),'監督：')]/following-sibling::td/a/text()")
     if result:
         return result[0]
     return ''
@@ -123,8 +116,7 @@ def getDirector(html):
 
 def getOutline(html):
     result1 = html.xpath("//div[@class='mg-b20 lh4']/text()")
-    result2 = html.xpath(
-        "//div[@class='mg-b20 lh4']/p[@class='mg-b20']/text()")
+    result2 = html.xpath("//div[@class='mg-b20 lh4']/p[@class='mg-b20']/text()")
     a = ''
     b = ''
     if result1:
@@ -158,19 +150,18 @@ def main(number, appoint_url='', log_info='', req_web=''):
     num1 = '/cid=' + new_number + '/'
     num2 = new_number + '/'
 
-    if appoint_url:  # 如果传入地址，则使用传入的地址
+    if appoint_url:                                                            # 如果传入地址，则使用传入的地址
         url = appoint_url
     try:
         result, htmlcode = get_html(url, cookies=cookies)
-        # 对各种错误、限制进行判断
-        if not result:  # 请求失败
-            error_type = 'request error'  # error_type 只是标记失败，内容暂不展示，可随便写
-            error_info = '[ DMM ] 请求URL：%s 出现错误：%s' % (
-                url, htmlcode)   # error_info 在主界面标题位置展示
-            # log_info 在日志页面展示
+                                                                               # 对各种错误、限制进行判断
+        if not result:                                                         # 请求失败
+            error_type = 'request error'                                       # error_type 只是标记失败，内容暂不展示，可随便写
+            error_info = '[ DMM ] 请求URL：%s 出现错误：%s' % (url, htmlcode)          # error_info 在主界面标题位置展示
+                                                                               # log_info 在日志页面展示
             log_info += '   >>> [ DMM ] 请求URL：%s 出现错误：%s\n' % (url, htmlcode)
             raise
-        if re.findall('foreignError', htmlcode):    # 非日本地区限制访问
+        if re.findall('foreignError', htmlcode):                               # 非日本地区限制访问
             error_type = 'area error'
             error_info = '[ DMM ] 地域限制, 请使用日本节点访问！'
             log_info += '   >>> [ DMM ] 地域限制, 请使用日本节点访问！\n'
@@ -184,26 +175,25 @@ def main(number, appoint_url='', log_info='', req_web=''):
             # 优先匹配'/cid=snis126/'这样链接的，图上面没有蓝光水印
             url1 = html.xpath("//a[contains(@href, $val)]/@href", val=num1)
             # /cid=6snis027/ 如果链接中包含detail和number，则表示找到了
-            url2 = html.xpath(
-                "//a[contains(@href, 'detail')][contains(@href, $val)]/@href", val=num2)
+            url2 = html.xpath("//a[contains(@href, 'detail')][contains(@href, $val)]/@href", val=num2)
 
             if url1:
                 url = url1[0]
             elif url2:
-                if re.search('cid=\d+[a-zA-Z]+\d+', url2[0]):
+                if re.search(r'cid=\d+[a-zA-Z]+\d+', url2[0]):
                     url = url2[0]
             if not url:
                 error_type = 'not found the movie'
                 error_info = '[ DMM ] 搜索页未匹配到番号！'
                 log_info += '   >>> [ DMM ] 搜索页未匹配到番号！\n'
                 raise
-            if url.find('?i3_ref=search&i3_ord') != -1:  # 去除url中无用的后缀
+            if url.find('?i3_ref=search&i3_ord') != -1:                        # 去除url中无用的后缀
                 url = url[:url.find('?i3_ref=search&i3_ord')]
             result, htmlcode = get_html(url, cookies=cookies)
             html = etree.fromstring(htmlcode, etree.HTMLParser())
 
         # 分析详情页
-        if re.findall('ageCheck', htmlcode):   # 年龄认证，表示无cookie或cookie失效
+        if re.findall('ageCheck', htmlcode):                                   # 年龄认证，表示无cookie或cookie失效
             if cookies['cookie']:
                 error_info = '[ DMM ] 年龄认证！需要重新设置cookie！'
                 log_info += '   >>> [ DMM ] 年龄认证！需要重新设置cookie！\n'
@@ -211,21 +201,21 @@ def main(number, appoint_url='', log_info='', req_web=''):
                 error_info = '[ DMM ] 年龄认证！请到【设置】-【网络设置】中添加 cookie！'
                 log_info += '   >>> [ DMM ] 年龄认证！请到【设置】-【网络设置】中添加 cookie！\n'
             raise
-        # 如果页面有404，表示传入的页面地址不对
+                                                                               # 如果页面有404，表示传入的页面地址不对
         if '404 Not Found' in str(html.xpath("//span[@class='d-txten']/text()")):
             error_type = 'detail page url error 404 not found!'
             error_info = '[ DMM ] 详情页地址不对！404 Not Found!'
             log_info += '   >>> [ DMM ] 详情页地址不对！404 Not Found！\n'
             raise
 
-        actor = getActor(html)  # 获取歌手
-        title = getTitle(html).strip()  # 获取标题（去掉标题最后的歌手名）
+        actor = getActor(html)                                                 # 获取歌手
+        title = getTitle(html).strip()                                         # 获取标题（去掉标题最后的歌手名）
         if not title:
             error_type = 'title data not found'
             error_info = '[ DMM ]  标题数据未匹配到！'
             log_info += '   >>> [ DMM ]  标题数据未匹配到！ \n'
             raise
-        cover_url = getCover(html)  # 获取cover
+        cover_url = getCover(html)                                             # 获取cover
         if not cover_url:
             error_type = 'cover URL not found'
             error_info += '[ DMM ]  cover URL 未匹配到！'
@@ -240,7 +230,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
             score = getScore(html)
             series = getSeries(html)
             director = getDirector(html)
-            # number = getNum(html)
+                                                                               # number = getNum(html)
             studio = getStudio(html)
             extrafanart = getExtraFanart(html)
             cover_small_url = getCoverSmall(html)
@@ -248,8 +238,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
         except Exception as error_info:
             error_type = 'error'
             error_info = '[ DMM ] 一些 data 在获取时出错！'
-            log_info += '   >>> [ DMM ] 一些 data 在获取时出错！！ %s\n' % str(
-                error_info)
+            log_info += '   >>> [ DMM ] 一些 data 在获取时出错！！ %s\n' % str(error_info)
             raise
         try:
             dic = {
@@ -298,8 +287,7 @@ def main(number, appoint_url='', log_info='', req_web=''):
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'))  # .encode('UTF-8')
+    js = json.dumps(dic, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':')) # .encode('UTF-8')
     return js
 
 

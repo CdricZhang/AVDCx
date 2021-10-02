@@ -1,5 +1,5 @@
-import sys  # NOQA: E402
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import json
 from Getter import airav
 import Function.config as cf
@@ -21,36 +21,35 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     del_actor_name = config.get('del_actor_name')
 
     if 'cn.airav.wiki' in appoint_url:
-        appoint_url = appoint_url.replace(
-            'cn.airav.wiki', 'jp.airav.wiki').replace('?lng=zh-CN', '') + '?lng=jp'
+        appoint_url = appoint_url.replace('cn.airav.wiki', 'jp.airav.wiki').replace('?lng=zh-CN', '') + '?lng=jp'
     elif 'www.airav.wiki' in appoint_url:
-        appoint_url = appoint_url.replace(
-            'www.airav.wiki', 'jp.airav.wiki').replace('?lng=zh-TW', '') + '?lng=jp'
+        appoint_url = appoint_url.replace('www.airav.wiki', 'jp.airav.wiki').replace('?lng=zh-TW', '') + '?lng=jp'
     elif 'jp.airav.wiki' in appoint_url:
         appoint_url = appoint_url.replace('?lng=jp', '') + '?lng=jp'
-    json_data = json.loads(airav.main(
-        number, appoint_url, translate_language='jp'))
+    json_data = json.loads(airav.main(number, appoint_url, translate_language='jp'))
     if not getDataState(json_data):
-        return json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )
+        return json.dumps(
+            json_data,
+            ensure_ascii=False,
+            sort_keys=False,
+            indent=4,
+            separators=(',', ':'),
+        )
     if translate_language != 'ja':
         if translate_language == 'zh_cn':
-            appoint_url = json_data['website'].replace(
-                'jp.airav.wiki', 'cn.airav.wiki').replace('?lng=jp', '?lng=zh-CN')
+            appoint_url = json_data['website'].replace('jp.airav.wiki', 'cn.airav.wiki').replace('?lng=jp', '?lng=zh-CN')
         else:
-            appoint_url = json_data['website'].replace(
-                'jp.airav.wiki', 'www.airav.wiki').replace('?lng=jp', '?lng=zh-TW')
+            appoint_url = json_data['website'].replace('jp.airav.wiki', 'www.airav.wiki').replace('?lng=jp', '?lng=zh-TW')
         log_info = json_data['log_info']
         req_web = json_data['req_web']
-        json_data_zh = json.loads(airav.main(
-            number, appoint_url, translate_language, log_info, req_web))
+        json_data_zh = json.loads(airav.main(number, appoint_url, translate_language, log_info, req_web))
         if getDataState(json_data_zh):
             json_data['req_web'] = json_data_zh['req_web']
             json_data['website'] = json_data_zh['website']
             if 'title' in translate_content:
                 json_data['title'] = json_data_zh['title']
                 if del_actor_name:
-                    json_data['title'] = json_data['title'].replace(
-                        ' ' + json_data['actor'], '').strip(' ')
+                    json_data['title'] = json_data['title'].replace(' ' + json_data['actor'], '').strip(' ')
             if 'outline' in translate_content:
                 json_data['outline'] = json_data_zh['outline']
             if actor_output != 'ja':
@@ -58,8 +57,13 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             if info_output != 'ja':
                 json_data['tag'] = json_data_zh['tag']
 
-    js = json.dumps(json_data, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(
+        json_data,
+        ensure_ascii=False,
+        sort_keys=False,
+        indent=4,
+        separators=(',', ':'),
+    )                                                                          # .encode('UTF-8')
     return js
 
 

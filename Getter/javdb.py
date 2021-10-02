@@ -1,18 +1,17 @@
-import sys
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import re
 from lxml import etree
 import json
 import cloudscraper
 import Function.config as cf
 import urllib3
-urllib3.disable_warnings()
+urllib3.disable_warnings()  # yapf: disable
 # import traceback
 
 
 def getNumber(html, number):
-    result = html.xpath(
-        '//a[@class="button is-white copy-to-clipboard"]/@data-clipboard-text')
+    result = html.xpath('//a[@class="button is-white copy-to-clipboard"]/@data-clipboard-text')
     if result:
         result = result[0]
     else:
@@ -22,18 +21,15 @@ def getNumber(html, number):
 
 def getTitle(html):
     try:
-        result = str(html.xpath(
-            '/html/body/section/div/h2/strong/text()')).strip(" ['']")
-        return re.sub('.*\] ', '', result.replace('/', ',').replace('\\xa0', '').replace(' : ', ''))
+        result = str(html.xpath('/html/body/section/div/h2/strong/text()')).strip(" ['']")
+        return re.sub(r'.*\] ', '', result.replace('/', ',').replace('\\xa0', '').replace(' : ', ''))
     except:
-        return re.sub('.*\] ', '', result.replace('/', ',').replace('\\xa0', ''))
+        return re.sub(r'.*\] ', '', result.replace('/', ',').replace('\\xa0', ''))
 
 
 def getActor(html):
-    actor_result = html.xpath(
-        '//div[@class="panel-block"]/strong[contains(text(), "演員:") or contains(text(), "Actor(s):")]/../span[@class="value"]/a/text()')
-    gender_result = html.xpath(
-        '//div[@class="panel-block"]/strong[contains(text(), "演員:") or contains(text(), "Actor(s):")]/../span[@class="value"]/strong/@class')
+    actor_result = html.xpath('//div[@class="panel-block"]/strong[contains(text(), "演員:") or contains(text(), "Actor(s):")]/../span[@class="value"]/a/text()')
+    gender_result = html.xpath('//div[@class="panel-block"]/strong[contains(text(), "演員:") or contains(text(), "Actor(s):")]/../span[@class="value"]/strong/@class')
     i = 0
     actor = ''
     for gender in gender_result:
@@ -55,89 +51,70 @@ def getActorPhoto(actor):
 
 
 def getStudio(html):
-    result1 = str(html.xpath(
-        '//strong[contains(text(),"片商:")]/../span/a/text()')).strip(" ['']")
-    result2 = str(html.xpath(
-        '//strong[contains(text(),"Maker:")]/../span/a/text()')).strip(" ['']")
+    result1 = str(html.xpath('//strong[contains(text(),"片商:")]/../span/a/text()')).strip(" ['']")
+    result2 = str(html.xpath('//strong[contains(text(),"Maker:")]/../span/a/text()')).strip(" ['']")
     return str(result1 + result2).strip('+').replace("', '", '').replace('"', '')
 
 
 def getPublisher(html):
-    result1 = str(html.xpath(
-        '//strong[contains(text(),"發行:")]/../span/a/text()')).strip(" ['']")
-    result2 = str(html.xpath(
-        '//strong[contains(text(),"Publisher:")]/../span/a/text()')).strip(" ['']")
+    result1 = str(html.xpath('//strong[contains(text(),"發行:")]/../span/a/text()')).strip(" ['']")
+    result2 = str(html.xpath('//strong[contains(text(),"Publisher:")]/../span/a/text()')).strip(" ['']")
     return str(result1 + result2).strip('+').replace("', '", '').replace('"', '')
 
 
 def getRuntime(html):
-    result1 = str(html.xpath(
-        '//strong[contains(text(),"時長")]/../span/text()')).strip(" ['']")
-    result2 = str(html.xpath(
-        '//strong[contains(text(),"Duration:")]/../span/text()')).strip(" ['']")
+    result1 = str(html.xpath('//strong[contains(text(),"時長")]/../span/text()')).strip(" ['']")
+    result2 = str(html.xpath('//strong[contains(text(),"Duration:")]/../span/text()')).strip(" ['']")
     return str(result1 + result2).replace(' 分鍾', '').replace(' minute(s)', '')
 
 
 def getSeries(html):
-    result1 = str(html.xpath(
-        '//strong[contains(text(),"系列:")]/../span/a/text()')).strip(" ['']")
-    result2 = str(html.xpath(
-        '//strong[contains(text(),"Series:")]/../span/a/text()')).strip(" ['']")
+    result1 = str(html.xpath('//strong[contains(text(),"系列:")]/../span/a/text()')).strip(" ['']")
+    result2 = str(html.xpath('//strong[contains(text(),"Series:")]/../span/a/text()')).strip(" ['']")
     return str(result1 + result2).strip('+').replace("', '", '').replace('"', '')
 
 
 def getRelease(html):
-    result1 = str(html.xpath(
-        '//strong[contains(text(),"日期:")]/../span/text()')).strip(" ['']")
-    result2 = str(html.xpath(
-        '//strong[contains(text(),"Released Date:")]/../span/text()')).strip(" ['']")
+    result1 = str(html.xpath('//strong[contains(text(),"日期:")]/../span/text()')).strip(" ['']")
+    result2 = str(html.xpath('//strong[contains(text(),"Released Date:")]/../span/text()')).strip(" ['']")
     return str(result1 + result2).strip('+')
 
 
 def getYear(getRelease):
     try:
-        result = str(re.search('\d{4}', getRelease).group())
+        result = str(re.search(r'\d{4}', getRelease).group())
         return result
     except:
         return getRelease
 
 
 def getTag(html):
-    result1 = str(html.xpath(
-        '//strong[contains(text(),"類別:")]/../span/a/text()')).strip(" ['']")
-    result2 = str(html.xpath(
-        '//strong[contains(text(),"Tags:")]/../span/a/text()')).strip(" ['']")
-    return str(result1 + result2).strip('+').replace(",\\xa0", "").replace("'", "").replace(' ', '').replace(',,',
-                                                                                                             '').lstrip(
-        ',')
+    result1 = str(html.xpath('//strong[contains(text(),"類別:")]/../span/a/text()')).strip(" ['']")
+    result2 = str(html.xpath('//strong[contains(text(),"Tags:")]/../span/a/text()')).strip(" ['']")
+    return str(result1 + result2).strip('+').replace(",\\xa0", "").replace("'", "").replace(' ', '').replace(',,', '').lstrip(',')
 
 
 def getCover(html):
     try:
-        result = str(html.xpath(
-            "//img[@class='video-cover']/@src")[0]).strip(" ['']")
+        result = str(html.xpath("//img[@class='video-cover']/@src")[0]).strip(" ['']")
     except:
         result = ''
     return result
 
 
-def getExtraFanart(html):  # 获取封面链接
-    extrafanart_list = html.xpath(
-        "//div[@class='tile-images preview-images']/a[@class='tile-item']/@href")
+def getExtraFanart(html):                                                      # 获取封面链接
+    extrafanart_list = html.xpath("//div[@class='tile-images preview-images']/a[@class='tile-item']/@href")
     return extrafanart_list
 
 
 def getDirector(html):
-    result1 = str(html.xpath(
-        '//strong[contains(text(),"導演:")]/../span/a/text()')).strip(" ['']")
-    result2 = str(html.xpath(
-        '//strong[contains(text(),"Director:")]/../span/a/text()')).strip(" ['']")
+    result1 = str(html.xpath('//strong[contains(text(),"導演:")]/../span/a/text()')).strip(" ['']")
+    result2 = str(html.xpath('//strong[contains(text(),"Director:")]/../span/a/text()')).strip(" ['']")
     return str(result1 + result2).strip('+').replace("', '", '').replace('"', '')
 
 
 def getScore(html):
-    result = str(html.xpath(
-        "//span[@class='score-stars']/../text()")).strip(" ['']")
+    result = str(html.xpath("//span[@class='score-stars']/../text()")).strip(" ['']")
     try:
         score = re.findall(r'(\d{1}\..+)分', result)
         if score:
@@ -157,18 +134,17 @@ def getMosaic(title, isuncensored):
     return mosaic
 
 
-def getRealUrl(html, number):  # 获取详情页链接
+def getRealUrl(html, number):                                                  # 获取详情页链接
     url_list = html.xpath("//a[@class='box']/@href")
     if '.' in number:
-        old_date = re.findall('\.\d+\.\d+\.\d+', number)
+        old_date = re.findall(r'\.\d+\.\d+\.\d+', number)
         if old_date:
             old_date = old_date[0]
             new_date = '.20' + old_date[1:]
             number = number.replace(old_date, new_date)
     for each in url_list:
         text_list = html.xpath("//a[@href=$url]/div/text()", url=each)
-        text_list = str(text_list).replace("', '", '').replace(
-            ' ', '').replace('\\n', '').replace('-', '').replace('.', '')
+        text_list = str(text_list).replace("', '", '').replace(' ', '').replace('\\n', '').replace('-', '').replace('.', '')
         if number.upper().replace('.', '').replace('-', '') in text_list.upper():
             return each
     return False
@@ -178,7 +154,7 @@ def getCoverSmall(number, real_url):
     a = real_url.replace('/v/', '')[:2].lower()
     result = 'https://jdbimgs.com/thumbs/' + \
         a + real_url.replace('/v/', '/') + '.jpg'
-    if re.findall('\.\d+\.\d+\.\d+', number):
+    if re.findall(r'\.\d+\.\d+\.\d+', number):
         result = ''
     return result
 
@@ -203,22 +179,17 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     error_type = ''
     error_info = ''
     url_search = ''
-    try:  # 捕获主动抛出的异常
+    try:                                                                                                                  # 捕获主动抛出的异常
         if not real_url:
+
             # 通过搜索获取real_url
             url_search = javdb_url + '/search?q=' + number + '&f=all&locale=zh'
             log_info += '   >>> JAVDB-生成搜索页地址: %s \n' % url_search
+
             # ========================================================================搜索番号
-            scraper = cloudscraper.create_scraper(
-                browser={
-                    'browser': 'firefox',
-                    'platform': 'windows',
-                    'mobile': False
-                }
-            )  # returns a CloudScraper instance
+            scraper = cloudscraper.create_scraper(browser={'browser': 'firefox', 'platform': 'windows', 'mobile': False}) # returns a CloudScraper instance
             try:
-                html_search = scraper.get(
-                    url_search, cookies=cookies, proxies=proxies, timeout=timeout).text
+                html_search = scraper.get(url_search, cookies=cookies, proxies=proxies, timeout=timeout).text
             except Exception as error_info:
                 log_info += '   >>> JAVDB-请求搜索页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
@@ -246,15 +217,13 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
         if real_url:
             scraper = cloudscraper.CloudScraper()
             try:
-                html_info = scraper.get(
-                    real_url, cookies=cookies, proxies=proxies, timeout=timeout).text
+                html_info = scraper.get(real_url, cookies=cookies, proxies=proxies, timeout=timeout).text
             except Exception as error_info:
                 log_info += '   >>> JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
                 raise Exception('JAVDB-请求详情页：出错！错误信息：%s\n' % str(error_info))
             html_detail = etree.fromstring(html_info, etree.HTMLParser())
-            html_title = str(html_detail.xpath(
-                '//title/text()')).strip(" ['']")
+            html_title = str(html_detail.xpath('//title/text()')).strip(" ['']")
             if html_title == 'Please Wait... | Cloudflare':
                 log_info += '   >>> JAVDB-请求详情页：被 5 秒盾拦截！\n'
                 error_type = 'SearchCloudFlare'
@@ -269,19 +238,18 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 raise Exception('JAVDB-该番号内容需要登录查看！')
             outline = ''
             # ========================================================================收集信息
-            actor = getActor(html_detail)  # 获取actor
+            actor = getActor(html_detail)                                                   # 获取actor
             actor = str(actor).strip(" [',']").replace('\'', '')
             actor_photo = getActorPhoto(actor)
             number = getNumber(html_detail, number)
-            title = getTitle(html_detail)  # 获取标题并去掉头尾歌手名
+            title = getTitle(html_detail)                                                   # 获取标题并去掉头尾歌手名
             if not title:
                 log_info += '   >>> JAVDB- title 获取失败！\n'
                 error_type = 'need login'
                 raise Exception('JAVDB- title 获取失败！')
             mosaic = getMosaic(title, isuncensored)
-            title = title.replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace(
-                '_', '-').replace(number.upper(), '').replace(number, '').replace('--', '-').strip()
-            cover_url = getCover(html_detail)  # 获取cover
+            title = title.replace('中文字幕', '').replace('無碼', '').replace("\\n", '').replace('_', '-').replace(number.upper(), '').replace(number, '').replace('--', '-').strip()
+            cover_url = getCover(html_detail)                                               # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> JAVDB- cover url 获取失败！\n'
                 error_type = 'Cover Url is None!'
@@ -297,25 +265,25 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             studio = getStudio(html_detail)
             publisher = getPublisher(html_detail)
             extrafanart = getExtraFanart(html_detail)
+
             # 封面处理
-            number_list = ['LUXU', 'SIRO', 'GANA', 'ARA-',
-                           'MIUM', 'SHYN', 'SDFK', 'KMHRS']  # 下载封面的番号前缀
+            number_list = ['LUXU', 'SIRO', 'GANA', 'ARA-', 'MIUM', 'SHYN', 'SDFK', 'KMHRS'] # 下载封面的番号前缀
             for each in number_list:
                 if each in number:
                     image_download = True
-            if 'SOD star' in publisher:   # 下载封面的发行商
+            if 'SOD star' in publisher:                                                     # 下载封面的发行商
                 image_download = True
-            if 'VR' in tag:   # 下载封面的标签
+            if 'VR' in tag:                                                                 # 下载封面的标签
                 image_download = True
-            if 'KMHRS' in number:   # 封面改用剧照第一张图
+            if 'KMHRS' in number:                                                           # 封面改用剧照第一张图
                 if extrafanart:
                     cover_small_url = extrafanart[0]
-            # 封面改用海报TD-011
-            if series == 'トコダケ' or re.search('^TD-*\d{3,}', number):
+                                                                                            # 封面改用海报TD-011
+            if series == 'トコダケ' or re.search(r'^TD-*\d{3,}', number):
                 image_download = True
                 cover_small_url = cover_url
                 image_cut = 'center'
-            if isuncensored or 'FC2' in number or 'GANA' in number:   # 封面改居中裁剪
+            if isuncensored or 'FC2' in number or 'GANA' in number:                         # 封面改居中裁剪
                 image_cut = 'center'
 
             try:
@@ -351,8 +319,7 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
                 log_info += '   >>> JAVDB-数据获取成功！\n'
                 dic['log_info'] = log_info
             except Exception as error_info:
-                log_info += '   >>> JAVDB-生成数据字典：出错！ 错误信息：%s\n' % str(
-                    error_info)
+                log_info += '   >>> JAVDB-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
                 error_info = str(error_info)
                 raise Exception(log_info)
 
@@ -366,8 +333,13 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(
+        dic,
+        ensure_ascii=False,
+        sort_keys=False,
+        indent=4,
+        separators=(',', ':'),
+    )                                                                          # .encode('UTF-8')
     return js
 
 

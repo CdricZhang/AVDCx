@@ -1,10 +1,10 @@
-import sys
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import json
 from Getter import javlibrary
 import Function.config as cf
 import urllib3
-urllib3.disable_warnings()
+urllib3.disable_warnings()  # yapf: disable
 
 
 def getDataState(json_data):
@@ -23,10 +23,15 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
     del_actor_name = config.get('del_actor_name')
 
     appoint_url = appoint_url.replace('/cn/', '/ja/').replace('/tw/', '/ja/')
-    json_data = json.loads(javlibrary.main(
-        number, appoint_url, 'jp', log_info, req_web))
+    json_data = json.loads(javlibrary.main(number, appoint_url, 'jp', log_info, req_web))
     if not getDataState(json_data):
-        return json.dumps(json_data, ensure_ascii=False, sort_keys=False, indent=4, separators=(',', ':'), )
+        return json.dumps(
+            json_data,
+            ensure_ascii=False,
+            sort_keys=False,
+            indent=4,
+            separators=(',', ':'),
+        )
     if translate_language != 'ja':
         if translate_language == 'zh_cn':
             appoint_url = json_data['website'].replace('/ja/', '/cn/')
@@ -34,23 +39,26 @@ def main(number, appoint_url='', log_info='', req_web='', isuncensored=False):
             appoint_url = json_data['website'].replace('/ja/', '/tw/')
         log_info = json_data['log_info']
         req_web = json_data['req_web']
-        json_data_zh = json.loads(javlibrary.main(
-            number, appoint_url, translate_language, log_info, req_web))
+        json_data_zh = json.loads(javlibrary.main(number, appoint_url, translate_language, log_info, req_web))
         if getDataState(json_data_zh):
             json_data['req_web'] = json_data_zh['req_web']
             json_data['website'] = json_data_zh['website']
             if 'title' in translate_content:
                 json_data['title'] = json_data_zh['title']
                 if del_actor_name:
-                    json_data['title'] = json_data['title'].replace(
-                        ' ' + json_data['actor'], '').strip(' ')
+                    json_data['title'] = json_data['title'].replace(' ' + json_data['actor'], '').strip(' ')
             if actor_output != 'ja':
                 json_data['actor'] = json_data_zh['actor']
             if info_output != 'ja':
                 json_data['tag'] = json_data_zh['tag']
 
-    js = json.dumps(json_data, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(
+        json_data,
+        ensure_ascii=False,
+        sort_keys=False,
+        indent=4,
+        separators=(',', ':'),
+    )                                                                          # .encode('UTF-8')
     return js
 
 

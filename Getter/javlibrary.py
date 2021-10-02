@@ -1,12 +1,12 @@
-import sys
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import re
 from lxml import etree
 import json
 import cloudscraper
 import Function.config as cf
 import urllib3
-urllib3.disable_warnings()
+urllib3.disable_warnings()  # yapf: disable
 
 
 def getRealUrl(html, number, domain_2):
@@ -15,8 +15,7 @@ def getRealUrl(html, number, domain_2):
     result = html.xpath('//div[@id="video_title"]/h3/a/text()')
     for each in result:
         if new_number in each.replace('-', '').upper():
-            real_url = html.xpath(
-                '//div[@id="video_title"]/h3/a[contains(text(), $title)]/@href', title=each)[0]
+            real_url = html.xpath('//div[@id="video_title"]/h3/a[contains(text(), $title)]/@href', title=each)[0]
             real_url = 'https://www.javlibrary.com' + real_url
             return real_url
     result = html.xpath('//a[contains(@href, "/?v=jav")]/@title')
@@ -40,8 +39,7 @@ def getTitle(html):
 
 
 def getNumber(html):
-    result = html.xpath(
-        '//div[@id="video_id"]/table/tr/td[@class="text"]/text()')
+    result = html.xpath('//div[@id="video_id"]/table/tr/td[@class="text"]/text()')
     if result:
         result = result[0]
     else:
@@ -50,8 +48,7 @@ def getNumber(html):
 
 
 def getActor(html):
-    result = html.xpath(
-        '//div[@id="video_cast"]/table/tr/td[@class="text"]/span/span[@class="star"]/a/text()')
+    result = html.xpath('//div[@id="video_cast"]/table/tr/td[@class="text"]/span/span[@class="star"]/a/text()')
     if result:
         result = str(result).strip(' []').replace("'", '').replace(', ', ',')
     else:
@@ -78,8 +75,7 @@ def getCover(html):
 
 
 def getTag(html):
-    result = html.xpath(
-        '//div[@id="video_genres"]/table/tr/td[@class="text"]/span/a/text()')
+    result = html.xpath('//div[@id="video_genres"]/table/tr/td[@class="text"]/span/a/text()')
     if result:
         result = str(result).strip(' []').replace("'", '').replace(', ', ',')
     else:
@@ -88,8 +84,7 @@ def getTag(html):
 
 
 def getRelease(html):
-    result = html.xpath(
-        '//div[@id="video_date"]/table/tr/td[@class="text"]/text()')
+    result = html.xpath('//div[@id="video_date"]/table/tr/td[@class="text"]/text()')
     if result:
         result = str(result).strip(' []').replace("'", '').replace(', ', ',')
     else:
@@ -99,15 +94,14 @@ def getRelease(html):
 
 def getYear(release):
     try:
-        result = str(re.search('\d{4}', release).group())
+        result = str(re.search(r'\d{4}', release).group())
         return result
     except:
         return release[:4]
 
 
 def getStudio(html):
-    result = html.xpath(
-        '//div[@id="video_maker"]/table/tr/td[@class="text"]/span/a/text()')
+    result = html.xpath('//div[@id="video_maker"]/table/tr/td[@class="text"]/span/a/text()')
     if result:
         result = result[0]
     else:
@@ -116,8 +110,7 @@ def getStudio(html):
 
 
 def getPublisher(html):
-    result = html.xpath(
-        '//div[@id="video_label"]/table/tr/td[@class="text"]/span/a/text()')
+    result = html.xpath('//div[@id="video_label"]/table/tr/td[@class="text"]/span/a/text()')
     if result:
         result = result[0]
     else:
@@ -126,8 +119,7 @@ def getPublisher(html):
 
 
 def getRuntime(html):
-    result = html.xpath(
-        '//div[@id="video_length"]/table/tr/td/span[@class="text"]/text()')
+    result = html.xpath('//div[@id="video_length"]/table/tr/td/span[@class="text"]/text()')
     if result:
         result = result[0]
     else:
@@ -136,8 +128,7 @@ def getRuntime(html):
 
 
 def getScore(html):
-    result = html.xpath(
-        '//div[@id="video_review"]/table/tr/td/span[@class="score"]/text()')
+    result = html.xpath('//div[@id="video_review"]/table/tr/td/span[@class="score"]/text()')
     if result:
         result = result[0].strip('()')
     else:
@@ -146,8 +137,7 @@ def getScore(html):
 
 
 def getDirector(html):
-    result = html.xpath(
-        '//div[@id="video_director"]/table/tr/td[@class="text"]/span/a/text()')
+    result = html.xpath('//div[@id="video_director"]/table/tr/td[@class="text"]/span/a/text()')
     if result:
         result = result[0]
     else:
@@ -178,27 +168,19 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     else:
         javlibrary_url = domain + '/ja/vl_searchbyid.php?keyword='
         domain_2 = 'https://www.javlibrary.com/ja'
-    scraper = cloudscraper.create_scraper(
-        browser={
-            'browser': 'firefox',
-            'platform': 'windows',
-            'mobile': False
-        }
-    )
-    try:  # 捕获主动抛出的异常
+    scraper = cloudscraper.create_scraper(browser={'browser': 'firefox', 'platform': 'windows', 'mobile': False})
+    try:                                                                       # 捕获主动抛出的异常
         if not real_url:
+
             # 通过搜索获取real_url
             url_search = javlibrary_url + number
             log_info += '   >>> javlibrary-生成搜索页地址: %s \n' % url_search
             try:
-                html_search = scraper.get(
-                    url_search, proxies=proxies, timeout=timeout).text
+                html_search = scraper.get(url_search, proxies=proxies, timeout=timeout).text
             except Exception as error_info:
-                log_info += '   >>> javlibrary-请求搜索页：出错！错误信息：%s\n' % str(
-                    error_info)
+                log_info += '   >>> javlibrary-请求搜索页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
-                raise Exception('javlibrary-请求搜索页：出错！错误信息：%s\n' %
-                                str(error_info))
+                raise Exception('javlibrary-请求搜索页：出错！错误信息：%s\n' % str(error_info))
             html = etree.fromstring(html_search, etree.HTMLParser())
             html_title = str(html.xpath('//title/text()')).strip(" ['']")
             if 'Cloudflare' in html_title:
@@ -216,17 +198,13 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
 
         if real_url:
             try:
-                html_info = scraper.get(
-                    real_url, proxies=proxies, timeout=timeout).text
+                html_info = scraper.get(real_url, proxies=proxies, timeout=timeout).text
             except Exception as error_info:
-                log_info += '   >>> javlibrary-请求详情页：出错！错误信息：%s\n' % str(
-                    error_info)
+                log_info += '   >>> javlibrary-请求详情页：出错！错误信息：%s\n' % str(error_info)
                 error_type = 'timeout'
-                raise Exception('javlibrary-请求详情页：出错！错误信息：%s\n' %
-                                str(error_info))
+                raise Exception('javlibrary-请求详情页：出错！错误信息：%s\n' % str(error_info))
             html_detail = etree.fromstring(html_info, etree.HTMLParser())
-            html_title = str(html_detail.xpath(
-                '//title/text()')).strip(" ['']")
+            html_title = str(html_detail.xpath('//title/text()')).strip(" ['']")
             if html_title == 'Please Wait... | Cloudflare':
                 log_info += '   >>> javlibrary-请求详情页：被 5 秒盾拦截！\n'
                 error_type = 'SearchCloudFlare'
@@ -237,12 +215,12 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 error_type = 'title 获取失败'
                 raise Exception('javlibrary-title 获取失败！')
             web_number = getNumber(html_detail)
-            title = title.replace(web_number + ' ', '')   # 去掉标题里的番号
-            actor = getActor(html_detail)  # 获取actor
+            title = title.replace(web_number + ' ', '')                        # 去掉标题里的番号
+            actor = getActor(html_detail)                                      # 获取actor
             actor_photo = getActorPhoto(actor)
             if del_actor_name:
                 title = title.replace(' ' + actor, '')
-            cover_url = getCover(html_detail)  # 获取cover
+            cover_url = getCover(html_detail)                                  # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> javlibrary-cover url 获取失败！\n'
                 error_type = 'Cover Url is None!'
@@ -289,8 +267,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 log_info += '   >>> javlibrary-数据获取成功！\n'
                 dic['log_info'] = log_info
             except Exception as error_info:
-                log_info += '   >>> javlibrary-生成数据字典：出错！ 错误信息：%s\n' % str(
-                    error_info)
+                log_info += '   >>> javlibrary-生成数据字典：出错！ 错误信息：%s\n' % str(error_info)
                 error_info = str(error_info)
                 raise Exception(log_info)
 
@@ -304,8 +281,13 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(
+        dic,
+        ensure_ascii=False,
+        sort_keys=False,
+        indent=4,
+        separators=(',', ':'),
+    )                                                                          # .encode('UTF-8')
     return js
 
 

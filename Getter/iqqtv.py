@@ -1,12 +1,12 @@
-import sys
-sys.path.append('../')  # NOQA: E402
+import sys  # yapf: disable # NOQA: E402
+sys.path.append('../')  # yapf: disable
 import re
 from lxml import etree
 import json
 from Function.getHtml import get_html
 import Function.config as cf
 import urllib3
-urllib3.disable_warnings()
+urllib3.disable_warnings()  # yapf: disable
 
 
 def getTitle(html):
@@ -29,8 +29,7 @@ def getWebNumber(title, number):
 
 def getActor(html):
     try:
-        result = str(html.xpath(
-            '//p[@class="movie_txt_av"]/a/span/text()')).strip("['']").replace("'", '')
+        result = str(html.xpath('//p[@class="movie_txt_av"]/a/span/text()')).strip("['']").replace("'", '')
     except:
         result = ''
     return result
@@ -74,7 +73,7 @@ def getRelease(html):
 
 def getYear(release):
     try:
-        result = str(re.search('\d{4}', release).group())
+        result = str(re.search(r'\d{4}', release).group())
         return result
     except:
         return release[:4]
@@ -111,8 +110,7 @@ def getRuntime(html):
     if result:
         result = result[0].strip().split(':')
         if len(result) == 3:
-            result = int(int(result[0])*60 +
-                         int(result[1]) + int(result[2])/60)
+            result = int(int(result[0]) * 60 + int(result[1]) + int(result[2]) / 60)
     else:
         result = ''
     return str(result)
@@ -123,7 +121,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     log_info += '   >>> iqqtv-开始使用iqqtv进行刮削\n'
     config = cf.get_config()
     del_actor_name = config.get('del_actor_name')
-    if not re.match('n\d{4}', number):
+    if not re.match(r'n\d{4}', number):
         number = number.upper()
     real_url = appoint_url
     iqqtv_domain = 'https://iqqtv.cloud'
@@ -141,11 +139,13 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
     else:
         iqqtv_url = 'https://iqqtv.cloud/jp/'
 
-    try:  # 捕获主动抛出的异常
+    try:                                                                       # 捕获主动抛出的异常
         if not real_url:
+
             # 通过搜索获取real_url
             url_search = iqqtv_url + 'search.php?kw=' + number
             log_info += '   >>> iqqtv-生成搜索页地址: %s \n' % url_search
+
             # ========================================================================搜索番号
             result, html_search = get_html(url_search)
             if not result:
@@ -154,10 +154,9 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 raise Exception('iqqtv-请求搜索页：错误！信息：' + html_search)
             html = etree.fromstring(html_search, etree.HTMLParser())
             number1 = number
-            if not re.search('\d+[-_]\d+', number):
+            if not re.search(r'\d+[-_]\d+', number):
                 number1 = ' ' + number
-            real_url = html.xpath(
-                "//h3[@class='one_name ga_name' and (contains(text(), $number)) and not (contains(text(), '克破'))]/../@href", number=number1)
+            real_url = html.xpath("//h3[@class='one_name ga_name' and (contains(text(), $number)) and not (contains(text(), '克破'))]/../@href", number=number1)
 
             if real_url:
                 real_url = iqqtv_domain + real_url[0]
@@ -171,24 +170,23 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             try:
                 result, html_content = get_html(real_url)
             except Exception as error_info:
-                log_info += '   >>> iqqtv-请求详情页：出错！错误信息：%s \n' % str(
-                    error_info)
+                log_info += '   >>> iqqtv-请求详情页：出错！错误信息：%s \n' % str(error_info)
                 error_type = 'timeout'
                 raise Exception('iqqtv-请求详情页：出错！错误信息：%s \n' % str(error_info))
             html_info = etree.fromstring(html_content, etree.HTMLParser())
-            title = getTitle(html_info)  # 获取标题
+            title = getTitle(html_info)                                        # 获取标题
             if not title:
                 log_info += '   >>> iqqtv- title 获取失败！ \n'
                 error_type = 'iqqtv- title 获取失败！'
                 raise Exception('iqqtv- title 获取失败!')
-            web_number = getWebNumber(title, number)    # 获取番号，用来替换标题里的番号
+            web_number = getWebNumber(title, number)                           # 获取番号，用来替换标题里的番号
             title = title.replace(' %s' % web_number, '').strip()
-            actor = getActor(html_info)  # 获取actor
+            actor = getActor(html_info)                                        # 获取actor
             actor_photo = getActorPhoto(actor)
             if del_actor_name:
                 a = ' ' + actor
                 title = title.replace(a, '').strip(' ')
-            cover_url = getCover(html_info)  # 获取cover
+            cover_url = getCover(html_info)                                    # 获取cover
             if 'http' not in cover_url:
                 log_info += '   >>> iqqtv- cover url 获取失败！ \n'
                 error_type = 'Cover Url is None!'
@@ -241,8 +239,7 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
                 log_info += '   >>> iqqtv-数据获取成功！\n'
                 dic['log_info'] = log_info
             except Exception as error_info:
-                log_info += '   >>> iqqtv-生成数据字典：出错！ 错误信息：%s \n' % str(
-                    error_info)
+                log_info += '   >>> iqqtv-生成数据字典：出错！ 错误信息：%s \n' % str(error_info)
                 error_info = str(error_info)
                 raise Exception(log_info)
 
@@ -256,8 +253,13 @@ def main(number, appoint_url='', translate_language='zh_cn', log_info='', req_we
             'error_info': str(error_info),
             'req_web': req_web,
         }
-    js = json.dumps(dic, ensure_ascii=False, sort_keys=False,
-                    indent=4, separators=(',', ':'), )  # .encode('UTF-8')
+    js = json.dumps(
+        dic,
+        ensure_ascii=False,
+        sort_keys=False,
+        indent=4,
+        separators=(',', ':'),
+    )                                                                          # .encode('UTF-8')
     return js
 
 
