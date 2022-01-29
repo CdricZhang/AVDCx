@@ -3801,7 +3801,8 @@ class MyMAinWindow(QMainWindow, Ui_AVDV):
             # 匹配网络高质量标题（可在线更新）
             if not movie_title:
                 result, html_search_title = get_html('http://www.yesjav.info/search.asp?q=%s&' % movie_number)
-                if result:
+                # 增加了非空判断以解决下面的异常
+                if result and html_search_title != '':
                     html_title = etree.fromstring(html_search_title, etree.HTMLParser())
                     movie_title = str(html_title.xpath('//dl[@id="zi"]/p/font/a/b[contains(text(), $number)]/../../a[contains(text(), "中文字幕")]/text()', number=movie_number)).replace(' (中文字幕)', '').strip("['']")
             # 使用json_data数据
